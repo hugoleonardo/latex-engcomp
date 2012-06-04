@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.4)  19 JUN 2012 10:36
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.25)  4 JUN 2012 20:26
 entering extended mode
  %&-line parsing enabled.
 **Tegra3.tex
@@ -109,7 +109,7 @@ File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
 (/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
+File: pdftex.def 2009/08/25 v0.04m Graphics/color for pdfTeX
 \Gread@gobject=\count91
 ))
 \Gin@req@height=\dimen117
@@ -208,7 +208,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 403.
 LaTeX Font Info:    ... okay on input line 403.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 403.
 LaTeX Font Info:    ... okay on input line 403.
- (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
+ (/usr/share/texmf/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count104
 \scratchdimen=\dimen128
@@ -221,13 +221,13 @@ LaTeX Font Info:    ... okay on input line 403.
 \MPnumerator=\count108
 \everyMPtoPDFconversion=\toks22
 )
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 415.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 416.
 
  (/usr/share/texmf-texlive/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <11> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 415.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 416.
 Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no œ in font ptmr7t!
@@ -239,13 +239,14 @@ Missing character: There is no € in font ptmr7t!
 Missing character: There is no ™ in font ptmr7t!
 Missing character: There is no Ã in font ptmr7t!
 Missing character: There is no   in font ptmr7t!
-Missing character: There is no Ã in font ptmr7t!
-Missing character: There is no ¡ in font ptmr7t!
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-Underfull \hbox (badness 2318) in paragraph at lines 457--458
+Missing character: There is no Ã in font ptmr7t!
+Missing character: There is no ¡ in font ptmr7t!
+
+Underfull \hbox (badness 2318) in paragraph at lines 458--459
 []\OT1/ptm/m/n/10 Dispositivos m[]oveis fre-quente-mente ex-e-cu-tam di-ver-sas
 
  []
@@ -266,27 +267,27 @@ File: ../pictures/QuadCoreBenchmark.png Graphic file (type png)
 File: ../pictures/QuadCoreVideo.png Graphic file (type png)
 
 <use ../pictures/QuadCoreVideo.png>
-LaTeX Font Info:    Try loading font information for U+lasy on input line 491.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 492.
 
 (/usr/share/texmf-texlive/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 491.
+LaTeX Font Info:    Try loading font information for U+msa on input line 492.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 491.
+LaTeX Font Info:    Try loading font information for U+msb on input line 492.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
-)
-<../pictures/Tecnologiasdeprocesso.png, id=14, 827.09pt x 497.86pt>
+) [2 <../pictures/QaudCorePhota.png (PNG copy)> <../pictures/MultiThread.png (P
+NG copy)> <../pictures/QuadCoreBenchmark.png (PNG copy)> <../pictures/QuadCoreV
+ideo.png (PNG copy)>]
+<../pictures/Tecnologiasdeprocesso.png, id=21, 827.09pt x 497.86pt>
 File: ../pictures/Tecnologiasdeprocesso.png Graphic file (type png)
 
-<use ../pictures/Tecnologiasdeprocesso.png> [2 <../pictures/QaudCorePhota.png (
-PNG copy)> <../pictures/MultiThread.png (PNG copy)> <../pictures/QuadCoreBenchm
-ark.png (PNG copy)> <../pictures/QuadCoreVideo.png (PNG copy)>]
+<use ../pictures/Tecnologiasdeprocesso.png>
 <../pictures/CompanionCore.pdf, id=22, 614.295pt x 565.11125pt>
 File: ../pictures/CompanionCore.pdf Graphic file (type pdf)
 
@@ -295,12 +296,15 @@ File: ../pictures/CompanionCore.pdf Graphic file (type pdf)
 File: ../pictures/vSMP.png Graphic file (type png)
 
 <use ../pictures/vSMP.png>
-<../pictures/Table1.png, id=24, 968.61874pt x 327.2225pt>
+Underfull \vbox (badness 1248) has occurred while \output is active []
+
+ [3 <../pictures/Tecnologiasdeprocesso.png (PNG copy)> <../pictures/CompanionCo
+re.pdf (PNG copy)> <../pictures/vSMP.png (PNG copy)>]
+<../pictures/Table1.png, id=27, 968.61874pt x 327.2225pt>
 File: ../pictures/Table1.png Graphic file (type png)
 
-<use ../pictures/Table1.png> [3 <../pictures/Tecnologiasdeprocesso.png (PNG cop
-y)> <../pictures/CompanionCore.pdf (PNG copy)> <../pictures/vSMP.png (PNG copy)
->] <../pictures/PowerSavesVSMP.png, id=28, 1040.88875pt x 541.02126pt>
+<use ../pictures/Table1.png>
+<../pictures/PowerSavesVSMP.png, id=28, 1040.88875pt x 541.02126pt>
 File: ../pictures/PowerSavesVSMP.png Graphic file (type png)
 
 <use ../pictures/PowerSavesVSMP.png>
@@ -315,25 +319,25 @@ File: ../pictures/Kal-ElHigherFrequency.png Graphic file (type png)
 Missing character: There is no Ã in font ptmr7t!
 Missing character: There is no ­ in font ptmr7t!
 
-Underfull \hbox (badness 10000) in paragraph at lines 598--599
+Underfull \hbox (badness 10000) in paragraph at lines 599--600
 []\OT1/ptm/m/n/8 http://www.nvidia.com/content/PDF/tegra[]white[]papers/Benefit
 s-of-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 601--602
+Underfull \hbox (badness 10000) in paragraph at lines 602--603
 []\OT1/ptm/m/n/8 http://www.nvidia.com.br/content/PDF/tegra[]white[]papers/tegr
 a-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 604--605
+Underfull \hbox (badness 10000) in paragraph at lines 605--606
 []\OT1/ptm/m/n/8 http://www.nvidia.com/content/PDF/tegra[]white[]papers/Variabl
 e-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 604--605
+Underfull \hbox (badness 10000) in paragraph at lines 605--606
 \OT1/ptm/m/n/8 SMP-A-Multi-Core-CPU-Architecture-for-Low-Power-and-High-
  []
 
@@ -341,10 +345,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 604--605
 y)> <../pictures/Kal-ElLowerFrequency.png (PNG copy)> <../pictures/Kal-ElHigher
 Frequency.png (PNG copy)>] (./Tegra3.aux) ) 
 Here is how much of TeX's memory you used:
- 2576 strings out of 495061
- 37015 string characters out of 1182622
- 95541 words of memory out of 3000000
- 5737 multiletter control sequences out of 15000+50000
+ 2573 strings out of 495061
+ 36938 string characters out of 1182621
+ 94272 words of memory out of 3000000
+ 5734 multiletter control sequences out of 15000+50000
  38083 words of font info for 77 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  27i,7n,24p,1038b,250s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -357,7 +361,7 @@ ts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-texlive/fonts/type1/urw
 /times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmbi8a.pfb><
 /usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-tex
 live/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Tegra3.pdf (4 pages, 889283 bytes).
+Output written on Tegra3.pdf (4 pages, 889432 bytes).
 PDF statistics:
  63 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
