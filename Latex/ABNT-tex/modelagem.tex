@@ -1,0 +1,1624 @@
+\chapter{Modelagem de Teletráfego com Memória Longa}
+\label{cap:modelagem}
+
+Este capítulo apresenta os modelos \ac{FGN}, \ac{MWM} e \ac{ARFIMA},  %e \ac{SEMIFAR}\cite{beran99}, 
+de grande importância em hidrologia, economia, finanças, telecomunicações e outras áreas. O modelo ARFIMA é adequado para esquemas de previsão de teletráfego com LRD porque é paramétrico. Os processos FGN e MWM são não-paramétricos e têm sido amplamente utilizados para simulação/geração de teletráfego \cite{bardet03}, \cite{paxson97}, \cite{ribeiro99}, \cite{mello07}, \cite{backar00}, \cite{davies87}, \cite{percival92}. 
+%O leitor interessado poderá encontrar no apêndice \ref{apend-A}  uma descrição mais aprofundada da teoria da transformada \emph{wavelet}. 
+
+%Conforme mencionado pelo Capítulo anterior, a literatura registra outros modelos relevantes com memória longa tais como o DFBM, o FGN e o MWM. Esses modelos são introduzidos pelo apêndice \ref{apend-B}.
+
+\section{Introdução}
+\label{model:sec:intro}
+Em geral, modelos de tráfego podem ser classificados como heterogêneos ou homogêneos. Modelos heterogêneos simulam o trágego agregado (tráfego gerado por vários usuários, aplicações e protocolos) num enlace da rede. Por outro lado, modelos homogêneos referem-se a um tipo específico de tráfego, tal como tráfego de vídeo \ac{MPEG} \cite{beran95}, \cite{chang97}. 
+
+Modelos heterogêneos podem ser subdivididos em duas classes: comportamentais ou estruturais. Modelos comportamentais modelam as estatísticas do tráfego, tais como correlação, distribuição marginal ou até mesmo estatísticas de ordem mais alta (terceira e quarta ordens, por exemplo), sem levar em conta o mecanismo físico de geração de tráfego (ou seja, parâmetros de modelos comportamentais não estão diretamente relacionados aos parâmetros da rede de comunicação) \cite{paxson97}, \cite{riedi99}, \cite{mandelbrot68}, \cite{ma01}, \cite{lima07a}. Por outro lado, modelos estruturais \cite{yang01}, \cite{willinger97}, \cite{andersen97},  estão relacionados aos mecanismos de geração de pacotes e seus parâmetros podem ser mapeados para parâmetros da rede, tais como número de usuários e banda passante. 
+Observe que os modelos FGN, ARFIMA e MWM são modelos comportamentais de tráfego agregado e que processos do tipo \emph{On}/\emph{Off}\footnote{Modelos deste tipo assumem que uma determinada fonte de tráfego alterne os estados \emph{On}, em que há um fluxo de dados entre o remetente e o destinatário, e \emph{Off}, período de silêncio, em que nenhuma informação é transmitida.} podem ser utilizados como modelos estruturais de tráfego (veja \cite{athina04} para maiores detalhes). 
+
+\section{Modelagem Não-Paramétrica com FGN e MWM}
+\label{model:sec:non-param}
+
+\subsection{Processo FGN}
+\label{model:subsec:fgn}
+
+%Considere-se um processo $\rvy_t$ $H\text{-sssi}$ com autocovariância dada por (\ref{eq:cov-int-ordem1}). Seja 
+%$\rvx_t = \Delta \rvy_t$, $t=0,\pm1, \pm2, \ldots$, um processo Gaussiano de média nula exatamente auto-similar de segunda ordem com autocovariância dada por (\ref{eq:cov-as}). Como $\rvx_t$ é Gaussiano, então a sua distribuição é totalmente caracterizada pelas suas média e autocovariância. Para cada valor de $H\in(0,1)$, existe exatamente um processo Gaussiano $\rvx_t$, denominado \ac{FGN}, associado ao processo $\rvy_t$, denominado \textbf{movimento Browniano fracionário} (\textbf{\ac{FBM}}), denotado por $\rvy_t = \rvB_{H}(t)$. O FBM tem uma denominação especial quando $H = 1/2$: movimento Browniano (\emph{Brownian motion}) e é designado por $\rvB_{1/2}(t)$ ou $\rvB(t)$. Neste caso, $\rvx_1 , \rvx_2 , ...$ são variáveis aleatórias Gaussianas independentes. Segue-se a definição do movimento Browniano, bem como uma breve  descrição do seu significado físico.  
+
+Em termos históricos, o processo \ac{FGN}, proposto por Mandelbrot e Van Ness em 1968 \cite{mandelbrot68} para modelagem de séries hidrológicas LRD, é o primeiro modelo importante de memória longa que aparece na literatura. Por definição, se $\{\rvx_t\}_{t \in \mathbb{Z}}$ é um FGN, então $\rvx_t$ é um processo estacionário com autocovariância dada por (\ref{eq:cov-as}) 
+(ou seja, $C_{\rvx}(\tau) = \frac{\sigma^2_\rvx}{2}[ |\tau+1|^{2H} - 2|\tau|^{2H} + |\tau-1|^{2H}]$, $\tau=\ldots,-1,0,1,\ldots$).
+O FGN corresponde à primeira diferença de um processo estocástico de tempo contínuo conhecido como movimento Browniano fracionário (\ac{FBM})
+$\{\rvB_{H}(t):0\leq t \leq \infty\}$ com parâmetro de Hurst $0<H<1$ \cite[pág.279]{percival00}, ou seja, 
+\begin{equation}
+  \label{eq:FGN-FBM}
+  \rvx_t = \Delta \rvB_{H}(t) = \rvB_{H}(t+1) - \rvB_{H}(t), \quad t=0,1,2,\ldots  \quad.
+\end{equation}
+
+Beran fornece uma definição formal do proceso FBM em \cite{beran94}. O FBM tem uma denominação especial quando $H = 1/2$: movimento Browniano (\emph{Brownian motion}) e é designado por $\rvB_{1/2}(t)$. Neste caso, $\rvx_1 , \rvx_2 , ...$ são variáveis aleatórias Gaussianas independentes. A Fig. \ref{fig:fbm} ilustra realizações de processos FBM para vários valores do parâmetro de Hurst.
+
+\begin{figure}[htp]
+	\begin{center}
+		\includegraphics[width=10.0cm,keepaspectratio]{figuras/fbm.eps}
+	\end{center}
+	\caption{Realizações de processos FBM para vários valores do parâmetro de Hurst. As simulações foram feitas com o código MATLAB de geração e identificação de processos FBM desenvolvido por Coeurjolly \cite{coeurjolly00},\cite{matlab:fbm}.}
+\label{fig:fbm}
+\end{figure}  
+
+
+%O movimento Browniano ou \textbf{processo de Wiener} (vide as realizações ilustradas pela Fig. \ref{fig:fbm}) é um processo estocástico que modela a integral de um ruído branco (ruído branco integrado) e que pode ser usado para se descrever \cite[pág.454]{gubner06}, \cite[pág.348]{papoulis91}, \cite[pág.493]{athreya06}:
+%\begin{itemize}
+%	\item o movimento aleatório de uma partícula num líquido sujeita ao bombardeio das moléculas do líquido (estudado por Einstein e Slomuchowski);
+%	\item o movimento do pólen (que foi estudado pelo botânico britânico Robert Brown, daí o nome ``movimento Browniano'');
+%	\item flutuações de preços no mercado de ações (estudado pelo economista francês Bachelier).
+%\end{itemize}
+  
+
+%Seja $\rvB(t)$, $0\leq t \leq \infty$, a função que representa o deslocamento, numa dimensão, experimentado por uma partícula em movimento Browniano no instante $t$. Considere-se o intervalo de tempo $(s,t)$, muito maior do que o tempo entre colisões sucessivas com as moléculas do meio, e a quantidade $\{\rvB(t) - \rvB(s)\}$, que representa o deslocamento ``líquido'' no intervalo. De acordo com o teorema do limite central, $\{\rvB(t) - \rvB(s)\}$ tem distribuição normal, uma vez que corresponde à somatória de um número muito grande de pequenos deslocamentos. Assume-se que a distribuição de probabilidades de $\{\rvB(t) - \rvB(s)\}$ e de $\{\rvB(t+h) - \rvB(s+h)\}$ sejam iguais para qualquer $h>0$, pois é razoável supor-se que o deslocamento num dado intervalo depende somente do tamanho do intervalo e não do instante de tempo em que o intervalo se inicia. $\rvB(t)$ possui incrementos independentes, porque as partículas são deslocadas mediante colisões aleatórias (deslocamentos ``líquidos'' em intervalos de tempo distintos são independentes).
+
+%O movimento Browniano é auto-similar com $H = 1/2$, o que pode ser constatado a partir da seguinte definição \cite[pág.55]{beran94}: 
+
+%\begin{defi}[Movimento Browniano]
+%\label{def:MB}
+%Seja $\rvB(t)$ um processo estocástico de tempo contínuo tal que 
+%\begin{enumerate}
+%	\item $\rvB(t)$ é Gaussiano;
+%	\item $\rvB(0)$ = 0;
+%	\item $\rvB(t)$ possui incrementos independentes\footnote{É portanto um processo Markoviano.};
+%	\item $E[\rvB(t) - \rvB(s)] = 0$;
+%	\item $\text{Var}[\rvB(t) - \rvB(s)] =  2 |t - s|$  ($\text{Var}[\rvB(t)] =  2t$).
+%\end{enumerate}
+%Então $\rvB(t)$ é o movimento Browniano. $\quad \blacksquare$
+%\end{defi}
+
+%A função de densidade de probabilidade de $\rvB(t)$ tem a seguinte expressão:
+%\begin{equation}
+%	\label{eq:fdp-MB}
+%	f_\rvB(b,t)= \frac{1}{\sigma \sqrt{2 \pi t}} e^{-\frac{b^2}{2 \sigma^2 t}}.
+%\end{equation}
+
+%A auto-similaridade com $H =1/2$ é conseqüência direta da definição \ref{def:MB} porque 
+%$E[\rvB(ct)] = E[\rvB(ct) - \rvB(0)] = 0 = c^{1/2} E[\rvB(t)]$.
+
+%A autocovariância é dada por
+%\begin{equation}
+%	\label{eq:acv-MB}
+%	C_{\rvB}(t,s) = \sigma^2 \text{min}(t,s).
+%\end{equation}
+
+%O movimento Browniano fracionário, com $H\in(0,1)$, é definido por (\ref{eq:cov-int-ordem1}). Alternativamente, também pode ser enunciado em termos de uma média móvel de $d\rvB(t)$ ($\rvB(t)$ sendo o movimento Browniano), em que os incrementos passados de $\rvB(t)$ são ponderados pela função peso $w_H$ definida por
+%\[ w_H(t,s) = 0 \quad \quad \quad \text{para} \quad	s \geq t, \]
+%\[ w_H(t,s) = (t - s)^{H-1/2} \quad \quad \quad \text{para} \quad	0\leq s < t, \]
+%\[ w_H(t,s) = (t - s)^{H-1/2} -  (-s)^{H-1/2}\quad \quad \quad \text{para} \quad	s < 0. \]
+
+%\begin{defi}[Movimento Browniano Fracionário]
+%\label{def:FBM}
+%Seja $H$ tal que  $0<H<1$, e $b_0 \in \mathbb{R}$. Para $t>0$, o movimento Browniano fracionário $\rvB_H(t)$ é definido por \cite{mandelbrot68}
+%\begin{equation}
+%\begin{split}
+%	\rvB_H(0) &= b_0 \\
+%  \rvB_H(t)-\rvB_H(0)&=\left(\frac{1}{\Gamma(H+1/2)}\right)  \int_{-\infty}^{0} \left[(t-s)^{H-1/2}                       -(-s)^{H-1/2}\right]\,dB(s) \,\,+ \\
+%	                 & +  \int_{0}^{t} (t-s)^{H-1/2} \,dB(s).\quad \blacksquare 
+%\end{split}
+%\end{equation}
+%\end{defi}
+
+Pode-se criar um FBM de tempo discreto (\ac{DFBM}), denotado por $\rvB_t$, por meio da soma cumulativa de amostras do FGN $\{\rvx_t\}$: 
+\begin{equation}
+  \label{eq:DFBM}
+  \rvB_t \equiv \rvB_{H}(t) = \sum_{u=0}^{t-1} \rvx_u, \quad t=1,2,\ldots  \quad.
+\end{equation}
+
+A DEP do DFBM é dada pela fórmula \cite[pág. 280]{percival00}
+\begin{equation}
+	\label{dep:dfbm}
+	P_{\rvB_t}(f) = \sigma_x^2 C_H \sum_{j=-\infty}^{\infty}\frac{1}{|f+j|^{2H +1}}, \quad -\frac{1}{2} \leq f \leq \frac{1}{2},
+\end{equation}
+em que $\sigma_x^2$ é a potência de um FGN de média nula, $C_H=\frac{\Gamma(2H+1)\sin{(\pi H)}}{2\pi^{2H+1}}$ e $0<H<1$. De acordo com (\ref{dep:dfbm}), a DEP do DFBM possui uma singularidade do tipo $|f|^{-\alpha}$, $0<\alpha<1$, na origem, pois 
+\begin{equation}
+	\label{dep:dfbm-1/f}
+	P_{\rvB_t}\varpropto |f|^{1-2H},\,\,\,\,f\rightarrow 0  	\, .
+\end{equation}
+
+O FGN e o DFBM estão relacionados pela função de transferência 
+\begin{equation}
+	\label{eq:H(Z)}
+	H(z) = \frac{X(z)}{B(z)} = 1 - z^{-1}, \, 
+\end{equation}
+em que $X(z)$ e $B(z)$ denotam as transformadas $z$ de $x_t$ e $B_t$, respectivamente. A resposta em freqüência associada a (\ref{eq:H(Z)}) é
+\begin{equation}
+	\label{eq:H(f)}
+	H(f)=H(z)|_{z=e^{j2\pi f}} = 1-e^{-j2\pi f} \, .
+\end{equation} 
+Como a relação saída/entrada em termos das DEPs é igual a \cite[pág. 351]{stark02}
+\begin{equation}
+	\label{eq:DEPout-DEPin}
+	P_\rvx(f) = |H(f)|^2 P_{\rvB_t}(f) \, ,
+\end{equation}   
+em que $|H(f)|^2$ é dado por, 
+\begin{equation}
+	\label{eq:D(f)}
+	|H(f)|^2 = G(f) = 4 \sin^2{(\pi f)}  \, ,
+\end{equation}
+então a DEP do FGN é igual a   
+\begin{equation}
+	\label{dep:fgn}
+   P_\rvx(f)=4 \sin^2{(\pi f)} P_{\rvB_t}(f) \, .   
+\end{equation}
+
+Assim, (\ref{dep:dfbm}) e (\ref{dep:fgn}) mostram que a DEP do FGN é caracterizada por somente dois parâmetros:  $\sigma_x^2$ e $H$ (responsável pela forma do espectro). Além disso, é importante se ter em mente que o FGN é completamente especificado pela sua média e pela sua DEP, pois é Gaussiano. 
+
+Em \cite{paxson97}, é mostrado que (\ref{dep:fgn}) pode ser reescrita na forma:
+%\begin{multline}
+\begin{equation}
+	\label{dep2:fgn}
+   P_\rvx(f) = A(f,H)[ |2\pi f|^{-2H-1} + B(f,H)]\,  ,
+%\end{multline}
+\end{equation}
+em que $A(f,H)=2\sin{(\pi H)}\Gamma{(2H+1)}(1-\cos{(2\pi f)})$ e $B(f,H) = \sum_{j=1}^{\infty}[(2\pi j + 2\pi f)^{-2H-1} + (2\pi j - 2\pi f)^{-2H-1}]$. 
+Para pequenos valores de $f$ tem-se que $P_\rvx(f) \propto |f|^{1-2H}$ . 
+
+
+
+
+\subsection{Transformada \emph{Wavelet}}
+\label{model:subsec:transf-wav}
+
+\subsubsection{A Transformada \emph{Wavelet} Contínua}
+\label{model:subsubsec:CWT}
+
+A transformada de Fourier de um sinal $x(t)$, caso exista, é definida como 
+
+\begin{equation}
+\label{def:TF}
+	X(\nu) = \text{TF}\{x(t)\} = \int_{-\infty}^{\infty} x(t) e^{-j2\pi\nu t}dt\,,
+\end{equation}
+em que $\nu$ denota a freqüência em ciclos/segundo [Hz].
+
+Gabor \cite{gabor46} mostrou que é possível representar o conteúdo espectral \textbf{local} de um sinal $x(t)$ em torno de um instante de tempo $\tau$ através da transformada janelada de Fourier (\ac{WFT})
+\begin{equation}
+\label{def:WFT}
+	X_T(\nu,\tau) = \int_{-\infty}^{\infty} x(t)g_T(t-\tau)e^{-j2\pi\nu t}dt \, ,
+\end{equation}
+em que $g_T(t)$ é uma janela de suporte finito de duração $T$ e $\nu$ denota freqüência. A função janela é atrasada no tempo e depois transladada na freqüência (modulada no tempo). A WFT é uma representação bidimensional definida no plano ou domínio tempo-freqüência porque depende dos parâmetros $\nu$ e $\tau$. A WFT equivaleria a uma descrição do tipo ``partitura'' musical contínua de $x(t)$.  
+
+De acordo com o princípio da incerteza de Heisenberg \cite[pág.52]{kaiser94}, um sinal cujo conteúdo de energia esteja bem localizado no tempo tem esta energia bastante espalhada no domínio da freqüência. Como a janela de \ref{def:WFT} tem um certo tamanho $T$ fixo, conclui-se que a WFT não é boa para analisar (ou identificar) comportamentos de $x(t)$ que aconteçam em tempos muito menores ou muito maiores do que $T$, como, por exemplo, fenômenos transitórios de duração $\Delta t << T$ ou ciclos que existam em períodos maiores do que $T$. A transformada \emph{wavelet} resolve este problema substituindo a modulação pela \textbf{mudança de escala}, conforme será descrito a seguir.
+
+Uma \emph{wavelet} $\psi_0(t)$ (também chamada às vezes de ``\emph{wavelet} mãe''), $t \in \mathbb{R}$, é uma função que satisfaz três condições \cite{percival00}, \cite{whitcher2001}.
+\begin{enumerate}
+	\item \label{admissib}
+	      A sua transformada de Fourier $\Psi(\nu)$, $-\infty < \nu < \infty$, é tal que existe uma constante finita 
+	      $C_\psi$ que obedece à \textbf{condição de admissibilidade}
+	     \begin{equation}
+				\label{eq:admissib}
+						0< C_\psi = \int_{0}^{\infty} \frac {|\Psi(\nu)|^2}{\nu} d\nu < \infty \,.
+				\end{equation}
+	\item \label{cruza-zeros}
+	      A integral de $\psi_0(t)$ é nula:
+				\begin{equation}
+					\label{eq:cruza-zeros}
+					\int_{-\infty}^{\infty} \psi_0(t) \,dt = 0\,.
+				\end{equation}
+	\item \label{sup-finito}
+	      A sua energia é unitária: 
+	      \begin{equation}
+					\label{eq:sup-finito}
+					\int_{-\infty}^{\infty} |\psi_0(t)|^2 \,dt = 1\,.
+				\end{equation}						
+\end{enumerate}
+
+A condição de admissibilidade (\ref{admissib}) impõe que $\Psi(0)=0$ (tenha valor DC nulo) e que o decaimento de $|\Psi(\nu)|^2$ para $\nu \rightarrow \infty$ seja pelo menos tão rápido quanto o de uma função $\text{sinc}(\nu) \equiv \sin{(\pi \nu)}/(\pi \nu)$, que é do tipo $1/\nu$ (vide demonstração em \cite{baccala04}). A condição (\ref{cruza-zeros}) garante que $\Psi(0)=0$ e impõe que $\psi_0(t)$ tenha cruzamentos por zeros (não necessariamente eqüiespaçados) de tal modo que excursões positivas da função sejam compensadas por excursões negativas. A condição (\ref{sup-finito}) exige que o suporte efetivo de $\psi_0(t)$ seja finito\footnote{Ou seja, grande parte da energia da função está concentrada num determinado intervalo de tempo.}, o que faz com que a \emph{wavelet} seja uma função localizada no tempo. Sendo assim, $\psi_0(t)$ deve se parecer com uma ``pequena onda'' ou onda de curta duração (este é o significado do termo \emph{wavelet}).  A função $\sin(t)$ (senóide), por exemplo, não é uma \emph{wavelet}, porque oscila entre $1$ e $-1$ para $-\infty \leq t \leq \infty$ (o seno então seria um exemplo de ``onda grande'' ou onda de duração infinita). 
+
+As Figs. \ref{fig:exemplos-wavelets}, \ref{fig:Meyer} e \ref{fig:wav-Gaussianas} 
+ilustram alguns exemplos de \emph{wavelets}. A \emph{wavelet} de Haar (vide canto superior esquerdo da Fig. \ref{fig:exemplos-wavelets}) é o exemplo mais antigo (e também o mais simples) de \emph{wavelet}\footnote{O matemático húngaro Alfred Haar propôs esta \emph{wavelet} em 1909 na sua tese de doutoramento, que foi supervisionada por Hilbert, sobre sistemas ortogonais de funções.}. 
+
+\begin{figure}[htp]
+	\begin{center}
+		\includegraphics[height=9cm,keepaspectratio]{figuras/examples-of-wavelets.eps}
+	\end{center}
+	\caption{Quatro exemplos de funções \emph{wavelet}. Esta figura foi gerada pela função \texttt{toon0111.m} do \emph{toolbox} \texttt{WaveLab850} para \texttt{MATLAB} \cite{wavelab:url}.}
+	\label{fig:exemplos-wavelets}
+\end{figure}
+
+\begin{figure}[htp]
+	\begin{center}
+		\includegraphics[width=14cm,height=6cm]{figuras/Meyer.eps}
+	\end{center}
+	\caption{\emph{Wavelet} de Meyer. Esta figura foi gerada pela função \texttt{WaveLab850} \texttt{toon0114.m}.}
+	\label{fig:Meyer}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+		\subfloat[]{%
+			\label{fig:wav-Gauss}
+			\includegraphics[height=6cm,keepaspectratio]{figuras/wav-Gauss.eps}}\\		
+		\vspace{5pt}%
+		\subfloat[]{%
+			\label{fig:wav-MexHat}
+			\includegraphics[height=6cm,keepaspectratio]{figuras/wav-MexHat.eps}}\\
+		\vspace{10pt}%
+		\caption[]{\subref{fig:wav-Gauss}: \emph{wavelet} Gaussiana (relacionada à primeira derivada da \ac{PDF} Gaussiana); \subref{fig:wav-MexHat}: \emph{wavelet} ``chapéu mexicano'' (relacionada à segunda derivada da \ac{PDF} Gaussiana). Estas \emph{wavelets} foram geradas pela função \texttt{gauswavf.m} do \emph{toolbox wavelet} para \texttt{MATLAB}.}%
+\label{fig:wav-Gaussianas}%
+\end{figure}
+
+A transformada \emph{wavelet} foi originalmente desenvolvida como uma ferramenta de análise e síntese de sinais de energia de tempo contínuo\footnote{As \emph{wavelets} foram introduzidas por Grossmann e Morlet \cite{morlet84}.} \cite{morlet84}, \cite{mallat89}, \cite{mallat89b}, \cite{mallat89c}, \cite{daubechies88}, \cite{daubechies92}. Um sinal de energia $x(t)$, $t \in \mathbb{R}$ ($t$ denota tempo), obedece à restrição   
+\begin{equation}
+\label{eq:sinal-de-energia}
+	\left\|x\right\|^2 = \left\langle x,x\right\rangle \equiv \int_{-\infty}^{\infty} |x(t)|^2\,dt < \infty,
+\end{equation}
+ou seja, $x(t)$ que obedece à restrição (\ref{eq:sinal-de-energia}) pertence ao espaço das funções de quadrado integrável\footnote{O espaço $L^2(\mathbb{R})$ é um exemplo de \textbf{espaço de Hilbert}. Diz-se que um conjunto $\mathcal{H}$ é um espaço de Hilbert se (i) $\mathcal{H}$ é um espaço vetorial completo (no sentido de que toda seqüência de Cauchy $\{x_n\}_{n\geq1}$ converge em norma para algum elemento $x \in \mathcal{H}$) em $\mathbb{C}$ (ou em $\mathbb{R}$) e se (ii) $\mathcal{H}$ é equipado com uma operação de produto interno \cite[pág.46]{brockdavis91}, \cite[pág.161]{stein05}. Observe que $\{x_n\}_{n\geq1}$ é convergente se e somente se $\{x_n\}_{n\geq1}$ for uma seqüência de Cauchy (condição necessária e suficiente) \cite{kolmogorov75}.}  $L^2(\mathbb{R})$. Atualmente, a transformada \emph{wavelet} também tem sido utilizada como uma ferramenta de análise de sinais de tempo discreto. 
+
+%A transformada \emph{wavelet} de tempo contínuo (\ac{CWT}) correlaciona um sinal com versões dilatadas  ou ``esticadas'' de uma função \emph{wavelet} (passa-bandas), produzindo uma representação de multirresolução (que leva em conta várias escalas de tempo) do sinal.
+
+A Fig. \ref{fig:tf-taxonomia} ilustra uma taxonomia da transformada \emph{wavelet}. Observe que há decomposições \emph{wavelet} em tempo contínuo (\ac{CWT}) e em tempo discreto. A CWT de um sinal $x(t)$ consiste num conjunto $C=\{W_\psi(s,\tau), \,s \in \mathbb{R}^+, \,\tau \in \mathbb{R} \}$, em que $\tau$ é o parâmetro de localização no tempo, $s$ representa a escala e $\psi$ denota uma função \emph{wavelet}, de coeficientes \emph{wavelet} no plano tempo-escala (também conhecido como plano tempo-freqüência) contínuo dados por\footnote{Neste trabalho, o produto interno entre as funções $f(.)$ e $g(.)$ que pertencem a um espaço de funções definidas num domínio $\mathcal{D}$ é dado por: $\left\langle f,g \right\rangle = \int_{\mathcal{D}} w(x)f^{\ast}(x)g(x)\,dx$, em que $w(x)$ denota uma função não negativa arbitrária.}
+\begin{equation}
+\label{eq:CWT}
+	W_\psi(s,\tau) = \left\langle \psi_{0_{(s,\tau)}},x \right\rangle =
+	\int_{-\infty}^{\infty} \frac{1}{\sqrt{s}} \psi_0^{\ast}\left( \frac{\lambda-\tau}{s} \right) x(\lambda) d\lambda \,,
+\end{equation}
+em que $\psi_{0_{(s,\tau)}}(t)=s^{-1/2} \psi_0\left( \frac{t-\tau}{s} \right)$ denota uma versão dilatada e deslocada da \emph{wavelet} ``mãe'' $\psi_0(t)$. 
+%e $\left\langle \psi_{0},x \right\rangle$ representa o produto interno entre a \emph{wavelet} e o sinal. 
+O fator $1/\sqrt{s}$ em (\ref{eq:CWT}) é usado para que
+todas as funções da classe
+\begin{equation}
+\label{eq:psi-analise}
+	\mathcal{W} = \left\{  \frac{1}{\sqrt{s}} \psi_0\left( \frac{t-\tau}{s} \right) \in \mathbb{R} \right\} \, 
+\end{equation}
+tenham a mesma energia (norma). 
+
+Note que a idéia básica da CWT definida por (\ref{eq:CWT}) é correlacionar\footnote{Medir a semelhança.} um sinal $x(t)$ com versões transladadas (por $\tau$) e dilatadas (por $s$) de uma \emph{wavelet} mãe (que tem um espectro do tipo passa-bandas). Como mencionado acima, a CWT é uma função de dois parâmetros. Ela é, portanto, uma transformada redundante, pois consiste no mapeamento de um sinal unidimensional sobre o plano tempo-escala.   
+
+Diferentemente da WFT, onde a reconstrução é feita a partir da mesma família de funções que foi usada na análise, na CWT a síntese é feita com funções $\tilde{\psi}_{s,\tau}$ que devem satisfazer
+\begin{equation}
+	\label{eq:psi-sintese}
+	\tilde{\psi}_{s,\tau}(t) = \frac{1}{C_\psi}\frac{1}{s^2} \psi_{s,\tau}(t) \,.
+\end{equation}  
+Sendo assim, $x(t)$ é recuperado completamente via transformada \emph{wavelet} contínua inversa (\ac{ICWT}):
+\begin{equation}
+\label{eq:ICWT}
+	x(t) = \frac{1}{C_\psi} \int_{0}^{\infty} \left[ \int_{-\infty}^{\infty} W_\psi(s,\tau)	\frac{1}{\sqrt{s}} \psi\left( \frac{t-\tau}{s} \right) d\tau\right] \frac{ds}{s^2}\,.
+\end{equation}
+
+
+A diferença fundamental entre a CWT e a WFT reside no fato das funções $\psi_{s,\tau}$ sofrerem dilações\footnote{\emph{Dilations}, em inglês. O termo ``dilação'' tem o significado de dilatação.}  e compressões. A análise em escalas refinadas de tempo (pequenos valores de $s$) requer funções $\psi_{s,\tau}$ ``rápidas'', isto é, de pequeno suporte, enquanto que a análise em escalas agregadas de tempo (valores elevados de $s$) requer funções $\psi_{s,\tau}$ mais ``lentas'', isto é, de suporte mais largo. Conforme foi mencionado anteriormente, o produto interno definido por \ref{eq:CWT} é uma medida da semelhança entre a \emph{wavelet} $\psi\left( \frac{t-\tau}{s} \right)$ e o sinal $x(t)$ num certo instante de tempo $\tau$ e numa determinada escala $s$. Para um $\tau$ fixo, grandes valores de $s$ correspondem a uma análise em baixas freqüências, ao passo que pequenos valores de $s$ estão associados a uma análise em altas freqüências. Portanto, a transformada \emph{wavelet} possui uma \textbf{resolução temporal variável} (isto é, capacidade para analisar o sinal de perto - ``\emph{zoom in}'' - ou de longe - ``\emph{zoom out}''), sendo adequada para o estudo de fenômenos que acontecem em várias escalas de tempo.
+
+
+A Fig. \ref{fig:exemplo-CWT} mostra a CWT de um sinal que é regular durante a primeira metade da sua duração e que contém singularidades em quase todos os pontos da sua segunda metade. Quando a escala decresce, a CWT decai rapidamente para zero nas regiões em que o sinal é regular. As singularidades isoladas na parte esquerda da figura produzem coeficientes de grandes valores em seus respectivos cones de influência, que convergem para as localizações das singularidades.   
+
+\begin{figure}[htp]
+	\begin{center}
+		\includegraphics[width=15cm,height=9cm]{figuras/exemplo-CWT.eps}
+	\end{center}
+	\vspace{10pt}%
+	\caption{A imagem da parte inferior da figura é a CWT $W_\psi(s,\tau)$ do sinal da parte superior, calculada com uma 
+	\emph{wavelet} que é a primeira derivada da \ac{PDF} Gaussiana. Os parâmetros $\tau=t$ e $s$ variam ao longo dos eixos horizontal e vertical, respectivamente. Grandes valores (positivos) de coeficientes \emph{wavelet} são indicados pela cor preta. Observe que as singularidades isoladas na parte esquerda da figura produzem grandes coeficientes em seus respectivos cones de influência, que convergem para as localizações das singularidades. Esta figura foi criada com a função \texttt{WaveLab} \texttt{WTBrowser.m}.}
+	\label{fig:exemplo-CWT}
+\end{figure}
+
+Segundo Kaiser \cite{kaiser94}, a CWT e a WFT são casos especiais de um método mais geral de análise e reconstrução de sinais, denominado teoria dos \emph{frames} ou dos arcabouços em maior generalidade. O uso de \emph{frames} na descrição de sinais é uma alternativa ao uso de \emph{bases}. Enquanto as bases representam um número mínimo de vetores necessários para representar um vetor (sinal) qualquer, os \emph{frames} são conjuntos com mais vetores que o mínimo necessário (ou seja, são redundantes). A família de funções $\psi_{s, \tau}$ é linearmente dependente porque cada vetor do \emph{frame} (que é infinito-dimensional) pode ser decomposto como uma superposiçao linear contínua dos outros vetores\footnote{Observe-se que um \emph{frame} contínuo é definido num \emph{espaço linear de funções} ou \emph{espaço funcional}, que tem dimensão infinita.}. A eq. \ref{eq:ICWT} é válida porque o operador síntese $\textbf{S}$ da ICWT foi definida da forma
+\begin{equation}
+	\label{eq:op-S}
+	\textbf{S} = ( \textbf{T}^* \textbf{T} )^{-1} \textbf{T}^*   
+\end{equation}   
+em que $\textbf{T}: X \rightarrow Y$ corresponde ao operador de análise definida pela CWT e $\textbf{T}^* : Y \rightarrow X$ é o \emph{operador adjunto} de $\textbf{T}$, que deve satisfazer a relação
+\begin{equation}
+	\label{eq:op-auto-ad}
+	\left\langle y, \textbf{T}x \right\rangle = \left\langle \textbf{T}^* y, x \right\rangle \, .
+\end{equation}    
+Se $( \textbf{T}^* \textbf{T} )^{-1}$ existe, como é o caso da CWT (e também da WFT), garante-se que vale a \emph{resolução da identidade} \cite[pág.24]{daubechies92}
+\begin{equation}
+	\label{eq:res-ident}
+	\textbf{S}\textbf{T} = \textbf{I} \, .
+\end{equation}    
+em que o operador identidade $\textbf{I}$ é definido por $\textbf{I} x \equiv x$, para todo $x$. 
+%A leitura de \cite{daubechies92},  \cite{kaiser94} e \cite{kreyszig78} é recomendada para o leitor que estiver interessado em explanações mais aprofundadas da teoria da CWT e dos arcabouços em maior generalidade.  
+
+Kaiser \cite{kaiser94} afirma que pode-se passar da descrição em tempo contínuo para uma descrição em tempo discreto em que $\tau = k \Delta \tau$, $k \in \mathbb{Z}$, e $s = \sigma^m$, $m \in \mathbb{R}$, desde que o tempo de amostragem $\Delta \tau$ seja suficientemente pequeno ($\Delta \tau \approx 0$) e que o fator de escala $\sigma$ seja escolhido suficientemente próximo da unidade, isto é, $\sigma \approx 1$ (representação de $x(t)$ num plano tempo-escala finamente discretizado). Este resultado não surpreende, porque, se \emph{frames} contínuos são infinitamente redundantes, então espera-se que \emph{frames} discretos, obtidos com $\Delta \tau \approx 0$ e $\sigma \approx 1$, sejam altamente redundantes. Entretanto, Mallat \cite{mallat89} propôs, em meados da década de 1980, um método radicalmente diferente (e surpreendente) de implementação da transformada \emph{wavelet} discreta, em que sinais são representados com $\Delta \tau$ finito e $\sigma\neq 1+\epsilon$, com $\epsilon$ arbitrário, denominado análise de multirresolução (\ac{MRA}). As propriedades de análise e reconstrução são mantidas, mesmo sem variações de escala e de tempo do tipo infinitesimal. A MRA é completamente recursiva, sendo portanto ideal para implementações computacionais. 
+
+Na MRA, $\Delta \tau=1$ e $\sigma=2$, o que resulta numa forma de decomposição de $x(t)$  em que as escalas de tempo são diádicas (potências de 2). A reconstrução de $x(t)$ é perfeita. As \emph{wavelets} usadas na MRA formam  conjuntos de \emph{bases ortonormais} ao invés de \emph{frames}. Portanto, essas novas \emph{wavelets} não podem ser obtidas via discretização de um \emph{frame} contínuo genérico, pois $\sigma=2$, como dito acima. A teoria da MRA provê a ``prescrição'' para a construção dessas novas \emph{wavelets}, as quais devem satisfazer outras restrições além da \emph{condição de admissibilidade} (\ref{admissib}). 
+
+\subsubsection{Análise de Multirresolução e Transformada \emph{Wavelet} Discreta}
+\label{model:subsubsec:dwt}
+
+A Fig. \ref{fig:tf-taxonomia} mostra que há dois tipos de DWT (veja que a CWT possui uma ``filha'' que também se chama DWT \cite{veitch00b}): a DWT para sinais de tempo discreto e a DWT para sinais de tempo contínuo. 
+\begin{figure}[htp]
+	\begin{center}
+		\includegraphics[height=6cm,keepaspectratio]{figuras/tw.eps}
+	\end{center}
+	\caption{Taxonomia da transformada \emph{wavelet}.}
+	\label{fig:tf-taxonomia}
+\end{figure}
+A DWT pode ser formulada para sinais de tempo discreto (como fazem, por exemplo, Percival e Walden em \cite[Cap.4]{percival00}), sem que haja o estabelecimento de uma conexão explícita com a CWT. 
+Por outro lado, não se deve entender que o termo ``discreto'' da DWT para sinais de tempo contínuo queira dizer que esta transformada seja definida sobre um sinal de tempo discreto, mas tão somente que os coeficientes produzidos por esta transformada pertencem a um subconjunto $D=\{w_{j,k} = W_\psi(2^{j},2^jk), \,j \in \mathbb{Z}, \,k \in \mathbb{Z} \}$ do conjunto $C$ \cite{veitch00b}, \cite[pág.105]{whitcher2001}. De fato, os coeficientes da DWT para sinais de tempo contínuo também podem ser obtidos diretamente, por meio da integral (esta relação será demonstrada mais adiante, no estudo da análise de multirresolução)
+\begin{equation}
+\label{eq:integral-DWT}
+	w_{j,k} = \left\langle \psi_{0_{(2^j,2^jk)}},x \right\rangle = \int_{-\infty}^{\infty} 2^{-j/2} \psi_0^{\ast}(2^{-j}\lambda - k) x(\lambda) \,d\lambda \,,
+\end{equation}
+em que os índices $j$ e $k$ são chamados de escala e localização, respectivamente, que não envolve um sinal de tempo discreto, mas o sinal de tempo contínuo $x(t)$. 
+
+A Eq. (\ref{eq:integral-DWT}) mostra que a DWT de tempo contínuo corresponde a uma versão criticamente amostrada da CWT definida por (\ref{eq:CWT}) nas escalas diádicas $s=2^{j}$, $j=\ldots, -1, 0, 1, 2,\ldots$, em que os instantes de tempo na escala diádica $s=2^j$ estão separados por múltiplos de $2^j$ (vide Fig. \ref{fig:cwt-dwt}). A função $\psi_0$ de (\ref{eq:integral-DWT}) deve ser definida a partir de uma análise de multirresolução (\ac{MRA}) do sinal $x(t)$ \cite{percival00}, \cite{daubechies92}, \cite{mallat99}, a qual é apresentada na seqüência. Observe-se que a teoria da MRA de tempo contínuo é similar à de tempo discreto (veja \cite{percival00}, por exemplo). Apesar dos sinais de teletráfego serem de tempo discreto, o autor desta tese optou por apresentar a versão de tempo contínuo da MRA porque o estimador do parâmetro de Hurst baseado em \emph{wavelets} proposto por Abry e Veitch \cite{abry98} que será usado nos Caps. \ref{cap:tarfima} e \ref{cap:trafego} é baseado na análise espectral de um processo ``fictício'' $\{\tilde{\rvx}_t,\, t \in \mathbb{R}\}$ que é associado ao processo de tempo discreto $\{\rvx_n,\, n \in \mathbb{Z}\}$ (vide \cite{veitch00b} para obter maiores detalhes).  
+
+\begin{figure}[htp]
+	\begin{center}
+		\includegraphics[width=12cm,keepaspectratio]{figuras/cwt-dwt.eps}
+	\end{center}
+	\caption{Amostragem crítica do plano tempo-escala por meio da discretização dos parâmetros da CWT ($s=2^j$ e $\tau=2^jk$). A CWT é definida em todos os pontos do plano $(s,\tau)$ e corresponde a uma representação redundante da informação presente no sinal. Note que o número de coeficientes dobra quando se vai de uma escala $s_1=2^{j+1}$ para uma escala mais rápida (ou mais refinada) $s_2=2^{j}$.}
+	\label{fig:cwt-dwt}
+\end{figure}
+
+
+
+%Este item introduz a \ac{DWT}, que é a ferramenta básica para o estudo de séries temporais via \emph{wavelets} \cite{percival00}. Recomenda-se ao leitor interessado em se aprofundar na teoria da transformada \emph{wavelet} a leitura das referências \cite{percival00}, \cite{kaiser94}, \cite{daubechies92} e \cite{whitcher2001}.
+%\footnote{O autor desta tese recomenda que o iniciante no assunto inicie os seus estudos pelo livro de Percival e Walden \cite{percival00}, o qual julga ser adequado para engenheiros/pesquisadores que tenham noções de processamento digital de sinais.}
+
+
+%Considere $\phi(t) \in L^2(\mathbb{R})$ tal que $\{\phi_{0,k}(t):k \in \mathbb{Z}\}$, em que $\phi_{0,k}(t)=\phi(t-k)$, seja uma base ortonormal de algum subespaço fechado $V_0 \subset L^2(\mathbb{R})$.
+
+
+%Bases ortonormais construídas a partir de \emph{wavelets} são utilizadas para se descrever sinais no plano tempo-freqüência, de maneira análoga à transformada janelada de Fourier. A transformada \emph{wavelet} é uma solução natural para a análise de sinais auto-similares, porque a sua aplicação envolve ``dilações''\footnote{\emph{Dilations}, em inglês. O termo ``dilação'' tem o significado de dilatação.} (expansões) de bandas espectrais. Portanto, a DWT possui resolução temporal variável (a transformada janelada de Fourier não possui esta funcionalidade). Além disso, os coeficientes da DWT de um sinal LRD são praticamente não-correlacionados (intra e inter-escalas) \cite{percival00}, \cite{whitcher2001}. Por esta razão, as \emph{wavelets} têm sido amplamente empregadas na análise e na síntese de sinais fractais \cite{abry98}.  
+
+Uma MRA é, por definição, uma seqüência de subespaços fechados\footnote{Um subespaço $\mathcal{M}$ de um espaço de Hilbert $\mathcal{H}$ é um subespaço \textbf{fechado} de $\mathcal{H}$ se $\left\|x_n - x\right\|\rightarrow 0$, $\{x_n\}_{n\geq1} \in \mathcal{M}$, implica que $x \in \mathcal{M}$ (ou seja, $\mathcal{M}$ contém todos os seus pontos de acumulação).}  $\{V_j\}_{j \in \mathbb{Z}}$ de $L^2(\mathbb{R})$  tal que \cite[pág.462]{percival00}, \cite{daubechies92}: 
+\begin{enumerate}
+	\item $\ldots V_2 \subset V_1 \subset V_0 \subset V_{-1} \subset V_{-2} \subset \ldots$;
+		\label{subconjuntosVj}
+	\item $\bigcap_{j \in Z} V_j = \{\}$; 
+		%\label{f2jt}
+	\item $\bigcup_{j \in Z} V_j = L^2(\mathbb{R})$;
+		\label{Vj_forma_L2}
+	\item $x(t) \in V_j \Leftrightarrow x(2^j t) \in V_0, j>0$ (em que $t$ denota tempo e $x(t)$ é um sinal de energia);
+		\label{fdesloc}
+	\item Existe uma função $\phi_{j}(t) = 2^{-j/2}\phi_0(2^{-j}t)$ em $V_j$, denominada \textit{função de escala}, tal que o conjunto $\{\phi_{j,k}, \: k \in \mathbb{Z}\}$ é uma base ortonormal de $V_j$, com $\phi_{j,k}(t) = 2^{-j/2} \phi_0(2^{-j}t - k) \: \forall j,k \in \mathbb{Z}$.
+	\label{subespacophi}
+\end{enumerate}
+%A obtenção da função de escala $\phi_0(t)$ da propriedade \ref{subespacophi} depende da família \emph{wavelet} escolhida (Haar, Daubechies etc.). 
+O subespaço $V_j$ é conhecido como o \textbf{espaço de aproximação} associado à escala de tempo $s_j=2^j$ (supondo-se que $V_0$ seja o espaço de aproximação com escala unitária). 
+
+Se a projeção sobre $V_j$ de $x(t)$ é representada pelos coeficientes de escala 
+\begin{equation}
+	\label{eq:int-coef-escala}
+	u_{j,k}=\left\langle \phi_{j,k},x\right\rangle = \int_{-\infty}^{\infty} 2^{-j/2} \phi_0^{\ast}(2^{-j}t - k)x(t)\, dt, 
+\end{equation}
+então as propriedades \ref{subconjuntosVj} e \ref{Vj_forma_L2} garantem que 
+$\underset{j\to -\infty}\lim \sum_k \phi_{j,k}(t) u_{j,k} = x(t)$, $\forall\,\,x \in L^2(\mathbb{R})$. 
+A propriedade \ref{fdesloc} implica que o subespaço $V_j$ é uma versão em escala do subespaço $V_0$ (multirresolução). A base ortonormal mencionada na propriedade \ref{subespacophi} é obtida por translações no tempo da função passa-baixas $\phi_{j}$.
+
+Considere a seqüência de aproximações (também conhecidas na literatura como \emph{wavelet smooths} \cite{percival00} ou suavizações \emph{wavelet}) sucessivas de $x(t)$ 
+\begin{equation}
+	\label{eq:aprox}	
+	\mathcal{S}_j(t) = \sum_k \phi_{j,k}(t) u_{j,k} \quad j=\ldots,-1,0,1,\ldots \,. %x_j(t) = 
+\end{equation}
+Como $V_{j+1} \subset V_{j}$, tem-se que $\mathcal{S}_{j+1}(t)$ é uma aproximação mais grosseira de $x(t)$ do que $\mathcal{S}_{j}(t)$. Este fato ilustra a idéia fundamental da MRA, que consiste em examinar a \textbf{perda de informação} quando se vai de $\mathcal{S}_{j}(t)$ para $\mathcal{S}_{j+1}(t)$:
+\begin{equation}
+	\label{eq:detalhe}	
+	\mathcal{S}_{j}(t) = \mathcal{S}_{j+1}(t) + \Delta x_{j+1}(t),
+\end{equation}
+em que $\Delta x_{j+1}(t)$ (dito \textbf{detalhe} de $x_j(t)$) pertence ao subespaço $W_{j+1}$, denominado espaço do detalhe \cite{percival00} (também às vezes chamado de subespaço \emph{wavelet} \cite{abry98}), o qual está associado às 
+flutuações (ou variações) do sinal na escala de tempo mais refinada $s_j=2^j$ (qualitativamente, os coeficientes \emph{wavelet} $w_{j,k}$ da escala $j$ são proporcionais às diferenças entre médias adjacentes do sinal $x_t$ na escala de tempo $\tau_j=s_{j-1}=2^{j-1}$ \cite[pág.59]{percival00}),  
+%escala temporal $\tau^j=2^{j-1}$, 
+e que corresponde ao complemento ortogonal de $V_{j+1}$ em $V_{j}$\footnote{Além disso, $W_{j+1}$ está contido no subespaço $V_{j}$.}. A MRA mostra que os sinais de detalhe 
+$\Delta x_{j+1}(t) = \mathcal{D}_{j+1}(t)$ podem ser obtidos diretamente a partir de projeções sucessivas do sinal original $x(t)$ sobre subespaços \emph{wavelet} $W_j$. Além disso, a teoria da MRA demonstra que existe uma função $\psi_0(t)$, denominada ``\emph{wavelet} mãe'', que é obtida a partir de $\phi_0(t)$, tal que $\psi_{j,k}(t) = 2^{-j/2} \psi_0(2^{-j}t - k) \: k \in \mathbb{Z}$ é uma base ortonormal de $W_j$.      
+
+O detalhe $\mathcal{D}_{j+1}(t)$ é obtido pela equação 
+\begin{equation}
+	\label{eq:detalhe2}	
+	\mathcal{D}_{j+1}(t) = \sum_k \psi_{j+1,k}(t)\left\langle \psi_{j+1,k}(t), x(t)\right\rangle \, ,
+\end{equation}
+em que o produto interno $\left\langle \psi_{j+1,k}(t), x(t)\right\rangle = w_{j+1,k}$
+%\begin{equation}
+%	\label{eq:int-coef-wav}
+%\left\langle \psi_{j+1,k}(t), x(t)\right\rangle = 	w_{j+1,k} = \int_{-\infty}^{\infty} x(t) 2^{-(j+1)/2} \psi_0(2^{-(j+1)}t - k)\, dt, 
+%\end{equation}
+denota o coeficiente \emph{wavelet} associado à escala $j+1$ e tempo discreto $k$ e $\{\psi_{j+1,k}(t)\}$ é uma família de funções \emph{wavelets} que gera o subespaço $W_{j+1}$, ortogonal ao subespaço $V_{j+1}$ ($W_{j+1} \bot V_{j+1}$), isto é, 
+\begin{equation}
+		\label{eq:<phi,psi>}
+		\left\langle \psi_{j+1,n} , \phi_{j+1,p} \right\rangle = 0 \, , \forall n,p.
+\end{equation}
+Portanto, o sinal de detalhe $\mathcal{D}_{j+1}(t)$ pertence ao subespaço complementar $W_{j+1}$ de $V_{j}$, pois 
+\begin{equation}
+  \label{eq:soma-direta}
+	V_{j} = V_{j+1} \oplus W_{j+1}, 
+\end{equation}
+ou seja, $V_{j}$ é dado pela soma direta de $V_{j+1}$ e $W_{j+1}$, e isto quer dizer que qualquer elemento em $V_{j}$ pode ser determinado a partir da soma de dois elementos ortogonais pertencentes a $V_{j+1}$ e $W_{j+1}$. Iterando-se  (\ref{eq:soma-direta}), tem-se que 
+\begin{equation}
+  \label{eq2:soma-direta}
+	V_{j} = W_{j+1} \oplus W_{j+2} \oplus \ldots \quad.
+\end{equation}
+A Eq. (\ref{eq2:soma-direta}) diz que a aproximação $\mathcal{S}_j(t)$ é dada por
+\begin{equation}
+	\label{eq:sintese-aproxj}	
+	 \mathcal{S}_j(t)  =  \sum_{i=j+1}^{\infty}\sum_{k} w_{i,k} \psi_{i,k}(t)\,. 
+\end{equation}
+
+%A Fig. \ref{fig:Haar} ilustra as funções de escala e \emph{wavelet} de Haar. A Fig. \ref{fig:Haar-V0} mostra as funções de escala $\phi^{(H)}_0(t)$ e \emph{wavelet} $\psi^{(H)}_0(t)$ de Haar com suporte no intervalo unitário $0 \leq t \leq 1$ (que está associado à escala $j=0$), ao passo que a Fig. \ref{fig:Haar-V1}
+%mostra as funções de escala $\phi^{(H)}_1(t)$ e \emph{wavelet} $\psi^{(H)}_1(t)$ de Haar com suporte no intervalo $0 \leq t \leq 2$ (que está associado à escala $j=1$). 
+
+
+%\begin{figure}[htp]
+%\centering
+%		\subfloat[]{%
+%			\label{fig:Haar-V0}
+%			\includegraphics[width=12cm,keepaspectratio]{figuras/haar-wavelet.eps}}\\		
+%		\vspace{10pt}%
+%		\subfloat[]{%
+%			\label{fig:Haar-V1}
+%			\includegraphics[width=12cm,keepaspectratio]{figuras/haar-wavelet-j1.eps}}\\
+%		\vspace{10pt}%
+%		\caption[]{\subref{fig:Haar-V0}: funções de escala $\phi^{(H)}_0(t)$ e \emph{wavelet} $\psi^{(H)}_0(t)$ de Haar com suporte no intervalo unitário $0 \leq t \leq 1$ (escala $j=0$) e \subref{fig:Haar-V1}: funções de escala $\phi^{(H)}_1(t)$ e \emph{wavelet} $\psi^{(H)}_1(t)$ de Haar com suporte no intervalo $0 \leq t \leq 2$ (escala $j=1$) \cite[págs.39,40]{fernando06}.}%
+%\label{fig:Haar}%
+%\end{figure}
+
+
+%Na prática, um sinal $\{x_t\}_{t\in \mathbb{Z}}$ pode ser capturado em várias escalas de tempo, resultando em um conjunto de séries temporais $\{x_{j,k}\}$, em que o índice $j=0,1,2,\ldots,J-1$ ($j=0$ corresponde à escala mais rápida) está associado às escalas temporais diádicas de interesse $\lambda=2^j$ e $k$ é um índice de tempo. A análise de $x$ começa com a série $u_0(k)=\left\langle x_{0,k}, \phi_{0,k}(t)\right\rangle$, $k=0,1,\ldots,N-1$. A seqüência $\{u_0(k)\}$ é decomposta via filtragem e subamostragem por um fator de $2$ (\emph{downsampling}) em duas seqüências: $\{u_1(k)\}$ e $\{d_1(k)\}$, cada uma contendo $N/2$ pontos. Este processo de filtragem e subamostragem é repetido várias vezes, obtendo-se as seqüências
+A MRA de um sinal de tempo contínuo $x(t)$ é iniciada com a determinação dos coeficientes\footnote{A seqüência
+$u_0(k)$ é obtida amostrando-se a saída de um filtro com resposta impulsiva $\phi^{\ast}(-t)$ (filtro casado com a função $\phi_0(t)=\phi(t)$) nos instantes $k=0,1,2,\ldots$, ou seja, $u_0(k) = x(t)\star \phi^{\ast}(-t)$ para $k=0,1,2,\ldots$, em que $\star$ denota convolução.}  
+$u_0(k)=\left\langle \phi_{0,k}(t),x(t)\right\rangle$, em que $k=0,1,\ldots,N-1$, %(suponha que $N=2^J$), 
+%\footnote{Esta seção assume que $N=2^J$, mas isto não é mandatório. Adotou-se este valor de $N$ para que} 
+que estão associados à projeção de $x(t)$ no subespaço de aproximação $V_0$. Em seguida, a seqüência $\{u_0(k)\}$ é decomposta via filtragem e subamostragem por um fator de $2$ (\emph{downsampling}) em duas seqüências: $\{u_1(k)\}$ e $\{w_1(k)\}$, cada uma contendo $N/2$ pontos. Este processo de filtragem e subamostragem é repetido várias vezes, obtendo-se as seqüências
+\begin{equation}
+	\label{eq:seq-u}
+	%\{ \{u_0(k)\}_N,\{u_1(k)\}_{\frac{N}{2}},\{u_2(k)\}_{\frac{N}{4}},\ldots,\{u_{J-1}(k)\}_{\frac{N}{2^{J-1}}}\}
+	\left\{  \{u_0(k)\}_N,\{u_1(k)\}_{\frac{N}{2}},\{u_2(k)\}_{\frac{N}{4}},\ldots, \{u_j(k)\}_{\frac{N}{2^j}},\ldots,\{u_{J}(k)\}_{\frac{N}{2^{J}}} \right\} 
+\end{equation} 
+e 
+\begin{equation}
+	\label{eq:seq-w}
+	%\{ \{w_1(k)\}_{\frac{N}{2}},\{w_2(k)\}_{\frac{N}{4}}, \ldots,\{w_{J-1}(k)\}_{\frac{N}{2^{J-1}}} \} \, .
+	\left\{ \{w_1(k)\}_{\frac{N}{2}},\{w_2(k)\}_{\frac{N}{4}}, \ldots, \{w_j(k)\}_{\frac{N}{2^j}},\{w_{J}(k)\}_{\frac{N}{2^{J}}} \right\}  \,. 
+\end{equation}
+%Observe que $\{u_{J}(k)\}_{\frac{N}{2^{J}}}$ e $\{w_{J}(k)\}_{\frac{N}{2^{J}}}$ são ``seqüências'' de tamanho igual a um, pois $N/2^J=1$.   
+A literatura \cite{veitch00b}, \cite{abry98} denomina o conjunto de coeficientes 
+\begin{equation}
+	\label{eq:DWT}
+	\left\{ \{w_1(k)\}_{\frac{N}{2}},\{w_2(k)\}_{\frac{N}{4}}, \ldots,\{w_{J}(k)\}_{\frac{N}{2^{J}}}, \{u_{J}(k)\}_{\frac{N}{2^{J}}} \right\}
+\end{equation}
+como a \ac{DWT} do sinal $x(t)$.
+
+A Fig. \ref{fig:wavedec-sumsin} ilustra a DWT de 3 níveis (decomposição nas escalas $j=1,2,3$) associada a 1024 amostras do sinal de tempo discreto $x(k)= \sin{(3k)} + \sin{(0,3k)} + \sin{(0,03k)}$, que  corresponde à superposição de 3 senóides nas freqüências $f_1 \approx 0,004775$, $f_2 \approx 0,04775$  e $f_3\approx 0,4775$. A Fig. \ref{fig:dep-sumsin} mostra a DEP deste sinal. 
+
+\begin{figure}[htp]
+	\begin{center}
+		\includegraphics[width=15cm,height=8cm]{figuras/wavedec-sumsin.eps}
+	\end{center}
+	\caption{Uma ilustração da DWT de 3 níveis do sinal de tempo discreto $x(k)= \sin{(3k)} + \sin{(0,3k)} + \sin{(0,03k)}$. O gráfico concatena as seqüências dos coeficientes de escala $\{u_3(k)\}_{128}$ e dos coeficientes \emph{wavelet} $\{w_3(k)\}_{128}$, $\{w_2(k)\}_{256}$ e $\{w_1(k)\}_{512}$ da esquerda para a direita, ou seja, os primeiros 128 pontos correspondem à seqüência $\{u_3(k)\}_{128}$; seguem-se os 128 pontos da seqüência $\{w_3(k)\}_{128}$, os 256 pontos da seqüência $\{w_2(k)\}_{256}$ e os 512 pontos da seqüência $\{w_1(k)\}_{512}$.}
+	\label{fig:wavedec-sumsin}
+\end{figure}
+
+\begin{figure}[htp]
+	\begin{center}
+		\includegraphics[width=15cm,keepaspectratio]{figuras/dep-sumsin.eps}
+	\end{center}
+	\caption{DEP do sinal $x(k)= \sin{(3k)} + \sin{(0,3k)} + \sin{(0,03k)}$.}
+	\label{fig:dep-sumsin}
+\end{figure}
+
+
+A reconstrução de $x(t)$ é implementada via filtragem e sobreamostragem por um fator de $2$ (\emph{upsampling}) das seqüências (\ref{eq:seq-u}) e (\ref{eq:seq-w}), obtendo-se uma aproximação de  $x(t)$ no subespaço $V_0$  
+\begin{equation}
+	\label{def:sintese-MRA}	
+ \mathcal{S}_0(t) = \mathcal{S}_{J}(t)  + \mathcal{D}_1(t) + \mathcal{D}_2(t) + \dots + \mathcal{D}_{J}(t)  %x_{0}(t)=
+	 %x(t) \approx \sum_{k} u(J,k) \phi_{J,k}(t) + \sum_{j=1}^{J}\sum_{k} w_{j,k} \psi_{j,k}(t)\,. 
+\end{equation} 
+ou
+\begin{equation}
+	\label{eq:IDWT}	
+	% \mathcal{S}_0(t) &= \mathcal{S}_{J}(t)  + \mathcal{D}_1(t) + \mathcal{D}_2(t) + \dots + \mathcal{D}_{J}(t)  %x_{0}(t)=
+	 x(t) \approx \sum_{k} u(J,k) \phi_{J,k}(t) + \sum_{j=1}^{J}\sum_{k} w_{j,k} \psi_{j,k}(t)\,. 
+\end{equation}
+A Eq. (\ref{eq:IDWT}) define a transforma discreta \emph{wavelet} inversa - \ac{IDWT}. A  Fig. \ref{fig:reconwave-sumsin}
+ilustra a síntese do sinal $x(k)= \sin{(3k)} + \sin{(0,3k)} + \sin{(0,03k)}$ conforme (\ref{def:sintese-MRA}) (utilizou-se a \emph{wavelet} de Haar).
+
+\begin{figure}[htp]
+	\begin{center}
+		\includegraphics[width=14cm,keepaspectratio]{figuras/reconwave-sumsin.eps}
+	\end{center}
+	\caption{Síntese do sinal $x(k)= \sin{(3k)} + \sin{(0,3k)} + \sin{(0,03k)}$ em termos da soma $\mathcal{S}_{3}(t)  + \mathcal{D}_1(t) + \mathcal{D}_2(t) + \mathcal{D}_{3}(t)$ (aproximação na escala $j=3$ e detalhes nas escalas 1, 2 e 3). Na Fig., $a_3=\mathcal{S}_{3}$ e $d_j=\mathcal{D}_j$, $j=1,2,3$.}
+	\label{fig:reconwave-sumsin}
+\end{figure}
+
+
+Diz-se que a função $\phi_0(t)=\phi(t)$ determina uma MRA de $x(t)$ de acordo com (\ref{def:sintese-MRA}), se a mesma obedece às seguintes condições:
+\begin{enumerate}
+	\item ortonormalidade intra-escala (propriedade \ref{subespacophi})
+				\begin{equation}
+						\label{eq:cond-ortog-t}
+						\left\langle \phi(t-m),\phi(t-n)\right\rangle = \delta_{m,n}\,,
+				\end{equation}
+				em que $\delta_{m,n}$ é o delta de Kronecker ($\delta_{m,n}=1$ se $m=n$, $\delta_{m,n}=0$ para $m\neq n$). A Eq.  (\ref{eq:cond-ortog-t}) impõe uma condição de ortonormalidade na escala $j=0$.
+	\item média unitária
+				\begin{equation}
+						\label{eq:media-phi}
+						\int_{-\infty}^{\infty} \phi(t)\, dt=1\,.
+				\end{equation}			
+	\item 
+				\begin{equation}
+						\label{eq:dilation}
+						\frac{1}{\sqrt{2}}\phi\left(\frac{t}{2}\right) = \sum_n g_n \phi(t-n)\,,
+				\end{equation}
+				pois ``cabem'' várias $\phi(t-k)$ em $\phi(\frac{t}{2})$ (é uma conseqüência da propriedade                              (\ref{subconjuntosVj}) da MRA).
+\end{enumerate}
+%em que $g_n$ denota os coeficientes de um filtro passa-baixas denominado \textbf{filtro de escala}. Na prática, adota-se $\{g_n\in \mathbb{R}: n=0,1,\ldots,L-1\}$, ou seja, $\{g_n\}$ é um filtro com coeficientes reais do tipo \ac{FIR}\footnote{As funções de escala e \emph{wavelet} associadas a filtros de escala FIR têm suporte compacto; portanto, a MRA baseada em sistemas ortonormais FIR possui uma boa resolução temporal (porque as funções são localizadas no tempo) \cite[pág.176]{kaiser94}. Os filtros \emph{wavelet} de Daubechies são exemplos de sistemas ortonormais FIR.}.
+
+A Eq. \ref{eq:dilation} pode ser reescrita na forma
+\begin{equation}
+	\label{eq2:dilation}
+	\phi(t) = \sum_n \sqrt2 g_n \phi(2t-n)\,,
+\end{equation}
+conhecida como \textbf{Equação de Dilação}. As Eqs. \ref{eq:dilation} e \ref{eq2:dilation} podem ser escritas, respectivamente, no domínio das freqüências como 
+\begin{equation}
+	\label{eq:escala-f}
+	\sqrt2 \Phi(2\nu) = G(\nu) \Phi(\nu)\,,
+\end{equation}
+e
+\begin{equation}
+	\label{eq2:escala-f}
+	\Phi(\nu) = \frac{1}{\sqrt{2}} G(\nu) \Phi\left(\frac{\nu}{2}\right)\,,
+\end{equation}
+em que $\Phi(\nu)$ é a transformada de Fourier de $\phi(t)$ e $G(\nu) = \sum_n g_n e^{-j 2 \pi \nu n}$, conhecido como \textbf{filtro de escala} (passa-baixas), representa um filtro periódico em $\nu$.
+
+Como o subespaço $W_{j+1}$ é ortogonal a $V_{j+1}$ e está contido em $V_j$, tem-se que
+\begin{equation}
+	\label{eq:wavelet}
+	\frac{1}{\sqrt{2}}\psi\left(\frac{t}{2}\right) = \sum_n h_n \phi(t-n)\,,
+\end{equation}
+ou
+\begin{equation}
+	\label{eq2:wavelet}
+	\psi(t) = \sum_n \sqrt{2} h_n \phi(2t-n)\,,
+\end{equation}
+que é a \textbf{Equação da \emph{Wavelet}}. Aplicando-se a transformada de Fourier em (\ref{eq:wavelet}) e (\ref{eq2:wavelet}) obtém-se, respectivamente, 
+\begin{equation}
+	\label{eq:wavelet-f}
+	\sqrt(2) \Psi(2\nu) = H(\nu) \Phi(\nu)\,,
+\end{equation}
+e 
+\begin{equation}
+	\label{eq2:wavelet-f}
+	\Psi(\nu) = \frac{1}{\sqrt{2}} H(\nu) \Phi\left(\frac{\nu}{2}\right)\,.
+\end{equation}
+em que $H(\nu)$ é o \textbf{filtro \emph{wavelet}} (passa-altas).
+
+Reescrevendo-se (\ref{eq:<phi,psi>}) em termos do domínio das freqüências e usando-se (\ref{eq:escala-f}) e (\ref{eq:wavelet-f}) resulta a \textbf{condição de ortogonalidade}
+\begin{equation}
+	\label{eq:cond-ortog}
+	\int_{-\infty}^{\infty} G(\nu)H^{*}(\nu) |\Phi(\nu)|^2 \, d\nu = 0\,,
+\end{equation}
+que o filtro $H$ deve atender para que a família $\{\psi_{1,k}(t)\}$ seja ortogonal à família $\{\phi_{1,k}(t)\}$. Pode-se mostrar \cite[pág.150]{kaiser94}, \cite[pág.75]{percival00} que a condição 
+\begin{equation}
+	\label{eq:QMF}
+	h_n = (-1)^n g_{L-1-n}\,, \quad \leftrightarrow \quad H(z)=-z^{-L+1}G(-z^{-1})\,, 
+\end{equation}
+em que $L$ denota o comprimento de um filtro FIR $g_n$, é suficiente para que valha (\ref{eq:cond-ortog}).  
+Diz-se que $g_n$ e $h_n$ são \textbf{filtros espelhados em quadratura} (ou \textbf{\ac{QMF}}) quando estão relacionados por (\ref{eq:QMF}). A Fig. \ref{fig:QMF} mostra os gráficos de resposta em freqüência dos filtros QMF e também ilustra a resposta em freqüência de filtros do tipo \emph{brickwall}, que não são fisicamente realizáveis.
+%Filtros $H$ e $G$ que obedecem à eq. \ref{eq:cond-ortog} são denominados \emph{Quadrature Mirror Filters} (QMF).
+ 
+\begin{figure}[htp]
+	\begin{center}
+		\includegraphics[height=8cm,keepaspectratio]{figuras/QMF.eps}
+	\end{center}
+	\caption{Resposta em freqüência de filtros QMF (gráfico da parte superior) \emph{vs} resposta em freqüência de filtros do tipo \emph{brickwall} (fisicamente não-realizáveis).}
+	\label{fig:QMF}
+\end{figure}
+
+De acordo com (\ref{eq2:dilation}), a MRA começa a partir de uma definição (dentre várias possíveis) da função de escala $\phi(t)$, que está relacionada ao filtro de escala $g_n$ por (\ref{eq:dilation}). A Eq. (\ref{eq:QMF}) diz que a escolha de um filtro $\{g_n\}$ do tipo \ac{FIR} implica um $\{h_n\}$ que também seja FIR. Finalmente, a função \emph{wavelet} é determinada por (\ref{eq:wavelet}). As funções de escala $\phi(t)$ e \emph{wavelet} $\psi(t)$ associadas aos filtros FIR $\{g_n\}$ e $\{h_n\}$ possuem suporte compacto, oferecendo, portanto, a funcionalidade de \emph{resolução temporal}. 
+
+A função de escala mais simples que satisfaz (\ref{eq:cond-ortog-t}) é a função característica\footnote{Definida por
+\[ \chi_{E}(x) = 
+	\begin{cases}
+			1\,\,\,\text{se}\, x \in E	\\
+			0\,\,\,\text{se}\, x \notin E.
+	  \end{cases} \]
+}
+do intervalo $I = [0,1)$, que corresponde à função de escala de Haar:
+\begin{equation}
+	\label{eq:Haar-scale-function}
+	\phi^{(H)}(t) = \chi_{[0,1)}(t) = 
+	\begin{cases}
+			1\,\,\,\text{se}\, 0 \leq t <1	\\
+			0\,\,\,\text{caso contrário}.
+	  \end{cases} 
+\end{equation}
+Neste caso (MRA de Haar), o filtro de escala de Haar associado é dado por 
+\begin{equation}
+	\label{eq:filtro-escala-Haar}
+	g_n=\{\ldots,0,g_0=1/\sqrt{2}, g_1=1/\sqrt{2},0,\ldots\}\,,
+\end{equation}
+o filtro \emph{wavelet} de Haar por 
+\begin{equation}
+	\label{eq:filtro-wav-Haar}
+	h_n=\{\ldots,0,h_0=g_1=1/\sqrt{2}, h_1=-g_0=-1/\sqrt{2},0,\ldots\}\,
+\end{equation}
+e a função \emph{wavelet} de Haar por
+\begin{equation}
+	\label{eq:Haar-wav-function}
+	\psi^{(H)}(t) = \chi_{[0,1/2)}(t) - \chi_{[1/2,1)}(t)\,.  
+\end{equation}
+
+A Fig. \ref{fig:exemplos-wav-Daubechies} mostra as funções de escala e \emph{wavelets} de Daubechies com $N=2,3,4$ momentos ou cumulantes nulos (\emph{vanishing moments})
+\begin{equation}
+	\label{def:van-moments}
+	\int_{-\infty}^{\infty} t^m \psi(t) \, dt = 0, \,\,\, m=0,1,\ldots,N-1 \,.
+\end{equation}
+Ingrid Daubechies \cite{daubechies88} foi a primeira a propor um método para construção de seqüências de funções de transferência $\{ G^{(N)}(z) \}_{N=1,2,3,\dots}$ e $\{ H^{(N)}(z)\}_{N=1,2,3,\dots}$, em que $G^{(N)}(z)$ está associada ao filtro FIR passa-baixas $g^{(N)}_n$ 
+%\footnote{$G(z)$ é a \emph{transformada} \textbf{\emph{z}} de $\{g_n\}$, definida por $G(z) = \sum_{n=-\infty}^{\infty} g_n z^{-n}$} 
+e $H^{(N)}(z)$ ao filtro passa-altas $h^{(N)}_n$. As funções de escala e \emph{wavelet} correspondentes têm suporte em $[0,2N-1]$. O primeiro membro da seqüência é o sistema de Haar $\phi^{(1)}=\phi^{(H)}$, $\psi^{(1)}=\psi^{(H)}$. Os filtros de Daubechies são generalizações do sistema de Haar para $N \geq 2$ (consulte \cite{kaiser94} para obter maiores informações). 
+
+
+\begin{figure}[htp]
+	\begin{center}
+		\includegraphics[width=15cm,keepaspectratio]{figuras/exemplos-wav-Daubechies.eps}
+	\end{center}
+	%\vspace{10pt}%
+	\caption{Os gráficos da parte inferior mostram as \emph{wavelets} de Daubechies com $N=2,3,4$ momentos nulos
+(\emph{vanishing moments}), da esquerda para a direita, respectivamente. As funções de escala correspondentes estão na parte superior. Esta figura foi criada com a função \texttt{WaveLab} \texttt{WTBrowser.m}.}
+	\label{fig:exemplos-wav-Daubechies}
+\end{figure}
+
+
+%Demonstra-se que valem as relações  \cite{baccala04}, \cite{kaiser94}
+%\begin{equation}
+%\label{eq:wavelet}
+%	\frac{1}{\sqrt{2}}\psi(\frac{t}{2}) = \sum_n h_n \phi(t-n)\,,
+%\end{equation}
+%em que $h_n$ denota os coeficientes do \textbf{filtro \emph{wavelet}} (que também é um filtro FIR com coeficientes reais na prática, só que passa-altas), conhecida como \textbf{equação da \emph{wavelet}} e a \textbf{condição de ortogonalidade} 
+%\begin{equation}
+%	\label{def:cond-ortog}
+%	\int_{-\infty}^{\infty} G(\nu)H^{*}(\nu) |\Phi(\nu)|^2 \, d\nu = 0\,,
+%\end{equation}
+%em que $G(\nu)=G(f)|_{f=\nu/\nu_a}$ e $H(\nu)=H(f)|_{f=\nu/\nu_a}$ ($\nu_a$ denota a freqüência de amostragem do sinal original $x(t)$), que o filtro passa-altas $H$ deve atender para que a família de funções $\{\psi_{j,k}(t)\}$ seja ortogonal à família $\{\phi_{j,k}(t)\}$. O restante desta seção supõe que as seqüências $\{g_n\}$ e $\{h_n\}$ sejam reais e FIR com tamanho $L$.
+
+
+Demonstra-se que \cite{mallat89}:
+\begin{equation}
+	\label{eq1:BF}
+	u_{j}(n) = \sum_{k} g(k-2n) u_{j-1}(k)\, 
+\end{equation}
+e que
+\begin{equation}
+	\label{eq2:BF}
+	w_{j}(n) = \sum_{k} h(k-2n) u_{j-1}(k)\,. 
+\end{equation}
+
+De acordo com (\ref{eq1:BF}) e (\ref{eq2:BF}), pode-se obter os coeficientes $u_j(n)$ e $w_j(n)$ a partir dos coeficientes de escala $u_{j-1}(m)$ por meio de uma operação de dizimação da seqüência $\{u_{j-1}(m)\}$ por um fator de 2. A dizimação (ou decimação) consiste no cascateamento de um filtro passa-baixas $g(-m)$ (com função de transferência $\bar{G}(z)=G(1/z)$ e resposta em freqüência $G^{\ast}(f)$) ou passa-altas $h(-m)$ (com função de transferência $\bar{H}(z)=H(1/z)$ e resposta em freqüência $H^{\ast}(f)$) com um compressor (ou dizimador) por um fator de 2, conforme ilustrado pela Fig. \ref{fig:QMF-Bank-Analise}. 
+%(o apêndice \ref{apend-multirate} contém um resumo dos conceitos de sistemas multitaxa usados pela DWT). 
+Note que decimar um sinal por um fator $D$ é o mesmo que reduzir sua taxa de amostragem em $D$ vezes. 
+
+A Fig. \ref{fig:QMF-Bank-Analise} sugere que os coeficientes de uma DWT podem ser determinados a partir de um algoritmo piramidal baseado em convoluções com filtros espelhados em quadratura (esta foi a proposta original de Mallat em \cite{mallat89}). Sendo assim, a MRA é implementada via bancos de filtros de análise passa-baixas $G^{\ast}(f)$ e passa-altas $H^{\ast}(f)$ 
+%\footnote{Em que $G(f)=\sum_{k=-\infty}^{\infty} g_k e^{-j2 \pi fk}$ e $H(f)=\sum_{k=-\infty}^{\infty} h_k e^{-j2 \pi fk}$, $-1/2 \leq f \leq 1/2$.} 
+adequadamente posicionados para separação das seqüências de coeficientes de escala das seqüências de coeficientes \emph{wavelet}. Posteriormente é possível reconstruir o sinal original utilizando-se o banco de filtros duais de reconstrução QMF passa-baixas $G(f)$ e passa-altas $H(f)$ \cite{mallat89}, conforme mostra a Fig. \ref{fig:QMF-Bank-Recon}\footnote{Pode-se adotar os filtros QMF de reconstrução passa-baixas $G(f)$ e passa-altas $H(f)$ desde que os filtros de análise sejam os filtros duais passa-baixas $G^{\ast}(f)$ e passa-altas $H^{\ast}(f)$.}. De acordo com a Fig. \ref{fig:QMF-Bank-Recon}, $u_{j-1}(n)$ pode ser reconstruído por meio da inserção de zeros entre cada duas amostras de $u_{j}(m)$ e $w_{j}(m)$, gerando-se os sinais $u^{\text{up}}_{j}(n)$ e $w^{\text{up}}_{j}(n)$ nas saídas dos interpoladores (a inserção de zeros é conhecida como operação de interpolação, em que há um aumento da taxa de amostragem do sinal ou \emph{upsampling}), aos quais se seguem convoluções com os filtros $G(f)$ e $H(f)$, respectivamente. É importante ressaltar que a complexidade do algoritmo da pirâmide é $O(N)$ (assumindo-se que se quer calcular a DWT de $N$ amostras), ao passo que o cálculo ``direto'' da DWT (que envolve multiplicação de matrizes) é $O(N^2)$ \cite{percival00}.      
+ 
+
+\begin{figure}[htp]
+\centering
+		\subfloat[]{%
+			\label{fig:QMF-Bank-Analise}
+			\includegraphics[height=5cm,keepaspectratio]{figuras/QMF-Bank-Analise.eps}}\\		
+		\vspace{5pt}%
+		\subfloat[]{%
+			\label{fig:QMF-Bank-Recon}
+			\includegraphics[height=5cm,keepaspectratio]{figuras/QMF-Bank-Recon.eps}}\\
+		\vspace{10pt}%
+		\caption[]{\subref{fig:QMF-Bank-Analise} banco de filtros QMF de análise $G^{\ast}(f)$ (passa-baixas) e $H^{\ast}(f)$ (passa-altas) com decimação (\emph{downsampling}) por um fator de 2; \subref{fig:QMF-Bank-Recon} banco de filtros QMF de reconstrução com interpolação (\emph{upsampling}) por um fator de 2. Note que são usados os filtros duais passa-baixas $G(f)$ e passa-altas $H(f)$.}%
+\label{fig1:QMF-Bank}%
+\end{figure}
+
+
+%Mallat \cite{mallat89} propôs uma maneira eficiente de implementar a decomposição recursiva de (\ref{eq:seq-u}) e 
+%(\ref{eq:seq-w}), que utiliza um algoritmo piramidal baseado em convoluções com filtros espelhados em quadratura. A MRA é implementada via bancos de filtros passa-baixas $G(f)$ e passa-altas $H(f)$ \footnote{Em que $G(f)=\sum_{k=-\infty}^{\infty} g_k e^{-j2 \pi fk}$ e $H(f)=\sum_{k=-\infty}^{\infty} h_k e^{-j2 \pi fk}$, $-1/2 \leq f \leq 1/2$.} adequadamente posicionados para separação dos sinais de aproximação e de detalhe. Posteriormente é possível reconstruir o sinal original pelo mesmo processo de filtragens, de modo que os filtros de decomposição e de reconstrução formem um sistema de filtros em quadratura (QMF). Ressalta-se que a complexidade desse algoritmo é $O(N)$, ao passo que o cálculo ``direto'' da \ac{IDWT} (que envolve multiplicação de matrizes) é $O(N^2)$ \cite{percival00}. 
+
+A Fig. \ref{fig:MRA} é um diagrama de fluxo que ilustra a projeção inicial de um sinal $x(t)$ sobre $V_{0}$ seguida da MRA em $W_1$, $W_2$ e $V_2$ em que, $G^{\ast}\left( \frac{k}{N/2^{j-1}} \right)$ e $H^{\ast}\left( \frac{k}{N/2^{j-1}} \right)$ representam a \ac{TDF} dos filtros circulares de escala (passa-baixas) e \emph{wavelet} (passa-altas), respectivamente \cite{percival00}. O símbolo ``$\downarrow 2$'' indica a operação de \emph{downsampling} de um sinal. 
+A Fig. \ref{fig:recon} representa a reconstrução (aproximada) de $x(t)$ a partir de $W_1$, $W_2$ e $V_2$. Observe que os filtros circulares correspondem aos complexos conjugados dos filtros usados na análise. O símbolo ``$\uparrow 2$'' indica a operação de \emph{upsampling} de um sinal. 
+
+
+\begin{figure}[htp]
+\centering
+		\subfloat[]{%
+			\label{fig:MRA}
+			\includegraphics[width=14cm,keepaspectratio]{figuras/MRA.eps}}\\		
+		\vspace{5pt}%
+		\subfloat[]{%
+			\label{fig:recon}
+			\includegraphics[width=14cm,keepaspectratio]{figuras/recon.eps}}\\
+		\vspace{10pt}%
+		\caption[]{\subref{fig:MRA} Diagrama de fluxo que mostra a projeção inicial de um sinal $x(t)$ sobre $V_{0}$ seguida da decomposição em $W_1$, $W_2$ e $V_2$. \subref{fig:recon} Diagrama de fluxo que ilustra a síntese aproximada de $x(t)$ a partir de $W_1$, $W_2$ e $V_2$.}%
+\label{fig:MRA-recon}%
+\end{figure}
+
+A Fig. \ref{fig:subband} mostra que o espectro $U_0(f)$ do sinal $u_0(n)$ da Fig. \ref{fig:MRA-recon} é subdividido em três bandas de freqüência (que cobrem duas oitavas): $0 \leq f < 1/8$, $1/8 \leq f < 1/4$	e $1/4 \leq f \leq 1$.  
+É interessante observar que a Fig. \ref{fig:subband} ilustra que a DWT utiliza o princípio da codificação de sub-bandas usado em sistemas práticos digitais multitaxa de codificação de sinais de voz (veja \cite{rabiner83} e \cite{proakis07} para maiores detalhes).
+
+\begin{figure}[htp]
+	\begin{center}
+		\includegraphics[width=10cm,keepaspectratio]{figuras/subband.eps}
+	\end{center}
+	\caption{Diagrama de blocos que mostra que a DWT funciona de modo similar a um esquema de codificação de sub-bandas. O espectro $U_0(f)$ do sinal $u_0(n)$ da Fig. \ref{fig:MRA-recon} é subdividido em três bandas de freqüência (que cobrem duas oitavas): $0 \leq f < 1/8$, $1/8 \leq f < 1/4$	e $1/4 \leq f \leq 1$.}
+	\label{fig:subband}
+\end{figure}
+
+\subsection{Modelo MWM}
+\label{model:subsec:mwm}
+
+%\subsubsection{MWM}
+%\label{model:subsubsec:mwm}
+
+%The DWT represents a process $\{X_k\}$ in the time-frequency plane in terms of shifted 
+%and dilated versions of a ``mother'' bandpass wavelet function $\psi_{0}(t)$ and shifted versions of a low pass scaling function $\phi_{0}(t)$ \cite{kaiser94} (the subscript ``$0$'' indicates the finest time scale). The families
+
+%\begin{equation}
+%	\label{eq:basis}
+%	\begin{cases}
+%		\phi_{j,k}(t) = 2^{-j/2}\phi_0(2^{-j}t - k) & \\ 
+%		\psi_{j,k}(t) = 2^{-j/2}\psi_0(2^{-j}t - k) & j \in \mathbb{Z}\,,k\in \mathbb{Z}, 
+%	\end{cases}
+%\end{equation}
+%where $j$ denotes scale and $k$ is a time index, can form orthonormal basis if $\psi_0(t)$ and $\phi_0(t)$ are properly chosen. 
+
+O MWM usa o sistema de MRA de Haar e está baseado numa cascata binomial multiplicativa no domínio \emph{wavelet}, a qual garante que as séries simuladas são positivas (o que não acontece quando se utiliza modelos Gaussianos, tais como o FGN, na síntese de teletráfego) \cite{riedi99}. A cascata binomial é uma árvore binomial aleatória cuja raiz é o coeficiente $u_{J-1,0}$ (o MWM considera que $\frac{N}{2^{J-1}}=1$, onde $N$ denota o número de amostras)  
+\begin{equation}
+	\label{def2:sintese-MRA}	
+ 	x_{t}  = x_{0,k} = u_{J-1,0} \phi_{J-1,0}(t) + \overset{J-1}{\underset{j=1}\sum} {\underset{k}\sum} w_{j,k}               \psi_{j,k}(t), 
+\end{equation} 
+%Note-se que (\ref{def2:sintese-MRA}) é obtida a partir de (\ref{def:sintese-MRA}) e ...
+em que $\phi_{J-1,0}(t)$ denota a função de escala de Haar na escala mais lenta (ordem $J-1$) e os $w_{j,k}$ são os coeficientes \emph{wavelet}. 
+
+Os coeficientes de escala e \emph{wavelet} de Haar podem ser calculados recursivamente por meio do seguinte conjunto de equações de síntese,
+\begin{gather}
+	u_{j-1,2k}   = 2^{-1/2} (u_{j,k} + w_{j,k}) \label{eq:u(j-1,2k)} \\
+	u_{j-1,2k+1} = 2^{-1/2} (u_{j,k} - w_{j,k}) \label{eq:u(j-1,2k+1)}.
+\end{gather}
+Portanto, sinais estritamente positivos podem ser modelados se $u_{j,k}\geq 0$ e  
+\begin{equation}
+	\label{eq:rest-u-w}	
+	|w_{j,k}| \leq u_{j,k} \, . 
+\end{equation} 
+
+É possível escolher um modelo estatístico para os $w_{j,k}$ que incorpore a condição (\ref{eq:rest-u-w}). O MWM especifica um modelo multiplicativo,   
+
+\begin{equation}
+	\label{eq:beta-mult}	
+	w_{j,k} = M_{j,k} u_{j,k} \, , 
+\end{equation} 
+em que o multiplicador $M_{j,k}$ pode ser modelado como uma variável aleatória com distribuição $\beta$ simétrica com parâmetro de forma $p_j$, ou seja, $M_j \sim \beta(p_j,p_j)$. Neste caso, o MWM é conhecido como $\beta$-MWM e assume-se que os $M_{j,k}$'s são mutuamente independentes e independentes dos $u_{j,k}$ \footnote{Riedi et al\cite{riedi99} também investigaram o uso de outras distribuições para os multiplicadores.}.
+
+A variância de $M_j$ é dada por \cite{riedi99}
+\begin{equation}
+	\label{eq:var-mult}	
+	\text{Var} [M_j] = \frac{1}{2p_j+1} \,. 
+\end{equation} 
+ 
+Desta forma, as equações (\ref{eq:u(j-1,2k)}) e (\ref{eq:u(j-1,2k+1)}) podem ser reescritas como 
+\begin{gather}
+	u_{j-1,2k}   = \left( \frac{1 + M_{j,k}}{\sqrt{2}} \right)u_{j,k} \label{eq2:u(j-1,2k)} \\
+	u_{j-1,2k+1} = \left( \frac{1 - M_{j,k}}{\sqrt{2}} \right)u_{j,k} \label{eq2:u(j-1,2k+1)}.
+\end{gather}
+Estas equações mostram que o MWM é de fato uma cascata binomial. 
+%Riedi et al \cite{riedi99} demonstrate that MWM has lognormal marginals and multifractal behavior. 
+
+O MWM pode aproximar a DEP de uma seqüência de treinamento por meio da modelagem do decaimento da variância dos coeficientes \emph{wavelet}
+\begin{equation}
+	\label{eq:var-decay}	
+	\eta_j = \frac{\text{Var}[w_{j,k}]}{\text{Var}[w_{j-1,k}]}=\frac{2 p_{(j-1)}+1}{p_{(j)}+1} \, , 
+\end{equation} 
+que leva a
+\begin{equation}
+	\label{eq:p(j)}	
+	p_{(j-1)} = \frac{\eta_j}{2} ( p_{(j)}+1) - 1/2 \,
+\end{equation}
+e
+\begin{equation}
+	\label{eq2:p(j)}	
+	p_{(j)} = \frac{2 p_{(j-1)}+1}{\eta_j} - 1 \,.
+\end{equation}
+ 
+O MWM assume que $u_{J-1,0}$ (o coeficiente de escala ``raiz'') seja aproximadamente Gaussiano. Pode-se mostrar que $p_{(j)}$ converge para 
+\begin{equation}
+	\label{eq:lim-p}	
+	p_{-\infty} = \lim_{j\rightarrow -\infty} p_{(j)} = \frac{2^{\alpha}-1}{2-2^{\alpha}} \, , 
+\end{equation}
+em que $\alpha$ e $H$ estão relacionados por (\ref{rel-H-alpha}).
+
+A Tabela \ref{tab:asymp-p} lista alguns valores assintóticos para o parâmetro de forma $p$. 
+
+\begin{table}[h]
+	\caption{Valores assintóticos do parâmetro de forma $p$ dos multiplicadores $\beta$ em função de $\alpha$ (or $H$)\cite{riedi99}.}
+	\centering
+		\begin{tabular}{c|c|c|c|c} \hline\hline
+		$\alpha$  &  $0.1$    &  $0.2$   & $0.5$	  & $0.8$ 	\\ \hline
+		$p$       &  $0.077$  &  $0.175$ & $0.707$  & $2.86$ \\ \hline
+		$H$       &  $0.55$   &  $0.6$   & $0.75$	  & $0.9$ 	\\ \hline\hline 
+    \end{tabular}
+	\label{tab:asymp-p}
+\end{table}
+
+%Portanto, se a variável aleatória $M_{j,k}$ converge em distribuição se $j\rightarrow -\infty$, então o \emph{output} do MWM tem propriedades multifractais e a densidade de probabilidade marginal converge para uma lognormal \cite{riedi99}. 
+O modelo MWM tem propriedades multifractais e a densidade de probabilidade marginal é lognormal \cite{riedi99}.
+
+%Finally, we must choose the initial value for the parameter $p_{(J-1)}$ of the model. From (\ref{eq:beta-mult}) and (\ref{eq:var-mult}) we obtain
+%\begin{equation}
+%	\label{eq:p(J-1)}	
+%	p_{(J-1)} = \frac{E\{U^2_{J-1,0}\}}{2 E\{W^2_{J-1,0}\}} - \frac{1}{2}\,. 
+%\end{equation} 
+
+
+
+\section{Modelagem Paramétrica}
+\label{model:sec:param}
+
+\subsection{Modelo ARFIMA}
+\label{model:subsec:arfima}
+
+Conforme explicado no item \ref{sec:mod-st}, a modelagem de uma série temporal (linear) $x_t$ consiste na estimação de uma 
+função de transferência (ou modelo) $H(B)$ tal que
+\begin{equation}
+	\label{eq:func-transf}
+	\rvx_t = H(B)\rvw_t, 
+\end{equation}
+em que $\rvw_t$ é a inovação no instante $t$. Na prática, a modelagem é baseada na estimação da função inversa $G(B)=H(B)^{-1}$, pois espera-se que a filtragem de $x_t$ por $G(B)$ produza uma série de resíduos $w_t$ do tipo RB.   
+
+Granger e Joyeux \cite{granger80} e Hosking \cite{hosking81} introduziram de forma independente a classe de modelos  ARFIMA que possui as seguintes propriedades:
+\begin{enumerate}
+	\item modelagem explícita da memória longa;
+	\item flexibilidade para modelar a estrutura de autocorrelação das séries nos pequenos e grandes \emph{lags};
+	\item possibilitar a simulação de séries LRD a partir do modelo.
+\end{enumerate}
+
+Considere a equação 
+\begin{equation}
+	\label{eq:def-FD}
+	\Delta^d \rvx_t = \rvw_t, 
+\end{equation}
+em que $d$ é um expoente fracionário\footnote{Uma característica de séries LRD é que as autocorrelações amostrais indicam não-estacionariedade \cite[pág.460]{morettin04}. Portanto, faria sentido modelar uma série LRD, pelo menos numa primeira tentativa, como um processo integrado de primeira ordem ($\rvx_t \sim I(d=1)$). Entretanto, a DEP da série diferençada tende a zero na freqüência zero (não é um ruído branco) \cite[pág.260]{zivot03}, \cite{granger80} ou seja, parece ser ``super-diferençada''. Este fato justifica, de maneira intuitiva, a modelagem de séries LRD por meio de processos de integração fracionária.}, $0<d<1/2$. Observe-se que
+\begin{equation}
+  \label{def:frac-diff-filter}
+	\Delta^d = (1-B)^d =\sum_{k=0}^{\infty} \binom{d}{k} (-1)^k B^k, %\\
+	        %= 1-dB + \frac{1}{2!}d(d-1)B^2 - \frac{1}{3!}d(d-1)(d-2)B^3 + \ldots, 
+\end{equation}
+com coeficientes binomiais\footnote{A função Gamma estende a função fatorial para números reais e complexos: $d!=\Gamma(d+1)$.}
+\begin{equation}
+  \label{eq:coef-binom}
+	\binom{d}{k} = \frac{\Gamma(d+1)}{\Gamma(k+1)\Gamma(d-k+1)}, %\frac{d!}{k!(d-k)!} = 
+\end{equation}
+resulta no \textbf{filtro de diferença fracionária}
+\begin{equation}
+  \label{def2:frac-diff-filter}
+	\Delta^d = 1-dB + \frac{1}{2!}d(d-1)B^2 - \frac{1}{3!}d(d-1)(d-2)B^3 + \ldots, 
+\end{equation}
+que é definido para qualquer real $d>-1$. De acordo com (\ref{def2:frac-diff-filter}), o modelo (\ref{eq:def-FD}) é do tipo AR($\infty$) (vide (\ref{eq:modelo-ar-inf})). A Eq. (\ref{eq:def-FD}) define o \textbf{processo fracionário integrado} (também chamado de modelo \ac{FD}($d$) \cite{percival00} ou \textbf{RB fracionário} \cite{morettin04}), que é uma extensão do modelo integrado ARIMA($0,d,0$) (\ref{eq:arima}), $d \in \mathbb{Z}_+$. O processo FD consegue modelar a singularidade do tipo $1/f^\alpha$ na origem do espectro de uma série LRD. O FD é estacionário e LRD quando $0<d<1/2$; é estacionário e SRD quando $-1/2<d<0$; é não-estacionário\footnote{Neste caso, $\rvx_t$ tem variância infinita \cite{granger80}.} quando $|d|>1/2$. 
+
+%\begin{figure}%
+%\centering
+%		\subfloat[]{%
+%			\label{fig:farimah055}
+%			\includegraphics[height=7cm,keepaspectratio]{figuras/farimah055.eps}}\\		
+%		\hspace{10pt}%
+%		\subfloat[]{%
+%			\label{fig:farimah06}
+%			\includegraphics[height=7cm,keepaspectratio]{figuras/farimah06.eps}}\\
+%		\hspace{10pt}%
+%		\subfloat[]{%
+%			\label{fig:farimah07}
+%			\includegraphics[height=7cm,keepaspectratio]{figuras/farimah07.eps}}\\
+%		\hspace{10pt}%
+%\caption[]{Três simulações do modelo ARFIMA:  \subref{fig:farimah055} ARFIMA$(0;0,05;0)$, \subref{fig:farimah06} ARFIMA$(0;0,1;0)$ e \subref{fig:farimah07} ARFIMA$(0;0,2;0)$.}%
+%\label{fig:farima}%
+%\end{figure}
+
+%\begin{figure}%
+%\centering
+%		\subfloat[]{%
+%			\label{fig:farimah08}
+%			\includegraphics[height=7cm,keepaspectratio]{figuras/farimah08.eps}}\\
+%		\hspace{10pt}%
+%		\subfloat[]{%
+%			\label{fig:farimah09}
+%			\includegraphics[height=7cm,keepaspectratio]{figuras/farimah09.eps}}\\		
+%\caption[]{Duas simulações do modelo ARFIMA:  \subref{fig:farimah08} ARFIMA$(0;0,3;0)$  e \subref{fig:farimah09} ARFIMA$(0;0,4;0)$.}%
+%\label{fig2:farima}%
+%\end{figure}
+
+Na prática, observa-se que o decaimento das \ac{SACF} para \textbf{pequenos valores de \emph{lag}} de algumas séries reais de teletráfego é bem modelado por processos SRD \cite{paxson97}, \cite{riedi99}, \cite{mello07}, \cite{ma01}, \cite{lima07a}, \cite{lima07b}, ou seja, têm autocorrelações significativas que decaem de modo exponencial para pequenos \emph{lags}, a qual não é modelada pelo processo FD($d$). Isto não quer dizer que este tipo de série de tráfego não seja assintoticamente LRD (lembre-se que a SACF de séries LRD, para \textbf{valores suficientemente grandes de \emph{lag}}, decresce segundo uma função potência, isto é, o decaimento para zero é extremamente lento e do tipo hiperbólico), mas tão somente que a característica de SRD pode se manifestar por meio da existência de ``picos locais'' de DEP (além da singularidade na origem do espectro que é devida à memória longa), conforme ilustrado pela Fig. \ref{fig2:psd-lrd-srd} (imagine o espectro resultante da superposição dos espectros dos processos FD($0,4$) e AR($4$)). É daí que surge a necessidade de se introduzir a classe ARFIMA($p,d,q$) de modelos (mais flexível do que a classe FD)
+\begin{equation}
+	\label{eq:def-ARFIMA}
+	\phi(B)\Delta^d \rvx_t = \theta(B)\rvw_t, 
+\end{equation}
+em que $-1/2<d<1/2$, $\phi(B)$ é o operador auto-regressivo de ordem $p$ (\ref{eq:op-ar}), $\theta(B)$ é o operador de média móvel de ordem $q$ (\ref{eq:op-ma}) e $\rvw_t$ é um RB Gaussiano. O modelo (\ref{eq:def-ARFIMA}) é \textbf{LRD, estacionário e invertível} quando $0<d<1/2$ e se os pólos e zeros de $\theta(z)/\phi(z)$ estiverem dentro do círculo de raio unitário (vide (\ref{eq:est}) e (\ref{eq:inv})). 
+%As Figs. \ref{fig:farima} e \ref{fig2:farima} ilustram realizações de processos ARFIMA para vários valores do parâmetro $d$.
+
+\begin{figure}[htp]
+	\begin{center}
+	\centering
+		\includegraphics[height=8cm,keepaspectratio]{figuras/psd-lrd-srd.eps}
+		\caption{DEPs para modelos AR(4) e FD(0,4) de mesma potência.}
+	\label{fig2:psd-lrd-srd}
+	\end{center}
+\end{figure}
+
+
+O parâmetro $d$ modela a estrutura da autocorrelação de ordens altas (em que o decaimento é lento, do tipo hiperbólico). Por outro lado, os parâmetros dos polinômios $\phi(B)$ e $\theta(B)$ são responsáveis pela modelagem da autocorrelação em \emph{lags} de ordens baixas (decaimento rápido do tipo exponencial). A Eq. (\ref{eq:def-ARFIMA}) pode ser reescrita na forma AR($\infty$)
+\begin{equation}
+	\label{eq2:def-ARFIMA}
+	\frac{\phi(B)}{ \theta(B)}\Delta^d \rvx_t =\rvw_t. 
+\end{equation}
+
+A DEP de um modelo ARFIMA$(p,d,q)$ é dada por \cite{morettin04}, \cite{lima07b}
+\begin{equation}
+  \label{def:psd-farima}
+	P_\rvx(f) = \frac{\sigma^2_{\rvw} |1-e^{-j2 \pi f}|^{-2d} |1 - \theta_1 e^{-j2 \pi f} - \ldots - \theta_q e^{-jq2 \pi f}|^{2}}{|1 - \phi_1 e^{-j2 \pi f} - \ldots - \phi_p e^{-jp2 \pi f}|^{2}},
+\end{equation}
+em que $\sigma^2_{\rvw}$ é a potência de $\rvw_t$  e  $w=2 \pi f$ é a freqüência angular normalizada ($-\pi \leq w \leq \pi$).
+A Eq.(\ref{def:psd-farima}) tem a seguinte forma simplificada para o caso ARFIMA$(0,d,0)$:
+\begin{equation}
+  \label{def:psd-farima(0,d,0)}
+	P_\rvx(f) = |1 - e^{-j2\pi f}|^{-2d} \,\sigma^2_{\rvw} = [2(1-\cos{(2\pi f)})]^{-d} \,\sigma^2_{\rvw} 
+\end{equation}
+ou 
+\begin{equation}
+  \label{def2:psd-farima(0,d,0)}
+	P_\rvx(f) = [2\sin{(\pi f/2)}]^{-2d} \,\sigma^2_{\rvw}. 
+\end{equation}
+Como $\sin{w}\approx w$ para $w$ próximo de zero, então (\ref{def2:psd-farima(0,d,0)}) reduz-se a 
+\begin{equation}
+  \label{def3:psd-farima(0,d,0)}
+	P_\rvx(f) = (\pi f)^{-2d} \,\sigma^2_{\rvw}. 
+\end{equation}
+Note-se que (\ref{def3:psd-farima(0,d,0)}) segue o espectro especificado pela Definição \ref{def:lrd}, Eq. (\ref{eq:lrd}).
+
+\subsection{Previsão de Modelos ARFIMA}
+\label{model:subsec:prev-arfima}
+
+\subsubsection{Estimação Ótima}
+\label{model:subsubsec:est-otima}
+
+Sejam as três formas básicas %(\ref{eq:arima-eqdif}), (\ref{eq:proc-linear}) e (\ref{eq:modelo-ar-inf})
+do  modelo ARIMA($p,d,q$) (\ref{eq:arima}) da seção \ref{sec:arima} no instante $t+h$, em que $t$ é o instante atual e $h$ denota um \textbf{horizonte} de previsão:    
+\begin{description}
+	\item[(a)] ARMA($p+d,q$) (similar à Eq. (\ref{eq:arma})) 
+	           \begin{equation}
+	           	 \label{eq2:arima-eqdif}
+	           	 \rvx_{t+h} = \overset{p+d}{\underset{k=1}\sum}\varphi_k \rvx_{t+h-k} + \rvw_{t+h} -                                                           \overset{q}{\underset{k=1}\sum}\theta_k \rvw_{t+h-k};
+	           \end{equation}
+	\item[(b)] AR($\infty$) 
+	           \begin{equation}
+               \label{eq:arima-ar-inf}
+	             \rvx_{t+h} = \overset{\infty}{\underset{k=1}\sum} g_k \rvx_{t+h-k} + \rvw_{t+h}. \\ 
+            \end{equation}
+	\item[(c)] MA($\infty$)\footnote{A seqüência $\psi_{t}$ em (\ref{eq2:arima-ma-inf}) denota a resposta impulsiva do modelo ARIMA. Adotou-se esta nova notação para que o leitor não confunda o horizonte $h$ com um coeficiente $h_k = \psi_k$ da resposta impulsiva.}
+	          \begin{equation}
+               \label{eq2:arima-ma-inf}
+	             \rvx_{t+h} = \overset{\infty}{\underset{k=0}\sum} \psi_{k} \rvw_{t+h-k} 
+            \end{equation}
+\end{description}
+
+A Eq. (\ref{eq2:arima-ma-inf}) sugere que a previsão do valor futuro de origem $t$ e horizonte $h\geq1$, denotada por $\hat{x}_{t+h}$, seja uma combinação linear das inovações $\{w_{t},w_{t-1},w_{t-2},\ldots\}$. Seja
+\begin{equation}
+   \label{eq:prev-EQM}
+	 \hat{x}_{t+h} = \psi_{h}^{\ast} w_{t} + \psi_{h+1}^{\ast} w_{t-1} + \psi_{h+2}^{\ast} w_{t-2} + \ldots    
+\end{equation}
+a previsão de \ac{EQMM} (\ac{MMSE}). Então os coeficientes $\psi_{h+k}^{\ast}$, $k=0,1,2,\ldots$, podem ser determinados minimizando-se o \ac{EQM} de previsão
+\begin{equation}
+   \label{eq:min-EQM}
+	 E[(\mathbf{e}_{t+h})^2] = E[(\rvx_{t+h} - \hat{\rvx}_{t+h})^2] = E\left[ \left(\overset{\infty}{\underset{k=0}\sum} \psi_{k} \rvw_{t+h-k} -  \overset{\infty}{\underset{k=0}\sum} \psi_{h+k}^{\ast} \rvw_{t-k} \right)^2\right]. 
+\end{equation}
+Como 
+\[ \overset{\infty}{\underset{k=0}\sum} \psi_{k} \rvw_{t+h-k} = \overset{\infty}{\underset{k=-h}\sum} \psi_{h+k} \rvw_{t-k},\]
+tem-se que $\mathbf{e}_{t+h}$ é dado por
+\begin{equation}
+   \label{eq:erro-prev}
+	  \mathbf{e}_{t+h} = \psi_{0} \rvw_{t+h} + \psi_{1} \rvw_{t+h-1} + \ldots + \psi_{h-1} \rvw_{t+1} - 
+	  \overset{\infty}{\underset{k=0}\sum} (\psi_{h+k} -\psi_{h+k}^{\ast}) \rvw_{t-k} \,.
+\end{equation}
+Deste modo,
+\begin{equation}
+   \label{eq2:min-EQM}
+	  E[(\mathbf{e}_{t+h})^2] = (1  + \psi_{1}^2 + \ldots + \psi_{h-1}^2) \sigma^2_{\rvw} + 
+	  \overset{\infty}{\underset{k=0}\sum} (\psi_{h+k} -\psi_{h+k}^{\ast})^2 \sigma^2_{\rvw},
+\end{equation}
+em que $\psi_{0}=1$, pois as inovações $\rvw_{t}$ são não-correlacionadas. 
+Segue-se que $\psi_{h+k}^{\ast} = \psi_{h+k}$ minimiza (\ref{eq2:min-EQM}).
+
+Portanto, a previsão ótima segundo o critério MMSE é dada por
+\begin{equation}
+   \label{eq:prev-MMSE}
+	 \hat{x}_{t+h} = \psi_{h} w_{t} + \psi_{h+1} w_{t-1} + \psi_{h+2} w_{t-2} + \ldots = 
+	 \overset{\infty}{\underset{k=0}\sum} \psi_{h+k} w_{t-k}      
+\end{equation}
+e o erro mínimo de previsão por 
+\begin{equation}
+   \label{eq:erro-prev-min}
+	  \mathbf{e}_{t+h} = \rvw_{t+h} + \psi_{1} \rvw_{t+h-1} + \ldots + \psi_{h-1} \rvw_{t+1}
+\end{equation} 
+possui a variância
+\begin{equation}
+   \label{eq:var-erro-prev-min}
+	  V_h = (1  + \psi_{1}^2 + \ldots + \psi_{h-1}^2) \sigma^2_{\rvw},
+\end{equation} 
+dado que 
+\begin{equation}
+	\label{eq:av-erro-prev}
+	E[\mathbf{e}_{t+h}|\mathcal{F}_t^{(\infty)}] = 0,
+\end{equation}
+em que $\mathcal{F}_t^{(\infty)} = \{x_{t}, x_{t-1}, \ldots\}$ denota o conjunto de todas as observações passadas da série.
+
+Note-se que
+\begin{equation}
+   \label{eq:valor-futuro}
+	 \rvx_{t+h} = \hat{x}_{t+h} + \mathbf{e}_{t+h}, \quad h \geq 1.
+\end{equation} 
+Observe-se que a esperança condicional de $\rvx_{t+h}$ dadas as observaçõs passadas da série
+\begin{equation}
+	E[\rvx_{t+h}|\mathcal{F}_t^{(\infty)}] = \hat{x}_{t+h},
+\end{equation} 
+é igual à previsão MMSE (vide (\ref{eq:av-erro-prev})) (isto não acontece por acaso). De fato, pode-se demonstrar \cite{stark02}, \cite{sayed03} que o preditor ótimo segundo o critério MMSE: a) é a esperança condicional $E[\rvx_{t+h}|\mathcal{F}_t^{(\infty)}]$ e b) que esse preditor ótimo é linear quando as inovações são Gaussianas.   
+
+\subsubsection{Formas de Previsão}
+\label{model:subsubsec:formas-prev}
+
+Tomando-se a esperança condicional em (\ref{eq2:arima-eqdif}), obtém-se a previsão via equação de diferenças
+\begin{equation}
+\begin{split}
+  \label{eq:prev-arima-eqdif}
+	    \hat{x}_{t+h}\, =  &\,\, \varphi_1 E[\rvx_{t+h-1}|\mathcal{F}_t^{(\infty)}] + \ldots + \varphi_{p+d}                                                           E[\rvx_{t+h-p-d}|\mathcal{F}_t^{(\infty)}] \\
+	                      &\, + E[\rvw_{t+h}|\mathcal{F}_t^{(\infty)}] - \theta_1 E[\rvw_{t+h-1}|\mathcal{F}_t^{(\infty)}] - \ldots - \theta_q                                   E[\rvw_{t+h-q}|\mathcal{F}_t^{(\infty)}],\\
+\end{split}
+\end{equation}
+para $h\geq1$. Observe-se que 
+\begin{equation}
+\begin{split}
+  \label{eq:fatos-prev-arima-eqdif}
+	    E[\rvx_{t+k}|\mathcal{F}_t^{(\infty)}] &= \hat{x}_{t+k},\quad k>0,\\
+	    E[\rvx_{t+k}|\mathcal{F}_t^{(\infty)}] &= x_{t+k},\quad k\leq0,\\
+	    E[\rvw_{t+k}|\mathcal{F}_t^{(\infty)}] &= 0, \quad k>0,\\
+	    E[\rvw_{t+k}|\mathcal{F}_t^{(\infty)}] &= \hat{w}_{t+k},\quad k\leq0.\\
+\end{split}
+\end{equation} 
+
+Note-se que \cite[pág.227]{morettin04}:
+\begin{description}
+	\item[(a)] $\hat{x}_{t+h}$ depende de $\hat{x}_{t+h-1}, \hat{x}_{t+h-2}, \ldots$, que são calculados de forma recursiva;  
+	\item[(b)] na prática, só se conhece um número finito de observações passadas, ou seja, $\mathcal{F}_t = \{x_{t}, x_{t-1}, \ldots, x_{1}\}$. Portanto, 
+	\[ E[\rvx_{t+k}|\mathcal{F}_t^{(\infty)}] \approx E[\rvx_{t+k}|\mathcal{F}_t];\]
+	\item[(c)] as previsões para um AR($p$) são exatas, pois pode-se mostrar que 
+	\[ E[\rvx_{t+k}|x_{t}, x_{t-1}, \ldots] = E[\rvx_{t+k}|x_{t},\ldots,x_{t+1-p}]\]  
+\end{description}
+	
+Tomando-se a esperança condicional em (\ref{eq:arima-ar-inf}) obtém-se a previsão por meio da forma AR($\infty$)
+\begin{equation}
+  \label{eq:prev-ar-inf}
+	    \hat{x}_{t+h} = \overset{\infty}{\underset{k=1}\sum} g_k E[\rvx_{t+h-k}|\mathcal{F}_t^{(\infty)}] + E[\rvw_{t+h}|\mathcal{F}_t^{(\infty)}],
+\end{equation}
+como $E[\rvw_{t+h}|\mathcal{F}_t^{(\infty)}]=0$, pode-se reescrever (\ref{eq:prev-ar-inf}) na forma
+\begin{equation}
+  \label{eq2:prev-ar-inf}
+	    \hat{x}_{t+h} = g_1 \hat{x}_{t+h-1} + g_2 \hat{x}_{t+h-2} + \ldots + g_h x_{t} + g_{h+1} x_{t-1} + \ldots \quad.
+\end{equation}
+
+
+\subsubsection{Intervalo de Confiança}
+\label{model:subsubsec:IC-arfima}
+
+O modelo ARFIMA (\ref{eq:def-ARFIMA}) assume que a seqüência de inovações $\rvw_t$ seja um RB Gaussiano de média nula, ou seja, $\rvw_t \sim \mathcal{N}(0,\sigma^2_{\rvw})$. Segue-se então que a distribuição condicional de $\rvx_{t+h}$ dado $\mathcal{F}_t^{(\infty)}$ é do tipo $\mathcal{N}(\hat{x}_{t+h},V_h)$ e que
+\begin{equation}
+ Z = \frac{x_{t+h}-\hat{x}_{t+h}}{\sqrt{V_h}} \sim \mathcal{N}(0,1).
+\end{equation}
+
+A expressão do intervalo de confiança para $\rvx_{t+h}$, ao nível de confiança $(1-\beta)$, é dada por 
+%\footnote{Dada uma probabilidade $\beta$, encontra-se um valor $z_{\beta}$ tal que $P\{-z_{\beta}<Z<z_{\beta}\}=\beta$ ($z_{\beta}=1,96$ para $\beta=95\%$).}
+\begin{equation}
+\label{eq:int-conf}
+ \hat{x}_{t+h} - z_{\beta/2}\sqrt{V_h} \leq \rvx_{t+h} \leq \hat{x}_{t+h} + z_{\beta/2}\sqrt{V_h}.
+\end{equation}
+
+Como na prática o valor de $\sigma^2_{\rvw}$ é desconhecido, utiliza-se a estimativa 
+\begin{equation}
+   \label{eq:est-var-erro-prev-min}
+	  \hat{V}_h = (1  + \psi_{1}^2 + \ldots + \psi_{h-1}^2) \hat{\sigma}^2_{\rvw}, 
+\end{equation} 
+obtida na fase de estimação do modelo. Finalmente, obtém-se a expressão final do intervalo de confiança para $\rvx_{t+h}$
+\begin{equation}
+\label{eq2:int-conf}
+ \hat{x}_{t+h} - z_{\beta}\hat{\sigma}_{\rvw}\left[1+\overset{h-1}{\underset{k=1}\sum} \psi_k^2 \right]^{1/2} \leq \rvx_{t+h} \leq \hat{x}_{t+h} + z_{\beta}\hat{\sigma}_{\rvw}\left[1+\overset{h-1}{\underset{k=1}\sum} \psi_k^2 \right]^{1/2}.
+\end{equation}
+
+\subsubsection{Previsão do ARFIMA}
+\label{model:subsubsec:prev-arfima}
+
+Considere o modelo ARFIMA($p,d,q$) estacionário e invertível, $-0,5<d<0,5$, dado por (\ref{eq2:def-ARFIMA}). Pode-se reescrever o processo na forma AR($\infty$) %(\ref{eq:arima-ar-inf})
+\begin{equation}
+  \label{eq:farima-ar-inf}
+	\overset{\infty}{\underset{k=0}\sum} g_k \rvx_{t-k} = \rvw_{t},  
+\end{equation}
+em que $g_0=1$ e 
+\begin{equation}
+  \label{eq:farima-op-ar-inf}
+	\overset{\infty}{\underset{k=0}\sum} g_k B^k = \phi(B)\theta^{-1}(B)(1-B)^{d} = \pi(B).  
+\end{equation}
+
+Então, pode-se prever um valor futuro de $\rvx_{t}$ utilizando-se (\ref{eq:farima-op-ar-inf}) e (\ref{eq2:prev-ar-inf}) \cite[pág.474]{morettin04}. A variância do erro de previsão é dada por (\ref{eq:var-erro-prev-min}). Note-se
+que o polinômio $\pi(B)$ é de ordem infinita (pois $|d|<1/2$). Como na prática o que se tem é uma série com $N$ observações, utilizam-se somente os $L$ primeiros termos $\pi(B)$, com $L<N$. O próximo Capítulo abordará a questão da escolha do valor de $L$. 
+
+\section{Testes Estatísticos de Memória Longa}
+\label{model:sec:testes}
+
+\subsection{Estatística $R/S$}
+\label{model:subsec:ros}
+
+Seja uma série temporal $x_t$, $t=1,2,\ldots,N$. Hurst \cite{hurst51} propôs o teste de memória longa
+\begin{equation}
+	\label{eq:teste-R/S}
+	Q_N = \frac{1}{\hat{s}_N} \left[ \max_{1\leq k \leq N}\sum_{j=1}^{k}(x_j - \bar{x})  - \min_{1\leq k \leq N} \sum_{j=1}^{k}(x_j - \bar{x})\right],
+\end{equation}
+em que $\hat{s}_N = \sqrt{\hat{C}_0}$, conhecido como estatística \textbf{\ac{R/S}} ou \textbf{\emph{rescaled adjusted range}} \cite{zivot03}, \cite{beran94}. 
+
+Hurst observou que o gráfico log-log de $R/S$ (para a série dos níveis anuais mínimos do Rio Nilo) \emph{versus} $N$ espalhava-se ao longo de uma reta com inclinação superior a $1/2$, ou seja, que $\log{(R/S)}$ versus $N$ apresentava um comportamento do tipo $C N^{H}$ (efeito de Hurst), em que $C$ é uma constante e $1/2<H<1$ denota o parâmetro de Hurst. Esta descoberta empírica contradizia o comportamento esperado para processos Markovianos (que são SRD), em que $R/S$ deve ter um comportamento assintótico do tipo $C N^{1/2}$ \cite{beran94}. 
+
+De acordo com \cite[pág.262]{zivot03} e \cite[pág.82]{beran94}, a estatística $N^{-1/2}Q_N$ converge para uma variável aleatória bem definida (para $N\rightarrow\infty$) quando $\rvx_t$ é um processo RBG. É por isto que o gráfico log-log de $R/S$ \emph{versus} $N$ apresenta um comportamento assintótico do tipo $C N^{1/2}$. Por outro lado, é a estatística $N^{-H}Q_N$ que converge para uma variável aleatória bem definida quando $\rvx_t$ é LRD \footnote{Para maiores detalhes, vide os Teoremas 4.1 e 4.2 em \cite{beran94}.}.  
+
+Posteriormente, Lo \cite{lo91} mostrou que (\ref{eq:teste-R/S}) não é robusta quanto à presença de SRD na série e desenvolveu uma versão estendida de (\ref{eq:teste-R/S})
+\begin{equation}
+	\label{eq:teste-R/S-lo}
+	Q_T = \frac{1}{\hat{\sigma}_{NW}} \left[ \max_{1\leq k \leq N}\sum_{j=1}^{k}(x_j - \bar{x})  - \min_{1\leq k \leq N} \sum_{j=1}^{k}(x_j - \bar{x})\right],
+\end{equation}
+em que $\hat{\sigma}_{NW}$ denota a raiz quadrada da estimativa de Newey-West para a variância de longo termo (\emph{long run variance}) de um processo $\rvx_t$ (estacionário e ergódico) \cite[pág.85]{zivot03} \cite{hamilton94}. A  variância de longo termo é definida como
+\begin{equation}
+	\label{eq:lr-var}
+	lrv(\rvx_t) = \sum_{\tau=-\infty}^{\infty} C_\tau. 
+\end{equation}
+Como $C_{-\tau} = C_{\tau}$, (\ref{eq:lr-var}) pode ser reescrita como
+\begin{equation}
+	\label{eq2:lr-var}
+	lrv(\rvx_t) = C_0 + 2 \sum_{\tau=1}^{\infty} C_\tau. 
+\end{equation}
+O estimador de Newey-West para (\ref{eq:lr-var}) é dado por
+\begin{equation}
+	\label{eq:est-NW}
+	\widehat{lrv}_{NW}(x_t)= \hat{C}_0 + 2 \sum_{\tau=1}^{T} w_{\tau,T} \hat{C}_\tau,
+\end{equation}
+em que os $w_{\tau,T}$ denotam coeficientes (cuja somatória é igual a um) e um parâmetro de truncamento que satisfaz $T = O(N^{1/3})$.
+
+\subsection{Teste GPH}
+\label{model:subsec:gph}
+
+Geweke e Porter-Hudak \cite{gph83} propuseram um teste de memória longa baseado na DEP do processo ARFIMA$(0,d,0)$ dada por\footnote{A Eq. (\ref{def:psd-fd}) é deduzida a partir de (\ref{def:psd-farima}).}
+\begin{equation}
+  \label{def:psd-fd}
+	P_\rvx(f) = [4 \sin^2(\pi f)]^{-d} \sigma^2_{\rvw},
+\end{equation}
+em que $\sigma^2_{\rvw}$ denota a potência do RB $\rvw_t$. Note-se que o parâmetro $d$ pode ser estimado por meio da seguinte regressão
+\begin{equation}
+  \label{eq:gph}
+	\ln P_\rvx(f_j) = - d \ln[4 \sin^2(\pi f_j)] + 2 \ln {\sigma_{\rvw}},
+\end{equation}
+para $j=1,2,\ldots,z(N)$, em que $z(N)=N^{\alpha}$, $0<\alpha<1$ ($N$ denota o número de amostras). Geweke e Porter-Hudak mostraram que se $P_\rvx(f_j)$ for estimado pelo método do periodograma, então o estimador de mínimos quadrados $\hat{d}$ utilizando a regressão (\ref{eq:gph}) é normalmente distribuído em grandes amostras se $z(N) = N^\alpha$ com $0 < \alpha < 1$:
+\begin{equation}
+  \label{eq:dist-est-gph}
+	\hat{d} \sim  \mathcal{N}\left(d, \frac{\pi^2}{6 \sum_{j=1}^{z(N)} (U_j - \bar{U})^2} \right),
+\end{equation}
+em que $U_j  = \ln[4 \sin^2(\pi f_j)]$ e $\bar{U}$ é a média amostral dos $U_j$, $j=1,2,\ldots,z(N)$. Sob a hipótese nula de que não haja LRD ($d=0$), a estatística $t$
+\begin{equation}
+  \label{eq:t-stat}
+	t_{d=0} =  \hat{d} \left( \frac{\pi^2}{6 \sum_{j=1}^{z(N)} (U_j - \bar{U})^2} \right)^{-1/2}
+\end{equation} 
+tem distribuição normal no limite.
+
+\section{Alguns Métodos para Estimação de $H$ e $d$}
+\label{model:sec:estH}
+
+\subsection{Abordagens Heurísticas}
+\label{model:subsec:est-Heurist}
+
+\subsubsection{Estatística R/S}
+\label{model:subsubsec:ros2}
+
+De acordo com a seção \ref{model:subsec:ros}, o gráfico log-log da estatística $R/S$ \emph{versus} $N$, em que $N$ denota o número de pontos da série, de uma série LRD se aproxima de uma reta com inclinação $1/2<H<1$. Este fato é utilizado pelo método de estimação do parâmetro $H$ denominado análise R/S, que consiste no procedimento descrito a seguir. Primeiramente, calcula-se a estatística $R/S$ usando-se $N_1$ observações consecutivas da série, em que $N_1$ deve ser um número suficientemente grande. Em seguida incrementa-se o número de observações por um fator $f$; isto é, calcula-se $R/S$ sobre $N_i=fN_{i-1}$ amostras consecutivas para $i=2,\ldots,s$. Note-se que para se obter a estatística $R/S$ com $N_i$ observações consecutivas, pode-se dividir a série em $[N/N_i]$ blocos e obter-se $[N/N_i]$ valores, em que $[.]$ denota a parte inteira de um número real. A regressão do \emph{plot} log-log de todas as estatísticas $R/S$ \emph{versus} $N_i$, $i=1,\ldots,s$, produz uma estimativa do parâmetro $H$ \cite{zivot03}, \cite{beran94}.    
+
+\subsubsection{\emph{Plot} da Variância}
+\label{model:subsubsec:var-plot}
+
+O gráfico da variância (\emph{variance plot}) é um método heurístico de estimação do parâmetro de Hurst. Beran \cite{beran94} mostra que a variância da média amostral de uma série LRD decresce com o seu tamanho $N$ mais lentamente do que no caso tradicional (variáveis independentes ou não-correlacionadas) e da seguinte maneira
+\begin{equation} 
+	\label{eq:var-plot}
+	\text{Var}(\bar{x}) \approx c N^{2H-2},
+\end{equation} 
+em que $c>0$. Tem-se os seguintes passos \cite{lima02}:
+\begin{enumerate}
+
+\item Seja $k$ um número inteiro. Para diferentes $k$ pertencentes à faixa $2\leq k\leq N/2$, e para um número $m_k$ suficiente de subséries de tamanho $k$, calcular as médias de $m_k$ amostras de tamanho $k$, $\bar{x}_1(k),\bar{x}_2(k), \ldots,\bar{x}_{m_k}(k)$  e a média global 
+
+	\begin{equation}
+		\bar{x}(k) = m_k^{-1} \sum_{j=1}^{m_k}\bar{x}_{j}(k). 
+	\end{equation}
+
+\item Para cada $k$, calcular a variância da amostra de $m_k$ médias de amostras $\bar{x}_{j}(k)$, $j=1,2,\ldots,m_k$:
+
+	\begin{equation}
+		s^2(k) = \frac{1}{m_k-1}\sum_{k=1}^{m_k}(\bar{x}_{j}(k) - \bar{x}(k))^2.
+	\end{equation}
+
+\item Representar num gráfico $\log s^2(k)$ \emph{versus} $\log k$.
+		
+\end{enumerate}
+Para o caso de dependência de curta duração ou independência, espera-se que o coeficiente angular $2H-2$ do \emph{plot} seja igual a $(2 \times 1/2) -2 = -1$. 
+
+
+\subsubsection{Método do Periodograma}
+\label{model:subsubsec:pgram}
+
+De acordo com a definição (\ref{def:lrd}), a DEP de um processo LRD é aproximada pela expressão $C_P|f|^{1-2H}$ quando $f\rightarrow0$. Como a DEP pode ser estimada pelo periodograma, um log-log \emph{plot} do periodograma \emph{versus} freqüência deve acompanhar uma reta com inclinação $1-2H$ para freqüências próximas de zero. Este procedimento de estimação é conhecido como método do periodograma.
+
+
+O estimador $\hat{P}_{\rvx}(f)$ da DEP é obtido pelo método não-paramétrico\footnote{Os métodos paramétricos de análise espectral são baseados em modelos AR, MA e ARMA. Portanto não devem ser aplicados para estimação da DEP de um ruído $1/f^{\alpha}$.} do periodograma \cite{percival93}, com janelamento de dados (\emph{data tapering}, para redução de vazamento de potência) e suavização (\emph{smoothing}, para redução da variabilidade de $\hat{P}_{\rvx}(f)$). O periodograma é calculado via\footnote{A definição foi dada sem incluir o janelamento e a suavização, para melhor compreensão da natureza essencial do estimador.}   
+
+\begin{equation}
+	\label{def:pgram}
+	\hat{P}_{\rvx}(f) = \frac{1}{N} |X(f)|^2 \, .
+\end{equation}  
+
+\subsection{Método de Whittle}
+\label{model:subsec:whittle}
+
+O estimador de Whittle também é baseado no periodograma e envolve a minimização da função \cite{taqqu95} 
+\begin{equation} 
+	\label{eq:whittle}
+	Q(\theta) = \int_{-0.5}^{0.5} \frac{\hat{P}_\rvx(f)}{P_\rvx(\mathbf{\theta},f)}df
+\end{equation}
+em que $\hat{P}_\rvx(f)$ denota o periodograma da série $x_t$, $P_\rvx(\mathbf{\theta},f)$ é a DEP teórica do modelo ARFIMA$(p,d,q)$ $\rvx_t$ na freqüência $f$ e $\mathbf{\theta}=[p,d,q]$ representa o vetor de parâmetros desconhecidos. Vide \cite{beran94} para maiores detalhes sobre este método.
+
+
+\subsection{Estimador Aproximado de MV de Haslett e Raftery}
+\label{model:subsec:HR}
+
+%- Referência básica: \cite{haslett89}
+Considere o modelo ARFIMA (\ref{eq:def-ARFIMA}), reescrito na forma
+\begin{equation}
+	\label{eq:ARFIMA-HR}
+	\rvx_t = \Delta^{-d}\phi(B)^{-1}\theta(B)\rvw_t\,. 
+\end{equation}
+Sejam $\hat{x}_{t}$ a previsão ótima de passo-1 de $\rvx_{t}$ dadas as observações passadas $\mathcal{F}_{t-1} = \{x_{t-1}, x_{t-1}, \ldots, x_{1}\}$, $e_t = x_t - \hat{x}_{t}$ o erro de previsão de passo-1 e  
+\begin{equation} 
+ \zeta=[\sigma^2_{\rvw},\phi_1,\ldots,\phi_p, d, \theta_1,\ldots,\theta_q]
+\end{equation} 
+o vetor de parâmetros  do modelo (\ref{eq:ARFIMA-HR}). Harvey \cite[pág.91]{harvey93} mostra que
+a função de log-verossimilhança de (\ref{eq:ARFIMA-HR}) é dada por uma expressão conhecida como \textbf{decomposição do erro de previsão}
+\begin{equation} 
+	\label{eq:MV-HR}
+	\log {[L(\zeta)|\mathcal{F}_{t-1}]} =
+	-\frac{N}{2}\log{2 \pi}  -\frac{N}{2}\log{\sigma^2_{\rvw}} - \frac{1}{2}\sum_{t=1}^{N} \log{f_t} - \frac{1}{2\sigma^2_{\rvw}}\sum_{t=1}^{N}e^2_t/f_t  \,,
+\end{equation}
+em que $f_t=\text{Var}[e_t]/\sigma^2_{\rvw}$.
+
+Haslett e Raftery \cite{haslett89} propuseram um procedimento rápido para a determinação de uma aproximação de (\ref{eq:MV-HR}), que é usada pelo programa \texttt{S-PLUS}$^{\text{\textregistered}}$. O leitor interessado em obter maiores detalhes sobre o algoritmo de Haslett e Raftery deve consultar a seção 4.3 do artigo referenciado acima.
+
+\subsection{Estimador \emph{Wavelet} de Abry e Veitch}
+\label{model:subsec:wavelet}
+
+%- Referências básicas: \cite{veitch99}, \cite{bardet03b}
+%- Cap. 5 utiliza estimador \emph{wavelet} ABRY/VEITCH
+
+Considere um sinal estacionário $x(t)$, $t \in \mathbb{R}$ e a sua IDWT (\ref{eq:IDWT})
+	\[  x(t) \approx \sum_{k} u(J,k) \phi_{J,k}(t) + \sum_{j=1}^{J}\sum_{k} w_{j,k} \psi_{j,k}(t). \]  
+A estacionariedade de $x_t$ implica a estacionariedade das seqüências de coeficientes \emph{wavelet} $\{w_{j,k}\}$ em todas as escalas $j$. Seja $\mathbb{P}_j= E[w^2_{j,k}]=\text{Var}[w_{j,k}]$ a potência do sinal $\{w_{j,k}\}$ ou \textbf{variância \emph{wavelet}} \cite[pág.296]{percival00} numa determinada escala $j$.
+
+Demonstra-se que \cite{abry98}, \cite{stoev05}
+\begin{equation}
+	\label{eq:pot-seq-wav}
+	\mathbb{P}_j = \int_{\mathbb{R}} |\Psi(\nu)|^2 P_{\rvx}(\nu/2^j) d\nu\,,
+\end{equation} 
+em que $\Psi(\nu)$, $-\infty < \nu <\infty$, denota a transformada de Fourier da \emph{wavelet} $\psi(t)$ e $P_{\rvx}(\nu)$ denota a DEP de $x(t)$.
+Considere $j \rightarrow \infty$. Então $P_{\rvx}(\nu/2^j)$ pode ser vista como uma versão magnificada (dilatada) da DEP de $x(t)$ na região de baixas freqüências ($\nu\rightarrow 0$). Sendo assim, depreende-se que (\ref{eq:pot-seq-wav}) é uma aproximação da potência de $x(t)$ na região das baixas freqüências para $j \rightarrow \infty$ (pois a integral (\ref{eq:pot-seq-wav}) é ponderada pela função $|\Psi(\nu)|^2$).  
+
+Suponha que $x(t)$ seja LRD (vide definição \ref{def:lrd}), isto é,
+\begin{equation}
+	\label{def:LRD-again}
+  P_{\rvx}(\nu) \sim C_P|\nu|^{-\alpha}, \quad  \nu \rightarrow 0, \quad 0<\alpha<1 \,,
+\end{equation} 
+em que $\sim$ significa que a razão entre os lados esquerdo e direito de (\ref{def:LRD-again}) converge para $1$.
+As Eqs. (\ref{eq:pot-seq-wav}) e (\ref{def:LRD-again}) implicam que a seguinte relação é válida para $j\rightarrow \infty$:
+\begin{equation}
+	\label{eq2:pot-seq-wav}
+	\mathbb{P}_j \sim C_P \int_{\mathbb{R}} |\Psi(\nu)|^2 |\nu/2^j|^{-\alpha} d\nu = C_P C 2^{j\alpha} \,,
+\end{equation} 
+em que $C=C(\Psi, \alpha) = \int_{\mathbb{R}} |\Psi(\nu)|^2 |\nu|^{-\alpha}d\nu$.
+
+A Eq. (\ref{eq2:pot-seq-wav}) sugere que $H=(1+\alpha)/2$ pode ser estimado por meio de 
+\begin{equation}
+	\label{eq:wavelet-estimate-H}
+	\log_2 (\mathbb{P}_j) \sim (2H-1)j + \text{constante}, \quad j\rightarrow \infty\,.
+\end{equation} 
+
+Dado o sinal amostrado $x_k$, $k=0,1,\ldots,N-1$, associado ao sinal original $x(t)$, pode-se estimar $\log_2 (\mathbb{P}_j)$ utilizando-se os coeficientes $w_{j,k}$, $k=0,1,\ldots,N_j-1$, $j=1,2,\ldots,J$, da DWT de $x_k$. O estimador de $\log_2 (\mathbb{P}_j)$ é dado por
+\begin{equation}
+	\label{eq2:wavelet-estimate-H}
+	S_j = \log_2 \left(\frac{1}{N_j} \sum_{k=0}^{N_j-1} w^2_{j,k} \right) \approx \log_2 (\mathbb{P}_j)\,.
+\end{equation} 
+O conjunto de estatísticas $S_j$, $j=1,2,\ldots,J$, é denominado \textbf{espectro \emph{wavelet}} do sinal $x_k$. 
+A relação (\ref{eq:wavelet-estimate-H}) diz que o espectro \emph{wavelet} de $x_k$ é \textbf{linear com inclinação $\alpha=2H-1$} nas escalas dilatadas de tempo. A aplicação de uma regressão linear entre as escalas $j_1$ e $j_2$ do espectro \emph{wavelet} resulta na seguinte fórmula explícita (Eq. (2.10) do artigo \cite{abry98}) para estimação de $H$:
+\begin{equation}
+	\label{def:AV-estimator-H}
+	\widehat{H}_{[j_1,j_2]} = \frac{1}{2} 
+	\left[ \frac{ \underset{j=j_1}{\overset{j_2}\sum} \varepsilon_jjS_j - \underset{j=j_1}{\overset{j_2}\sum} \varepsilon_jj \underset{j=j_1}{\overset{j_2}\sum}\varepsilon_jS_j} {\underset{j=j_1}{\overset{j_2}\sum} \varepsilon_j \underset{j=j_1}{\overset{j_2}\sum} \varepsilon_jj^2 - \left(\underset{j=j_1}{\overset{j_2}\sum} \varepsilon_jj\right)^2} + 1 \right]
+\end{equation} 
+em que $\varepsilon_j = (N \ln^2 2)/2^{j+1}$. A Eq. (\ref{def:AV-estimator-H}) define o estimador \emph{wavelet} de Abry e Veitch (AV).
+  
+O estimador \emph{wavelet} $\widehat{H}_{[j_1,j_2]}$ apresenta um bom desempenho quando as séries não estão muito distantes de um FGN. Estudos empíricos indicam que o mesmo é robusto quanto a tendências determinísticas suaves e mudanças na estrutura de dependência de curta duração das séries temporais \cite{abry98},\cite{bardet03b},\cite{stoev05}.  
+
+A discussão desta seção mostrou que o estimador AV é baseado na variância \emph{wavelet} de sinais de tempo contínuo. Abry, Veitch e Taqqu propuseram em \cite{veitch00b} um método para que o estimador AV possa ser aplicado a sinais de tempo discreto, tais como sinais de tráfego em redes. O método consiste numa pré-filtragem do sinal de tempo discreto original $x_k$ (``fase de inicialização'' da DWT), a qual produz a seqüência inicial (a ser decomposta pela DWT) 
+\begin{equation}
+	\label{eq:inic-MRA}
+	u_{\tilde{x}}(k) = \int_{-\infty}^{\infty} \tilde{x}_t \phi_0(t-k)\,dt \,,
+\end{equation}   
+em que 
+\begin{equation}
+	\label{eq2:inic-MRA}
+	\tilde{x}(t) =  \underset{n=-\infty}{\overset{\infty}\sum} x(n) \text{sinc}(t-n)\,.
+\end{equation}   
+Note que $\tilde{x}(t)$ é um sinal de tempo contínuo ``fictício'' que o procedimento de inicialização da DWT associa ao sinal original $x_k$ e que (\ref{eq:inic-MRA}) mostra que o estimador AV é calculado por meio da DWT de uma versão filtrada de $x_k$. 
+
+Aplicando-se (\ref{eq2:inic-MRA}) em (\ref{eq:inic-MRA}) tem-se que
+\begin{equation}
+\begin{split}
+	\label{eq3:inic-MRA}
+	u_{\tilde{x}}(k) &= \int_{-\infty}^{\infty} \tilde{x}_t \phi_0(t-k)\,dt \\
+	                 &= \underset{n=-\infty}{\overset{\infty}\sum} x(n) \int_{-\infty}^{\infty} \phi_0(t-k)\text{sinc}(t-n)\,dt \\
+	                 &= \underset{n=-\infty}{\overset{\infty}\sum} x(n) I(k-n) \\
+	                 &= x(k)\star I(k)\,, 
+\end{split}
+\end{equation}   
+em que 
+\begin{equation}
+	I(m) = \int_{-\infty}^{\infty} \text{sinc}(t+m) \phi_0(t)\,dt\,.
+\end{equation}   
+
+A função  \texttt{MATLAB}$^{\text{\textregistered}}$ \texttt{LDestimate.m} de Veitch e Abry \cite{SecOrderTools:url} é utilizada nesta tese para a estimação de $d$ pelo método \emph{wavelet} AV. 
+
+%Seguem-se abaixo dois exemplos de uso da mesma: 
+%\begin{description}
+%\item[(a)] Estimação do parâmetro $d$ de uma série ARFIMA$(0;0,4;0)$ com $N=4096=2^{12}$ pontos ($12$ escalas ou oitavas):
+%\begin{verbatim}
+%>> LDestimate(data,1,1,12,1,1,1)
+%>> alphaest/2
+%ans =
+%0.3860
+%>> 
+%\end{verbatim}
+%O resultado estimado é $\hat{d}=0,386$. A segunda entrada da função especifica o número de momentos nulos da \emph{wavelet} de Daubechies. No exemplo, foi escolhida a \emph{wavelet} de Haar. 
+%(vide o apêndice \ref{ap-I} para maiores detalhes sobre o método de construção de sistemas de \ac{MRA}-\ac{FIR} proposto por Daubechies \cite{daubechies88}, \cite{daubechies92}). 
+%As terceira e quarta entradas configuram os limites inferior e superior das escalas, respectivamente. As três últimas entradas devem ser iguais a 1 (conforme explicado pelo \emph{help} da função \texttt{LDestimate.m}). 
+
+%\item[(b)] Estimação do parâmetro $d$ de uma série com $N=200$ pontos:
+%\begin{verbatim}
+%>> LDestimate(data,1,1,7,1,1,1)
+%>> alphaest/2
+%ans =
+%0.3807
+%>> 
+%\end{verbatim}
+%O resultado estimado é $\hat{d}=0,3807$.  
+%\end{description}
+
+A Fig. \ref{fig:Wav-Spec} ilustra os espectros \emph{wavelet} de um RBG, do modelo AR(4) $\rvx_t = 2,7607\rvx_{t-1} - 3,8106\rvx_{t-2} + 2,6535\rvx_{t-3} - 0,9238\rvx_{t-4} + \rvw_t$  e do \emph{trace} \texttt{BellcoreAug89} (\emph{bin} de 10 milissegundos).  O espectro \emph{wavelet} do RBG é plano, ao passo que o espectro do \emph{trace} \texttt{BellcoreAug89} é aproximadamente linear entre as escalas $j=3$ e $j=10$. Os \emph{spikes} na escalas 2 e 3 do espectro do modelo AR(4) sugerem a presença de dependência de curta duração. Os parâmetros de Hurst estimados por meio do ajuste da linha vermelha ao espectro \emph{wavelet} do RBG entre as escalas $j=10,11,\ldots,20$, da linha vermelha ao espectro do processo AR(4) entre $j=7,8,\ldots,12$ e da linha vermelha ao espectro do \emph{trace}	\texttt{BellcoreAug89} entre $j=3,4,\ldots,12$, são iguais a $\widehat{H}\approx 0,5$, $\widehat{H}\approx 0,51$ e $\widehat{H}\approx 0,814$, respectivamente. A Fig. \ref{fig:pgram-ar4-BellcoreAug89} ilustra os periodogramas alisados pelo método \ac{WOSA} da série AR(4) e do \emph{trace} \texttt{BellcoreAug89} da Fig. \ref{fig:Wav-Spec}. 
+
+\begin{figure}[htp]
+\centering
+	\subfloat[]{
+		\label{fig:Wav-Spec-RBG}				                                   		
+  \includegraphics[width=7cm,keepaspectratio]{figuras/Wav-Spec-RBG.eps}}		
+  \hspace{0pt}%
+  \subfloat[]{
+		\label{fig:Wav-Spec-AR4-Eq46a-Percival}				                                   		
+  \includegraphics[width=7cm,keepaspectratio]{figuras/Wav-Spec-AR4-Eq46a-Percival.eps}}		
+  \hspace{0pt}%
+  \subfloat[]{
+		\label{fig:Wav-Spec-BellcoreAug89}				                                   		
+  \includegraphics[height=7cm,keepaspectratio]{figuras/Wav-Spec-BellcoreAug89.eps}}		
+  \vspace{10pt}%
+		\caption[]{Espectros \emph{wavelet} \subref{fig:Wav-Spec-RBG} de um RBG, \subref{fig:Wav-Spec-AR4-Eq46a-Percival} do modelo AR(4) $\rvx_t = 2,7607\rvx_{t-1} - 3,8106\rvx_{t-2} + 2,6535\rvx_{t-3} - 0,9238\rvx_{t-4} + \rvw_t$  e do \subref{fig:Wav-Spec-BellcoreAug89} \emph{trace} \texttt{BellcoreAug89} (\emph{bin} de 10 milissegundos). Note que o espectro \emph{wavelet} \subref{fig:Wav-Spec-RBG} é plano, ao passo que o espectro \subref{fig:Wav-Spec-BellcoreAug89} é aproximadamente linear entre as escalas $j=3$ e $j=10$. 
+Os \emph{spikes} na escalas 2 e 3 de \subref{fig:Wav-Spec-AR4-Eq46a-Percival} sugerem a presença de dependência de curta duração. Os parâmetros de Hurst estimados por meio do ajuste da linha vermelha ao espectro \emph{wavelet} \subref{fig:Wav-Spec-RBG} entre as escalas $j=10,11,\ldots,20$, da linha vermelha ao espectro \subref{fig:Wav-Spec-AR4-Eq46a-Percival}	entre $j=7,8,\ldots,12$ e da linha vermelha ao espectro  \subref{fig:Wav-Spec-BellcoreAug89}entre $j=3,4,\ldots,12$, são iguais a $\widehat{H}\approx 0,5$, $\widehat{H}\approx 0,51$ e $\widehat{H}\approx 0,814$, respectivamente.}%
+\label{fig:Wav-Spec}%
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+	\subfloat[]{
+		\label{fig:pgram-AR4-Eq46a-Percival}				                                   		
+  \includegraphics[height=7cm,keepaspectratio]{figuras/pgram-AR4-Eq46a-Percival.eps}}
+  \hspace{15pt}%
+  \subfloat[]{
+		\label{fig:pgram-BellcoreAug89}				                                   		
+  \includegraphics[height=7cm,keepaspectratio]{figuras/pgram-BellcoreAug89.eps}}		
+  \vspace{10pt}%
+		\caption[]{Periodogramas alisados pelo método \ac{WOSA}: \subref{fig:pgram-AR4-Eq46a-Percival} série AR(4) da Fig. \ref{fig:Wav-Spec} e \subref{fig:pgram-BellcoreAug89} \emph{trace} \texttt{BellcoreAug89} (\emph{bin} de 10 milissegundos).}%
+\label{fig:pgram-ar4-BellcoreAug89}%
+\end{figure}
+
+
+
+\section{Biespectro e Testes de Linearidade}
+\label{model:sec:biespectro}
+%Referências \cite{baccala03}, \cite{hinich82} e \cite{ventura00}
+
+Sejam $\rvx=[\rvx_1,\rvx_2,\ldots,\rvx_n]^\Tpeq$ e $\omega = [\omega_1,\omega_2,\ldots,\omega_n]^\Tpeq$, em que $\Tpeq$ denota a operação de transposição, um vetor aleatório real $n$-dimensional e um vetor de parâmetros reais com $n$ componentes, respectivamente\footnote{Admite-se que todos os vetores sejam vetores-coluna, a menos que se diga o contrário.}.  
+Os momentos conjuntos de ordem $r=k_1+k_2+\ldots+k_n$ de $\rvx$ são dados por \cite{papoulis91} 
+\begin{multline} 
+%\begin{equation}
+ \label{def:moments}
+\text{Mom} \{\rvx_1^{k_1}, \rvx_2^{k_2}, \ldots, \rvx_n^{k_n}\} \equiv E\{\rvx_1^{k_1} \rvx_2^{k_2} \ldots \rvx_n^{k_n}\} = \\
+                (-j)^r \left.\frac{\partial^r \Phi_{\rvx}(\omega^\Tpeq)}{\partial \omega_1^{k_1} \partial \omega_2^{k_2}\dots\partial \omega_n^{k_n}}\right|_{\omega_1=\omega_2=\ldots=\omega_n=0} 
+%  \text{Mom} \{X_1^{k_1}, X_2^{k_2}, \ldots, X_n^{k_n}\} \equiv E\{X_1^{k_1} X_2^{k_2} \ldots X_n^{k_n}\} = \\
+%                = (-j)^r \left.\frac{\partial^r \Phi_{\mathbf{X}}(\bw^T)}{\partial \omega_1^{k_1} \partial %\omega_2^{k_2}\dots\partial \omega_n^{k_n}}\right|_{\omega_1=\omega_2=\ldots=\omega_n=0} 
+%\end{equation}
+\end{multline}
+em que
+\begin{equation}
+  \label{def:charac-function}
+  \Phi_{\rvx}(\omega^\Tpeq) \equiv E\{e^{j\omega^\Tpeq \rvx}\} 
+\end{equation}	
+é a função característica conjunta de $\rvx$ ($E\{.\}$ denota o operador esperança, como visto no Cap. \ref{cap:conceitos}). 
+
+Os cumulantes conjuntos de ordem $r$ de $\rvx$ são definidos como \cite{brillinger65}, \cite{rosenblatt83} 
+%\begin{multline}
+\begin{equation}
+  \label{def:cum}
+  \text{Cum} \{\rvx_1^{k_1}, \rvx_2^{k_2}, \ldots, \rvx_n^{k_n}\} \equiv 
+  (-j)^r \left.\frac{\partial^r \tilde{\Psi}_{\rvx}(\omega^\Tpeq)}{\partial \omega_1^{k_1} \partial \omega_2^{k_2}\dots\partial \omega_n^{k_n}}\right|_{\omega_1=\omega_2=\ldots=\omega_n=0}\,,
+%  \text{Cum} \{X_1^{k_1}, X_2^{k_2}, \ldots, X_n^{k_n}\} \equiv \\
+%  \equiv(-j)^r \left.\frac{\partial^r \tilde{\Psi}_{\mathbf{X}}(\bw^T)}{\partial \omega_1^{k_1} \partial %\omega_2^{k_2}\dots\partial \omega_n^{k_n}}\right|_{\omega_1=\omega_2=\ldots=\omega_n=0}\,,
+\end{equation}
+%\end{multline}	
+em que 
+\begin{equation}
+  \label{def:ln-charac-function}
+  \tilde{\Psi}_{\rvx}(\omega^\Tpeq) \equiv \ln{\Phi_{\rvx}(\omega^\Tpeq)} 
+\end{equation}	
+corresponde ao logaritmo natural da função característica conjunta.
+
+Pode-se verificar  que os momentos \cite{brillinger65}
+\begin{align}
+	m_1 & = E\{\rvx\} = \mu   &  m_2 & = E\{\rvx^2\} \\
+	m_3 & = E\{\rvx^3\} &  m_4 & = E\{\rvx^4\}
+\end{align} 
+de uma variável aleatória $\rvx$ estão relacionados aos seus cumulantes por
+\begin{align}
+	c_1 & = \text{Cum}\{\rvx\} = m_1 \\
+	c_2 & = \text{Cum}\{\rvx,\rvx\} = m_2 - m_1^2 \\
+	c_3 & = \text{Cum}\{\rvx,\rvx,\rvx\} = m_3 - 3m_2m_1 + 2m_1^3 \\
+	c_4 & = \text{Cum}\{\rvx,\rvx,\rvx,\rvx\} = m_4 - 4m_3m_1 - 3m_2^2 + 12m_2m_1^2 - 6m_1^4\,.  
+\end{align} 
+%\begin{multline}
+%	c_4 = \text{Cum}\{X,X,X,X\} = \\
+%	= m_4 - 4m_3m_1 - 3m_2^2 + 12m_2m_1^2 - 6m_1^4\,.
+%\end{multline} 
+
+%Wold's decomposition theorem states that any real wide sense stationary random sequence $\{X_k\}$ has a causal linear process (or infinite moving average) representation \cite[p. 64]{zivot03} defined as 
+%\begin{align}
+%  \label{def:wold-decomp}
+%  X_k & = \mu + h_0 W_k + h_1 W_{k-1} + h_2 W_{k-2} + \ldots \notag \\
+%      & = \mu + \sum_{j=0}^{\infty} h_j W_{k-j}  \\
+%  h_0 & = 1,\,\,\sum_{j=0}^{\infty}h_j^2 < \infty,\,\, W_k \sim \text{WN}(0,\sigma^2) \notag
+%\end{align}	
+%where $\{W_k\}$ is a white noise process and $\mu$ is the mean of $\{X_k\}$. Any stochastic process that does not satisfy Eq. (\ref{def:wold-decomp}) is said to be nonlinear. 
+
+%In general, there are three motivations behind the use of higher-order spectra (HOS)\cite{nikias93}: a) to suppress Gaussian noise in detection, estimation and identification situations; b) to reconstruct the phase and magnitude of signals or systems, and (c) to detect and characterize non-linearities in time series. In this article, HOS plays a key role in characterizing multifractal time series %(see Section\ref{sec:analysis}). 
+
+%The spectrum (or PSD), bispectrum and trispectrum of $\{X_k\}$ are formally defined in the following.  
+%O biespectro e o triespectro de $\{\rvx_k\}$ são formalmente definidos a seguir.  
+
+Assuma que os momentos de ordem menor ou igual a $n$ de um processo estacionário $\{\rvx_k\}$ existam. Então
+%Assume the moments of a stationary process $\{X_k\}$ up to order $n$ exist. Then
+\begin{multline} 
+%\begin{equation}
+ \label{def:moments-Xk}
+	\text{Mom} \{\rvx(k), \rvx(k+\tau_1), \ldots, \rvx(k+\tau_{n-1})\} =  E\{\rvx(k)\rvx(k+\tau_1) \ldots \rvx(k+\tau_{n-1})\} \equiv \\
+	m^\rvx_n(\tau_1, \tau_2, \ldots, \tau_{n-1}) 
+% \text{Mom} \{X(k), X(k+\tau_1), \ldots, X(k+\tau_{n-1})\} =  \\
+% = E\{X(k)X(k+\tau_1) \ldots X(k+\tau_{n-1})\} \equiv \\
+%\equiv m^x_n(\tau_1, \tau_2, \ldots, \tau_{n-1})  
+%\end{equation}
+\end{multline}  
+em que $\tau_1, \tau_2, \ldots, \tau_{n-1}$, $\tau_i = 0, \pm1, \pm2, \ldots$ para todo $i$, denotam \emph{lags}. 
+Similarmente, os cumulantes de ordem $n$ de $\{\rvx_k\}$ podem ser escritos como 
+%Similarly, the $n$th-order cumulants of $\{X_k\}$ can be writen as
+%\begin{multline}
+\begin{equation} 
+	\label{def:cum-Xk}
+  c^\rvx_n(\tau_1, \tau_2, \ldots, \tau_{n-1}) \equiv \text{Cum}\{\rvx(k), \rvx(k+\tau_1), \ldots, \rvx(k+\tau_{n-1})\}.   
+%  c^x_n(\tau_1, \tau_2, \ldots, \tau_{n-1}) \equiv \\
+%  \equiv \text{Cum}\{X(k), X(k+\tau_1), \ldots, X(k+\tau_{n-1})\}.   
+\end{equation}
+%\end{multline}   
+
+Nikias \emph{et al} \cite{nikias93} demonstram que as seguintes relações são válidas:
+\begin{align}
+	& c^\rvx_1  = m^\rvx_1 = \mu\,\,\text{(média)} \label{def:1st-order-cum} \\
+	& c^\rvx_2(\tau_1)  = m^\rvx_2(\tau_1) - (m^\rvx_1)^2 \,\,\text{(função de autocovariância)} \label{def:2nd-order-cum} \\
+	& c^\rvx_3(\tau_1, \tau_2) = m^\rvx_3(\tau_1,\tau_2) - m^\rvx_1[m^\rvx_2(\tau_1) + m^\rvx_2(\tau_2) 
+	+ m^\rvx_2(\tau_2 - \tau_1)] + 2(m^\rvx_1)^3 \label{def:3rd-order-cum} 
+\end{align} 
+%\begin{multline} 
+%  \label{def:3rd-order-cum}
+%	c^x_3(\tau_1, \tau_2) = m^x_3(\tau_1,\tau_2) - \\
+%	- m^x_1[m^x_2(\tau_1) + m^x_2(\tau_2) + m^x_2(\tau_2 - \tau_1)] + 2(m^x_1)^3 \,, 
+%\end{multline}   
+e
+\begin{equation} 
+  \label{def:4rd-order-cum}
+\begin{split}
+	c^\rvx_4(\tau_1, \tau_2, \tau_3) & = m^\rvx_4(\tau_1,\tau_2,\tau_3) - m^\rvx_2(\tau_1)m^\rvx_2(\tau_3 -\tau_2) - \\
+	& - m^\rvx_2(\tau_2)m^\rvx_2(\tau_3 - \tau_1) - m^\rvx_2(\tau_3)m^\rvx_2(\tau_2 - \tau_1) - \\
+	& - m^\rvx_1[m^\rvx_3(\tau_2 - \tau_1, \tau_3 - \tau_1) + m^\rvx_3(\tau_2,\tau_3) + \\
+	& + m^\rvx_3(\tau_2,\tau_4) + m^\rvx_3(\tau_1,\tau_2)] + \\
+	& + (m^\rvx_1)^2[m^\rvx_2(\tau_1) + m^\rvx_2(\tau_2) + m^\rvx_2(\tau_3) + \\
+	& + m^\rvx_2(\tau_3- \tau_1) + m^\rvx_2(\tau_3- \tau_2) + m^\rvx_2(\tau_2- \tau_1)] - \\
+	& - 6(m^\rvx_1)^4\,.    
+\end{split}
+\end{equation}   
+
+Seja $\{\rvx_k\}$ um processo de média zero, isto é, $m^\rvx_1=0$. Se $\tau_1=\tau_2=\tau_3=0$ em (\ref{def:2nd-order-cum}), (\ref{def:3rd-order-cum}), e (\ref{def:4rd-order-cum}) tem-se que
+\begin{equation} 
+\label{eq:var-skew-kur-cum} 
+\begin{split}
+	E\{\rvx(k)^2\} &= c^\rvx_2(0) = \sigma^2\,\,\text{(variância)}  \\
+	E\{\rvx(k)^3\}/\sigma^3 &= c^\rvx_3(0,0)/\sigma^3 = S(\rvx_k)\,\,\text{(assimetria)} \\
+	E\{\rvx(k)^4\}/\sigma^4 &= c^\rvx_4(0,0,0)/\sigma^4 = K(\rvx_k)\,\,\text{(curtose)}\,.  
+\end{split}
+\end{equation}   
+As fórmulas (\ref{eq:var-skew-kur-cum}) dão a variância, assimetria e  curtose em termos de cumulantes. 
+
+Sejam $f = [f_1,f_2,\ldots,f_n]^\Tpeq$ e $\tau = [\tau_1,\tau_2,\ldots,\tau_n]^\Tpeq$ 
+vetores de freqüências normalizadas e de \emph{lags}, respectivamente. 
+O poliespectro de ordem $n$ do processo $\rvx_k$ é definido como \cite{nikias93}:
+%The $n$th-order cumulant spectrum (or polyspectrum) of process $X_k$ is defined as\cite{nikias93}:
+%\begin{multline}
+\begin{equation}
+	\label{def:polyspectra}
+  P^\rvx_n(f^\Tpeq) = \sum_{\tau_1=-\infty}^{\infty} \ldots \sum_{\tau_{n-1}=-\infty}^{\infty} c^\rvx_n(\tau^\Tpeq)   \text{exp}\{-j2 \pi (f^\Tpeq \tau ) \}\,.  
+%  P^x_n(\textbf{\emph{f}}^T) = \sum_{\tau_1=-\infty}^{\infty} \ldots \sum_{\tau_{n-1}=-\infty}^{\infty} c^x_n(\btau^T) %\text{exp}\{-j2 \pi ( \textbf{\emph{f}}^T \btau ) \}  
+\end{equation}
+%\end{multline}
+
+A DEP, biespectro e triespectro correspondem aos espectros de segunda, terceira e quarta ordens, respectivamente: 
+\begin{equation}
+	\label{def:spec}
+  P^\rvx_2(f) = P^\rvx(f) =\sum_{\tau_1=-\infty}^{\infty} c^\rvx_2(\tau) e^{-j2 \pi f \tau}\,, 
+\end{equation}
+%\begin{multline}
+\begin{equation}
+	\label{def:bispec} 
+	P^\rvx_3(f_1,f_2) = \sum_{\tau_1=-\infty}^{\infty} \sum_{\tau_2=-\infty}^{\infty} c^\rvx_3 (\tau_1,\tau_2) e^{-j2 \pi (f_1\tau_1 + f_2\tau_2)} \,,	
+%	P^x_3(f_1,f_2) = \sum_{\tau_1=-\infty}^{\infty} \sum_{\tau_2=-\infty}^{\infty} c^x_3 (\tau_1,\tau_2). \\
+%	.e^{-j2 \pi (f_1\tau_1 + f_2\tau_2)} \,,
+\end{equation}
+%\end{multline}
+%\begin{multline}
+\begin{equation}
+\label{def:trispec}
+		P^\rvx_4(f_1,f_2,f_3) = \sum_{\tau_1=-\infty}^{\infty} \sum_{\tau_2=-\infty}^{\infty} \sum_{\tau_3=-\infty}^{\infty} 
+		c^\rvx_4 (\tau_1,\tau_2,\tau_3) e^{-j2 \pi (f_1\tau_1 + f_2\tau_2+ f_3 \tau_3)} \,. 
+%		P^x_4(f_1,f_2,f_3) = \sum_{\tau_1=-\infty}^{\infty} \sum_{\tau_2=-\infty}^{\infty} \sum_{\tau_3=-\infty}^{\infty} \\
+%		.c^x_4 (\tau_1,\tau_2,\tau_3) e^{-j2 \pi (f_1\tau_1 + f_2\tau_2+ f_3 \tau_3)} \,. 
+\end{equation}
+%\end{multline}
+O bispectro e o trispectro são complexos. Outra estatística útil é a bicoerência, definida como
+%Another useful statistic is the bicoherence, defined as 
+
+\begin{equation}
+  \label{def:bico}
+  B^\rvx_3(f_1,f_2) = \frac{P^\rvx_3(f_1,f_2)}{\sqrt{P^\rvx(f_1+f_2) P^\rvx(f_1) P^\rvx(f_2)}}\,.     
+\end{equation}	
+
+Hinich \cite{hinich82} desenvolveu testes estatísticos para Gaussianidade e linearidade. Estes testes são baseados nas seguintes propriedades: 1) se $\{\rvx_k\}$ é Gaussiano, seus cumulantes de terceira ordem são nulos; portanto, o seu bispectro é nulo e 2) se $\{\rvx_k\}$ é linear e não-Gaussiano, então a sua bicoerência é uma constante não nula \cite[pág.1-22]{swami00}. Os testes de normalidade e linearidade aplicados nos Caps. \ref{cap:tarfima} e Cap. \ref{cap:trafego} utilizam o \emph{toolbox} \texttt{MATLAB} ``\emph{Higher-Order Spectral Analysis}'' de Swami, Mendel e Nikias \cite{swami00}.
+ 
+\section{Teste de Estacionariedade KPSS}
+\label{model:sec:kpss}
+
+Testes de estacionariedade assumem a hipótese nula\footnote{É a hipótese que se deseja rejeitar.} (ou de trabalho) de que a série sob investigação seja do tipo $\rvx_t \sim I(0)$ \cite{zivot03}\footnote{Testes de raízes unitárias como o teste Dickey-Fuller trabalham com a hipótese nula de que a série seja $I(1)$.}.
+O teste KPSS, proposto por Kwiatkowski, Phillips, Schmidt e Shin \cite{kpss92}, \cite{zivot03}, é baseado no modelo
+
+\begin{align}
+	\label{eq:mod-kpss}
+	\rvy_t &=    \beta^\Tpeq \dvd_t + \mu_t + u_t \\
+  \mu_t  &=    \mu_{t-1} + \rvw_t, \quad \rvw_t \sim \mathcal{N}(0,\sigma^2_{\rvw}) 
+\end{align} 
+em que $\beta$ é um vetor de parâmetros, $\dvd_t$ é um vetor de componentes determinísticos (constante ou constante mais tendência) e $u_t$ é $I(0)$. Observe que $\mu_t$ é um passeio aleatório. A hipótese nula de que $\rvy_t$ seja $I(0)$ é formulada como $H_0: \quad \sigma^2_{\rvw}=0$, o que implica que $\mu_t$ é uma constante. A estatística KPSS para o teste de $\sigma^2_{\rvw}=0$ contra a hipótese alternativa $\sigma^2_{\rvw}>0$ é dada por
+\begin{equation}
+	\label{eq:KPSS}
+	KPSS = \left(N^{-2} \sum_{t=1}^{N} \hat{S}^2_t \right)/ \hat{\lambda}^2
+\end{equation} 
+em que $N$ é o tamanho da amostra, $\hat{S}_t = \sum_{j=1}^{t} \hat{u}_j$, $\hat{u}_t$ é o resíduo de uma regressão de $y_t$ sobre $\dvd_t$ e 
+$\hat{\lambda}^2$ é uma estimativa da variância de longo termo de $u_t$ usando $\hat{u}_t$. Sob a hipótese nula de que $y_t$ seja $I_0$, demonstra-se que $KPSS$ converge para uma função do movimento Browniano que depende da forma dos termos de tendência determinística $\dvd_t$ e que, por outro lado, independe do vetor $\beta$.  

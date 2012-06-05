@@ -1,0 +1,1045 @@
+\chapter{Códigos MATLAB}
+\label{apend-cod-MATLAB}
+
+\begin{mylisting}
+\begin{verbatim}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                       %
+%  Alexandre B. de Lima                                 %
+%                                                       %
+%   04/11/2007                                          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% function emse() 
+%
+% Given a time series FARIMA(p,d,q), an estimate of the long memory
+% parameter d (= H-1/2), and an adjusted AR(p2), this function returns: 
+%   1) "k-steps-ahead-forecasts"  based on the last 100 observations
+%      (k=1,...,k_max=100) given by the AR(p2) and the TARFIMA(L) models.
+%   2) an Excel Table with the Empirical Mean-Square Errors (EMSE) for
+%      several values of k_max (k_max= 7,10,20,50,100)
+%
+% Note that TARFIMA(L) is a finite-dimensional (i.e.,truncated) 
+% state-space representation of an FARIMA(p,d,0) model. For more details, 
+% please refer to the paper  
+% "State-Space Modeling of Long-Range Dependent Teletraffic", ITC 2007,
+% LNCS 4516, pp.260-271, 2007 (20th Int'l Teletraffic Congress, Ottawa, 
+% Canada).
+%
+% inputs: 
+%          timeseries = name of the text file which contains the time 
+%                       series under analysis (ASCII column vector)
+%          d          = estimated value of "d" for "timeseries" (I use 
+%                       the estimate given by S+FinMetrics) 
+%          name_ar_farima = name of a text file with the estimated AR coef.
+%                       of FARIMA (if applicable)
+%          name_ma_farima = name of a text file with the estimated MA coef.
+%                       of FARIMA (if applicable)
+%          L          = order of the finite-dimensional representation
+%          namear     = name of a text file which contains the parameters 
+%                       of the AR fitted model 
+%
+% outputs:
+%          Table with EMSEs, Figures with forecasts 
+%
+% Copyright(c) 2007 Universidade de São Paulo, Laboratório de Comunicações
+% e Sinais
+% 
+% Permission is granted for use and non-profit distribution providing that 
+% this notice be clearly maintained. The right to distribute any portion 
+% for profit or as part of any commercial product is specifically reserved
+% for the author.
+
+%function emse() 
+
+clear
+close all
+
+% note that : a) vectors with coefficients are column vectors, and
+%             b) vetors with observations are row vectors
+
+% ================================================================
+% INPUT DATA
+
+%  Prompt for time series
+timeseries = input('file with the time series: ','s');
+
+%  Prompt for estimated FARIMA model
+d = input('parameter "d": ');
+
+yes = 'y';
+yes2 = 'Y';
+j1 = input('AR coefficients? Y/N [Y]: ','s');
+if ( strcmp(yes,j1) | strcmp(yes2,j1) ) 
+    name_ar_farima = input('file with the estimated AR coef. of FARIMA:
+     ','s');
+    ar_farima = load(name_ar_farima);
+    ar_farima = -1*ar_farima; 
+% remember that the coefficients given by S-PLUS are the 
+% negative of the coefficients used in MATLAB (convention)
+% See S-PLUS Guide to Statistics, Vol. 2 
+    ar_farima = [1; ar_farima]; % MATLAB convention
+else
+    ar_farima = [1];
+end;
+
+j2=input('MA coefficients? Y/N [Y]: ','s');
+if ( strcmp(yes,j2) | strcmp(yes2,j2) )
+    name_ma_farima = input('file with the estimated MA coef. of FARIMA:
+     ','s');
+    ma_farima = load(name_ma_farima);
+    ma_farima = -1*ma_farima; 
+% remember that the coefficients given by S-PLUS are the 
+% negative of the coefficients used in MATLAB (convention)
+    ma_farima = [1; ma_farima]; % MATLAB convention
+else 
+    ma_farima = [1];
+end;
+
+L = input('order of the finite-dimensional representation: ');
+namear = input('file with the coef. of the estimated AR model: ','s');
+
+fullseries =load(timeseries)';
+N = length(fullseries);
+%mu = mean(fullseries);
+
+% =================================
+% Prediction from T-FARIMA(L) model
+
+for j = 0:100 
+    D(j+1) = -gamma(j-d)/(gamma(j+1)*gamma(-d));
+end
+
+D = -1*D; % D(B) = (1-B)^d = 1 -d_1B -d_2B^2 - ...
+% "D" is a row vector
+
+phi_temp = conv(ar_farima,D');
+
+% Truncated AR(L) polynomial (1-phi_1B-phi_2B^2 - ... - phi_LB^L)
+phi_B = ldiv(phi_temp,ma_farima,(L+1)); 
+phi_B2 = -1*phi_B(2:(L+1)); %coef. of AR(L) (S+ convention) 
+                            %column vector
+[m,n]=size(phi_B2);
+ 
+if (m<n)
+    phi_B2 = phi_B2';
+end
+
+k = [7 10 20 50 100];
+% k denotes the number of steps to predict ahead
+% k_max=100
+
+% ma100 = ldiv(ma_farima,phi_temp,101); % ldiv(b,a,N) is a function for 
+                                        % the power series expansion of 
+                                        % polynomial phi_B
+% Now we must invert and truncate the AR(L) representation
+% Yields the same result of: ma100 = ldiv(ma_farima,phi_temp,101)
+ma100 = ldiv(1,phi_B,101);
+ma100 = ma100(2:length(ma100));
+% Vector with the coef. of the MA(100) representation of T-FARIMA(L) 
+% [psi1 psi2 ... psi100], calculated by S-PLUS
+% do not change signs! (as stated in section "DETAILS" of the "arma2ma()"
+%                       function help )
+
+%prev = zeros(length(fullseries)); % initialize row vector with predictions 
+
+ma100quad = ma100.^2; % coefficiente to the square
+var_erro = zeros(1,k(1)); % initialize row vector with the variances 
+                          % of the k-step ahead prediction errors
+
+%t = 2700;
+%t=866;
+% origin of prediction
+                          
+for j=1:length(k)
+
+    t=length(fullseries)-k(j); 
+    % origin of prediction
+    
+    % estimate mean of time series
+    mu = mean(fullseries(t:-1:1));  
+    
+    % Initialize row vector Z (with L previous observations)
+    Z  = fullseries(t:-1:t-(length(phi_B2)-1)) - mu;
+    % Z = [Z_358 Z_357 ... Z_309]
+
+    % column vector I of innovations
+    I = filter(phi_B,1,(fullseries'-mu));
+    pot_inov = var(I);
+
+    for h=1:k(j)    
+        prev(h) = Z*phi_B2;
+        Z = [prev(h) Z(1:(length(phi_B2)-1))];
+    end    
+
+    prev = prev + mu; % predictions
+    x = fullseries(t+1:t+k(j)); % future observations
+    EQMPt(j) = sum((prev-x).^2)/k(j);
+    erro = x-prev;
+    
+    if j == length(k)
+        for h=1:k(j)    
+            if h==1
+                var_erro(h) = 1*pot_inov; % vide Eq.(9.11) Morettin(2004)
+            else
+                var_erro(h) = (ma100quad(h-1)*pot_inov) + var_erro(h-1);
+            end 
+        end   
+    end   
+end
+
+upper_bound = prev + 1.96*sqrt(var_erro);
+lower_bound = prev - 1.96*sqrt(var_erro);
+
+erroabs = abs(erro);
+
+% ===========================
+
+% Prediction from AR(p) model 
+
+ar = load(namear);
+p = length(ar);
+ar = -1*ar; % remember that the coefficients given by S-PLUS are the 
+            % negative of the coefficients used in MATLAB (convention)
+            
+ar = [1; ar]; % MATLAB convention
+ARorder = strcat('AR(',num2str(p),')')
+B = [1];
+[z_ar,p_ar,G] = tf2zpk(B,ar);
+zplane(z_ar,p_ar,'k')
+title(['Diagrama de Pólos e Zeros do modelo AR(',int2str(p),')'])
+figure
+
+ar2 = -1*ar(2:length(ar)); % S-PLUS convention
+
+ar_ma100 = ldiv(1,ar,101);
+ar_ma100 = ar_ma100(2:length(ar_ma100))';
+% Vector with the coef. of the MA(100) representation of AR(p) 
+% [psi1 psi2 ... psi100], calculated by S-PLUS
+% do not change signs! (as stated in section "DETAILS" of the "arma2ma()"
+%                       function help )
+
+%prev2 = zeros(length(fullseries)); 
+% initialize row vector with predictions 
+ar_ma100quad = ar_ma100.^2; % coef. to the square
+var_erro2 = zeros(1,k(1));  
+% initialize row vector with the variances 
+% of the k-step ahead prediction errors
+
+
+for j=1:length(k)
+    
+    t=length(fullseries)-k(j); % origin of prediction
+    
+    % estimate mean of time series
+    mu = mean(fullseries(t:-1:1));  
+    
+    % Initialize row vector Z2 (p observations)
+    Z2 = fullseries(t:-1:t-(length(ar2)-1))- mu;
+
+    % column vector I2 of innovations
+    I2 = filter(ar,1,(fullseries'-mu));
+    pot_inov2 = var(I2);
+    
+    for h=1:1:k(j)    
+        prev2(h) = Z2*ar2;
+        Z2 = [prev2(h) Z2(1:(length(ar2)-1))];
+    end
+
+    prev2 = prev2 + mu;
+    x2 = fullseries(t+1:t+k(j));
+    EQMPt2(j) = sum((prev2-x2).^2)/k(j);  
+    erro2 = x2-prev2;
+
+    if j == length(k)
+        for h=1:k(j)    
+            if h==1
+                var_erro2(h) = 1*pot_inov2; 
+                % vide Eq.(9.11) Morettin(2004)
+            else
+                var_erro2(h) = (ar_ma100quad(h-1)*pot_inov2) + 
+                var_erro2(h-1);
+            end 
+        end   
+    end   
+end
+
+upper_bound2 = prev2 + 1.96*sqrt(var_erro2);
+lower_bound2 = prev2 - 1.96*sqrt(var_erro2);
+
+erro2abs = abs(erro2);
+
+delta_error_abs = erro2abs - erroabs ;
+% =====================================
+%ARorder = strcat('AR(',num2str(p),')')
+TFARIMAorder = strcat('TARFIMA(',num2str(L),')')
+
+EQM = [EQMPt2',EQMPt'];
+
+emse1 = {'k',ARorder,TFARIMAorder; k(1),EQM(1,1),EQM(1,2); k(2),EQM(2,1),
+EQM(2,2); k(3),EQM(3,1),EQM(3,2);k(4),EQM(4,1),EQM(4,2); k(5),EQM(5,1),
+EQM(5,2)}
+
+xlswrite('emse.xls', emse1, 'teste');
+
+%==============
+% Draw graphics
+
+% Estimation of Power spectral density (PSD) using Welch's method
+% Advantages: simultaneous reduction of a) bias due to leakage (via data 
+% tapering) and b) variability (by averaging the periodograms of 
+% Nb blocks of size Ns) of the periodogram.
+
+[Pxx,w] = pwelch(fullseries);
+plot(w/(2*pi),10*log10(Pxx))
+%xlabel('normalized frequency (cycle/sample)')
+xlabel('f (ciclo/amostra)')
+%ylabel('power/frequency (dB/cycle/sample)')
+ylabel('dB/ciclo/amostra')
+%title('PSD via WOSA')
+title('DEP estimada (método WOSA)')
+
+figure
+[Pxx,w] = pwelch(I);
+plot(w/(2*pi),10*log10(Pxx))
+xlabel('f (ciclo/amostra)')
+ylabel('dB/ciclo/amostra')
+title('DEP estimada (método WOSA) dos resíduos do modelo TARFIMA')
+
+t=length(fullseries)-max(k); % origin of prediction using k_max=100
+                             % t=1106 for the Nile River minima series
+                             % used by Beran in the first chapter of
+                             % his book
+%n = (t-max(k)+1):1:N;
+n = (t-max(k)+1):1:(t+max(k));
+
+figure
+plot(n,fullseries(n),'k.-')
+hold on
+%pause
+%plot((t+1:N),prev,'.:g')
+plot((t+1:t+max(k)),prev,'.-g')
+hold on
+%pause
+%plot((t+1:N),upper_bound,'x:g')
+plot((t+1:t+max(k)),upper_bound,'x:g')
+hold on
+%pause
+%plot((t+1:N),lower_bound,'*:g')
+plot((t+1:t+max(k)),lower_bound,'*:g')
+hold on
+%pause
+%plot((t+1:N),prev2,'.:r')
+plot((t+1:t+max(k)),prev2,'.:r')
+hold on
+%pause
+%plot((t+1:N),upper_bound2,'x:r')
+plot((t+1:t+max(k)),upper_bound2,'x:r')
+hold on
+%pause
+%plot((t+1:N),lower_bound2,'*:r')
+plot((t+1:t+max(k)),lower_bound2,'*:r')
+
+figure
+plot((t+1:t+max(k)),delta_error_abs,'k.-')
+xlabel('h')
+%ylabel('difference of absolute values of prediction errors')
+ylabel('diferença entre os erros absolutos de previsão')
+
+%==========================================
+% Comparison of TARFIMAs with L=10, and 100
+
+L2 = 10;
+phi_B3 = ldiv(phi_temp,ma_farima,(L2+1)); 
+phi_B4 = -1*phi_B3(2:(L2+1)); 
+[m,n]=size(phi_B4);
+ 
+if (m<n)
+    phi_B4 = phi_B4';
+end
+
+ma100L2 = ldiv(1,phi_B3,101);
+ma100L2 = ma100L2(2:length(ma100L2));
+
+ma100quadL2 = ma100L2.^2; 
+var_erro3 = zeros(1,max(k)); 
+
+mu = mean(fullseries(t:-1:1));  
+Z3  = fullseries(t:-1:t-(length(phi_B4)-1)) - mu;
+I3 = filter(phi_B3,1,(fullseries'-mu));
+pot_inov3 = var(I3);
+
+for h=1:max(k)    
+    prev3(h) = Z3*phi_B4;
+    Z3 = [prev3(h) Z3(1:(length(phi_B4)-1))];
+end    
+
+prev3 = prev3 + mu; % predictions
+x = fullseries(t+1:t+max(k)); % future observations
+    
+erro3 = x-prev3;
+    
+for h=1:max(k)    
+    if h==1
+       var_erro3(h) = 1*pot_inov3; % vide Eq.(9.11) Morettin(2004)
+    else
+       var_erro3(h) = (ma100quadL2(h-1)*pot_inov2) + var_erro3(h-1);
+    end 
+end   
+                          
+upper_bound3 = prev3 + 1.96*sqrt(var_erro3);
+lower_bound3 = prev3 - 1.96*sqrt(var_erro3);         
+
+n = (t-max(k)+1):1:(t+max(k));
+
+figure
+plot(n,fullseries(n),'k.-')
+hold on
+%pause
+%plot((t+1:N),prev,'.:g')
+plot((t+1:t+max(k)),prev,'.:g')
+hold on
+%pause
+%plot((t+1:N),upper_bound,'x:g')
+plot((t+1:t+max(k)),upper_bound,'x:g')
+hold on
+%pause
+%plot((t+1:N),lower_bound,'*:g')
+plot((t+1:t+max(k)),lower_bound,'*:g')
+hold on
+%pause
+%plot((t+1:N),prev2,'.:r')
+plot((t+1:t+max(k)),prev3,'.:b')
+hold on
+%pause
+%plot((t+1:N),upper_bound2,'x:r')
+plot((t+1:t+max(k)),upper_bound3,'x:b')
+hold on
+%pause
+%plot((t+1:N),lower_bound2,'*:r')
+plot((t+1:t+max(k)),lower_bound3,'*:b')
+\end{verbatim}
+\end{mylisting}
+
+\clearpage
+\begin{mylisting}
+\begin{verbatim}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                       %
+%  Alexandre B. de Lima                                 %
+%                                                       %
+%   14/10/2007                                          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% This script gives measures of the k-step forecastability of a time series
+% as defined in p.24 of "An Introduction to Long-Memory Time Series Models 
+% and Fractional Differencing", Granger and Joyeux, 1980. 
+% 
+% Copyright(c) 2007 Universidade de São Paulo, Laboratório de Comunicações
+% e Sinais
+% 
+% Permission is granted for use and non-profit distribution providing that 
+% this notice be clearly maintained. The right to distribute any portion 
+% for profit or as part of any commercial product is specifically reserved
+% for the author.
+
+clear
+close all
+
+% note that : a) vectors with coefficients are column vectors, and
+%             b) vetors with observations are row vectors
+
+% =====================================================================
+
+% Forecasting potential of the long-memory models (predictions based on 
+% an infinite past)
+
+ar_farima = [1];
+ma_farima = [1];
+d = input('parameter "d": '); % parameter "d"
+
+M = 200;  % to derive the first M coef. of the MA(inf) representation
+
+for j = 0:M 
+    D(j+1) = -gamma(j-d)/(gamma(j+1)*gamma(-d)); 
+    % Eq.(16.30), pág. 475, "Análise de Séries Temporais", 
+    % Morettin & Toloi,2004
+end
+
+D = -1*D; % D(B) = (1-B)^d = 1 -d_1B -d_2B^2 - ... (estimated truncated 
+          % fractional difference filter)
+          % "D" is a row vector 
+
+phi_B = conv(ar_farima,D'); % AR polynomial (1-phi_1B-phi_2B^2 - ...) 
+phi_B2 = -1*phi_B(2:length(phi_B)); 
+%coef. of AR polynomial (S+ convention) 
+
+ma100 = ldiv(ma_farima,phi_B,M); % ldiv(b,a,N) is a function for 
+                                   % the power series expansion of 
+                                   % polynomial phi_B
+ma100 = ma100';
+ma100quad = ma100.^2; % coefficients to the square
+
+Sk = cumsum(ma100quad); % vector with the variances of the k-step forecast 
+                        % errors (length = 100) for the ARFIMA model
+
+% let x_t be an FARIMA(0,d,0) of the form 
+%       (1-B)^d{x_t} = w_t
+% where it is assumed that var{w_t}=1 for convenience.
+% The variance of x_t is given by 
+%       var{x_t} = gamma(-2d+1)/gamma^2(-d+1)
+% (see, Eq.(3.2) in paper "Fractional Differencing", Hosking, 1981) 
+Vd = gamma(-2*d+1)/(gamma(-d+1))^2 ;                       
+
+k = [1 10 20 100]; % so that you can reproduce the results presented in 
+                   % Tables 8.7 and 8.8 by Jan Beran in "Statistics for 
+                   % Long-Memory Processes", Chapman & Hall, 1994
+
+% quantity "Rk" measures the k-step ahead forecasting potential of the LRD
+% model, i.e., it's a standardized measure of how well one can predict 
+% x_{t+k} given the infinite past
+
+for j=1:length(k)
+    Rk(j) = 1 - Sk(k(j))/Vd; 
+end
+
+%========================================================================
+% Forecasting potential of the TARFIMA(L), whose predictions are based on
+% L previous observations
+
+% INPUT DATA
+
+L = input('order of the finite-dimensional representation: ');
+%d2 = input('estimate of "d": ');
+
+for j = 0:L 
+    D2(j+1) = -gamma(j-d)/(gamma(j+1)*gamma(-d));
+end
+
+D2 = -1*D2; 
+
+phi2_B = conv(ar_farima,D2'); % AR polynomial (1-phi_1.B-phi_2.B^2 - ...) 
+phi2_B2 = -1*phi2_B(2:length(phi2_B)); 
+%coef. of AR polynomial (S+ convention) 
+
+ma100_2 = ldiv(ma_farima,phi2_B,M); 
+ma100_2 = ma100_2';
+ma100quad_2 = ma100_2.^2;                                    
+                                    
+Sk2 = cumsum(ma100quad_2); 
+% vector with the variances of the k-step forecast errors (length = 100)
+% for the TARFIMA model  
+
+% let x_t be approximated by an TARFIMA(L) model as 
+%       (1 - phi_1.B - phi_2.B^2 - ... - phi_L.B^L)x_t = w_t
+% where it is assumed that var{w_t}=1 for convenience.
+% x_t has the MA(inf) representation
+%       x_t = (1 - phi_1.B - phi_2.B^2 - ... - phi_L.B^L)^{-1}w_t  or
+%       x_t = (1 + psi_1.B + psi_2.B^2 + ... )w_t
+% and the variance of x_t is given by 
+%       var{x_t} = 1 + sum_{j=1}^{inf}(psi_j^2)
+% (see, Eq.(3.3.1) in p.91 of "Time Series: Theory and Methods", 2nd Ed., 
+%  Brockwell and Davis, 1991)
+% Below, Sk2(M) gives an estimate of var{x_t}
+Vd2 =  Sk2(M);  
+
+% quantity "R2k" measures the k-step ahead forecasting potential of the 
+% truncated FARIMA model, i.e., it's a standardized measure of how well one 
+% can predict x_{t+k} given "L" (=order of TARFIMA model) past observations
+for j=1:length(k)
+    R2k(j) = 1 - Sk2(k(j))/Vd2; 
+end
+
+% ========================================================================
+
+% Forecasting potential for the AR(1) process with with rho(1)=1/9 
+% and rho(1)=2/3. The lag-1 correlation is chosen such that it is the same
+% as for a ARFIMA(0,d,0) process with H=0.6 and 0.9 respectively.
+rho_1 = 1/9;
+rho_2 = 2/3;
+
+% let x_t be an AR(1) of the form 
+%       (1-phi_1)^d{x_t} = w_t
+% It is assumed that var{w_t}=1 for convenience.
+
+Vh06_AR1 = 1/(1 -rho_1^2); % variance of AR(1) process with H=0.6;
+Vh09_AR1 = 1/(1 -rho_2^2); % variance of AR(1) process with H=0.9;
+                           % see Brockwell & Davis (1991), 
+                           % Morettin & Toloi (2004)
+
+for j=1:100                           
+    Skh06_AR1(j) = Vh06_AR1*(1 - rho_1^(2*j));
+    Skh09_AR1(j) = Vh09_AR1*(1 - rho_2^(2*j));
+end
+
+for j=1:length(k)
+    R3k(j) = 1 - Skh06_AR1(k(j))/Vh06_AR1; 
+    R4k(j) = 1 - Skh09_AR1(k(j))/Vh09_AR1;
+end
+\end{verbatim}
+\end{mylisting}
+
+\clearpage
+\begin{mylisting}
+\begin{verbatim}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                       %
+%  Alexandre B. de Lima                                 %
+%                                                       %
+%   28/10/2007                                          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+clear
+close all
+
+j=sqrt(-1);
+
+d = input('parameter "d": ');
+%d=0.3859;
+H = d + 0.5;
+da = 1; %potencia do ruido branco Gaussiano
+
+yes = 'y';
+yes2 = 'Y';
+j1 = input('AR coefficients? Y/N [Y]: ','s');
+if ( strcmp(yes,j1) | strcmp(yes2,j1) ) 
+    name_ar_farima = input('file with the estimated AR coef. of FARIMA:
+     ','s');
+    ar_farima = load(name_ar_farima);
+else
+    ar_farima = [1];
+end;
+
+j2=input('MA coefficients? Y/N [Y]: ','s');
+if ( strcmp(yes,j2) | strcmp(yes2,j2) )
+    name_ma_farima = input('file with the estimated MA coef. of FARIMA:
+     ','s');
+    ma_farima = load(name_ma_farima);
+else 
+    ma_farima = [1];
+end;
+
+ar_farima = -1*ar_farima; 
+% remember that the coefficients given by S-PLUS are the 
+% negative of the coefficients used in MATLAB (convention)
+% See S-PLUS Guide to Statistics, Vol. 2 
+
+ar_farima = [1; ar_farima];
+ma_farima = -1*ma_farima;                          
+ma_farima = [1; ma_farima];
+
+N=2048;
+Deltaf = (0.5/N);
+
+i=0;
+
+% Calculo da Densidade Espectral de Potencia do modelo FARIMA(p,d,0) 
+for f=(0.5/N):(0.5/N):0.5
+    A = [1 -exp(-j*2*pi*f)];
+    B = (abs(sum(A))^(-2*d)*(da^2));
+    if (length(ma_farima)>1)
+       A2 =  
+    end
+    C = [1 -0.3014*exp(-j*2*pi*f) 0.3988*exp(-j*2*pi*f*2)];    
+    D = (abs(sum(C)))^2;
+    i = i+1; 
+    
+    Sd(i) = B/D;
+end
+
+Pdf = Deltaf*Sd;
+Pd  = sum(Pdf);
+
+% Estimação da DEP da seria simulada
+se =dlmread('fGn_(4096)pts_alpha(0.8)_NrOfVM(1)_
+TopLev(9)_realiz3_filtroIIR2.txt');
+[Pxx,w] = pwelch(se,[],[],(2*N));
+
+Pxx = Pxx(2:N+1);
+
+Pf = Deltaf*Pxx;
+P  = sum(Pf);
+
+% Calculo da DEP do modelo T-FARIMA  
+ar_farima = [0.3014; -0.3988]; 
+% sinais dos coeficientes de acordo com a convenção do S-PLUS = -1*Matlab
+
+% Determina Polinomio "Vphi(B)=phi(B)D(B)" de acordo com a 
+% Eq. (16.26), pg. 475, do Livro "Análise de Séries Temporais", de 
+% Morettin e Toloi, 
+% onde D(B) = (1-B)^d = 1 -d(1)B -d(2)B^2 - ...
+
+ar_farima = -1*ar_farima; 
+ar_farima = [1; ar_farima];
+
+L=50;
+M = length(ar_farima);
+K = L-(M-1);
+
+% calcula d(j)
+for j = 0:K 
+    D(j+1) = -gamma(j-d)/(gamma(j+1)*gamma(-d));
+end
+
+D = -1*D; % "D" é um vetor linha
+
+Vphi_B = conv(ar_farima,D');
+Vphi_B2 = -1*Vphi_B(2:length(Vphi_B)); 
+
+Btfarima = 1;
+Atfarima = Vphi_B;
+F=(0.5/N):(0.5/N):0.5;
+H = freqz(Btfarima,Atfarima,F,1);
+St = abs(H).^2;
+
+Ptf = Deltaf*St;
+Pt  = sum(Ptf);
+
+% Calculo da DEP do modelo AR estimado 
+Bar = 1;
+Aar = load('ar10h09.txt');
+Aar = -1*Aar; 
+Aar = [1; Aar];
+H2 = freqz(Bar,Aar,F,1);
+Sar = abs(H2).^2;
+
+Par = Deltaf*Sar;
+Ptar  = sum(Par);
+
+R=Pt/Pd;
+R1=Pt/P;
+R2=Pt/Ptar;
+
+f=(0.5/N):(0.5/N):0.5;
+
+figure %figura 1
+plot(f,10*log10(St),'r')
+xlabel('frequency')
+ylabel('PSD (dB)')
+
+hold on
+pause
+
+plot(f,10*log10(R*Sd),'g')
+
+hold on
+pause
+
+plot(f,10*log10(R2*Sar),'g')
+
+erro = 10*log10(St)-10*log10(R*Sd);
+
+figure %figura 2
+plot(f,10*log10(St)-10*log10(R*Sd))
+xlabel('frequency')
+ylabel('dB')
+
+figure %figura 3
+loglog(f,R*Sd,'g')
+xlabel('frequency')
+ylabel('PSD')
+
+hold on
+pause
+loglog(f,St,'r')
+
+hold on
+pause
+loglog(f,R1*Pxx,'m')
+
+%hold on
+%pause
+%loglog(f,R2*Sar,'b')
+\end{verbatim}
+\end{mylisting}
+
+\clearpage
+\begin{mylisting}
+\begin{verbatim}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                       %
+%   Generate.m                                          %
+%                                                       %
+%   Fernando L. de Mello                                %
+%   Alexandre B. de Lima                                %
+%                                                       %
+%   10/2006                                             %
+%   12/2007                                             %
+%                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   References:
+%    1) J.-A. Bäckar, "A Framework for Implementing Fractal Traffic Models 
+%    in Real Time", M.Sc. Thesis, SERC, Melbourne,2000.
+%    2) F. L. de Mello, "Estudo e Implementação de um Gerador de Tráfego 
+%    com Dependência de Longa Duração", M.Sc. Thesis, Univ. of Sao Paulo, 2006.   
+%    3) F. L. de Mello, A. B. de Lima, M. Lipas, J. R. A. Amazonas, 
+%    "Geração de Séries Auto-Similares Gaussianas via Wavelets para Uso em 
+%    Simulações de Tráfego", IEEE Latin America Transactions, Março, 2007.
+%    4) A. B. de Lima, F. L. de Mello, M. Lipas, J. R. A. Amazonas,
+%    "A Generator of Teletraffic with Long and Short-Range Dependence",
+%    12th CAMAD Workshop (part of the 18th IEEE PIMRC07), Greece, 2007.
+%    5) D. B. Percival and A. T. Walden, "Wavelet Methods for Time Series 
+%    Analysis", Cambridge University Press, 2000.
+%    6) R. H. Riedi, M. S. Crouse, V. J. Ribeiro, R. G. Baraniuk, 
+%    "A multifractal wavelet model with application to network traffic"
+%    IEEE Transactions on Information Theory, 45(3), pp.992-1018, April, 1999.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%
+%    'Generate.m' is a wavelet-based generator of self-similar sample paths of 
+%    Fractional Gaussian Noise (FGN) and Multifractal Wavelet Model (MWM). 
+%    It works in conjunction with functions 'Model.m' and 'Recon.m'
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Models:
+% 1 - wavelet coeficients as white noise random processes (FGN synthesis)
+% 2 - MWM
+% 3 - wavelet coeficients as AR(1) random processes (FGN synthesis)
+% 9 - Reconstrucao Analise Matlab
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Parameters:
+% TopLev    % number of iterations (reconstruction using Pyramid algorithm)
+% NrOfVM    % number of vanishing moments of the Daubechies wavelet function
+% modelo    % stochastic model used 
+% Lm        % number of generated samples
+% alpha     % scaling exponent; remember that H = (1+alpha)/2 and d = alpha -0.5 
+%           % where 'H' is the Hurst parameter and 'd' is the fractional parameter
+%           % of an ARFIMA(p,d,q) model
+% p         % shape parameter of the beta probability density function 
+%           % In the MWM model, the variance of the multiplier R is given by
+%           % var[R] = 1/(2p+1). 
+% phi       % AR(1) coefficient
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% use as: [Data, nome_arquivo]=Generate(TopLev, NrOfVM, modelo, varargin)
+%      or [Data]=Generate(TopLev, NrOfVM, 9, varargin) - modelo 9
+% where: 
+% for 'modelo'= 1 (FGN, white noise wav. coef.), 'varargin' will be 2 parameters:  "Lm, alpha"
+% for 'modelo'= 2 (MWM), 'varargin' sera dois parametros:    "alpha, p"  
+% for 'modelo'= 3 (FGN, AR(1) wav. coef.), 'varargin' will be 3 parameters: "Lm, alpha, phi"
+% for 'modelo'= 9, 'varargin' will be five parameters:  "Lm, vetor_coefs (C), L, TopLev, wname" 
+%
+% Example of interactive use: generation of an FGN signal with 4096 samples
+%                             alpha = 0.6 (H=[1+alpha]/2=0.8), 
+%                             from 1 root scale (approximation) coeficient
+%
+% >> [Data, archive_name] = Generate(12, 1, 1, 4096,0.6)
+% 
+% wname =
+% db1
+% g =
+%    0.7071    0.7071
+% Lf =
+%    2
+% h =
+%    0.7071   -0.7071
+% Data = 
+% Columns 1 through 6
+%    [1x1 struct]    [1x1 struct]    [1x1 struct]    [1x1 struct]    
+%[1x1 struct]    [1x1 struct]
+%  Columns 7 through 12
+%    [1x1 struct]    [1x1 struct]    [1x1 struct]    [1x1 struct]
+%[1x1 struct]    [1x1 struct]
+%  Column 13
+%    [1x1 struct]
+% archive_name =
+% fGn_(4096)pts_alpha(0.6)_NrOfVM(1)_TopLev(12)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+function [Data, archive_name] = Generate(TopLev, NrOfVM, model, varargin)
+
+N = int2str(NrOfVM); % N is a string
+wname = 'db'; % must concatenate N obtain dbN
+% Compute the corresponding scaling filter. 
+wname = strcat(wname,N)
+% Compute the corresponding scaling filter. 
+g = dbwavf(wname); 
+g = g * sqrt(2)
+Lf = length(g) % must be 2N
+h = fliplr(g); h = (-1).^(0:Lf-1).*h 
+% Eq.(75b) of book "Wavelet Methods for Time Series Analysis"
+
+
+% call function Model, which generates an approximation on scale j=0.
+[Data, archive_name] = Model(TopLev, NrOfVM, h, g, model, varargin{:});
+\end{verbatim}
+\end{mylisting}
+
+\clearpage
+\begin{mylisting}
+\begin{verbatim}
+function [Data,nome_arquivo] = Model(TopLev, NrOfVM, h, g, modelo, varargin)
+	  
+    if modelo ~= 2, 
+        Lm = varargin{1};
+        varargin(1) = []; 
+        switch modelo
+            case 1, 
+                nome_arquivo = ['fGn_(',int2str(Lm),')pts_alpha(',num2str(varargin{1}),')_
+                NrOfVM(',int2str(NrOfVM),')_TopLev(',int2str(TopLev),')'] ;
+            case 3, 
+                nome_arquivo =  ['fGn_(',int2str(Lm),')pts_alpha(',num2str(varargin{1}),')_
+                phi(',num2str(varargin{2}),')_NrOfVM(',int2str(NrOfVM),')_
+                TopLev(',int2str(TopLev),')'] ;                 
+            case 9, 
+                 nome_arquivo = [];
+        end
+        
+    else %2 = MWM:
+        if NrOfVM ~= 1,
+            error('Modelo 2 (MWM) exige que se escolha NrOfVM = 1 para usar a Wavelet de Haar');
+        end
+        Lm = 2^TopLev; % one root scale coefficient
+        
+        nome_arquivo = ['MWM_(',int2str(Lm),')pts_alpha(',num2str(varargin{1}),')_p(',
+        num2str(varargin{2}),')_TopLev(',int2str(TopLev),')'] ;
+    end
+    
+    Lf = 2*NrOfVM; % filter length
+	kn = [0 Lm-1]; 	
+	kp = kn; 
+	Data{0+(1)}.kp = kn; 
+	kc = kn;  
+	kd = kn; 
+	Data{0+(1)}.kd = kn;
+	
+	for j=1:TopLev,
+        kc = [kd(1)-(Lf-1) kd(2)]; 
+        kd = fix (kc/2); 
+         
+        kn = floor([0 kn(2)-(Lf-1)]/2); 
+        kp = floor(kp/2) - [(NrOfVM - 1) 0]; 
+        
+        Data{j+(1)}.kd = kd;
+        Data{j+(1)}.kp = kp; 
+        Data{j+(1)}.kn = kn;
+	end
+	
+	Data{TopLev+(1)}.app  = appProcess(diff(kp)+1, modelo, varargin{:}); 
+    
+    for j=TopLev:-1:1,
+        [Data] = detProcess(j,TopLev,Data,modelo,varargin{:});
+        Data{j-1+(1)}.app = Recon(j,NrOfVM,Data,h,g); 
+    end
+
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%internal:
+function approxs = appProcess(n, modelo, varargin)
+	  switch modelo
+        case 1, 
+            approxs = 4+randn(1,n);
+        case 2, approxs = 4+randn(1,n); 
+        case 3, approxs = zeros(1,n); 
+        case 9, 
+            vetor_coefs = varargin{1};
+            L=varargin{2};
+            TopLev = varargin{3};
+            wname = varargin{4};
+            coefsA = appcoef(vetor_coefs,L,wname,TopLev);
+            if length(coefsA) == n ,
+                approxs = coefsA; 
+            else
+                warning('Numero de coeficientes da dwt nao bate com o 
+                necessario para reconstituir o sinal');
+                approxs = coefsA(1:n);
+            end
+        otherwise, disp('Modelo nao implementado'); approxs = []; 
+    end
+
+            
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%internal:
+function [Data] = detProcess(level, TopLev, Data, modelo, varargin)
+    if modelo ~= 9,
+        alpha = varargin{1}; 
+        ctrvariance = 2^( (level - TopLev) * alpha/2 );
+    end
+    
+    n = diff( Data{level+(1)}.kp ) + 1;
+    
+    switch modelo
+        case 1, 
+            Data{level+(1)}.det = ctrvariance*randn(1,n); 
+        case 2, %MWM:
+            p = varargin{2};
+            if (level == TopLev) & (p == 0),
+                p = (2^alpha - 1)/(2 - 2^alpha);
+                Data{0+(1)}.p = p;
+                for i = 1:TopLev,
+                    p = (2*p+1)/2^alpha - 1;
+                    Data{i+(1)}.p = p;
+                end
+            elseif (level == TopLev) & (p > 0),
+                Data{TopLev+(1)}.p = p;
+                for i = TopLev-1:-1:0,
+                    p = (2^alpha*(p+1)-1)/2;
+                    Data{i+(1)}.p = p;
+                end
+                p = Data{TopLev+(1)}.p;
+            elseif level ~= TopLev,
+                p = Data{level+(1)}.p;
+            end
+            R01 = betarnd(p,p,1,n);
+            R = 2.*R01-1;
+            Data{level+(1)}.det = R.*Data{level+(1)}.app;
+        case 3, phi = varargin{2}; 
+            inject = ctrvariance*randn(1,n);
+            Data{level+(1)}.det(1) = phi*0 + inject(1);
+            for i=2:n,
+                Data{level+(1)}.det(i) = phi*Data{level+(1)}.det(i-1) + inject(i);
+            end
+            clear inject;
+        case 9, 
+            vetor_coefs = varargin{1};
+            L = varargin{2};
+            coefsD = detcoef(vetor_coefs,L,level); 
+            if length(coefsD) == n ,
+                Data{level+(1)}.det = coefsD; 
+            else
+                warning('Numero de coeficientes da dwt nao bate com o 
+                necessario para reconstituir o sinal');
+                Data{level+(1)}.det = coefsD(1:n);
+            end     
+            
+        otherwise, error(['Modelo ', int2str(modelo), ' nao implementado!!!']); 
+    end
+\end{verbatim}
+\end{mylisting}
+
+\clearpage
+\begin{mylisting}
+\begin{verbatim}
+
+function approxs = Recon(level, NrOfVM, Data, h, g) % h will be high-pass filter coefficients.
+    Lf = length(h);
+    
+    kp = Data{level + (1)}.kp; 
+    
+    % Eqs. (7.11), (7.12), (7.13) and (7.14) of Backar M.Sc thesis (see  p.49):
+    %%%%%%%%%%%%%%%%%%
+    
+    ku = 2*kp; 
+    
+    kc = ku + [0 Lf-1]; 
+    
+    %%%%%%%%%%%%%%%%%%%
+    
+    kp = Data{level-1 + (1)}.kp; 
+    
+    appro =  Data{level + (1)}.app;
+    detail =  Data{level + (1)}.det;
+    
+    appup = dyadup(appro,0);
+    detup = dyadup(detail,0);
+    
+    appconv = conv(appup,g); 
+    detconv = conv(detup,h); 
+    
+    indices = [kp(1)-kc(1)+(1):kp(2)-kc(1)+(1)];
+    
+    appro = appconv(indices) + detconv(indices);
+    
+    approxs = appro;
+\end{verbatim}
+\end{mylisting}
