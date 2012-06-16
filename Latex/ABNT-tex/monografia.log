@@ -1,0 +1,256 @@
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.25)  30 MAY 2012 22:33
+entering extended mode
+ %&-line parsing enabled.
+**monografia.tex
+(./monografia.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, loaded.
+(./abnt.cls
+Document Class: abnt 2002/11/27 versao 1.1 patch 1 da Classe LaTeX2e ABNT
+(/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texmf-texlive/tex/latex/tools/calc.sty
+Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count79
+\calc@Bcount=\count80
+\calc@Adimen=\dimen102
+\calc@Bdimen=\dimen103
+\calc@Askip=\skip41
+\calc@Bskip=\skip42
+LaTeX Info: Redefining \setlength on input line 76.
+LaTeX Info: Redefining \addtolength on input line 77.
+\calc@Ccount=\count81
+\calc@Cskip=\skip43
+)
+(/usr/share/texmf-texlive/tex/latex/tools/multicol.sty
+Package: multicol 2008/12/05 v1.6h multicolumn formatting (FMi)
+\c@tracingmulticols=\count82
+\mult@box=\box26
+\multicol@leftmargin=\dimen104
+\c@unbalance=\count83
+\c@collectmore=\count84
+\doublecol@number=\count85
+\multicoltolerance=\count86
+\multicolpretolerance=\count87
+\full@width=\dimen105
+\page@free=\dimen106
+\premulticols=\dimen107
+\postmulticols=\dimen108
+\multicolsep=\skip44
+\multicolbaselineskip=\skip45
+\partial@page=\box27
+\last@line=\box28
+\mult@rightbox=\box29
+\mult@grightbox=\box30
+\mult@gfirstbox=\box31
+\mult@firstbox=\box32
+\@tempa=\box33
+\@tempa=\box34
+\@tempa=\box35
+\@tempa=\box36
+\@tempa=\box37
+\@tempa=\box38
+\@tempa=\box39
+\@tempa=\box40
+\@tempa=\box41
+\@tempa=\box42
+\@tempa=\box43
+\@tempa=\box44
+\@tempa=\box45
+\@tempa=\box46
+\@tempa=\box47
+\@tempa=\box48
+\@tempa=\box49
+\c@columnbadness=\count88
+\c@finalcolumnbadness=\count89
+\last@try=\dimen109
+\multicolovershoot=\dimen110
+\multicolundershoot=\dimen111
+\mult@nat@firstbox=\box50
+\colbreak@box=\box51
+)
+(/usr/share/texmf-texlive/tex/latex/base/report.cls
+Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texmf-texlive/tex/latex/base/size12.clo
+File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count90
+\c@chapter=\count91
+\c@section=\count92
+\c@subsection=\count93
+\c@subsubsection=\count94
+\c@paragraph=\count95
+\c@subparagraph=\count96
+\c@figure=\count97
+\c@table=\count98
+\abovecaptionskip=\skip46
+\belowcaptionskip=\skip47
+\bibindent=\dimen112
+)
+(/usr/share/texmf-texlive/tex/latex/setspace/setspace.sty
+Package: setspace 2000/12/01 6.7 Contributed and Supported LaTeX2e package
+
+Package: `setspace' 6.7 <2000/12/01>
+)
+\ABNTanapindent=\skip48
+\ABNTsignwidth=\skip49
+\ABNTsignthickness=\skip50
+\ABNTsignskip=\skip51
+ (/usr/share/texmf-texlive/tex/latex/tools/indentfirst.sty
+Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+))
+(/usr/share/texmf-texlive/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/usr/share/texmf-texlive/tex/latex/base/t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+))
+(/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
+Package: inputenc 2008/03/30 v1.1d Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+
+(/usr/share/texmf-texlive/tex/latex/base/latin1.def
+File: latin1.def 2008/03/30 v1.1d Input encoding file
+))
+(/usr/share/texmf-texlive/tex/generic/babel/babel.sty
+Package: babel 2008/07/06 v3.8l The Babel package
+
+(/usr/share/texmf-texlive/tex/generic/babel/portuges.ldf
+Language: portuges 2008/03/18 v1.2q Portuguese support from the babel system
+
+(/usr/share/texmf-texlive/tex/generic/babel/babel.def
+File: babel.def 2008/07/06 v3.8l Babel common definitions
+\babel@savecnt=\count99
+\U@D=\dimen113
+)
+
+Package babel Warning: No hyphenation patterns were loaded for
+(babel)                the language `Portuguese'
+(babel)                I will use the patterns loaded for \language=0 instead.
+
+\l@portuges = a dialect from \language0
+\l@brazil = a dialect from \language\l@portuges 
+Package babel Info: Making " an active character on input line 145.
+)) (./monografia.aux)
+\openout1 = `monografia.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 37.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 37.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 37.
+ [0
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Underfull \hbox (badness 1400) in paragraph at lines 39--39
+\T1/cmr/m/n/12 Grau de Bacharel em Ciên-cia da Com-
+ []
+
+[1] [2
+
+] [3
+
+
+
+] [4
+
+
+] [5
+
+] [6
+
+] (./monografia.toc)
+\tf@toc=\write3
+\openout3 = `monografia.toc'.
+
+ [7
+
+] (./monografia.lof)
+\tf@lof=\write4
+\openout4 = `monografia.lof'.
+
+ [8
+
+
+]
+(./monografia.lot)
+\tf@lot=\write5
+\openout5 = `monografia.lot'.
+
+ [9
+
+]
+Cap\'{\i }tulo 1.
+[10
+
+] [11]
+Cap\'{\i }tulo 2.
+[12
+
+] [13]
+Cap\'{\i }tulo 3.
+[14
+
+] (./monografia.bbl [15]
+Underfull \hbox (badness 4832) in paragraph at lines 24--27
+[]\T1/cmr/m/n/12 The Nes-sus Project. \T1/cmr/m/it/12 The Nes-sus Project\T1/cm
+r/m/n/12 . 2002. URL:
+ []
+
+) [16
+
+]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <20.74> on input line 157.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 157.
+
+Anexo A.
++-------------------------------------------------------------------+
+| Comentario, sugestao ou critica sobre o abnTeX? Entre em contato: |
+|                  http://abntex.codigolivre.org.br                 |
++-------------------------------------------------------------------+
+[17
+
+] (./monografia.aux) ) 
+Here is how much of TeX's memory you used:
+ 1380 strings out of 495061
+ 16601 string characters out of 1182621
+ 72082 words of memory out of 3000000
+ 4555 multiletter control sequences out of 15000+50000
+ 22860 words of font info for 54 fonts, out of 3000000 for 9000
+ 28 hyphenation exceptions out of 8191
+ 28i,9n,24p,270b,225s stack positions out of 5000i,500n,10000p,200000b,50000s
+ </home/danilo/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecb
+x1728.600pk> </home/danilo/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600p
+k> </home/danilo/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/
+danilo/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/danilo/.te
+xmf-var/fonts/pk/ljfour/jknappen/ec/ecbi2488.600pk> </home/danilo/.texmf-var/fo
+nts/pk/ljfour/jknappen/ec/ecti1200.600pk> </home/danilo/.texmf-var/fonts/pk/ljf
+our/jknappen/ec/eccc1200.600pk> </home/danilo/.texmf-var/fonts/pk/ljfour/jknapp
+en/ec/ecrm1440.600pk> </home/danilo/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm
+1200.600pk> </home/danilo/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbi2074.600pk
+> </home/danilo/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk>
+Output written on monografia.pdf (18 pages, 162845 bytes).
+PDF statistics:
+ 474 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
