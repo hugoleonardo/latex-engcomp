@@ -1,0 +1,48 @@
+MPLINK 4.43, Linker
+Linker Map File - Created Sat Jun 23 20:19:37 2012
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000000
+                   .org_1       code   0x000000    program   0x000084
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000041      
+            66 out of 2182 program addresses used, program memory utilization is 3%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+           BOTAO_P1_PRESS   0x00002a    program     static E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\5_semestre\micmic\TrabalhoFinal\Untitled.asm
+           BOTAO_P2_PRESS   0x000030    program     static E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\5_semestre\micmic\TrabalhoFinal\Untitled.asm
+           BOTAO_P3_PRESS   0x000036    program     static E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\5_semestre\micmic\TrabalhoFinal\Untitled.asm
+           BOTAO_P4_PRESS   0x00003c    program     static E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\5_semestre\micmic\TrabalhoFinal\Untitled.asm
+          CHECAR_CONTADOR   0x00001b    program     static E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\5_semestre\micmic\TrabalhoFinal\Untitled.asm
+               DAR_CHOQUE   0x000020    program     static E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\5_semestre\micmic\TrabalhoFinal\Untitled.asm
+                   INICIO   0x000001    program     static E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\5_semestre\micmic\TrabalhoFinal\Untitled.asm
+                     MAIN   0x000011    program     static E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\5_semestre\micmic\TrabalhoFinal\Untitled.asm
+                    START   0x000009    program     static E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\5_semestre\micmic\TrabalhoFinal\Untitled.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   INICIO   0x000001    program     static E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\5_semestre\micmic\TrabalhoFinal\Untitled.asm
+                    START   0x000009    program     static E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\5_semestre\micmic\TrabalhoFinal\Untitled.asm
+                     MAIN   0x000011    program     static E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\5_semestre\micmic\TrabalhoFinal\Untitled.asm
+          CHECAR_CONTADOR   0x00001b    program     static E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\5_semestre\micmic\TrabalhoFinal\Untitled.asm
+               DAR_CHOQUE   0x000020    program     static E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\5_semestre\micmic\TrabalhoFinal\Untitled.asm
+           BOTAO_P1_PRESS   0x00002a    program     static E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\5_semestre\micmic\TrabalhoFinal\Untitled.asm
+           BOTAO_P2_PRESS   0x000030    program     static E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\5_semestre\micmic\TrabalhoFinal\Untitled.asm
+           BOTAO_P3_PRESS   0x000036    program     static E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\5_semestre\micmic\TrabalhoFinal\Untitled.asm
+           BOTAO_P4_PRESS   0x00003c    program     static E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\5_semestre\micmic\TrabalhoFinal\Untitled.asm
+
+
