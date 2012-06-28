@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.6.25)  26 JUN 2012 23:54
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.6.25)  28 JUN 2012 01:54
 entering extended mode
 **filtro.tex
 
@@ -307,7 +307,83 @@ Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
 \verbatim@in@stream=\read1
 )
 (E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\5_semestre\pds\Filtro\filtro.a
-ux)
+ux
+! Missing \endcsname inserted.
+<to be read again> 
+                   \protect 
+l.14 ...tit  {a} para filtros passa-baixa}{{5}{4}}
+                                                  
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.14 ...tit  {a} para filtros passa-baixa}{{5}{4}}
+                                                  
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Extra \endcsname.
+\@ifundefined ...dafter \ifx \csname #1\endcsname 
+                                                  \relax \expandafter \@firs...
+l.14 ...tit  {a} para filtros passa-baixa}{{5}{4}}
+                                                  
+I'm ignoring this, since I wasn't doing a \csname.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \protect 
+l.14 ...tit  {a} para filtros passa-baixa}{{5}{4}}
+                                                  
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Extra \endcsname.
+\@namedef ...xpandafter \def \csname #1\endcsname 
+                                                  
+l.14 ...tit  {a} para filtros passa-baixa}{{5}{4}}
+                                                  
+I'm ignoring this, since I wasn't doing a \csname.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \protect 
+l.15 ...t  {a} para filtros rejeita-faixa}{{6}{4}}
+                                                  
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+
+LaTeX Warning: Label `valor de \textit {a} para filtros rejeita-faixa' multiply
+ defined.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \protect 
+l.15 ...t  {a} para filtros rejeita-faixa}{{6}{4}}
+                                                  
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Extra \endcsname.
+\@namedef ...xpandafter \def \csname #1\endcsname 
+                                                  
+l.15 ...t  {a} para filtros rejeita-faixa}{{6}{4}}
+                                                  
+I'm ignoring this, since I wasn't doing a \csname.
+
+
+LaTeX Warning: Label `(1)' multiply defined.
+
+
+LaTeX Warning: Label `(2)' multiply defined.
+
+)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
@@ -336,124 +412,180 @@ LaTeX Font Info:    ... okay on input line 12.
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
+ [1
+
+{C:/Users/Jass/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 14.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 14.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 14.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 30.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 30.
- [1
-
-{C:/Users/Jass/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 77.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 40.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 77.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 40.
+ [2]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 61.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 61.
+
+! Undefined control sequence.
+l.82 ...ma de calcular está apresentada em \eqref
+                                                  {(1)}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.88 ...equências é mostrado na equação \eqref
+                                                  {(2)}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
 
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.80 ,		\item R
-               ealizar transformação em frequência (s \rightarrow s).
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.80 ,		\item R
-               ealizar transformação em frequência (s \rightarrow s).
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.80 ,		\item R
-               ealizar transformação em frequência (s \rightarrow s).
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+Overfull \hbox (2.7227pt too wide) in paragraph at lines 88--89
+[]\OT1/cmr/m/n/10 Uma vez cal-cu-ladas as frequ^encias dig-i-tais, e necessar
+io cal-cu-lar as frequ^encias
+ []
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.80 ...nsformação em frequência (s \rightarrow
-                                                   s).
+l.90 \subsection{Frequências distorcidas \Omega}
+                                                 
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.90 \subsection{Frequências distorcidas \Omega}
+                                                 
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
 
-! LaTeX Error: Something's wrong--perhaps a missing \item.
+[3]
+! Double superscript.
+<recently read> ^
+                 
+l.116 		k = \frac{1}{\Omega_r^{2}'}
+                                   
+I treat `x^1^2' essentially like `x^1{}^2'.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.81 	\end{itemize}
-                   
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+! Double superscript.
+<recently read> ^
+                 
+l.148 		V_{i} = \sqrt{(1-k\Omega_{i}^{2}'
+                                         )(1-\frac{\Omega_{i}^{2}'}{k})} ,
+I treat `x^1^2' essentially like `x^1{}^2'.
 
+! Double superscript.
+<recently read> ^
+                 
+l.148 ...ega_{i}^{2}')(1-\frac{\Omega_{i}^{2}'}{k}
+                                                  )} ,
+I treat `x^1^2' essentially like `x^1{}^2'.
 
-! LaTeX Error: Command \end{itemize} invalid in math mode.
+[4]
+! Missing $ inserted.
+<inserted text> 
+                $
+l.159 ...extit{a}_{li}\textit{s}'+\textit{a}_{2i}}
+                                                  ,
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.81 	\end{itemize}
-                   
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+! Extra }, or forgotten $.
+\mbox #1->\leavevmode \hbox {#1}
+                                
+l.159 ...extit{a}_{li}\textit{s}'+\textit{a}_{2i}}
+                                                  ,
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
 
+! Extra }, or forgotten $.
+\nfss@text #1->{\mbox {#1}}
+                           
+l.159 ...extit{a}_{li}\textit{s}'+\textit{a}_{2i}}
+                                                  ,
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
 
-! LaTeX Error: Something's wrong--perhaps a missing \item.
+! Extra }, or forgotten $.
+\frac #1#2->{\begingroup #1\endgroup \over #2}
+                                              
+l.159 ...extit{a}_{li}\textit{s}'+\textit{a}_{2i}}
+                                                  ,
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.81 	\end{itemize}
-                   
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.81 	\end{itemize}
-                   
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+! You can't use `\eqno' in math mode.
+\endequation ->\eqno 
+                     \hbox {\@eqnnum }$$\@ignoretrue 
+l.160 	\end{equation}
+                     
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.81 	\end{itemize}
-                   
+l.160 	\end{equation}
+                     
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.160 	\end{equation}
+                     
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.160 	\end{equation}
+                     
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.160 	\end{equation}
+                     
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
@@ -463,108 +595,63 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.83 ...r transformação do filtro (s \rightarrow
-                                                   z).
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-! LaTeX Error: Command \end{itemize} invalid in math mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.84 	\end{itemize}
-                   
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.84 	\end{itemize}
-                   
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.84 	\end{itemize}
-                   
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.84 	\end{itemize}
-                   
+l.160 	\end{equation}
+                     
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-[2]
+! Display math should end with $$.
+<to be read again> 
+                   \endgroup 
+l.160 	\end{equation}
+                     
+The `$' that I just saw supposedly matches a previous `$$'.
+So I shall assume that you typed `$$' both times.
+
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.91 ...r transformação do filtro (s \rightarrow
-                                                   z).
+l.164 			\item {m = 0 e l = \frac{n}{2}
+                                       ,
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
+! Extra }, or forgotten $.
+\frac #1#2->{\begingroup #1\endgroup \over #2}
+                                              
+l.164 			\item {m = 0 e l = \frac{n}{2}
+                                       ,
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
 
-! LaTeX Error: Command \end{itemize} invalid in math mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.92 	\end{itemize}
-                   
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.92 	\end{itemize}
-                   
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.92 	\end{itemize}
-                   
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+! Extra }, or forgotten $.
+l.165 			 para \textit{n} par}
+                              
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.92 	\end{itemize}
-                   
+l.166 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.166 
+      
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
@@ -574,10 +661,55 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.94 ...nsformação em frequência (s \rightarrow
-                                                   s).
+l.167 			\item {m = 1 e l = \frac{\textit{n}-1}{2}
+                                                  ,
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+\frac #1#2->{\begingroup #1\endgroup \over #2}
+                                              
+l.167 			\item {m = 1 e l = \frac{\textit{n}-1}{2}
+                                                  ,
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 168.
+
+! Please use \mathaccent for accents in math mode.
+\add@accent ...@spacefactor \spacefactor }\accent 
+                                                  #1 #2\egroup \spacefactor ...
+l.168 			 para \textit{n} í
+                            mpar}
+I'm changing \accent to \mathaccent here; wish me luck.
+(Accents are not the same in formulas as they are in text.)
+
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.168 			 para \textit{n} í
+                            mpar}
+A left brace was mandatory here, so I've put one in.
+You might want to delete and/or insert some corrections
+so that I will find a matching right brace soon.
+(If you're confused by all this, try typing `I}' now.)
+
+
+LaTeX Warning: Command \i invalid in math mode on input line 168.
+
+! You can't use `\spacefactor' in math mode.
+\add@accent ...}\accent #1 #2\egroup \spacefactor 
+                                                  \accent@spacefactor 
+l.168 			 para \textit{n} í
+                            mpar}
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
 
 
 ! LaTeX Error: Command \end{itemize} invalid in math mode.
@@ -586,8 +718,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.95 	\end{itemize}
-                   
+l.169 		\end{itemize}
+                     
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
@@ -598,8 +730,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.95 	\end{itemize}
-                   
+l.169 		\end{itemize}
+                     
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
@@ -610,16 +742,50 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.95 	\end{itemize}
-                   
+l.169 		\end{itemize}
+                     
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.95 	\end{itemize}
-                   
+l.169 		\end{itemize}
+                     
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+Missing character: There is no � in font cmex10!
+! Missing } inserted.
+<inserted text> 
+                }
+l.169 		\end{itemize}
+                     
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.169 		\end{itemize}
+                     
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.169 		\end{itemize}
+                     
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
@@ -627,7 +793,7 @@ really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
 ! Undefined control sequence.
-l.102 ...resposta em frequ\^encia do filtro anal\�
+l.203 ...resposta em frequ\^encia do filtro anal\�
                                                   �ogico para a resposta em ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -643,12 +809,13 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.102 ...esposta em frequ\^encia do filtro anal\´
+l.203 ...esposta em frequ\^encia do filtro anal\´
                                                   ogico para a resposta em f...
 
 You need to provide a definition with \DeclareInputText 
 or \DeclareInputMath before using this key.
 
+[5]
 
 ! LaTeX Error: Bad math environment delimiter.
 
@@ -656,7 +823,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.107 		\[
+l.208 		\[
           s = \frac{2}{T} \frac{(1-Z^{-1})}{1+Z^{-1}}\]
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -665,7 +832,7 @@ or  <return>  to continue without it.
 ! You can't use `\eqno' in horizontal mode.
 \endequation ->\eqno 
                      \hbox {\@eqnnum }$$\@ignoretrue 
-l.108 	\end{equation}
+l.209 	\end{equation}
                      
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
@@ -675,7 +842,7 @@ return to the right one by typing `I}' or `I$' or `I\par'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.108 	\end{equation}
+l.209 	\end{equation}
                      
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -686,7 +853,7 @@ my insertion and my current dilemma will both disappear.
 ! Display math should end with $$.
 <to be read again> 
                    \endgroup 
-l.108 	\end{equation}
+l.209 	\end{equation}
                      
 The `$' that I just saw supposedly matches a previous `$$'.
 So I shall assume that you typed `$$' both times.
@@ -698,7 +865,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.110 		\[
+l.211 		\[
           z = \frac{(1+s(T/2)}{1-s(T/2)}\]
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -707,7 +874,7 @@ or  <return>  to continue without it.
 ! You can't use `\eqno' in horizontal mode.
 \endequation ->\eqno 
                      \hbox {\@eqnnum }$$\@ignoretrue 
-l.111 	\end{equation}
+l.212 	\end{equation}
                      
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
@@ -717,7 +884,7 @@ return to the right one by typing `I}' or `I$' or `I\par'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.111 	\end{equation}
+l.212 	\end{equation}
                      
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -728,7 +895,7 @@ my insertion and my current dilemma will both disappear.
 ! Display math should end with $$.
 <to be read again> 
                    \endgroup 
-l.111 	\end{equation}
+l.212 	\end{equation}
                      
 The `$' that I just saw supposedly matches a previous `$$'.
 So I shall assume that you typed `$$' both times.
@@ -740,7 +907,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.117 \[
+l.218 \[
         \omega = \frac{2\(\arctan(\Omega T)}{2}\]
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -753,7 +920,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.117 \[\omega = \frac{2\(\arctan(\Omega T)}{2}
+l.218 \[\omega = \frac{2\(\arctan(\Omega T)}{2}
                                                \]
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -762,7 +929,7 @@ or  <return>  to continue without it.
 ! You can't use `\eqno' in horizontal mode.
 \endequation ->\eqno 
                      \hbox {\@eqnnum }$$\@ignoretrue 
-l.118 \end{equation}
+l.219 \end{equation}
                     
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
@@ -772,7 +939,7 @@ return to the right one by typing `I}' or `I$' or `I\par'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.118 \end{equation}
+l.219 \end{equation}
                     
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -783,7 +950,7 @@ my insertion and my current dilemma will both disappear.
 ! Display math should end with $$.
 <to be read again> 
                    \endgroup 
-l.118 \end{equation}
+l.219 \end{equation}
                     
 The `$' that I just saw supposedly matches a previous `$$'.
 So I shall assume that you typed `$$' both times.
@@ -795,7 +962,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.120 \[
+l.221 \[
         \Omega = \frac{2}{T}\tan(\frac{\omega }{2})\]
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -804,7 +971,7 @@ or  <return>  to continue without it.
 ! You can't use `\eqno' in horizontal mode.
 \endequation ->\eqno 
                      \hbox {\@eqnnum }$$\@ignoretrue 
-l.121 \end{equation}
+l.222 \end{equation}
                     
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
@@ -814,7 +981,7 @@ return to the right one by typing `I}' or `I$' or `I\par'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.121 \end{equation}
+l.222 \end{equation}
                     
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -825,13 +992,13 @@ my insertion and my current dilemma will both disappear.
 ! Display math should end with $$.
 <to be read again> 
                    \endgroup 
-l.121 \end{equation}
+l.222 \end{equation}
                     
 The `$' that I just saw supposedly matches a previous `$$'.
 So I shall assume that you typed `$$' both times.
 
 ! Undefined control sequence.
-l.123 ...�ncias são encontradas utilizando \eqref
+l.224 ...�ncias são encontradas utilizando \eqref
                                                   {(3)} e/ou \eqref{(4)}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -840,7 +1007,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.123 ...tradas utilizando \eqref{(3)} e/ou \eqref
+l.224 ...tradas utilizando \eqref{(3)} e/ou \eqref
                                                   {(4)}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -848,140 +1015,23 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[3]
-! Misplaced \noalign.
-\hline ->\noalign 
-                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.146 \hline
-            
-I expect to see \noalign only after the \cr of
-an alignment. Proceed, and I'll ignore this case.
-
-! Misplaced \noalign.
-\hline ->\noalign 
-                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.152 \hline
-            
-I expect to see \noalign only after the \cr of
-an alignment. Proceed, and I'll ignore this case.
-
+[6]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.171 ...esnormalização \omega_pd1 e \omega_rd1}
-                                                  
+l.249 
+      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.171 ...esnormalização \omega_pd1 e \omega_rd1}
-                                                  
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+! Display math should end with $$.
+<to be read again> 
+                   \par 
+l.249 
+      
+The `$' that I just saw supposedly matches a previous `$$'.
+So I shall assume that you typed `$$' both times.
 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.179 ...uências distoricdas \omega_p e \omega_r}
-                                                  
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.179 ...uências distoricdas \omega_p e \omega_r}
-                                                  
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! You can't use `\eqno' in math mode.
-\endequation ->\eqno 
-                     \hbox {\@eqnnum }$$\@ignoretrue 
-l.202 	\end{equation}
-                     
-Sorry, but I'm not programmed to handle this case;
-I'll just pretend that you didn't ask for it.
-If you're in the wrong mode, you might be able to
-return to the right one by typing `I}' or `I$' or `I\par'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.202 	\end{equation}
-                     
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-[4]
-! Undefined control sequence.
-l.216 		\teta
-              = \frac{1}{2N}}\log\frac{10^{0.05ap}+1}{10^{0.05ap}-1}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Extra }, or forgotten $.
-l.216 		\teta = \frac{1}{2N}}
-                             \log\frac{10^{0.05ap}+1}{10^{0.05ap}-1}
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-
-! LaTeX Error: Bad math environment delimiter.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.219 		h = 2\sqrt[4]{q} \(
-                            \sum_{a=0}^{2} (-1^{a})(q^{a(a+1)}(\sinh((2(a+1)...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-! Undefined control sequence.
-l.219 ...} (-1^{a})(q^{a(a+1)}(\sinh((2(a+1))\teta
-                                                  )\)
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-! LaTeX Error: Bad math environment delimiter.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.219 ...-1^{a})(q^{a(a+1)}(\sinh((2(a+1))\teta)\)
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-! Misplaced \noalign.
-\hline ->\noalign 
-                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.243 \hline
-            
-I expect to see \noalign only after the \cr of
-an alignment. Proceed, and I'll ignore this case.
-
-[5]
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
@@ -990,108 +1040,155 @@ l.252 \hline
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
-<pictures/Filtro1/Magnitude.png, id=30, 529.98pt x 268.75406pt>
-File: pictures/Filtro1/Magnitude.png Graphic file (type png)
+! Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
+l.257 \hline
+            
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
 
-<use pictures/Filtro1/Magnitude.png>
-Package pdftex.def Info: pictures/Filtro1/Magnitude.png used on input line 269.
+[7]
+! Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
+l.295 \hline
+            
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
 
-(pdftex.def)             Requested size: 341.43306pt x 173.14204pt.
+! Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
+l.304 \hline
+            
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
 
-<pictures/Filtro1/Fase.png, id=31, 523.9575pt x 260.47313pt>
-File: pictures/Filtro1/Fase.png Graphic file (type png)
+<pictures/Filtro1/RespMagnitudeFiltro1.png, id=39, 838.63312pt x 417.81094pt>
+File: pictures/Filtro1/RespMagnitudeFiltro1.png Graphic file (type png)
 
-<use pictures/Filtro1/Fase.png>
-Package pdftex.def Info: pictures/Filtro1/Fase.png used on input line 276.
-(pdftex.def)             Requested size: 341.43306pt x 169.73874pt.
+<use pictures/Filtro1/RespMagnitudeFiltro1.png>
+Package pdftex.def Info: pictures/Filtro1/RespMagnitudeFiltro1.png used on inpu
+t line 326.
+(pdftex.def)             Requested size: 341.43306pt x 170.09866pt.
 
-<pictures/Filtro1/RespImpulso.png, id=32, 526.21594pt x 262.73157pt>
-File: pictures/Filtro1/RespImpulso.png Graphic file (type png)
+<pictures/Filtro1/RespFaseFiltro1.png, id=40, 844.65562pt x 427.5975pt>
+File: pictures/Filtro1/RespFaseFiltro1.png Graphic file (type png)
 
-<use pictures/Filtro1/RespImpulso.png>
-Package pdftex.def Info: pictures/Filtro1/RespImpulso.png used on input line 28
-5.
-(pdftex.def)             Requested size: 341.43306pt x 170.48083pt.
+<use pictures/Filtro1/RespFaseFiltro1.png>
+Package pdftex.def Info: pictures/Filtro1/RespFaseFiltro1.png used on input lin
+e 333.
+(pdftex.def)             Requested size: 341.43306pt x 172.84981pt.
 
-<pictures/Filtro1/Polos&Zeros.png, id=33, 542.77782pt x 268.00125pt>
-File: pictures/Filtro1/Polos&Zeros.png Graphic file (type png)
+<pictures/Filtro1/RespImpulsoFiltro1.png, id=41, 834.11626pt x 426.84468pt>
+File: pictures/Filtro1/RespImpulsoFiltro1.png Graphic file (type png)
 
-<use pictures/Filtro1/Polos&Zeros.png>
-Package pdftex.def Info: pictures/Filtro1/Polos&Zeros.png used on input line 29
-2.
-(pdftex.def)             Requested size: 284.52756pt x 140.49419pt.
+<use pictures/Filtro1/RespImpulsoFiltro1.png>
+Package pdftex.def Info: pictures/Filtro1/RespImpulsoFiltro1.png used on input 
+line 342.
+(pdftex.def)             Requested size: 341.43306pt x 174.72087pt.
 
-<pictures/Filtro2/Magnitude.png, id=34, 539.01375pt x 247.67531pt>
-File: pictures/Filtro2/Magnitude.png Graphic file (type png)
+<pictures/Filtro1/DiagramaFiltro1.png, id=42, 844.65562pt x 427.5975pt>
+File: pictures/Filtro1/DiagramaFiltro1.png Graphic file (type png)
 
-<use pictures/Filtro2/Magnitude.png>
-Package pdftex.def Info: pictures/Filtro2/Magnitude.png used on input line 299.
+<use pictures/Filtro1/DiagramaFiltro1.png>
+Package pdftex.def Info: pictures/Filtro1/DiagramaFiltro1.png used on input lin
+e 349.
+(pdftex.def)             Requested size: 284.52756pt x 144.04367pt.
 
-(pdftex.def)             Requested size: 341.43306pt x 156.89037pt.
+<pictures/Filtro2/RespMagnitudeFiltro2.png, id=43, 838.63312pt x 421.575pt>
+File: pictures/Filtro2/RespMagnitudeFiltro2.png Graphic file (type png)
 
-<pictures/Filtro2/Fase.png, id=35, 523.9575pt x 238.64156pt>
-File: pictures/Filtro2/Fase.png Graphic file (type png)
+<use pictures/Filtro2/RespMagnitudeFiltro2.png>
+Package pdftex.def Info: pictures/Filtro2/RespMagnitudeFiltro2.png used on inpu
+t line 358.
+(pdftex.def)             Requested size: 341.43306pt x 171.63107pt.
 
-<use pictures/Filtro2/Fase.png>
-Package pdftex.def Info: pictures/Filtro2/Fase.png used on input line 306.
-(pdftex.def)             Requested size: 341.43306pt x 155.51207pt.
+<pictures/Filtro2/RespFaseFiltro2.png, id=44, 837.1275pt x 411.03563pt>
+File: pictures/Filtro2/RespFaseFiltro2.png Graphic file (type png)
 
-<pictures/Filtro2/RespImpulso.png, id=36, 526.96875pt x 237.13594pt>
-File: pictures/Filtro2/RespImpulso.png Graphic file (type png)
+<use pictures/Filtro2/RespFaseFiltro2.png>
+Package pdftex.def Info: pictures/Filtro2/RespFaseFiltro2.png used on input lin
+e 365.
+(pdftex.def)             Requested size: 341.43306pt x 167.64136pt.
 
-<use pictures/Filtro2/RespImpulso.png>
-Package pdftex.def Info: pictures/Filtro2/RespImpulso.png used on input line 31
-5.
-(pdftex.def)             Requested size: 341.43306pt x 153.65166pt.
- [6 <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/5_semestre/pds/Filtro/pict
-ures/Filtro1/Magnitude.png>]
-<pictures/Filtro2/Polos&Zeros.png, id=40, 529.98pt x 236.38312pt>
-File: pictures/Filtro2/Polos&Zeros.png Graphic file (type png)
+<pictures/Filtro2/RespImpulsoFiltro2.png, id=45, 847.66687pt x 412.54124pt>
+File: pictures/Filtro2/RespImpulsoFiltro2.png Graphic file (type png)
 
-<use pictures/Filtro2/Polos&Zeros.png>
-Package pdftex.def Info: pictures/Filtro2/Polos&Zeros.png used on input line 32
-2.
-(pdftex.def)             Requested size: 341.43306pt x 152.2874pt.
- [7 <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/5_semestre/pds/Filtro/pict
-ures/Filtro1/Fase.png> <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/5_semes
-tre/pds/Filtro/pictures/Filtro1/RespImpulso.png>] [8 <E:/Danilo/Desktop/backup1
-/EngComp/latex-engcomp/5_semestre/pds/Filtro/pictures/Filtro1/Polos&Zeros.png> 
-<E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/5_semestre/pds/Filtro/pictures
-/Filtro2/Magnitude.png> <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/5_seme
-stre/pds/Filtro/pictures/Filtro2/Fase.png>] [9 <E:/Danilo/Desktop/backup1/EngCo
-mp/latex-engcomp/5_semestre/pds/Filtro/pictures/Filtro2/RespImpulso.png> <E:/Da
-nilo/Desktop/backup1/EngComp/latex-engcomp/5_semestre/pds/Filtro/pictures/Filtr
-o2/Polos&Zeros.png>]
+<use pictures/Filtro2/RespImpulsoFiltro2.png>
+Package pdftex.def Info: pictures/Filtro2/RespImpulsoFiltro2.png used on input 
+line 374.
+(pdftex.def)             Requested size: 341.43306pt x 166.16553pt.
+
+<pictures/Filtro2/DiagramaFiltro2.png, id=46, 837.1275pt x 410.2828pt>
+File: pictures/Filtro2/DiagramaFiltro2.png Graphic file (type png)
+
+<use pictures/Filtro2/DiagramaFiltro2.png>
+Package pdftex.def Info: pictures/Filtro2/DiagramaFiltro2.png used on input lin
+e 381.
+(pdftex.def)             Requested size: 341.43306pt x 167.33432pt.
+ [8] [9 <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/5_semestre/pds/Filtro/
+pictures/Filtro1/RespMagnitudeFiltro1.png> <E:/Danilo/Desktop/backup1/EngComp/l
+atex-engcomp/5_semestre/pds/Filtro/pictures/Filtro1/RespFaseFiltro1.png>] [10 <
+E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/5_semestre/pds/Filtro/pictures/
+Filtro1/RespImpulsoFiltro1.png> <E:/Danilo/Desktop/backup1/EngComp/latex-engcom
+p/5_semestre/pds/Filtro/pictures/Filtro1/DiagramaFiltro1.png>] [11 <E:/Danilo/D
+esktop/backup1/EngComp/latex-engcomp/5_semestre/pds/Filtro/pictures/Filtro2/Res
+pMagnitudeFiltro2.png> <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/5_semes
+tre/pds/Filtro/pictures/Filtro2/RespFaseFiltro2.png> <E:/Danilo/Desktop/backup1
+/EngComp/latex-engcomp/5_semestre/pds/Filtro/pictures/Filtro2/RespImpulsoFiltro
+2.png>] [12 <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/5_semestre/pds/Fil
+tro/pictures/Filtro2/DiagramaFiltro2.png>]
 (E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\5_semestre\pds\Filtro\filtro.a
-ux)
+ux
+! Missing \endcsname inserted.
+<to be read again> 
+                   \protect 
+l.14 ...tit  {a} para filtros passa-baixa}{{5}{4}}
+                                                  
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+! Missing \endcsname inserted.
+<to be read again> 
+                   \protect 
+l.15 ...t  {a} para filtros rejeita-faixa}{{6}{4}}
+                                                  
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+)
+
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2506 strings out of 494045
- 38525 string characters out of 3145972
+ 2511 strings out of 494045
+ 38901 string characters out of 3145972
  99928 words of memory out of 3000000
- 5804 multiletter control sequences out of 15000+200000
+ 5805 multiletter control sequences out of 15000+200000
  8241 words of font info for 29 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 36i,8n,38p,1235b,271s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,8n,38p,853b,273s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C
 :/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/
 Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Pr
-ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Progr
-am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program 
-Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Fil
-es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files 
-(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Files (x86
-)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files (x86)/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on filtro.pdf (9 pages, 217620 bytes).
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Prog
+ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Program
+ Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Fi
+les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files
+ (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x
+86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files (x86)
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Files (x86)/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on filtro.pdf (12 pages, 281399 bytes).
 PDF statistics:
- 92 PDF objects out of 1000 (max. 8388607)
+ 109 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
