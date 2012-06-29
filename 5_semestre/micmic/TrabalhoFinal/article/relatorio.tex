@@ -1,17 +1,31 @@
-\documentclass[a4paper,10pt]{article}
+\documentclass[article]{IEEEtran}
 \usepackage[utf8]{inputenc}
-
-%opening
-\title{}
-\author{}
+\usepackage[pdftex]{graphicx}
+\graphicspath{./}
 
 \begin{document}
+
+\title{Tegra 3}
+
+\author{Danilo Souza, Hugo Santos, Welton Ara\'ujo
+
+\thanks{Engenharia da Computa\c{c}\~ao, Universidade Federal do Par\'a, Bel\'em-PA, Brasil}
+Emails: \{dhcsouza, hugoleonardoeng07, weltonmaxx007\}@gmail.com\\
+Matr\'iculas: 10080000801, 10080000701, 10080000501}
 
 \maketitle
 
 \begin{abstract}
 
 \end{abstract}
+
+\begin{IEEEkeywords}
+
+\end{IEEEkeywords}
+
+\IEEEpeerreviewmaketitle
+
+
 
 \section{Descrição da Implementação}
 
@@ -77,6 +91,19 @@ A rotina \textit{FIND\_LOSER} procura pelo primeiro 0 entre os bits de \textit{B
     START\_LED		& PORTB,6	& LED que sinaliza o início do momento de decisão	\\ \hline
   \end{tabular}
 \end{table}
+
+\section{Descrição do Projeto}
+
+O projeto baseia-se em um jogo, onde o objetivo é não levar choque, o brinquedo possui 4 controles com um botão cada e uma luz no meio, usada para indicar a hora em os jogadores devem apertar os botões, o último que apertar leva um choque. Ao começo do jogo o LED fica piscando, a rodada termina quando o LED mudar de cor, a partir desse momento o último jogador que apertar o botão leva um choque, que é descarregado no próprio controle, feito de metal. Caso algum jogador aperte o botão antes do tempo, este também levará choque como punição.\\
+Para o projeto foram usados 4 botões, cada botão com 2 LED's, um para indicar que aquele jogador está participando do jogo e outro para indicar que aquele jogador levou um choque, um botão para representar o \textit{start}, um botão para escolher o número de jogadores, sendo no mínimo 2 e no máximo 4 e um led para indicar o começo e término de uma rodada. Quando o jogo começa, a luz do LED fica constante e quando o LED apaga, a rodada termina um LED amarelo do último botão pressionado acende indicando que aquele jogador levou um choque. Os LED's são somente para representar o circuito do choque que poderia ser acionado usando o mesmo sinão de saida utilizado par aacender o LED. 
+
+	\begin{figure}	
+		\centering
+%		\includegraphics[scale=•]{•}
+		\includegraphics[scale=8.5cm]{./2012-06-2900.56.14.png}
+		\caption{Ilustração do jogo}
+ 		\label{fig:jogochoque1}
+	\end{figure}
 
 
 
