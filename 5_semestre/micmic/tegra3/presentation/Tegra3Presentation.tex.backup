@@ -73,10 +73,10 @@ Processador NVidia Tegra 3%
 \end{frame}
 
 \begin{frame}{Evolu\c{c}\~ao do Processador Tegra}
-  %\begin{figure}[ht]
-  %\centering
-  %\includegraphics[width=11.0cm]{./pictures/EvolucaoTegra.png}
-  %\end{figure}
+  \begin{figure}[ht]
+  \centering
+  \includegraphics[width=11.0cm]{./pictures/EvolucaoTegra.png}
+  \end{figure}
 \end{frame}
 
 
