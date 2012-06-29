@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.6.25)  28 JUN 2012 01:54
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.6.25)  28 JUN 2012 01:55
 entering extended mode
 **filtro.tex
 
@@ -1102,7 +1102,7 @@ File: pictures/Filtro2/RespMagnitudeFiltro2.png Graphic file (type png)
 
 <use pictures/Filtro2/RespMagnitudeFiltro2.png>
 Package pdftex.def Info: pictures/Filtro2/RespMagnitudeFiltro2.png used on inpu
-t line 358.
+t line 360.
 (pdftex.def)             Requested size: 341.43306pt x 171.63107pt.
 
 <pictures/Filtro2/RespFaseFiltro2.png, id=44, 837.1275pt x 411.03563pt>
@@ -1110,7 +1110,7 @@ File: pictures/Filtro2/RespFaseFiltro2.png Graphic file (type png)
 
 <use pictures/Filtro2/RespFaseFiltro2.png>
 Package pdftex.def Info: pictures/Filtro2/RespFaseFiltro2.png used on input lin
-e 365.
+e 367.
 (pdftex.def)             Requested size: 341.43306pt x 167.64136pt.
 
 <pictures/Filtro2/RespImpulsoFiltro2.png, id=45, 847.66687pt x 412.54124pt>
@@ -1118,7 +1118,7 @@ File: pictures/Filtro2/RespImpulsoFiltro2.png Graphic file (type png)
 
 <use pictures/Filtro2/RespImpulsoFiltro2.png>
 Package pdftex.def Info: pictures/Filtro2/RespImpulsoFiltro2.png used on input 
-line 374.
+line 376.
 (pdftex.def)             Requested size: 341.43306pt x 166.16553pt.
 
 <pictures/Filtro2/DiagramaFiltro2.png, id=46, 837.1275pt x 410.2828pt>
@@ -1126,7 +1126,7 @@ File: pictures/Filtro2/DiagramaFiltro2.png Graphic file (type png)
 
 <use pictures/Filtro2/DiagramaFiltro2.png>
 Package pdftex.def Info: pictures/Filtro2/DiagramaFiltro2.png used on input lin
-e 381.
+e 383.
 (pdftex.def)             Requested size: 341.43306pt x 167.33432pt.
  [8] [9 <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/5_semestre/pds/Filtro/
 pictures/Filtro1/RespMagnitudeFiltro1.png> <E:/Danilo/Desktop/backup1/EngComp/l
@@ -1170,7 +1170,7 @@ Here is how much of TeX's memory you used:
  5805 multiletter control sequences out of 15000+200000
  8241 words of font info for 29 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 36i,8n,38p,853b,273s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,8n,38p,853b,271s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C
 :/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/
@@ -1186,7 +1186,7 @@ TeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiKTeX
 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.
 9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
 onts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on filtro.pdf (12 pages, 281399 bytes).
+Output written on filtro.pdf (12 pages, 281352 bytes).
 PDF statistics:
  109 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
