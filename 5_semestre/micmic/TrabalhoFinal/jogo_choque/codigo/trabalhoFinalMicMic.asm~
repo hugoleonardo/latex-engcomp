@@ -1,0 +1,259 @@
+;PISCA
+LIST P=16F628
+INCLUDE<P16F628.INC>
+
+#DEFINE BANK0 BCF STATUS,RP0
+#DEFINE BANK1 BSF STATUS,RP0
+
+#DEFINE BOTAO_P1 		PORTA,0
+#DEFINE BOTAO_P2 		PORTA,1
+#DEFINE BOTAO_P3 		PORTA,2
+#DEFINE BOTAO_P4 		PORTA,3
+#DEFINE BOTAO_START 	PORTA,4
+#define BOTAO_N_PLAYERS PORTA,5
+
+#define SHOCK_LED_PLAYER1 	PORTB,0
+#define SHOCK_LED_PLAYER2 	PORTB,1
+#define SHOCK_LED_PLAYER3 	PORTB,2
+#define SHOCK_LED_PLAYER4 	PORTB,3
+
+#define ENABLED_LED_PLAYER3 		PORTB,4
+#define ENABLED_LED_PLAYER4 		PORTB,5
+
+#define LED_DELAY		PORTB,6
+
+CONT 	  	equ 0x20
+LAST_CONT 	equ 0x21
+BOT		equ 0x22
+LAST_BOT  	equ 0x23
+COUNT1 	  	equ 0x24
+COUNT2 	  	equ 0x25
+COUNT3 	  	equ 0x26
+
+ORG 0X00
+GOTO INICIO
+
+INICIO
+	BANK1
+	MOVLW 	B'00111111'
+	MOVWF 	TRISA
+	MOVLW 	B'00000000'
+	MOVWF 	TRISB
+	BANK0
+	CLRF 	PORTA
+	clrf 	PORTB
+	bsf 	ENABLED_LED_PLAYER3
+	bsf 	ENABLED_LED_PLAYER4
+	movlw	0
+	movwf	CONT
+	movwf	LAST_CONT ;
+	movwf	BOT
+	movwf 	LAST_BOT
+	clrf 	BOT
+
+START
+	clrwdt ; limpa watchdog 
+	btfsc 	BOTAO_N_PLAYERS
+	goto 	SET_N_PLAYERS ; vai setar numero de jogadores
+	BTFSC	BOTAO_START
+	;GOTO 	MAIN ; SE O BOTAO FOI PRESSIONADO VAI PRA MAIN
+	goto	DELAY_LED
+	GOTO 	START
+
+SET_N_PLAYERS
+	btfss 	ENABLED_LED_PLAYER3
+	goto 	SET_PLAYER3 ; se não setado, vai setar
+	btfss 	ENABLED_LED_PLAYER4
+	goto 	SET_PLAYER4 ; se não setado, vai setar
+	goto 	UNSET_PLAYERS ; se todos estiverem setados, vai desetar o 3 e 4
+
+SET_PLAYER3
+	bsf 	ENABLED_LED_PLAYER3 ; ativa jogador 3
+	bcf 	BOT,2 ; seta estado do botao jogador 3
+	movlw 	1 ; contador começa em 1
+	movwf 	CONT ; salva o valor de W em CONT
+	movwf	LAST_CONT
+	movwf 	LAST_CONT ; salva o valor de W em LAST_CONT
+	movf 	BOT,W ; salva ultima configuracao de jogadores em LAST_BOT
+	movwf	LAST_BOT
+	goto 	WAIT	
+
+SET_PLAYER4
+	bsf 	ENABLED_LED_PLAYER4 ; ativa jogador 4
+	bcf 	BOT,3 ; seta estado do botao jogador 4
+	movlw 	0 ; contador começa em 0
+	movwf 	CONT ; salva o valor de W em CONT
+	movwf 	LAST_CONT ; salva o valor de W em LAST_CONT
+	movf 	BOT,W ; salva ultima configuracao de jogadores em LAST_BOT
+	movwf	LAST_BOT
+	goto 	WAIT
+
+UNSET_PLAYERS
+	bcf 	ENABLED_LED_PLAYER3 ; desativa led jogadores 3
+	bsf 	BOT, 2 ; setar estado do botao do jogador 3
+	bcf 	ENABLED_LED_PLAYER4 ; desativa led jogadores 4
+	bsf 	BOT,3 ; setar estado do botao do jogador 4
+	movlw 	2 ; contador começa em 2
+	movwf 	CONT ; salva o valor de W em CONT
+	movwf 	LAST_CONT ; salva o valor de W em LAST_CONT
+	movf	BOT,W
+	movwf 	LAST_BOT ; salva ultima configuracao de jogadores
+	movf	LAST_BOT,W ; debug
+	goto 	WAIT
+
+WAIT ; loop para esperar desapertar o botão de selecionar número de jogadores
+	btfss 	BOTAO_N_PLAYERS
+	goto 	START ; se desapertado
+	clrwdt ; limpa watchdog
+	goto 	WAIT 
+
+MAIN
+	BTFSC	BOTAO_P1; TESTE SE O BOTAO ESTA PRESSIONADO 
+	CALL 	BOTAO_P1_PRESS; SE PRESSIONADO entra na rotina
+	BTFSC	BOTAO_P2
+	CALL 	BOTAO_P2_PRESS
+	BTFSC	BOTAO_P3
+	CALL 	BOTAO_P3_PRESS
+	BTFSC 	BOTAO_P4
+	CALL 	BOTAO_P4_PRESS
+	CALL 	CHECAR_CONTADOR
+	clrwdt ;limpa watchdog
+	GOTO 	MAIN
+
+CHECAR_CONTADOR
+	movf 	CONT,W
+	BTFSS 	CONT,0
+	RETURN
+	BTFSS 	CONT,1
+	RETURN
+	GOTO 	DAR_CHOQUE ; se CONT>=3
+
+DAR_CHOQUE ;TEM QUE ACHAR O PRIMEIRO ZERO	
+	BTFSS 	BOT,0
+	bsf 	SHOCK_LED_PLAYER1 ; se jogador 1 perdeu
+	BTFSS 	BOT,1
+	bsf 	SHOCK_LED_PLAYER2 ; se jogador 2 perdeu
+	BTFSS 	BOT,2
+	bsf 	SHOCK_LED_PLAYER3 ; se jogador 3 perdeu
+	BTFSS 	BOT,3
+	bsf 	SHOCK_LED_PLAYER4 ; se jogador 4 perdeu
+	GOTO 	DELAY_SHOCK
+
+BOTAO_P1_PRESS
+	BTFSC 	BOT,0
+	RETURN
+	bsf 	BOT,0 ; seta 1 no bit do jogador 1
+	movf 	CONT,W ; carrega o valor de CONT em W
+	addlw 	1 ; soma 1
+	movwf 	CONT ; salva o valor de W em CONT
+	RETURN
+	
+BOTAO_P2_PRESS
+	BTFSC 	BOT,1
+	RETURN
+	bsf 	BOT,1 ; seta 1 no bit do jogador 1
+	movf 	CONT,W ; carrega o valor de CONT em W
+	addlw 	1 ; soma 1
+	movwf 	CONT ; salva o valor de W em CONT
+	RETURN
+
+BOTAO_P3_PRESS
+	BTFSC 	BOT,2
+	RETURN
+	bsf 	BOT,2 ; seta 1 no bit do jogador 1
+	movf 	CONT,W ; carrega o valor de CONT em W
+	addlw 	1 ; soma 1
+	movwf 	CONT ; salva o valor de W em CONT
+	RETURN
+
+BOTAO_P4_PRESS
+	BTFSC 	BOT,3
+	RETURN
+	bsf 	BOT,3 ; seta 1 no bit do jogador 1
+	movf 	CONT,W ; carrega o valor de CONT em W
+	addlw 1 ; soma 1
+	movwf 	CONT ; salva o valor de W em CONT
+	RETURN
+
+DELAY_SHOCK
+	MOVLW 	D'3'
+	MOVWF 	COUNT1
+
+DELAY0_SHOCK
+	MOVLW 	D'100'
+	MOVWF 	COUNT2
+	DECFSZ 	COUNT1,F
+	GOTO 	DELAY1_SHOCK
+	movf 	LAST_CONT,W
+	movwf	CONT
+	movf 	LAST_BOT,W
+	movwf 	BOT
+	bcf 	SHOCK_LED_PLAYER1
+	bcf 	SHOCK_LED_PLAYER2
+	bcf 	SHOCK_LED_PLAYER3
+	bcf 	SHOCK_LED_PLAYER4
+	GOTO 	START
+
+DELAY1_SHOCK
+	MOVLW 	D'255'
+	MOVWF 	COUNT3
+	DECFSZ 	COUNT2,F
+	GOTO 	DELAY2_SHOCK
+	GOTO 	DELAY0_SHOCK
+
+DELAY2_SHOCK
+	DECFSZ 	COUNT3,F
+	GOTO 	$-1
+	GOTO 	DELAY1_SHOCK
+
+DELAY_LED
+	MOVLW 	D'6'
+	MOVWF 	COUNT1
+	bsf 	LED_DELAY
+
+
+DELAY0_LED
+	MOVLW 	D'255'
+	MOVWF 	COUNT2
+	DECFSZ 	COUNT1,F
+	GOTO 	DELAY1_LED
+	bcf 	LED_DELAY
+	GOTO 	MAIN
+
+DELAY1_LED
+	MOVLW 	D'255'
+	MOVWF 	COUNT3
+	DECFSZ 	COUNT2,F
+	GOTO 	DELAY2_LED
+	GOTO 	DELAY0_LED
+
+DELAY2_LED
+	DECFSZ 	COUNT3,F
+	GOTO 	$-1
+	btfsc	BOTAO_P1 
+	call 	SHOCK_P1
+	btfsc	BOTAO_P2
+	call 	SHOCK_P2
+	btfsc	BOTAO_P3
+	call 	SHOCK_P3
+	btfsc 	BOTAO_P4
+	call 	SHOCK_P4
+	GOTO 	DELAY1_LED
+
+SHOCK_P1
+	bsf SHOCK_LED_PLAYER1
+	goto DELAY_SHOCK
+
+SHOCK_P2
+	bsf SHOCK_LED_PLAYER2
+	goto DELAY_SHOCK
+
+SHOCK_P3
+	bsf SHOCK_LED_PLAYER3
+	goto DELAY_SHOCK
+
+SHOCK_P4
+	bsf SHOCK_LED_PLAYER4
+	goto DELAY_SHOCK
+
+END
