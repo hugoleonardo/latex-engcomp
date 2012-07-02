@@ -24,7 +24,7 @@ Devido à grande dificuldade para se trabalhar com sinais reais, em função da 
 
 A fase da Resposta em Frequência indica a defasagem do sinal com relação ao sinal de entrada do sistema de filtragem e a resposta em magnitude representa as bandas de passagem, de corte e de transição, sendo esta última um ponto chave no projeto de filtros, uma vez que, dependendo da aplicação, pode ser crucial ter uma banda de transição pequena, enquanto que em outros casos não é necessária uma grande rigidez para essa faixa de frequências do espectro.
  
-Os filtros digitais são divididos em duas categorias, FIR (Resposta ao Impulso Infinita) e IIR (Resposta ao Impulso Infinita), onde esta última consiste em mapear para o universo digital filtros analógicos amplamente conhecidos e estudados, como Filtro de Chebyshev, Butterworth e Elíptico (Cauer), para o universo digital. 
+Os filtros digitais são divididos em duas categorias, FIR (Resposta ao Impulso Infinita) e IIR (Resposta ao Impulso Infinita), sendo esta última apenas o mapeamento de filtros analógicos amplamente conhecidos e estudados, como Filtro de Chebyshev, Butterworth e Elíptico (Cauer), para o universo digital. 
 Este trabalho tem por objetivo mostrar uma implementação do filtro Elípitco, usando o MatLab, tomando como referência dois filtros, um passa-baixa e outro rejeita-faixa, que serão mostrados no decorrer desse texto.   
 
 

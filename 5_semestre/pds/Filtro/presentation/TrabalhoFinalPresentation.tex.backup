@@ -1,0 +1,155 @@
+\documentclass{beamer}
+
+% Setup appearance:
+
+\usetheme{Darmstadt}
+\usefonttheme[onlylarge]{structurebold}
+\setbeamerfont*{frametitle}{size=\normalsize,series=\bfseries}
+\setbeamertemplate{navigation symbols}{}
+
+
+% Standard packages
+
+\usepackage[brazil]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage[table]{xcolor}
+ 
+% Setup TikZ
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\tikzstyle{block}=[draw opacity=0.7,line width=1.4cm]
+
+%diretório das figuras
+\graphicspath{../article}
+
+\title[Filtro El\'iptico]{%
+Jogo do choque%
+}
+
+\author[Souza,Santos,Ara\'ujo]{
+     Danilo~Souza\and
+     Hugo~Santos\and
+     Welton~Ara\'ujo
+     }
+
+
+\institute[Bel\'em]{
+  \inst{1}%
+  Universidade Federal do Par\'a
+  }
+\date[Bel�m 2012]{
+  29 de Junho de 2012
+  }
+
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\section{Introdu\c{c}\~ao}
+\begin{frame}{Filtros Digitais}
+	\begin{itemize}
+	 \item	Filtros FIR
+	 \item	Filtros IIR
+		\begin{itemize}
+		  \item Mapemamento de filtros analógicos
+		  \item Menor ordem
+		  \item Mais difíceis de projetar
+		  \item Problemas com Estabilidade
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\subsection{Filtro El\'ipticos}
+
+	\begin{frame}{Filtro El\'ipticos}
+		\begin{itemize}{Vantagens}
+		  \item Maior declive na banda de transi\c{c}\~ao}
+		  \item Menor ordem que outros filtros IIR
+		\end{itemize}
+		\begin{itemize}{Desvantagens}
+		    \item N\~ao possui fase linear
+			\begin{itemize}
+			    \item Projetado somente em termos de magnitude
+			\end{itemize}
+		\end{itemize}
+	\end{frame}
+   
+  \begin{frame}{Projeto}
+	\begin{itemize}
+		\item Duas abordagens
+	\end{itemize}
+	\begin{itemize}
+	  \item  	Abordagem I
+		\begin{itemize}
+			\item Projetar filtro Passa-Baixa analógico
+			\item Realizar transformação em frequência (s \(\rightarrow\) s)
+			\item Aplicar transformação do filtro (s \(\rightarrow\) z)
+		\end{itemize}
+	\end{itemize}
+	\begin{itemize}
+	  \item  	Abordagem II
+		\begin{itemize}
+			\item Projetar filtro Passa-Baixa analógico
+			\item Aplicar transformação do filtro (s \(\rightarrow\) z)
+			\item Realizar transformação em frequência (z \(\rightarrow\) z)
+		\end{itemize}
+	\end{itemize}
+  \end{frame}
+
+  \subsection{O algoritmo}
+    \begin{frame}
+      \begin{itemize}
+	\item	Escolher n\'umero de jogadores
+	\item	Pressionar \textit{START}
+	\item	Esperar LED vermelho apagar
+	  \begin{itemize}
+	   \item	Caso um bot\~ao seja pressionado antes, este levar�� um choque
+	  \end{itemize}
+	\item	Checar se algum bot\~ao foi pressionado
+	  \begin{itemize}
+	    \item	Incrementar contador caso algum bot\~ao tenha sido pressionado
+	  \end{itemize}
+	\item	Checar quais bot\~oes foram pressionados
+	\item 	Dar choque no pino do \'ultimo bot\~ao pressionado
+      \end{itemize}
+    \end{frame}
+    \begin{frame}
+      \begin{figure}[ht]
+	  \centering
+	  \includegraphics[width=4.0cm]{./article/fluxograma.jpg}
+      \end{figure}      
+    \end{frame}
+
+\subsection{A Simula\c{c}\~ao}
+    \begin{frame}
+     \begin{figure}[ht]
+	  \centering
+	  \includegraphics[width=7.0cm]{./article/4jogadores.png}
+      \end{figure}
+    \end{frame}
+    \begin{frame}
+     \begin{figure}[ht]
+	  \centering
+	  \includegraphics[width=7.0cm]{./article/choqueP2.png}
+      \end{figure}
+    \end{frame}
+        \begin{frame}
+     \begin{figure}[ht]
+	  \centering
+	  \includegraphics[width=7.0cm]{./article/delaystart.png}
+      \end{figure}
+    \end{frame}
+
+  \end{frame}
+
+  
+
+\end{document}

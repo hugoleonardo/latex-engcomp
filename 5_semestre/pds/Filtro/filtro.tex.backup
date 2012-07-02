@@ -24,12 +24,12 @@ Devido à grande dificuldade para se trabalhar com sinais reais, em função da 
 
 A fase da Resposta em Frequência indica a defasagem do sinal com relação ao sinal de entrada do sistema de filtragem e a resposta em magnitude representa as bandas de passagem, de corte e de transição, sendo esta última um ponto chave no projeto de filtros, uma vez que, dependendo da aplicação, pode ser crucial ter uma banda de transição pequena, enquanto que em outros casos não é necessária uma grande rigidez para essa faixa de frequências do espectro.
  
-Os filtros digitais são divididos em duas categorias, FIR (Resposta ao Impulso Infinita) e IIR (Resposta ao Impulso Infinita), onde esta última consiste em mapear para o universo digital filtros analógicos amplamente conhecidos e estudados, como Filtro de Chebyshev, Butterworth e Elíptico (Cauer), para o universo digital. 
+Os filtros digitais são divididos em duas categorias, FIR (Resposta ao Impulso Infinita) e IIR (Resposta ao Impulso Infinita), sendo esta última apenas o mapeamento de filtros analógicos amplamente conhecidos e estudados, como Filtro de Chebyshev, Butterworth e Elíptico (Cauer), para o universo digital. 
 Este trabalho tem por objetivo mostrar uma implementação do filtro Elípitco, usando o MatLab, tomando como referência dois filtros, um passa-baixa e outro rejeita-faixa, que serão mostrados no decorrer desse texto.   
 
 
 
-Uma das grandes vantagens de se trabalhar com filtros IIR é que quando comparados com filtros FIR ,com os mesmos requisitos de projeto, apresentam menor ordem. Por este motivo precisam realizar menos multiplicações, diminuindo assim os recursos para implementação. Entretanto por apresentarem resposta ao impulso infinita possuem um problema com a estabilidade, para garantir um filtro estável o projeto deve ser feito de tal forma que os pólos da Função de Transferência  sejam internos ao círculo de raio unitário do plano Z. Outro problema dos filtros IIR é que não há controle sobre a fase da Resposta em Frequência, os filtros são projetados levando em consideração somente a magnitude, portanto não sendo indicados para aplicações que necessitam de filtros com fase linear (p.e. processamento de imagem).
+Uma das grandes vantagens de se trabalhar com filtros IIR é que quando comparados com filtros FIR ,com os mesmos requisitos de projeto, apresentam menor ordem. Por este motivo precisam realizar menos multiplicações, diminuindo assim os recursos para implementação, entretanto por apresentarem resposta ao impulso infinita possuem um problema com a estabilidade, para garantir um filtro estável o projeto deve ser feito de tal forma que os pólos da Função de Transferência  sejam internos ao círculo de raio unitário do plano Z. Outro problema dos filtros IIR é que não há controle sobre a fase da Resposta em Frquência, os filtros são projetados levando em consideração somente a magnitude, portanto não sendo indicados para aplicações que necessitam de filtros com fase linear (p.e. processamento de imagem).
 
 Algumas vantagens e desvantagens de se trabalhar com filtros elíptcios são listadas abaixo:
 %Uma vantagem em particular do filtro Elíptcio quando comparado com outros filtros IIR é que possui um declive mais acentuado na banda de transição, o que o torna mais adequado para aplicações que necessitam de uma maior rigidez em relação à banda de transição. Embora possuam a menor ordem dentre os filtros IIR, os filtros elípticos são considerados mais difíceis de projetar.
@@ -135,7 +135,7 @@ Existem basicamente duas abordagens para projetar um filtro Elíptico:
 	\end{equation}
 	
 	\begin{equation}
-		\sigma\ =  \frac{2q^{\frac{1}{4}}\sum_{j=0}^{\infty} (-1)^{j} q^{j(j+1)} senh[(2j+1)\Theta]}								{1+2\sum_{j=1}^{\infty}  (-1)^{j} q^{j^{2}} cosh[2j\Theta]}
+		\sigma\ =  \frac{2q^{\frac{1}{4}}\sum_{j=0}^{\infty} (-1)^{j} q^{j(j+1)} senh[(2j+1)\Theta]}								{1+2\sum_{j=1}^{\infty}  (-1)^{j} q^{j^{2}} cosh[(2j\Theta]}
 	\end{equation}
 	
 	\begin{equation}
@@ -156,15 +156,15 @@ Existem basicamente duas abordagens para projetar um filtro Elíptico:
 	\end{itemize}
 	
 	\begin{equation}
-		H'(\textit{s}') = \frac{H'_{0}}{(\textit{s}'+\sigma)^{m}} \prod_{i=1}^{l} \frac {\textit{s}'^{2} 																						+b_{2i}}														{\textit{s'^{2}}+\textit{a}_{li}\textit{s}'+\textit{a}_{2i}},
+		H'(\textit{s}') = \frac{H'_{0}}{(\textit{s}'+\sigma^{m})} \prod_{i=1}^{l} \frac {\textit{s}'^{2} 																						+b_{2i}}														{\textit{s'^{2}}+\textit{a}_{li}\textit{s}'+\textit{a}_{2i}},
 	\end{equation}
 		onde 
 		
 		\begin{itemize}
-			\item {m = 0 e l = n/2},
+			\item {m = 0 e l = \frac{n}{2},
 			 para \textit{n} par}
 			
-			\item {m = 1 e l = (n-1)/2,
+			\item {m = 1 e l = \frac{\textit{n}-1}{2},
 			 para \textit{n} ímpar}
 		\end{itemize}
 		\begin{equation}
@@ -205,10 +205,10 @@ Sua vantagem se deve ao fato de evitar o \textit{aliasing}, portanto mantém as 
 O método da transformação bilinear baseia-se na seguinte relação:
 
 	\begin{equation} \label{(1)}
-		\[s = \frac{2}{T} \frac{(1-Z)}{(1+Z)}\]
+		\[s = \frac{2}{T} \frac{(1-Z^{-1})}{1+Z^{-1}}\]
 	\end{equation}
 	\begin{equation} \label{(2)}
-		\[z = \frac{1+s(T/2)}{1-s(T/2)}\]
+		\[z = \frac{(1+s(T/2)}{1-s(T/2)}\]
 	\end{equation}
 
 
@@ -221,7 +221,7 @@ Resolvendo esta relação para as frequ\^encias \(\omega\) (digital) e \(\Omega\
 \[\Omega = \frac{2}{T}\tan(\frac{\omega }{2})\]
 \end{equation}
 
-Para realizar a transformação bilinear é necessário encontrar primeiramente as frequências pré-distorcidas, pois esta transformação resulta em um erro muito grande para altas frequência, por isso é crucial achar as frequências distorcidas para todos os casos, para que então a transformação possa ser feita de fato. Essas frequências são encontradas utilizando \eqref{(3)} e/ou \eqref{(4)}
+Para realizar a transformação bilinear é necessário encontrar primeiramente as frequências pré-distorcidas, pois esta transformação resulta em um erro muito grande para altas frequência, por isso a necessidade de achar as frequências distorcidas para todos os casos, para que então a transformação possa ser feita de fato. Essas frequências são encontradas utilizando \eqref{(3)} e/ou \eqref{(4)}
 
 
 \subsection{Filtro I}
@@ -267,8 +267,8 @@ A expressão da transformada de Fourier é:
 \(A_r\) 	& 60 dB		\\
 \(\Omega_p1\) 	& 40 rad/s	\\
 \(\Omega_r1\) 	& 50 rad/s	\\
-\(\Omega_r2\) 	& 70 rad/s	\\
-\(\Omega_p2\) 	& 80 rad/s	\\
+\(\Omega_p2\) 	& 70 rad/s	\\
+\(\Omega_r2\) 	& 80 rad/s	\\
 \(\Omega_s\) 	& 240 rad/s	\\
 
 \end{tabular}
@@ -276,7 +276,7 @@ A expressão da transformada de Fourier é:
 \label{tab:tabfiltro2}
 \end{table}
 
-Trata-se de um filtro rejeita-faixa. Suas especificações estão inseridas na Tabela \ref{tab:tabfiltro2}. Onde \(A_{p1}\) e \(A_{r1}\) são a atenuação máxima e mínima nas frequências de passagem e rejeição, respectivamente. \(\Omega_{p2}\) e \(\Omega_{p1}\) são as frequências  máxima e mínima de passagem. \(\Omega_{r2}\), \(\Omega_{r1}\) são as frequências máxima e mínima de rejeição.
+Trata-se de um filtro rejeita-faixa. Suas especificações estão inseridas na Tabela \ref{tab:tabfiltro2}. Onde \(A_{p1}\) e \(A_{r1}\) são a atenuação máxima e mínima nas frequências de passagem e rejeição, respectivamente. \(\Omega_{p1}\) e \(\Omega_{r1}\) são as frequências  máxima de passagem e mínima de rejeição, respectivamente, da faixa inicial. \(\Omega_{p2}\), \(\Omega_{r2}\) são as frequências mínima de passagem, máxima de rejeição, respectivamente, da faixa final.
 A frequ\^encia de amostragem \'e representada por \(\Omega_s\).
 
 A equação de diferença gerada por esse filtro é: 
@@ -314,35 +314,12 @@ A expressão da transformada de Fourier é:
 % \end{itemize}
 
 
-
 \section{Implementação no MatLab}
-
-
 
 \subsection{Filtro I}
 
 	
-Os gráficos das respostas em frequência em magnitude e fase estão nas Figuras \ref{fig:magnitude1} e \ref{fig:fase1}.
-
-
-
-O gráfico da resposta ao impulso e o diagrama de polos e zeros estão nas figuras \ref{fig:resimp1} e \ref{fig:diapolozero1}, respectivamente.
-
-
-\subsection{Filtro II}
-
-Os gráficos das respostas em frequência em magnitude e fase estão nas Figuras \ref{fig:magnitude2} e \ref{fig:fase2}.
-
-O gráfico da resposta ao impulso e o diagrama de polos e zeros estão nas figuras \ref{fig:resimp2} e \ref{fig:diapolozero2}, respectivamente.
-
-
-\section{Conclusões}
-
-Com esta implementação, pode-se concluir que filtros IIR com aproximações elípticas possuem um alto grau de complexidade de projeto, pois necessitam de muitas transformações para se obter os coeficientes do filtro desejado. Foi possível confirmar as caracteristicas conhecidas deste tipo de filtro, como Resposta em Fase não linear, \textit{equiripple} nas bandas de passagem e rejeição e um grande declive da Resposta em Frequência na banda de transição. 
-
-As principais dificuldades no projeto de um filtro elíptico foi a realização dos cálculos nas transformações necessárias, pois essas precisam ser muito precisas e por pequenos erros por parte do grupo, os coeficientes do filtro se diferenciavam dos coeficientes desejados e por causa deste pequeno desvio o filtro não atendeu de maneira 100\% satisfatória o gabarito do projeto. Isto pode ser comprovado no Filtro II, que possui resultados bem próximos do gabarito, além de ser um filtro estável. Já no Filtro I, o grupo conseguiu superar essas dificuldades, e o resultado do filtro atendeu o gabarito requisitado.
-
-\section{Gráficos}
+Os gráficos das respostas em frequência em magnitude, magnitude normalizada e fase estão nas Figuras \ref{fig:magnitude1} e \ref{fig:fase1}.
 
 \begin{figure}[ht]
  \centering
@@ -358,6 +335,8 @@ As principais dificuldades no projeto de um filtro elíptico foi a realização 
  \label{fig:fase1}
 \end{figure}
 
+O gráfico da resposta ao impulso e o diagrama de polos e zeros estão nas figuras \ref{fig:resimp1} e \ref{fig:diapolozero1}, respectivamente.
+
 \begin{figure}[ht]
  \centering
  \includegraphics[width=12cm]{pictures/Filtro1/RespImpulsoFiltro1.png}
@@ -372,20 +351,7 @@ As principais dificuldades no projeto de um filtro elíptico foi a realização 
  \label{fig:diapolozero1}
 \end{figure}
 
-
-\begin{figure}[ht]
- \centering
- \includegraphics[width=12cm]{pictures/Filtro2/RespImpulsoFiltro2.png}
- \caption{Resposta ao impulso do filtro II}
- \label{fig:resimp2}
-\end{figure}
-
-\begin{figure}[ht]
- \centering
- \includegraphics[width=12cm]{pictures/Filtro2/DiagramaFiltro2.png}
- \caption{Diagrama de polos e zeros do filtro II}
- \label{fig:diapolozero2}
-\end{figure}
+\subsection{Filtro II}
 
 \begin{figure}[ht]
  \centering
@@ -401,5 +367,26 @@ As principais dificuldades no projeto de um filtro elíptico foi a realização 
  \label{fig:fase2}
 \end{figure}
 
+O gráfico da resposta ao impulso e o diagrama de polos e zeros estão nas figuras \ref{fig:resimp2} e \ref{fig:diapolozero2}, respectivamente.
+
+\begin{figure}[ht]
+ \centering
+ \includegraphics[width=12cm]{pictures/Filtro2/RespImpulsoFiltro2.png}
+ \caption{Resposta ao impulso do filtro II}
+ \label{fig:resimp2}
+\end{figure}
+
+\begin{figure}[ht]
+ \centering
+ \includegraphics[width=12cm]{pictures/Filtro2/DiagramaFiltro2.png}
+ \caption{Diagrama de polos e zeros do filtro II}
+ \label{fig:diapolozero2}
+\end{figure}
+
+\section{Conclusões}
+
+Com esta implementação, pode-se concluir que filtros IIR com aproximações elípticas possuem um alto grau de complexidade de projeto, pois necessitam de muitas transformações para se obter os coeficientes do filtro desejado. Foi possível confirmar as caracteristicas conhecidas deste tipo de filtro, como Resposta em Fase não linear, \textit{equiripple} nas bandas de passagem e rejeição e um grande declive da Resposta em Frequência na banda de transição. 
+
+AS principais dificuldades no projeto de um filtro elíptico foi a realização dos cálculos nos transformações necessárias, pois essas precisam ser muito precisas e por pequenos erros por parte do grupo, os coeficientes od filtro se diferenciavam do dos coeficientes desejados e por causa deste pequeno desvio o filtro não atendeu de maneira 100\% satisfatória o gabarito do projeto. Isto pode ser comprovado no Filtro II, que possui resultados bem próximos do gabarito, além de ser um filtro estável. Já no Filtro I, o grupo conseguiu superar essas dificuldades, e o resultado do filtro atendeu o gabarito requisitado.
 
 \end{document}

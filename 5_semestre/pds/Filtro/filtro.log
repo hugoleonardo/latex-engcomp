@@ -1,23 +1,14 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.6.25)  28 JUN 2012 01:55
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.25)  2 JUL 2012 17:04
 entering extended mode
+ %&-line parsing enabled.
 **filtro.tex
-
-(E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\5_semestre\pds\Filtro\filtro.t
-ex
-LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
-abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
-croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
-lician, german, german-x-2009-06-19, greek, gujarati, hindi, hungarian, iceland
-ic, indonesian, interlingua, irish, italian, kannada, kurmanji, lao, latin, lat
-vian, lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerm
-an, ngerman-x-2009-06-19, nynorsk, oriya, panjabi, pinyin, polish, portuguese, 
-romanian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swis
-sgerman, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, u
-senglishmax, welsh, loaded.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
+(./filtro.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, loaded.
+(/usr/share/texmf-texlive/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size10.clo"
+(/usr/share/texmf-texlive/tex/latex/base/size10.clo
 File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -32,19 +23,19 @@ File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+(/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
+(/usr/share/texmf-texlive/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
+(/usr/share/texmf-texlive/tex/latex/base/t1enc.dfu
 File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -194,7 +185,7 @@ File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
+(/usr/share/texmf-texlive/tex/latex/base/ot1enc.dfu
 File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -225,7 +216,7 @@ File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
+(/usr/share/texmf-texlive/tex/latex/base/omsenc.dfu
 File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
@@ -249,43 +240,36 @@ Now handling font encoding U ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks16
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
-File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+(/etc/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
-File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
-Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
-)
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
-Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
-)
+(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2009/08/25 v0.04m Graphics/color for pdfTeX
 \Gread@gobject=\count87
 ))
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
-(C:\Users\Jass\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption.sty
-Package: caption 2012/02/19 v3.2f Customizing captions (AR)
+(/usr/share/texmf-texlive/tex/latex/caption/caption.sty
+Package: caption 2009/10/09 v3.1k Customizing captions (AR)
 
-(C:\Users\Jass\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption3.sty
-Package: caption3 2012/01/12 v1.4b caption3 kernel (AR)
+(/usr/share/texmf-texlive/tex/latex/caption/caption3.sty
+Package: caption3 2009/10/09 v3.1k caption3 kernel (AR)
 \captionmargin=\dimen105
 \captionmargin@=\dimen106
 \captionwidth=\dimen107
@@ -295,19 +279,17 @@ Package: caption3 2012/01/12 v1.4b caption3 kernel (AR)
 )
 \c@ContinuedFloat=\count88
 )
-(C:\Users\Jass\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\subcaption.sty
-Package: subcaption 2012/01/12 v1.1d Sub-captions (AR)
+(/usr/share/texmf-texlive/tex/latex/caption/subcaption.sty
+Package: subcaption 2008/08/31 v1.0b Adding subcaptions (AR)
 \c@subfigure=\count89
 \c@subtable=\count90
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\verbatim.sty"
+(/usr/share/texmf-texlive/tex/latex/tools/verbatim.sty
 Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks17
 \verbatim@line=\toks18
 \verbatim@in@stream=\read1
-)
-(E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\5_semestre\pds\Filtro\filtro.a
-ux
+) (./filtro.aux
 ! Missing \endcsname inserted.
 <to be read again> 
                    \protect 
@@ -384,6 +366,8 @@ LaTeX Warning: Label `(1)' multiply defined.
 LaTeX Warning: Label `(2)' multiply defined.
 
 )
+\openout1 = `filtro.aux'.
+
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
@@ -396,7 +380,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
- (C:\Users\Jass\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+ (/usr/share/texmf/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count91
 \scratchdimen=\dimen111
@@ -407,14 +391,13 @@ LaTeX Font Info:    ... okay on input line 12.
 \MPscratchCnt=\count94
 \MPscratchDim=\dimen112
 \MPnumerator=\count95
-\makeMPintoPDFobject=\count96
 \everyMPtoPDFconversion=\toks20
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  [1
 
-{C:/Users/Jass/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 14.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -423,7 +406,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 14.
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 40.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+(/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
@@ -454,8 +437,8 @@ and I'll forget about whatever was undefined.
 
 
 Overfull \hbox (2.7227pt too wide) in paragraph at lines 88--89
-[]\OT1/cmr/m/n/10 Uma vez cal-cu-ladas as frequ^encias dig-i-tais, e necessar
-io cal-cu-lar as frequ^encias
+[]\OT1/cmr/m/n/10 Uma vez cal-cu-ladas as frequ^encias dig-i-tais, ^^Se necess^
+^Sario cal-cu-lar as frequ^encias
  []
 
 ! Missing $ inserted.
@@ -611,26 +594,7 @@ l.160 	\end{equation}
 The `$' that I just saw supposedly matches a previous `$$'.
 So I shall assume that you typed `$$' both times.
 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.164 			\item {m = 0 e l = \frac{n}{2}
-                                       ,
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Extra }, or forgotten $.
-\frac #1#2->{\begingroup #1\endgroup \over #2}
-                                              
-l.164 			\item {m = 0 e l = \frac{n}{2}
-                                       ,
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Extra }, or forgotten $.
+! Extra }, or forgotten \endgroup.
 l.165 			 para \textit{n} par}
                               
 I've deleted a group-closing symbol because it seems to be
@@ -638,159 +602,6 @@ spurious, as in `$x}$'. But perhaps the } is legitimate and
 you forgot something else, as in `\hbox{$x}'. In such cases
 the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.166 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.166 
-      
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.167 			\item {m = 1 e l = \frac{\textit{n}-1}{2}
-                                                  ,
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Extra }, or forgotten $.
-\frac #1#2->{\begingroup #1\endgroup \over #2}
-                                              
-l.167 			\item {m = 1 e l = \frac{\textit{n}-1}{2}
-                                                  ,
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 168.
-
-! Please use \mathaccent for accents in math mode.
-\add@accent ...@spacefactor \spacefactor }\accent 
-                                                  #1 #2\egroup \spacefactor ...
-l.168 			 para \textit{n} Ã­
-                            mpar}
-I'm changing \accent to \mathaccent here; wish me luck.
-(Accents are not the same in formulas as they are in text.)
-
-! Missing { inserted.
-<to be read again> 
-                   \begingroup 
-l.168 			 para \textit{n} Ã­
-                            mpar}
-A left brace was mandatory here, so I've put one in.
-You might want to delete and/or insert some corrections
-so that I will find a matching right brace soon.
-(If you're confused by all this, try typing `I}' now.)
-
-
-LaTeX Warning: Command \i invalid in math mode on input line 168.
-
-! You can't use `\spacefactor' in math mode.
-\add@accent ...}\accent #1 #2\egroup \spacefactor 
-                                                  \accent@spacefactor 
-l.168 			 para \textit{n} Ã­
-                            mpar}
-Sorry, but I'm not programmed to handle this case;
-I'll just pretend that you didn't ask for it.
-If you're in the wrong mode, you might be able to
-return to the right one by typing `I}' or `I$' or `I\par'.
-
-
-! LaTeX Error: Command \end{itemize} invalid in math mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.169 		\end{itemize}
-                     
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.169 		\end{itemize}
-                     
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.169 		\end{itemize}
-                     
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.169 		\end{itemize}
-                     
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-Missing character: There is no è in font cmex10!
-! Missing } inserted.
-<inserted text> 
-                }
-l.169 		\end{itemize}
-                     
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.169 		\end{itemize}
-                     
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.169 		\end{itemize}
-                     
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
 
 ! Undefined control sequence.
 l.203 ...resposta em frequ\^encia do filtro anal\Â
@@ -824,7 +635,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.208 		\[
-          s = \frac{2}{T} \frac{(1-Z^{-1})}{1+Z^{-1}}\]
+          s = \frac{2}{T} \frac{(1-Z)}{(1+Z)}\]
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -866,7 +677,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.211 		\[
-          z = \frac{(1+s(T/2)}{1-s(T/2)}\]
+          z = \frac{1+s(T/2)}{1-s(T/2)}\]
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1048,7 +859,6 @@ l.257 \hline
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
-[7]
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
@@ -1057,6 +867,7 @@ l.295 \hline
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
+[7]
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
@@ -1065,83 +876,45 @@ l.304 \hline
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
-<pictures/Filtro1/RespMagnitudeFiltro1.png, id=39, 838.63312pt x 417.81094pt>
+[8]
+<pictures/Filtro1/RespMagnitudeFiltro1.png, id=42, 838.63312pt x 417.81094pt>
 File: pictures/Filtro1/RespMagnitudeFiltro1.png Graphic file (type png)
 
 <use pictures/Filtro1/RespMagnitudeFiltro1.png>
-Package pdftex.def Info: pictures/Filtro1/RespMagnitudeFiltro1.png used on inpu
-t line 326.
-(pdftex.def)             Requested size: 341.43306pt x 170.09866pt.
-
-<pictures/Filtro1/RespFaseFiltro1.png, id=40, 844.65562pt x 427.5975pt>
+<pictures/Filtro1/RespFaseFiltro1.png, id=43, 844.65562pt x 427.5975pt>
 File: pictures/Filtro1/RespFaseFiltro1.png Graphic file (type png)
 
 <use pictures/Filtro1/RespFaseFiltro1.png>
-Package pdftex.def Info: pictures/Filtro1/RespFaseFiltro1.png used on input lin
-e 333.
-(pdftex.def)             Requested size: 341.43306pt x 172.84981pt.
-
-<pictures/Filtro1/RespImpulsoFiltro1.png, id=41, 834.11626pt x 426.84468pt>
+<pictures/Filtro1/RespImpulsoFiltro1.png, id=44, 834.11626pt x 426.84468pt>
 File: pictures/Filtro1/RespImpulsoFiltro1.png Graphic file (type png)
 
 <use pictures/Filtro1/RespImpulsoFiltro1.png>
-Package pdftex.def Info: pictures/Filtro1/RespImpulsoFiltro1.png used on input 
-line 342.
-(pdftex.def)             Requested size: 341.43306pt x 174.72087pt.
-
-<pictures/Filtro1/DiagramaFiltro1.png, id=42, 844.65562pt x 427.5975pt>
+<pictures/Filtro1/DiagramaFiltro1.png, id=45, 844.65562pt x 427.5975pt>
 File: pictures/Filtro1/DiagramaFiltro1.png Graphic file (type png)
 
 <use pictures/Filtro1/DiagramaFiltro1.png>
-Package pdftex.def Info: pictures/Filtro1/DiagramaFiltro1.png used on input lin
-e 349.
-(pdftex.def)             Requested size: 284.52756pt x 144.04367pt.
-
-<pictures/Filtro2/RespMagnitudeFiltro2.png, id=43, 838.63312pt x 421.575pt>
-File: pictures/Filtro2/RespMagnitudeFiltro2.png Graphic file (type png)
-
-<use pictures/Filtro2/RespMagnitudeFiltro2.png>
-Package pdftex.def Info: pictures/Filtro2/RespMagnitudeFiltro2.png used on inpu
-t line 360.
-(pdftex.def)             Requested size: 341.43306pt x 171.63107pt.
-
-<pictures/Filtro2/RespFaseFiltro2.png, id=44, 837.1275pt x 411.03563pt>
-File: pictures/Filtro2/RespFaseFiltro2.png Graphic file (type png)
-
-<use pictures/Filtro2/RespFaseFiltro2.png>
-Package pdftex.def Info: pictures/Filtro2/RespFaseFiltro2.png used on input lin
-e 367.
-(pdftex.def)             Requested size: 341.43306pt x 167.64136pt.
-
-<pictures/Filtro2/RespImpulsoFiltro2.png, id=45, 847.66687pt x 412.54124pt>
+<pictures/Filtro2/RespImpulsoFiltro2.png, id=46, 847.66687pt x 412.54124pt>
 File: pictures/Filtro2/RespImpulsoFiltro2.png Graphic file (type png)
 
 <use pictures/Filtro2/RespImpulsoFiltro2.png>
-Package pdftex.def Info: pictures/Filtro2/RespImpulsoFiltro2.png used on input 
-line 376.
-(pdftex.def)             Requested size: 341.43306pt x 166.16553pt.
-
-<pictures/Filtro2/DiagramaFiltro2.png, id=46, 837.1275pt x 410.2828pt>
+<pictures/Filtro2/DiagramaFiltro2.png, id=47, 837.1275pt x 410.2828pt>
 File: pictures/Filtro2/DiagramaFiltro2.png Graphic file (type png)
 
 <use pictures/Filtro2/DiagramaFiltro2.png>
-Package pdftex.def Info: pictures/Filtro2/DiagramaFiltro2.png used on input lin
-e 383.
-(pdftex.def)             Requested size: 341.43306pt x 167.33432pt.
- [8] [9 <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/5_semestre/pds/Filtro/
-pictures/Filtro1/RespMagnitudeFiltro1.png> <E:/Danilo/Desktop/backup1/EngComp/l
-atex-engcomp/5_semestre/pds/Filtro/pictures/Filtro1/RespFaseFiltro1.png>] [10 <
-E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/5_semestre/pds/Filtro/pictures/
-Filtro1/RespImpulsoFiltro1.png> <E:/Danilo/Desktop/backup1/EngComp/latex-engcom
-p/5_semestre/pds/Filtro/pictures/Filtro1/DiagramaFiltro1.png>] [11 <E:/Danilo/D
-esktop/backup1/EngComp/latex-engcomp/5_semestre/pds/Filtro/pictures/Filtro2/Res
-pMagnitudeFiltro2.png> <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/5_semes
-tre/pds/Filtro/pictures/Filtro2/RespFaseFiltro2.png> <E:/Danilo/Desktop/backup1
-/EngComp/latex-engcomp/5_semestre/pds/Filtro/pictures/Filtro2/RespImpulsoFiltro
-2.png>] [12 <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/5_semestre/pds/Fil
-tro/pictures/Filtro2/DiagramaFiltro2.png>]
-(E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\5_semestre\pds\Filtro\filtro.a
-ux
+<pictures/Filtro2/RespMagnitudeFiltro2.png, id=48, 838.63312pt x 421.575pt>
+File: pictures/Filtro2/RespMagnitudeFiltro2.png Graphic file (type png)
+
+<use pictures/Filtro2/RespMagnitudeFiltro2.png>
+<pictures/Filtro2/RespFaseFiltro2.png, id=49, 837.1275pt x 411.03563pt>
+File: pictures/Filtro2/RespFaseFiltro2.png Graphic file (type png)
+
+<use pictures/Filtro2/RespFaseFiltro2.png> [9 <./pictures/Filtro1/RespMagnitude
+Filtro1.png (PNG copy)>] [10 <./pictures/Filtro1/RespFaseFiltro1.png (PNG copy)
+> <./pictures/Filtro1/RespImpulsoFiltro1.png (PNG copy)> <./pictures/Filtro1/Di
+agramaFiltro1.png (PNG copy)>] [11 <./pictures/Filtro2/RespImpulsoFiltro2.png (
+PNG copy)> <./pictures/Filtro2/DiagramaFiltro2.png (PNG copy)> <./pictures/Filt
+ro2/RespMagnitudeFiltro2.png (PNG copy)>] [12 <./pictures/Filtro2/RespFaseFiltr
+o2.png (PNG copy)>] (./filtro.aux
 ! Missing \endcsname inserted.
 <to be read again> 
                    \protect 
@@ -1164,29 +937,27 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2511 strings out of 494045
- 38901 string characters out of 3145972
- 99928 words of memory out of 3000000
- 5805 multiletter control sequences out of 15000+200000
+ 2226 strings out of 495061
+ 33316 string characters out of 1182621
+ 96384 words of memory out of 3000000
+ 5411 multiletter control sequences out of 15000+50000
  8241 words of font info for 29 fonts, out of 3000000 for 9000
- 715 hyphenation exceptions out of 8191
- 36i,8n,38p,853b,271s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C
-:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/
-Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Pr
-ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Prog
-ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Program
- Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Fi
-les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files
- (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x
-86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files (x86)
-/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Files (x86)/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on filtro.pdf (12 pages, 281352 bytes).
+ 28 hyphenation exceptions out of 8191
+ 36i,8n,38p,855b,264s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-te
+xlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts
+/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/publ
+ic/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
+/cm/cmmi5.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi7.pf
+b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/shar
+e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texl
+ive/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-texlive/fonts/type1/public/am
+sfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cms
+y10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb></us
+r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on filtro.pdf (12 pages, 379238 bytes).
 PDF statistics:
  109 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
