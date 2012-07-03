@@ -22,11 +22,11 @@
 \usetikzlibrary{arrows}
 \tikzstyle{block}=[draw opacity=0.7,line width=1.4cm]
 
-%diretório das figuras
+%diret\'orio das figuras
 \graphicspath{../article}
 
 \title[Filtro El\'iptico]{%
-Jogo do choque%
+Filtro El\'iptico%
 }
 
 \author[Souza,Santos,Ara\'ujo]{
@@ -40,8 +40,8 @@ Jogo do choque%
   \inst{1}%
   Universidade Federal do Par\'a
   }
-\date[Bel�m 2012]{
-  29 de Junho de 2012
+\date[Bel\'em 2012]{
+  03 de Julho de 2012
   }
 
 
@@ -52,6 +52,9 @@ Jogo do choque%
   \titlepage
 \end{frame}
 
+\begin{frame}{Agenda}
+  \tableofcontents
+\end{frame}
 
 \section{Introdu\c{c}\~ao}
 \begin{frame}{Filtros Digitais}
@@ -59,17 +62,16 @@ Jogo do choque%
 	 \item	Filtros FIR
 	 \item	Filtros IIR
 		\begin{itemize}
-		  \item Mapemamento de filtros analógicos
+		  \item Mapemamento de filtros anal\'ogicos
 		  \item Menor ordem
-		  \item Mais difíceis de projetar
+		  \item Mais dif\'iceis de projetar
 		  \item Problemas com Estabilidade
 		\end{itemize}
 	\end{itemize}
 \end{frame}
 
-\subsection{Filtro El\'ipticos}
-
-	\begin{frame}{Filtro El\'ipticos}
+\section{Filtro El\'iptico}
+	\begin{frame}{Filtro El\'iptico}
 		\begin{itemize}{Vantagens}
 		  \item Maior declive na banda de transi\c{c}\~ao}
 		  \item Menor ordem que outros filtros IIR
@@ -81,75 +83,110 @@ Jogo do choque%
 			\end{itemize}
 		\end{itemize}
 	\end{frame}
+
+\subsection{Projeto de Filtros El\'ipticos}
    
-  \begin{frame}{Projeto}
-	\begin{itemize}
-		\item Duas abordagens
-	\end{itemize}
-	\begin{itemize}
-	  \item  	Abordagem I
+	\begin{frame}{Abordagens}
 		\begin{itemize}
-			\item Projetar filtro Passa-Baixa analógico
-			\item Realizar transformação em frequência (s \(\rightarrow\) s)
-			\item Aplicar transformação do filtro (s \(\rightarrow\) z)
+			\item Duas abordagens
 		\end{itemize}
-	\end{itemize}
-	\begin{itemize}
-	  \item  	Abordagem II
 		\begin{itemize}
-			\item Projetar filtro Passa-Baixa analógico
-			\item Aplicar transformação do filtro (s \(\rightarrow\) z)
-			\item Realizar transformação em frequência (z \(\rightarrow\) z)
-		\end{itemize}
+			\item  Abordagem I
+				\begin{itemize}
+					\item Projetar filtro Passa-Baixa anal\'ogico
+					\item Realizar transforma\c{c}\~ao em frequ\^encia (s \(\rightarrow\) s)
+					\item Aplicar transforma\c{c}\~ao do filtro (s \(\rightarrow\) z)
+				\end{itemize}
 	\end{itemize}
-  \end{frame}
+		\begin{itemize}
+			\item Abordagem II
+				\begin{itemize}
+					\item Projetar filtro Passa-Baixa anal\'ogico
+					\item Aplicar transforma\c{c}\~ao do filtro (s \(\rightarrow\) z)
+					\item Realizar transforma\c{c}\~ao em frequ\^encia (z \(\rightarrow\) z)
+				\end{itemize}
+		\end{itemize}
+	\end{frame}
 
-  \subsection{O algoritmo}
-    \begin{frame}
-      \begin{itemize}
-	\item	Escolher n\'umero de jogadores
-	\item	Pressionar \textit{START}
-	\item	Esperar LED vermelho apagar
-	  \begin{itemize}
-	   \item	Caso um bot\~ao seja pressionado antes, este levar�� um choque
-	  \end{itemize}
-	\item	Checar se algum bot\~ao foi pressionado
-	  \begin{itemize}
-	    \item	Incrementar contador caso algum bot\~ao tenha sido pressionado
-	  \end{itemize}
-	\item	Checar quais bot\~oes foram pressionados
-	\item 	Dar choque no pino do \'ultimo bot\~ao pressionado
-      \end{itemize}
-    \end{frame}
-    \begin{frame}
-      \begin{figure}[ht]
-	  \centering
-	  \includegraphics[width=4.0cm]{./article/fluxograma.jpg}
-      \end{figure}      
-    \end{frame}
+\subsubsection{Projeto do filtro}
+	\begin{frame}{Projeto dos filtros}
+		\begin{itemize}
+		 \item Encontrar a frequ\^encia digital \omega
+		\end{itemize}
+		\begin{itemize}
+		 \item Encontrar a frequ\^encia distorcida \Omega
+		\end{itemize}
+		\begin{itemize}
+		 \item \'E preciso encontrar algumas constantes para calcular a ordem do filtro
+		\end{itemize}
+	\end{frame}
+	
+\subsubsection{Tranforma\c{c}\~ao em Freque\^encia}
+	\begin{frame}
+		\begin{itemize}
+		 \item Filtro passa-baixa
+			  \begin{equation}
+			  s' \leftrightarrow \frac{1}{a} \frac{s}{\Omega_{p}}
+			  \end{equation}
+		 \item Filtro rejeita-faixa
+			  \begin{equation}
+			  s' \leftrightarrow \frac{1}{a} \frac{B_{s}}{s^{2} + \Omega_{0}^{2}}
+			  \end{equation}
+		\end{itemize}
 
-\subsection{A Simula\c{c}\~ao}
-    \begin{frame}
-     \begin{figure}[ht]
-	  \centering
-	  \includegraphics[width=7.0cm]{./article/4jogadores.png}
-      \end{figure}
-    \end{frame}
-    \begin{frame}
-     \begin{figure}[ht]
-	  \centering
-	  \includegraphics[width=7.0cm]{./article/choqueP2.png}
-      \end{figure}
-    \end{frame}
-        \begin{frame}
-     \begin{figure}[ht]
-	  \centering
-	  \includegraphics[width=7.0cm]{./article/delaystart.png}
-      \end{figure}
-    \end{frame}
+	\end{frame}
+	
+\subsubsection{Tranforma\c{c}\~ao Bilinear}
 
-  \end{frame}
+	\begin{frame}
+		\begin{itemize}
+			\item Mapear o plano \textit{s} para o plano \textit{z}
+				\begin{itemize}
+				\item  		\[z = \frac{1+s(T/2)}{1-s(T/2)}\]
+				\end{itemize}
+			\item Mapear o eixo \textit{jw} para a circunfer\^encia de raio unit\'ario
+			\item Mapear o lado esquerdo do plano \textit{s} para o interior da circunfer\^encia de raio unit\'ario
+			\item Mapear o lado direto do plano \textit{s} para o exterior da circunfer\^encia de raio unit\'ario
+			\item Compress\~ao das frequ\^encias (\textit{warping})
+			\item \(-\infty < \Omega < \infty\) para \(-\pi < \omega < \pi\)
+		\end{itemize}
 
+	\end{frame}
+	
+
+\section{A Implementa\c{c}\~ao}
+	\begin{frame}{Requisitos dos filtros}
+		\begin{table}[ht]
+		%\centering
+			\begin{tabular}{|l|l|}
+				\hline
+				\(A_p\) 	& 1 dB		\\ \hline
+				\(A_r\) 	& 40 dB		\\ \hline
+				\(\Omega_p\) 	& 1000 Hz	\\ \hline
+				\(\Omega_r\) 	& 1290 Hz	\\ \hline
+				\(\Omega_s\) 	& 3000 Hz	\\ \hline
+			\end{tabular}
+			\caption{Propriedades do filtro I}
+			\label{tab:tabfiltro1}\hfill
+		%\end{table}%
+		
+		%\begin{table}[ht]
+		%\centering
+			\begin{tabular}{|l|l|}
+				\hline
+				\(A_p\) 	& 0,5 dB	\\ \hline
+				\(A_r\) 	& 60 dB		\\ \hline
+				\(\Omega_p1\) 	& 40 rad/s	\\ \hline
+				\(\Omega_r1\) 	& 50 rad/s	\\ \hline
+				\(\Omega_r2\) 	& 70 rad/s	\\ \hline
+				\(\Omega_p2\) 	& 80 rad/s	\\ \hline
+				\(\Omega_s\) 	& 240 rad/s	\\ \hline
+			\end{tabular}
+			\caption{Propriedades do filtro II}
+			\label{tab:tabfiltro2}
+		\end{table}
+
+	\end{frame}
   
 
 \end{document}
