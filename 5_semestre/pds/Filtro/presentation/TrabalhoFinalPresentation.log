@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.6.25)  3 JUL 2012 13:37
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.6.25)  3 JUL 2012 14:11
 entering extended mode
 **TrabalhoFinalPresentation.tex
 
@@ -1116,162 +1116,26 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
 (Font)              Font shape `T1/phv/b/n' tried instead on input line 71.
  [3
 
+] [4
+
 ]
-! Argument of \frame has an extra }.
-<inserted text> 
-                \par 
-l.76 ...Maior declive na banda de transi\c{c}\~ao}
-                                                  
-I've run across a `}' that doesn't seem to match anything.
-For example, `\def\a#1{...}' and `\a}' would produce
-this error. If you simply proceed now, the `\par' that
-I've just inserted will cause me to report a runaway
-argument that might be the root of the problem. But if
-your `}' was spurious, just type `2' and it will go away.
-
-Runaway argument?
-{Filtro El\'iptico} \begin {itemize}{Vantagens} \item Maior declive n\ETC.
-! Paragraph ended before \frame was complete.
-<to be read again> 
-                   \par 
-l.76 ...Maior declive na banda de transi\c{c}\~ao}
-                                                  
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
-! Extra }, or forgotten \endgroup.
-<recently read> }
-                 
-l.76 ...Maior declive na banda de transi\c{c}\~ao}
-                                                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-
-! LaTeX Error: Lonely \item--perhaps a missing list environment.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.77 		  \item M
-                enor ordem que outros filtros IIR
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Underfull \hbox (badness 10000) detected at line 77
-[][]
- []
-
-! Undefined control sequence.
-<argument> .../enumerate \beameritemnestingprefix 
-                                                  body end
-l.78 		\end{itemize}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-! LaTeX Error: \begin{frame} on input line 74 ended by \end{itemize}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.78 		\end{itemize}
-                    
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.80 		    \item N
-                  \~ao possui fase linear
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.80 		    \item N
-                  \~ao possui fase linear
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.80 		    \item N
-                  \~ao possui fase linear
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.82 			    \item P
-                   rojetado somente em termos de magnitude
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-! Extra }, or forgotten \endgroup.
-\endframe ->\egroup 
-                    \begingroup \def \@currenvir {frame}
-l.85 	\end{frame}
-                 
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 109.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 112.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 109.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [4
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 112.
+ [5
 
 ]
-[5]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.122 	\end{frame}
+l.125 	\end{frame}
                   
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10.95> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 122.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 125.
 
 ! LaTeX Error: Command \end{itemize} invalid in math mode.
 
@@ -1279,7 +1143,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.122 	\end{frame}
+l.125 	\end{frame}
                   
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1291,7 +1155,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.122 	\end{frame}
+l.125 	\end{frame}
                   
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1303,7 +1167,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.122 	\end{frame}
+l.125 	\end{frame}
                   
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1311,7 +1175,7 @@ If that doesn't work, type  X <return>  to quit.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.122 	\end{frame}
+l.125 	\end{frame}
                   
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1322,7 +1186,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.122 	\end{frame}
+l.125 	\end{frame}
                   
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1334,7 +1198,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.122 	\end{frame}
+l.125 	\end{frame}
                   
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1346,7 +1210,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.122 	\end{frame}
+l.125 	\end{frame}
                   
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1358,7 +1222,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.122 	\end{frame}
+l.125 	\end{frame}
                   
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1366,7 +1230,7 @@ If that doesn't work, type  X <return>  to quit.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.122 	\end{frame}
+l.125 	\end{frame}
                   
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1383,122 +1247,122 @@ my insertion and my current dilemma will both disappear.
 ] [9
 
 ]
-<../pictures/Filtro1/RespMagnitudeFiltro1.png, id=282, 838.63312pt x 417.81094p
+<../pictures/Filtro1/RespMagnitudeFiltro1.png, id=281, 838.63312pt x 417.81094p
 t>
 File: ../pictures/Filtro1/RespMagnitudeFiltro1.png Graphic file (type png)
  <use ../pictures/Filtro1/RespMagnitudeFiltro1.png>
 Package pdftex.def Info: ../pictures/Filtro1/RespMagnitudeFiltro1.png used on i
-nput line 198.
+nput line 201.
 (pdftex.def)             Requested size: 256.0748pt x 127.57559pt.
  [10
 
  <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/5_semestre/pds/Filtro/picture
 s/Filtro1/RespMagnitudeFiltro1.png>]
-<../pictures/Filtro1/RespFaseFiltro1.png, id=305, 844.65562pt x 427.5975pt>
+<../pictures/Filtro1/RespFaseFiltro1.png, id=304, 844.65562pt x 427.5975pt>
 File: ../pictures/Filtro1/RespFaseFiltro1.png Graphic file (type png)
 
 <use ../pictures/Filtro1/RespFaseFiltro1.png>
 Package pdftex.def Info: ../pictures/Filtro1/RespFaseFiltro1.png used on input 
-line 205.
+line 208.
 (pdftex.def)             Requested size: 256.0748pt x 129.63734pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:magnitude
 1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.205 	\end{frame}
+l.208 	\end{frame}
                    [11
 
  <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/5_semestre/pds/Filtro/picture
 s/Filtro1/RespFaseFiltro1.png>]
-<../pictures/Filtro1/RespImpulsoFiltro1.png, id=326, 834.11626pt x 426.84468pt>
+<../pictures/Filtro1/RespImpulsoFiltro1.png, id=325, 834.11626pt x 426.84468pt>
 File: ../pictures/Filtro1/RespImpulsoFiltro1.png Graphic file (type png)
 <use ../pictures/Filtro1/RespImpulsoFiltro1.png>
 Package pdftex.def Info: ../pictures/Filtro1/RespImpulsoFiltro1.png used on inp
-ut line 212.
+ut line 215.
 (pdftex.def)             Requested size: 256.0748pt x 131.04391pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:magnitude
 1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.212 	\end{frame}
+l.215 	\end{frame}
                    [12
 
  <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/5_semestre/pds/Filtro/picture
 s/Filtro1/RespImpulsoFiltro1.png>]
-<../pictures/Filtro1/DiagramaFiltro1.png, id=347, 844.65562pt x 427.5975pt>
+<../pictures/Filtro1/DiagramaFiltro1.png, id=346, 844.65562pt x 427.5975pt>
 File: ../pictures/Filtro1/DiagramaFiltro1.png Graphic file (type png)
 
 <use ../pictures/Filtro1/DiagramaFiltro1.png>
 Package pdftex.def Info: ../pictures/Filtro1/DiagramaFiltro1.png used on input 
-line 219.
+line 222.
 (pdftex.def)             Requested size: 256.0748pt x 129.63734pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:magnitude
 1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.219 	\end{frame}
+l.222 	\end{frame}
                    [13
 
  <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/5_semestre/pds/Filtro/picture
 s/Filtro1/DiagramaFiltro1.png>]
-<../pictures/Filtro2/RespMagnitudeFiltro2.png, id=369, 838.63312pt x 421.575pt>
+<../pictures/Filtro2/RespMagnitudeFiltro2.png, id=368, 838.63312pt x 421.575pt>
 File: ../pictures/Filtro2/RespMagnitudeFiltro2.png Graphic file (type png)
 <use ../pictures/Filtro2/RespMagnitudeFiltro2.png>
 Package pdftex.def Info: ../pictures/Filtro2/RespMagnitudeFiltro2.png used on i
-nput line 228.
+nput line 231.
 (pdftex.def)             Requested size: 256.0748pt x 128.72491pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:magnitude
 1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.228 	\end{frame}
+l.231 	\end{frame}
                    [14
 
  <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/5_semestre/pds/Filtro/picture
 s/Filtro2/RespMagnitudeFiltro2.png>]
-<../pictures/Filtro2/RespFaseFiltro2.png, id=391, 837.1275pt x 411.03563pt>
+<../pictures/Filtro2/RespFaseFiltro2.png, id=390, 837.1275pt x 411.03563pt>
 File: ../pictures/Filtro2/RespFaseFiltro2.png Graphic file (type png)
 
 <use ../pictures/Filtro2/RespFaseFiltro2.png>
 Package pdftex.def Info: ../pictures/Filtro2/RespFaseFiltro2.png used on input 
-line 235.
+line 238.
 (pdftex.def)             Requested size: 256.0748pt x 125.73259pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:magnitude
 1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.235 	\end{frame}
+l.238 	\end{frame}
                    [15
 
  <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/5_semestre/pds/Filtro/picture
 s/Filtro2/RespFaseFiltro2.png>]
-<../pictures/Filtro2/RespImpulsoFiltro2.png, id=412, 847.66687pt x 412.54124pt>
+<../pictures/Filtro2/RespImpulsoFiltro2.png, id=411, 847.66687pt x 412.54124pt>
 File: ../pictures/Filtro2/RespImpulsoFiltro2.png Graphic file (type png)
 <use ../pictures/Filtro2/RespImpulsoFiltro2.png>
 Package pdftex.def Info: ../pictures/Filtro2/RespImpulsoFiltro2.png used on inp
-ut line 242.
+ut line 245.
 (pdftex.def)             Requested size: 256.0748pt x 124.62572pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:magnitude
 1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.242 	\end{frame}
+l.245 	\end{frame}
                    [16
 
  <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/5_semestre/pds/Filtro/picture
 s/Filtro2/RespImpulsoFiltro2.png>]
-<../pictures/Filtro2/DiagramaFiltro2.png, id=433, 837.1275pt x 410.2828pt>
+<../pictures/Filtro2/DiagramaFiltro2.png, id=432, 837.1275pt x 410.2828pt>
 File: ../pictures/Filtro2/DiagramaFiltro2.png Graphic file (type png)
 
 <use ../pictures/Filtro2/DiagramaFiltro2.png>
 Package pdftex.def Info: ../pictures/Filtro2/DiagramaFiltro2.png used on input 
-line 249.
+line 252.
 (pdftex.def)             Requested size: 256.0748pt x 125.5023pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:magnitude
 1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.249 	\end{frame}
+l.252 	\end{frame}
                    [17
 
  <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/5_semestre/pds/Filtro/picture
@@ -1506,59 +1370,41 @@ s/Filtro2/DiagramaFiltro2.png>]
 \tf@nav=\write6
 \tf@toc=\write7
 \tf@snm=\write8
-
-
-! LaTeX Error: \begin{frame} on input line 74 ended by \end{document}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.251 \end{document}
-                    
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 251.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 251.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 254.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 254.
 
 (E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\5_semestre\pds\Filtro\presenta
 tion\TrabalhoFinalPresentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 251.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 251.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 254.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 254.
 Package rerunfilecheck Info: File `TrabalhoFinalPresentation.out' has not chang
 ed.
-(rerunfilecheck)             Checksum: F4FB60FE79E70CBE6B0C2CEC7FDAFFD5;305.
+(rerunfilecheck)             Checksum: 2CD52B4E7F7B825140DE21EC28F9CF44;305.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 251.
- )
-(\end occurred inside a group at level 1)
-
-### semi simple group (level 1) entered at line 74 (\begingroup)
-### bottom level 
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 254.
+ ) 
 Here is how much of TeX's memory you used:
- 18642 strings out of 494045
- 361624 string characters out of 3145972
+ 18643 strings out of 494045
+ 361623 string characters out of 3145972
  438271 words of memory out of 3000000
- 21407 multiletter control sequences out of 15000+200000
+ 21408 multiletter control sequences out of 15000+200000
  57529 words of font info for 75 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 49i,20n,72p,415b,995s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.
-enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pf
-b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss10.pfb>
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C
-:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/P
-rogram Files (x86)/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Program F
-iles (x86)/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Program Files (x8
-6)/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on TrabalhoFinalPresentation.pdf (17 pages, 236088 bytes).
+ 49i,20n,72p,415b,744s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
+m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program 
+Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Program Fi
+les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program File
+s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (
+x86)/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Program Files (x86)/MiK
+TeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/
+fonts/type1/urw/helvetic/uhvro8a.pfb>
+Output written on TrabalhoFinalPresentation.pdf (17 pages, 235992 bytes).
 PDF statistics:
- 491 PDF objects out of 1000 (max. 8388607)
+ 490 PDF objects out of 1000 (max. 8388607)
  48 named destinations out of 1000 (max. 500000)
  177 words of extra memory for PDF output out of 10000 (max. 10000000)
 
