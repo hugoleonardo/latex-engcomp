@@ -166,7 +166,11 @@ Filtro El\'iptico%
 				\(\Omega_r\) 	& 1290 Hz	\\ \hline
 				\(\Omega_s\) 	& 3000 Hz	\\ \hline
 			\end{tabular}
+<<<<<<< HEAD
 			\label{tab:tabfiltro1}\quad
+=======
+			\label{tab:tabfiltro1}\hfill
+>>>>>>> 9bd42971d433320de75bcb48247ad5093a031aa9
 		%\end{table}%
 		
 		%\begin{table}[ht]
