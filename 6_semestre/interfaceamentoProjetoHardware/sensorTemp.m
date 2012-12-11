@@ -10,3 +10,4 @@
     % 5. Definir o valor de Rf
     % 6. Encontrar o valor de Rh (pela equação do offset)
     % 7. Encontrar o valor de RL (pela equação do ganho)
+    %
