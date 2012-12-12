@@ -13,6 +13,7 @@
 %
 
 % ######## CALCULO DO SINAL DO TERMISTOR ########
+clear all; close all; clc;
 
 vref = 2.5; % tensão de referencia
 v_max_ad = 4.5;
@@ -22,7 +23,7 @@ temp_max = 40;
 rf = 100000;
 r1 = 10000;
 vref_ad = 5;
-variacao_temp = 1;
+variacao_temp = 0.5;
 n_bits_ad = 8;
 
 %dc = 0.002; %em W/ºC
@@ -97,25 +98,35 @@ vetor_quantizado_converted(n_amostras)=0;
 
 for linha=1:n_amostras,
     tmp=0;
-    for coluna=1:n_bits,
+    tmp2=vref_ad;
+    for coluna=1:n_bits_ad,
         if(v0(linha)>= vref_ad/2^(coluna)+tmp)
             vetor_quantizado(linha, coluna) = 1; %seta bit
             vetor_quantizado_c1(linha, coluna) = 0; %seta bit
             tmp = tmp + (vref_ad/2^(coluna) );%acumulador para checar o bit seguinte
+            tmp2 = tmp2 - (vref_ad/2^(coluna) );
         else
             vetor_quantizado(linha,coluna) = 0; %zera bit
             vetor_quantizado_c1(linha, coluna) = 1; %seta bit
         end
-        vetor_quantizado_converted(linha)=tmp;%salva o maior valor do acumulador, número decimal
+        vetor_quantizado_converted(linha)=tmp2;%salva o maior valor do acumulador, número decimal
     end
+    %vetor_quantizado_converted(linha)=tmp;%salva o maior valor do acumulador, número decimal
     %vetor_amostra(linha) = sinal(amostra); %para o gráfico
     %amostra = amostra + in_amostras; %representa o intervalo de captura de cada amostra no sinal
 end
 
-subplot(2,1,1),stem(intervalo_temp,v1);
-subplot(2,1,2),stem(intervalo_temp,v0);
-subplot(2,2,1),stem(intervalo_temp,vetor_quantizado);
-subplot(2,2,2),stem(intervalo_temp,vetor_quantizado_c1);
+%plot(intervalo_temp,vetor_quantizado);
+%figure;
+%plot(intervalo_temp,vetor_quantizado_c1);
+%figure;
+%vetor_quantizado_converted
+%plot(n_amostras,vetor_quantizado_converted);
+
+subplot(2,2,1),stem(intervalo_temp,v1);
+subplot(2,2,2),stem(intervalo_temp,v0,'r');
+subplot(2,2,3),stem(intervalo_temp,vetor_quantizado_converted,'g');
+%subplot(2,2,2),stem(intervalo_temp,vetor_quantizado_c1);
 %plot(rtabc,v1); %hold; plot(res_term_min,'b'); hold; plot(res_term_max,'r');
 %figure;
 %plot(rtabc,v0);
