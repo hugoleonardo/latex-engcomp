@@ -1,0 +1,25 @@
+Controle de Voo - Banco de Dados
+
+Entidades:
+	Controlador (Matrícula, nome, endereço, telefone, e-mail, ano de ingresso)
+	Piloto (Matrícula, nome, endereço, telefone, e-mail, Cia Aérea, horas de voo, ano em que começou a pilotar)
+	Aeronave (numero de série, modelo, Cia Aérea, peso, nº de passageiros, peso máximo)
+	Plano de Voo (idPlanoVoo, Origem, Destino, Comandante, isAprovado, isAlterado (guarda informações de quais planos sofreram alterações))
+		Fases de voo - Controle  de pista, Decolagem, Em Voo, Aterrissagem
+	Voo (idPlanoVoo, Velocidade, altitude, fase do voo (composto))
+	Aeroportos (código, localidade, nº de pistas (com a extensão de cada pista), nº de plataformas de embarque/desembarque, capacidade de passageiros
+	
+Regras de negócio
+
+Uma aeronave só pode possuir um plano de voo
+Um plano de voo pertence a somente uma aeronave
+O plano de voo tem somente um aeroporto como origem e somente um como destino 
+Uma aeronave pode ser controlada por 1 ou mais controladores
+Uma aeronave só pode ser pilotada por 2 pilotos
+Um controlador pode controlar 1 ou mais aeronaves
+Um controlador Libera um plano de voo
+Uma aeroave só pode ser pilotada por dois  pilotos (comandante e co-piloto)
+O piloto apresenta um plano de voo para aprovação (Dessa forma o sistema sabe quem apresentou plano de voo e quais foram aprovados ou rejeitadas, e quem aprovou/rejeitou)
+Cada plano de voo se encontra em somente uma Fase de voo (As fases se alteram conforme os controladores autorizam pousos e decolagens)
+Cada piloto só pode pilotar uma aeronave por plano de voo
+	 
