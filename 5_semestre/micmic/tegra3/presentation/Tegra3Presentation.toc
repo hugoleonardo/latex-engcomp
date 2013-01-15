@@ -1,0 +1,11 @@
+\beamer@endinputifotherversion {3.10pt}
+\select@language {brazil}
+\beamer@sectionintoc {1}{Hist\'orico}{3}{0}{1}
+\beamer@sectionintoc {2}{Introdu\c {c}\~ao}{5}{0}{2}
+\beamer@sectionintoc {3}{Caracter\'isticas}{6}{0}{3}
+\beamer@subsectionintoc {3}{1}{Propriedades}{6}{0}{3}
+\beamer@subsectionintoc {3}{2}{Benchmarks}{8}{0}{3}
+\beamer@subsectionintoc {3}{3}{Processo de fabrica\c {c}\~ao X Consumo}{12}{0}{3}
+\beamer@subsectionintoc {3}{4}{Arquitetura vSMP}{15}{0}{3}
+\beamer@subsubsectionintoc {3}{4}{1}{Vantagens}{17}{0}{3}
+\beamer@sectionintoc {4}{Aplica\c {c}\~oes}{22}{0}{4}

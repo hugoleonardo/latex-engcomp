@@ -1,0 +1,626 @@
+MPASM  5.45           TRABALHOFINALMICMIC.ASM   6-29-2012  16:38:06         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 ;PISCA
+Warning[205]: Found directive in column 1. (LIST)
+                      00002 LIST P=16F628
+Warning[205]: Found directive in column 1. (INCLUDE)
+                      00003 INCLUDE<P16F628.INC>
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ;  MPASM PIC16F628 processor include
+                      00005 ; 
+                      00006 ;  (c) Copyright 1999-2012 Microchip Technology, All rights reserved
+                      00007 ;==========================================================================
+                      00008 
+                      00381         LIST
+                      00004 
+                      00005 #define BANK0 BCF STATUS,RP0
+                      00006 #define BANK1 BSF STATUS,RP0
+                      00007 
+                      00008 #define BOTAO_P1        PORTA,0
+                      00009 #define BOTAO_P2        PORTA,1
+                      00010 #define BOTAO_P3        PORTA,2
+                      00011 #define BOTAO_P4        PORTA,3
+                      00012 #define BOTAO_START PORTA,4
+                      00013 #define BOTAO_N_PS      PORTA,5
+                      00014 
+                      00015 #define SHOCK_LED_P1    PORTB,0
+                      00016 #define SHOCK_LED_P2    PORTB,1
+                      00017 #define SHOCK_LED_P3    PORTB,2
+                      00018 #define SHOCK_LED_P4    PORTB,3
+                      00019 
+                      00020 #define ENABLED_LED_P3  PORTB,4
+                      00021 #define ENABLED_LED_P4  PORTB,5
+                      00022 
+                      00023 #define START_LED       PORTB,6
+                      00024 
+  00000020            00025 COUNTER                 equ 0x20
+  00000021            00026 LAST_COUNTER    equ 0x21
+  00000022            00027 BOT                             equ 0x22
+  00000023            00028 LAST_BOT                equ 0x23
+  00000024            00029 COUNT1                  equ 0x24
+  00000025            00030 COUNT2                  equ 0x25
+  00000026            00031 COUNT3                  equ 0x26
+                      00032 
+Warning[205]: Found directive in column 1. (ORG)
+0000                  00033 ORG 0X00
+Warning[203]: Found opcode in column 1. (GOTO)
+0000   2801           00034 GOTO INICIO
+                      00035 
+0001                  00036 INICIO
+0001   1683           00037         BANK1
+0002   303F           00038         MOVLW   B'00111111'
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0003   0085           00039         MOVWF   TRISA
+MPASM  5.45           TRABALHOFINALMICMIC.ASM   6-29-2012  16:38:06         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0004   3000           00040         MOVLW   B'00000000'
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0005   0086           00041         MOVWF   TRISB
+0006   1283           00042         BANK0
+0007   0185           00043         CLRF    PORTA
+0008   0186           00044         clrf    PORTB
+0009   1606           00045         bsf     ENABLED_LED_P3
+000A   1686           00046         bsf     ENABLED_LED_P4
+000B   3000           00047         movlw   0
+000C   00A0           00048         movwf   COUNTER
+000D   00A1           00049         movwf   LAST_COUNTER ;
+000E   00A2           00050         movwf   BOT
+000F   00A3           00051         movwf   LAST_BOT
+0010   01A2           00052         clrf    BOT
+                      00053 
+0011                  00054 START
+0011   0064           00055         clrwdt ; limpa watchdog 
+0012   1A85           00056         btfsc   BOTAO_N_PS
+0013   2817           00057         goto    SET_N_PS ; vai setar numero de jogadores
+0014   1A05           00058         BTFSC   BOTAO_START
+                      00059         ;GOTO   MAIN ; SE O BOTAO FOI PRESSIONADO VAI PRA MAIN
+0015   2889           00060         goto    DELAY_LED
+0016   2811           00061         GOTO    START
+                      00062 
+0017                  00063 SET_N_PS
+0017   1E06           00064         btfss   ENABLED_LED_P3
+0018   281C           00065         goto    SET_P3 ; se não setado, vai setar
+0019   1E86           00066         btfss   ENABLED_LED_P4
+001A   2825           00067         goto    SET_P4 ; se não setado, vai setar
+001B   282D           00068         goto    DISABLE_P3P4 ; se todos estiverem setados, vai desetar o 3 e 4
+                      00069 
+001C                  00070 SET_P3
+001C   1606           00071         bsf     ENABLED_LED_P3 ; ativa jogador 3
+001D   1122           00072         bcf     BOT,2 ; seta estado do botao jogador 3
+001E   3001           00073         movlw   1 ; contador começa em 1
+001F   00A0           00074         movwf   COUNTER ; salva o valor de W em COUNTER
+0020   00A1           00075         movwf   LAST_COUNTER
+0021   00A1           00076         movwf   LAST_COUNTER ; salva o valor de W em LAST_COUNTER
+0022   0822           00077         movf    BOT,W ; salva ultima configuracao de jogadores em LAST_BOT
+0023   00A3           00078         movwf   LAST_BOT
+0024   2838           00079         goto    WAIT    
+                      00080 
+0025                  00081 SET_P4
+0025   1686           00082         bsf     ENABLED_LED_P4 ; ativa jogador 4
+0026   11A2           00083         bcf     BOT,3 ; seta estado do botao jogador 4
+0027   3000           00084         movlw   0 ; contador começa em 0
+0028   00A0           00085         movwf   COUNTER ; salva o valor de W em COUNTER
+0029   00A1           00086         movwf   LAST_COUNTER ; salva o valor de W em LAST_COUNTER
+002A   0822           00087         movf    BOT,W ; salva ultima configuracao de jogadores em LAST_BOT
+002B   00A3           00088         movwf   LAST_BOT
+002C   2838           00089         goto    WAIT
+                      00090 
+002D                  00091 DISABLE_P3P4
+MPASM  5.45           TRABALHOFINALMICMIC.ASM   6-29-2012  16:38:06         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+002D   1206           00092         bcf     ENABLED_LED_P3 ; desativa led jogadores 3
+002E   1522           00093         bsf     BOT, 2 ; setar estado do botao do jogador 3
+002F   1286           00094         bcf     ENABLED_LED_P4 ; desativa led jogadores 4
+0030   15A2           00095         bsf     BOT,3 ; setar estado do botao do jogador 4
+0031   3002           00096         movlw   2 ; contador começa em 2
+0032   00A0           00097         movwf   COUNTER ; salva o valor de W em COUNTER
+0033   00A1           00098         movwf   LAST_COUNTER ; salva o valor de W em LAST_COUNTER
+0034   0822           00099         movf    BOT,W
+0035   00A3           00100         movwf   LAST_BOT ; salva ultima configuracao de jogadores
+0036   0823           00101         movf    LAST_BOT,W ; debug
+0037   2838           00102         goto    WAIT
+                      00103 
+0038                  00104 WAIT ; loop para esperar desapertar o botão de selecionar número de jogadores
+0038   1E85           00105         btfss   BOTAO_N_PS
+0039   2811           00106         goto    START ; se desapertado
+003A   0064           00107         clrwdt ; limpa watchdog
+003B   2838           00108         goto    WAIT 
+                      00109 
+003C                  00110 MAIN
+003C   1805           00111         BTFSC   BOTAO_P1; TESTE SE O BOTAO ESTA PRESSIONADO 
+003D   2056           00112         CALL    BOTAO_P1_PRESS; SE PRESSIONADO entra na rotina
+003E   1885           00113         BTFSC   BOTAO_P2
+003F   205D           00114         CALL    BOTAO_P2_PRESS
+0040   1905           00115         BTFSC   BOTAO_P3
+0041   2064           00116         CALL    BOTAO_P3_PRESS
+0042   1985           00117         BTFSC   BOTAO_P4
+0043   206B           00118         CALL    BOTAO_P4_PRESS
+0044   2047           00119         CALL    CHECK_COUNTER
+0045   0064           00120         clrwdt ;limpa watchdog
+0046   283C           00121         GOTO    MAIN
+                      00122 
+0047                  00123 CHECK_COUNTER
+0047   0820           00124         movf    COUNTER,W
+0048   1C20           00125         BTFSS   COUNTER,0
+0049   0008           00126         RETURN
+004A   1CA0           00127         BTFSS   COUNTER,1
+004B   0008           00128         RETURN
+004C   284D           00129         GOTO    FIND_LOSER ; se COUNTER>=3
+                      00130 
+004D                  00131 FIND_LOSER ;TEM QUE ACHAR O PRIMEIRO ZERO       
+004D   1C22           00132         BTFSS   BOT,0
+004E   1406           00133         bsf     SHOCK_LED_P1 ; se jogador 1 perdeu
+004F   1CA2           00134         BTFSS   BOT,1
+0050   1486           00135         bsf     SHOCK_LED_P2 ; se jogador 2 perdeu
+0051   1D22           00136         BTFSS   BOT,2
+0052   1506           00137         bsf     SHOCK_LED_P3 ; se jogador 3 perdeu
+0053   1DA2           00138         BTFSS   BOT,3
+0054   1586           00139         bsf     SHOCK_LED_P4 ; se jogador 4 perdeu
+0055   2872           00140         GOTO    DELAY_SHOCK
+                      00141 
+0056                  00142 BOTAO_P1_PRESS
+0056   1822           00143         BTFSC   BOT,0
+0057   0008           00144         RETURN
+MPASM  5.45           TRABALHOFINALMICMIC.ASM   6-29-2012  16:38:06         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0058   1422           00145         bsf     BOT,0 ; seta 1 no bit do jogador 1
+0059   0820           00146         movf    COUNTER,W ; carrega o valor de COUNTER em W
+005A   3E01           00147         addlw   1 ; soma 1
+005B   00A0           00148         movwf   COUNTER ; salva o valor de W em COUNTER
+005C   0008           00149         RETURN
+                      00150         
+005D                  00151 BOTAO_P2_PRESS
+005D   18A2           00152         BTFSC   BOT,1
+005E   0008           00153         RETURN
+005F   14A2           00154         bsf     BOT,1 ; seta 1 no bit do jogador 1
+0060   0820           00155         movf    COUNTER,W ; carrega o valor de COUNTER em W
+0061   3E01           00156         addlw   1 ; soma 1
+0062   00A0           00157         movwf   COUNTER ; salva o valor de W em COUNTER
+0063   0008           00158         RETURN
+                      00159 
+0064                  00160 BOTAO_P3_PRESS
+0064   1922           00161         BTFSC   BOT,2
+0065   0008           00162         RETURN
+0066   1522           00163         bsf     BOT,2 ; seta 1 no bit do jogador 1
+0067   0820           00164         movf    COUNTER,W ; carrega o valor de COUNTER em W
+0068   3E01           00165         addlw   1 ; soma 1
+0069   00A0           00166         movwf   COUNTER ; salva o valor de W em COUNTER
+006A   0008           00167         RETURN
+                      00168 
+006B                  00169 BOTAO_P4_PRESS
+006B   19A2           00170         BTFSC   BOT,3
+006C   0008           00171         RETURN
+006D   15A2           00172         bsf     BOT,3 ; seta 1 no bit do jogador 1
+006E   0820           00173         movf    COUNTER,W ; carrega o valor de COUNTER em W
+006F   3E01           00174         addlw 1 ; soma 1
+0070   00A0           00175         movwf   COUNTER ; salva o valor de W em COUNTER
+0071   0008           00176         RETURN
+                      00177 
+0072                  00178 DELAY_SHOCK
+0072   3003           00179         MOVLW   D'3'
+0073   00A4           00180         MOVWF   COUNT1
+                      00181 
+0074                  00182 DELAY0_SHOCK
+0074   3064           00183         MOVLW   D'100'
+0075   00A5           00184         MOVWF   COUNT2
+0076   0BA4           00185         DECFSZ  COUNT1,F
+0077   2881           00186         GOTO    DELAY1_SHOCK
+0078   0821           00187         movf    LAST_COUNTER,W
+0079   00A0           00188         movwf   COUNTER
+007A   0823           00189         movf    LAST_BOT,W
+007B   00A2           00190         movwf   BOT
+007C   1006           00191         bcf     SHOCK_LED_P1
+007D   1086           00192         bcf     SHOCK_LED_P2
+007E   1106           00193         bcf     SHOCK_LED_P3
+007F   1186           00194         bcf     SHOCK_LED_P4
+0080   2811           00195         GOTO    START
+                      00196 
+0081                  00197 DELAY1_SHOCK
+MPASM  5.45           TRABALHOFINALMICMIC.ASM   6-29-2012  16:38:06         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0081   30FF           00198         MOVLW   D'255'
+0082   00A6           00199         MOVWF   COUNT3
+0083   0BA5           00200         DECFSZ  COUNT2,F
+0084   2886           00201         GOTO    DELAY2_SHOCK
+0085   2874           00202         GOTO    DELAY0_SHOCK
+                      00203 
+0086                  00204 DELAY2_SHOCK
+0086   0BA6           00205         DECFSZ  COUNT3,F
+0087   2886           00206         GOTO    $-1
+0088   2881           00207         GOTO    DELAY1_SHOCK
+                      00208 
+0089                  00209 DELAY_LED
+0089   3006           00210         MOVLW   D'6'
+008A   00A4           00211         MOVWF   COUNT1
+008B   1706           00212         bsf     START_LED
+                      00213 
+                      00214 
+008C                  00215 DELAY0_LED
+008C   30FF           00216         MOVLW   D'255'
+008D   00A5           00217         MOVWF   COUNT2
+008E   0BA4           00218         DECFSZ  COUNT1,F
+008F   2892           00219         GOTO    DELAY1_LED
+0090   1306           00220         bcf     START_LED
+0091   283C           00221         GOTO    MAIN
+                      00222 
+0092                  00223 DELAY1_LED
+0092   30FF           00224         MOVLW   D'255'
+0093   00A6           00225         MOVWF   COUNT3
+0094   0BA5           00226         DECFSZ  COUNT2,F
+0095   2897           00227         GOTO    DELAY2_LED
+0096   288C           00228         GOTO    DELAY0_LED
+                      00229 
+0097                  00230 DELAY2_LED
+0097   0BA6           00231         DECFSZ  COUNT3,F
+0098   2897           00232         GOTO    $-1
+0099   1805           00233         btfsc   BOTAO_P1 
+009A   20A2           00234         call    SHOCK_P1
+009B   1885           00235         btfsc   BOTAO_P2
+009C   20A4           00236         call    SHOCK_P2
+009D   1905           00237         btfsc   BOTAO_P3
+009E   20A6           00238         call    SHOCK_P3
+009F   1985           00239         btfsc   BOTAO_P4
+00A0   20A8           00240         call    SHOCK_P4
+00A1   2892           00241         GOTO    DELAY1_LED
+                      00242 
+00A2                  00243 SHOCK_P1
+00A2   1406           00244         bsf SHOCK_LED_P1
+00A3   2872           00245         goto DELAY_SHOCK
+                      00246 
+00A4                  00247 SHOCK_P2
+00A4   1486           00248         bsf SHOCK_LED_P2
+00A5   2872           00249         goto DELAY_SHOCK
+                      00250 
+MPASM  5.45           TRABALHOFINALMICMIC.ASM   6-29-2012  16:38:06         PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00A6                  00251 SHOCK_P3
+00A6   1506           00252         bsf SHOCK_LED_P3
+00A7   2872           00253         goto DELAY_SHOCK
+                      00254 
+00A8                  00255 SHOCK_P4
+00A8   1586           00256         bsf SHOCK_LED_P4
+00A9   2872           00257         goto DELAY_SHOCK
+                      00258 
+Warning[205]: Found directive in column 1. (END)
+                      00259 END
+MPASM  5.45           TRABALHOFINALMICMIC.ASM   6-29-2012  16:38:06         PAGE  7
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ADDEN                             00000003
+ADEN                              00000003
+BANK0                             BCF STATUS,RP0
+BANK1                             BSF STATUS,RP0
+BOT                               00000022
+BOTAO_N_PS                        PORTA,5
+BOTAO_P1                          PORTA,0
+BOTAO_P1_PRESS                    00000056
+BOTAO_P2                          PORTA,1
+BOTAO_P2_PRESS                    0000005D
+BOTAO_P3                          PORTA,2
+BOTAO_P3_PRESS                    00000064
+BOTAO_P4                          PORTA,3
+BOTAO_P4_PRESS                    0000006B
+BOTAO_START                       PORTA,4
+BRGH                              00000002
+C                                 00000000
+C1INV                             00000004
+C1OUT                             00000006
+C2INV                             00000005
+C2OUT                             00000007
+CCP1CON                           00000017
+CCP1IE                            00000002
+CCP1IF                            00000002
+CCP1M0                            00000000
+CCP1M1                            00000001
+CCP1M2                            00000002
+CCP1M3                            00000003
+CCP1X                             00000005
+CCP1Y                             00000004
+CCPR1                             00000015
+CCPR1H                            00000016
+CCPR1L                            00000015
+CHECK_COUNTER                     00000047
+CIS                               00000003
+CM0                               00000000
+CM1                               00000001
+CM2                               00000002
+CMCON                             0000001F
+CMIE                              00000006
+CMIF                              00000006
+COUNT1                            00000024
+COUNT2                            00000025
+COUNT3                            00000026
+COUNTER                           00000020
+CREN                              00000004
+CSRC                              00000007
+DATA_CP_OFF                       00003FFF
+DATA_CP_ON                        00003EFF
+DC                                00000001
+DELAY0_LED                        0000008C
+DELAY0_SHOCK                      00000074
+DELAY1_LED                        00000092
+MPASM  5.45           TRABALHOFINALMICMIC.ASM   6-29-2012  16:38:06         PAGE  8
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+DELAY1_SHOCK                      00000081
+DELAY2_LED                        00000097
+DELAY2_SHOCK                      00000086
+DELAY_LED                         00000089
+DELAY_SHOCK                       00000072
+DISABLE_P3P4                      0000002D
+EEADR                             0000009B
+EECON1                            0000009C
+EECON2                            0000009D
+EEDATA                            0000009A
+EEIE                              00000007
+EEIF                              00000007
+ENABLED_LED_P3                    PORTB,4
+ENABLED_LED_P4                    PORTB,5
+F                                 00000001
+FERR                              00000002
+FIND_LOSER                        0000004D
+FSR                               00000004
+GIE                               00000007
+INDF                              00000000
+INICIO                            00000001
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+LAST_BOT                          00000023
+LAST_COUNTER                      00000021
+MAIN                              0000003C
+NOT_BO                            00000000
+NOT_BOD                           00000000
+NOT_BOR                           00000000
+NOT_PD                            00000003
+NOT_POR                           00000001
+NOT_RBPU                          00000007
+NOT_T1SYNC                        00000002
+NOT_TO                            00000004
+OERR                              00000001
+OPTION_REG                        00000081
+OSCF                              00000003
+PCL                               00000002
+PCLATH                            0000000A
+PCON                              0000008E
+PEIE                              00000006
+PIE1                              0000008C
+PIR1                              0000000C
+PORTA                             00000005
+PORTB                             00000006
+PR2                               00000092
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+MPASM  5.45           TRABALHOFINALMICMIC.ASM   6-29-2012  16:38:06         PAGE  9
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RA5                               00000005
+RA6                               00000006
+RA7                               00000007
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RCIE                              00000005
+RCIF                              00000005
+RCREG                             0000001A
+RCSTA                             00000018
+RD                                00000000
+RP0                               00000005
+RP1                               00000006
+RX9                               00000006
+RX9D                              00000000
+SET_N_PS                          00000017
+SET_P3                            0000001C
+SET_P4                            00000025
+SHOCK_LED_P1                      PORTB,0
+SHOCK_LED_P2                      PORTB,1
+SHOCK_LED_P3                      PORTB,2
+SHOCK_LED_P4                      PORTB,3
+SHOCK_P1                          000000A2
+SHOCK_P2                          000000A4
+SHOCK_P3                          000000A6
+SHOCK_P4                          000000A8
+SPBRG                             00000099
+SPEN                              00000007
+SREN                              00000005
+START                             00000011
+START_LED                         PORTB,6
+STATUS                            00000003
+SYNC                              00000004
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+T1CKPS0                           00000004
+T1CKPS1                           00000005
+T1CON                             00000010
+T1OSCEN                           00000003
+MPASM  5.45           TRABALHOFINALMICMIC.ASM   6-29-2012  16:38:06         PAGE 10
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+T2CKPS0                           00000000
+T2CKPS1                           00000001
+T2CON                             00000012
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TMR1                              0000000E
+TMR1CS                            00000001
+TMR1H                             0000000F
+TMR1IE                            00000000
+TMR1IF                            00000000
+TMR1L                             0000000E
+TMR1ON                            00000000
+TMR2                              00000011
+TMR2IE                            00000001
+TMR2IF                            00000001
+TMR2ON                            00000002
+TOUTPS0                           00000003
+TOUTPS1                           00000004
+TOUTPS2                           00000005
+TOUTPS3                           00000006
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISA5                            00000005
+TRISA6                            00000006
+TRISA7                            00000007
+TRISB                             00000086
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+TRMT                              00000001
+TX9                               00000006
+TX9D                              00000000
+TXEN                              00000005
+TXIE                              00000004
+TXIF                              00000004
+TXREG                             00000019
+TXSTA                             00000098
+VR0                               00000000
+VR1                               00000001
+VR2                               00000002
+VR3                               00000003
+VRCON                             0000009F
+VREN                              00000007
+MPASM  5.45           TRABALHOFINALMICMIC.ASM   6-29-2012  16:38:06         PAGE 11
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+VROE                              00000006
+VRR                               00000005
+W                                 00000000
+WAIT                              00000038
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_BODEN_OFF                        00003FBF
+_BODEN_ON                         00003FFF
+_BOREN_OFF                        00003FBF
+_BOREN_ON                         00003FFF
+_CONFIG                           00002007
+_CPD_OFF                          00003FFF
+_CPD_ON                           00003EFF
+_CP_50                            00002BFF
+_CP_75                            000017FF
+_CP_ALL                           000003FF
+_CP_OFF                           00003FFF
+_DEVID1                           00002006
+_ER_OSC_CLKOUT                    00003FFF
+_ER_OSC_NOCLKOUT                  00003FFE
+_EXTCLK_OSC                       00003FEF
+_FOSC_ECIO                        00003FEF
+_FOSC_ERCLK                       00003FFF
+_FOSC_ERIO                        00003FFE
+_FOSC_HS                          00003FEE
+_FOSC_INTOSCCLK                   00003FFD
+_FOSC_INTOSCIO                    00003FFC
+_FOSC_LP                          00003FEC
+_FOSC_XT                          00003FED
+_HS_OSC                           00003FEE
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_INTRC_OSC_CLKOUT                 00003FFD
+_INTRC_OSC_NOCLKOUT               00003FFC
+_LP_OSC                           00003FEC
+_LVP_OFF                          00003F7F
+_LVP_ON                           00003FFF
+_MCLRE_OFF                        00003FDF
+_MCLRE_ON                         00003FFF
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_WDTE_OFF                         00003FFB
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FED
+__16F628                          00000001
+__DEBUG                           1
+MPASM  5.45           TRABALHOFINALMICMIC.ASM   6-29-2012  16:38:06         PAGE 12
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+
+0000 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0040 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0080 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXX------ ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:   170
+Program Memory Words Free:  1878
+
+
+Errors   :     0
+Warnings :     5 reported,     0 suppressed
+Messages :     2 reported,     0 suppressed
+
+

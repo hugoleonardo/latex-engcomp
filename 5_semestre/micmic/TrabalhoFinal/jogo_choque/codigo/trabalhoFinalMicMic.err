@@ -1,0 +1,7 @@
+Warning[205] D:\JOGO_CHOQUE\CODIGO\TRABALHOFINALMICMIC.ASM 2 : Found directive in column 1. (LIST)
+Warning[205] D:\JOGO_CHOQUE\CODIGO\TRABALHOFINALMICMIC.ASM 3 : Found directive in column 1. (INCLUDE)
+Warning[205] D:\JOGO_CHOQUE\CODIGO\TRABALHOFINALMICMIC.ASM 33 : Found directive in column 1. (ORG)
+Warning[203] D:\JOGO_CHOQUE\CODIGO\TRABALHOFINALMICMIC.ASM 34 : Found opcode in column 1. (GOTO)
+Message[302] D:\JOGO_CHOQUE\CODIGO\TRABALHOFINALMICMIC.ASM 39 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] D:\JOGO_CHOQUE\CODIGO\TRABALHOFINALMICMIC.ASM 41 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[205] D:\JOGO_CHOQUE\CODIGO\TRABALHOFINALMICMIC.ASM 259 : Found directive in column 1. (END)

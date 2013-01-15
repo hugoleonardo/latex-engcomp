@@ -1,0 +1,8 @@
+\beamer@endinputifotherversion {3.10pt}
+\select@language {brazil}
+\beamer@sectionintoc {1}{Introdu\c {c}\~ao}{3}{0}{1}
+\beamer@sectionintoc {2}{Descri\c {c}\~ao do Jogo}{4}{0}{2}
+\beamer@sectionintoc {3}{Descri\c {c}\~ao da Simula\c {c}\~ao}{5}{0}{3}
+\beamer@subsectionintoc {3}{1}{O algoritmo}{6}{0}{3}
+\beamer@subsectionintoc {3}{2}{A Simula\c {c}\~ao}{8}{0}{3}
+\beamer@sectionintoc {4}{Dificuldades}{11}{0}{4}
