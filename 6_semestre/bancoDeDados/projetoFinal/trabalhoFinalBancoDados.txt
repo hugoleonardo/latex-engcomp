@@ -4,10 +4,14 @@ Entidades:
 	Controlador (Matrícula, nome, endereço, telefone, e-mail, ano de ingresso)
 	Piloto (Matrícula, nome, endereço, telefone, e-mail, Cia Aérea, horas de voo, ano em que começou a pilotar)
 	Aeronave (numero de série, modelo, Cia Aérea, peso, nº de passageiros, peso máximo)
-	Plano de Voo (idPlanoVoo, Origem, Destino, Comandante, isAprovado, isAlterado (guarda informações de quais planos sofreram alterações))
+	Plano de Voo (idPlanoVoo, Origem, Destino, Comandante, isAprovado, isAlterado (guarda informações de quais planos sofreram alterações), data&hora)
+	Voo (idPlanoVoo, Velocidade, altitude, fase do voo (composto), radar)
 		Fases de voo - Controle  de pista, Decolagem, Em Voo, Aterrissagem
-	Voo (idPlanoVoo, Velocidade, altitude, fase do voo (composto))
 	Aeroportos (código, localidade, nº de pistas (com a extensão de cada pista), nº de plataformas de embarque/desembarque, capacidade de passageiros
+	Radar (idRadar, alcance, cindacta(composto))
+		Cindacta - I/II/II/IV
+	
+	
 	
 Regras de negócio
 
@@ -22,4 +26,6 @@ Uma aeroave só pode ser pilotada por dois  pilotos (comandante e co-piloto)
 O piloto apresenta um plano de voo para aprovação (Dessa forma o sistema sabe quem apresentou plano de voo e quais foram aprovados ou rejeitadas, e quem aprovou/rejeitou)
 Cada plano de voo se encontra em somente uma Fase de voo (As fases se alteram conforme os controladores autorizam pousos e decolagens)
 Cada piloto só pode pilotar uma aeronave por plano de voo
+Cada aeronave, quando em voo é controlada por 1 ou mais radares
+Cada Radar pertence a somente um Cindacta
 	 
