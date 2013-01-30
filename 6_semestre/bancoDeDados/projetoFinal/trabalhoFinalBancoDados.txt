@@ -1,31 +1,73 @@
 Controle de Voo - Banco de Dados
 
 Entidades:
-	Controlador (Matrícula, nome, endereço, telefone, e-mail, ano de ingresso)
-	Piloto (Matrícula, nome, endereço, telefone, e-mail, Cia Aérea, horas de voo, ano em que começou a pilotar)
-	Aeronave (numero de série, modelo, Cia Aérea, peso, nº de passageiros, peso máximo)
-	Plano de Voo (idPlanoVoo, Origem, Destino, Comandante, isAprovado, isAlterado (guarda informações de quais planos sofreram alterações), data&hora)
-	Voo (idPlanoVoo, Velocidade, altitude, fase do voo (composto), radar)
-		Fases de voo - Controle  de pista, Decolagem, Em Voo, Aterrissagem
-	Aeroportos (código, localidade, nº de pistas (com a extensão de cada pista), nº de plataformas de embarque/desembarque, capacidade de passageiros
-	Radar (idRadar, alcance, cindacta(composto))
-		Cindacta - I/II/II/IV
+	Controlador (Matrícula, nome, endereço, telefone, email, ano de ingresso)
 	
+	Piloto (matricula, codigoAnac, nome, endereço, telefone, email, horasVoo, milhasVoadas)
+	
+	CiaAera (idCiaAerea, codigoAnac (3 dígitos), nomeCiaAerea)
+	
+	Aeronave (numeroSerie, matriculaAeronave, modelo, peso, nPassageiros, pesoMax, velCruzeiroKm (char5), velCruzeiroMach (char4), velCruzeiroKnot(char5))
+	
+	Plano de Voo (idPlanoVoo, isAprovado, data&horaSaida, data&horaChegada, outrosDados, prioridade, altitudeInicialCruzeiro)
+	
+	Tipo Plano de Voo (idTipoPlanoVoo, nomePlanoVoo, validoDe, validoAte, diaDeOperacao (1,2...,7)) - Completo, Simplificado, Repetitivo
+	
+	Escala (idEscala, nome)
+	
+	Voo (idVoo, numVoo (TAM4525), dataHoraSaida, dataHoraChegada, velCruzeiroKm (char5), velCruzeiroMach (char4), velCruzeiroKnot(char5))
+	
+	Aeroporto (idAeroporto, codigoICAO(4 letras), localidade, nPistas, nPlataformasEmbarqueDesembarque, capacidadePassageirosAno)
+	
+	Pistas (id pista, extensão)
+	
+	** AltitudeEmVoo (idAltVoo, idVoo, idPlanoVoo, altitude, idFixo)
 	
 	
 Regras de negócio
 
-Uma aeronave só pode possuir um plano de voo
-Um plano de voo pertence a somente uma aeronave
-O plano de voo tem somente um aeroporto como origem e somente um como destino 
-Uma aeronave pode ser controlada por 1 ou mais controladores
-Uma aeronave só pode ser pilotada por 2 pilotos
-Um controlador pode controlar 1 ou mais aeronaves
-Um controlador Libera um plano de voo
-Uma aeroave só pode ser pilotada por dois  pilotos (comandante e co-piloto)
-O piloto apresenta um plano de voo para aprovação (Dessa forma o sistema sabe quem apresentou plano de voo e quais foram aprovados ou rejeitadas, e quem aprovou/rejeitou)
-Cada plano de voo se encontra em somente uma Fase de voo (As fases se alteram conforme os controladores autorizam pousos e decolagens)
-Cada piloto só pode pilotar uma aeronave por plano de voo
-Cada aeronave, quando em voo é controlada por 1 ou mais radares
-Cada Radar pertence a somente um Cindacta
+Um voo só pode possuir um plano de voo.(ok)
+
+Uma aeronave só pode ser pilotada por 2 pilotos. (ok) 
+Uma aeronave pertence a uma Cia Aérea. (ok)
+
+Um controlador pode controlar 1 ou mais voos.(ok)
+Um controlador Libera um plano de voo. (ok)
+Uma voo pode ser controlado por 1 ou mais controladores. (ok)
+
+Um plano de voo pertence a vários voos. (ok)
+O plano de voo tem somente um aeroporto como origem e somente um como destino.(ok)
+Um plano de voo só pode ter uma aeronave.(ok)
+Um plano de voo tem que ser de um tipo (Simplificado, repetitivo ou completo). (ok)
+Um plano de voo só pode ter um piloto responsável. (ok)
+Um plano de voo pode percorrer várias rotas.(ok)
+
+
+Uma escala pode ter um ou mais planos de voo.(ok)
+Um plano de voo pode fazer várias escalas.(ok)
+Uma escala é feita em vários aeroportos.(ok)
+
+Um aeroporto recebe várias escalas.(ok)
+Um aeroporto pode possuir uma ou várias pistas.(ok)
+
+O piloto apresenta um ou mais planos de voo para aprovação.(ok)
+Um piloto trabalha para uma Cia Aérea. (ok)
+
+
+Descrição do Minimundo
+
+O aumento do fluxo de passageiros aéreos por ano é inegável, com o barateamento de tecnologias, os preços das passagens estão ficando cada vez mais acessíveis, com isso aumenta o tráfego áereo, gerando uma demanda por sistemas cada vez mais complexos, capazes de gerenciaa uma grande quantidade de voos indo para vários lugares ao redor do mundo sem deixar de ter como prioridade a segurança que estes sistemas devem oferecer, uma vez que um erro pode ser fatal e é necessário automatizar ao máximo o controle de tráfego para que erros humanos possam interferir o mínimo possível.
+Este sistema oferece uma visão simplificada de um sistema de controle de vôos, notadamente estes sistemas são muito mais complexos na prática, mas para efeito de demonstração apenas os principais aspectos foram destacados neste modelo.
+O processo começa quando um piloto elabora um Plano de Voo, que contém informações a cerca de um determinado voo (tipo completo ou simples), ou de vários vôos (tipo retificado), e leva o plano para aprovação, podendo este ser ou não alterado por um controlador de vôo. Uma vez aprovado, o processo vai para a etapa de vôo. O plano contém ainda informações sobre a aeronave que realizará o vôo e as escalas que ele irá realizar. Uma mesma escala acontece em vários aeroporto e todos os vôos possuem escalas, sendo assim os vôos diretos possuem apenas uma escala. Cada plano de vôo é único para cada vôo, à excessão do tipo retificado, usado em casos de vôos regulares, esse tipo de plano pode ter validade de até 7 dias, este prazo é indicado pelo atributo "diasOperacao" da tabela "PlanoVoo".
+Um piloto trabalha para uma Companhia Aérea, esta por suas vez possui aeronaves que são utilizadas para os vôos e registradas para cada vô no plano de vôo. Cada aeronave só pode ser pilotada por dois pilotos, o Comandante e o Co-Piloto.	
+
+Observações: 
+
+1) Na relação entre as tabelas "PlanoVoo" e "Aeroportos", existem só um atributo "Aeroportos_idAeroporto" mostrado no DBDesigner, mas âmbas as relações, de Aeroporto de origem e Aeroporto de destino estão mencionadas nos índices descritos abaixo da tabela. Lembrar de criar os Atributos "Aeroportos_idAeroportoOrigem" e "Aeroportos_idAeroportoDestino" para corrigir o problema do DBDesigner.
+
+2) Todas as tabelas estão na 2ª Forma Normal porque todos os atributos secundários de todas as tabelas dependem totalmente de suas respectivas chaves primárias, logo todas as tabelas já estão também na 1ª Forma Normal
+
+	2.1) A tabela Aeronaves não está na 3ª forma normal porque possui dependências transitivas, foi necessário retirar os atributos "matricula", "peso", "numPassageiros", "pesoMax", "velCruzeiroKm", velCruzeiroMach", velCruzeiroKnots".
+
 	 
+3) Fazer considerações sobre o que foi omitido por motivo de complexidade, mas que é importante para melhor eficiência na gerência no tráfego aéreo.

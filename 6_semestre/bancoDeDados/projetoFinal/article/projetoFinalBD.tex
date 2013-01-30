@@ -1,0 +1,44 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[pdftex]{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{verbatim}
+
+%opening
+\title{Proposta de um Projeto de Banco de Dados para Controle de Tráfego Aéreo}
+\author{Danilo Souza - 10080000801, Hugo Santos - 10080000701, Welton Araújo - 10080000501}
+
+\begin{document}
+
+\maketitle
+
+\section{Introdu\c{c}\~ao}
+
+O aumento do fluxo de passageiros aéreos por ano é inegável, com o barateamento de tecnologias, os preços das passagens estão ficando cada vez mais acessíveis, com isso aumenta o tráfego áereo, gerando uma demanda por sistemas cada vez mais complexos, capazes de gerenciaa uma grande quantidade de voos indo para vários lugares ao redor do mundo sem deixar de ter como prioridade a segurança que estes sistemas devem oferecer, uma vez que um erro pode ser fatal e é necessário automatizar ao máximo o controle de tráfego para que erros humanos possam interferir o mínimo possível.
+Este sistema oferece uma visão simplificada de um sistema de controle de vôos, notadamente estes sistemas são muito mais complexos na prática, mas para efeito de demonstração apenas os principais aspectos foram destacados neste projeto.
+
+\section{Mini-Mundo e Regras de Negócio}
+	\subsection{Descrição do Mini-Mundo}
+	O processo começa quando um piloto elabora um Plano de Voo, que contém informações a cerca de um determinado voo (tipo completo ou simples), ou de vários vôos (tipo retificado), e apresenta o plano para aprovação, podendo este ser ou não alterado por um controlador de vôo, caso um plano seja alterado esta informação será gravada para possíveis análises estatísticas no futuro. O plano contém ainda informações sobre a aeronave que realizará o vôo e as escalas que este irá fazer. Uma mesma escala acontece em vários aeroporto e todos os vôos possuem escalas, sendo assim os vôos diretos possuem apenas uma escala. Cada plano de vôo é único para cada vôo, à excessão do tipo retificado, usado em casos de vôos regulares, esse tipo de plano pode ter validade de até 7 dias, este prazo é indicado pelo atributo "diasOperacao" da tabela "PlanoVoo".  Uma vez aprovado, o processo vai para a etapa de vôo.
+Um piloto trabalha para uma Companhia Aérea, esta por suas vez possui aeronaves que são utilizadas para os vôos e registradas para cada vô no plano de vôo. Cada aeronave só pode ser pilotada por dois pilotos, o Comandante e o Co-Piloto.	
+
+	
+	
+	\subsection{Descrição das Regras de Negócio}
+
+\section{Modelo Entidade Relacionamento (MER}
+	\subsection{Entidades e Atributos}
+	\subsection{Relacionamento}
+	
+\section{Modelo Relacional}
+	\subsection{Descrição do Mapeamento}
+	\subsection{Dicionário de Dados}	
+	
+\section{Normalização}
+	
+\section{Considerações Finais e Trabalhos Futuros}
+
+
+\end{document}
+
+
