@@ -240,79 +240,6 @@ div, p, td {font-family: Tahoma, Verdana, Arial, MS Sans Serif; color: black; fo
 <br>
 <table cellpadding="2" cellspacing="0" border="0" width="100%" bgcolor="#e4efff">
   <tr>
-    <td class="fontX">Aeroportos_has_Escalas
-     <font class="fontS"><br></font></td>
-  </tr>
-  <tr>
-    <td>
-      <table cellpadding="2" cellspacing="0" border="0" width="100%" bgcolor="#d0dfff">
-        <tr>
-          <td class="fontSB" style="border-bottom: 1px solid #606060" width="15%">ColumnName</td>
-          <td class="fontSB" style="border-bottom: 1px solid #606060" width="15%">DataType</td>
-          <td class="fontSB" style="border-bottom: 1px solid #606060" width="1%">PrimaryKey&nbsp;&nbsp;</td>
-          <td class="fontSB" style="border-bottom: 1px solid #606060" width="1%">NotNull&nbsp;&nbsp;</td>
-          <td class="fontSB" style="border-bottom: 1px solid #606060" width="1%">Flags</td>
-          <td class="fontSB" style="border-bottom: 1px solid #606060" width="15%">Default Value</td>
-          <td class="fontSB" style="border-bottom: 1px solid #606060" width="20%">Comment</td>
-          <td class="fontSB" style="border-bottom: 1px solid #606060" width="1%">AutoInc</td>
-        </tr>
-        <tr>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0"><b>Aeroportos_idAeroporto</b></td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0"><b>INTEGER</b></td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">PK</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">NN</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">UNSIGNED </td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-        </tr>
-        <tr>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0"><b>Escalas_idEscalas</b></td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0"><b>INTEGER</b></td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">PK</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">NN</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">UNSIGNED </td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-        </tr>
-
-      </table>
-    </td>
-  </tr>
-  <tr>
-    <td class="fontB">
-      <table cellpadding="2" cellspacing="0" border="0" width="100%" bgcolor="#d8e6ff">
-        <tr>
-          <td class="fontSB" style="border-bottom: 1px solid #606060" width="15%">IndexName</td>
-          <td class="fontSB" style="border-bottom: 1px solid #606060" width="15%">IndexType</td>
-          <td class="fontSB" style="border-bottom: 1px solid #606060" width="15%">Columns</td>
-        </tr>
-        <tr>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">PRIMARY</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">PRIMARY</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Aeroportos_idAeroporto<br>Escalas_idEscalas<br></td>
-        </tr>
-        <tr>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">Aeroportos_has_Escalas_FKAeroporto</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">Index</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Aeroportos_idAeroporto<br></td>
-        </tr>
-        <tr>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">Aeroportos_has_Escalas_FKEscala</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">Index</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Escalas_idEscalas<br></td>
-        </tr>
-
-      </table>
-    </td>
-  </tr>
-
-</table>
-<br>
-<br>
-<table cellpadding="2" cellspacing="0" border="0" width="100%" bgcolor="#e4efff">
-  <tr>
     <td class="fontX">CiaAerea
      <font class="fontS"><br></font></td>
   </tr>
@@ -516,11 +443,11 @@ div, p, td {font-family: Tahoma, Verdana, Arial, MS Sans Serif; color: black; fo
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">AI</td>
         </tr>
         <tr>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">nome</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">VARCHAR(30)</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Aeroportos_idAeroporto</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">INTEGER</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">NN</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">UNSIGNED </td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
@@ -542,78 +469,15 @@ div, p, td {font-family: Tahoma, Verdana, Arial, MS Sans Serif; color: black; fo
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">PRIMARY</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">idEscalas<br></td>
         </tr>
-
-      </table>
-    </td>
-  </tr>
-
-</table>
-<br>
-<br>
-<table cellpadding="2" cellspacing="0" border="0" width="100%" bgcolor="#e4efff">
-  <tr>
-    <td class="fontX">Escalas_has_PlanoVoo
-     <font class="fontS"><br></font></td>
-  </tr>
-  <tr>
-    <td>
-      <table cellpadding="2" cellspacing="0" border="0" width="100%" bgcolor="#d0dfff">
         <tr>
-          <td class="fontSB" style="border-bottom: 1px solid #606060" width="15%">ColumnName</td>
-          <td class="fontSB" style="border-bottom: 1px solid #606060" width="15%">DataType</td>
-          <td class="fontSB" style="border-bottom: 1px solid #606060" width="1%">PrimaryKey&nbsp;&nbsp;</td>
-          <td class="fontSB" style="border-bottom: 1px solid #606060" width="1%">NotNull&nbsp;&nbsp;</td>
-          <td class="fontSB" style="border-bottom: 1px solid #606060" width="1%">Flags</td>
-          <td class="fontSB" style="border-bottom: 1px solid #606060" width="15%">Default Value</td>
-          <td class="fontSB" style="border-bottom: 1px solid #606060" width="20%">Comment</td>
-          <td class="fontSB" style="border-bottom: 1px solid #606060" width="1%">AutoInc</td>
-        </tr>
-        <tr>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0"><b>Escalas_idEscalas</b></td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0"><b>INTEGER</b></td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">PK</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">NN</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">UNSIGNED </td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-        </tr>
-        <tr>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0"><b>PlanoVoo_idPlanoVoo</b></td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0"><b>INTEGER</b></td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">PK</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">NN</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">UNSIGNED </td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-        </tr>
-
-      </table>
-    </td>
-  </tr>
-  <tr>
-    <td class="fontB">
-      <table cellpadding="2" cellspacing="0" border="0" width="100%" bgcolor="#d8e6ff">
-        <tr>
-          <td class="fontSB" style="border-bottom: 1px solid #606060" width="15%">IndexName</td>
-          <td class="fontSB" style="border-bottom: 1px solid #606060" width="15%">IndexType</td>
-          <td class="fontSB" style="border-bottom: 1px solid #606060" width="15%">Columns</td>
-        </tr>
-        <tr>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">PRIMARY</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">PRIMARY</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Escalas_idEscalas<br>PlanoVoo_idPlanoVoo<br></td>
-        </tr>
-        <tr>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">Escalas_has_PlanoVoo_FKEscala</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">Escalas_FKAeroportoOrigem</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">Index</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Escalas_idEscalas<br></td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Aeroportos_idAeroporto<br></td>
         </tr>
         <tr>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">Escalas_has_PlanoVoo_FKPlanoVoo</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">Escalas_FKAeroportoDestino</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">Index</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">PlanoVoo_idPlanoVoo<br></td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Aeroportos_idAeroporto<br></td>
         </tr>
 
       </table>
@@ -1186,6 +1050,79 @@ div, p, td {font-family: Tahoma, Verdana, Arial, MS Sans Serif; color: black; fo
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">PlanoVoo_FKAeroportoOrigem</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">Index</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Aeroportos_idAeroporto<br></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+
+</table>
+<br>
+<br>
+<table cellpadding="2" cellspacing="0" border="0" width="100%" bgcolor="#e4efff">
+  <tr>
+    <td class="fontX">PlanoVoo_has_Escalas
+     <font class="fontS"><br></font></td>
+  </tr>
+  <tr>
+    <td>
+      <table cellpadding="2" cellspacing="0" border="0" width="100%" bgcolor="#d0dfff">
+        <tr>
+          <td class="fontSB" style="border-bottom: 1px solid #606060" width="15%">ColumnName</td>
+          <td class="fontSB" style="border-bottom: 1px solid #606060" width="15%">DataType</td>
+          <td class="fontSB" style="border-bottom: 1px solid #606060" width="1%">PrimaryKey&nbsp;&nbsp;</td>
+          <td class="fontSB" style="border-bottom: 1px solid #606060" width="1%">NotNull&nbsp;&nbsp;</td>
+          <td class="fontSB" style="border-bottom: 1px solid #606060" width="1%">Flags</td>
+          <td class="fontSB" style="border-bottom: 1px solid #606060" width="15%">Default Value</td>
+          <td class="fontSB" style="border-bottom: 1px solid #606060" width="20%">Comment</td>
+          <td class="fontSB" style="border-bottom: 1px solid #606060" width="1%">AutoInc</td>
+        </tr>
+        <tr>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0"><b>PlanoVoo_idPlanoVoo</b></td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0"><b>INTEGER</b></td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">PK</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">NN</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">UNSIGNED </td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
+        </tr>
+        <tr>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0"><b>Escalas_idEscalas</b></td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0"><b>INTEGER</b></td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">PK</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">NN</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">UNSIGNED </td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="fontB">
+      <table cellpadding="2" cellspacing="0" border="0" width="100%" bgcolor="#d8e6ff">
+        <tr>
+          <td class="fontSB" style="border-bottom: 1px solid #606060" width="15%">IndexName</td>
+          <td class="fontSB" style="border-bottom: 1px solid #606060" width="15%">IndexType</td>
+          <td class="fontSB" style="border-bottom: 1px solid #606060" width="15%">Columns</td>
+        </tr>
+        <tr>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">PRIMARY</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">PRIMARY</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">PlanoVoo_idPlanoVoo<br>Escalas_idEscalas<br></td>
+        </tr>
+        <tr>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">PlanoVoo_has_Escalas_FKPlanoVoo</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">Index</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">PlanoVoo_idPlanoVoo<br></td>
+        </tr>
+        <tr>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">PlanoVoo_has_Escalas_FKEscala</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">Index</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Escalas_idEscalas<br></td>
         </tr>
 
       </table>

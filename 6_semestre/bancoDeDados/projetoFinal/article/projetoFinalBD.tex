@@ -1,42 +1,107 @@
-\documentclass[a4paper,10pt]{article}
+\documentclass{abnt}
+\usepackage[latin1]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage[num]{abntcite}
 \usepackage[pdftex]{graphicx}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{verbatim}
-
-%opening
-\title{Proposta de um Projeto de Banco de Dados para Controle de Tráfego Aéreo}
-\author{Danilo Souza - 10080000801, Hugo Santos - 10080000701, Welton Araújo - 10080000501}
-
+\usepackage{lscape}
+ 
 \begin{document}
 
+\begin{center}
+\title{Proposta de um Projeto de Banco de Dados para Controle de Tráfego Aéreo}
+\author{Danilo Souza 	- 	10080000801 \\
+		Hugo Santos 	- 	10080000701 \\
+		Welton Araújo 	- 	10080000501}
 \maketitle
+\end{center}
 
-\section{Introdu\c{c}\~ao}
+
+\chapter{Introdu\c{c}\~ao}
 
 O aumento do fluxo de passageiros aéreos por ano é inegável, com o barateamento de tecnologias, os preços das passagens estão ficando cada vez mais acessíveis, com isso aumenta o tráfego áereo, gerando uma demanda por sistemas cada vez mais complexos, capazes de gerenciaa uma grande quantidade de voos indo para vários lugares ao redor do mundo sem deixar de ter como prioridade a segurança que estes sistemas devem oferecer, uma vez que um erro pode ser fatal e é necessário automatizar ao máximo o controle de tráfego para que erros humanos possam interferir o mínimo possível.
 Este sistema oferece uma visão simplificada de um sistema de controle de vôos, notadamente estes sistemas são muito mais complexos na prática, mas para efeito de demonstração apenas os principais aspectos foram destacados neste projeto.
 
-\section{Mini-Mundo e Regras de Negócio}
-	\subsection{Descrição do Mini-Mundo}
-	O processo começa quando um piloto elabora um Plano de Voo, que contém informações a cerca de um determinado voo (tipo completo ou simples), ou de vários vôos (tipo retificado), e apresenta o plano para aprovação, podendo este ser ou não alterado por um controlador de vôo, caso um plano seja alterado esta informação será gravada para possíveis análises estatísticas no futuro. O plano contém ainda informações sobre a aeronave que realizará o vôo e as escalas que este irá fazer. Uma mesma escala acontece em vários aeroporto e todos os vôos possuem escalas, sendo assim os vôos diretos possuem apenas uma escala. Cada plano de vôo é único para cada vôo, à excessão do tipo retificado, usado em casos de vôos regulares, esse tipo de plano pode ter validade de até 7 dias, este prazo é indicado pelo atributo "diasOperacao" da tabela "PlanoVoo".  Uma vez aprovado, o processo vai para a etapa de vôo.
-Um piloto trabalha para uma Companhia Aérea, esta por suas vez possui aeronaves que são utilizadas para os vôos e registradas para cada vô no plano de vôo. Cada aeronave só pode ser pilotada por dois pilotos, o Comandante e o Co-Piloto.	
+\chapter{Mini-Mundo e Regras de Negócio}
 
-	
-	
-	\subsection{Descrição das Regras de Negócio}
+	\section{Descrição do Mini-Mundo}
+	O processo começa quando um piloto elabora um Plano de Voo, que contém informações a cerca de um determinado voo (tipo completo ou simples), ou de vários vôos (tipo retificado), e apresenta o plano para aprovação, podendo este ser ou não alterado por um controlador de vôo, caso um plano seja alterado esta informação será gravada para possíveis análises estatísticas no futuro. O plano contém ainda informações sobre a aeronave que realizará o vôo e as escalas que este irá fazer. Uma mesma escala acontece em vários aeroportos e todos os vôos possuem pelo menos uma escala, ou seja, os vôos diretos possuem uma única escala, os vôos com uma parada possuem duas escalas e assim sucessivamente. Cada plano de vôo é único para cada vôo, à excessão do tipo retificado, usado em casos de vôos regulares, esse tipo de plano pode ter validade de até 7 e sua duração é indicada pelo atributo ``diasOperacao" da tabela ``PlanoVoo".  Uma vez aprovado, o processo vai para a etapa de vôo.
+	Sobre o vôo propriamente dito é necessário saber se sua data e hora de partida estão de acordo com o que está estipulado no plano de vôo e também se a aeornave está operando em sua velocidade máxima. Cada vôo possui um número único, provido pelo órgão regulador, porém vôos com o mesmo número acontecem várias vezes, e podem possuir o mesmo plano de vôo, para que a informação seja guardada para cada decolagem em específico é utilizado um outro identificador chamado de ``idVoo", sendo este o identificador chave de todos os vôos realizados. Cada vôo pode ser controlado por um ou mais controladores e estes podem controlar um ou mais vôos simultaneamente.
+Um piloto trabalha para uma Companhia Aérea, que por sua vez possui aeronaves que são utilizadas para os vôos e registradas para cada vôo no plano de vôo. Cada aeronave só pode possui um comandante, sendo este o responsável pelo plano de vôo, cada aeronave possui um número de série, seu identificador, uma matrícula, provida pelo órgão regulador e um modelo que refere às suas caracteristicas técnicas.	
 
-\section{Modelo Entidade Relacionamento (MER}
-	\subsection{Entidades e Atributos}
-	\subsection{Relacionamento}
+	\section{Descrição das Regras de Negócio}
 	
-\section{Modelo Relacional}
-	\subsection{Descrição do Mapeamento}
-	\subsection{Dicionário de Dados}	
+		\begin{enumerate}
+			\item Um controlador é responsável por controlar um ou mais vôos, sendo que cada vôo pode ser controlado por um ou mais controladores. O controlador é também responsável por autorizar um plano de vôo. Sobre o controlador é necessário saber as seguintes informações: matrícula, endereco, nome, telefone, e-mail e ano de admissão.
+			\item O plano de vôo é apresentado pelo piloto (comandante) responsável pelo vôo, cada plano é identificado por um número e só pode ter um piloto responsável. Sobre plano é importante saber também os aeroportos de origem/destino, a data e a hora previstas de saída/chegada, se o plano foi ou não aprovado, a prioridade, a aeronave que será utilizada, a altitude de cruzeiro prevista para o vôo, as escalas que o vôo irá realizar, o tipo do plano e o prazo de validade daquele plano (para casos em que o plano de vôo é do tipo repetitivo).
+			\item O sistema possui também um cadastro com todas as companhias aéras que operam no espeço aéreo, bem como dos pilotos e das aeronaves à serviço destas companhias. Sobre os pilotos as informações armazenadas são: código ANAC, endereco, nome, telefone, e-mail, quantidade de horas e de milhas que o piloto ja voou.
+			\item Cada aeronave da companhia possui uma matrícula fornacida pelo órgão regulador (INFRAERO) e são identificadas pelo seu número de série. Cada aeronave possui um modelo, e cada modelo tem caracteristicas específicas: descrição do modelo, peso, número máximo de passageiros, peso máximo, e velocidade de cruzeiro em Km, nós e Mach's (unidade que mede a velocidade em comparação com a velocidade do som).
+			\item Sobre as escalas é necessário saber apenas os aeroportos de origem e destino, cada plano pode realizar várias escalas, do mesmo jeito que uma escala é utilizada por diferentes planos de vôo.
+			\item Sobre os aeroportos são armazenadas as seguintes informações: código ICAO (identificador internacional de aeroportos), cidade onde o aeroporto está localizado, capacidade de passageiros por ano, número de plataformas para embarque/desembarque e número de pistas, sendo necessário também armazenar a extensão de cada pista dos aeroportos.
+		\end{enumerate}
 	
-\section{Normalização}
 	
-\section{Considerações Finais e Trabalhos Futuros}
+\chapter{Modelo Entidade Relacionamento (MER)}
+	
+	\section{O Modelo}
+		\clearpage	
+		\begin{landscape}	
+			\begin{figure}[!]
+  				\centering
+  				\includegraphics[width=22cm]{./pictures/ModeloEntidadeRelacionamentoControleVoos.png}
+  				\caption{Modelo Entidade Relacionamento - Controle de Vôos}
+  				\label{fig:Modelo Entidade Relacionamento - Controle de Vôos}
+			\end{figure}
+		\end{landscape}
+	
+\chapter{Modelo Relacional}
+
+	\section{O Modelo}	
+		\begin{landscape}	
+			\begin{figure}[h]
+  				\centering
+  				\includegraphics[width=22cm]{./pictures/ModeloRelacionalControleVoos.png}
+  				\caption{Modelo Relaciona - Controle de Vôos}
+  				\label{fig:Modelo Relacional - Controle de Vôos}
+			\end{figure}
+		\end{landscape}
+	
+	
+	\section{Descrição do Mapeamento}
+	
+		A tabela 1 apresenta a descrição sobre as regras de mapeamentos aplicadas à cada entidade do Modelo Entidade Relacionamento (MER).
+		
+		\begin{table}[h]
+		%\centering
+			\begin{tabular}{|l|l|p{7cm}|}
+				\hline
+				\textbf{Tabelas}	& \textbf{Entidade(s) Originária(s)}	& \textbf{Descrição do 							mapeamento} \\ \hline
+				CiaAerea		&		CiaAerea		& Entidade Forte \\ \hline
+				Aeronaves		&		Aeronaves		& Entidade Forte \\ \hline
+				Modelo Aeronaves&		Aeronaves		& Foi criada a partir da aplicação de uma regra 						de normalização que será explicada com mais detalhes na seção 5 \\ \hline
+				Pilotos			&		Pilotos		& Entidade Forte \\ \hline
+				Controladores	&		Controlador	& Entidade Forte \\ \hline
+				Voo				&		Voo				& Entidade Forte \\ \hline
+				Voo\_has\_Controlador &	Controladores e Voo & Relacionamento N:N entre Voo e 									Controlador \\ \hline
+				Aeroportos		&		Aeroportos		& Entidade Forte \\ \hline
+				Pistas			&		Pistas			& Foi criada por ser um atributo multivalorado 							da tabela ``Aeroportos" \\ \hline
+				Escalas			& 		Escalas			& Entidade Forte \\ \hline
+				PlanoVoo		&		PlanoVoo		& Entidade Forte \\ \hline
+				TipoPlanoVoo	&		TipoPlanoVoo	& Entidade Forte \\ \hline
+				PlanoVoo\_has\_Escalas &	Escalas e Plano Voo & Relacionamento N:N entre PlanoVoo e 									Escalas\\ \hline			
+				\hline
+			\end{tabular}
+		\caption{Descrição do Mapeamento MER - MR}
+		\label{tab:mapeamento}
+		\end{table}			
+	
+	\section{Dicionário de Dados}	
+	
+\chapter{Normalização}
+	
+\chapter{Considerações Finais e Trabalhos Futuros}
 
 
 \end{document}

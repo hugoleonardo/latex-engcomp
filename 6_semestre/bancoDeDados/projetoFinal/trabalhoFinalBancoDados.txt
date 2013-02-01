@@ -26,14 +26,16 @@ Entidades:
 	
 Regras de negócio
 
-Um voo só pode possuir um plano de voo.(ok)
+
 
 Uma aeronave só pode ser pilotada por 2 pilotos. (ok) 
 Uma aeronave pertence a uma Cia Aérea. (ok)
 
 Um controlador pode controlar 1 ou mais voos.(ok)
 Um controlador Libera um plano de voo. (ok)
+
 Uma voo pode ser controlado por 1 ou mais controladores. (ok)
+Um voo só pode possuir um plano de voo.(ok)
 
 Um plano de voo pertence a vários voos. (ok)
 O plano de voo tem somente um aeroporto como origem e somente um como destino.(ok)
@@ -57,7 +59,7 @@ Um piloto trabalha para uma Cia Aérea. (ok)
 Descrição do Minimundo
 
 O aumento do fluxo de passageiros aéreos por ano é inegável, com o barateamento de tecnologias, os preços das passagens estão ficando cada vez mais acessíveis, com isso aumenta o tráfego áereo, gerando uma demanda por sistemas cada vez mais complexos, capazes de gerenciaa uma grande quantidade de voos indo para vários lugares ao redor do mundo sem deixar de ter como prioridade a segurança que estes sistemas devem oferecer, uma vez que um erro pode ser fatal e é necessário automatizar ao máximo o controle de tráfego para que erros humanos possam interferir o mínimo possível.
-Este sistema oferece uma visão simplificada de um sistema de controle de vôos, notadamente estes sistemas são muito mais complexos na prática, mas para efeito de demonstração apenas os principais aspectos foram destacados neste modelo.
+Este sistema oferece uma visão simplificada de um sistema de controle de vôos, notadamente estes sistemas são muito mais complexos na prática, mas para efeito de demonstração apenas os principais aspectos foram destacados neste projeto.
 O processo começa quando um piloto elabora um Plano de Voo, que contém informações a cerca de um determinado voo (tipo completo ou simples), ou de vários vôos (tipo retificado), e leva o plano para aprovação, podendo este ser ou não alterado por um controlador de vôo. Uma vez aprovado, o processo vai para a etapa de vôo. O plano contém ainda informações sobre a aeronave que realizará o vôo e as escalas que ele irá realizar. Uma mesma escala acontece em vários aeroporto e todos os vôos possuem escalas, sendo assim os vôos diretos possuem apenas uma escala. Cada plano de vôo é único para cada vôo, à excessão do tipo retificado, usado em casos de vôos regulares, esse tipo de plano pode ter validade de até 7 dias, este prazo é indicado pelo atributo "diasOperacao" da tabela "PlanoVoo".
 Um piloto trabalha para uma Companhia Aérea, esta por suas vez possui aeronaves que são utilizadas para os vôos e registradas para cada vô no plano de vôo. Cada aeronave só pode ser pilotada por dois pilotos, o Comandante e o Co-Piloto.	
 
@@ -71,3 +73,5 @@ Observações:
 
 	 
 3) Fazer considerações sobre o que foi omitido por motivo de complexidade, mas que é importante para melhor eficiência na gerência no tráfego aéreo.
+
+4) Tivemos que amarrar o fato de que o piloto que requisitou o plano de voo é o comandante de todos os vôos associados àquele plano (no caso do plano repetitivo)

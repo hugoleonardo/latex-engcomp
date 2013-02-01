@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.6.25)  30 JAN 2013 18:24
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.6.25)  31 JAN 2013 23:19
 entering extended mode
 **projetoFinalBD.tex
 
@@ -15,29 +15,173 @@ an, ngerman-x-2009-06-19, nynorsk, oriya, panjabi, pinyin, polish, portuguese,
 romanian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swis
 sgerman, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, u
 senglishmax, welsh, loaded.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size10.clo"
-File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\abntex\abnt.cls"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\abntex\cvs-id.def")
+Document Class: abnt 2004/11/02 v1.27.2.1 Classe abnt (NBR6024, NBR6027, NBR602
+8, NBR14724)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\c@part=\count79
-\c@section=\count80
-\c@subsection=\count81
-\c@subsubsection=\count82
-\c@paragraph=\count83
-\c@subparagraph=\count84
-\c@figure=\count85
-\c@table=\count86
-\abovecaptionskip=\skip41
-\belowcaptionskip=\skip42
-\bibindent=\dimen102
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\calc.sty"
+Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count79
+\calc@Bcount=\count80
+\calc@Adimen=\dimen102
+\calc@Bdimen=\dimen103
+\calc@Askip=\skip41
+\calc@Bskip=\skip42
+LaTeX Info: Redefining \setlength on input line 76.
+LaTeX Info: Redefining \addtolength on input line 77.
+\calc@Ccount=\count81
+\calc@Cskip=\skip43
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\multicol.sty"
+Package: multicol 2011/06/27 v1.7a multicolumn formatting (FMi)
+\c@tracingmulticols=\count82
+\mult@box=\box26
+\multicol@leftmargin=\dimen104
+\c@unbalance=\count83
+\c@collectmore=\count84
+\doublecol@number=\count85
+\multicoltolerance=\count86
+\multicolpretolerance=\count87
+\full@width=\dimen105
+\page@free=\dimen106
+\premulticols=\dimen107
+\postmulticols=\dimen108
+\multicolsep=\skip44
+\multicolbaselineskip=\skip45
+\partial@page=\box27
+\last@line=\box28
+\mult@rightbox=\box29
+\mult@grightbox=\box30
+\mult@gfirstbox=\box31
+\mult@firstbox=\box32
+\@tempa=\box33
+\@tempa=\box34
+\@tempa=\box35
+\@tempa=\box36
+\@tempa=\box37
+\@tempa=\box38
+\@tempa=\box39
+\@tempa=\box40
+\@tempa=\box41
+\@tempa=\box42
+\@tempa=\box43
+\@tempa=\box44
+\@tempa=\box45
+\@tempa=\box46
+\@tempa=\box47
+\@tempa=\box48
+\@tempa=\box49
+\c@columnbadness=\count88
+\c@finalcolumnbadness=\count89
+\last@try=\dimen109
+\multicolovershoot=\dimen110
+\multicolundershoot=\dimen111
+\mult@nat@firstbox=\box50
+\colbreak@box=\box51
+\multicol@sort@counter=\count90
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\report.cls"
+Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size12.clo"
+File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count91
+\c@chapter=\count92
+\c@section=\count93
+\c@subsection=\count94
+\c@subsubsection=\count95
+\c@paragraph=\count96
+\c@subparagraph=\count97
+\c@figure=\count98
+\c@table=\count99
+\abovecaptionskip=\skip46
+\belowcaptionskip=\skip47
+\bibindent=\dimen112
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\setspace\setspace.sty"
+Package: setspace 2011/12/19 v6.7a set line spacing
+)
+\ABNTanapindent=\skip48
+\ABNTsignwidth=\skip49
+\ABNTsignthickness=\skip50
+\ABNTsignskip=\skip51
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\indentfirst.sty"
+Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+Package: inputenc 2008/03/30 v1.1d Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\latin1.def"
+File: latin1.def 2008/03/30 v1.1d Input encoding file
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\babel\babel.sty"
+Package: babel 2008/07/08 v3.8m The Babel package
+
+*************************************
+* Local config file bblopts.cfg used
+*
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
+File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\babel\portuges.ldf"
+Language: portuges 2008/03/18 v1.2q Portuguese support from the babel system
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\babel\babel.def"
+File: babel.def 2008/07/08 v3.8m Babel common definitions
+\babel@savecnt=\count100
+\U@D=\dimen113
+)
+\l@brazil = a dialect from \language\l@portuges 
+Package babel Info: Making " an active character on input line 145.
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\abntex\abntcite.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\abntex\cvs-id.def")
+Package: abntcite 2003/10/13 v1.26 Chamadas de referencias no texto (NBR10520)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\abntex\abntex-abrev.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\abntex\cvs-id.def")
+Package: abntex-abrev 2003/10/13 v1.3 Abreviacoes
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\abntex\nbr10522-1988.def"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\abntex\cvs-id.def")
+File: nbr10522-1988.def 2003/10/13 v1.2 Abreviacoes bibliograficas (NBR10522:19
+88)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\abntex\abntex-abrev-pt_BR.def"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\abntex\cvs-id.def")
+File: abntex-abrev-pt_BR.def 2003/10/13 v1.2 definicao de abntex-abrev, traduca
+o de termos en_US/pt_BR
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\abntex\nbr10520-2002.def"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\abntex\cvs-id.def")
+File: nbr10520-2002.def 2003/10/13 v1.2 Definicoes para abntcite (NBR10520:2002
+)
+)
+\minimumbiblabelwidth=\skip52
+\ABCIauxlen=\skip53
+\c@ABCIaux=\count101
+\c@ABCImax=\count102
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ltxmisc\relsize.sty"
+Package: relsize 2003/07/04 ver 3.1
+)
+\biblabelsep=\skip54
+LaTeX Info: Redefining \newblock on input line 562.
+LaTeX Info: Redefining \cite on input line 831.
+\ABCItoken=\toks16
 )
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
-\KV@toks@=\toks14
+\KV@toks@=\toks17
 )
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
@@ -59,38 +203,162 @@ Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
-\Gread@gobject=\count87
+\Gread@gobject=\count103
 ))
-\Gin@req@height=\dimen103
-\Gin@req@width=\dimen104
+\Gin@req@height=\dimen114
+\Gin@req@width=\dimen115
 )
 (C:\Users\Jass\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption.sty
 Package: caption 2012/02/19 v3.2f Customizing captions (AR)
 
 (C:\Users\Jass\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption3.sty
 Package: caption3 2012/01/12 v1.4b caption3 kernel (AR)
-\captionmargin=\dimen105
-\captionmargin@=\dimen106
-\captionwidth=\dimen107
-\caption@indent=\dimen108
-\caption@parindent=\dimen109
-\caption@hangindent=\dimen110
+\captionmargin=\dimen116
+\captionmargin@=\dimen117
+\captionwidth=\dimen118
+\caption@indent=\dimen119
+\caption@parindent=\dimen120
+\caption@hangindent=\dimen121
 )
-\c@ContinuedFloat=\count88
+\c@ContinuedFloat=\count104
 )
 (C:\Users\Jass\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\subcaption.sty
 Package: subcaption 2012/01/12 v1.1d Sub-captions (AR)
-\c@subfigure=\count89
-\c@subtable=\count90
+\c@subfigure=\count105
+\c@subtable=\count106
 )
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\verbatim.sty"
 Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks15
-\verbatim@line=\toks16
+\every@verbatim=\toks18
+\verbatim@line=\toks19
 \verbatim@in@stream=\read1
 )
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\lscape.sty"
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
 (E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\6_semestre\bancoDeDados\projet
-oFinal\article\projetoFinalBD.aux)
+oFinal\article\projetoFinalBD.aux
+! Missing \endcsname inserted.
+<to be read again> 
+                   \unhbox 
+l.12 ...elacionamento - Controle de V\^oos}{{1}{}}
+                                                  
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+
+LaTeX Warning: Label `fig:Modelo Entidade Relacionamento - Controle de V\^oos' 
+multiply defined.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \unhbox 
+l.12 ...elacionamento - Controle de V\^oos}{{1}{}}
+                                                  
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.12 ...elacionamento - Controle de V\^oos}{{1}{}}
+                                                  
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   \accent@spacefactor 
+l.12 ...elacionamento - Controle de V\^oos}{{1}{}}
+                                                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Bad space factor (0).
+<to be read again> 
+                   \accent@spacefactor 
+l.12 ...elacionamento - Controle de V\^oos}{{1}{}}
+                                                  
+I allow only values in the range 1..32767 here.
+
+! Extra \endcsname.
+\@namedef ...xpandafter \def \csname #1\endcsname 
+                                                  
+l.12 ...elacionamento - Controle de V\^oos}{{1}{}}
+                                                  
+I'm ignoring this, since I wasn't doing a \csname.
+
+! Extra }, or forgotten \endgroup.
+\@newl@bel ...ined}}\global \@namedef {#1@#2}{#3}}
+                                                  
+l.12 ...elacionamento - Controle de V\^oos}{{1}{}}
+                                                  
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \unhbox 
+l.15 ...lo Relacional - Controle de V\^oos}{{2}{}}
+                                                  
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+
+LaTeX Warning: Label `fig:Modelo Relacional - Controle de V\^oos' multiply defi
+ned.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \unhbox 
+l.15 ...lo Relacional - Controle de V\^oos}{{2}{}}
+                                                  
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   \accent@spacefactor 
+l.15 ...lo Relacional - Controle de V\^oos}{{2}{}}
+                                                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Bad space factor (0).
+<to be read again> 
+                   \accent@spacefactor 
+l.15 ...lo Relacional - Controle de V\^oos}{{2}{}}
+                                                  
+I allow only values in the range 1..32767 here.
+
+! Extra \endcsname.
+\@namedef ...xpandafter \def \csname #1\endcsname 
+                                                  
+l.15 ...lo Relacional - Controle de V\^oos}{{2}{}}
+                                                  
+I'm ignoring this, since I wasn't doing a \csname.
+
+! Extra }, or forgotten \endgroup.
+\@newl@bel ...ined}}\global \@namedef {#1@#2}{#3}}
+                                                  
+l.15 ...lo Relacional - Controle de V\^oos}{{2}{}}
+                                                  
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
 LaTeX Font Info:    ... okay on input line 11.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
@@ -103,58 +371,159 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
 LaTeX Font Info:    ... okay on input line 11.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
 LaTeX Font Info:    ... okay on input line 11.
-
-(C:\Users\Jass\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+ (C:\Users\Jass\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count91
-\scratchdimen=\dimen111
-\scratchbox=\box26
-\nofMPsegments=\count92
-\nofMParguments=\count93
-\everyMPshowfont=\toks17
-\MPscratchCnt=\count94
-\MPscratchDim=\dimen112
-\MPnumerator=\count95
-\makeMPintoPDFobject=\count96
-\everyMPtoPDFconversion=\toks18
+\scratchcounter=\count107
+\scratchdimen=\dimen122
+\scratchbox=\box52
+\nofMPsegments=\count108
+\nofMParguments=\count109
+\everyMPshowfont=\toks20
+\MPscratchCnt=\count110
+\MPscratchDim=\dimen123
+\MPnumerator=\count111
+\makeMPintoPDFobject=\count112
+\everyMPtoPDFconversion=\toks21
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-Missing character: There is no á in font cmr17!
-Missing character: There is no é in font cmr17!
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 13.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 13.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 13.
-Missing character: There is no ú in font cmr12!
-
-Overfull \hbox (112.07733pt too wide) in paragraph at lines 13--13
- [][] 
- []
-
-[1
+ [1
 
 {C:/Users/Jass/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 18.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 18.
+ [1]
+Cap\'{\i }tulo 1.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 22.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 22.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 22.
+[2
+
+]
+Cap\'{\i }tulo 2.
+[3
+
+] [4]
+Cap\'{\i }tulo 3.
+[5
+
+]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `!tbp') on input line 51.
+
+
+<./pictures/ModeloEntidadeRelacionamentoControleVoos.png, id=24, 633.0852pt x 4
+29.2838pt>
+File: ./pictures/ModeloEntidadeRelacionamentoControleVoos.png Graphic file (typ
+e png)
+ <use ./pictures/ModeloEntidadeRelacionamentoControleVoos.png>
+Package pdftex.def Info: ./pictures/ModeloEntidadeRelacionamentoControleVoos.pn
+g used on input line 53.
+(pdftex.def)             Requested size: 625.96062pt x 424.46169pt.
+
+[6 <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/6_semestre/bancoDeDados/pro
+jetoFinal/article/pictures/ModeloEntidadeRelacionamentoControleVoos.png (PNG co
+py)>]
+Cap\'{\i }tulo 4.
+[7
+
+
+
+
+]
+<./pictures/ModeloRelacionalControleVoos.png, id=32, 1548.78625pt x 1128.215pt>
+File: ./pictures/ModeloRelacionalControleVoos.png Graphic file (type png)
+<use ./pictures/ModeloRelacionalControleVoos.png>
+Package pdftex.def Info: ./pictures/ModeloRelacionalControleVoos.png used on in
+put line 65.
+(pdftex.def)             Requested size: 625.96062pt x 455.97774pt.
+
+
+LaTeX Warning: Float too large for page by 25.23361pt on input line 68.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[8 <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/6_semestre/bancoDeDados/pro
+jetoFinal/article/pictures/ModeloRelacionalControleVoos.png (PNG copy)>]
+Overfull \hbox (41.01323pt too wide) in paragraph at lines 78--96
+[][] 
+ []
+
+[9
+
+
+]
+Cap\'{\i }tulo 5.
+[10
+
+]
+Cap\'{\i }tulo 6.
++-------------------------------------------------------------------+
+| Comentario, sugestao ou critica sobre o abnTeX? Entre em contato: |
+|                  http://abntex.codigolivre.org.br                 |
++-------------------------------------------------------------------+
+[11
+
+]
 (E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\6_semestre\bancoDeDados\projet
-oFinal\article\projetoFinalBD.aux) ) 
+oFinal\article\projetoFinalBD.aux
+! Missing \endcsname inserted.
+<to be read again> 
+                   \unhbox 
+l.12 ...elacionamento - Controle de V\^oos}{{1}{}}
+                                                  
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Extra \endcsname.
+\@newl@bel ... \bbl@tempa \csname #1@#2\endcsname 
+                                                  \def \bbl@tempb {#3}\@safe...
+l.12 ...elacionamento - Controle de V\^oos}{{1}{}}
+                                                  
+I'm ignoring this, since I wasn't doing a \csname.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \unhbox 
+l.15 ...lo Relacional - Controle de V\^oos}{{2}{}}
+                                                  
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Extra \endcsname.
+\@newl@bel ... \bbl@tempa \csname #1@#2\endcsname 
+                                                  \def \bbl@tempb {#3}\@safe...
+l.15 ...lo Relacional - Controle de V\^oos}{{2}{}}
+                                                  
+I'm ignoring this, since I wasn't doing a \csname.
+
+)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 2208 strings out of 494045
- 34907 string characters out of 3145972
- 90326 words of memory out of 3000000
- 5533 multiletter control sequences out of 15000+200000
- 7280 words of font info for 26 fonts, out of 3000000 for 9000
+ 3474 strings out of 494045
+ 54015 string characters out of 3145972
+ 120459 words of memory out of 3000000
+ 6720 multiletter control sequences out of 15000+200000
+ 9167 words of font info for 32 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 36i,6n,38p,246b,189s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publ
-ic/amsfonts/cm/cmr17.pfb>
-Output written on projetoFinalBD.pdf (1 page, 43064 bytes).
+ 36i,10n,38p,1022b,307s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb>
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:
+/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb>
+Output written on projetoFinalBD.pdf (12 pages, 491258 bytes).
 PDF statistics:
- 22 PDF objects out of 1000 (max. 8388607)
+ 59 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
