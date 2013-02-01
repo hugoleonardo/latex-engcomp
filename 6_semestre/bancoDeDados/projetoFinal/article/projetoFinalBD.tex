@@ -1,22 +1,36 @@
 \documentclass{abnt}
 \usepackage[latin1]{inputenc}
 \usepackage[brazil]{babel}
-\usepackage[num]{abntcite}
+\usepackage[alf]{abntcite}
 \usepackage[pdftex]{graphicx}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{verbatim}
 \usepackage{lscape}
+\usepackage{float}
+\makeindex
+ 
+
  
 \begin{document}
 
-\begin{center}
-\title{Proposta de um Projeto de Banco de Dados para Controle de Tráfego Aéreo}
-\author{Danilo Souza 	- 	10080000801 \\
-		Hugo Santos 	- 	10080000701 \\
-		Welton Araújo 	- 	10080000501}
-\maketitle
-\end{center}
+%% informações sobre o trabalho
+\autor{	Danilo Souza 	- 10080000801 \\
+		Hugo Leonardo 	- 10080000701 \\
+		Welton Araújo 	- 10080000501}
+%\coautor{Fulano Fulanowsky}
+\titulo{Controle de Tráfego Aéreo}
+\comentario{Trabalho de Conclusão de disciplina referente à disciplina de Banco de Dados do 6\textordmasculine semestre do Curso de Engenharia de Computação.}
+\instituicao{Universidade Federal do Pará}
+\orientador[Professora: ]{Fabíola Araújo}
+\local{Belém}
+\data{2013} 
+
+\capa
+\folhaderosto
+\listoffigures
+\listoftables
+\sumario
 
 
 \chapter{Introdu\c{c}\~ao}
@@ -27,18 +41,18 @@ Este sistema oferece uma visão simplificada de um sistema de controle de vôos, n
 \chapter{Mini-Mundo e Regras de Negócio}
 
 	\section{Descrição do Mini-Mundo}
-	O processo começa quando um piloto elabora um Plano de Voo, que contém informações a cerca de um determinado voo (tipo completo ou simples), ou de vários vôos (tipo retificado), e apresenta o plano para aprovação, podendo este ser ou não alterado por um controlador de vôo, caso um plano seja alterado esta informação será gravada para possíveis análises estatísticas no futuro. O plano contém ainda informações sobre a aeronave que realizará o vôo e as escalas que este irá fazer. Uma mesma escala acontece em vários aeroportos e todos os vôos possuem pelo menos uma escala, ou seja, os vôos diretos possuem uma única escala, os vôos com uma parada possuem duas escalas e assim sucessivamente. Cada plano de vôo é único para cada vôo, à excessão do tipo retificado, usado em casos de vôos regulares, esse tipo de plano pode ter validade de até 7 e sua duração é indicada pelo atributo ``diasOperacao" da tabela ``PlanoVoo".  Uma vez aprovado, o processo vai para a etapa de vôo.
-	Sobre o vôo propriamente dito é necessário saber se sua data e hora de partida estão de acordo com o que está estipulado no plano de vôo e também se a aeornave está operando em sua velocidade máxima. Cada vôo possui um número único, provido pelo órgão regulador, porém vôos com o mesmo número acontecem várias vezes, e podem possuir o mesmo plano de vôo, para que a informação seja guardada para cada decolagem em específico é utilizado um outro identificador chamado de ``idVoo", sendo este o identificador chave de todos os vôos realizados. Cada vôo pode ser controlado por um ou mais controladores e estes podem controlar um ou mais vôos simultaneamente.
-Um piloto trabalha para uma Companhia Aérea, que por sua vez possui aeronaves que são utilizadas para os vôos e registradas para cada vôo no plano de vôo. Cada aeronave só pode possui um comandante, sendo este o responsável pelo plano de vôo, cada aeronave possui um número de série, seu identificador, uma matrícula, provida pelo órgão regulador e um modelo que refere às suas caracteristicas técnicas.	
+	O processo começa quando um piloto elabora um Plano de Voo, que contém informações a cerca de um determinado voo (tipo completo ou simples), ou de vários vôos (tipo retificado), e apresenta o plano para aprovação, podendo este ser ou não alterado por um controlador de vôo, caso um plano seja alterado esta informação será gravada para possíveis análises estatísticas no futuro. O plano contém ainda informações sobre a aeronave que realizará o vôo e as escalas que este irá fazer. Uma mesma escala acontece em vários aeroportos e todos os v\^oos possuem pelo menos uma escala, ou seja, os v\^oos diretos possuem uma única escala, os v\^oos com uma parada possuem duas escalas e assim sucessivamente. Cada plano de v\^oo é único para cada v\^oo, à excessão do tipo retificado, usado em casos de v\^oos regulares, esse tipo de plano pode ter validade de até 7 e sua duração é indicada pelo atributo ``diasOperacao" da tabela ``PlanoVoo".  Uma vez aprovado, o processo vai para a etapa de v\^oo.
+	Sobre o v\^oo propriamente dito é necessário saber se sua data e hora de partida estão de acordo com o que está estipulado no plano de v\^oo e também se a aeornave está operando em sua velocidade máxima. Cada v\^oo possui um número único, provido pelo órgão regulador, porém v\^oos com o mesmo número acontecem várias vezes, e podem possuir o mesmo plano de v\^oo, para que a informação seja guardada para cada decolagem em específico é utilizado um outro identificador chamado de ``idVoo", sendo este o identificador chave de todos os v\^oos realizados. Cada v\^oo pode ser controlado por um ou mais controladores e estes podem controlar um ou mais v\^oos simultaneamente.
+Um piloto trabalha para uma Companhia Aérea, que por sua vez possui aeronaves que são utilizadas para os v\^oos e registradas para cada v\^oo no plano de v\^oo. Cada aeronave só pode possui um comandante, sendo este o responsável pelo plano de v\^oo, cada aeronave possui um número de série, seu identificador, uma matrícula, provida pelo órgão regulador e um modelo que refere às suas caracteristicas técnicas.	
 
 	\section{Descrição das Regras de Negócio}
 	
 		\begin{enumerate}
-			\item Um controlador é responsável por controlar um ou mais vôos, sendo que cada vôo pode ser controlado por um ou mais controladores. O controlador é também responsável por autorizar um plano de vôo. Sobre o controlador é necessário saber as seguintes informações: matrícula, endereco, nome, telefone, e-mail e ano de admissão.
-			\item O plano de vôo é apresentado pelo piloto (comandante) responsável pelo vôo, cada plano é identificado por um número e só pode ter um piloto responsável. Sobre plano é importante saber também os aeroportos de origem/destino, a data e a hora previstas de saída/chegada, se o plano foi ou não aprovado, a prioridade, a aeronave que será utilizada, a altitude de cruzeiro prevista para o vôo, as escalas que o vôo irá realizar, o tipo do plano e o prazo de validade daquele plano (para casos em que o plano de vôo é do tipo repetitivo).
+			\item Um controlador é responsável por controlar um ou mais v\^oos, sendo que cada v\^oo pode ser controlado por um ou mais controladores. O controlador é também responsável por autorizar um plano de v\^oo. Sobre o controlador é necessário saber as seguintes informações: matrícula, endereco, nome, telefone, e-mail e ano de admissão.
+			\item O plano de v\^oo é apresentado pelo piloto (comandante) responsável pelo v\^oo, cada plano é identificado por um número e só pode ter um piloto responsável. Sobre plano é importante saber também os aeroportos de origem/destino, a data e a hora previstas de saída/chegada, se o plano foi ou não aprovado, a prioridade, a aeronave que será utilizada, a altitude de cruzeiro prevista para o v\^oo, as escalas que o v\^oo irá realizar, o tipo do plano e o prazo de validade daquele plano (para casos em que o plano de v\^oo é do tipo repetitivo).
 			\item O sistema possui também um cadastro com todas as companhias aéras que operam no espeço aéreo, bem como dos pilotos e das aeronaves à serviço destas companhias. Sobre os pilotos as informações armazenadas são: código ANAC, endereco, nome, telefone, e-mail, quantidade de horas e de milhas que o piloto ja voou.
 			\item Cada aeronave da companhia possui uma matrícula fornacida pelo órgão regulador (INFRAERO) e são identificadas pelo seu número de série. Cada aeronave possui um modelo, e cada modelo tem caracteristicas específicas: descrição do modelo, peso, número máximo de passageiros, peso máximo, e velocidade de cruzeiro em Km, nós e Mach's (unidade que mede a velocidade em comparação com a velocidade do som).
-			\item Sobre as escalas é necessário saber apenas os aeroportos de origem e destino, cada plano pode realizar várias escalas, do mesmo jeito que uma escala é utilizada por diferentes planos de vôo.
+			\item Sobre as escalas é necessário saber apenas os aeroportos de origem e destino, cada plano pode realizar várias escalas, do mesmo jeito que uma escala é utilizada por diferentes planos de v\^oo.
 			\item Sobre os aeroportos são armazenadas as seguintes informações: código ICAO (identificador internacional de aeroportos), cidade onde o aeroporto está localizado, capacidade de passageiros por ano, número de plataformas para embarque/desembarque e número de pistas, sendo necessário também armazenar a extensão de cada pista dos aeroportos.
 		\end{enumerate}
 	
@@ -46,32 +60,33 @@ Um piloto trabalha para uma Companhia Aérea, que por sua vez possui aeronaves qu
 \chapter{Modelo Entidade Relacionamento (MER)}
 	
 	\section{O Modelo}
-		\clearpage	
-		\begin{landscape}	
-			\begin{figure}[!]
+	A Figura \ref{fig:mer} mostra o MER para o projeto proposto.
+		%\begin{landscape}	
+			\begin{figure}[H]
   				\centering
-  				\includegraphics[width=22cm]{./pictures/ModeloEntidadeRelacionamentoControleVoos.png}
-  				\caption{Modelo Entidade Relacionamento - Controle de Vôos}
-  				\label{fig:Modelo Entidade Relacionamento - Controle de Vôos}
+  				\includegraphics[width=13.5cm, angle=90]																			{./pictures/ModeloEntidadeRelacionamentoControleVoos.png}
+  				\caption{Modelo Entidade Relacionamento - Controle de V\^oos}
+  				\label{fig:mer}
 			\end{figure}
-		\end{landscape}
+		%\end{landscape}
 	
 \chapter{Modelo Relacional}
 
 	\section{O Modelo}	
-		\begin{landscape}	
-			\begin{figure}[h]
+	A Figura \ref{fig:relacional} mostra o modelo relacional para o projeto proposto.
+		%\begin{landscape}	
+			\begin{figure}[H]
   				\centering
-  				\includegraphics[width=22cm]{./pictures/ModeloRelacionalControleVoos.png}
-  				\caption{Modelo Relaciona - Controle de Vôos}
-  				\label{fig:Modelo Relacional - Controle de Vôos}
+  				\includegraphics[width=14.5cm, angle=90]{./pictures/ModeloRelacionalControleVoos.png}
+  				\caption{Modelo Relaciona - Controle de V\^oos}
+  				\label{fig:relacional}
 			\end{figure}
-		\end{landscape}
+		%\end{landscape}
 	
 	
 	\section{Descrição do Mapeamento}
 	
-		A tabela 1 apresenta a descrição sobre as regras de mapeamentos aplicadas à cada entidade do Modelo Entidade Relacionamento (MER).
+		A Tabela \ref{tab:mapeamento} apresenta a descrição sobre as regras de mapeamentos aplicadas à cada entidade do Modelo Entidade Relacionamento (MER).
 		
 		\begin{table}[h]
 		%\centering
@@ -97,9 +112,13 @@ Um piloto trabalha para uma Companhia Aérea, que por sua vez possui aeronaves qu
 		\label{tab:mapeamento}
 		\end{table}			
 	
-	\section{Dicionário de Dados}	
+	\section{Dicionário de Dados}
+		
 	
 \chapter{Normalização}
+
+	Todas as tabelas, com excessão da tabela ``Aeronaves" já se encontram na 3\textordfeminine Forma Normal porque nenhum atributo possui dependência transitiva e todas as tabelas estão na 2\textordfeminine porque todos os atributos secundários de todas as tabelas dependem totalmente de suas respectivas chaves primárias, logo todas as tabelas já estão também na 1\textordfeminine Forma Normal.
+	Apenas a tabela ``Aeronaves" precisou ser normalizada, pois foi verificado que todos os seus atributos, com excessão do atributo ``matricula" dependiam exclusivamente do modelo da aeronave, visto que eram especificações técnicas que variam de acordo com o modelo, portanto, foi criada uma tabela chamada ``ModeloAeronaves" que armazena tais especificações técnicas e sua chave primária foi adicionada como chave entrangeira junto à chave primária da tabela ``Aeronaves"
 	
 \chapter{Considerações Finais e Trabalhos Futuros}
 

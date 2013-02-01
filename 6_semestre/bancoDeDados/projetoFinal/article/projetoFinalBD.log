@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.6.25)  31 JAN 2013 23:19
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.6.25)  1 FEB 2013 18:20
 entering extended mode
 **projetoFinalBD.tex
 
@@ -173,7 +173,7 @@ Package: relsize 2003/07/04 ver 3.1
 )
 \biblabelsep=\skip54
 LaTeX Info: Redefining \newblock on input line 562.
-LaTeX Info: Redefining \cite on input line 831.
+LaTeX Info: Redefining \cite on input line 589.
 \ABCItoken=\toks16
 )
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
@@ -236,232 +236,122 @@ Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\lscape.sty"
 Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
-(E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\6_semestre\bancoDeDados\projet
-oFinal\article\projetoFinalBD.aux
-! Missing \endcsname inserted.
-<to be read again> 
-                   \unhbox 
-l.12 ...elacionamento - Controle de V\^oos}{{1}{}}
-                                                  
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-
-LaTeX Warning: Label `fig:Modelo Entidade Relacionamento - Controle de V\^oos' 
-multiply defined.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \unhbox 
-l.12 ...elacionamento - Controle de V\^oos}{{1}{}}
-                                                  
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-
-! LaTeX Error: Missing \begin{document}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.12 ...elacionamento - Controle de V\^oos}{{1}{}}
-                                                  
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   \accent@spacefactor 
-l.12 ...elacionamento - Controle de V\^oos}{{1}{}}
-                                                  
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Bad space factor (0).
-<to be read again> 
-                   \accent@spacefactor 
-l.12 ...elacionamento - Controle de V\^oos}{{1}{}}
-                                                  
-I allow only values in the range 1..32767 here.
-
-! Extra \endcsname.
-\@namedef ...xpandafter \def \csname #1\endcsname 
-                                                  
-l.12 ...elacionamento - Controle de V\^oos}{{1}{}}
-                                                  
-I'm ignoring this, since I wasn't doing a \csname.
-
-! Extra }, or forgotten \endgroup.
-\@newl@bel ...ined}}\global \@namedef {#1@#2}{#3}}
-                                                  
-l.12 ...elacionamento - Controle de V\^oos}{{1}{}}
-                                                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \unhbox 
-l.15 ...lo Relacional - Controle de V\^oos}{{2}{}}
-                                                  
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-
-LaTeX Warning: Label `fig:Modelo Relacional - Controle de V\^oos' multiply defi
-ned.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \unhbox 
-l.15 ...lo Relacional - Controle de V\^oos}{{2}{}}
-                                                  
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   \accent@spacefactor 
-l.15 ...lo Relacional - Controle de V\^oos}{{2}{}}
-                                                  
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Bad space factor (0).
-<to be read again> 
-                   \accent@spacefactor 
-l.15 ...lo Relacional - Controle de V\^oos}{{2}{}}
-                                                  
-I allow only values in the range 1..32767 here.
-
-! Extra \endcsname.
-\@namedef ...xpandafter \def \csname #1\endcsname 
-                                                  
-l.15 ...lo Relacional - Controle de V\^oos}{{2}{}}
-                                                  
-I'm ignoring this, since I wasn't doing a \csname.
-
-! Extra }, or forgotten \endgroup.
-\@newl@bel ...ined}}\global \@namedef {#1@#2}{#3}}
-                                                  
-l.15 ...lo Relacional - Controle de V\^oos}{{2}{}}
-                                                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\float\float.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count107
+\float@exts=\toks20
+\float@box=\box52
+\@float@everytoks=\toks21
+\@floatcapt=\box53
 )
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
- (C:\Users\Jass\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+\@indexfile=\write3
+
+Writing index file projetoFinalBD.idx
+
+(E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\6_semestre\bancoDeDados\projet
+oFinal\article\projetoFinalBD.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+
+(C:\Users\Jass\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count107
+\scratchcounter=\count108
 \scratchdimen=\dimen122
-\scratchbox=\box52
-\nofMPsegments=\count108
-\nofMParguments=\count109
-\everyMPshowfont=\toks20
-\MPscratchCnt=\count110
+\scratchbox=\box54
+\nofMPsegments=\count109
+\nofMParguments=\count110
+\everyMPshowfont=\toks22
+\MPscratchCnt=\count111
 \MPscratchDim=\dimen123
-\MPnumerator=\count111
-\makeMPintoPDFobject=\count112
-\everyMPtoPDFconversion=\toks21
+\MPnumerator=\count112
+\makeMPintoPDFobject=\count113
+\everyMPtoPDFconversion=\toks23
 )
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
- [1
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 29.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 29.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 29.
+ [0
 
-{C:/Users/Jass/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 18.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 18.
- [1]
+{C:/Users/Jass/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [1]
+(E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\6_semestre\bancoDeDados\projet
+oFinal\article\projetoFinalBD.lof)
+\tf@lof=\write4
+ [2
+
+]
+(E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\6_semestre\bancoDeDados\projet
+oFinal\article\projetoFinalBD.lot)
+\tf@lot=\write5
+ [3
+
+]
+(E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\6_semestre\bancoDeDados\projet
+oFinal\article\projetoFinalBD.toc)
+\tf@toc=\write6
+ [4
+
+]
 Cap\'{\i }tulo 1.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 22.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 22.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 22.
-[2
+[5
+
 
 ]
 Cap\'{\i }tulo 2.
-[3
+[6
 
-] [4]
+] [7]
 Cap\'{\i }tulo 3.
-[5
 
-]
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 51.
-
-
-<./pictures/ModeloEntidadeRelacionamentoControleVoos.png, id=24, 633.0852pt x 4
+<./pictures/ModeloEntidadeRelacionamentoControleVoos.png, id=33, 638.1441pt x 4
 29.2838pt>
 File: ./pictures/ModeloEntidadeRelacionamentoControleVoos.png Graphic file (typ
 e png)
  <use ./pictures/ModeloEntidadeRelacionamentoControleVoos.png>
 Package pdftex.def Info: ./pictures/ModeloEntidadeRelacionamentoControleVoos.pn
-g used on input line 53.
-(pdftex.def)             Requested size: 625.96062pt x 424.46169pt.
+g used on input line 67.
+(pdftex.def)             Requested size: 384.1122pt x 258.3976pt.
 
-[6 <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/6_semestre/bancoDeDados/pro
-jetoFinal/article/pictures/ModeloEntidadeRelacionamentoControleVoos.png (PNG co
-py)>]
+[8
+
+ <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/6_semestre/bancoDeDados/proje
+toFinal/article/pictures/ModeloEntidadeRelacionamentoControleVoos.png (PNG copy
+)>]
 Cap\'{\i }tulo 4.
-[7
-
-
-
-
-]
-<./pictures/ModeloRelacionalControleVoos.png, id=32, 1548.78625pt x 1128.215pt>
+<./pictures/ModeloRelacionalControleVoos.png, id=37, 1461.46pt x 1076.02pt>
 File: ./pictures/ModeloRelacionalControleVoos.png Graphic file (type png)
+
 <use ./pictures/ModeloRelacionalControleVoos.png>
 Package pdftex.def Info: ./pictures/ModeloRelacionalControleVoos.png used on in
-put line 65.
-(pdftex.def)             Requested size: 625.96062pt x 455.97774pt.
+put line 80.
+(pdftex.def)             Requested size: 412.56496pt x 303.74635pt.
 
-
-LaTeX Warning: Float too large for page by 25.23361pt on input line 68.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[8 <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/6_semestre/bancoDeDados/pro
-jetoFinal/article/pictures/ModeloRelacionalControleVoos.png (PNG copy)>]
-Overfull \hbox (41.01323pt too wide) in paragraph at lines 78--96
+Overfull \hbox (41.01323pt too wide) in paragraph at lines 93--111
 [][] 
  []
 
 [9
 
-
-]
+ <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/6_semestre/bancoDeDados/proje
+toFinal/article/pictures/ModeloRelacionalControleVoos.png (PNG copy)>]
+[10]
 Cap\'{\i }tulo 5.
-[10
+[11
 
 ]
 Cap\'{\i }tulo 6.
@@ -469,61 +359,29 @@ Cap\'{\i }tulo 6.
 | Comentario, sugestao ou critica sobre o abnTeX? Entre em contato: |
 |                  http://abntex.codigolivre.org.br                 |
 +-------------------------------------------------------------------+
-[11
+[12
 
 ]
 (E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\6_semestre\bancoDeDados\projet
-oFinal\article\projetoFinalBD.aux
-! Missing \endcsname inserted.
-<to be read again> 
-                   \unhbox 
-l.12 ...elacionamento - Controle de V\^oos}{{1}{}}
-                                                  
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-! Extra \endcsname.
-\@newl@bel ... \bbl@tempa \csname #1@#2\endcsname 
-                                                  \def \bbl@tempb {#3}\@safe...
-l.12 ...elacionamento - Controle de V\^oos}{{1}{}}
-                                                  
-I'm ignoring this, since I wasn't doing a \csname.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \unhbox 
-l.15 ...lo Relacional - Controle de V\^oos}{{2}{}}
-                                                  
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-! Extra \endcsname.
-\@newl@bel ... \bbl@tempa \csname #1@#2\endcsname 
-                                                  \def \bbl@tempb {#3}\@safe...
-l.15 ...lo Relacional - Controle de V\^oos}{{2}{}}
-                                                  
-I'm ignoring this, since I wasn't doing a \csname.
-
-)
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+oFinal\article\projetoFinalBD.aux) ) 
 Here is how much of TeX's memory you used:
- 3474 strings out of 494045
- 54015 string characters out of 3145972
- 120459 words of memory out of 3000000
- 6720 multiletter control sequences out of 15000+200000
- 9167 words of font info for 32 fonts, out of 3000000 for 9000
+ 3544 strings out of 494045
+ 55436 string characters out of 3145972
+ 121500 words of memory out of 3000000
+ 6775 multiletter control sequences out of 15000+200000
+ 10485 words of font info for 36 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 36i,10n,38p,1022b,307s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb>
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:
-/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on projetoFinalBD.pdf (12 pages, 491258 bytes).
+ 36i,10n,38p,1036b,277s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmbxti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publi
+c/amsfonts/cm/cmr8.pfb>
+Output written on projetoFinalBD.pdf (13 pages, 516240 bytes).
 PDF statistics:
- 59 PDF objects out of 1000 (max. 8388607)
+ 71 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
