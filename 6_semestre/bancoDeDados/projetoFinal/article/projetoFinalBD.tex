@@ -61,27 +61,23 @@ Um piloto trabalha para uma Companhia Aérea, que por sua vez possui aeronaves qu
 	
 	\section{O Modelo}
 	A Figura \ref{fig:mer} mostra o MER para o projeto proposto.
-		%\begin{landscape}	
 			\begin{figure}[H]
   				\centering
   				\includegraphics[width=13.5cm, angle=90]																			{./pictures/ModeloEntidadeRelacionamentoControleVoos.png}
   				\caption{Modelo Entidade Relacionamento - Controle de V\^oos}
   				\label{fig:mer}
 			\end{figure}
-		%\end{landscape}
 	
 \chapter{Modelo Relacional}
 
 	\section{O Modelo}	
 	A Figura \ref{fig:relacional} mostra o modelo relacional para o projeto proposto.
-		%\begin{landscape}	
 			\begin{figure}[H]
   				\centering
   				\includegraphics[width=14.5cm, angle=90]{./pictures/ModeloRelacionalControleVoos.png}
   				\caption{Modelo Relaciona - Controle de V\^oos}
   				\label{fig:relacional}
 			\end{figure}
-		%\end{landscape}
 	
 	
 	\section{Descrição do Mapeamento}
@@ -90,7 +86,7 @@ Um piloto trabalha para uma Companhia Aérea, que por sua vez possui aeronaves qu
 		
 		\begin{table}[h]
 		%\centering
-			\begin{tabular}{|l|l|p{7cm}|}
+			\begin{tabular}{|l|l|p{6cm}|}
 				\hline
 				\textbf{Tabelas}	& \textbf{Entidade(s) Originária(s)}	& \textbf{Descrição do 							mapeamento} \\ \hline
 				CiaAerea		&		CiaAerea		& Entidade Forte \\ \hline
@@ -113,6 +109,87 @@ Um piloto trabalha para uma Companhia Aérea, que por sua vez possui aeronaves qu
 		\end{table}			
 	
 	\section{Dicionário de Dados}
+	
+		As Figuras COLOCAR NÚMERO DE FIGURAS abaixo mostram o dicionário de dados de cada tabela do modelo relacional.
+		
+			\begin{figure}[H]
+  				\centering
+  				\includegraphics[height=6cm, width=16cm]{./pictures/dicionarioDadosAeronaves.png}
+  				\caption{Dicionário de Dados - Tabela Aeronaves}
+  				\label{fig:dicAeronaves}
+			\end{figure}
+			\begin{figure}[H]
+  				\centering
+  				\includegraphics[height=7cm, width=16cm]{./pictures/dicionarioDadosAeroportos.png}
+  				\caption{Dicionário de Dados - Tabela Aeroportos}
+  				\label{fig:dicAeroportos}
+			\end{figure}
+			\begin{figure}[H]
+  				\centering
+  				\includegraphics[height=6cm, width=16cm]{./pictures/dicionarioDadosCiaAerea.png}
+  				\caption{Dicionário de Dados - Tabela CiaAerea}
+  				\label{fig:dicCiaAerea}
+			\end{figure}
+			\begin{figure}[H]
+  				\centering
+  				\includegraphics[height=7cm, width=16cm]{./pictures/dicionarioDadosControlador.png}
+  				\caption{Dicionário de Dados - Tabela Controlador}
+  				\label{fig:dicControlador}
+			\end{figure}			
+			\begin{figure}[H]
+  				\centering
+  				\includegraphics[height=4cm, width=16cm]{./pictures/dicionarioDadosEscala.png}
+  				\caption{Dicionário de Dados - Tabela Escala}
+  				\label{fig:dicEscala}
+			\end{figure}
+			\begin{figure}[H]
+  				\centering
+  				\includegraphics[height=7cm, width=16cm]{./pictures/dicionarioDadosModeloAeronaves.png}
+  				\caption{Dicionário de Dados - Tabela ModeloAeronaves}
+  				\label{fig:dicModeloAeronaves}
+			\end{figure}
+			\begin{figure}[H]
+  				\centering
+  				\includegraphics[height=7cm, width=16cm]{./pictures/dicionarioDadosPiloto.png}
+  				\caption{Dicionário de Dados - Tabela Piloto}
+  				\label{fig:dicPiloto}
+			\end{figure}
+			\begin{figure}[H]
+  				\centering
+  				\includegraphics[height=6cm, width=16cm]{./pictures/dicionarioDadosPistas.png}
+  				\caption{Dicionário de Dados - Tabela Pistas}
+  				\label{fig:dicPistas}
+			\end{figure}
+			\begin{figure}[H]
+  				\centering
+  				\includegraphics[height=11cm, width=16cm]{./pictures/dicionarioDadosPlanoVoo.png}
+  				\caption{Dicionário de Dados - Tabela PlanoVoo}
+  				\label{fig:dicPlanoVoo}
+			\end{figure}
+			\begin{figure}[H]
+  				\centering
+  				\includegraphics[height=4cm, width=16cm]																		{./pictures/dicionarioDadosPlanoVooHasEscalas.png}
+  				\caption{Dicionário de Dados - Tabela PlanoVoo\_has\_Escalas}
+  				\label{fig:dicPlanoVooHasEscalas}
+			\end{figure}
+			\begin{figure}[H]
+  				\centering
+  				\includegraphics[height=4cm, width=16cm]{./pictures/dicionarioDadosTipoPlanoVoo.png}
+  				\caption{Dicionário de Dados - Tabela TipoPlanoVoo}
+  				\label{fig:dicTipoPlanoVoo}
+			\end{figure}
+				\begin{figure}[H]
+  				\centering
+  				\includegraphics[height=7cm, width=16cm]{./pictures/dicionarioDadosVoo.png}
+  				\caption{Dicionário de Dados - Tabela Voo}
+  				\label{fig:dicVoo}
+			\end{figure}
+			\begin{figure}[H]
+  				\centering
+  				\includegraphics[height=4cm, width=16cm]{./pictures/dicionarioDadosVooHasControlador.png}
+  				\caption{Dicionário de Dados - Tabela Voo\textunderscore has\textunderscore Controlador}
+  				\label{fig:dicVooHasControlador}
+			\end{figure}					
 		
 	
 \chapter{Normalização}
@@ -121,7 +198,8 @@ Um piloto trabalha para uma Companhia Aérea, que por sua vez possui aeronaves qu
 	Apenas a tabela ``Aeronaves" precisou ser normalizada, pois foi verificado que todos os seus atributos, com excessão do atributo ``matricula" dependiam exclusivamente do modelo da aeronave, visto que eram especificações técnicas que variam de acordo com o modelo, portanto, foi criada uma tabela chamada ``ModeloAeronaves" que armazena tais especificações técnicas e sua chave primária foi adicionada como chave entrangeira junto à chave primária da tabela ``Aeronaves"
 	
 \chapter{Considerações Finais e Trabalhos Futuros}
-
+	Esta proposta de projeto foi fundamental para um melhor compreendimento sobre o controle de tráfego aéreo e o porque tais sistemas devem ser muito bem projetados antes de entrarem em opereração, qualquer erro pode resultar em graves consequências. Embora o projeto não entre em detalhes sobre aspectos importante que devem ser levados em consideração, como por exemplo, as mudanças de rotas e de altitude de um vôo, os radares que estão controlando determinado vôo enquanto ele está no ar, esse fatores iriam deixar o projeto mais complexo e mais extenso, porém são imprescindíveis para uma melhor gerência do sistema, uma vez que aumentam o controle ajudando assim a prevenir cada vez mais erros humanos. A proposta apresentada neste trabalho é a base no que tange controle de tráfego aéreo, abordando desde o controle de aeronaves até as escalas realizadas por cada vôo, cobrindo assim o processo básico de decolagem e pouso de uma aeronave dentro do espaço aéreo brasileiro.
+	Para exemplificar esses fatores temos 3 entidades que foram retidaras do projeto devido à complexidade, Rotas (usada para guardar as rotas do espaço aéreo usadas pelas aeronaves), Altitude (é necessário guardar valores de altitude, pois as aeronaves alternam sua altitude mais de uma vez durante um vôo), e Fixos (lugares pré-estabelicidos para mudanças de altitude). Com mais essas entidades seria pos´sível determinar todas as altitude em que uma aeronave esteve durante um vôo, em que locais ocorreram as trocas de altitudes e quais rotas foram utilizadas), essas informaçõe poderiam, por exemplo ser usadas para levantamentos estatísticos de congestionamento do espeço aéreo afim de viabulizar um estudo para otimizar sua utilização.
 
 \end{document}
 

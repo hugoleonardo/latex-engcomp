@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.6.25)  1 FEB 2013 18:20
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.6.25)  2 FEB 2013 16:57
 entering extended mode
 **projetoFinalBD.tex
 
@@ -324,7 +324,7 @@ File: ./pictures/ModeloEntidadeRelacionamentoControleVoos.png Graphic file (typ
 e png)
  <use ./pictures/ModeloEntidadeRelacionamentoControleVoos.png>
 Package pdftex.def Info: ./pictures/ModeloEntidadeRelacionamentoControleVoos.pn
-g used on input line 67.
+g used on input line 66.
 (pdftex.def)             Requested size: 384.1122pt x 258.3976pt.
 
 [8
@@ -338,10 +338,10 @@ File: ./pictures/ModeloRelacionalControleVoos.png Graphic file (type png)
 
 <use ./pictures/ModeloRelacionalControleVoos.png>
 Package pdftex.def Info: ./pictures/ModeloRelacionalControleVoos.png used on in
-put line 80.
+put line 77.
 (pdftex.def)             Requested size: 412.56496pt x 303.74635pt.
 
-Overfull \hbox (41.01323pt too wide) in paragraph at lines 93--111
+Overfull \hbox (12.56047pt too wide) in paragraph at lines 89--107
 [][] 
  []
 
@@ -349,9 +349,134 @@ Overfull \hbox (41.01323pt too wide) in paragraph at lines 93--111
 
  <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/6_semestre/bancoDeDados/proje
 toFinal/article/pictures/ModeloRelacionalControleVoos.png (PNG copy)>]
-[10]
+<./pictures/dicionarioDadosAeronaves.png, id=41, 989.19562pt x 146.79843pt>
+File: ./pictures/dicionarioDadosAeronaves.png Graphic file (type png)
+
+<use ./pictures/dicionarioDadosAeronaves.png>
+Package pdftex.def Info: ./pictures/dicionarioDadosAeronaves.png used on input 
+line 117.
+(pdftex.def)             Requested size: 455.23174pt x 170.71635pt.
+
+<./pictures/dicionarioDadosAeroportos.png, id=43, 989.94844pt x 137.7647pt>
+File: ./pictures/dicionarioDadosAeroportos.png Graphic file (type png)
+
+<use ./pictures/dicionarioDadosAeroportos.png>
+Package pdftex.def Info: ./pictures/dicionarioDadosAeroportos.png used on input
+ line 123.
+(pdftex.def)             Requested size: 455.24586pt x 199.1882pt.
+ [10]
+<./pictures/dicionarioDadosCiaAerea.png, id=47, 989.94844pt x 99.37125pt>
+File: ./pictures/dicionarioDadosCiaAerea.png Graphic file (type png)
+
+<use ./pictures/dicionarioDadosCiaAerea.png>
+Package pdftex.def Info: ./pictures/dicionarioDadosCiaAerea.png used on input l
+ine 129.
+(pdftex.def)             Requested size: 455.24586pt x 170.73628pt.
+
+<./pictures/dicionarioDadosControlador.png, id=48, 989.94844pt x 150.5625pt>
+File: ./pictures/dicionarioDadosControlador.png Graphic file (type png)
+
+<use ./pictures/dicionarioDadosControlador.png>
+Package pdftex.def Info: ./pictures/dicionarioDadosControlador.png used on inpu
+t line 135.
+(pdftex.def)             Requested size: 455.24586pt x 199.18878pt.
+
+<./pictures/dicionarioDadosEscala.png, id=49, 992.20688pt x 113.67468pt>
+File: ./pictures/dicionarioDadosEscala.png Graphic file (type png)
+
+<use ./pictures/dicionarioDadosEscala.png>
+Package pdftex.def Info: ./pictures/dicionarioDadosEscala.png used on input lin
+e 141.
+(pdftex.def)             Requested size: 455.2398pt x 113.81314pt.
+ [11 <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/6_semestre/bancoDeDados/p
+rojetoFinal/article/pictures/dicionarioDadosAeronaves.png> <E:/Danilo/Desktop/b
+ackup1/EngComp/latex-engcomp/6_semestre/bancoDeDados/projetoFinal/article/pictu
+res/dicionarioDadosAeroportos.png> <E:/Danilo/Desktop/backup1/EngComp/latex-eng
+comp/6_semestre/bancoDeDados/projetoFinal/article/pictures/dicionarioDadosCiaAe
+rea.png>]
+<./pictures/dicionarioDadosModeloAeronaves.png, id=54, 989.94844pt x 161.85469p
+t>
+File: ./pictures/dicionarioDadosModeloAeronaves.png Graphic file (type png)
+ <use ./pictures/dicionarioDadosModeloAeronaves.png>
+Package pdftex.def Info: ./pictures/dicionarioDadosModeloAeronaves.png used on 
+input line 147.
+(pdftex.def)             Requested size: 455.24586pt x 199.18132pt.
+
+<./pictures/dicionarioDadosPiloto.png, id=55, 990.70125pt x 204.01219pt>
+File: ./pictures/dicionarioDadosPiloto.png Graphic file (type png)
+
+<use ./pictures/dicionarioDadosPiloto.png>
+Package pdftex.def Info: ./pictures/dicionarioDadosPiloto.png used on input lin
+e 153.
+(pdftex.def)             Requested size: 455.24437pt x 199.18034pt.
+
+<./pictures/dicionarioDadosPistas.png, id=56, 992.20688pt x 120.45pt>
+File: ./pictures/dicionarioDadosPistas.png Graphic file (type png)
+
+<use ./pictures/dicionarioDadosPistas.png>
+Package pdftex.def Info: ./pictures/dicionarioDadosPistas.png used on input lin
+e 159.
+(pdftex.def)             Requested size: 455.2398pt x 170.73325pt.
+ [12 <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/6_semestre/bancoDeDados/p
+rojetoFinal/article/pictures/dicionarioDadosControlador.png> <E:/Danilo/Desktop
+/backup1/EngComp/latex-engcomp/6_semestre/bancoDeDados/projetoFinal/article/pic
+tures/dicionarioDadosEscala.png> <E:/Danilo/Desktop/backup1/EngComp/latex-engco
+mp/6_semestre/bancoDeDados/projetoFinal/article/pictures/dicionarioDadosModeloA
+eronaves.png>]
+<./pictures/dicionarioDadosPlanoVoo.png, id=61, 990.70125pt x 358.33875pt>
+File: ./pictures/dicionarioDadosPlanoVoo.png Graphic file (type png)
+
+<use ./pictures/dicionarioDadosPlanoVoo.png>
+Package pdftex.def Info: ./pictures/dicionarioDadosPlanoVoo.png used on input l
+ine 165.
+(pdftex.def)             Requested size: 455.24437pt x 312.99886pt.
+
+<./pictures/dicionarioDadosPlanoVooHasEscalas.png, id=62, 990.70125pt x 121.202
+82pt>
+File: ./pictures/dicionarioDadosPlanoVooHasEscalas.png Graphic file (type png)
+ <use ./pictures/dicionarioDadosPlanoVooHasEscalas.png>
+Package pdftex.def Info: ./pictures/dicionarioDadosPlanoVooHasEscalas.png used 
+on input line 171.
+(pdftex.def)             Requested size: 455.24437pt x 113.816pt.
+ [13 <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/6_semestre/bancoDeDados/p
+rojetoFinal/article/pictures/dicionarioDadosPiloto.png> <E:/Danilo/Desktop/back
+up1/EngComp/latex-engcomp/6_semestre/bancoDeDados/projetoFinal/article/pictures
+/dicionarioDadosPistas.png>]
+<./pictures/dicionarioDadosTipoPlanoVoo.png, id=66, 989.19562pt x 86.57344pt>
+File: ./pictures/dicionarioDadosTipoPlanoVoo.png Graphic file (type png)
+
+<use ./pictures/dicionarioDadosTipoPlanoVoo.png>
+Package pdftex.def Info: ./pictures/dicionarioDadosTipoPlanoVoo.png used on inp
+ut line 177.
+(pdftex.def)             Requested size: 455.23174pt x 113.8136pt.
+
+<./pictures/dicionarioDadosVoo.png, id=67, 990.70125pt x 174.6525pt>
+File: ./pictures/dicionarioDadosVoo.png Graphic file (type png)
+
+<use ./pictures/dicionarioDadosVoo.png>
+Package pdftex.def Info: ./pictures/dicionarioDadosVoo.png used on input line 1
+83.
+(pdftex.def)             Requested size: 455.24437pt x 199.18053pt.
+
+<./pictures/dicionarioDadosVooHasControlador.png, id=68, 989.94844pt x 119.6971
+9pt>
+File: ./pictures/dicionarioDadosVooHasControlador.png Graphic file (type png)
+ <use ./pictures/dicionarioDadosVooHasControlador.png>
+Package pdftex.def Info: ./pictures/dicionarioDadosVooHasControlador.png used o
+n input line 189.
+(pdftex.def)             Requested size: 455.24586pt x 113.81212pt.
+ [14 <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/6_semestre/bancoDeDados/p
+rojetoFinal/article/pictures/dicionarioDadosPlanoVoo.png> <E:/Danilo/Desktop/ba
+ckup1/EngComp/latex-engcomp/6_semestre/bancoDeDados/projetoFinal/article/pictur
+es/dicionarioDadosPlanoVooHasEscalas.png> <E:/Danilo/Desktop/backup1/EngComp/la
+tex-engcomp/6_semestre/bancoDeDados/projetoFinal/article/pictures/dicionarioDad
+osTipoPlanoVoo.png>]
+[15 <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/6_semestre/bancoDeDados/pr
+ojetoFinal/article/pictures/dicionarioDadosVoo.png> <E:/Danilo/Desktop/backup1/
+EngComp/latex-engcomp/6_semestre/bancoDeDados/projetoFinal/article/pictures/dic
+ionarioDadosVooHasControlador.png>]
 Cap\'{\i }tulo 5.
-[11
+[16
 
 ]
 Cap\'{\i }tulo 6.
@@ -359,16 +484,16 @@ Cap\'{\i }tulo 6.
 | Comentario, sugestao ou critica sobre o abnTeX? Entre em contato: |
 |                  http://abntex.codigolivre.org.br                 |
 +-------------------------------------------------------------------+
-[12
+[17
 
 ]
 (E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\6_semestre\bancoDeDados\projet
 oFinal\article\projetoFinalBD.aux) ) 
 Here is how much of TeX's memory you used:
- 3544 strings out of 494045
- 55436 string characters out of 3145972
+ 3624 strings out of 494045
+ 58403 string characters out of 3145972
  121500 words of memory out of 3000000
- 6775 multiletter control sequences out of 15000+200000
+ 6842 multiletter control sequences out of 15000+200000
  10485 words of font info for 36 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
  36i,10n,38p,1036b,277s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -379,9 +504,9 @@ pe1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type
 /public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
 blic/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publi
 c/amsfonts/cm/cmr8.pfb>
-Output written on projetoFinalBD.pdf (13 pages, 516240 bytes).
+Output written on projetoFinalBD.pdf (18 pages, 676515 bytes).
 PDF statistics:
- 71 PDF objects out of 1000 (max. 8388607)
+ 101 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 76 words of extra memory for PDF output out of 10000 (max. 10000000)
 

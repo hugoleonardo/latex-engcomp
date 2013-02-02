@@ -9,5 +9,5 @@
 \contentsline {section}{\numberline {4.1}O Modelo}{9}
 \contentsline {section}{\numberline {4.2}Descri\c c\~ao do Mapeamento}{10}
 \contentsline {section}{\numberline {4.3}Dicion\'ario de Dados}{10}
-\contentsline {chapter}{\numberline {5}Normaliza\c c\~ao}{11}
-\contentsline {chapter}{\numberline {6}Considera\c c\~oes Finais e Trabalhos Futuros}{12}
+\contentsline {chapter}{\numberline {5}Normaliza\c c\~ao}{16}
+\contentsline {chapter}{\numberline {6}Considera\c c\~oes Finais e Trabalhos Futuros}{17}
