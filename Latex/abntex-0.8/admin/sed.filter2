@@ -1,0 +1,2 @@
+/Working file:/{N; /Working file:.*revision/!d}
+s/revision 1.1$/New File (&)/

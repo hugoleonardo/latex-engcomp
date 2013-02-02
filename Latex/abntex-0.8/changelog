@@ -1,0 +1,1998 @@
+# $Id: changelog,v 1.2 2003/10/17 13:02:08 gweber Exp $
+# Este arquivo foi gerado pelo script admin/create_changelog
+# As informações são obtidas dos logs dos arquivos.
+# NÃO EDITE ESTE ARQUIVO
+------------- 0.8 (alfa2) ---------------------------
+
+Working file: texmf/bibtex/bib/abntex/abnt-options.bib
+revision 1.18
+date: 2003/07/22 16:41:27;  author: gweber;  state: Exp;  lines: +10 -1
+Adicionadas as opções abnt-title-command e abnt-substyle=COPPE.
+
+Working file: texmf/bibtex/bst/abntex/abnt-alf.bst
+revision 1.45
+date: 2003/07/23 12:06:01;  author: gweber;  state: Exp;  lines: +17 -19
+O comando apply.title.command agora atua sobre todas as ocorrências de title, mas
+não sobre campos title que estão vazios.
+revision 1.44
+date: 2003/07/22 16:26:01;  author: gweber;  state: Exp;  lines: +30 -13
+Adicionada a opção abnt-title-command. Com esta opção pode-se definir o comando
+\bibtextitlecommand que permite formatações especiais no titulo.
+
+Working file: texmf/bibtex/bst/abntex/abnt-num.bst
+revision 1.42
+date: 2003/07/23 12:06:01;  author: gweber;  state: Exp;  lines: +17 -19
+O comando apply.title.command agora atua sobre todas as ocorrências de title, mas
+não sobre campos title que estão vazios.
+revision 1.41
+date: 2003/07/22 16:26:02;  author: gweber;  state: Exp;  lines: +30 -12
+Adicionada a opção abnt-title-command. Com esta opção pode-se definir o comando
+\bibtextitlecommand que permite formatações especiais no titulo.
+
+Working file: texmf/doc/bibtex/abntex/abnt-bibtex-doc.tex
+revision 1.43
+date: 2003/07/23 12:15:07;  author: gweber;  state: Exp;  lines: +38 -4
+Comentários sobre a opção abnt-title-command, o comando \bibtextitlecommand
+e o grupo de opções abnt-substyle=COPPE.
+
+Working file: texmf/makeindex/abntex/tabela-siglas.ist
+revision 1.2
+date: 2003/10/03 08:50:58;  author: gweber;  state: Exp;  lines: +2 -1
+Correção do bug 204 que mantinha a vírgula após o texto com paginas=nao.
+New File (revision 1.1)
+date: 2003/09/24 09:20:04;  author: gweber;  state: Exp;
+Arquivos transferidos de tex/latex/abntex, resolve o bug 203
+
+Working file: texmf/makeindex/abntex/tabela-simbolos.ist
+revision 1.2
+date: 2003/10/03 08:50:59;  author: gweber;  state: Exp;  lines: +2 -1
+Correção do bug 204 que mantinha a vírgula após o texto com paginas=nao.
+New File (revision 1.1)
+date: 2003/09/24 09:20:04;  author: gweber;  state: Exp;
+Arquivos transferidos de tex/latex/abntex, resolve o bug 203
+
+Working file: texmf/tex/latex/abntex/abnt-UFPR.sty
+revision 1.2
+date: 2003/10/10 16:40:25;  author: gweber;  state: Exp;  lines: +4 -2
+Passa a usar cvs-id.def para gerar informações sobre data e versão.
+New File (revision 1.1)
+date: 2003/08/21 16:44:17;  author: gweber;  state: Exp;
+Estilo para a UFPR cedido por Rogério C. e Dornelles Vissotto Junior.
+
+Working file: texmf/tex/latex/abntex/abnt.cls
+revision 1.26
+date: 2003/10/13 09:40:01;  author: gweber;  state: Exp;  lines: +8 -6
+Passa a usar cvs-id.def para gerar informações sobre data e versão.
+revision 1.25
+date: 2003/09/16 16:49:29;  author: gweber;  state: Exp;  lines: +9 -6
+Troca de \bibname por \refname o que equivale a trocar "Referêncas Bibliográficas" por
+"Referências". Isto atende ao que entendemos esteja implícito na NBR14724-2002.
+revision 1.24
+date: 2003/08/22 14:45:18;  author: gweber;  state: Exp;  lines: +6 -2
+Resolvido bug 178 que fazia o texto de \part aparecer duas vezes.
+revision 1.21.2.2
+date: 2003/09/24 10:42:53;  author: gweber;  state: Exp;  lines: +51 -18
+Atualizado do main branch.
+
+Working file: texmf/tex/latex/abntex/abntcite.sty
+revision 1.26
+date: 2003/10/13 09:40:41;  author: gweber;  state: Exp;  lines: +7 -4
+Passa a usar cvs-id.def para gerar informações sobre data e versão.
+revision 1.25
+date: 2003/10/10 16:42:51;  author: gweber;  state: Exp;  lines: +10 -6
+Passa a usar cvs-id.def para gerar informações sobre data e versão.
+revision 1.24
+date: 2003/10/07 16:21:55;  author: gweber;  state: Exp;  lines: +8 -2
+Informação sobre o pacote (comando \ProvidesPackage) automáticamente atualizado via
+CVS Id tags.
+revision 1.23
+date: 2003/09/16 12:13:16;  author: gweber;  state: Exp;  lines: +33 -21
+A partir desta versão abntcite carrega os arquivos nbr10520-*.def com as definições
+espeçificas destas normas. Esta alteração cumpre em parte a tarefa 931.
+revision 1.22
+date: 2003/07/22 16:38:32;  author: gweber;  state: Exp;  lines: +9 -1
+Implementada a aopção abnt-substyle=COPPE que ativa a opção de mesmo nome em
+abnt-option.bib e define o comando \bibtextitlecommand de acordo.
+
+Working file: texmf/tex/latex/abntex/abntex-abrev-pt_BR.def
+revision 1.2
+date: 2003/10/13 09:41:07;  author: gweber;  state: Exp;  lines: +11 -3
+Passa a usar cvs-id.def para gerar informações sobre data e versão.
+
+Working file: texmf/tex/latex/abntex/abntex-abrev.sty
+revision 1.3
+date: 2003/10/13 09:41:21;  author: gweber;  state: Exp;  lines: +6 -3
+Passa a usar cvs-id.def para gerar informações sobre data e versão.
+revision 1.2
+date: 2003/10/10 10:08:09;  author: gweber;  state: Exp;  lines: +11 -3
+Passa a usar cvs-id.def para gerar informações sobre data e versão.
+
+Working file: texmf/tex/latex/abntex/cvs-id.def
+revision 1.3
+date: 2003/10/13 09:41:42;  author: gweber;  state: Exp;  lines: +9 -1
+Adicionado \CVSClass e \CVSFile
+revision 1.2
+date: 2003/10/10 10:05:51;  author: gweber;  state: Exp;  lines: +7 -3
+Corrigido argumento em \CVSPackage
+New File (revision 1.1)
+date: 2003/10/10 10:01:07;  author: gweber;  state: Exp;
+Arquivo que provê os comandos para extrair informações geradas automaticamente
+pelo CVS tal como data, revisão etc.
+
+Working file: texmf/tex/latex/abntex/inpi.sty
+revision 1.2
+date: 2003/09/08 12:44:58;  author: dmartins;  state: Exp;  lines: +47 -5
+Versao com fonte helvetica (Arial)
+
+Working file: texmf/tex/latex/abntex/nbr10520-2001.def
+revision 1.2
+date: 2003/10/13 09:42:13;  author: gweber;  state: Exp;  lines: +4 -2
+Passa a usar cvs-id.def para gerar informações sobre data e versão.
+New File (revision 1.1)
+date: 2003/09/16 11:17:20;  author: gweber;  state: Exp;
+Definições para abntcite.sty que satisfazem a NBR10520-2001.
+
+Working file: texmf/tex/latex/abntex/nbr10520-2002.def
+revision 1.2
+date: 2003/10/13 09:42:13;  author: gweber;  state: Exp;  lines: +4 -2
+Passa a usar cvs-id.def para gerar informações sobre data e versão.
+New File (revision 1.1)
+date: 2003/09/16 11:17:45;  author: gweber;  state: Exp;
+Definições para abntcite.sty que satisfazem a NBR10520-2002.
+
+Working file: texmf/tex/latex/abntex/nbr10522-1988.def
+revision 1.2
+date: 2003/10/13 09:42:13;  author: gweber;  state: Exp;  lines: +8 -3
+Passa a usar cvs-id.def para gerar informações sobre data e versão.
+
+Working file: texmf/tex/latex/abntex/tabela-siglas.ist
+revision 1.3
+date: 2003/09/24 09:21:54;  author: gweber;  state: dead;  lines: +1 -1
+transferido para makeindex/abntex para resolver o bug 203
+revision 1.2.2.1
+date: 2003/09/24 10:19:39;  author: gweber;  state: dead;  lines: +1 -1
+movidos para texmf/makeindex/abntex para resolver o bug 203
+
+Working file: texmf/tex/latex/abntex/tabela-simbolos.ist
+revision 1.3
+date: 2003/09/24 09:21:43;  author: gweber;  state: dead;  lines: +1 -1
+transferido para makeindex/abntex para resolver o bug 203
+revision 1.2.2.1
+date: 2003/09/24 10:19:39;  author: gweber;  state: dead;  lines: +1 -1
+movidos para texmf/makeindex/abntex para resolver o bug 203
+
+Working file: texmf/tex/latex/abntex/tabela-simbolos.sty
+revision 1.9
+date: 2003/10/13 09:44:08;  author: gweber;  state: Exp;  lines: +29 -4
+Passa a usar abntex-abrev para abreviações. Acrescentado um aviso sobre o que fazer
+para rodar makeindex.
+revision 1.8
+date: 2003/10/10 10:03:21;  author: gweber;  state: Exp;  lines: +8 -4
+Passa a usar cvs-id.def para gerar informações sobre data e versão.
+revision 1.7
+date: 2003/10/07 16:16:03;  author: gweber;  state: Exp;  lines: +7 -2
+Informação sobre o pacote (comando \ProvidesPackage) automáticamente atualizado via
+CVS Id tags.
+revision 1.6
+date: 2003/10/03 08:50:58;  author: gweber;  state: Exp;  lines: +18 -4
+Correção do bug 204 que mantinha a vírgula após o texto com paginas=nao.
+
+------------- 0.8 (alfa) ---------------------------
+
+Working file: texmf/bibtex/bib/abntex/abnt-10520-2002.bib
+New File (revision 1.1)
+date: 2003/06/19 11:47:09;  author: gweber;  state: Exp;
+Contém os exemplos específicos da 10520/2002
+
+Working file: texmf/bibtex/bib/abntex/abnt-6023-2000.bib
+revision 1.5
+date: 2003/06/19 09:33:41;  author: gweber;  state: Exp;  lines: +1 -1
+@string inicial trocado por @comment
+
+Working file: texmf/bibtex/bib/abntex/abnt-options.bib
+revision 1.17
+date: 2003/06/19 09:34:14;  author: gweber;  state: Exp;  lines: +10 -2
+Inicio da adaptação para 6023/2002 e 10520/2002.
+
+Working file: texmf/bibtex/bib/abntex/normas.bib
+revision 1.10
+date: 2003/06/19 11:34:02;  author: gweber;  state: Exp;  lines: +127 -1
+Grande número de normas novas e algumas correções.
+
+Working file: texmf/doc/bibtex/abntex/abnt-bibtex-alf-doc.tex
+revision 1.28
+date: 2003/06/30 14:42:50;  author: gweber;  state: Exp;  lines: +12 -9
+Pequenas modificações, início da adaptação para 10522/2002.
+revision 1.27
+date: 2003/06/19 09:32:18;  author: gweber;  state: Exp;  lines: +131 -16
+Inicio da adaptação para 10520/2002.
+
+Working file: texmf/doc/bibtex/abntex/abnt-bibtex-doc.tex
+revision 1.42
+date: 2003/06/30 14:45:26;  author: gweber;  state: Exp;  lines: +10 -8
+Pequenas modificações, início da adaptação para a 6023/2002.
+revision 1.41
+date: 2003/06/11 08:05:21;  author: gweber;  state: Exp;  lines: +62 -7
+Info sobre as opções abnt-doi, abnt-url-package e comportamento do campo url.
+
+Working file: texmf/tex/latex/abntex/abnt.cls
+revision 1.23
+date: 2003/06/30 14:10:47;  author: gweber;  state: Exp;  lines: +28 -11
+Links criados com hyperref para apêndices e anexos não misturam mais com os links para capítulos comuns,
+resolvendo o bug #140.
+
+Working file: texmf/tex/latex/abntex/abntex-abrev-pt_BR.def
+New File (revision 1.1)
+date: 2003/06/27 13:50:05;  author: gweber;  state: Exp;
+Traduções português-inglês dos termos usados em abreviações.
+
+Working file: texmf/tex/latex/abntex/abntex-abrev.sty
+New File (revision 1.1)
+date: 2003/06/27 13:49:21;  author: gweber;  state: Exp;
+Estilo principal que implementa abreviações para o projeto abntex.
+O arquivo pode ser usado sozinho ou em conjunto com classes e estilos bibliográficos.
+Ele carrega um aquivo com traduções portugês-inglês abntex-abrev-pt_BR.def e um arquivo
+com as definições da norma 10522/1988.
+
+Working file: texmf/tex/latex/abntex/nbr10522-1988.def
+New File (revision 1.1)
+date: 2003/06/27 13:50:41;  author: gweber;  state: Exp;
+Lista (muito incompleta) das abreviações contidas em NBR10522/1988.
+
+------------- 0.7 (stable release 1) ---------------------------
+
+Working file: texmf/bibtex/bib/abntex/abnt-6023-2000.bib
+revision 1.4
+date: 2003/06/05 14:51:17;  author: gweber;  state: Exp;  lines: +12 -13
+Todas as url's foram passadas para as suas formas reais, não há mais necessidade
+de editar url para que não gerem problemas com LaTeX.
+
+Working file: texmf/bibtex/bib/abntex/abnt-options.bib
+revision 1.16
+date: 2003/06/04 13:23:03;  author: gweber;  state: Exp;  lines: +14 -2
+Introduzidas as opções hyperref para abnt.url.package com isso os
+campos url são formatados agora como hyperlinks ativos.
+Também foram acrescentadas a opção abnt.doi que permite selecionar o
+tratamento que recebe uma url começada com doi:, as opções são
+expand (passa doi: para http:), link cria link com http: mas mostra doi:,
+e doi que não mexe em nada.
+
+Working file: texmf/bibtex/bib/abntex/normas.bib
+revision 1.9
+date: 2003/06/04 13:12:58;  author: gweber;  state: Exp;  lines: +2 -2
+campo doi da refeência DOI alterado para url ={doi:...
+
+Working file: texmf/bibtex/bst/abntex/abnt-alf.bst
+revision 1.43
+date: 2003/06/05 14:34:05;  author: gweber;  state: Exp;  lines: +51 -11
+Introduzido filtro.url.tex e filtro.url.html, a função do primeiro é alterar uma url de tal maneira
+que que o TeX possa processá-la sem problemas. A do segundo é fazer a mesma coisa
+para a url que é passada para html ou hyperref.
+revision 1.42
+date: 2003/06/04 13:18:07;  author: gweber;  state: Exp;  lines: +108 -34
+Introduzidas as opções hyperref para abnt.url.package com isso os campos url são formatados agora como hyperlinks ativos.
+Também foram acrescentadas a opção abnt.doi que permite selecionar o tratamento que recebe uma url começada com doi:
+
+Working file: texmf/bibtex/bst/abntex/abnt-num.bst
+revision 1.40
+date: 2003/06/05 14:34:05;  author: gweber;  state: Exp;  lines: +51 -11
+Introduzido filtro.url.tex e filtro.url.html, a função do primeiro é alterar uma url de tal maneira
+que que o TeX possa processá-la sem problemas. A do segundo é fazer a mesma coisa
+para a url que é passada para html ou hyperref.
+revision 1.39
+date: 2003/06/04 13:18:07;  author: gweber;  state: Exp;  lines: +107 -33
+Introduzidas as opções hyperref para abnt.url.package com isso os campos url são formatados agora como hyperlinks ativos.
+Também foram acrescentadas a opção abnt.doi que permite selecionar o tratamento que recebe uma url começada com doi:
+
+Working file: texmf/bibtex/bst/abntex/changelog.txt
+revision 1.32
+date: 2003/06/05 14:49:59;  author: gweber;  state: dead;  lines: +1 -1
+Não é necessário mais. Todo log será via cvs.
+
+Working file: texmf/doc/bibtex/abntex/abnt-bibtex-doc.tex
+revision 1.40
+date: 2003/05/30 10:39:19;  author: gweber;  state: Exp;  lines: +6 -4
+Alterações introduzidas em 0.7-beta.
+
+Working file: texmf/tex/latex/abntex/abnt.cls
+revision 1.22
+date: 2003/05/30 10:39:19;  author: gweber;  state: Exp;  lines: +17 -6
+Alterações introduzidas em 0.7-beta.
+revision 1.21.2.1
+date: 2003/05/30 10:16:07;  author: gweber;  state: Exp;  lines: +12 -6
+Correction of bug 137 which causes the class to fail when loading
+the package hyperref and using \tableofcontents.
+This also resolves partially bugs 82 and 51.
+
+Working file: texmf/tex/latex/abntex/abntcite.sty
+revision 1.21
+date: 2003/06/05 14:48:12;  author: gweber;  state: Exp;  lines: +40 -6
+Citations are now treated correctly if hyperref is loaded. This solves bugs 51 and 82
+which are now closed.
+revision 1.20
+date: 2003/06/04 13:42:10;  author: gweber;  state: Exp;  lines: +7 -2
+The presence of the package hyperref is now autodetected and
+the citeoption abnt-url-package=hyperref is loaded. In this way
+whenever the user loads hyperref all url's given in the bibliografic
+database are shown as links and can be navigated to. Note that
+running as pdflatex loads hyperref also.
+
+------------- 0.7 (beta) ---------------------------
+
+Working file: texmf/bibtex/bib/abntex/abnt-10520-2001.bib
+revision 1.2
+date: 2003/04/12 21:46:39;  author: gweber;  state: Exp;  lines: +16 -2
+exemplos adicionais para usar com \apud
+New File (revision 1.1)
+date: 2003/03/21 18:24:46;  author: gweber;  state: Exp;
+Contém a parte relativa ao 10520 que estava em abnt-def.bib
+
+Working file: texmf/bibtex/bib/abntex/abnt-6023-2000.bib
+revision 1.3
+date: 2003/03/28 21:00:19;  author: gweber;  state: Exp;  lines: +4 -4
+ajustes nos labels
+revision 1.2
+date: 2003/03/22 23:00:17;  author: gweber;  state: Exp;  lines: +63 -61
+correções de nomes
+New File (revision 1.1)
+date: 2003/03/21 18:25:34;  author: gweber;  state: Exp;
+Contém a parte relativa ao 6023/2000 que estava em abnt-def.bib
+
+Working file: texmf/bibtex/bib/abntex/abnt-bibtex-doc.bib
+revision 1.9
+date: 2003/03/21 18:28:51;  author: gweber;  state: Exp;  lines: +1 -21
+Agora contém só opções do documento abnt-bibtex-doc
+revision 1.8
+date: 2003/03/16 20:59:36;  author: gweber;  state: Exp;  lines: +3 -3
+Adaptados para novas opções.
+revision 1.7
+date: 2003/03/05 23:11:30;  author: gweber;  state: Exp;  lines: +10 -3
+Novas entradas.
+revision 1.6
+date: 2003/01/31 23:23:00;  author: gweber;  state: Exp;  lines: +3 -1
+Alterações das férias de final de ano.
+
+Working file: texmf/bibtex/bib/abntex/abnt-def.bib
+revision 1.30
+date: 2003/03/21 18:30:29;  author: gweber;  state: dead;  lines: +1 -1
+O conteúdo deste arquivo foi distribuídos em vários outros
+revision 1.29
+date: 2003/03/20 21:50:21;  author: gweber;  state: Exp;  lines: +112 -86
+revisão de todas as entradas
+revision 1.28
+date: 2003/03/05 23:11:30;  author: gweber;  state: Exp;  lines: +2 -2
+Novas entradas.
+revision 1.27
+date: 2003/02/15 13:05:27;  author: gweber;  state: Exp;  lines: +10 -9
+Alteração dos sobrenomes e nova opção abnt-last-names
+revision 1.26
+date: 2003/01/31 23:23:00;  author: gweber;  state: Exp;  lines: +201 -26
+Alterações das férias de final de ano.
+
+Working file: texmf/bibtex/bib/abntex/abnt-options.bib
+revision 1.15
+date: 2003/03/25 14:08:02;  author: gweber;  state: Exp;  lines: +7 -1
+primeiras opções para normas ISO
+revision 1.14
+date: 2003/03/21 18:29:21;  author: gweber;  state: Exp;  lines: +19 -5
+Atualização das opções
+revision 1.13
+date: 2003/03/16 20:59:36;  author: gweber;  state: Exp;  lines: +56 -6
+Adaptados para novas opções.
+revision 1.12
+date: 2003/03/02 01:49:00;  author: gweber;  state: Exp;  lines: +7 -1
+Inclui nova opção abnt-substyle.
+revision 1.11
+date: 2003/02/15 13:05:27;  author: gweber;  state: Exp;  lines: +7 -1
+Alteração dos sobrenomes e nova opção abnt-last-names
+revision 1.10
+date: 2003/02/07 00:14:49;  author: gweber;  state: Exp;  lines: +7 -1
+Nova opção abnt-verbatim-entry
+revision 1.9
+date: 2003/01/31 23:23:00;  author: gweber;  state: Exp;  lines: +7 -1
+Alterações das férias de final de ano.
+revision 1.8
+date: 2002/12/07 21:37:19;  author: gweber;  state: Exp;  lines: +26 -12
+Novas opções abnt-repeated-author-omit, abnt-repeated-title-omit, abnt-nbr10520
+
+Working file: texmf/bibtex/bib/abntex/abnt-test.bib
+revision 1.7
+date: 2003/04/10 11:30:51;  author: gweber;  state: Exp;  lines: +3 -3
+Correção do trema em Schroter
+revision 1.6
+date: 2003/03/22 23:00:57;  author: gweber;  state: Exp;  lines: +45 -1
+novo teste de letras acentuadas
+revision 1.5
+date: 2003/01/31 23:23:00;  author: gweber;  state: Exp;  lines: +17 -1
+Alterações das férias de final de ano.
+
+Working file: texmf/bibtex/bib/abntex/abntex-doc.bib
+New File (revision 1.1)
+date: 2003/03/21 18:28:12;  author: gweber;  state: Exp;
+Referências à documentação do grupo abnTeX
+
+Working file: texmf/bibtex/bib/abntex/iso-690-1987.bib
+New File (revision 1.1)
+date: 2003/03/25 14:08:50;  author: gweber;  state: Exp;
+exemplos para ISO 690
+
+Working file: texmf/bibtex/bib/abntex/normas.bib
+revision 1.8
+date: 2003/04/27 01:35:42;  author: gweber;  state: Exp;  lines: +10 -4
+links novos para normas ISO
+revision 1.7
+date: 2003/04/22 23:03:01;  author: gweber;  state: Exp;  lines: +11 -11
+Mais normas ISO
+revision 1.6
+date: 2003/04/14 12:21:17;  author: gweber;  state: Exp;  lines: +139 -5
+Mais uma dezena de normas ISO
+revision 1.5
+date: 2003/04/13 03:03:53;  author: gweber;  state: Exp;  lines: +37 -4
+Mais normas ISO e DOI
+revision 1.4
+date: 2003/03/31 18:31:20;  author: gweber;  state: Exp;  lines: +7 -3
+adicionadas urls das normas ISO
+revision 1.3
+date: 2003/03/28 18:36:40;  author: gweber;  state: Exp;  lines: +33 -19
+normas ABNT com NBR na frente
+revision 1.2
+date: 2003/03/25 14:07:22;  author: gweber;  state: Exp;  lines: +23 -1
+acrescentadas algumas normas ISO
+New File (revision 1.1)
+date: 2003/03/21 18:26:51;  author: gweber;  state: Exp;
+Referências das normas da ABNT
+
+Working file: texmf/bibtex/bst/abntex/abnt-alf.bst
+revision 1.41
+date: 2003/04/08 00:39:39;  author: gweber;  state: Exp;  lines: +22 -2
+Implementada a entrada @hidden que gera um \hiddenbibitem (só alf),
+ou seja uma entrada que não aparece na lista de referências e que pode ser
+usada com o comando \apud e \apudonline.
+revision 1.40
+date: 2003/04/01 19:34:47;  author: gweber;  state: Exp;  lines: +8 -8
+consertado bug de ordenação alfabética, agora a ordenação em sort.format.names é igual a de format.names
+revision 1.39
+date: 2003/03/25 14:06:19;  author: gweber;  state: Exp;  lines: +83 -13
+Inicio da adaptação para ISO 690:1987.
+Acrescentada a opção iso-author-punctuation cuja opção
+void gera iniciais juntas e sem ponto.
+revision 1.38
+date: 2003/03/22 22:59:13;  author: gweber;  state: Exp;  lines: +82 -35
+abnt-nbr10520 foi substituído por abnt-cite-style.
+A função recompose.name recompõe um nome complicado, mas a função
+ainda é experimental e não está sendo usada no momento. Mesmo
+porque há nomes que o próprio bibtex tem problemas para tratar.
+A função presort for modificada de modo a poder manter o SORT em
+abnt-num sem realmente ordenar alfabeticamente.
+revision 1.37
+date: 2003/03/20 21:49:14;  author: gweber;  state: Exp;  lines: +77 -12
+Corrigido bug que não colocava ponto após o número de uma edição.
+Nas informações sobre o abnt-*.bst agora também é mostrado o número da versão.
+A formatação de year agora recebe um n.dashify fazendo com que
+1990-1992 vire 1990--1992.
+Paginação em @journalpart tratada como em @book.
+Adicionada nova entrada @patent.
+O critério para adicionar um tie (~) aumentou de 2 para 4 letras.
+A entrada @manual agora também aceita o campo furtherresp.
+revision 1.36
+date: 2003/03/16 20:57:54;  author: gweber;  state: Exp;  lines: +66 -33
+As opções abnt-dont-use-etal e abnt-no-etal-label  foram substituidos por
+abnt-etal-cite, abnt-etal-list e abnt-etal-text. abnt-etal-cite e abnt-etal-list
+tomam valores numéricos que controlam quando se substitui a lista de autores
+por "et al.". abnt-etal-text é o texto "et al.". A opção abnt-substyle foi
+removida e substituida por abnt-and-type.
+revision 1.35
+date: 2003/03/07 23:18:57;  author: gweber;  state: Exp;  lines: +8 -4
+Ocrrigido bug que não gerava "et al." nos labels em chamada autor-data.
+revision 1.34
+date: 2003/03/02 01:49:00;  author: gweber;  state: Exp;  lines: +36 -17
+Inclui nova opção abnt-substyle.
+revision 1.33
+date: 2003/02/15 13:04:08;  author: gweber;  state: Exp;  lines: +55 -19
+Novo tratamento para sobrenomes.
+revision 1.32
+date: 2003/02/07 00:11:58;  author: gweber;  state: Exp;  lines: +115 -7
+Nova função write.entry.verbatim e modificação de type para entrada @thesis.
+revision 1.31
+date: 2003/01/31 23:23:00;  author: gweber;  state: Exp;  lines: +152 -65
+Alterações das férias de final de ano.
+revision 1.30
+date: 2002/12/07 21:36:15;  author: gweber;  state: Exp;  lines: +107 -37
+Implementada as opções abnt-repeated-author-omit, abnt-repeated-title-omit, e abnt-nbr10520
+
+Working file: texmf/bibtex/bst/abntex/abnt-num.bst
+revision 1.38
+date: 2003/04/08 00:39:39;  author: gweber;  state: Exp;  lines: +23 -3
+Implementada a entrada @hidden que gera um \hiddenbibitem (só alf),
+ou seja uma entrada que não aparece na lista de referências e que pode ser
+usada com o comando \apud e \apudonline.
+revision 1.37
+date: 2003/04/01 19:34:47;  author: gweber;  state: Exp;  lines: +9 -9
+consertado bug de ordenação alfabética, agora a ordenação em sort.format.names é igual a de format.names
+revision 1.36
+date: 2003/03/25 14:06:20;  author: gweber;  state: Exp;  lines: +83 -13
+Inicio da adaptação para ISO 690:1987.
+Acrescentada a opção iso-author-punctuation cuja opção
+void gera iniciais juntas e sem ponto.
+revision 1.35
+date: 2003/03/22 22:59:13;  author: gweber;  state: Exp;  lines: +81 -35
+abnt-nbr10520 foi substituído por abnt-cite-style.
+A função recompose.name recompõe um nome complicado, mas a função
+ainda é experimental e não está sendo usada no momento. Mesmo
+porque há nomes que o próprio bibtex tem problemas para tratar.
+A função presort for modificada de modo a poder manter o SORT em
+abnt-num sem realmente ordenar alfabeticamente.
+revision 1.34
+date: 2003/03/20 21:49:14;  author: gweber;  state: Exp;  lines: +77 -12
+Corrigido bug que não colocava ponto após o número de uma edição.
+Nas informações sobre o abnt-*.bst agora também é mostrado o número da versão.
+A formatação de year agora recebe um n.dashify fazendo com que
+1990-1992 vire 1990--1992.
+Paginação em @journalpart tratada como em @book.
+Adicionada nova entrada @patent.
+O critério para adicionar um tie (~) aumentou de 2 para 4 letras.
+A entrada @manual agora também aceita o campo furtherresp.
+revision 1.33
+date: 2003/03/16 20:57:54;  author: gweber;  state: Exp;  lines: +66 -33
+As opções abnt-dont-use-etal e abnt-no-etal-label  foram substituidos por
+abnt-etal-cite, abnt-etal-list e abnt-etal-text. abnt-etal-cite e abnt-etal-list
+tomam valores numéricos que controlam quando se substitui a lista de autores
+por "et al.". abnt-etal-text é o texto "et al.". A opção abnt-substyle foi
+removida e substituida por abnt-and-type.
+revision 1.32
+date: 2003/03/07 23:18:58;  author: gweber;  state: Exp;  lines: +8 -4
+Ocrrigido bug que não gerava "et al." nos labels em chamada autor-data.
+revision 1.31
+date: 2003/03/02 01:49:00;  author: gweber;  state: Exp;  lines: +34 -15
+Inclui nova opção abnt-substyle.
+revision 1.30
+date: 2003/02/15 13:04:08;  author: gweber;  state: Exp;  lines: +53 -17
+Novo tratamento para sobrenomes.
+revision 1.29
+date: 2003/02/07 00:11:59;  author: gweber;  state: Exp;  lines: +115 -7
+Nova função write.entry.verbatim e modificação de type para entrada @thesis.
+revision 1.28
+date: 2003/01/31 23:23:00;  author: gweber;  state: Exp;  lines: +152 -65
+Alterações das férias de final de ano.
+revision 1.27
+date: 2002/12/07 21:36:14;  author: gweber;  state: Exp;  lines: +107 -37
+Implementada as opções abnt-repeated-author-omit, abnt-repeated-title-omit, e abnt-nbr10520
+
+Working file: texmf/bibtex/bst/abntex/changelog.txt
+revision 1.31
+date: 2003/03/16 20:57:54;  author: gweber;  state: Exp;  lines: +4 -1
+As opções abnt-dont-use-etal e abnt-no-etal-label  foram substituidos por
+abnt-etal-cite, abnt-etal-list e abnt-etal-text. abnt-etal-cite e abnt-etal-list
+tomam valores numéricos que controlam quando se substitui a lista de autores
+por "et al.". abnt-etal-text é o texto "et al.". A opção abnt-substyle foi
+removida e substituida por abnt-and-type.
+revision 1.30
+date: 2003/03/07 23:18:58;  author: gweber;  state: Exp;  lines: +5 -1
+Ocrrigido bug que não gerava "et al." nos labels em chamada autor-data.
+revision 1.29
+date: 2003/03/02 01:49:00;  author: gweber;  state: Exp;  lines: +5 -1
+Inclui nova opção abnt-substyle.
+revision 1.28
+date: 2003/02/15 13:04:08;  author: gweber;  state: Exp;  lines: +8 -2
+Novo tratamento para sobrenomes.
+revision 1.27
+date: 2003/02/07 00:11:59;  author: gweber;  state: Exp;  lines: +8 -1
+Nova função write.entry.verbatim e modificação de type para entrada @thesis.
+revision 1.26
+date: 2003/01/31 23:23:00;  author: gweber;  state: Exp;  lines: +22 -2
+Alterações das férias de final de ano.
+revision 1.25
+date: 2002/12/07 21:36:15;  author: gweber;  state: Exp;  lines: +11 -1
+Implementada as opções abnt-repeated-author-omit, abnt-repeated-title-omit, e abnt-nbr10520
+
+Working file: texmf/doc/bibtex/abntex/abnt-bibtex-alf-doc.tex
+revision 1.26
+date: 2003/04/08 00:40:44;  author: gweber;  state: Exp;  lines: +199 -75
+novos comandos \apud e entrada @hidden
+revision 1.25
+date: 2003/03/28 20:54:20;  author: gweber;  state: Exp;  lines: +23 -20
+ajustes nas citações às normas
+revision 1.24
+date: 2003/03/25 14:17:35;  author: gweber;  state: Exp;  lines: +43 -36
+alterações nos arquivos bib
+revision 1.23
+date: 2003/03/07 23:20:20;  author: gweber;  state: Exp;  lines: +13 -12
+Novo exemplo que mostra a geração de "et al." na chamada em referências com mais de 3 autores.
+revision 1.22
+date: 2003/03/02 01:49:00;  author: gweber;  state: Exp;  lines: +9 -5
+Inclui nova opção abnt-substyle.
+revision 1.21
+date: 2003/01/31 23:23:00;  author: gweber;  state: Exp;  lines: +41 -30
+Alterações das férias de final de ano.
+revision 1.20
+date: 2002/12/07 21:38:24;  author: gweber;  state: Exp;  lines: +66 -44
+Descrição das novas opções abnt-repeated-author-omit, abnt-repeated-title-omit, abnt-nbr10520
+
+Working file: texmf/doc/bibtex/abntex/abnt-bibtex-doc.tex
+revision 1.39
+date: 2003/04/08 00:41:47;  author: gweber;  state: Exp;  lines: +52 -4
+novos comandos \apud e entrada @hidden e novo comportamento de \citeauthor
+revision 1.38
+date: 2003/03/28 20:54:20;  author: gweber;  state: Exp;  lines: +42 -39
+ajustes nas citações às normas
+revision 1.37
+date: 2003/03/25 14:17:35;  author: gweber;  state: Exp;  lines: +249 -160
+alterações nos arquivos bib
+revision 1.36
+date: 2003/03/05 23:10:41;  author: gweber;  state: Exp;  lines: +4 -4
+Novas opções documentadas e pequenas correções.
+revision 1.35
+date: 2003/03/02 01:49:00;  author: gweber;  state: Exp;  lines: +79 -46
+Inclui nova opção abnt-substyle.
+revision 1.34
+date: 2003/02/15 13:06:20;  author: gweber;  state: Exp;  lines: +25 -14
+Descrição da nova opção abnt-last-names
+revision 1.33
+date: 2003/02/07 00:13:31;  author: gweber;  state: Exp;  lines: +61 -30
+Uso da nova opção abnt-verbatim-entry, adicionado comentário sobre
+@monography e spell check.
+revision 1.32
+date: 2003/01/31 23:23:00;  author: gweber;  state: Exp;  lines: +154 -90
+Alterações das férias de final de ano.
+revision 1.31
+date: 2002/12/07 21:38:24;  author: gweber;  state: Exp;  lines: +177 -87
+Descrição das novas opções abnt-repeated-author-omit, abnt-repeated-title-omit, abnt-nbr10520
+
+Working file: texmf/doc/latex/abntex/inpi-ex.tex
+New File (revision 1.1)
+date: 2003/03/28 20:55:49;  author: gweber;  state: Exp;
+transferido de texmf/tex/latex/
+
+Working file: texmf/doc/latex/abntex/tabela-simbolos-doc.tex
+revision 1.5
+date: 2003/03/28 20:54:56;  author: gweber;  state: Exp;  lines: +12 -8
+ajustes nas citações às normas
+revision 1.4
+date: 2003/03/19 21:05:14;  author: gweber;  state: Exp;  lines: +11 -4
+Corrigida uma incompatibilidade com hyperref e consequentemente
+com pdflatex. O estilo agora passa a opção hyperindex=false para
+o hypereref.
+revision 1.3
+date: 2003/03/12 22:26:57;  author: gweber;  state: Exp;  lines: +58 -10
+Adaptado para as correções e acréscimos no estilo.
+revision 1.2
+date: 2003/03/05 23:09:43;  author: gweber;  state: Exp;  lines: +202 -11
+Primeira versão da documentação completa.
+New File (revision 1.1)
+date: 2003/02/28 00:44:00;  author: gweber;  state: Exp;
+Documentação do estilos tabela-simbolos, com exemplos.
+
+Working file: texmf/tex/latex/abntex/abnt.cls
+revision 1.21
+date: 2003/03/25 14:12:39;  author: gweber;  state: Exp;  lines: +2 -1
+branches:  1.21.2;
+esta é a versão 1.18.2.3
+revision 1.20
+date: 2003/03/25 14:11:19;  author: gweber;  state: Exp;  lines: +1008 -1131
+esta é a versão 1.18.2.1
+revision 1.18.2.3
+date: 2003/03/20 13:05:29;  author: gweber;  state: Exp;  lines: +2 -1
+Correção do bug 114, adicionado retorno do espaçamento selecionado
+no final do comando \capa.
+http://codigolivre.org.br/bugs/?func=detailbug&bug_id=114&group_id=46
+revision 1.18.2.2
+date: 2003/03/19 21:37:49;  author: gweber;  state: Exp;  lines: +4 -2
+Contornado um problema em \ABNTaddcontentsline
+que fazia o pdflatex falhar quando processava
+o comando \sumario.
+revision 1.18.2.1
+date: 2002/12/06 13:54:00;  author: gweber;  state: Exp;  lines: +2 -3
+alterações para o release 0.6-3
+
+Working file: texmf/tex/latex/abntex/abntcite.sty
+revision 1.19
+date: 2003/04/10 11:29:46;  author: gweber;  state: Exp;  lines: +6 -3
+\citenumstyle redefined to \relax instead of \large. According to
+the norm 6023/2000 the number label in the bibliography list is
+of the same font size as the remaining entry.
+revision 1.18
+date: 2003/04/08 00:38:43;  author: gweber;  state: Exp;  lines: +21 -2
+further commands \loccit, \passim, \etseq and new behaviour of \citeauthor for num
+revision 1.17
+date: 2003/04/07 12:22:55;  author: gweber;  state: Exp;  lines: +56 -9
+The command \hiddenbibitem was implemented. It creates an entry which
+does not appear in the bibliography list but creates all necessary keys
+for citation. This is for use with the new \apud and \apudonline commands.
+Further new commands: \Idem, \Ibidem, \opcit, \cfcite.
+
+Working file: texmf/tex/latex/abntex/devel.txt
+revision 1.3
+date: 2003/05/20 09:32:10;  author: mvsfrasson;  state: dead;  lines: +0 -0
+
+devel.txt estah muito desatualizado; deve ser reescrito.
+
+Working file: texmf/tex/latex/abntex/inpi-ex.tex
+revision 1.3
+date: 2003/03/28 20:56:55;  author: gweber;  state: dead;  lines: +0 -0
+transferido para doc/latex
+revision 1.2
+date: 2003/01/02 20:56:14;  author: dmartins;  state: Exp;  lines: +753 -806
+Versao com numeracao de paginas inflexivel
+New File (revision 1.1)
+date: 2002/12/12 21:12:30;  author: dmartins;  state: Exp;
+Versao de teste do cvs
+
+Working file: texmf/tex/latex/abntex/inpi.sty
+New File (revision 1.1)
+date: 2003/01/02 20:59:19;  author: dmartins;  state: Exp;
+*** empty log message ***
+
+Working file: texmf/tex/latex/abntex/tabela-siglas.ist
+revision 1.2
+date: 2003/03/12 22:26:19;  author: gweber;  state: Exp;  lines: +11 -12
+branches:  1.2.2;
+Corrigido bug que mostrava pedaços das páginas, redesenho de alguns comandos.
+New File (revision 1.1)
+date: 2003/03/10 14:25:48;  author: gweber;  state: Exp;
+Arquivo de estilo makeindex para ser usado junto com o estilos tabela-simbolos.
+
+Working file: texmf/tex/latex/abntex/tabela-simbolos.ist
+revision 1.2
+date: 2003/03/12 22:26:20;  author: gweber;  state: Exp;  lines: +11 -13
+branches:  1.2.2;
+Corrigido bug que mostrava pedaços das páginas, redesenho de alguns comandos.
+New File (revision 1.1)
+date: 2003/02/28 00:43:07;  author: gweber;  state: Exp;
+Arquivo de estilo para makeindex.
+
+Working file: texmf/tex/latex/abntex/tabela-simbolos.sty
+revision 1.5
+date: 2003/03/19 21:04:44;  author: gweber;  state: Exp;  lines: +6 -1
+Corrigida uma incompatibilidade com hyperref e consequentemente
+com pdflatex. O estilo agora passa a opção hyperindex=false para
+o hypereref.
+revision 1.4
+date: 2003/03/12 22:26:20;  author: gweber;  state: Exp;  lines: +16 -18
+Corrigido bug que mostrava pedaços das páginas, redesenho de alguns comandos.
+revision 1.3
+date: 2003/03/10 14:26:03;  author: gweber;  state: Exp;  lines: +5 -2
+Alteração em \tabelasiglas
+revision 1.2
+date: 2003/03/05 23:08:54;  author: gweber;  state: Exp;  lines: +162 -33
+Finalizada a primeira versão operacional.
+New File (revision 1.1)
+date: 2003/02/28 00:42:37;  author: gweber;  state: Exp;
+Estilo que cria tabelas de siglas e símbolos a partir de índices gerados por makeindex.
+
+Working file: lyx/layouts/abnt.layout
+New File (revision 1.1)
+date: 2003/03/14 01:41:48;  author: flaviocorrea;  state: Exp;
+Versao alpha 0.1 revisao 1
+
+Working file: bin/geratss
+revision 1.2
+date: 2003/03/05 23:12:25;  author: gweber;  state: Exp;  lines: +25 -11
+Primeira versão operacional.
+New File (revision 1.1)
+date: 2003/02/28 00:41:40;  author: gweber;  state: Exp;
+Script que gera os índices para a lista de símbolos.
+\n
+------------- 0.6 (stable release 3) ---------------------------
+
+Working file: texmf/bibtex/bib/abntex/abnt-bibtex-doc.bib
+revision 1.5
+date: 2002/11/22 18:21:54;  author: gweber;  state: Exp;  lines: +12 -1
+Novas entradas.
+revision 1.4
+date: 2002/11/05 20:38:50;  author: gweber;  state: Exp;  lines: +7 -1
+Novos exemplos.
+revision 1.3
+date: 2002/06/15 19:34:22;  author: gweber;  state: Exp;  lines: +7 -1
+novas entradas.
+revision 1.2
+date: 2002/06/08 01:13:18;  author: gweber;  state: Exp;  lines: +4 -4
+Veja changelog.txt
+New File (revision 1.1)
+date: 2002/06/07 00:39:32;  author: gweber;  state: Exp;
+chamava anteriormente abnt-options.bib que agora tem outra função.
+
+Working file: texmf/bibtex/bib/abntex/abnt-def.bib
+revision 1.25
+date: 2002/11/05 20:38:50;  author: gweber;  state: Exp;  lines: +97 -1
+Novos exemplos.
+revision 1.24
+date: 2002/11/05 19:10:26;  author: gweber;  state: Exp;  lines: +20 -3
+Novos exemplos.
+revision 1.23
+date: 2002/11/05 00:33:25;  author: gweber;  state: Exp;  lines: +57 -1
+Novos exemplos.
+revision 1.22
+date: 2002/11/04 13:29:39;  author: gweber;  state: Exp;  lines: +61 -14
+Alterações em format.address.field
+revision 1.21
+date: 2002/09/03 01:08:38;  author: gweber;  state: Exp;  lines: +53 -2
+novas entradas
+revision 1.20
+date: 2002/08/27 01:20:11;  author: gweber;  state: Exp;  lines: +63 -11
+novas entradas de documentos sonoros.
+revision 1.19
+date: 2002/08/20 01:48:28;  author: gweber;  state: Exp;  lines: +34 -1
+novas entradas
+revision 1.18
+date: 2002/08/14 22:01:59;  author: gweber;  state: Exp;  lines: +32 -1
+Novas entradas.
+revision 1.17
+date: 2002/06/15 19:34:22;  author: gweber;  state: Exp;  lines: +121 -6
+novas entradas.
+revision 1.16
+date: 2002/06/08 01:13:18;  author: gweber;  state: Exp;  lines: +69 -10
+Veja changelog.txt
+revision 1.15
+date: 2002/06/07 20:14:45;  author: gweber;  state: Exp;  lines: +2 -2
+Correções.
+revision 1.14
+date: 2002/06/06 00:57:00;  author: gweber;  state: Exp;  lines: +26 -46
+Retirados os key, alteradas as letras com acentuação.
+revision 1.13
+date: 2002/05/30 01:08:21;  author: gweber;  state: Exp;  lines: +27 -3
+alterada a forma de tratar volume, generalização de organization como autoria.
+revision 1.12
+date: 2002/05/25 19:39:47;  author: gweber;  state: Exp;  lines: +123 -113
+Retirado \C e \I do preâmbulo dos estilos, arquivos bib foram alterados
+correspondentemente.
+revision 1.11
+date: 2002/05/25 01:14:49;  author: gweber;  state: Exp;  lines: +26 -2
+Labels em auto-data não são mais maiúsculas.
+revision 1.10
+date: 2002/05/24 01:03:18;  author: gweber;  state: Exp;  lines: +1 -0
+acrescentado et al. nos labels do sistema auto-data.
+revision 1.9
+date: 2002/05/20 01:28:16;  author: gweber;  state: Exp;  lines: +3 -3
+Resolução de problema com phdthesis. Introdução de [] em abnt-num.
+revision 1.8
+date: 2002/04/25 00:44:57;  author: gweber;  state: Exp;  lines: +25 -2
+2 novos exemplos. Um deles usa publisher em article.
+revision 1.7
+date: 2002/03/09 01:15:46;  author: gweber;  state: Exp;  lines: +8 -0
+Correções para poder usar com o Makefile.
+revision 1.6
+date: 2002/03/02 19:13:38;  author: gweber;  state: Exp;  lines: +29 -1
+Mais exemplos.
+revision 1.5
+date: 2001/11/27 00:54:41;  author: gweber;  state: Exp;  lines: +75 -6
+Novas entradas dos exemplos de 10520
+revision 1.4
+date: 2001/11/07 06:39:17;  author: gweber;  state: Exp;  lines: +64 -0
+Acrescentados novos exemplos de furtherresp.
+revision 1.3
+date: 2001/11/06 13:06:19;  author: gweber;  state: Exp;  lines: +29 -0
+*** empty log message ***
+revision 1.2
+date: 2001/11/06 12:13:26;  author: gweber;  state: Exp;  lines: +27 -1
+Adicionado campo furtherresp para book.
+New File (revision 1.1)
+date: 2001/11/06 11:04:22;  author: gweber;  state: Exp;
+Arquivos de base de bibliografia.
+
+Working file: texmf/bibtex/bib/abntex/abnt-nrj.bib
+New File (revision 1.1)
+date: 2002/11/22 00:27:58;  author: gweber;  state: Exp;
+Contém a entrada @preamble para obter margem direita justificada.
+
+Working file: texmf/bibtex/bib/abntex/abnt-options.bib
+revision 1.7
+date: 2002/11/22 18:21:54;  author: gweber;  state: Exp;  lines: +16 -1
+Novas entradas.
+revision 1.6
+date: 2002/06/15 19:34:22;  author: gweber;  state: Exp;  lines: +16 -1
+novas entradas.
+revision 1.5
+date: 2002/06/08 01:13:18;  author: gweber;  state: Exp;  lines: +10 -4
+Veja changelog.txt
+revision 1.4
+date: 2002/06/07 00:40:58;  author: gweber;  state: Exp;  lines: +36 -43
+Este arquivo é completamente novo, contém as entradas pré-definidas para citeoption.
+Faz parte do pacote abntex e não mais da documentação. O conteúdo anterior está em
+abnt-bibtex-doc.bib.
+revision 1.3
+date: 2002/05/25 01:14:49;  author: gweber;  state: Exp;  lines: +1 -0
+Labels em auto-data não são mais maiúsculas.
+revision 1.2
+date: 2002/05/24 01:03:18;  author: gweber;  state: Exp;  lines: +4 -0
+acrescentado et al. nos labels do sistema auto-data.
+New File (revision 1.1)
+date: 2002/03/08 23:04:15;  author: gweber;  state: Exp;
+Arquivo de opções.
+
+Working file: texmf/bibtex/bib/abntex/abnt-test.bib
+revision 1.4
+date: 2002/06/08 01:13:18;  author: gweber;  state: Exp;  lines: +2 -2
+Veja changelog.txt
+revision 1.3
+date: 2002/05/25 01:14:49;  author: gweber;  state: Exp;  lines: +1 -0
+Labels em auto-data não são mais maiúsculas.
+revision 1.2
+date: 2002/05/20 01:28:16;  author: gweber;  state: Exp;  lines: +9 -2
+Resolução de problema com phdthesis. Introdução de [] em abnt-num.
+New File (revision 1.1)
+date: 2001/11/06 11:04:22;  author: gweber;  state: Exp;
+Arquivos de base de bibliografia.
+
+Working file: texmf/bibtex/bst/abnt-alf.bst
+revision 1.4
+date: 2002/03/07 00:35:54;  author: gweber;  state: dead;  lines: +0 -0
+Novo diretório abntex.
+revision 1.3
+date: 2001/11/27 00:53:33;  author: gweber;  state: Exp;  lines: +118 -69
+Tentativa de adequação a nova 10520
+revision 1.2
+date: 2001/11/06 12:13:26;  author: gweber;  state: Exp;  lines: +9 -2
+Adicionado campo furtherresp para book.
+New File (revision 1.1)
+date: 2001/10/22 22:07:30;  author: gweber;  state: Exp;
+branches:  1.1.1;
+Initial revision
+revision 1.1.1.1
+date: 2001/10/22 22:07:30;  author: gweber;  state: Exp;  lines: +0 -0
+abntex files for install with tetex.
+
+Working file: texmf/bibtex/bst/abnt-num.bst
+revision 1.4
+date: 2002/03/07 00:35:54;  author: gweber;  state: dead;  lines: +0 -0
+Novo diretório abntex.
+revision 1.3
+date: 2002/02/22 23:42:56;  author: gweber;  state: Exp;  lines: +34 -23
+Separação da documentação.
+revision 1.2
+date: 2001/11/06 12:13:26;  author: gweber;  state: Exp;  lines: +9 -2
+Adicionado campo furtherresp para book.
+New File (revision 1.1)
+date: 2001/10/22 22:07:34;  author: gweber;  state: Exp;
+branches:  1.1.1;
+Initial revision
+revision 1.1.1.1
+date: 2001/10/22 22:07:34;  author: gweber;  state: Exp;  lines: +0 -0
+abntex files for install with tetex.
+
+Working file: texmf/bibtex/bst/changelog.txt
+revision 1.2
+date: 2002/03/07 00:35:54;  author: gweber;  state: dead;  lines: +0 -0
+Novo diretório abntex.
+New File (revision 1.1)
+date: 2001/11/06 13:04:08;  author: gweber;  state: Exp;
+registro das modificações
+
+Working file: texmf/bibtex/bst/abntex/abnt-alf.bst
+revision 1.29
+date: 2002/11/22 18:20:32;  author: gweber;  state: Exp;  lines: +39 -22
+Nova opção abnt-refinfo e correção de abnt-no-etal-label.
+revision 1.28
+date: 2002/11/22 13:53:18;  author: gweber;  state: Exp;  lines: +31 -6
+Teste de substituição de palavras-chave do cvs.
+revision 1.27
+date: 2002/11/22 00:30:15;  author: gweber;  state: Exp;  lines: +18 -10
+Adaptação para autodeteção de nome de arquivo pelo cvs.
+revision 1.26
+date: 2002/11/19 21:55:32;  author: gweber;  state: Exp;  lines: +4 -4
+Alterações no preâmbulo gerado no .bbl, retirada do \rigthskip.
+revision 1.25
+date: 2002/11/15 16:27:42;  author: gweber;  state: Exp;  lines: +5 -2
+Alterações no preâmbulo do ambiente thebibliography.
+revision 1.24
+date: 2002/11/04 13:29:39;  author: gweber;  state: Exp;  lines: +41 -21
+Alterações em format.address.field
+revision 1.23
+date: 2002/09/03 01:08:38;  author: gweber;  state: Exp;  lines: +5 -14
+novas entradas
+revision 1.22
+date: 2002/08/27 01:19:14;  author: gweber;  state: Exp;  lines: +22 -4
+@inbook usa furtherresp e @misc usa howpublished no lugar de note.
+revision 1.21
+date: 2002/08/20 01:47:47;  author: gweber;  state: Exp;  lines: +7 -5
+alterações em @misc
+revision 1.20
+date: 2002/08/14 22:01:38;  author: gweber;  state: Exp;  lines: +2 -1
+entrada tipo misc agora formata páginas como book
+revision 1.19
+date: 2002/06/24 16:50:42;  author: gweber;  state: Exp;  lines: +141 -105
+Introduz \abntrefinfo (experimental).
+revision 1.18
+date: 2002/06/15 19:29:08;  author: gweber;  state: Exp;  lines: +162 -100
+Modificações extensas, consulte changelog.txt
+revision 1.17
+date: 2002/06/08 01:13:19;  author: gweber;  state: Exp;  lines: +62 -28
+Veja changelog.txt
+revision 1.16
+date: 2002/06/07 00:36:23;  author: gweber;  state: Exp;  lines: +15 -78
+removidas todos os crossref e \newblock
+revision 1.15
+date: 2002/06/06 00:51:55;  author: gweber;  state: Exp;  lines: +60 -119
+A ordenação alfabética foi reescrita.
+revision 1.14
+date: 2002/06/05 20:47:25;  author: gweber;  state: Exp;  lines: +10 -8
+adicionadas as funções bbl.url.begin e bbl.url.end, retirado \newblock de output.nonull
+revision 1.13
+date: 2002/06/04 15:03:18;  author: gweber;  state: Exp;  lines: +2 -2
+Corrigido erro que colocou # ao invés de #1 para abnt.alf, por isso
+os labels do \bibitem não eram gerados automaticamente.
+revision 1.12
+date: 2002/05/30 01:08:21;  author: gweber;  state: Exp;  lines: +76 -72
+alterada a forma de tratar volume, generalização de organization como autoria.
+revision 1.11
+date: 2002/05/28 19:54:51;  author: gweber;  state: Exp;  lines: +4 -4
+abnt-alf gera o segundo label em letras maiúsculas (novamente).
+revision 1.10
+date: 2002/05/25 19:39:47;  author: gweber;  state: Exp;  lines: +17 -9
+Retirado \C e \I do preâmbulo dos estilos, arquivos bib foram alterados
+correspondentemente.
+revision 1.9
+date: 2002/05/25 01:14:49;  author: gweber;  state: Exp;  lines: +26 -28
+Labels em auto-data não são mais maiúsculas.
+revision 1.8
+date: 2002/05/24 18:31:17;  author: gweber;  state: Exp;  lines: +2 -2
+O segundo label em \bibitem não é mais em maiúsculas.
+revision 1.7
+date: 2002/05/24 01:03:18;  author: gweber;  state: Exp;  lines: +19 -14
+acrescentado et al. nos labels do sistema auto-data.
+revision 1.6
+date: 2002/05/22 23:54:54;  author: gweber;  state: Exp;  lines: +5 -6
+Soluciona o alinhamento à esquerda na lista de referências.
+revision 1.5
+date: 2002/05/22 21:46:38;  author: gweber;  state: Exp;  lines: +2 -1
+acertado a questão da distância entre a lista de referências e a margem.
+revision 1.4
+date: 2002/05/20 01:24:43;  author: gweber;  state: Exp;  lines: +45 -102
+Resolvido problema com phdthesis.
+revision 1.3
+date: 2002/05/09 00:32:58;  author: gweber;  state: Exp;  lines: +10 -28
+Alterados os comandos \C e \I. Reirado tudo referente a longest.label.
+revision 1.2
+date: 2002/04/25 00:42:28;  author: gweber;  state: Exp;  lines: +4 -2
+Adicição do campo publisher em article.
+New File (revision 1.1)
+date: 2002/03/07 00:37:54;  author: gweber;  state: Exp;
+Implementado chamadas segundo NBR 10520.
+
+Working file: texmf/bibtex/bst/abntex/abnt-num.bst
+revision 1.26
+date: 2002/11/22 18:20:32;  author: gweber;  state: Exp;  lines: +37 -20
+Nova opção abnt-refinfo e correção de abnt-no-etal-label.
+revision 1.25
+date: 2002/11/22 13:53:18;  author: gweber;  state: Exp;  lines: +30 -5
+Teste de substituição de palavras-chave do cvs.
+revision 1.24
+date: 2002/11/22 12:37:37;  author: gweber;  state: Exp;  lines: +3 -3
+Teste de substituição cvs.
+revision 1.23
+date: 2002/11/22 00:30:15;  author: gweber;  state: Exp;  lines: +17 -9
+Adaptação para autodeteção de nome de arquivo pelo cvs.
+revision 1.22
+date: 2002/11/19 21:55:32;  author: gweber;  state: Exp;  lines: +4 -4
+Alterações no preâmbulo gerado no .bbl, retirada do \rigthskip.
+revision 1.21
+date: 2002/11/15 16:27:42;  author: gweber;  state: Exp;  lines: +5 -2
+Alterações no preâmbulo do ambiente thebibliography.
+revision 1.20
+date: 2002/11/04 13:29:39;  author: gweber;  state: Exp;  lines: +41 -21
+Alterações em format.address.field
+revision 1.19
+date: 2002/09/03 01:08:38;  author: gweber;  state: Exp;  lines: +5 -14
+novas entradas
+revision 1.18
+date: 2002/08/27 01:19:14;  author: gweber;  state: Exp;  lines: +21 -3
+@inbook usa furtherresp e @misc usa howpublished no lugar de note.
+revision 1.17
+date: 2002/08/20 01:47:47;  author: gweber;  state: Exp;  lines: +6 -4
+alterações em @misc
+revision 1.16
+date: 2002/08/14 22:01:38;  author: gweber;  state: Exp;  lines: +2 -1
+entrada tipo misc agora formata páginas como book
+revision 1.15
+date: 2002/06/26 16:44:00;  author: gweber;  state: Exp;  lines: +141 -105
+Alterações experimentais (\abntrefinfo)
+revision 1.14
+date: 2002/06/15 19:29:09;  author: gweber;  state: Exp;  lines: +162 -100
+Modificações extensas, consulte changelog.txt
+revision 1.13
+date: 2002/06/08 01:13:19;  author: gweber;  state: Exp;  lines: +62 -28
+Veja changelog.txt
+revision 1.12
+date: 2002/06/07 00:36:23;  author: gweber;  state: Exp;  lines: +15 -78
+removidas todos os crossref e \newblock
+revision 1.11
+date: 2002/06/06 00:53:35;  author: gweber;  state: Exp;  lines: +69 -126
+alteração no tratamento de volumes em inbook e incollection
+revision 1.10
+date: 2002/05/30 01:08:21;  author: gweber;  state: Exp;  lines: +75 -71
+alterada a forma de tratar volume, generalização de organization como autoria.
+revision 1.9
+date: 2002/05/28 19:54:52;  author: gweber;  state: Exp;  lines: +4 -4
+abnt-alf gera o segundo label em letras maiúsculas (novamente).
+revision 1.8
+date: 2002/05/25 19:39:47;  author: gweber;  state: Exp;  lines: +17 -9
+Retirado \C e \I do preâmbulo dos estilos, arquivos bib foram alterados
+correspondentemente.
+revision 1.7
+date: 2002/05/25 01:14:49;  author: gweber;  state: Exp;  lines: +28 -30
+Labels em auto-data não são mais maiúsculas.
+revision 1.6
+date: 2002/05/24 01:03:18;  author: gweber;  state: Exp;  lines: +21 -16
+acrescentado et al. nos labels do sistema auto-data.
+revision 1.5
+date: 2002/05/22 23:54:55;  author: gweber;  state: Exp;  lines: +5 -5
+Soluciona o alinhamento à esquerda na lista de referências.
+revision 1.4
+date: 2002/05/20 01:24:43;  author: gweber;  state: Exp;  lines: +45 -102
+Resolvido problema com phdthesis.
+revision 1.3
+date: 2002/05/09 00:32:58;  author: gweber;  state: Exp;  lines: +10 -28
+Alterados os comandos \C e \I. Reirado tudo referente a longest.label.
+revision 1.2
+date: 2002/04/25 00:42:28;  author: gweber;  state: Exp;  lines: +4 -2
+Adicição do campo publisher em article.
+New File (revision 1.1)
+date: 2002/03/07 00:37:54;  author: gweber;  state: Exp;
+Implementado chamadas segundo NBR 10520.
+
+Working file: texmf/bibtex/bst/abntex/changelog.txt
+revision 1.24
+date: 2002/11/22 18:20:32;  author: gweber;  state: Exp;  lines: +9 -1
+Nova opção abnt-refinfo e correção de abnt-no-etal-label.
+revision 1.23
+date: 2002/11/22 00:30:15;  author: gweber;  state: Exp;  lines: +13 -1
+Adaptação para autodeteção de nome de arquivo pelo cvs.
+revision 1.22
+date: 2002/11/04 13:29:39;  author: gweber;  state: Exp;  lines: +19 -1
+Alterações em format.address.field
+revision 1.21
+date: 2002/09/03 01:08:38;  author: gweber;  state: Exp;  lines: +6 -1
+novas entradas
+revision 1.20
+date: 2002/08/27 01:19:14;  author: gweber;  state: Exp;  lines: +6 -1
+@inbook usa furtherresp e @misc usa howpublished no lugar de note.
+revision 1.19
+date: 2002/08/20 01:47:47;  author: gweber;  state: Exp;  lines: +7 -1
+alterações em @misc
+revision 1.18
+date: 2002/08/14 22:01:38;  author: gweber;  state: Exp;  lines: +6 -1
+entrada tipo misc agora formata páginas como book
+revision 1.17
+date: 2002/06/27 12:36:30;  author: gweber;  state: Exp;  lines: +10 -1
+\abntrefinfo
+revision 1.16
+date: 2002/06/15 19:29:09;  author: gweber;  state: Exp;  lines: +37 -1
+Modificações extensas, consulte changelog.txt
+revision 1.15
+date: 2002/06/08 01:13:19;  author: gweber;  state: Exp;  lines: +12 -1
+Veja changelog.txt
+revision 1.14
+date: 2002/06/07 00:36:23;  author: gweber;  state: Exp;  lines: +10 -1
+removidas todos os crossref e \newblock
+revision 1.13
+date: 2002/06/06 00:54:36;  author: gweber;  state: Exp;  lines: +13 -1
+*** empty log message ***
+revision 1.12
+date: 2002/06/05 20:47:25;  author: gweber;  state: Exp;  lines: +6 -1
+adicionadas as funções bbl.url.begin e bbl.url.end, retirado \newblock de output.nonull
+revision 1.11
+date: 2002/05/30 01:08:21;  author: gweber;  state: Exp;  lines: +14 -1
+alterada a forma de tratar volume, generalização de organization como autoria.
+revision 1.10
+date: 2002/05/28 19:54:52;  author: gweber;  state: Exp;  lines: +5 -1
+abnt-alf gera o segundo label em letras maiúsculas (novamente).
+revision 1.9
+date: 2002/05/25 19:39:47;  author: gweber;  state: Exp;  lines: +8 -1
+Retirado \C e \I do preâmbulo dos estilos, arquivos bib foram alterados
+correspondentemente.
+revision 1.8
+date: 2002/05/25 01:14:49;  author: gweber;  state: Exp;  lines: +9 -0
+Labels em auto-data não são mais maiúsculas.
+revision 1.7
+date: 2002/05/24 18:31:17;  author: gweber;  state: Exp;  lines: +4 -0
+O segundo label em \bibitem não é mais em maiúsculas.
+revision 1.6
+date: 2002/05/24 01:03:18;  author: gweber;  state: Exp;  lines: +6 -0
+acrescentado et al. nos labels do sistema auto-data.
+revision 1.5
+date: 2002/05/22 23:54:55;  author: gweber;  state: Exp;  lines: +5 -0
+Soluciona o alinhamento à esquerda na lista de referências.
+revision 1.4
+date: 2002/05/22 21:46:38;  author: gweber;  state: Exp;  lines: +8 -0
+acertado a questão da distância entre a lista de referências e a margem.
+revision 1.3
+date: 2002/05/20 01:24:43;  author: gweber;  state: Exp;  lines: +10 -0
+Resolvido problema com phdthesis.
+revision 1.2
+date: 2002/05/09 00:32:58;  author: gweber;  state: Exp;  lines: +6 -0
+Alterados os comandos \C e \I. Reirado tudo referente a longest.label.
+New File (revision 1.1)
+date: 2002/03/07 00:37:54;  author: gweber;  state: Exp;
+Implementado chamadas segundo NBR 10520.
+
+Working file: texmf/doc/bibtex/abnt-bibtex-alf-doc.dvi
+revision 1.3
+date: 2002/02/28 00:22:16;  author: gweber;  state: dead;  lines: +0 -0
+Remoção de arquivos intermediários da árvore cvs.
+revision 1.2
+date: 2002/02/23 00:33:08;  author: gweber;  state: Exp;  lines: +5 -5
+Atualização.
+New File (revision 1.1)
+date: 2002/02/22 23:42:56;  author: gweber;  state: Exp;
+Separação da documentação.
+
+Working file: texmf/doc/bibtex/abnt-bibtex-alf-doc.pdf
+revision 1.3
+date: 2002/02/28 00:22:16;  author: gweber;  state: dead;  lines: +0 -0
+Remoção de arquivos intermediários da árvore cvs.
+revision 1.2
+date: 2002/02/23 00:33:08;  author: gweber;  state: Exp;  lines: +84 -81
+Atualização.
+New File (revision 1.1)
+date: 2002/02/22 23:42:56;  author: gweber;  state: Exp;
+Separação da documentação.
+
+Working file: texmf/doc/bibtex/abnt-bibtex-alf-doc.ps.gz
+revision 1.3
+date: 2002/02/28 00:22:16;  author: gweber;  state: dead;  lines: +0 -0
+Remoção de arquivos intermediários da árvore cvs.
+revision 1.2
+date: 2002/02/23 00:33:08;  author: gweber;  state: Exp;  lines: +145 -156
+Atualização.
+New File (revision 1.1)
+date: 2002/02/22 23:42:56;  author: gweber;  state: Exp;
+Separação da documentação.
+
+Working file: texmf/doc/bibtex/abnt-bibtex-alf-doc.tex
+revision 1.5
+date: 2002/03/15 23:53:24;  author: gweber;  state: dead;  lines: +0 -0
+Movido para diretório abntex.
+revision 1.4
+date: 2002/03/13 22:49:28;  author: mvsfrasson;  state: Exp;  lines: +12 -4
+
+
+Essa NAO eh para ser distribuida ainda!!!!!
+
+abnt.cls - adicionando o comando \assinatura{nome} e preparando o terreno
+           para a folha de aprovacao.
+
+LEIAME -  comecando a escrever
+revision 1.3
+date: 2002/03/09 01:15:46;  author: gweber;  state: Exp;  lines: +46 -1
+Correções para poder usar com o Makefile.
+revision 1.2
+date: 2002/03/02 19:11:48;  author: gweber;  state: Exp;  lines: +81 -24
+Implementado referências múltiplas.
+New File (revision 1.1)
+date: 2002/02/22 23:42:56;  author: gweber;  state: Exp;
+Separação da documentação.
+
+Working file: texmf/doc/bibtex/abnt-bibtex-doc.dvi
+revision 1.3
+date: 2002/02/28 00:22:16;  author: gweber;  state: dead;  lines: +0 -0
+Remoção de arquivos intermediários da árvore cvs.
+revision 1.2
+date: 2002/02/23 00:33:08;  author: gweber;  state: Exp;  lines: +22 -21
+Atualização.
+New File (revision 1.1)
+date: 2002/02/22 23:42:56;  author: gweber;  state: Exp;
+Separação da documentação.
+
+Working file: texmf/doc/bibtex/abnt-bibtex-doc.pdf
+revision 1.3
+date: 2002/02/28 00:22:16;  author: gweber;  state: dead;  lines: +0 -0
+Remoção de arquivos intermediários da árvore cvs.
+revision 1.2
+date: 2002/02/23 00:10:45;  author: gweber;  state: Exp;  lines: +239 -240
+Updated pdf.
+New File (revision 1.1)
+date: 2002/02/22 23:42:56;  author: gweber;  state: Exp;
+Separação da documentação.
+
+Working file: texmf/doc/bibtex/abnt-bibtex-doc.ps.gz
+revision 1.5
+date: 2002/02/28 00:22:16;  author: gweber;  state: dead;  lines: +0 -0
+Remoção de arquivos intermediários da árvore cvs.
+revision 1.4
+date: 2002/02/23 00:33:08;  author: gweber;  state: Exp;  lines: +348 -338
+Atualização.
+revision 1.3
+date: 2002/02/22 23:42:57;  author: gweber;  state: Exp;  lines: +344 -315
+Separação da documentação.
+revision 1.2
+date: 2001/11/06 12:13:26;  author: gweber;  state: Exp;  lines: +315 -327
+Adicionado campo furtherresp para book.
+New File (revision 1.1)
+date: 2001/10/23 00:00:08;  author: gweber;  state: Exp;
+Bibtex documentation.
+
+Working file: texmf/doc/bibtex/abnt-bibtex-doc.tex
+revision 1.9
+date: 2002/03/15 23:54:17;  author: gweber;  state: dead;  lines: +0 -0
+Movido para diretório abntex.
+revision 1.8
+date: 2002/03/13 22:49:28;  author: mvsfrasson;  state: Exp;  lines: +12 -4
+
+
+Essa NAO eh para ser distribuida ainda!!!!!
+
+abnt.cls - adicionando o comando \assinatura{nome} e preparando o terreno
+           para a folha de aprovacao.
+
+LEIAME -  comecando a escrever
+revision 1.7
+date: 2002/03/09 01:15:46;  author: gweber;  state: Exp;  lines: +1 -1
+Correções para poder usar com o Makefile.
+revision 1.6
+date: 2002/02/22 23:42:57;  author: gweber;  state: Exp;  lines: +5 -96
+Separação da documentação.
+revision 1.5
+date: 2001/11/27 00:55:37;  author: gweber;  state: Exp;  lines: +102 -8
+Primeiros trabalhos de adequação a 10520
+revision 1.4
+date: 2001/11/07 06:39:17;  author: gweber;  state: Exp;  lines: +18 -16
+Acrescentados novos exemplos de furtherresp.
+revision 1.3
+date: 2001/11/06 13:06:19;  author: gweber;  state: Exp;  lines: +9 -8
+*** empty log message ***
+revision 1.2
+date: 2001/11/06 12:13:26;  author: gweber;  state: Exp;  lines: +31 -7
+Adicionado campo furtherresp para book.
+New File (revision 1.1)
+date: 2001/10/23 00:00:08;  author: gweber;  state: Exp;
+Bibtex documentation.
+
+Working file: texmf/doc/bibtex/abnt-def.bib
+revision 1.2
+date: 2001/11/06 12:19:09;  author: gweber;  state: dead;  lines: +0 -0
+Estes arquivos foram movidos para texmf/bibtex/bst/abntex.
+New File (revision 1.1)
+date: 2001/10/23 00:00:08;  author: gweber;  state: Exp;
+Bibtex documentation.
+
+Working file: texmf/doc/bibtex/abnt-test.bib
+revision 1.2
+date: 2001/11/06 12:19:09;  author: gweber;  state: dead;  lines: +0 -0
+Estes arquivos foram movidos para texmf/bibtex/bst/abntex.
+New File (revision 1.1)
+date: 2001/10/23 00:00:08;  author: gweber;  state: Exp;
+Bibtex documentation.
+
+Working file: texmf/doc/bibtex/abntex/abnt-bibtex-alf-doc.css
+New File (revision 1.1)
+date: 2002/06/04 14:23:30;  author: mvsfrasson;  state: Exp;
+
+
+colocados os style sheets para as paginas da documentacao dos estilos bibtex
+
+Working file: texmf/doc/bibtex/abntex/abnt-bibtex-alf-doc.tex
+revision 1.19
+date: 2002/11/22 18:23:37;  author: gweber;  state: Exp;  lines: +35 -34
+Informações novas sobre abnt-refinfo e abnt-no-etal-label
+revision 1.18
+date: 2002/11/19 21:29:35;  author: gweber;  state: Exp;  lines: +12 -2
+Correções para rodar com pdflatex.
+revision 1.17
+date: 2002/11/15 16:27:42;  author: gweber;  state: Exp;  lines: +4 -4
+Alterações no preâmbulo do ambiente thebibliography.
+revision 1.16
+date: 2002/09/03 01:09:39;  author: gweber;  state: Exp;  lines: +19 -17
+pequenos acertos.
+revision 1.15
+date: 2002/06/27 12:38:41;  author: gweber;  state: Exp;  lines: +6 -3
+Pequenas alterações.
+revision 1.14
+date: 2002/06/15 19:39:19;  author: gweber;  state: Exp;  lines: +2 -4
+Atualização da documentação.
+revision 1.13
+date: 2002/06/07 18:10:12;  author: mvsfrasson;  state: Exp;  lines: +6 -4
+
+
+Atualizada apenas a linha do latex2html.
+revision 1.12
+date: 2002/06/07 00:55:48;  author: gweber;  state: Exp;  lines: +9 -7
+adaptado para \citeauthoronline
+revision 1.11
+date: 2002/06/07 00:44:14;  author: gweber;  state: Exp;  lines: +5 -4
+Novas informações, especialmente sobre citeoption.
+revision 1.10
+date: 2002/06/06 00:59:44;  author: gweber;  state: Exp;  lines: +49 -21
+Alterações nas seções, inclusão dos novos comandos \citeauthor e \citeyear
+revision 1.9
+date: 2002/06/04 14:21:12;  author: mvsfrasson;  state: Exp;  lines: +4 -0
+
+
+inserida a linha de comando do latex2html
+revision 1.8
+date: 2002/06/04 14:17:42;  author: mvsfrasson;  state: Exp;  lines: +80 -60
+
+
+Nada mudou, apenas que foi escrito um pouco de codigo para ser otimizado
+tambem para latex2html.
+revision 1.7
+date: 2002/05/25 01:14:49;  author: gweber;  state: Exp;  lines: +5 -3
+Labels em auto-data não são mais maiúsculas.
+revision 1.6
+date: 2002/05/24 01:03:18;  author: gweber;  state: Exp;  lines: +28 -2
+acrescentado et al. nos labels do sistema auto-data.
+revision 1.5
+date: 2002/05/09 00:35:03;  author: gweber;  state: Exp;  lines: +3 -6
+Alteração nas no tamanho das margens.
+revision 1.4
+date: 2002/04/24 23:27:48;  author: gweber;  state: Exp;  lines: +78 -46
+Acréscimo de explicações sobre a limitação do estilo abnt-alf.sty
+revision 1.3
+date: 2002/03/27 23:51:42;  author: gweber;  state: Exp;  lines: +26 -14
+Pequenos acertos e deteção de bugs (não resolvidos ainda).
+revision 1.2
+date: 2002/03/23 01:31:54;  author: gweber;  state: Exp;  lines: +8 -4
+Pequenas alterações.
+New File (revision 1.1)
+date: 2002/03/14 01:40:08;  author: gweber;  state: Exp;
+Doc em novo diretório abntex.
+
+Working file: texmf/doc/bibtex/abntex/abnt-bibtex-doc.css
+New File (revision 1.1)
+date: 2002/06/04 14:23:30;  author: mvsfrasson;  state: Exp;
+
+
+colocados os style sheets para as paginas da documentacao dos estilos bibtex
+
+Working file: texmf/doc/bibtex/abntex/abnt-bibtex-doc.tex
+revision 1.30
+date: 2002/12/02 01:03:04;  author: gweber;  state: Exp;  lines: +10 -11
+Mais adaptações para usar a classe abnt.cls.
+revision 1.29
+date: 2002/11/27 22:55:49;  author: gweber;  state: Exp;  lines: +40 -45
+Mudanças para a versão 0.61
+revision 1.28
+date: 2002/11/22 18:23:37;  author: gweber;  state: Exp;  lines: +15 -5
+Informações novas sobre abnt-refinfo e abnt-no-etal-label
+revision 1.27
+date: 2002/11/22 00:30:15;  author: gweber;  state: Exp;  lines: +3 -3
+Adaptação para autodeteção de nome de arquivo pelo cvs.
+revision 1.26
+date: 2002/11/19 21:29:35;  author: gweber;  state: Exp;  lines: +14 -8
+Correções para rodar com pdflatex.
+revision 1.25
+date: 2002/11/05 20:38:50;  author: gweber;  state: Exp;  lines: +16 -16
+Novos exemplos.
+revision 1.24
+date: 2002/11/05 19:10:26;  author: gweber;  state: Exp;  lines: +43 -45
+Novos exemplos.
+revision 1.23
+date: 2002/11/05 00:33:25;  author: gweber;  state: Exp;  lines: +8 -6
+Novos exemplos.
+revision 1.22
+date: 2002/11/04 13:29:39;  author: gweber;  state: Exp;  lines: +14 -6
+Alterações em format.address.field
+revision 1.21
+date: 2002/09/03 01:09:39;  author: gweber;  state: Exp;  lines: +12 -13
+pequenos acertos.
+revision 1.20
+date: 2002/08/27 01:21:08;  author: gweber;  state: Exp;  lines: +14 -15
+novas entradas de abnt-def
+revision 1.19
+date: 2002/08/20 01:49:27;  author: gweber;  state: Exp;  lines: +4 -3
+novas entradas
+revision 1.18
+date: 2002/08/14 22:02:41;  author: gweber;  state: Exp;  lines: +9 -7
+Atualizado com novas entradas de abnt-def.bib
+revision 1.17
+date: 2002/06/27 12:38:41;  author: gweber;  state: Exp;  lines: +2 -2
+Pequenas alterações.
+revision 1.16
+date: 2002/06/15 19:39:19;  author: gweber;  state: Exp;  lines: +53 -25
+Atualização da documentação.
+revision 1.15
+date: 2002/06/08 01:13:19;  author: gweber;  state: Exp;  lines: +25 -29
+Veja changelog.txt
+revision 1.14
+date: 2002/06/07 00:44:14;  author: gweber;  state: Exp;  lines: +104 -58
+Novas informações, especialmente sobre citeoption.
+revision 1.13
+date: 2002/06/04 14:21:12;  author: mvsfrasson;  state: Exp;  lines: +3 -1
+
+
+inserida a linha de comando do latex2html
+revision 1.12
+date: 2002/06/01 21:12:44;  author: mvsfrasson;  state: Exp;  lines: +13 -10
+
+
+Versao do abnt-bibtex-doc.tex que roda macio no latex2html. Pouquissimas
+mudancas.   (Miguel Frasson)
+revision 1.11
+date: 2002/06/01 16:03:48;  author: mvsfrasson;  state: Exp;  lines: +4 -5
+
+
+Gerald, mudei so um pouquinho sua documentacao para que ela funcione no
+latex2html.
+revision 1.10
+date: 2002/06/01 15:48:22;  author: mvsfrasson;  state: Exp;  lines: +52 -16
+
+
+Algum suporte para latex2html.
+
+abnt-num.perl esta funcionando relativamente bem, mas falta suportar
+redefinicao do comandos \leftovercite e \rightovercite. Agora \citeonline
+ja eh suportado. O arquivo abnt-bibtex-doc.tex ja esta rodando numa boa.
+
+O abnt.perl ainda esta engatinhando.
+revision 1.9
+date: 2002/05/30 01:08:21;  author: gweber;  state: Exp;  lines: +9 -8
+alterada a forma de tratar volume, generalização de organization como autoria.
+revision 1.8
+date: 2002/05/25 19:39:47;  author: gweber;  state: Exp;  lines: +5 -5
+Retirado \C e \I do preâmbulo dos estilos, arquivos bib foram alterados
+correspondentemente.
+revision 1.7
+date: 2002/05/25 01:14:49;  author: gweber;  state: Exp;  lines: +6 -6
+Labels em auto-data não são mais maiúsculas.
+revision 1.6
+date: 2002/05/20 01:28:16;  author: gweber;  state: Exp;  lines: +26 -4
+Resolução de problema com phdthesis. Introdução de [] em abnt-num.
+revision 1.5
+date: 2002/05/09 00:35:03;  author: gweber;  state: Exp;  lines: +3 -6
+Alteração nas no tamanho das margens.
+revision 1.4
+date: 2002/04/25 00:44:57;  author: gweber;  state: Exp;  lines: +6 -6
+2 novos exemplos. Um deles usa publisher em article.
+revision 1.3
+date: 2002/03/23 01:31:54;  author: gweber;  state: Exp;  lines: +27 -8
+Pequenas alterações.
+revision 1.2
+date: 2002/03/23 00:48:31;  author: gweber;  state: Exp;  lines: +5 -2
+Mudanças menores.
+New File (revision 1.1)
+date: 2002/03/14 01:40:08;  author: gweber;  state: Exp;
+Doc em novo diretório abntex.
+
+Working file: texmf/doc/latex/abntex/abnt-classe-doc.css
+revision 1.2
+date: 2002/05/21 08:47:11;  author: mvsfrasson;  state: Exp;  lines: +1 -1
+*** empty log message ***
+New File (revision 1.1)
+date: 2002/03/21 16:22:59;  author: mvsfrasson;  state: Exp;
+
+
+Style sheet para melhorar a apresentacao do abnt-classe-doc.html
+
+Working file: texmf/doc/latex/abntex/abnt-classe-doc.tex
+revision 1.11
+date: 2002/11/25 09:39:42;  author: mvsfrasson;  state: Exp;  lines: +45 -22
+
+
+Versao da documentacao da classe para abntex 0.6
+revision 1.10
+date: 2002/05/30 18:37:54;  author: mvsfrasson;  state: Exp;  lines: +104 -102
+
+
+Alteracoes menores. Acho que o manual da classe esta na versao final.
+revision 1.9
+date: 2002/05/21 15:23:24;  author: mvsfrasson;  state: Exp;  lines: +0 -467
+
+
+Tentando corrigir um problema: o cs aparenteente editou meu arquivo com
+entradasdo ediff.
+revision 1.8
+date: 2002/05/21 08:42:34;  author: mvsfrasson;  state: Exp;  lines: +564 -41
+
+
+Documentacao da classe compativel com latex, pdflatex e latex2html.
+Referente a versao 1.
+revision 1.7
+date: 2002/05/14 20:28:11;  author: gweber;  state: Exp;  lines: +694 -444
+incluidos no cvs à pedido do Miguel.
+revision 1.6
+date: 2002/04/30 19:54:06;  author: mvsfrasson;  state: Exp;  lines: +67 -58
+
+
+Mais algumas mudancas. Pouca coisa significativa.
+revision 1.5
+date: 2002/04/29 21:00:41;  author: mvsfrasson;  state: Exp;  lines: +1 -1
+
+
+Ops.. outro errinho retirado.
+revision 1.4
+date: 2002/04/29 20:51:42;  author: mvsfrasson;  state: Exp;  lines: +307 -221
+
+
+Versao muito melhorada da documentacao da classe. Varios erros retirados,
+alguns topicos revisados e outros adicionados.
+revision 1.3
+date: 2002/04/27 21:38:03;  author: mvsfrasson;  state: Exp;  lines: +112 -27
+
+
+Melhorada documentacao
+revision 1.2
+date: 2002/03/21 16:19:54;  author: mvsfrasson;  state: Exp;  lines: +326 -219
+
+
+Versao do manualda classe que eh convertivel a HTML e mantem o layout
+original do manual quando em LaTeX.
+New File (revision 1.1)
+date: 2002/03/20 12:13:01;  author: mvsfrasson;  state: Exp;
+
+
+Versao preliminar do novo manual da classe -> abnt-classe-doc.tex
+
+Working file: texmf/tex/latex/abntex/abnt-alf.sty
+revision 1.17
+date: 2002/06/28 07:47:14;  author: mvsfrasson;  state: Exp;  lines: +5 -294
+
+
+Adicionando o abntcite.sty, e fazendo os abnt-alf.sty e
+abnt-num.sty compativeis com ele. Falta a compatibilidade
+com as versoes antigas do abnt.alf :-(
+revision 1.16
+date: 2002/06/08 20:05:28;  author: mvsfrasson;  state: Exp;  lines: +3 -4
+
+
+Pequenas mudancas cosmeticas.
+revision 1.15
+date: 2002/06/07 18:08:59;  author: mvsfrasson;  state: Exp;  lines: +59 -50
+
+
+Versao congelada para release. Ainda nao suporta o campo do ano em branco,
+mas estah bem estavel.
+revision 1.14
+date: 2002/06/07 07:34:29;  author: mvsfrasson;  state: Exp;  lines: +20 -8
+
+
+Mudancas menores para que o "et al." nao produza um ponto final (com maior
+espacamento).
+revision 1.13
+date: 2002/06/06 11:19:01;  author: mvsfrasson;  state: Exp;  lines: +3 -4
+
+
+pequenas correcoes no \citeauthor e \citeauthoronline
+revision 1.12
+date: 2002/06/06 10:05:23;  author: mvsfrasson;  state: Exp;  lines: +81 -45
+
+
+Implementados \citeauthor, \citeauthoronline e corrigido bug da virgula
+extra no \citeonline. Removidos \citeyearp e \citeauthorp
+revision 1.11
+date: 2002/06/05 09:12:40;  author: mvsfrasson;  state: Exp;  lines: +4 -1
+
+
+definido o comando \ABNTALFloaded.
+revision 1.10
+date: 2002/06/05 09:08:39;  author: mvsfrasson;  state: Exp;  lines: +115 -326
+
+
+Limpeza geral no abnt-alf. Todos os comandos "sinistros" foram
+retirados. Agora o codigo estah totalmente legivel.
+revision 1.9
+date: 2002/06/01 15:48:22;  author: mvsfrasson;  state: Exp;  lines: +43 -33
+
+
+Algum suporte para latex2html.
+
+abnt-num.perl esta funcionando relativamente bem, mas falta suportar
+redefinicao do comandos \leftovercite e \rightovercite. Agora \citeonline
+ja eh suportado. O arquivo abnt-bibtex-doc.tex ja esta rodando numa boa.
+
+O abnt.perl ainda esta engatinhando.
+revision 1.8
+date: 2002/05/30 18:40:08;  author: mvsfrasson;  state: Exp;  lines: +393 -89
+
+
+Incluido o suporte para \citeyear e \citeauthor, e o texto das citacoes
+esta sendo escrito com sucesso no arquivo auxiliar, com o minimo de
+expansao possivel. O proximo passo eh implementar o perl...
+revision 1.7
+date: 2002/05/23 15:44:59;  author: mvsfrasson;  state: Exp;  lines: +125 -46
+
+
+Primeira participacao do Miguel no abnt-alf.
+Apenas indentei o codigo, comentei algumas coisas para eu entender o que
+acontece no futuro.
+\@citex e \@citeonlinex ganharam muito em legibilidade.
+\citeoption introduzido.
+revision 1.6
+date: 2002/03/27 23:51:42;  author: gweber;  state: Exp;  lines: +5 -2
+Pequenos acertos e deteção de bugs (não resolvidos ainda).
+revision 1.5
+date: 2002/03/09 01:15:46;  author: gweber;  state: Exp;  lines: +26 -10
+Correções para poder usar com o Makefile.
+revision 1.4
+date: 2002/03/02 19:09:04;  author: gweber;  state: Exp;  lines: +13 -4
+Implementado a primeira versão de chamadas múltiplas ítem 5.1.4
+revision 1.3
+date: 2002/02/22 23:42:57;  author: gweber;  state: Exp;  lines: +4 -15
+Separação da documentação.
+revision 1.2
+date: 2001/11/27 00:56:32;  author: gweber;  state: Exp;  lines: +55 -5
+Alteração para 10520, altamente experimental
+New File (revision 1.1)
+date: 2001/10/22 22:07:34;  author: gweber;  state: Exp;
+branches:  1.1.1;
+Initial revision
+revision 1.1.1.1
+date: 2001/10/22 22:07:34;  author: gweber;  state: Exp;  lines: +0 -0
+abntex files for install with tetex.
+
+Working file: texmf/tex/latex/abntex/abnt-num.sty
+revision 1.9
+date: 2002/06/28 07:47:14;  author: mvsfrasson;  state: Exp;  lines: +13 -30
+
+
+Adicionando o abntcite.sty, e fazendo os abnt-alf.sty e
+abnt-num.sty compativeis com ele. Falta a compatibilidade
+com as versoes antigas do abnt.alf :-(
+revision 1.8
+date: 2002/06/08 20:05:28;  author: mvsfrasson;  state: Exp;  lines: +7 -4
+
+
+Pequenas mudancas cosmeticas.
+revision 1.7
+date: 2002/06/06 10:05:23;  author: mvsfrasson;  state: Exp;  lines: +5 -2
+
+
+Implementados \citeauthor, \citeauthoronline e corrigido bug da virgula
+extra no \citeonline. Removidos \citeyearp e \citeauthorp
+revision 1.6
+date: 2002/06/01 15:48:22;  author: mvsfrasson;  state: Exp;  lines: +24 -3
+
+
+Algum suporte para latex2html.
+
+abnt-num.perl esta funcionando relativamente bem, mas falta suportar
+redefinicao do comandos \leftovercite e \rightovercite. Agora \citeonline
+ja eh suportado. O arquivo abnt-bibtex-doc.tex ja esta rodando numa boa.
+
+O abnt.perl ainda esta engatinhando.
+revision 1.5
+date: 2002/05/22 23:54:55;  author: gweber;  state: Exp;  lines: +3 -2
+Soluciona o alinhamento à esquerda na lista de referências.
+revision 1.4
+date: 2002/05/20 01:28:16;  author: gweber;  state: Exp;  lines: +5 -0
+Resolução de problema com phdthesis. Introdução de [] em abnt-num.
+revision 1.3
+date: 2002/03/23 01:32:49;  author: gweber;  state: Exp;  lines: +2 -1
+acréscimos de dados de identificação desse arquivo.
+revision 1.2
+date: 2002/03/16 00:22:04;  author: gweber;  state: Exp;  lines: +5 -0
+Adicionada a nota de licença/copyright.
+New File (revision 1.1)
+date: 2001/10/22 22:07:34;  author: gweber;  state: Exp;
+branches:  1.1.1;
+Initial revision
+revision 1.1.1.1
+date: 2001/10/22 22:07:34;  author: gweber;  state: Exp;  lines: +0 -0
+abntex files for install with tetex.
+
+Working file: texmf/tex/latex/abntex/abnt.cls
+revision 1.19
+date: 2002/12/05 09:55:02;  author: mvsfrasson;  state: Exp;  lines: +1131 -1007
+
+
+rascunho mal acabado da versao 2 do abnt.cls
+revision 1.18
+date: 2002/11/27 10:06:58;  author: mvsfrasson;  state: Exp;  lines: +8 -3
+branches:  1.18.2;
+
+
+Updated internal documenation
+revision 1.17
+date: 2002/11/27 10:03:32;  author: mvsfrasson;  state: Exp;  lines: +5 -8
+
+
+Remendo para a versao 1.1 :-(
+revision 1.16
+date: 2002/11/23 20:52:32;  author: mvsfrasson;  state: Exp;  lines: +324 -308
+
+
+Esperada versao 1.1 (para ser lancada com abnTeX 0.6) da classe.
+Retirei varios bugs vindos das ultimas modificacoes.
+revision 1.15
+date: 2002/11/20 21:10:27;  author: mvsfrasson;  state: Exp;  lines: +125 -5
+
+
+primeira versao com \aboutabntex e \aboutthisdocument
+revision 1.14
+date: 2002/05/21 08:39:27;  author: mvsfrasson;  state: Exp;  lines: +1789 -1776
+
+
+Versao 1 final -> comentarios e versao atualizados.
+revision 1.13
+date: 2002/05/14 20:28:11;  author: gweber;  state: Exp;  lines: +1776 -1491
+incluidos no cvs à pedido do Miguel.
+revision 1.12
+date: 2002/04/29 20:49:52;  author: mvsfrasson;  state: Exp;  lines: +44 -28
+
+
+Adicionado uma opcao do pacote setspace para nao exagerar no espaco do modo
+matematico destacado (display style)
+revision 1.11
+date: 2002/04/27 21:55:33;  author: mvsfrasson;  state: Exp;  lines: +10 -68
+
+
+Versao excenssialmente igual, com melhores comentarios.
+revision 1.10
+date: 2002/04/27 21:42:52;  author: mvsfrasson;  state: Exp;  lines: +3 -3
+
+
+Havia me esquecido de mudar o numero da versao no arquivo... ops
+revision 1.9
+date: 2002/04/27 21:39:06;  author: mvsfrasson;  state: Exp;  lines: +28 -20
+
+
+Um bug fix: marcas de  pagina para secoes nao numeradas
+Setspace nao mais requer versao.
+revision 1.8
+date: 2002/03/20 12:32:45;  author: mvsfrasson;  state: Exp;  lines: +97 -72
+
+
+Um pouco mais de documentacao na implementacao.
+revision 1.7
+date: 2002/03/20 09:56:01;  author: mvsfrasson;  state: Exp;  lines: +11 -11
+
+
+abnt.cls:
+
+corrigido o bug nas marcas de pagina do \@schapter (inapropriado
+\chaptermark, que adicionava o numero do capitulo nas marcas de pagina)
+
+adicionado o suporte para folha de aprovacao (primeira versao)
+revision 1.6
+date: 2002/03/18 12:15:49;  author: mvsfrasson;  state: Exp;  lines: +15 -0
+
+
+Corrigido o bug de incompatibilidade entre pnumplain e cabecalhos de
+pagina, encontrada pelo brunoparente.
+
+Esta versao da classe ainda eh de desenvolvimento, mas estah "usavel".
+revision 1.5
+date: 2002/03/13 22:49:28;  author: mvsfrasson;  state: Exp;  lines: +40 -10
+
+
+Essa NAO eh para ser distribuida ainda!!!!!
+
+abnt.cls - adicionando o comando \assinatura{nome} e preparando o terreno
+           para a folha de aprovacao.
+
+LEIAME -  comecando a escrever
+revision 1.4
+date: 2002/02/26 17:34:01;  author: mvsfrasson;  state: Exp;  lines: +3 -12
+
+
+Simplificada a redefinicao do \newcounter antes do
+\LoadClass. Funcionamento inalterado.
+revision 1.3
+date: 2002/02/26 10:56:48;  author: mvsfrasson;  state: Exp;  lines: +33 -65
+
+
+Acrescentado um esquema para que o contador figure, definido dentro do
+report.cls, seja definido (dentro do report) sem ser subcontador do
+chapter. Para isso, redefini o \newcounter localmente para:
+
+- se tentar redefinir o figureou table
+    define como eu quero
+- senao (se eh outro contador)
+    deine normalmente.
+
+O codigo acrescentado esta imediatamente antes e depois do \LoadClass
+revision 1.2
+date: 2002/02/25 17:22:27;  author: mvsfrasson;  state: Exp;  lines: +1 -1
+
+
+Corrigindo um bug na classe. Logo de cara. :-(
+New File (revision 1.1)
+date: 2002/02/25 16:33:07;  author: mvsfrasson;  state: Exp;
+*** empty log message ***
+
+Working file: texmf/tex/latex/abntex/abntart.cls
+New File (revision 1.1)
+date: 2002/11/20 19:03:31;  author: mvsfrasson;  state: Exp;
+
+
+Classe abntart -> eh apenas um apelido da abnt com opcao article
+
+Working file: texmf/tex/latex/abntex/abntcite.sty
+revision 1.16
+date: 2002/12/02 13:24:21;  author: mvsfrasson;  state: Exp;  lines: +49 -25
+
+
+"Work around" para o incorrigivel bug do \verb. Usar opcao load-texton-demand e nunca usar \citetext para uma entrada com \verb, para proteger o latex de ter um comando com \verb dentro.
+revision 1.15
+date: 2002/11/28 15:14:40;  author: mvsfrasson;  state: Exp;  lines: +169 -70
+
+
+abntcite no modo num, com nova opcao "foot", implementa a primeira versao das citacoes numericas com footnote.
+revision 1.14
+date: 2002/11/28 12:26:33;  author: mvsfrasson;  state: Exp;  lines: +92 -11
+
+
+Implementado \citetext{chave}. Tambem implementado mecanismo para carregar o texto por demanda (poderia comsumir muita memoria armazenar o texto todo).
+revision 1.13
+date: 2002/11/25 09:46:11;  author: mvsfrasson;  state: Exp;  lines: +21 -17
+
+
+Retirado um bug na opcao bibjustif
+revision 1.12
+date: 2002/11/23 21:28:19;  author: mvsfrasson;  state: Exp;  lines: +27 -27
+
+
+Ultimas alteracoes como combinado.
+Novas opcoes `bibjustif' e `bibleftalign' (default)
+revision 1.11
+date: 2002/11/20 15:29:17;  author: mvsfrasson;  state: Exp;  lines: +24 -20
+
+
+Mais correcoezinhas
+revision 1.10
+date: 2002/11/20 15:11:39;  author: mvsfrasson;  state: Exp;  lines: +9 -4
+
+
+Pequenos toques finais.
+revision 1.9
+date: 2002/11/20 14:23:39;  author: mvsfrasson;  state: Exp;  lines: +26 -51
+
+
+Implementado a opcao sem-bibtex, que coloca
+
+\setlength{\rightskip}{0pt plus 2cm}\ABCIthebibliformat
+
+caso o usuario nao use os estilos bibtex (que colocariam isso)
+revision 1.8
+date: 2002/11/20 14:05:38;  author: mvsfrasson;  state: Exp;  lines: +70 -27
+
+
+Implementado o \ABCIthebibliformat como combinado na lista
+revision 1.7
+date: 2002/11/18 17:19:05;  author: mvsfrasson;  state: Exp;  lines: +41 -24
+
+
+Acrescentado o hook (gancho) \AfterTheBiliography
+\setlength{\rightskip}{0pt plus 2cm} eh default
+revision 1.6
+date: 2002/11/18 09:33:14;  author: mvsfrasson;  state: Exp;  lines: +7 -11
+
+
+Corrigido bug do \ABCIcolondefault
+revision 1.5
+date: 2002/11/16 19:04:08;  author: mvsfrasson;  state: Exp;  lines: +22 -23
+
+
+Release Candidate a abnTeX 0.6
+revision 1.4
+date: 2002/11/15 22:13:42;  author: mvsfrasson;  state: Exp;  lines: +122 -13
+
+
+Versao bem melhorada do abntcite.
+Inclui
+  implementacao do recuo (foi dificil)
+  opcao indent igual a recuo
+  correcoes menores
+revision 1.3
+date: 2002/11/12 10:19:14;  author: mvsfrasson;  state: Exp;  lines: +174 -52
+Uma tentativa. Esta incompleto, esperando revisao do Gerald.
+revision 1.2
+date: 2002/07/05 14:04:12;  author: mvsfrasson;  state: Exp;  lines: +285 -77
+
+
+Adicionado a compressao da lista numerica para abnt-num e
+opcao experimental
+New File (revision 1.1)
+date: 2002/06/28 07:47:14;  author: mvsfrasson;  state: Exp;
+
+
+Adicionando o abntcite.sty, e fazendo os abnt-alf.sty e
+abnt-num.sty compativeis com ele. Falta a compatibilidade
+com as versoes antigas do abnt.alf :-(
+
+Working file: texmf/tex/latex/abntex/devel.txt
+revision 1.2
+date: 2002/03/13 22:49:28;  author: mvsfrasson;  state: Exp;  lines: +1 -1
+
+
+Essa NAO eh para ser distribuida ainda!!!!!
+
+abnt.cls - adicionando o comando \assinatura{nome} e preparando o terreno
+           para a folha de aprovacao.
+
+LEIAME -  comecando a escrever
+New File (revision 1.1)
+date: 2002/02/26 18:28:32;  author: mvsfrasson;  state: Exp;
+
+
+Arquivo que descreve o funcionamento dos principais pontos da classe. Na
+primeira versao, expliquei a definicao dos ambientes figure e tabel, e como
+funciona o esquema de paginacao da classe.
+

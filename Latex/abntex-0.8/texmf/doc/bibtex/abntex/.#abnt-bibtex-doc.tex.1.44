@@ -1,0 +1,1369 @@
+%% $Id: abnt-bibtex-doc.tex,v 1.44 2004/03/23 17:35:47 mvsfrasson Exp $
+%% name of this file abnt-bibtex-doc.tex
+%% Copyright 2001-2003 by the abnTeX group at http://codigolivre.org.br/projects/abntex
+%%
+%% Mantained by: Gerald Weber <gweber@codigolivre.org.br>
+%%
+%% This file is distributed under the Free Document License (FDL) http://www.gnu.org/licenses/fdl.html
+%%
+%% $Log: abnt-bibtex-doc.tex,v $
+%% Revision 1.44  2004/03/23 17:35:47  mvsfrasson
+%%
+%%
+%% Arquivos atualizados para nao necessitarem pacote html
+%%
+%% Revision 1.43  2003/07/23 12:15:07  gweber
+%% Coment�ios sobre a op�o abnt-title-command, o comando \bibtextitlecommand
+%% e o grupo de op�es abnt-substyle=COPPE.
+%%
+%% Revision 1.42  2003/06/30 14:45:26  gweber
+%% Pequenas modifica�es, in�io da adapta�o para a 6023/2002.
+%%
+%% Revision 1.41  2003/06/11 08:05:21  gweber
+%% Info sobre as op�es abnt-doi, abnt-url-package e comportamento do campo url.
+%%
+%% Revision 1.40  2003/05/30 10:39:19  gweber
+%% Altera�es introduzidas em 0.7-beta.
+%%
+%% Revision 1.39  2003/04/08 00:41:47  gweber
+%% novos comandos \apud e entrada @hidden e novo comportamento de \citeauthor
+%%
+%% Revision 1.38  2003/03/28 20:54:20  gweber
+%% ajustes nas cita�es � normas
+%%
+%% Revision 1.37  2003/03/25 14:17:35  gweber
+%% altera�es nos arquivos bib
+%%
+%%
+
+\documentclass[espacosimples]{abnt}
+
+\ifx\pdfoutput\undefined
+\else
+%from /usr/share/texmf/doc/pdftex/base/pdftexman.pdf
+\pdfinfo{
+  /Title        (Estilo bibtex compativel com a `norma' 6023 da ABNT)
+  /Author       (G. Weber - Grupo abnTeX)
+  /Subject      (referencias bibliograficas)
+  /Keywords     (ABNT, bibliografia, 6023/2000, 6023/2002)}
+\fi
+
+\usepackage[brazil]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{hyperref}
+
+\IfFileExists{html.sty}
+{\usepackage{html}}
+{\usepackage{comment}
+ \excludecomment{htmlonly}
+ \excludecomment{rawhtml}
+ \includecomment{latexonly}
+ \newcommand{\html}[1]{}
+ \newcommand{\latex}[1]{##1}
+ \ifx\undefined\hyperref
+  \ifx\pdfoutput\undefined \let\pdfunknown\relax
+   \let\htmlATnew=\newcommand
+  \else
+   \ifx\pdfoutput\relax \let\pdfunknown\relax
+    \usepackage{hyperref}\let\htmlATnew=\renewcommand
+   \else
+    \usepackage{hyperref}\let\htmlATnew=\newcommand
+   \fi
+  \fi
+ \else
+  \let\htmlATnew=\renewcommand
+ \fi
+ \ifx\pdfunknown\relax
+  \htmlATnew{\htmladdnormallink}[2]{##1}
+ \else
+  \def\htmladdnormallink##1##2{\href{##2}{##1}}
+ \fi
+ \long\def\latexhtml##1##2{##1}}
+
+% latex2html nao suporta \ifthenelse...
+\usepackage[abnt-url-package=none,abnt-etal-list=0,abnt-verbatim-entry=no,abnt-show-options=no]{abntcite}
+%\usepackage[num,abnt-verbatim-entry=yes]{abntcite}
+\newcommand{\OKs}{173}
+\newcommand{\quaseOKs}{12}
+\newcommand{\nadaOK}{3}
+\def\Versao$#1 #2${#2}
+\def\Data$#1 #2 #3${#2}
+%\newcommand{\bibtextitlecommand}[2]{``#2''}
+\begin{document}
+%\citeoption{abnt-options0}
+\nocite{NBR6023:2000,NBR10520:1988,NBR10520:2001,abnt-bibtex-alf-doc}
+\nocite{7.1.3-1,7.1.3-2}
+%\citeoption{ABNT-barcelos0}
+\nocite{7.1.3-3}
+%\citeoption{ABNT-barcelos1}
+\nocite{7.1.3-4,7.1.3-5,7.1.3-6,7.1.3-7,7.1.3-8,7.1.3-9,7.1.3-10}
+\nocite{7.2.2-1,7.2.2-2}
+\nocite{7.3.2-1,7.3.2-2,7.3.2-3}
+\nocite{7.4.1.3-1,7.4.1.3-2,7.4.1.3-3}
+\nocite{7.4.2-1,7.4.2-2,7.4.2-3,7.4.2.1-1,7.4.2.1-2,7.4.2.1-3,7.4.2.1-4}
+\nocite{7.4.2.2.1-1,7.4.2.2.1-2}
+\nocite{7.4.2.2.2}
+\nocite{7.4.2.3-1,7.4.2.3-2,7.4.2.3-3,7.4.2.3-4,7.4.2.3-5,7.4.2.3-6}
+\nocite{7.5.1.2-1,7.5.1.2-2,7.5.1.2-3}
+\nocite{7.5.2.2-1,7.5.2.2-2,7.5.2.2-3}
+\nocite{7.5.3-1,7.5.3-2,7.5.3-3,7.5.3-4,7.5.3-5,7.6}
+\nocite{7.7.1.2-1,7.7.1.2-2,7.7.1.2-3,7.7.1.2-4,7.7.1.2-5,7.7.1.2-6,7.7.1.2-7}
+\nocite{7.7.2.2-1,7.7.2.2-2,7.7.2.2-3}
+\nocite{7.7.3.2,7.7.4-1,7.7.4-2,7.7.4-3}
+\nocite{7.8.3-1,7.8.3-2,7.8.3-3}
+\nocite{7.9.3-1}
+%\citeoption{7.9.3-2:begin}\nocite{7.9.3-2}\citeoption{7.9.3-2:end}
+\nocite{7.9.3-3,7.9.3-4,7.9.3-5,7.9.3-6,7.9.3-7,7.9.3-8,7.9.3-9}
+\nocite{7.10-1,7.10-2,7.10-3,7.10-4,7.10-5,7.10-6}
+\nocite{7.11.1-1,7.11.1-2,7.11.1-3,7.11.1-4,7.11.1-5,7.11.2-1,7.11.2-2,7.11.3-1,7.11.3-2,7.11.3-3}
+\nocite{7.12.2-1,7.12.2-2,7.12.2-3}
+\nocite{7.13.2-1,7.13.2-2,7.13.2-3,7.13.2-4,7.13.2-5,7.13.2-5b,7.13.2-6,7.13.2-7,%
+7.13.2-8,7.13.2-9,7.13.2-10,7.13.2-11,7.13.2-12}
+%\citeoption{abnt-options1}
+\nocite{8.1.1.1-1,8.1.1.1-2}
+%\citeoption{abnt-options2}
+\nocite{8.1.1.1-3}
+\nocite{8.1.1.2}
+\nocite{8.1.1.4-1,8.1.1.4-2,8.1.1.4-3,8.1.1.4-4}
+\nocite{8.1.1.5,8.1.1.6}
+\nocite{8.1.1.7-1,8.1.1.7-2,8.1.1.7-3}
+\nocite{8.1.2.1-1,8.1.2.1-2,8.1.2.1-3}
+\nocite{8.1.2.2-1,8.1.2.2-2}
+\nocite{8.1.2.3-1,8.1.2.3-2}
+\nocite{8.2.1,8.2.2,8.2.4,8.2.5,8.2.6,8.3.1-1,8.3.1-2,8.3.2,8.3.2b}
+\nocite{8.4.1,8.4.3,8.4.4}
+\nocite{8.4.5-1,8.4.5-2}
+\nocite{8.5.1-1,8.5.1-2,8.5.2-1:begin,8.5.2-1,8.5.2-1:end,8.5.2-2,8.5.3}
+\nocite{8.5.4}
+\nocite{8.5.5}
+\nocite{8.6.1,8.6.2,8.6.3,8.6.4,8.6.5,8.6.6,8.6.7}
+\nocite{8.6.8-1,8.6.8-2}
+\nocite{8.6.9-2}
+\nocite{8.7.1-1,8.7.1-2,8.7.1-3,8.7.2-1,8.7.2-2}
+\nocite{8.7.3,8.7.4,8.7.5,8.7.6-1,8.7.6-2}
+\nocite{8.8-1,8.8-2,8.8-3,8.8-4}
+\nocite{8.9-1,8.9-2}
+\nocite{8.10-1,8.10-2,8.10-3,8.10-4,8.10-5}
+\nocite{8.11.1,8.11.2-1,8.11.2-2}
+\nocite{8.11.3-1,8.11.3-2}
+\nocite{8.11.4-1,8.11.4-2}
+%\citeoption{abnt-options3}
+\nocite{8.11.4-1b}
+%\citeoption{abnt-options4}
+\nocite{8.11.4-1c}
+%\citeoption{abnt-options5}
+\nocite{8.11.5-1,8.11.5-2,8.11.5-3,8.11.5-4,8.11.5-6,8.11.5-7,8.11.5-8,8.11.5-9,8.11.5-9b,8.11.5-11}
+\nocite{9.1-1,9.1-2}
+%\citeoption{abnt-repeated-author-omit=yes}
+\nocite{9.2.2-1,9.2.2-2}
+%\citeoption{abnt-repeated-author-omit=no}
+%\citeoption{abnt-repeated-title-omit=yes}
+\nocite{9.2.3-1,9.2.3-2}
+%\citeoption{abnt-repeated-title-omit=no}
+\nocite{DOI}
+
+\nocite{ABNT-final}
+
+%begin{latexonly}
+\autor{G. Weber}
+\titulo{Estilo bibtex compat�el com a `norma' 6023 da ABNT\\
+Vers� \Versao$Revision: 1.44 $}
+\comentario{Manual de uso dos estilos bibliogr�icos {\tt abnt-alf.bst} e
+{\tt abnt-num.bst}.
+Inclui coment�ios sobre a implementa�o desses estilos}
+\instituicao{Grupo \abnTeX}
+\local{abntex.codigolivre.org.br}
+\data{\Data$Date: 2004/03/23 17:35:47 $}
+\capa \folhaderosto
+%end{latexonly}
+
+\begin{htmlonly}
+\title{Estilo bibtex compat�el com a `norma' 6023 da ABNT}
+\author{G.Weber --- Grupo \abnTeX\\\htmladdnormallink{\tt abntex.codigolivre.org.br}{http://abntex.codigolivre.org.br}}
+\date{Vers� \Versao}
+\maketitle
+\end{htmlonly}
+
+\sumario
+\listoftables
+
+\chapter{Avisos}
+
+\section{Se puder, evite usar essa `norma'}
+
+Sim, estamos falando muito s�io!
+A `norma' 6023/2000\cite{NBR6023:2000} da ABNT �uma droga.
+Se puder n� use e n� pe� para ningu� usar.
+Se voc�faz parte de comit�, comiss�s etc. de qualquer n�el, por favor
+ajude a combater essa bobagem.
+
+Existem centenas de estilos bibliogr�icos muito legais
+por a� use o pr�rio bibtex para experimentar. Se voc�quiser entender
+porque n� se deveria usar, em nenhuma circunst�cia, a `norma' 6023
+ent� leia o restante do texto.
+Por� se voc�estiver sendo \emph{for�do}
+a usar a `norma' da ABNT ent� v�em frente e boa sorte!
+
+Porque ent� fizemos o estilo bibliogr�ico razoavelmente compat�el
+com a `norma'? N� queremos incentivar o uso do \LaTeX\  e queremos
+ajudar os pobres-coitados, alguns dos quais n� mesmos, que s� ou
+ser� for�dos, por estupidez burocr�ica, a usar `normas' da ABNT.
+
+\section{Cuidado! Normas nebulosas!}
+
+N� elaboramos os estilos debru�dos diretamente sobre os originais da ABNT
+e as seguimos escrupulosamente. Mas n� se iluda! O que a sua coordena�o
+de p�-gradua�o, ou orientador, ou chefe etc., entendem por `normas ABNT'
+pode n� ter qualquer v�culo com a realidade. Por isso \emph{n� garantimos}
+que ao usar os estilos do \abnTeX\ voc�esteja em conformidade com as normas
+da sua institui�o ou empresa.
+
+Por que isso acontece? Em geral porque os originais das `normas' da ABNT n�
+s� publicamente dispon�eis e as pessoas acabam se orientando na base do
+`ouvir falar', ou livros que supostamente se baseiam nessas `normas'.
+Acredite: nenhum material que encontramos (livros, roteiros de biblioteca,
+normas de p�-gradua�o, material encontrado na internet) implementa
+as `normas' da ABNT corretamente.
+
+Um exemplo cl�sico �o sistema de chamada num�ico (cita�o num�ica, usada neste
+documento). Embora \emph{todas} as `normas' da ABNT\cite{NBR6023:2000,NBR10520:1988,NBR10520:2001}
+`autorizem' seu uso a maioria das institui�es, orientadores, membros de banca
+ir� dizer que isso n� �ABNT. Acredite se quiser.
+
+As regras particulares de algumas institui�es foram acomodadas em termos de subestilos.
+Consulte a tabela~\ref{tabela-subestilos} e avise-nos se houver regras
+particulares de sua institui�o para que possam ser disponibilizadas para outras
+pessoas.
+
+\section{At�que ponto esse estilo bibtex cumpre a `norma' 6023?}
+
+O estilo ainda est�em fase final de desenvolvimento. Praticamente
+todos os tipos de entrada funcionam bem.
+
+Tanto o estilo num�ico ({\tt abnt-num.bst} ou {\tt [num]})
+quanto o alfab�ico ({\tt abnt-alf.bst} ou {\tt [alf]})
+funcionam razoavelmente bem e deve
+gerar uma lista bibliogr�ica bastante compat�el.
+O uso deste estilo lhe dar�um resultado muito superior
+a uma lista formatada �m�, principalmente se voc�n� tiver acesso
+a `norma' original\cite{NBR6023:2000}.
+
+Fuja das `interpreta�es' dessa norma que proliferam na internet, nenhuma
+delas faz muito sentido. Mesmo os tais livros de ``Metodologia do Trabalho
+Cient�ico''\footnote{Que, na minha opini�, deveriam se chamar ``Burocracia Cient�ica''.}
+cont� interpreta�es muito peculiares das `normas' da ABNT.
+Se voc�est�para entregar sua tese, j�tem uma base bibtex formada,
+esse estilo vai resolver seu problema, com toda certeza.
+
+Na `norma' 6023/2000\cite{NBR6023:2000} h�202 exemplos de refer�cias
+bibliogr�icas de tudo que se possa imaginar. Isso inclui coisas que
+jamais classificariamos como objetos bibliogr�icos como est�uas
+por exemplo. Parece que os autores dessa `norma' pensam que se
+deve gerar entradas bibliogr�icas para tudo que possa ser colocado
+dentro das quatro paredes de uma biblioteca. Surpreende que n� tenham
+colocado tamb� a bibliotec�ia e a samambaia que decora a entrada
+da biblioteca!
+
+At�o momento \OKs\ exemplos
+est� sendo reproduzidos corretamente e \quaseOKs\ parcialmente.
+Alguns (\nadaOK) n� puderam ser reproduzidos por quest�s diversas.
+Todos os
+exemplos que tentamos reproduzir est� mostrados neste documento.
+Sempre que poss�el colocamos um coment�io, em notas de roda-p�
+explicando qual o problema dos exemplos que n� conseguimos reproduzir 100\%.
+Alguns exemplos jamais ser� reproduzidos corretamente ou por serem estranhos
+demais ou porque est� em desacordo com a pr�ria `norma'.
+As teses s� um exemplo not�io desse ltimo caso.
+
+A `norma' 6023/2000\cite{NBR6023:2000} �complicada e cheia de inconsist�cias.
+Jamais ser�poss�el gerar um estilo bibtex 100\% consistente com a `norma', at�porque nem `norma' �compat�el com ela mesma. Um bom estilo bibliogr�ico
+deve ter uma linha l�ica para formata�o de refer�cias.
+Assim, com alguns poucos exemplos qualquer pessoa poderia deduzir os casos
+omissos. Nesse sentido `norma' 6023 trafega pela contra-m�, �quase
+imposs�el deduzir a linha l�ica dessa `norma'. O problema mais grave, no
+entanto, fica pela maneira de organizar nomes. A ABNT quebrou o sobrenome
+em duas partes. Normalmente se fala apenas em ``last name", agora temos
+o ``last last name" gra�s �ABNT. Isso n� apenas �problem�ico,
+pelo menos do ponto de vista do bibtex, mas �tamb� um desrespeito ao
+autor citado.
+
+O que parece �vio dessa coisa que a ABNT tem coragem de chamar de norma,
+�que n� ocorreu aos seus autores que bibliografias possam
+ser geradas automaticamente a partir de bases de dados.
+E olhe que o bibtex j�existe muito antes de sair a primeira vers�
+da `norma' escrita em 1989 (�m�uina, acredite se quiser!).
+A l�ica dessa `norma' parece ser aquele em que se imagina o
+computador como um simulador de m�uina de escrever, algo tamb�
+conhecido com MS Word. Diversos exemplos de refer�cias s�
+sobre Windows e Word, o que aumenta as nossas suspeitas nesse
+sentido.
+
+\section{Em que ambiente foram desenvolvidos os estilos?}
+
+Os estilos foram desenvolvidos em Conectiva Linux 8, e a implementa�o \TeX\ �o {\tt tetex} vers� 1.0.7.
+
+\chapter{Como usar}
+
+\section{Sele�o dos estilos}
+
+\subsection{Cita�o num�ica [{\tt num}]}
+
+Diferente do que muita gente imagina, o sistema num�ico �`permitido'  pela `norma'\cite{NBR6023:2000} em sua se�o
+9.1.\footnote{Voc�n� faz id�a do nmero de pessoas (especialmente
+funcion�ios de p�-gradua�o, orientadores e membros de banca) que simplesmente
+\emph{n� acreditam} que o sistema num�ico seja `permitido' pela `norma'.
+E n� adianta `esfregar' o original da `norma' na cara deles.}
+Se voc�quiser usar este estilo de cita�o utilize o estilo {\tt [num]} (arquivo
+{\tt abnt-num.bst}).
+Selecione com o comando \verb+usepackage+ no pre�bulo:
+\begin{verbatim}
+\usepackage[num]{abntcite}
+\end{verbatim}
+Com isso as chamadas no texto v� ser
+compat�eis com os exemplos 9.1 da `norma'\cite{NBR6023:2000}.
+
+Alternativamente, voc�pode n� selecionar o pacote e s�colocar
+o estilo bibliogr�ico
+\begin{verbatim}
+\bibliographystyle{abnt-num}
+\end{verbatim}
+assim as chamadas no texto v� seguir o padr� do \LaTeX.
+
+\subsubsection{A chamada no texto}
+
+No texto voc�deve chamar as cita�es com os comandos \verb+\cite+ e
+\verb+\citeonline+. Veja os exemplos abaixo.
+
+\noindent\begin{minipage}[t]{10cm}\latex{\small}\begin{verbatim}
+El�rons podem relaxar via intera�o
+el�ron-f�on\cite{Tsen86}.
+\end{verbatim}\end{minipage}\begin{minipage}[t]{7cm}\latex{\small}
+El�rons podem relaxar via intera�o el�ron-f�on\cite{Tsen86}.
+\end{minipage}\vspace{5mm}\\
+
+\noindent\begin{minipage}[t]{10cm}\latex{\small}\begin{verbatim}
+Segundo a refer�cia \citeonline{8.1.1.2}
+entende-se que \ldots\
+\end{verbatim}\end{minipage}\begin{minipage}[t]{7cm}\latex{\small}
+Segundo  a refer�cia \citeonline{8.1.1.2}
+entende-se que \ldots\
+\end{minipage}\vspace{5mm}\\
+
+O estilo {\tt abntcite} ainda disponibiliza os comandos \verb+\citeyear+,
+\verb+\citeauthor+ e \verb+citeauthoronline+.
+O uso de \verb+\citeyear+ e \verb+citeauthoronline+
+�igual ao do estilo autor-data ({\tt [alf]}) como mostrado nos seguintes
+exemplos:
+
+\noindent\begin{minipage}[t]{10cm}\latex{\small}\begin{verbatim}
+Em \citeyear{Tsen86} \citeauthoronline{Tsen86}
+mostraram que el�rons podem relaxar via 
+intera�o el�ron-f�on\cite{Tsen86}.
+\end{verbatim}\end{minipage}\begin{minipage}[t]{7cm}\latex{\small}
+Em \citeyear{Tsen86} \citeauthoronline{Tsen86}
+mostraram que el�rons podem relaxar via
+intera�o el�ron-f�on\cite{Tsen86}.
+\end{minipage}\vspace{5mm}\\
+
+O uso de \verb+citeauthor+ �modificado em rela�o ao estilo autor-data ({\tt [alf]})
+como se v�no exemplo:
+
+\noindent\begin{minipage}[t]{10cm}\latex{\small}\begin{verbatim}
+Em \citeyear{Tsen86} \citeauthor{Tsen86}
+mostraram que el�rons podem relaxar via 
+intera�o el�ron-f�on.
+\end{verbatim}\end{minipage}\begin{minipage}[t]{7cm}\latex{\small}
+Em \citeyear{Tsen86} \citeauthor{Tsen86}
+mostraram que el�rons podem relaxar via
+intera�o el�ron-f�on.
+\end{minipage}\vspace{5mm}\\
+
+\subsubsection{Altera�o do estilo de chamada {\tt [num]}}
+
+A `norma'\cite{NBR6023:2000} aceita tr� estilos de chamada:
+\begin{enumerate}
+\item para que \latexhtml{$\ldots$}{...} �sociedade\latexhtml{$^{[10]}$
+    $\ldots$}{\begin{rawhtml}<sup>[10]</sup>\end{rawhtml}...}
+\item para que \latexhtml{$\ldots$}{...} �sociedade\latexhtml{$^{(10)}$
+    $\ldots$}{\begin{rawhtml}<sup>(10)</sup>\end{rawhtml}...}
+\item para que \latexhtml{$\ldots$}{...} �sociedade\latexhtml{$^{10}$
+    $\ldots$}{\begin{rawhtml}<sup>10</sup>\end{rawhtml}...}
+\end{enumerate}
+Percebeu-se que o terceiro estilo entra em conflito com a
+numera�o das notas de roda-p�
+Portanto agora o estilo {\tt [num]} coloca colchetes, a primeira
+op�o listada pela `norma'\cite{NBR6023:2000}, este comportamento
+pode ser alterado com os comandos \verb+\leftovercite+ e
+\verb+\rightovercite+.
+Por exemplo, para usar par�teses coloque no pre�bulo do seu texto use
+\begin{verbatim}
+\renewcommand{\leftovercite}{(}
+\renewcommand{\rightovercite}{)}
+\end{verbatim}
+
+\subsection{Cita�o alfab�ica por autor-data [{\tt alf}]}
+
+Se voc�quiser usar o estilo de cita�o alfab�ico
+(se�o 9.2 em 6023/2000\cite{NBR6023:2000})
+utilize {\tt [alf]} (arquivo {\tt abnt-alf.bst}).
+\begin{verbatim}
+\usepackage[alf]{abntcite}
+\end{verbatim}
+N� recomendamos usar o estilo alfab�ico isoladamente com o comando
+\verb+\bibliographystyle+, o resultado pode ser muito estranho. Mas se
+voc�fizer quest�, v�l�
+\begin{verbatim}
+\bibliographystyle{abnt-alf}
+\end{verbatim}
+
+Importante: veja documento espec�ico Ref.~\citeonline{abnt-bibtex-alf-doc}.
+
+\section{Cuidados com a acentua�o}
+
+Normalmente n� h�problemas em usar carateres acentuados em arquivos
+bibliogr�icos. Por� os estilos aqui usado fazem uso quase abusivo da
+convers� para letras maisculas. Neste caso �preciso ter algum cuidado.
+Na tabela~\ref{tabela-acentos} voc�encontra alguns exemplos das convers�s
+mais importantes. Preste aten�o especial para `� e `� que devem estar
+envoltos em chaves.
+A regra geral �sempre usar a acentua�o neste modo quando
+houver convers� para letras maisculas.
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{ll}\hline\hline
+acento & bibtex\\
+���& \verb+\`a+ \verb+\'a+ \verb+\~a+\\
+�& \verb+{\'\i}+\\
+�& \verb+{\c c}+\\
+\hline\hline
+\end{tabular}
+\end{center}
+\caption{Tabela de convers� de acentua�o.}
+\label{tabela-acentos}
+\end{table}
+
+
+\chapter{Utiliza�o da cita�o por sistema autor-data {\tt [alf]}}
+
+Veja documento espec�ico Ref.~\citeonline{abnt-bibtex-alf-doc}.
+
+\chapter{Altera�o din�ica das op�es do estilo {\tt [citeoption]}}
+\label{chapter-opcoes-estilo}
+Voc�pode alterar algumas maneiras do estilo bibliogr�ico
+sem ter de alterar o arquivo em si.\footnote{At�onde sabemos
+os estilos bibliogr�icos do \abnTeX\ s� os nicos que podem
+alterar o comportamento do bibtex com comandos dentro do arquivo
+\LaTeX.}
+O m�odo usado aqui permite at�mesmo que se altere o estilo de uma cita�o para outra.
+Isso est�sendo usado neste documento que voc�est�lendo.
+Todas as op�es est� apresentadas nas tabelas \ref{tabela-opcoes-formatacao}--\ref{tabela-opcoes-funcionamento}.
+
+\section{Como proceder}
+
+\subsection{Usando {\tt abntcite} e {\tt citeoption}}
+
+Voc�deve utilizar o comando \verb+\citeoption+ e
+incluir a base {\tt abnt-options} no \verb+\bibliography+
+por exemplo
+\begin{verbatim}
+\citeoption{abnt-full-initials=yes}
+\end{verbatim}
+ativa a op�o de usar primeiro nome completo.
+Voc�tamb� pode definir suas op�es logo no carregamento do estilo,
+por exemplo:
+\begin{verbatim}
+\usepackage[num,abnt-full-initials=yes]{abntcite}
+\end{verbatim}
+
+\subsection{Sem usar {\tt abntcite} nem {\tt citeoption}}
+
+Voc�pode se valer das op�es aqui apresentadas sem usar o pacote {\tt abntcite}.
+Para isso voc�precisa usar o comando \verb+\nocite+ como no seguinte
+exemplo:
+\begin{verbatim}
+\nocite{abnt-full-initials=yes}
+\end{verbatim}
+O nico inconveniente desse m�odo (que funciona bem) �que voc�vai ter
+de conviver constantemente com a mensagem de que a refer�cia {\tt abnt-full-initials=yes}
+n� foi definida.
+
+
+\subsection{Como agrupar v�ias op�es}
+
+Voc�pode agrupar op�es criando uma entrada do tipo {\tt \@ABNT-options}
+em um arquivo de bibliografias (tipo {\tt .bib}), por exemplo:
+\begin{verbatim}
+@ABNT-options{minhasopcoes,
+ abnt-emphasize="\emph",
+ abnt-full-initials="no",
+ abnt-show-options="warn",
+ abnt-thesis-year="final",
+ key="x"}
+\end{verbatim}
+
+voc�deve da�chamar suas op�es assim \verb+\citeoption{minhasopcoes}+.
+
+A se�o~\ref{section-quando-vale} explica a fun�o do campo {\tt key}.
+
+\subsection{Modo de funcionamento do {\tt citeoption}}
+
+O comando \verb+\citeoption+ for� o \LaTeX\ a gerar
+uma entrada de cita�o no arquivo auxiliar (.aux) que vai ser processada
+pelo bibtex. Se voc�n� quiser usar o arquivo {\tt abnt-options}, voc�pode colocar uma entrada tipo {\tt ABNT-options}
+no seu arquivo .bib, �essa entrada que voc�deve citar com \verb+\citeoption+.
+Veja o arquivo
+{\tt abnt-bibtex-doc.bib} para exemplos dessa entrada.
+As op�es dispon�eis est� descritas nas
+tabelas~\ref{tabela-opcoes-formatacao}, \ref{tabela-opcoes-composicao} e
+\ref{tabela-opcoes-funcionamento}.
+
+\subsection{Cuidados a tomar}
+
+Note que o bibtex
+somente processa cada entrada bibliogr�ica uma nica vez. N� adianta usar
+o mesmo \verb+\citeoption+ mais de uma vez de uma vez no texto, ela n�
+ser�processada de novo. Isso acontece porque o comando \verb+\citeoption+
+nada mais �do que um comando tipo \verb+\cite+ que vai ser processado
+pelo bibtex como uma simples entrada bibliogr�ica.
+
+\section{Quando come� a valer a op�o?}
+\label{section-quando-vale}
+
+O momento a partir do qual a op�o selecionada por \verb+\citeoption+
+depende do estilo bibliogr�ico que voc�est�usando.
+
+\subsection{Sistema num�ico [{\tt num}]}
+As op�es valem a partir
+do ponto do texto onde aparece o comando \verb+\citeoption+.
+Se voc�quiser que a op�o esteja valendo para \emph{todas}
+as entradas ent� use \verb+\citeoption+ \emph{antes} de
+qualquer uso de \verb+\cite+ ou \verb+\citeonline+.
+
+\subsection{Sistema alfab�ico por autor-data [{\tt alf}]}
+As op�es valem a partir do ponto onde a entrada aparece na ordem alfab�ica,
+\emph{independente do ponto no texto onde a cita�o foi feita}.
+Isso �controlado atrav� do campo {\tt key}. Se voc�quiser que
+as op�es estejam valendo desde o in�io voc�deve selecionar {\tt key}
+de maneira a fazer a op�o aparecer primeiro na ordena�o alfab�ica,
+como por exemplo {\tt key=\{a\}}.
+Ao usar \verb+\citeoption+ com {\tt [alf]} esteja atento aos
+seguintes fatos:
+\begin{enumerate}
+\item �muito dif�il controlar a posi�o exata em que a op�o
+      come� a valer, a menos que voc�escolha um {\tt key} bem
+      radical como {\tt=\{aaaa\}} que garante que esta op�o ser�      processada antes de todas as outras entradas bibliogr�icas.
+      Este recurso �usado no arquivo {\tt abnt-options.bib}.
+\item na pr�ica, em geral voc�vai querer que uma op�o esteja
+      valendo para todas as suas refer�cias ent� voc�pode usar
+      as op�es predefinidas no arquivo {\tt abnt-options.bib}.
+\item voc�n� pode usar \verb+\nocite{*}+ ou \verb+\cite{*}+
+      junto com o arquivo
+      {\tt abnt-options.bib} pois isso chamaria \emph{todas} as
+      op�es ao mesmo tempo.
+\end{enumerate}
+
+
+O controle de onde a op�o aparece �bem mais delicado no estilo {\tt [alf]}
+do que no estilo {\tt [num]}. Sugerimos ficar atento ao posicionamento
+usando a op�o {\tt abnt-show-options=list} e remover essa op�o quando o
+documento estiver na reda�o final.
+
+{\bf Veja tamb� outras op�es de altera�o no documento~\citeonline{abnt-bibtex-alf-doc}.}
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{lrp{8cm}}\hline\hline
+campo & op�es & descri�o \\ \hline
+\emph{abnt-emphasize} & & Seleciona o estilo de fonte do grifo.
+Podem ser usadas quaisquer combina�es de comandos de fonte, mas apenas
+\verb+\bf+ e \verb+\em+ s� compat�eis com a `norma' 6023. \\
+{\tt abnt-emphasize=em} & \verb+\emph+ & {\em op�o padr�}.  \\
+{\tt abnt-emphasize=bf} & \verb+\textbf+ &
+\\ \hline
+\emph{abnt-ldots-type} && (somente {\tt [alf]}) determina de que maneira deve
+ser composto o ``$\ldots$'' nas chamadas. \\
+{\tt abnt-ldots-type=normal} & \underline{\tt normal} & usar \verb+\ldots+ normal do \LaTeX.\\
+{\tt abnt-ldots-type=math} & \tt math & usar ambiente matem�ico, ou seja
+\verb+$\ldots$+.\\
+{\tt abnt-ldots-type=none} & {\tt none} & n� usa nada.\\
+{\tt abnt-ldots-type=text} & {\tt text} & simplesmente usa ``...'', o espa�mento
+fica ruim mas pode ser til na convers� para HTML.
+\\ \hline
+\emph{abnt-title-command} && Controla o uso do comando (veja
+se�o~\ref{sec-titlecommand}) \verb+\bibtextitlecommand+. \\
+{\tt abnt-title-command=no} & \underline{\tt no} & n� usa esse comando.\\
+{\tt abnt-title-command=yes} & {\tt yes} & usa esse comando.
+\\ \hline\hline
+\end{tabular}
+\end{center}
+\caption[Op�es de altera�o dos estilos bibliogr�icos: formata�o]{
+Op�es de altera�o da formata�o dos estilos bibliogr�icos.
+As op�es padr� (\emph{default}) s� sublinhadas ou indicadas.
+Tamb� indicados as entradas que j�est� definidas em {\tt abnt-options.bib}.}
+\label{tabela-opcoes-formatacao}
+\end{table}
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{lrp{8cm}}\hline\hline
+campo & op�es & descri�o \\ \hline
+\emph{abnt-and-type} & & Op�o espec�ica do estilo {\tt [alf]} veja
+refer�cia~\citeonline{abnt-bibtex-alf-doc}.
+\\ \hline
+\emph{abnt-dont-use-etal} &  & Op�o obsoleta veja \emph{abnt-etal-cite}.
+\\ \hline
+\emph{abnt-etal-cite} &  & Op�o espec�ica do estilo {\tt [alf]} veja
+refer�cia~\citeonline{abnt-bibtex-alf-doc}.
+\\ \hline
+\emph{abnt-etal-list} &  & controla como e quando os co-autores s�
+substitu�os por \emph{et al.} na lista bibliogr�ica. Segundo o �em {\bf 8.1.12}\cite{NBR6023:2000}
+�facultado
+indicar todos os autores se isto for indispens�el. Note que a substitui�o
+por \emph{et al.} continua ocorrendo \emph{sempre} se os co-autores tiverem sido indicados
+como {\tt others}.\\
+{\tt abnt-etal-list=0}&{\tt 0}& n� abrevia a lista de autores.\\
+{\tt abnt-etal-list=2}& {\tt 2} & abrevia com mais de 2 autores.\\
+{\tt abnt-etal-list=3}& \underline{\tt 3} & abrevia com mais de 2 autores.\\
+$\vdots$ & $\vdots$ & \\
+{\tt abnt-etal-list=5}& {\tt 5} & abrevia com mais de 5 autores.
+\\ \hline
+\emph{abnt-etal-text} &  & Texto a ser usado, tanto na chamada quanto na
+bibliografia, quando a lista de autores �abreviada.\\
+{\tt abnt-etal-text=none}&{\tt none}& n� usa qualquer texto.\\
+{\tt abnt-etal-text=default}&\underline{\tt et al.}& usa `et al.'.\\
+{\tt abnt-etal-text=emph}&\verb+\emph{et al.}+& usa �fase: `\emph{et al.}'.\\
+{\tt abnt-etal-text=it}&\verb+\textit{et al.}+& usa it�ico: `\textit{et al.}'.\\
+\\ \hline\hline
+\end{tabular}
+\end{center}
+\caption[Op�es de altera�o dos estilos bibliogr�icos: et al.]{
+Op�es de altera�o da formata�o de \emph{et al.}
+na composi�o dos estilos bibliogr�icos.
+}
+\label{tabela-opcoes-etal}
+\end{table}
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{lrp{8cm}}\hline\hline
+campo & op�es & descri�o \\ \hline
+\emph{abnt-full-initials} & & Seleciona se os prenomes v�
+ser por extenso (quando dispon�el na base).\\
+{\tt abnt-full-initials=no}& \underline{\tt no} & abreviado;\\
+{\tt abnt-full-initials=yes}& {\tt yes} & por extenso. Exemplos: \protect\citeonline{7.9.3-2,8.1.1.1-1,8.1.1.1-2,8.5.2-1}.
+\\ \hline
+\emph{abnt-last-names} & & Determina de que maneira devem ser tratados os sobrenomes.
+Para uma discuss� sobre esse aspecto veja a se�o \ref{nome-pessoais}.\\
+{\tt abnt-last-names=abnt}& \underline{\tt abnt} & Segue estritamente a ABNT.\\
+{\tt abnt-last-names=bibtex}& {\tt bibtex} & Segue o modo usual do bibtex.
+\\ \hline
+\emph{abnt-last-names} && Determina de que maneira devem ser tratados os
+sobrenomes.\\
+{\tt abnt-missing-year=void} & \underline{\tt void} & deixa em branco, �o padr�.\\
+{\tt abnt-missing-year=sd} & {\tt sd} & coloca a express� ``[s.d.]'' (sem data).
+Note que a `norma'\cite{NBR6023:2000} n� usa isso.
+\\ \hline
+\emph{abnt-missing-year} && Determina de que maneira deve ser tratado
+um ano (campo {\tt year}) ausente.\\
+{\tt abnt-missing-year=void} & \underline{\tt void} & deixa em branco, �o padr�.\\
+{\tt abnt-missing-year=sd} & {\tt sd} & coloca a express� ``[s.d.]'' (sem data).
+Note que a `norma'\cite{NBR6023:2000} n� usa isso.\\
+\\ \hline
+\emph{abnt-repeated-author-omit} &   & Permite suprimir o autor que aparece repetidas vezes na seq�cia.
+Exemplos: \citeonline{9.2.2-1,9.2.2-2}.\\
+{\tt abnt-repeated-author-omit=no} & \underline{\tt no} & Repete os autores. \\
+&& Nota: tamb� coloca automaticamente
+{\tt abnt-repeated-title-omit=no}. \\
+{\tt abnt-repeated-author-omit=yes} & \tt yes & Substitui o autor repetido por \underline{\ \ \ \ \ \ \ \ }. \\
+\\ \hline
+\emph{abnt-repeated-title-omit} &   & Permite suprimir o t�ulo que aparece repetidas vezes na seq�cia quando
+o autor \emph{tamb�} est�repetido.
+Exemplos: \citeonline{9.2.3-1,9.2.3-2}\\
+{\tt abnt-repeated-title-omit=no} & \underline{\tt no} & Repete os t�ulos. \\
+{\tt abnt-repeated-title-omit=yes} & \tt yes & Substitui o t�ulo repetido por \underline{\ \ \ \ \ \ \ \ }.\\
+&& Nota: tamb� coloca automaticamente
+{\tt abnt-repeated-author-omit=yes}. \\
+\\ \hline
+\emph{abnt-thesis-year} & &
+Controla a posi�o do ano numa entrada tipo {\tt mastersthesis}, {\tt phdthesis}
+e {\tt monography}.\\
+{\tt abnt-thesis-year=final}& \underline{\tt final} & coloca o ano no final, ex.~\protect\citeonline{8.11.4-1,8.11.4-2};\\
+{\tt abnt-thesis-year=title}& {\tt title} & logo ap� o t�ulo, ex.~\protect\citeonline{8.11.4-1b};\\
+{\tt abnt-thesis-year=both}& {\tt both} & em ambas as posi�es, ex.~\protect\citeonline{8.11.4-1c}.
+\\ \hline\hline
+\end{tabular}
+\end{center}
+\caption[Op�es de altera�o dos estilos bibliogr�icos: composi�o]{
+Op�es de altera�o da composi�o dos estilos bibliogr�icos.
+}
+\label{tabela-opcoes-composicao}
+\end{table}
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{lrp{8cm}}\hline\hline
+campo & op�es & descri�o \\ \hline
+\emph{abnt-refinfo} & & Controla a utiliza�o do comando
+\verb+\abntrefinfo+ usado pelo estilo {\tt abntcite}\\
+{\tt abnt-refinfo=yes} &\underline{\tt yes} & usa \verb+\abntrefinfo+ \\
+{\tt abnt-refinfo=no} & {\tt no} & n� usa \verb+\abntrefinfo+
+\\ \hline
+\emph{abnt-show-options} &  &
+Controla como s� mostradas as op�es. \\
+{\tt abnt-show-options=no}& \underline{\tt no} & para n� ver informa�o nenhuma; \\
+{\tt abnt-show-options=warn}& {\tt warn} & para ter as informa�es mostradas como
+\emph{warnings} durante a execu�o do bibtex; \\
+{\tt abnt-show-options=list}& {\tt list} & para ter
+cada entrada listada na pr�ria lista de refer�cias.
+Exemplos: \protect\citeonline{abnt-options0,abnt-options1,abnt-options2,abnt-options3,abnt-options4,abnt-options5,ABNT-final}.
+\\ \hline
+\emph{abnt-verbatim-entry} & & Permite mostrar na lista de refer�cias toda
+a entrada em modo \emph{verbatim}.
+\textbf{Importante:} este modo mostra as entrada j�com a
+substitui�o das macros definidas por {\tt @string}.\\
+{\tt abnt-verbatim-entry=no} &\underline{\tt no} & n� mostra a entrada. \\
+{\tt abnt-verbatim-entry=yes} & {\tt yes} & mostra a entrada \emph{verbatim}, �usado neste documento.
+\\ \hline\hline
+\end{tabular}
+\end{center}
+\caption[Op�es de altera�o dos estilos bibliogr�icos: funcionamento]{
+Op�es de altera�o do funcionamento dos estilos bibliogr�icos.
+}
+\label{tabela-opcoes-funcionamento}
+\end{table}
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{lrp{8cm}}\hline\hline
+campo & op�es & descri�o \\ \hline
+\emph{abnt-doi} & & Determina como s� tratadas url's referentes a DOI
+(Digital Object Identifier)\cite{DOI}. Note que as op�es seguintes
+s�ter� efeito se a url iniciar por {\tt doi:}.\\
+{\tt abnt-doi=expand} & \underline{expand} &
+Expande um endere� iniciado com {\tt doi:} para
+{\tt http://dx.doi.org/}\\
+{\tt abnt-doi=link} & {\tt link} & Deixa o endere� intacto e coloca uma hiperliga�o
+para a url correspondente em {\tt http:}. A liga�o s�estar�funcionando
+se algum pacote como {\tt hyperref} tiver sido selecionado.\\
+{\tt abnt-doi=doi} & {\tt doi} & Deixa o endere� intacto e coloca uma hiperliga�o
+tamb� para um documento do tipo {\tt doi:}.\\ \hline
+\emph{abnt-url-package} & & Identifica o pacote que �usado para tratar url's.
+\emph{Nota: �necess�io carregar esses pacotes para que estas op�es tenham
+efeito}\\
+{\tt abnt-url-package=none} &\underline{\tt none} & nenhum pacote.\\
+{\tt abnt-url-package=url} & {\tt url} & usa o pacote {\tt url}.\\
+{\tt abnt-url-package=hyperref} & {\tt hyperref} & usa o pacote {\tt hyperref}.\\
+{\tt abnt-url-package=html} & {\tt html} & usa o pacote {\tt html}.\\
+\hline\hline
+\end{tabular}
+\end{center}
+\caption[Op�es de altera�o dos estilos bibliogr�icos: url]{
+Op�es de altera�o referntes a url (endere�s de internet).
+Veja tamb� a se�o~\protect\ref{sec-url} para mais informa�es.}
+\label{tabela-opcoes-url}
+\end{table}
+
+\section{Comandos controlados por {\tt citeoption}}
+
+\subsection{{\tt bibtextitlecommand}}
+\label{sec-titlecommand}
+
+Esse comando permite formata�es adicionais bastantes sofisticadas.
+Os comandos s� estruturados com dois argmentos, o primeiro �o tipo
+de entrada e o segundo argumento �o campo a ser formatado.
+Veja como fica para a refer�cia \citeonline{7.2.2-2}:
+\begin{verbatim}
+\bibtextitlecommand{inbook}{A coloniza{\c c}\~ao da terra do {T}ucuj\'us}
+\end{verbatim}
+
+No seu arquivo principal voc�deve definir o comando como no seguinte exemplo:
+\begin{verbatim}
+\newcommand{\bibtextitlecommand}[2]{``#2''}
+\end{verbatim}
+Aqui, todas as ocorr�cias de t�ulos s� colocadas entre aspas.
+Se voc�quisesse restringir esse comando apenas a entradas do tipo {\tt article}
+esse comando poderia ficar da seguinte forma:
+\begin{verbatim}
+\newcommand{\bibtextitlecommand}[2]{%
+  \ifthenelse{\equal{#1}{article}}{``#2''}{}}
+\end{verbatim}
+
+\clearpage
+\section{Op�es agrupadas}
+
+O arquivo {\tt abnt-options.bib} define op�es que agrupam outras op�es
+definidas nas tabelas \ref{tabela-opcoes-formatacao} a \ref{tabela-opcoes-funcionamento}.
+As tabelas \ref{tabela-subestilos} e \ref{tabela-versao-normas} mostram
+os grupos de op�es dispon�eis. Consulte o pr�rio arquivo {\tt abnt-options.bib}
+para ver as op�es 
+definidas.\footnote{Note que estas op�es s�podem ser usadas se for usado o arquivo  {\tt abnt-options.bib}
+na bibliografia.}
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{lp{9cm}}\hline\hline
+op�o  & descri�o \\ \hline
+{\tt abnt-substyle=COPPE} & op�es espec�icas para a COPPE/UFRJ.\\
+{\tt abnt-substyle=UFLA} & op�es espec�icas para a UFLA.\\
+\hline\hline
+\end{tabular}
+\end{center}
+\caption[Subestilos de diversas institui�es]{
+Subestilos locais usadas por algumas institui�es. Estas altera�es
+foram identificadas por usu�ios. Se sua institui�o
+tem regras particulares que poderiam entrar aqui, por favor avise-nos.}
+\label{tabela-subestilos}
+\end{table}
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{lp{9cm}}\hline\hline
+op�o & descri�o \\ \hline
+{\tt abnt-nbr10520=2001} & (\emph{padr�}) segue a `norma' 10520/2001\cite{NBR10520:2001}.\\
+{\tt abnt-nbr10520=1988} & segue a `norma' 10520/1988\cite{NBR10520:1988}.\\
+\hline\hline
+\end{tabular}
+\end{center}
+\caption[Vers� das `normas' a ser usada]{
+Grupos de op�es que caraterizam as vers�s das diversas `normas'.}
+\label{tabela-versao-normas}
+\end{table}
+
+
+\clearpage
+\chapter{Novos campos}
+
+Para conseguir atender a todas as peculiaridades da `norma' 6023\cite{NBR6023:2000}
+foi necess�io criar um grande nmero de campos bibliogr�icos espec�icos.
+Esteja atento que outros estilos bibtex v� simplesmente ignorar esses campos.
+Se o campo for utilizado por outros estilos tamb�, estaremos indicando esse
+fato (desde que seja do nosso conhecimento).
+
+\section{Endere�s de internet (url)}\label{sec-url}
+
+O estilo bibliogr�ico junto com o pacote {\tt abntcite} trata corretamente
+endere�s de internet, mais conhecidos como {\tt url}. Veja a tabela~\ref{tabela-url}.
+Se o seu documento carrega o pacote {\tt hyperref} \emph{antes} do
+pacote {\tt abntcite} todas as url viram hyperliga�es (\emph{hyperlinks}
+que podem ser naveg�eis. Note que ao utilizar {\tt pdflatex} o
+pacote {\tt hyperref} �automaticamente carregado.
+
+Dependendo das op�es escolhidas (veja a tabela~\ref{tabela-opcoes-url}),
+a url pode aparecer como hiperliga�o na
+sua lista bibliogr�ica. Para que isto ocorra �necess�io que a sua url
+esteja formatada de maneira v�ida, isto � que inicie por
+{\tt http:}, {\tt ftp:}, {\tt mailto:}, {\tt file:} ou {\tt doi:}.
+A url ser�filtrada para a remo�o de carateres que atrapalham a formata�o
+\LaTeX, mas a url passada para o programa externo ser�sempre correta.
+O estilo bibliogr�ico tamb� insere marca�es de hifena�o que permite que
+a url seja quebrada, j�que elas tendem a ser muito longas.
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{lcp{8cm}}\hline\hline
+campo & entradas & descri�o \\ \hline
+{\tt url}   & todas    & {\bf u}niversal {\bf r}esource {\bf l}ocator, ou endere�
+de internet. \emph{A url deve ser dada exatamente como seria usada num browser.
+O estilo bibliogr�ico se encarrega de adaptar a url para que possa ser formatada
+pelo \LaTeX e para que possa servir como hiperliga�o em documentos que usam o
+pacote hyperref ou pdflatex.}
+\\ \hline
+{\tt urlaccessdate} & todas & data em que foi acessado a url.
+\emph{�responsabilidade
+do usu�io colocar a data no formato correto.}
+\\ \hline\hline
+\end{tabular}
+\end{center}
+\caption[Campos relativos a sites de internet e documentos eletr�icos]%
+{Campos relativos a sites de internet e documentos eletr�icos.
+Exemplos: \citeonline{7.3.2-2,7.3.2-3,7.4.2.3-1,7.4.2.3-2,7.4.2.3-3,7.4.2.3-4,%
+7.4.2.3-5,7.4.2.3-6,7.5.3-1,7.5.3-2,7.5.3-3,7.5.3-4,7.5.3-5,7.13.2-1,7.13.2-3}.
+O campo {\tt url} �utilizado em numerosos estilos bibtex.}
+\label{tabela-url}
+\end{table}
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{lp{3cm}p{8cm}}\hline\hline
+campo & entradas & descri�o \\ \hline
+{\tt isbn}   & {\tt book}, {\tt booklet}, {\tt inbook}, {\tt incollection},
+{\tt inproceedings}, {\tt proceedings}    & ISBN �a numera�o internacional para livros.
+\emph{�responsabilidade
+do usu�io colocar o ISBN no formato correto.}
+Ex.~\citeonline{7.1.3-1,7.1.3-2,8.5.1-1,8.8-4,8.11.5-6}.
+\\ \hline
+{\tt issn} & {\tt article}, {\tt book}, {\tt inproceedings}, {\tt proceedings} & ISSN �a numera�o internacional para publica�es peri�icas:
+jornais, revistas, cat�ogos telef�icos etc.
+\emph{�responsabilidade
+do usu�io colocar o ISSN no formato correto.}
+Ex.~\citeonline{7.4.1.3-1,7.4.1.3-3}.
+\\ \hline\hline
+\end{tabular}
+\end{center}
+\caption[Campos relativos a ISBN e ISSN.]
+{Campos relativos a ISBN e ISSN.
+Os campos {\tt isbn} e {\tt issn} s�  usados nos estilos {\tt is-alpha}, {\tt is-unsrt},
+{\tt dinat}, {\tt jurabib}, {\tt jureco},
+{\tt abbrvnat}, {\tt plainnat}, {\tt unsrtnat}}
+\label{tabela-isbn}
+\end{table}
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{lp{4cm}p{8cm}}\hline\hline
+campo & entradas & descri�o \\ \hline
+{\tt subtitle} & todas & subt�ulo relativo ao {\tt title}, n� coloque os dois pontos que s� gerados
+                   autom�icamente.
+Ex.~\citeonline{NBR6023:2000,7.1.3-5,7.1.3-7,7.1.3-8,7.1.3-9,7.1.3-10,7.4.2.3-2,7.5.1.2-3,7.10-3,%
+7.10-4,7.13.2-1,8.1.1.1-3,8.1.1.7-3,8.1.2.1-1,8.2.1,8.2.2,8.5.3,8.11.4-2}
+\\ \hline
+{\tt booksubtitle} & todas que tem o campo {\tt booktitle}& subt�ulo relat�o ao {\tt booktitle}.
+Ex.~\citeonline{7.2.2-1,7.5.3-5}
+\\  \hline
+{\tt section} & {\tt journal} & formata a se�o de um {\tt article}.
+Ex.~\citeonline{7.4.2.1-1,7.4.2.1-3,7.7.1.2-2,7.7.1.2-4,7.7.1.2-6,7.7.2.2-1,7.7.2.2-2}
+\\ \hline\hline
+\end{tabular}
+\end{center}
+\caption{Campos relativos a subt�ulos e se�es de revistas.}
+\label{tabela-subtitle}
+\end{table}
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{lp{4cm}p{8cm}}\hline\hline
+campo & entradas & descri�o \\ \hline
+{\tt editortype} & todas onde cabe {\tt editor} & altera o tipo de editor (padr� ``Ed.'')
+para qualquer valor colocado no campo.
+Isto atende ao �em {\bf 8.1.1.4}\cite{NBR6023:2000}.
+\emph{�responsabilidade
+do usu�io usar formato correto: ``Org.", ``Coord." etc.}
+Ex.~\citeonline{7.2.2-1,8.1.1.4-1,8.1.1.4-2,8.1.1.4-4,8.2.2,8.7.5} e sem essa op�o:
+\citeonline{7.1.3-5,8.1.1.4-3}.\\ \hline
+{\tt furtherresp} & {\tt book} & adiciona informa�es sobre responsabilidades
+adicionais de autoria, tradu�o, organiza�o, ilustra�es etc.
+Isto atende ao �em {\bf 8.1.1.7}\cite{NBR6023:2000}.
+\emph{�responsabilidade
+do usu�io colocar isso na forma correta, muito embora nenhuma
+prescri�o para isso esteja dada\cite{NBR6023:2000}}
+Ex.~\citeonline{7.1.3-5,7.3.2-1,7.7.1.2-7,8.1.1.4-4,8.1.1.7-1,8.1.1.7-2,%
+8.1.1.7-3,8.2.2,8.4.3,8.8-3,8.8-4,8.10-5,8.11.1,8.11.2-1,8.11.2-2}\\  \hline
+{\tt org-short} & todas & este campo permite colocar uma abreviatura
+ou sigla para o nome de uma organiza�o (ex. ABNT). Isso permite que
+a chamada na cita�o use a forma abreviada. \emph{somente para o estilo
+alfab�ico}.\\
+\hline\hline
+\end{tabular}
+\end{center}
+\caption{Campos relativos a autoria.}
+\label{tabela-type}
+\end{table}
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{lp{3cm}p{8cm}}\hline\hline
+campo & entradas & descri�o \\ \hline
+{\tt dimensions} & {\tt book} & texto que mostra as dimens�s do documento.
+Isto atende ao �em {\bf 8.9}\cite{NBR6023:2000}.
+\emph{�responsabilidade
+do usu�io colocar as dimens�s na forma correta.}
+Ex.~\citeonline{7.1.3-1,8.5.1-1,8.8-4,8.9-1,8.9-2,8.10-1,8.10-2,8.10-3,%
+8.10-5,8.11.2-1,8.11.5-8}
+\\ \hline
+{\tt illustrated} & {\tt book} & indica as ilustra�es. Se for vazio,
+{\tt illustrated=\{\}}, ser�colocado autom�icamente ``il.''.
+Sen� ser�colocado o que estiver neste campo.
+\emph{�responsabilidade
+do usu�io usar os formatos corretos: ``il. color.'', ``principalmente il. color.'',
+``somente il.'' etc.}
+Ex.~\citeonline{7.1.3-6,8.5.1-1,8.8-1,8.8-2,8.8-3,8.8-4,8.10-1,8.11.2-1,8.11.5-6}
+\\ \hline
+{\tt pagename} & todas  & define novo nome para p�ina, alterando o
+padr� ``p.''. Note que a nica varia�o �usar ``f.'', para designar folhas
+ao inv� de p�inas.
+Isto atende ao �em {\bf 8.7.2}\cite{NBR6023:2000}.
+\emph{�responsabilidade
+do usu�io usar formato correto: ``f."}
+Ex.~\citeonline{7.1.3-3,8.4.5-1,8.7.2-2,7.9.3-8}
+\\ \hline\hline
+\end{tabular}
+\end{center}
+\caption{Campos relativos a descri�o f�ica do documento.}
+\label{tabela-fis}
+\end{table}
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{lp{8cm}}\hline\hline
+campo & descri�o \\ \hline
+{\tt conference-number} & nmero da confer�cia, adiciona
+um ponto autom�icamente, isto � `13' vira `13.'.
+\\ \hline
+{\tt conference-year} & ano em que foi realizada
+a confer�cia.
+\\ \hline
+{\tt conference-location} &
+localiza�o onde foi realizada a confer�cia
+\\ \hline\hline
+\end{tabular}
+\end{center}
+\caption{Campos relativos a descri�o de uma confer�cia para entradas do tipo
+{\tt proceedings}, {\tt inproceedings} e {\tt conference}.}
+\label{tabela-conf}
+\end{table}
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{lp{8cm}}\hline\hline
+campo & descri�o \\ \hline
+{\tt year-presented} & ano em que um trabalho foi apresentado.
+\\ \hline\hline
+\end{tabular}
+\end{center}
+\caption{Campos relativos teses e monografias.}
+\label{tabela-campos-teses}
+\end{table}
+
+
+\chapter{Novas Entradas}
+
+Algumas novas entradas tiveram de ser criadas. Entradas s�
+objetos de cita�o bibliogr�icas como \verb+@book+ e \verb+@article+
+que ficam no seu arquivo de bibliografias (arquivo {\tt .bib}).
+Note que outros estilos bibliogr�icos v� tratar essas entradas como
+sendo \verb+@misc+
+
+\section{{\tt @ABNT-option} --- Mudan� no estilo ABNT}
+
+Com entrada {\tt @ABNT-option} voc�pode especificar as altera�es
+no comportamento dos estilos bibliogr�icos.
+Veja o cap�ulo~\ref{chapter-opcoes-estilo},
+p�ina~\pageref{chapter-opcoes-estilo}, para mais detalhes.
+Neste texto as altera�es s� mostradas na pr�ria lista de refer�cias:
+\citeonline{abnt-options0,ABNT-barcelos0,ABNT-barcelos1,7.9.3-2:begin,7.9.3-2:end,%
+abnt-options1,abnt-options2,abnt-options3,abnt-options4,abnt-options5}
+
+\section{{\tt @hidden} --- Entrada escondida }
+
+{\tt @hidden} gera uma entrada que n� vai aparecer na lista de
+refer�cias para ser usada com os comandos
+\verb+\apud+ e \verb+\apudonline+ (Veja a Ref.~\citeonline{abnt-bibtex-alf-doc} para
+mais detalhes).
+Os nicos campos considerados s� de autoria ({\tt author}, ou {\tt editor},
+ou {\tt organization}, ou {\tt title}) e de ano
+({\tt year}). 
+Este tipo de entrada s�tem sentido no estilo autor-data {\tt [alf]}.
+
+\section{{\tt @ISO-option} --- Mudan� de estilo ISO}
+
+Tem a mesma fun�o que entradas tipo {\tt @ABNT-option} s�que altera
+op�es espec�icas para `normas' ISO.
+
+\section{{\tt @journalpart} --- Partes de peri�icos }
+
+Esta entrada formata partes de peri�icos. Veja os exemplos
+\citeonline{7.4.2-1,7.4.2-2,7.4.2-3,8.2.4,8.2.5,8.6.6,8.6.7}.
+
+\section{{\tt @monography} --- Monografias}
+
+Al� de teses de mestrado\footnote{O trabalho escrito de mestrado no Brasil
+�chamado de disserta�o, dando a entender que se trata de um trabalho
+de qualidade inferior a de uma tese. No exterior, onde o trabalho das pessoas
+costuma ser mais respeitado, �chamado de tese de mestrado mesmo.}
+ e doutorado, a ABNT ainda definiu separadamente monografias em geral.
+Use exatamente da mesma maneira como {\tt @mastersthesis} e {\tt @phdthesis}.
+Exemplos: \citeonline{8.11.4-1,8.11.4-1b,8.11.4-1c}
+
+\section{{\tt @patent} --- Patentes}
+
+�uma entrada ainda bastante experimental para descrever patentes.
+Exemplo: \citeonline{7.6}
+
+\section{{\tt @thesis} --- Teses de modo geral}
+
+Esta entrada funciona como {\tt @phdthesis} com a diferen� que o 
+campo {\tt type} deve conter toda a informa�o sobre o tipo de tese. 
+Por exemplo, se tivermos:
+\begin{verbatim}
+type={Doutorado em f\'\i sica}
+\end{verbatim}
+teremos como sa�a `Doutorado em f�ica' e n�
+`Tese (Doutorado em f�ica)' como em {\tt @phdthesis}.
+
+
+\bibliography{abnt-nrj,abnt-bibtex-doc,abntex-doc,abnt-6023-2000,normas,abnt-test,abnt-options}
+
+
+\apendice
+\chapter{Quest�s espec�icas da `norma' 6023 e sua implementa�o}
+
+\section{A `norma' em contradi�o com ela mesma}
+
+A `norma' diz que os exemplos que traz s� normativos, ocorre
+que muitos exemplos n� satisfazem a pr�ria `norma'.
+Aqui n� tentamos reproduzir os exemplos de modo a ter exatamente
+a mesma formata�o. Com os exemplos errados ficamos � vezes na
+situa�o dif�il de ter de reproduzir coisas inconsistentes.
+
+\paragraph{Abrevia�o de nomes:} a refer�cia \citeonline{8.1.1.7-1}
+deveria abreviar o ``Dante'' mas n� �isso o que �feito no
+exemplo da `norma' 6023/2000\cite{NBR6023:2000}.
+A solu�o para reproduzir isso foi formatar o {\tt author} assim:
+\begin{verbatim}
+ author  ={Dante{\space}Alighieri},
+\end{verbatim}
+
+\section{Elementos essenciais e complementares}
+
+Do �em {\bf 7.1.3}\cite{NBR6023:2000}:
+\begin{quote}
+Os elementos complementares s�: indica�es de outros tipos de responsabilidade
+(ilustrador, tradutor, revisor, adaptador, compilador etc.);
+informa�es sobre caracter�ticas f�icas do suporte material, p�inas
+[{\tt pages}] e/ou
+volumes [{\tt volume}], ilustra�es,
+dimens�s [{\tt dimensions}]\cite{7.1.3-1,7.1.3-2},
+s�ie editorial ou cole�o [{\tt series}], notas [{\tt notes}] e
+ISBN [{\tt isbn}]\cite{7.1.3-1,7.1.3-2}, entre outros.
+\end{quote}
+
+{\tt book} \cite{7.1.3-1,7.1.3-2,7.1.3-5,7.1.3-6,7.1.3-10};
+{\tt phdthesis} \cite{7.1.3-3};
+{\tt booklet} \cite{7.1.3-4};
+{\tt manual} \cite{7.1.3-7,7.1.3-8,7.1.3-9};
+
+\paragraph{Coment�io}
+Veja tabela~\ref{tabela-isbn} sobre a descri�o e uso do campo {\tt isbn}.
+
+Veja coment�io na se�o \ref{sec-teses}, \latex{p�ina
+  \pageref{sec-teses},} sobre o posicionamento do ano em \citeonline{7.1.3-3}.
+
+\section{Partes de colet�eas [{\tt incollection}] e livros [{\tt inbook}]}
+
+Do �em {\bf 7.2.2}\cite{NBR6023:2000}:
+\begin{quote}
+Os elementos essenciais s�: autor(es) [{\tt author}], t�ulo [{\tt subtitle}],
+subt�ulo [{\tt subtitle}] (se houver) da parte,
+seguidos da express� ``In:'' \cite{7.2.2-1}, e da refer�cia completa
+da monografia no todo. No final da refer�cia, deve-se informar a pagina�o [{\tt pages}]
+ou outra forma de individualizar a parte referenciada.
+\end{quote}
+
+{\tt incollection} \cite{7.2.2-1,8.7.5};
+{\tt inbook} \cite{7.2.2-2}.
+
+\paragraph{O que ainda precisa ser feito:}
+\begin{enumerate}
+\item Formatar o tipo de editor em \cite{7.2.2-1}.
+\end{enumerate}
+
+\section{Eventos, Anais, Proceedings}
+
+Na se�o 7.5.1\cite{NBR6023:2000} �discutido como se referencia artigos em
+proceedings e os proceedings em s� �uma completa maluquice! Em nenhum
+lugar entra o editor dos proceedings, isso faz a `norma' da ABNT divergir
+completamente de qualquer outro estilo bibliogr�ico conhecido. Proceedings
+s� sempre publicados e referenciados a partir do nome dos editores.
+Significa que uma pessoa
+que for pegar a refer�cia formatada pelo estilo da ABNT corre o risco
+de nunca encontrar tal refer�cia.
+
+Outro problema �que no lugar do editor a ABNT coloca o nome do evento, o que
+normalmente viria no t�ulo. Em compensa�o o t�ulo foi quebrado em duas partes
+(suspiro!). Assim um proceeding do tipo ``Anais da V Reuni� dos Usu�ios Latex"
+tem no lugar do editor ``REUNI� DOS USU�IOS LATEX, 5." e no lugar
+do t�ulo ``{\bf Anais\latexhtml{$\ldots$}{...}}. Note ainda que o ``V" vira ```5." embora
+tipo mundo diga ``V Reuni�" e n� ``Reuni�, 5.".
+Enfim, se podemos complicar, para que simplificar!
+
+Resumindo, a ABNT desprezou a figura importante do editor, quebrou o t�ulo
+em v�ias partes, introduziu informa�es sem import�cia e fugiu completamente
+ao que �internacionalmente aceito para esses tipos de refer�cias.
+
+N� \emph{sinceramente} n� sabemos como elaborar um estilo bibtex coerente que seja
+compat�el com essa bobagem sem introduzir v�ios campos novos.
+Vide a tabela~\ref{tabela-conf} para a descri�o dos campos novos que
+foram introduzidos.
+Outra adapta�o foi usar o campo {\tt organization} para
+o nome do evento. Isso normalmente n� �usado em entradas to tipo
+{\tt proceedings} e {\tt inproceedings}, mas foi a melhor solu�o encontrada.
+Novamente, esteja atento que ao usar outros estilos bibtex suas bibliografias
+poder� ficar com uma cara muito estranha. Recomendo estudar os exemplos
+aqui apresentados para um resultado aceit�el.
+
+Naturalmente, como �internacionalmente aceito �usual se referenciar ao
+editor e se voc�j�tem entradas formatadas assim o editor vai aparecer
+no lugar do {\tt organization}. Existe a�o risco de algu� aborrecer voc�dizendo que voc�n� est�cumprindo a `norma', mas esse risco �pequeno
+porque o nmero de pessoas que conhece a `norma' a esse ponto �pequeno tamb�.
+
+{\tt proceedings}\cite{7.5.1.2-1,7.5.1.2-2,7.5.1.2-3,7.5.3-1,8.1.2.1-3};
+{\tt inproceedings}\cite{7.5.2.2-1,7.5.2.2-2,7.5.2.2-3,7.5.3-2,7.5.3-3,7.5.3-4,7.5.3-5}
+
+\section{Nomes pessoais [{\tt author}]}
+\label{nome-pessoais}
+\begin{quote}
+{\bf 8.1.1.1}\cite{NBR6023:2000}
+Indica(m)-se o(s) autores [{\tt author}, {\tt editor}]
+pelo \emph{ltimo sobrenome}, em maisculas, seguido
+do(s) prenome(s) e \emph{outros sobrenomes} abreviado(s) ou n�.
+\cite{8.1.1.1-1,8.1.1.1-2}
+\cite{8.1.1.1-1,8.1.1.1-2,8.1.1.1-3}
+\end{quote}
+
+\subsection{Coment�io}
+A ABNT conseguiu quebrar o sobrenome em duas partes. Com isso ficou dif�il
+gerar uma forma coerente de escrever nomes em bibtex.
+Bibtex assume que nomes sejam da forma "First von Last Jr.", a ABNT misturou
+o "Last" com o "First". O exemplo \citeonline{8.1.1.1-1} deveria ser
+escrito assim: author=\{Roque de Brito Alves\}, aqui ficou "First=Roque",
+"von=de",  e "Last=Brito Alves". A formata�o usual dos 
+estilos bibtex colocariam ent� "BRITO ALVES, Roque de",  mas isso n�  cumpre
+a `norma'. 
+O nosso estilo consegue contornar o problema e gerar "ALVES, Roque de Brito",
+mas existe a possibilidade de que o nosso mecanismo gere problemas.
+Se voc�quiser reveter ao modo usual do bibtex use a op�o
+{\tt bibtex} descrita na tabela \ref{tabela-opcoes-composicao}.
+Outro problema �a quest� de elementos tipo ``Jr." tais como ``Filho'',
+``Neto'' etc. A `norma' n� diz nada explicitamente sobre o que fazer com isso.
+Pelos exemplos fica aparente que esses elementos s� agregados ao sobrenome.
+Embora seja estranho, o estilo trata esses casos sem problema algum.
+Veja \citeonline{8.4.4,9.1-1,7.5.2.2-1,7.4.2.1-3,7.5.3-4}
+
+\section{T�ulo ({\tt title}) e subt�ulo ({\tt subtitle})}
+
+Do �em {\bf 8.2.1}\cite{NBR6023:2000}:
+\begin{quote}
+O t�ulo [{\tt title}, {\tt booktitle}] e subt�ulo [{\tt subtitle}, {\tt booksubtitle}] devem ser reproduzidos
+tal como figuram no documento, separados por dois pontos.
+\end{quote}
+
+Exemplos:
+{\tt article}\cite{7.4.2.3-2}
+{\tt book}\cite{7.1.3-5,7.1.3-10,7.10-3,8.1.1.1-3,8.2.1,8.5.3}
+{\tt incollection}\cite{7.2.2-1}
+{\tt manual}\cite{NBR6023:2000,7.1.3-7,7.1.3-8,7.1.3-9,7.10-4,8.1.2.1-1}
+{\tt mastersthesis}\cite{8.11.4-2}
+{\tt misc}\cite{7.13.2-1}.
+
+\subsection{Coment�io:}
+O subt�ulo foi implementado atrav� dos novos campos {\tt subtitle}
+e {\tt booksubtitle} que
+est� dispon�el para todas as entradas bibliogr�icas.
+A separa�o por dois pontos �gerada automaticamente quando o estilo
+deteta a presen� do campo {\tt subtitle} ou {\tt booksubtitle}.
+Note que em outros estilos bibliogr�icos os campos {\tt subtitle}
+e {\tt booksubtitle} ser�
+ignorado.
+Veja tamb� a tabela~\ref{tabela-subtitle}.
+
+N� fica muito claro o que vem a ser um subt�ulo nem qual seria a sua
+serventia. N� conhecemos nenhum outro estilo bibliogr�ico que fa�
+uso de subt�ulos, da�n� recomendamos o seu uso.
+
+\section{Aus�cia de local ({\tt address}) e editora ({\tt publisher})}
+
+Do �em {\bf 8.4.5}\cite{NBR6023:2000}:
+\begin{quote}
+N� sendo poss�el determinar o local [{\tt address}], utiliza-se a express� \emph{Sine loco},
+abreviada, entre colchetes [S.l.]
+\end{quote}
+Do �em {\bf 8.5.3}\cite{NBR6023:2000}:
+\begin{quote}
+Quando a editora [{\tt publisher}] n� �identificada, deve-se indicar a express�
+\emph{sine nomine}, abreviada, entre colchetes [s.n.].
+\end{quote}
+Do �em {\bf 8.5.4}\cite{NBR6023:2000}:
+\begin{quote}
+Quando o local [{\tt address}] e o editor [{\tt publisher}] n� puderem ser
+identificados na publica�o, utilizam-se ambas as express�s, abreviadas e
+entre colchetes [S.l.: s.n.]
+\end{quote}
+
+\subsection{Coment�io}
+Quando o bibtex encontrar uma entrada {\tt book} sem campo {\tt publisher}
+ser�feita a substitui�o autom�ica por [s.n.].
+\cite{8.5.3}
+Se encontrar sem {\tt address} ser�colocada [S.l.]. \cite{8.4.5-1,8.4.5-2}
+Se n� tiver nenhuma das duas [S.l.: s.n.]. \cite{8.5.4}
+
+\section{Teses, Disserta�es, Monografias}
+\label{sec-teses}
+
+Do �em {\bf 8.11.4}\cite{NBR6023:2000}:
+\begin{quote}
+Nas disserta�es [{\tt mastersthesis}], teses [{\tt phdthesis}]
+e/ou outros trabalhos acad�icos [{\tt monography}] devem ser indicados
+em nota o tipo do documento (monografia, disserta�o, tese etc.), o grau [{\tt type}],
+a vincula�o acad�ica [{\tt school}], local [{\tt address}]
+e a data [{\tt year}] da defesa, mencionada na folha de
+aprova�o (se houver). \cite{8.11.4-1,8.11.4-2,8.11.4-1b,8.11.4-1c}
+\end{quote}
+
+\subsection{Coment�io}
+Na `norma' os exemplos \citeonline{8.11.4-1,8.11.4-2} apresentam alguns
+problemas. Ambos repetem o ano \emph{duas} vezes, a primeira logo ap� o t�ulo
+e a segunda no final. O exemplo \citeonline{8.11.4-2} inclusive apresenta
+duas datas diferentes.
+N� foi fornecida nenhuma explica�o para essa discrep�cia.
+Como na descri�o acima se diz ``local e a data'' optamos no estilo colocar
+apenas a data no final logo ap� o local.
+�poss�el alterar o comportamento do estilo via o campo {\tt abnt-thesis-year},
+veja a tabela~\ref{tabela-opcoes-composicao} para mais detalhes.
+
+
+\chapter{Refer�cias segundo o tipo de entrada bibtex}
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{lp{2.5cm}p{9cm}}\hline\hline
+entrada & contribu�as & da refer�cia \citeonline{NBR6023:2000} \\ \hline
+{\tt article} & \citeonline{Sun99,Creci99,Subramaniam98,Deng00,Eiter99:HAA,%
+Inverno97:Formalisms,Tsen86}%,Schroter98}
+& \citeonline{7.4.2.1-1,7.4.2.1-2,7.4.2.1-3,7.4.2.1-4,%
+7.4.2.2.1-1,7.4.2.2.1-2,7.4.2.2.2,7.4.2.3-1,7.4.2.3-2,7.4.2.3-3,7.4.2.3-4,%
+7.4.2.3-5,7.4.2.3-6,7.7.1.2-2,7.7.1.2-3,7.7.1.2-4,7.7.1.2-5,7.7.1.2-6,7.7.2.2-1,%
+7.7.2.2-2,7.7.3.2,7.7.4-1,7.7.4-3,7.9.3-2,8.2.6,%
+8.3.1-1,8.6.8-1,8.6.8-2,8.6.9-2,8.9-1,8.9-2,%
+8.11.5-2}. \\ \hline
+{\tt book} & \citeonline{Koneman99,Ferber95:SMA,Cardona82}
+& \citeonline{7.1.3-1,7.1.3-2,7.1.3-5,7.1.3-6,7.1.3-10,%
+7.3.2-1,7.4.1.3-1,7.4.1.3-2,7.4.1.3-3,7.7.1.2-1,7.7.1.2-7,7.8.3-1,7.8.3-2,7.8.3-3,%
+7.10-1,7.10-3,8.1.1.1-1,8.1.1.1-2,%
+8.1.1.1-3, 8.1.1.2,8.1.1.4-1,8.1.1.4-2,8.1.1.4-3,8.1.1.4-4,8.1.1.5,8.1.1.6,%
+8.1.1.7-1,8.1.1.7-2,8.1.1.7-3,8.2.1,8.2.2,8.3.1-2,8.3.2,%
+8.4.1,8.4.3,8.4.4,8.4.5-1,8.4.5-2,8.5.1-1,8.5.2-1,8.5.1-2,8.5.2-2,8.5.3,8.5.4,%
+8.6.1,8.6.2,8.6.3,8.6.4,8.6.5,8.7.1-1,8.7.1-2,8.7.1-3,8.7.2-1,8.7.2-2,8.7.3,8.7.4,8.7.6-1,8.7.6-2,%
+8.8-1,8.8-2,8.8-3,8.8-4,8.10-1,8.10-2,8.10-3,8.10-4,8.10-5,8.11.1,8.11.2-1,8.11.2-2,%
+8.11.5-1,8.11.5-6,8.11.5-7,8.11.5-8,8.11.5-11,9.1-1,9.2.2-1,9.2.2-2,9.2.3-1,9.2.3-2}
+\\ \hline
+{\tt booklet} && \citeonline{7.1.3-4,9.1-2} \\ \hline
+{\tt inbook} && \citeonline{7.2.2-2,7.3.2-2,7.7.2.2-3,7.11.2-1,7.11.2-2} \\ \hline
+{\tt incollection} & \citeonline{Jennings98:Applications} &
+\citeonline{7.2.2-1,8.7.5,8.11.3-1,8.11.3-2} \\ \hline
+{\tt inproceedings} & \citeonline{Valiant95:Rationality,Chiao00} &
+\citeonline{7.5.2.2-1,7.5.2.2-2,7.5.2.2-3,7.5.3-2,%
+7.5.3-3,7.5.3-4,7.5.3-5} \\ \hline
+{\tt journalpart} && \citeonline{7.4.2-1,7.4.2-2,7.4.2-3,8.2.4,8.2.5,8.6.6,8.6.7}\\ \hline
+{\tt manual} &  \citeonline{Bumgardner97:Syd} &
+\citeonline{7.1.3-7,7.1.3-8,7.1.3-9,7.10-2,7.10-4,%
+8.1.2.1-1,8.1.2.1-2,8.1.2.2-1,8.3.2b,8.5.5} \\ \hline
+{\tt masterthesis} && \citeonline{8.11.4-2} \\ \hline
+{\tt misc} && \citeonline{7.6,7.9.3-1,7.9.3-3,7.9.3-4,7.9.3-5,7.9.3-6,7.9.3-7,%
+7.9.3-8,7.9.3-9,7.10-5,7.10-6,7.11.1-1,7.11.1-2,7.11.1-3,7.11.1-4,7.11.1-5,7.11.3-1,7.11.3-2,%
+7.11.3-3,7.12.2-1,7.12.2-2,7.12.2-3,7.13.2-1,7.13.2-2,7.13.2-3,7.13.2-4,%
+7.13.2-5,7.13.2-5b,7.13.2-6,7.13.2-7,7.13.2-8,7.13.2-9,7.13.2-10,7.13.2-11,7.13.2-12}
+\\ \hline
+{\tt proceedings} &&\citeonline{7.5.1.2-1,7.5.1.2-2,7.5.1.2-3,7.5.3-1,8.1.2.1-3,8.11.5-3}
+\\ \hline
+{\tt phdthesis} &\citeonline{Giraffa:1999}&  \citeonline{7.1.3-3} \\ \hline
+{\tt techreport} & \citeonline{Singh91:Intentions} &
+\citeonline{8.1.2.2-2,8.1.2.3-1,8.1.2.3-2} \\ \hline
+{\tt unpublished} & \citeonline{Mccarthy92:Elephant} & \\ \hline\hline
+\end{tabular}
+\end{center}
+\caption{Cita�es bibliogr�icas usadas neste documento ordenadas segundo o
+tipo de entrada.}\label{table-entrada}
+\end{table}
+
+\end{document}

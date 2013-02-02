@@ -1,0 +1,11 @@
+RDATE=$2
+echo "fetching logs for release $1 (this may take some time)"
+cd ..
+cvs log -d $RDATE texmf lyx bin > cvs.logs
+sed -f admin/sed.filter cvs.logs > step1.logs
+echo "\n" >> step1.logs
+echo "------------- $1 ---------------------------" > release.log
+sed -f admin/sed.filter2 step1.logs >> release.log
+cat release.log >> changelog
+rm cvs.logs step1.logs release.log
+cd admin

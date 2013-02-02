@@ -1,0 +1,4 @@
+\input{nbr6027-1989.def}
+\ExecuteOptions{floatnumber=continous}
+\ExecuteOptions{pagestart=folhaderosto}
+\ExecuteOptions{plainheader}

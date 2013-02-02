@@ -1,0 +1,19 @@
+%% $Id: nbr10522-1988.def,v 1.2 2003/10/13 09:42:13 gweber Exp $
+%% name of this file nbr14724-2001.def
+%% Copyright 2004 by the abnTeX group at http://abntex.codigolivre.org.br
+%%
+%% This file is distributed under the LaTeX-Project Public License (LPPL)
+%%            http://www.latex-project.org/lppl.html
+%% You are free to modify this file under the LPPL.
+%%
+%% $Log: nbr10522-1988.def,v $
+
+%clearly required
+\ExecuteOptions{floatnumber=continous}
+\ExecuteOptions{pagestart=folhaderosto}
+\ExecuteOptions{header=plain}
+\ExecuteOptions{chapter=Title,section=Title}
+\ExecuteOptions{espacoumemeio}
+%our interpretation/understanding
+\ExecuteOptions{appendix=titlebox,appendix=NAME}
+\ExecuteOptions{indent=all

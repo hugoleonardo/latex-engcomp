@@ -1,0 +1,16 @@
+% $Id:$
+@manual{cod-catalog,
+organization ={FEBAB},
+title ={Código de Catalogação Anglo-Americano 2},
+address ={São Paulo},
+year   = {1983--1985}}
+@manual{desktop-publishing,
+author ={B. Goatly},
+title  ={Desktop-Publishing on the Arquimedes: DTP for all},
+address={Reino Unido},
+publisher={Sigma},
+year   ={1991},
+@book{Nicholis,
+author = {A. B. Nicholis},
+title  ={Algum título},
+year   =1983}

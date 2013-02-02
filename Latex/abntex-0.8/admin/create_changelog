@@ -1,0 +1,10 @@
+echo "# \$Id: create_changelog,v 1.2 2003/10/17 13:28:53 gweber Exp $" > ../changelog
+echo "# Este arquivo foi gerado pelo script admin/create_changelog" >> ../changelog
+echo "# As informações são obtidas dos logs dos arquivos."  >> ../changelog
+echo "# NÃO EDITE ESTE ARQUIVO" >> ../changelog
+./create_log "0.8 (alfa2)"               "2003-07-01<"
+./create_log "0.8 (alfa)"               "2003-06-09<2003-07-01"
+./create_log "0.7 (stable release 1)"   "2003-05-30<2003-06-09"
+./create_log "0.7 (beta)"               "2002-12-06<2003-05-30"
+./create_log "0.6 (stable release 3)"   "<2002-12-06"
+
