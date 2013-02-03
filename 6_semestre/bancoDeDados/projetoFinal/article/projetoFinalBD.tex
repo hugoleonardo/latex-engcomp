@@ -35,15 +35,18 @@
 
 \chapter{Introdu\c{c}\~ao}
 
-O aumento do fluxo de passageiros aéreos por ano é inegável, com o barateamento de tecnologias, os preços das passagens estão ficando cada vez mais acessíveis, com isso aumenta o tráfego áereo, gerando uma demanda por sistemas cada vez mais complexos, capazes de gerenciaa uma grande quantidade de voos indo para vários lugares ao redor do mundo sem deixar de ter como prioridade a segurança que estes sistemas devem oferecer, uma vez que um erro pode ser fatal e é necessário automatizar ao máximo o controle de tráfego para que erros humanos possam interferir o mínimo possível.
-Este sistema oferece uma visão simplificada de um sistema de controle de vôos, notadamente estes sistemas são muito mais complexos na prática, mas para efeito de demonstração apenas os principais aspectos foram destacados neste projeto.
+O aumento do fluxo de passageiros aéreos por ano é inegável. Com o barateamento das tecnologias, os preços das passagens estão ficando cada vez mais acessíveis. A maior acessibilidade faz aumentar o tráfego áereo gerando uma demanda por sistemas cada vez mais complexos, capazes de gerenciar uma grande quantidade de vôos indo para vários lugares ao redor do mundo sem deixar de priorizar a segurança que estes sistemas devem oferecer. Uma vez que um erro ocorra, pode ser fatal e é necessário automatizar ao máximo o controle de tráfego para minimizar os erros humanos.
+
+Este sistema oferece uma visão simplificada de um sistema de controle de vôos, notadamente estes sistemas são muito mais complexos na prática, mas, para efeito de demonstração, apenas os principais aspectos foram destacados neste projeto.
 
 \chapter{Mini-Mundo e Regras de Negócio}
 
 	\section{Descrição do Mini-Mundo}
-	O processo começa quando um piloto elabora um Plano de Voo, que contém informações a cerca de um determinado voo (tipo completo ou simples), ou de vários vôos (tipo retificado), e apresenta o plano para aprovação, podendo este ser ou não alterado por um controlador de vôo, caso um plano seja alterado esta informação será gravada para possíveis análises estatísticas no futuro. O plano contém ainda informações sobre a aeronave que realizará o vôo e as escalas que este irá fazer. Uma mesma escala acontece em vários aeroportos e todos os v\^oos possuem pelo menos uma escala, ou seja, os v\^oos diretos possuem uma única escala, os v\^oos com uma parada possuem duas escalas e assim sucessivamente. Cada plano de v\^oo é único para cada v\^oo, à excessão do tipo retificado, usado em casos de v\^oos regulares, esse tipo de plano pode ter validade de até 7 e sua duração é indicada pelo atributo ``diasOperacao" da tabela ``PlanoVoo".  Uma vez aprovado, o processo vai para a etapa de v\^oo.
-	Sobre o v\^oo propriamente dito é necessário saber se sua data e hora de partida estão de acordo com o que está estipulado no plano de v\^oo e também se a aeornave está operando em sua velocidade máxima. Cada v\^oo possui um número único, provido pelo órgão regulador, porém v\^oos com o mesmo número acontecem várias vezes, e podem possuir o mesmo plano de v\^oo, para que a informação seja guardada para cada decolagem em específico é utilizado um outro identificador chamado de ``idVoo", sendo este o identificador chave de todos os v\^oos realizados. Cada v\^oo pode ser controlado por um ou mais controladores e estes podem controlar um ou mais v\^oos simultaneamente.
-Um piloto trabalha para uma Companhia Aérea, que por sua vez possui aeronaves que são utilizadas para os v\^oos e registradas para cada v\^oo no plano de v\^oo. Cada aeronave só pode possui um comandante, sendo este o responsável pelo plano de v\^oo, cada aeronave possui um número de série, seu identificador, uma matrícula, provida pelo órgão regulador e um modelo que refere às suas caracteristicas técnicas.	
+	O processo começa quando um piloto elabora um Plano de Vôo que contém informações a cerca de um determinado vôo (tipo completo ou simples) ou de vários vôos (tipo retificado). Este plano deve ser apresentado para aprovação podendo ser ou não alterado por um controlador de vôo, caso um plano seja alterado esta informação será gravada para possíveis análises estatísticas no futuro. O plano contém ainda informações sobre a aeronave que realizará o vôo e as escalas que este irá fazer. Uma mesma escala acontece em vários aeroportos e todos os v\^oos possuem pelo menos uma escala, ou seja, os v\^oos diretos possuem uma única escala, os v\^oos com uma parada possuem duas escalas e assim sucessivamente. Cada plano de v\^oo é único para cada v\^oo, exceto do tipo retificado, usado em casos de v\^oos regulares. Esse tipo de plano pode ter validade de até 7 e sua duração é indicada pelo atributo ``diasOperacao" da tabela ``PlanoVoo".  Uma vez aprovado, o processo vai para a etapa de v\^oo.
+	
+	Sobre o v\^oo propriamente dito é necessário saber se sua data e hora de partida estão de acordo com o que está estipulado no plano de v\^oo e também se a aeornave está operando em sua velocidade máxima. Cada v\^oo possui um número único, provido pelo órgão regulador, porém v\^oos com o mesmo número acontecem várias vezes, e podem possuir o mesmo plano de v\^oo. Para que a informação seja guardada para cada decolagem em específico é utilizado um outro identificador chamado de ``idVoo", sendo este o identificador chave de todos os v\^oos realizados. Cada v\^oo pode ser controlado por um ou mais controladores e estes podem controlar um ou mais v\^oos simultaneamente.
+	
+Um piloto trabalha para uma Companhia Aérea, que por sua vez possui aeronaves que são utilizadas para os v\^oos e registradas para cada v\^oo no plano de v\^oo. Cada aeronave só pode possui um comandante, sendo este o responsável pelo plano de v\^oo e cada aeronave possui um número de série, seu identificador, uma matrícula, provida pelo órgão regulador e um modelo que refere às suas caracteristicas técnicas.	
 
 	\section{Descrição das Regras de Negócio}
 	
@@ -63,7 +66,7 @@ Um piloto trabalha para uma Companhia Aérea, que por sua vez possui aeronaves qu
 	A Figura \ref{fig:mer} mostra o MER para o projeto proposto.
 			\begin{figure}[H]
   				\centering
-  				\includegraphics[width=13.5cm, angle=90]																			{./pictures/ModeloEntidadeRelacionamentoControleVoos.png}
+  				\includegraphics[width=14.5cm, angle=90]											{./pictures/ModeloEntidadeRelacionamentoControleVoos.png}
   				\caption{Modelo Entidade Relacionamento - Controle de V\^oos}
   				\label{fig:mer}
 			\end{figure}
@@ -74,7 +77,8 @@ Um piloto trabalha para uma Companhia Aérea, que por sua vez possui aeronaves qu
 	A Figura \ref{fig:relacional} mostra o modelo relacional para o projeto proposto.
 			\begin{figure}[H]
   				\centering
-  				\includegraphics[width=14.5cm, angle=90]{./pictures/ModeloRelacionalControleVoos.png}
+  				\includegraphics[width=15.5cm, angle=90]
+  				{./pictures/ModeloRelacionalControleVoos.png}
   				\caption{Modelo Relaciona - Controle de V\^oos}
   				\label{fig:relacional}
 			\end{figure}
@@ -86,6 +90,7 @@ Um piloto trabalha para uma Companhia Aérea, que por sua vez possui aeronaves qu
 		
 		\begin{table}[h]
 		%\centering
+		\caption{Descrição do Mapeamento MER - MR}
 			\begin{tabular}{|l|l|p{6cm}|}
 				\hline
 				\textbf{Tabelas}	& \textbf{Entidade(s) Originária(s)}	& \textbf{Descrição do 							mapeamento} \\ \hline
@@ -103,14 +108,13 @@ Um piloto trabalha para uma Companhia Aérea, que por sua vez possui aeronaves qu
 				TipoPlanoVoo	&		TipoPlanoVoo	& Entidade Forte \\ \hline
 				PlanoVoo\_has\_Escalas &	Escalas e Plano Voo & Relacionamento N:N entre PlanoVoo e 									Escalas\\ \hline			
 				\hline
-			\end{tabular}
-		\caption{Descrição do Mapeamento MER - MR}
+			\end{tabular}		
 		\label{tab:mapeamento}
 		\end{table}			
 	
 	\section{Dicionário de Dados}
 	
-		As Figuras COLOCAR NÚMERO DE FIGURAS abaixo mostram o dicionário de dados de cada tabela do modelo relacional.
+		As Figuras \ref{fig:dicAeronaves}, \ref{fig:dicAeroportos}, \ref{fig:dicCiaAerea}, \ref{fig:dicControlador}, \ref{fig:dicEscala}, \ref{fig:dicModeloAeronaves}, \ref{fig:dicPiloto}, \ref{fig:dicPistas}, \ref{fig:dicPlanoVoo}, \ref{fig:dicPlanoVooHasEscalas}, \ref{fig:dicTipoPlanoVoo}, \ref{fig:dicVoo} e \ref{fig:dicVooHasControlador} abaixo mostram o dicionário de dados de cada tabela do modelo relacional.
 		
 			\begin{figure}[H]
   				\centering
@@ -195,11 +199,15 @@ Um piloto trabalha para uma Companhia Aérea, que por sua vez possui aeronaves qu
 \chapter{Normalização}
 
 	Todas as tabelas, com excessão da tabela ``Aeronaves" já se encontram na 3\textordfeminine Forma Normal porque nenhum atributo possui dependência transitiva e todas as tabelas estão na 2\textordfeminine porque todos os atributos secundários de todas as tabelas dependem totalmente de suas respectivas chaves primárias, logo todas as tabelas já estão também na 1\textordfeminine Forma Normal.
+	
 	Apenas a tabela ``Aeronaves" precisou ser normalizada, pois foi verificado que todos os seus atributos, com excessão do atributo ``matricula" dependiam exclusivamente do modelo da aeronave, visto que eram especificações técnicas que variam de acordo com o modelo, portanto, foi criada uma tabela chamada ``ModeloAeronaves" que armazena tais especificações técnicas e sua chave primária foi adicionada como chave entrangeira junto à chave primária da tabela ``Aeronaves"
 	
 \chapter{Considerações Finais e Trabalhos Futuros}
-	Esta proposta de projeto foi fundamental para um melhor compreendimento sobre o controle de tráfego aéreo e o porque tais sistemas devem ser muito bem projetados antes de entrarem em opereração, qualquer erro pode resultar em graves consequências. Embora o projeto não entre em detalhes sobre aspectos importante que devem ser levados em consideração, como por exemplo, as mudanças de rotas e de altitude de um vôo, os radares que estão controlando determinado vôo enquanto ele está no ar, esse fatores iriam deixar o projeto mais complexo e mais extenso, porém são imprescindíveis para uma melhor gerência do sistema, uma vez que aumentam o controle ajudando assim a prevenir cada vez mais erros humanos. A proposta apresentada neste trabalho é a base no que tange controle de tráfego aéreo, abordando desde o controle de aeronaves até as escalas realizadas por cada vôo, cobrindo assim o processo básico de decolagem e pouso de uma aeronave dentro do espaço aéreo brasileiro.
-	Para exemplificar esses fatores temos 3 entidades que foram retidaras do projeto devido à complexidade, Rotas (usada para guardar as rotas do espaço aéreo usadas pelas aeronaves), Altitude (é necessário guardar valores de altitude, pois as aeronaves alternam sua altitude mais de uma vez durante um vôo), e Fixos (lugares pré-estabelicidos para mudanças de altitude). Com mais essas entidades seria pos´sível determinar todas as altitude em que uma aeronave esteve durante um vôo, em que locais ocorreram as trocas de altitudes e quais rotas foram utilizadas), essas informaçõe poderiam, por exemplo ser usadas para levantamentos estatísticos de congestionamento do espeço aéreo afim de viabulizar um estudo para otimizar sua utilização.
+	Esta proposta de projeto foi fundamental para um melhor compreendimento sobre o controle de tráfego aéreo e o porquê tais sistemas devem ser muito bem projetados antes de entrarem em opereração, qualquer erro pode resultar em graves consequências. Embora o projeto não entre em detalhes sobre aspectos importante que devem ser levados em consideração, como por exemplo, as mudanças de rotas e de altitude de um vôo, os radares que estão controlando determinado vôo enquanto ele está no ar, esse fatores iriam deixar o projeto mais complexo e mais extenso, porém são imprescindíveis para uma melhor gerência do sistema, uma vez que aumentam o controle ajudando assim a prevenir cada vez mais erros humanos.
+	
+	A proposta apresentada neste trabalho é a base no que tange controle de tráfego aéreo, abordando desde o controle de aeronaves até as escalas realizadas por cada vôo, cobrindo assim o processo básico de decolagem e pouso de uma aeronave dentro do espaço aéreo brasileiro.
+	
+	Para exemplificar esses fatores temos 3 entidades que foram retidaras do projeto devido à complexidade, Rotas (usada para guardar as rotas do espaço aéreo usadas pelas aeronaves), Altitude (é necessário guardar valores de altitude, pois as aeronaves alternam sua altitude mais de uma vez durante um vôo), e Fixos (lugares pré-estabelicidos para mudanças de altitude). Com mais essas entidades seria possível determinar todas as altitude em que uma aeronave esteve durante um vôo, em que locais ocorreram as trocas de altitudes e quais rotas foram utilizadas), essas informaçõe poderiam, por exemplo ser usadas para levantamentos estatísticos de congestionamento do espaço aéreo a fim de viabilizar um estudo para otimizar sua utilização.
 
 \end{document}
 
