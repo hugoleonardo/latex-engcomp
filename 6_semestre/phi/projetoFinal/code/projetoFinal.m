@@ -60,26 +60,42 @@ while i<qt_amostras
     tmp1 = v1_illum_min;
     tmp2 = v1_illum_max;
     v0_sinal(i) = tmp1;
+    sinal(i) = v1_illum_min;
     for j=1:8,
         tmp1 = tmp1 + 0.074;
         v0_sinal(i+j) = tmp1;
+        sinal(i+j) = v1_illum_max;
     end
     i=(i+j);
     v0_sinal(i+1) = tmp1+0.037;
+    sinal(i+1) = v1_illum_max;
     i=i+1;
     for l=1:32,
         v0_sinal(i+l) = v1_illum_max;
+        sinal(i+l) = v1_illum_max;
     end
-    i=(i+l);
-    v0_sinal(i+1) = tmp2-0.037;
+    i=i+l;
+    tmp2 = tmp2 - 0.037;
+    v0_sinal(i+1) = tmp2;
+    sinal(i+1) = v1_illum_min;
     for m=1:8,
         tmp2 = tmp2 - 0.074;
-        v0_sinal(i+m) = tmp2
+        v0_sinal(i+m) = tmp2;
+        sinal(i+m) = v1_illum_min;
     end
-    i=i+m
+    i=i+m;
+    for i=i+1:i+64,
+        v0_sinal(i) = tmp2;
+        sinal(i) = v1_illum_min;
+    end
 end
 
-intervalo_temp = 0 : 1 : 295-1;
-plot(intervalo_temp, v0_sinal);
+%intervalo_temp = 0 : 1 : 295-1;
+intervalo_temp = 0 : 1 : 340-1;
+plot(intervalo_temp, v0_sinal),hold,plot(intervalo_temp, sinal,'r');
+title('Responsividade real(azul) e ideal(vermelho) do sensor'); xlabel('Tempo(ms)'); ylabel('Tensão(V)');
+%plot(intervalo_temp, v0_sinal);
+%hold;
+%subplot(1,2,2),plot(intervalo_temp, sinal);
 
 
