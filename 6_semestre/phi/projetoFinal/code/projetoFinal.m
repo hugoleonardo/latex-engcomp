@@ -1,25 +1,30 @@
-
+%Trabalho Final de Projetos de Hardware e Interfaceamento
 clear all; close all; clc;
 
 
-vref = 5;
+vcc = 5;
 %P=(U^2)/R
 pd = 70*10^(-3);
-rss = vref^2/pd;
+rss = vcc^2/pd;
 rss = 10^4; %podemos truncar Rss para um valor maior ou igual a 357 Ohms para Vref 5V
 
-v_max_ad = 4.5;
-v_min_ad = .5;
-vref_ad = 5;
-n_bits_ad = 1;
-rf=100000;
-duracao = 7; %duracao em segundos
+v_max_amp = 4.5; %tensao maxima no amplificador
+v_min_amp = .5; %tensao minima no amplificador
+rf=10^5;
+duracao = .8; %duracao em segundos
 qt_amostras=duracao*1000;
 r=0.05; %raio em metros
-v=.2; %velocidade em m/s
+v=.6; %velocidade em m/s
 t=2*pi*r/v;
 t_r=9; %tempo de resposta de leitura do sensor em ms
 
+%######## CALCULO DOS RESISTORES PARA O COMPARADOR ########
+r1=1000; %resistor 1 do divisor de tensao
+v_ref_comp = 2.5;
+%V=r2*Vref/(r1+r2) equacao do divisor de tensao
+r2=r1*(vcc-v_ref_comp)/v_ref_comp; %resistor 2 do divisor de tensao
+
+%######## CALCULO DO NUMERO DE AMOSTRAS EM CADA ESTADO PROPORCIONALMENTE ########
 phi = pi/16; %angulo de abertura
 t_phi = phi*r/v; %tempo da luz na abertura
 
@@ -65,30 +70,37 @@ v1_illum_min_ideal = i_illum_min_ideal*rss; %tensao na luminancia minima ideal
 %######## CALCULO DO GANHO E OFFSET ########
 %calculo do ganho
 dif_v1_max_e_min = v1_illum_max - v1_illum_min; %diferenca entre V1 maxima e minima
-dif_v_ad_max_e_min = v_max_ad - v_min_ad; %diferenca entre V0 maxima e minima no AD
+dif_v_ad_max_e_min = v_max_amp - v_min_amp; %diferenca entre V0 maxima e minima no AD
 ganho = dif_v_ad_max_e_min/dif_v1_max_e_min;
 %calculo do offset
 v1_illum_min_amp = v1_illum_min * ganho; %tensao luminancia minima amplificada
 v1_illum_max_amp = v1_illum_max * ganho; %tensao luminancia maxima amplificada
-offset = v1_illum_min_amp - v_min_ad;
+offset = v1_illum_min_amp - v_min_amp;
 
 %######## CALCULO DAS RESISTENCIAS RH E RL ########
 %calculo do RH
-rh = (vref*rf)/offset;
+rh = (vcc*rf)/offset;
 %calculo do RL
 rl = rf/((ganho - 1) - rf/rh);
 
 %######## GERANDO SINAL REAL E IDEAL ########
+v_sinal_comp(qt_amostras)=0;
 i=1;
 while i<qt_amostras
     %tmp1 = v1_illum_min;
     tmp = 0;
     %v0_sinal(i) = tmp1;
     v_sinal(i) = ((illum_min_ideal*illum_relative_response)*alfa*10^(-6))*rss;
+    v_sinal_amp(i) = (((illum_min_ideal*illum_relative_response)*alfa*10^(-6))*rss*ganho)-offset;
     %v0_sinal_ideal(i) = v1_illum_min_ideal;
     v_sinal_ideal(i) = (illum_min_ideal*alfa*10^(-6))*rss;
+    v_sinal_ideal_amp(i) = ((illum_min_ideal*alfa*10^(-6))*rss*ganho)-offset;
     lux_sinal(i)= illum_min_ideal*illum_relative_response;
     lux_sinal_ideal(i)=illum_min_ideal;
+    %calculo do comparador
+    if( v_sinal_amp(i) > v_ref_comp)
+        v_sinal_comp(i) = vcc;
+    end
     %borda de crescimento
     for j=1:n_amostras_transicao,
         %tmp1 = tmp1 + 0.070;
@@ -101,6 +113,10 @@ while i<qt_amostras
         v_sinal_ideal_amp(i+j) = ((illum_max_ideal*alfa*10^(-6))*rss*ganho)-offset;
         lux_sinal(i+j)= (illum_min_ideal+tmp)*illum_relative_response;
         lux_sinal_ideal(i+j)=illum_max_ideal;
+        %calculo do comparador
+        if( v_sinal_amp(i+j) > v_ref_comp)
+            v_sinal_comp(i+j) = vcc;
+        end
         if ((i+j)==qt_amostras) break; end
     end
     i=(i+j);
@@ -116,6 +132,10 @@ while i<qt_amostras
         v_sinal_ideal_amp(i+l) = ((illum_max_ideal*alfa*10^(-6))*rss*ganho)-offset;
         lux_sinal(i+l)= illum_max_ideal*illum_relative_response;
         lux_sinal_ideal(i+l)=illum_max_ideal;
+        %calculo do comparador
+        if( v_sinal_amp(i+l) > v_ref_comp)
+            v_sinal_comp(i+l) = vcc;
+        end
         l=l+1;
         if ((i+l)==qt_amostras) break; end
     end
@@ -133,7 +153,10 @@ while i<qt_amostras
         v_sinal_ideal_amp(i+m) = ((illum_min_ideal*alfa*10^(-6))*rss*ganho)-offset;
         lux_sinal(i+m)= (illum_min_ideal+tmp)*illum_relative_response;
         lux_sinal_ideal(i+m)=illum_min_ideal;
-        %tmp=tmp-var_lux;
+        %calculo do comparador
+        if( v_sinal_amp(i+m) > v_ref_comp)
+            v_sinal_comp(i+m) = vcc;
+        end
         if ((i+m)==qt_amostras) break; end
     end
     i=i+m;
@@ -148,6 +171,10 @@ while i<qt_amostras
         v_sinal_ideal_amp(i) = ((illum_min_ideal*alfa*10^(-6))*rss*ganho)-offset;
         lux_sinal(i)= illum_min_ideal*illum_relative_response;
         lux_sinal_ideal(i)=illum_min_ideal;
+        %calculo do comparador
+        if( v_sinal_amp(i) > v_ref_comp)
+            v_sinal_comp(i) = vcc;
+        end
         if (i==qt_amostras) break; end
     end
 end
@@ -157,23 +184,19 @@ subplot(3,2,1),plot(intervalo_temp, v_sinal),hold,plot(intervalo_temp, v_sinal_i
 title('Sinal gerado pelo sensor real(azul) e ideal(vermelho) do sensor'); xlabel('Tempo(ms)'); ylabel('Tensão(V)');
 subplot(3,2,3),plot(intervalo_temp, lux_sinal),hold,plot(intervalo_temp, lux_sinal_ideal,'r');
 title('Luminância atingindo o sensor real(azul) e ideal(vermelho) do sensor'); xlabel('Tempo(ms)'); ylabel('Luminância(Lux)');
-subplot(3,2,5),plot(intervalo_temp, v_sinal_amp),hold,plot(intervalo_temp, v_sinal_ideal_amp,'r');
+subplot(3,2,5),plot(intervalo_temp, v_sinal_amp),hold on,plot(intervalo_temp, v_sinal_ideal_amp,'r'),hold on,plot(intervalo_temp, v_sinal_comp,'g');
 title('Amplificação do sinal gerado pelo sensor real(azul) e ideal(vermelho) do sensor'); xlabel('Tempo(ms)'); ylabel('Tensão(V)');
 
-%t_phi = phi*r/v; %tempo da luz na abertura
-%n_amostras_t_phi = round(t_phi*1000);
-%n_amostras_transicao = t_r;
-%n_amostras_high = round(t_phi*1000)-n_amostras_transicao;
-%n_amostras_low = round(t*1000 - n_amostras_t_phi - n_amostras_transicao*2);
-%if(round(t_phi*1000) < t_r+1)
-%    n_amostras_transicao = round(t_phi*1000);
-%    n_amostras_high = 0;
-%end
-%######## GERANDO SINAL REAL E IDEAL ########
+%######## GERANDO SINAL RANDOMICO REAL E IDEAL ########
+v_sinal_r_comp(qt_amostras)=0;
 i=1;
+v_counter=1;
 while i<qt_amostras
+    v2_r(v_counter)=rand([1 9000],1,1)*10;
     v_r=rand([1 9000],1,1);
+    %tr=2*pi*r/v_r(v_counter);
     tr=2*pi*r/v_r;
+    %t_phi = phi*r/v_r(v_counter); %tempo da luz na abertura
     t_phi = phi*r/v_r; %tempo da luz na abertura
     
     n_amostras_t_phi = round(t_phi*1000);
@@ -188,11 +211,15 @@ while i<qt_amostras
     
     tmp = 0;
     v_sinal_r(i) = ((illum_min_ideal*illum_relative_response)*alfa*10^(-6))*rss;
-    v_sinal__r_amp(i) = (((illum_min_ideal*illum_relative_response)*alfa*10^(-6))*rss*ganho)-offset;
+    v_sinal_r_amp(i) = (((illum_min_ideal*illum_relative_response)*alfa*10^(-6))*rss*ganho)-offset;
     v_sinal_r_ideal(i) = (illum_min_ideal*alfa*10^(-6))*rss;
     v_sinal_r_ideal_amp(i) = ((illum_min_ideal*alfa*10^(-6))*rss*ganho)-offset;
     lux_sinal_r(i)= illum_min_ideal*illum_relative_response;
     lux_sinal_r_ideal(i)=illum_min_ideal;
+    %calculo do comparador
+    if( v_sinal_r_amp(i) > v_ref_comp)
+        v_sinal_r_comp(i) = vcc;
+    end
     %borda de crescimento
     for j=1:n_amostras_transicao,
         tmp = tmp+var_lux;
@@ -202,6 +229,10 @@ while i<qt_amostras
         v_sinal_r_ideal_amp(i+j) = ((illum_max_ideal*alfa*10^(-6))*rss*ganho)-offset;
         lux_sinal_r(i+j)= (illum_min_ideal+tmp)*illum_relative_response;
         lux_sinal_r_ideal(i+j)=illum_max_ideal;
+        %calculo do comparador
+        if( v_sinal_r_amp(i+j) > v_ref_comp)
+            v_sinal_r_comp(i+j) = vcc;
+        end
         if ((i+j)==qt_amostras) break; end
     end
     i=(i+j);
@@ -215,6 +246,10 @@ while i<qt_amostras
         v_sinal_r_ideal_amp(i+l) = ((illum_max_ideal*alfa*10^(-6))*rss*ganho)-offset;
         lux_sinal_r(i+l)= illum_max_ideal*illum_relative_response;
         lux_sinal_r_ideal(i+l)=illum_max_ideal;
+        %calculo do comparador
+        if( v_sinal_r_amp(i+l) > v_ref_comp)
+            v_sinal_r_comp(i+l) = vcc;
+        end
         l=l+1;
         if ((i+l)==qt_amostras) break; end
     end
@@ -229,6 +264,10 @@ while i<qt_amostras
         v_sinal_r_ideal_amp(i+m) = ((((illum_min_ideal)*illum_relative_response)*alfa*10^(-6))*rss*ganho)-offset;
         lux_sinal_r(i+m)= (illum_min_ideal+tmp)*illum_relative_response;
         lux_sinal_r_ideal(i+m)=illum_min_ideal;
+        %calculo do comparador
+        if( v_sinal_r_amp(i+m) > v_ref_comp)
+            v_sinal_r_comp(i+m) = vcc;
+        end
         if ((i+m)==qt_amostras) break; end
     end
     i=i+m;
@@ -241,15 +280,38 @@ while i<qt_amostras
         v_sinal_r_ideal_amp(i) = (((illum_min_ideal*illum_relative_response)*alfa*10^(-6))*rss*ganho)-offset;
         lux_sinal_r(i)= illum_min_ideal*illum_relative_response;
         lux_sinal_r_ideal(i)=illum_min_ideal;
+        %calculo do comparador
+        if( v_sinal_r_amp(i) > v_ref_comp)
+            v_sinal_r_comp(i) = vcc;
+        end
         if (i==qt_amostras) break; end
     end
+    v_counter=v_counter+1;
 end
 
-subplot(3,2,2),plot(intervalo_temp, v_sinal_r),hold,plot(intervalo_temp, v_sinal_r_ideal,'r');
+subplot(3,2,2),plot(intervalo_temp, v_sinal_r),hold on,plot(intervalo_temp, v_sinal_r_ideal,'r');
 title('Sinal randomico gerado pelo sensor real(azul) e ideal(vermelho) do sensor'); xlabel('Tempo(ms)'); ylabel('Tensão(V)');
-subplot(3,2,4),plot(intervalo_temp, lux_sinal_r),hold,plot(intervalo_temp, lux_sinal_r_ideal,'r');
+subplot(3,2,4),plot(intervalo_temp, lux_sinal_r),hold on,plot(intervalo_temp, lux_sinal_r_ideal,'r');
 title('Luminância randomico atingindo o sensor real(azul) e ideal(vermelho) do sensor'); xlabel('Tempo(ms)'); ylabel('Luminância(Lux)');
-subplot(3,2,6),plot(intervalo_temp, v_sinal_r_amp),hold,plot(intervalo_temp, v_sinal_r_ideal_amp,'r');
+subplot(3,2,6),plot(intervalo_temp, v_sinal_r_amp),hold on;plot(intervalo_temp, v_sinal_r_ideal_amp,'r'),hold on; plot(intervalo_temp, v_sinal_r_comp,'g');
 title('Amplificação do sinal randomico gerado pelo sensor real(azul) e ideal(vermelho) do sensor'); xlabel('Tempo(ms)'); ylabel('Tensão(V)');
 
-
+i=1;
+periodo=0;
+flag_high=0;
+flag_low=0;
+tmp_v=1;
+%while i<qt_amostras
+%    if( v_sinal_r_comp(i) == vcc && flag_high==0)
+%        flag_high=1;
+%        i_periodo=i;
+%    end
+%    if (v_sinal_r_comp(i) == 0 && flag_high==1)
+%        flag_low=1;
+%    end
+%    if (v_sinal_r_comp(i) == vcc && flag_high==1 && flag_low==1)
+%        f_periodo=i;
+%        v_calc(tmp_v) = 2*pi*r/(f_periodo-i_periodo)*1000;
+%        tmp_v=tmp_v+1;
+%    end
+%end
