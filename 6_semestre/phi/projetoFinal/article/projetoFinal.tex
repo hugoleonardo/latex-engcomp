@@ -1,0 +1,57 @@
+\documentclass[article]{IEEEtran}
+%\usepackage[utf8]{inputenc}
+\usepackage[pdftex]{graphicx}
+\graphicspath{./}
+
+\begin{document}
+
+\title{Medição de Velocidade usando um Sensor de Luminosidade}
+
+\author{Danilo Souza, Hugo Santos, Welton Ara\'ujo
+
+%\thanks{Engenharia da Computa\c{c}\~ao, Universidade Federal do Par\'a, Bel\'em-PA, Brasil}
+Emails: \{dhcsouza, hugoleonardoeng07, weltonmaxx007\}@gmail.com\\
+Matr\'iculas: 10080000801, 10080000701, 10080000501}
+
+\maketitle
+
+\begin{abstract}
+
+\end{abstract}
+
+\begin{IEEEkeywords}
+sensor de luz, sensor de velocidade, LLS05-A
+\end{IEEEkeywords}
+
+\IEEEpeerreviewmaketitle
+
+\section{Introdução}
+ 
+ Medir grandezas do mundo real e ter essas medições disponíveis em tempo real é algo bastante comum nos dias atuais, seja para fins de controle, segurança ou simplesmente entretenimento, essas medições devem possuir uma boa margem de confiabilidade dentro das aplicações que as requerem. Neste contexto temos as medições de velocidade que são largamente utilizada nas mais diversas aplicações, desde velocidade de automóveis de brinquedos até a velocidade de elétrons dentro de um acelerador de partículas. \\
+ Cada aplicação demanda diferentes requisitos para a construção destes sensores, que podem ser simples ou sofisticados e isso implica naturalmente no preço final do produto. \\
+ Este artigo tem por objetivo mostrar como utilizar um sensor de luz para medir a velocidade de um motor, este que pode estar acoplado a uma roda de um veículo ou a inúmeras outras aplicações, principalmente na indústria.
+ 
+\section{Descrição do Projeto}
+
+	O projeto consistem em posicionar um led no furo de uma roda, esta acoplada a um motor, e posicionar um sensor de luz de tal forma que a cada volta completa o led passe exatamente na frente do sensor. Dessa forma a luminância no sensor irá aumentar e consequentemente haverá um aumento na corrente de saída. \\
+	Este sinal precisa ser amplificado a saída do amplificador irá para um comparador que irá verificar se o nível está alto ou baixo. O programa criado irá calcular o tempo entre cada vez que o sensor emitir um sinal de nível alto e conhecendo esse tempo juntamente com o raio da circunferência, será possível determinar a que velocidade a roda está girando. \\
+	Em resumo, o projeto segue os seguintes passos de fucnionamento:
+		\begin{itemize}
+			\item Sensor de luz capta a alta luminância do led
+			\item A saída do sensor é amplificada
+			\item A saida do amplificador é comparada
+			\item A saida alta do comparador é usada como referência para calcular o periodo de revolução
+			\item Usando o período é possivel determinar a velocidade
+		\end{itemize}
+		
+\section{Descrição da Simulação}
+
+	A simulação foi realizado no MatLab e foram gerados diversos gráficos para descrever o compartamento de cada etapa do projeto. A equação do sensor LSS05-A foi determinada a partir de dados do seu \textit{datasheet}. Os seguintes sinais (vetores) foram criados:
+		\begin{itemize}
+			\item Sinal que simula o giro da roda (lux X tempo).
+			\item Sinal que simula a captação da luminância do led pelo sensor, considerando atrasos e 						perdas (lux X tempo).
+			\item Sinal que simula a conversão dos valores em lux para tensão na saída do sensor (tensão 					X tempo).
+		\end{itemize}
+
+
+\end{document}
