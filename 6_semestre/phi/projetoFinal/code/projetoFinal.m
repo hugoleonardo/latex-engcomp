@@ -16,18 +16,19 @@ rf=100000;
 duracao = .8; %duracao em segundos
 qt_amostras=duracao*1000;
 r=0.05; %raio em metros
-v=5; %velocidade em m/s
+v=.4; %velocidade em m/s
 t=2*pi*r/v;
+t_r=9; %tempo de resposta de leitura do sensor em ms
 
 phi = pi/16; %angulo de abertura
 t_phi = phi*r/v; %tempo da luz na abertura
 n_amostras_t_phi = round(t_phi*1000);
 n_amostras_low = round(t*1000 - n_amostras_t_phi - 18);
 
-n_amostras_transicao = 9;
+n_amostras_transicao = t_r;
 n_amostras_high = round(t_phi*1000)-n_amostras_transicao*2;
 
-if(round(t_phi*1000) < 19)
+if(round(t_phi*1000) < t_r*2+1)
     n_amostras_transicao = round(t_phi/2*1000);
     n_amostras_high = 0;
 end
@@ -44,7 +45,7 @@ alfa = 180/160; %coeficiente angular da reta do sinal gerado pelo sensor segundo
 
 %######## CALCULO DA CORRENTE DE LUMINANCIA MAXIMA E MINIMA REAL E IDEAL ########
 i_illum_max = alfa*illum_max*10^(-6); %corrente na luminancia maxima
-i_illum_min = alfa*illum_min*10^(-6); %corrente na luminancia maxima
+i_illum_min = alfa*illum_min*10^(-6); %corrente na luminancia minima
 
 i_illum_max_ideal = alfa*illum_max_ideal*10^(-6); %corrente na luminancia maxima ideal
 i_illum_min_ideal = alfa*illum_min_ideal*10^(-6); %corrente na luminancia maxima ideal
@@ -77,59 +78,84 @@ rh = (vref*rf)/offset;
 rl = rf/((ganho - 1) - rf/rh);
 
 %######## GERANDO SINAL REAL E IDEAL ########
+var_lux = (((illum_max_ideal-illum_min_ideal)/t_r));
 i=1;
 while i<qt_amostras
-    tmp1 = v1_illum_min;
-    tmp2 = v1_illum_max;
-    v0_sinal(i) = tmp1;
-    v0_sinal_ideal(i) = v1_illum_min_ideal;
+    %tmp1 = v1_illum_min;
+    tmp = 0;
+    %v0_sinal(i) = tmp1;
+    v_sinal(i) = ((illum_min_ideal*illum_relative_response)*alfa*10^(-6))*rss;
+    %v0_sinal_ideal(i) = v1_illum_min_ideal;
+    v_sinal_ideal(i) = (illum_min_ideal*alfa*10^(-6))*rss;
+    lux_sinal(i)= illum_min_ideal*illum_relative_response;
+    lux_sinal_ideal(i)=illum_min_ideal;
+    %borda de crescimento
     for j=1:n_amostras_transicao,
-        %if (j>int64(t_phi/2)) break; end
-        tmp1 = tmp1 + 0.070;
-        v0_sinal(i+j) = tmp1;
-        v0_sinal_ideal(i+j) = v1_illum_max_ideal;
+        %tmp1 = tmp1 + 0.070;
+        tmp = tmp+var_lux;
+        %v0_sinal(i+j) = tmp1;
+        v_sinal(i+j) = (((illum_min_ideal+tmp)*illum_relative_response)*alfa*10^(-6))*rss;
+        v_sinal_amp(i+j) = ((((illum_min_ideal+tmp)*illum_relative_response)*alfa*10^(-6))*rss*ganho)-offset;
+        %v0_sinal_ideal(i+j) = v1_illum_max_ideal;
+        v_sinal_ideal(i+j) = (illum_max_ideal*alfa*10^(-6))*rss;
+        v_sinal_ideal_amp(i+j) = ((((illum_max_ideal)*illum_relative_response)*alfa*10^(-6))*rss*ganho)-offset;
+        lux_sinal(i+j)= (illum_min_ideal+tmp)*illum_relative_response;
+        lux_sinal_ideal(i+j)=illum_max_ideal;
         if ((i+j)==qt_amostras) break; end
     end
     i=(i+j);
     if (i==qt_amostras) break; end
-    %v0_sinal(i+1) = tmp1+0.037;
-    %v0_sinal_ideal(i+1) = v1_illum_max_ideal;
-    %i=i+1;
-    %if (i==qt_amostras) break; end
+    %sinal alto
     l=1;
     while l<n_amostras_high+1,
-        %if(t_phi<=18) break; end
-        v0_sinal(i+l) = v1_illum_max;
-        v0_sinal_ideal(i+l) = v1_illum_max_ideal;
+        %v0_sinal(i+l) = v1_illum_max;
+        v_sinal(i+l) = ((illum_max_ideal*illum_relative_response)*alfa*10^(-6))*rss;
+        v_sinal_amp(i+l) = ((((illum_max_ideal)*illum_relative_response)*alfa*10^(-6))*rss*ganho)-offset;
+        %v0_sinal_ideal(i+l) = v1_illum_max_ideal;
+        v_sinal_ideal(i+l) = (illum_max_ideal*alfa*10^(-6))*rss;
+        v_sinal_ideal_amp(i+l) = ((((illum_max_ideal)*illum_relative_response)*alfa*10^(-6))*rss*ganho)-offset;
+        lux_sinal(i+l)= illum_max_ideal*illum_relative_response;
+        lux_sinal_ideal(i+l)=illum_max_ideal;
         l=l+1;
         if ((i+l)==qt_amostras) break; end
     end
     i=i+l-1;
     if (i==qt_amostras) break; end
-    %tmp2 = tmp2 - 0.037;
-    %v0_sinal(i+1) = tmp2;
-    %v0_sinal_ideal(i+1) = v1_illum_min_ideal;
+    %borda de descrescimento
     for m=1:n_amostras_transicao,
-        %if (m>t_phi/2) break; end
-        tmp1 = tmp1 - 0.070;
-        v0_sinal(i+m) = tmp1;
-        v0_sinal_ideal(i+m) = v1_illum_min_ideal;
+        %tmp1 = tmp1 - 0.070;
+        tmp=tmp-var_lux;
+        %v0_sinal(i+m) = tmp1;
+        v_sinal(i+m) = (((illum_min_ideal+tmp)*illum_relative_response)*alfa*10^(-6))*rss;
+        v_sinal_amp(i+m) = ((((illum_min_ideal+tmp)*illum_relative_response)*alfa*10^(-6))*rss*ganho)-offset;
+        %v0_sinal_ideal(i+m) = v1_illum_min_ideal;
+        v_sinal_ideal(i+m) = (illum_min_ideal*alfa*10^(-6))*rss;
+        v_sinal_ideal_amp(i+m) = ((((illum_min_ideal)*illum_relative_response)*alfa*10^(-6))*rss*ganho)-offset;
+        lux_sinal(i+m)= (illum_min_ideal+tmp)*illum_relative_response;
+        lux_sinal_ideal(i+m)=illum_min_ideal;
+        %tmp=tmp-var_lux;
         if ((i+m)==qt_amostras) break; end
     end
     i=i+m;
     if (i==qt_amostras) break; end
+    %sinal baixo
     for i=i+1:i+n_amostras_low,
-        v0_sinal(i) = v1_illum_min;
-        v0_sinal_ideal(i) = v1_illum_min_ideal;
+        %v0_sinal(i) = v1_illum_min;
+        v_sinal(i) = (((illum_min_ideal)*illum_relative_response)*alfa*10^(-6))*rss;
+        %v0_sinal_ideal(i) = v1_illum_min_ideal;
+        v_sinal_amp(i) = ((((illum_min_ideal)*illum_relative_response)*alfa*10^(-6))*rss*ganho)-offset;
+        v_sinal_ideal(i) = (illum_min_ideal*alfa*10^(-6))*rss;
+        v_sinal_ideal_amp(i) = ((((illum_min_ideal)*illum_relative_response)*alfa*10^(-6))*rss*ganho)-offset;
+        lux_sinal(i)= illum_min_ideal*illum_relative_response;
+        lux_sinal_ideal(i)=illum_min_ideal;
         if (i==qt_amostras) break; end
     end
 end
 
 intervalo_temp = 0 : 1 : qt_amostras-1;
-plot(intervalo_temp, v0_sinal),hold,plot(intervalo_temp, v0_sinal_ideal,'r');
-%title('Responsividade real(azul e 70% menor) e ideal(vermelho) do sensor'); xlabel('Tempo(ms)'); ylabel('Tensão(V)');
-%plot(intervalo_temp, v0_sinal);
-%hold;
-%subplot(1,2,2),plot(intervalo_temp, sinal);
-
-
+subplot(3,1,1),plot(intervalo_temp, v_sinal),hold,plot(intervalo_temp, v_sinal_ideal,'r');
+title('Sinal gerado pelo sensor real(azul) e ideal(vermelho) do sensor'); xlabel('Tempo(ms)'); ylabel('Tensão(V)');
+subplot(3,1,2),plot(intervalo_temp, lux_sinal),hold,plot(intervalo_temp, lux_sinal_ideal,'r');
+title('Luminância atingindo o sensor real(azul) e ideal(vermelho) do sensor'); xlabel('Tempo(ms)'); ylabel('Luminância(Lux)');
+subplot(3,1,3),plot(intervalo_temp, v_sinal_amp),hold,plot(intervalo_temp, v_sinal_ideal_amp,'r');
+title('Amplificação do sinal gerado pelo sensor real(azul) e ideal(vermelho) do sensor'); xlabel('Tempo(ms)'); ylabel('Tensão(V)');
