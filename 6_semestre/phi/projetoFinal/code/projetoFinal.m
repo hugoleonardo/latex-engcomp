@@ -20,6 +20,7 @@ v=.4; %velocidade em m/s
 t=2*pi*r/v;
 t_r=9; %tempo de resposta de leitura do sensor em ms
 
+
 phi = pi/16; %angulo de abertura
 t_phi = phi*r/v; %tempo da luz na abertura
 n_amostras_t_phi = round(t_phi*1000);
@@ -37,6 +38,7 @@ end
 illum_max_ideal = 100; %luminancia maxima real
 illum_min_ideal = 20; %luminancia minima real
 illum_relative_response = 0.7; %percepcao do valor de luminancia pelo sensor
+var_lux = (((illum_max_ideal-illum_min_ideal)/t_r));
 
 illum_max = illum_max_ideal*illum_relative_response; %luminancia maxima dada pelo sensor
 illum_min = illum_min_ideal*illum_relative_response; %luminancia minima dada pelo sensor
@@ -78,7 +80,6 @@ rh = (vref*rf)/offset;
 rl = rf/((ganho - 1) - rf/rh);
 
 %######## GERANDO SINAL REAL E IDEAL ########
-var_lux = (((illum_max_ideal-illum_min_ideal)/t_r));
 i=1;
 while i<qt_amostras
     %tmp1 = v1_illum_min;
@@ -98,7 +99,7 @@ while i<qt_amostras
         v_sinal_amp(i+j) = ((((illum_min_ideal+tmp)*illum_relative_response)*alfa*10^(-6))*rss*ganho)-offset;
         %v0_sinal_ideal(i+j) = v1_illum_max_ideal;
         v_sinal_ideal(i+j) = (illum_max_ideal*alfa*10^(-6))*rss;
-        v_sinal_ideal_amp(i+j) = ((((illum_max_ideal)*illum_relative_response)*alfa*10^(-6))*rss*ganho)-offset;
+        v_sinal_ideal_amp(i+j) = ((illum_max_ideal*alfa*10^(-6))*rss*ganho)-offset;
         lux_sinal(i+j)= (illum_min_ideal+tmp)*illum_relative_response;
         lux_sinal_ideal(i+j)=illum_max_ideal;
         if ((i+j)==qt_amostras) break; end
@@ -113,7 +114,7 @@ while i<qt_amostras
         v_sinal_amp(i+l) = ((((illum_max_ideal)*illum_relative_response)*alfa*10^(-6))*rss*ganho)-offset;
         %v0_sinal_ideal(i+l) = v1_illum_max_ideal;
         v_sinal_ideal(i+l) = (illum_max_ideal*alfa*10^(-6))*rss;
-        v_sinal_ideal_amp(i+l) = ((((illum_max_ideal)*illum_relative_response)*alfa*10^(-6))*rss*ganho)-offset;
+        v_sinal_ideal_amp(i+l) = ((illum_max_ideal*alfa*10^(-6))*rss*ganho)-offset;
         lux_sinal(i+l)= illum_max_ideal*illum_relative_response;
         lux_sinal_ideal(i+l)=illum_max_ideal;
         l=l+1;
@@ -130,7 +131,7 @@ while i<qt_amostras
         v_sinal_amp(i+m) = ((((illum_min_ideal+tmp)*illum_relative_response)*alfa*10^(-6))*rss*ganho)-offset;
         %v0_sinal_ideal(i+m) = v1_illum_min_ideal;
         v_sinal_ideal(i+m) = (illum_min_ideal*alfa*10^(-6))*rss;
-        v_sinal_ideal_amp(i+m) = ((((illum_min_ideal)*illum_relative_response)*alfa*10^(-6))*rss*ganho)-offset;
+        v_sinal_ideal_amp(i+m) = ((illum_min_ideal*alfa*10^(-6))*rss*ganho)-offset;
         lux_sinal(i+m)= (illum_min_ideal+tmp)*illum_relative_response;
         lux_sinal_ideal(i+m)=illum_min_ideal;
         %tmp=tmp-var_lux;
@@ -145,7 +146,7 @@ while i<qt_amostras
         %v0_sinal_ideal(i) = v1_illum_min_ideal;
         v_sinal_amp(i) = ((((illum_min_ideal)*illum_relative_response)*alfa*10^(-6))*rss*ganho)-offset;
         v_sinal_ideal(i) = (illum_min_ideal*alfa*10^(-6))*rss;
-        v_sinal_ideal_amp(i) = ((((illum_min_ideal)*illum_relative_response)*alfa*10^(-6))*rss*ganho)-offset;
+        v_sinal_ideal_amp(i) = ((illum_min_ideal*alfa*10^(-6))*rss*ganho)-offset;
         lux_sinal(i)= illum_min_ideal*illum_relative_response;
         lux_sinal_ideal(i)=illum_min_ideal;
         if (i==qt_amostras) break; end
@@ -159,3 +160,65 @@ subplot(3,1,2),plot(intervalo_temp, lux_sinal),hold,plot(intervalo_temp, lux_sin
 title('Luminância atingindo o sensor real(azul) e ideal(vermelho) do sensor'); xlabel('Tempo(ms)'); ylabel('Luminância(Lux)');
 subplot(3,1,3),plot(intervalo_temp, v_sinal_amp),hold,plot(intervalo_temp, v_sinal_ideal_amp,'r');
 title('Amplificação do sinal gerado pelo sensor real(azul) e ideal(vermelho) do sensor'); xlabel('Tempo(ms)'); ylabel('Tensão(V)');
+
+%######## GERANDO SINAL REAL E IDEAL ########
+i=1;
+while i<qt_amostras
+    tmp = 0;
+    v_sinal(i) = ((illum_min_ideal*illum_relative_response)*alfa*10^(-6))*rss;
+    v_sinal_amp(i) = (((illum_min_ideal*illum_relative_response)*alfa*10^(-6))*rss*ganho)-offset;
+    v_sinal_ideal(i) = (illum_min_ideal*alfa*10^(-6))*rss;
+    v_sinal_ideal_amp(i) = ((illum_min_ideal*alfa*10^(-6))*rss*ganho)-offset;
+    lux_sinal(i)= illum_min_ideal*illum_relative_response;
+    lux_sinal_ideal(i)=illum_min_ideal;
+    %borda de crescimento
+    for j=1:n_amostras_transicao,
+        tmp = tmp+var_lux;
+        v_sinal(i+j) = (((illum_min_ideal+tmp)*illum_relative_response)*alfa*10^(-6))*rss;
+        v_sinal_amp(i+j) = ((((illum_min_ideal+tmp)*illum_relative_response)*alfa*10^(-6))*rss*ganho)-offset;
+        v_sinal_ideal(i+j) = (illum_max_ideal*alfa*10^(-6))*rss;
+        v_sinal_ideal_amp(i+j) = ((illum_max_ideal*alfa*10^(-6))*rss*ganho)-offset;
+        lux_sinal(i+j)= (illum_min_ideal+tmp)*illum_relative_response;
+        lux_sinal_ideal(i+j)=illum_max_ideal;
+        if ((i+j)==qt_amostras) break; end
+    end
+    i=(i+j);
+    if (i==qt_amostras) break; end
+    %sinal alto
+    l=1;
+    while l<n_amostras_high+1,
+        v_sinal(i+l) = ((illum_max_ideal*illum_relative_response)*alfa*10^(-6))*rss;
+        v_sinal_amp(i+l) = (((illum_max_ideal*illum_relative_response)*alfa*10^(-6))*rss*ganho)-offset;
+        v_sinal_ideal(i+l) = (illum_max_ideal*alfa*10^(-6))*rss;
+        v_sinal_ideal_amp(i+l) = ((illum_max_ideal*alfa*10^(-6))*rss*ganho)-offset;
+        lux_sinal(i+l)= illum_max_ideal*illum_relative_response;
+        lux_sinal_ideal(i+l)=illum_max_ideal;
+        l=l+1;
+        if ((i+l)==qt_amostras) break; end
+    end
+    i=i+l-1;
+    if (i==qt_amostras) break; end
+    %borda de descrescimento
+    for m=1:n_amostras_transicao,
+        tmp=tmp-var_lux;
+        v_sinal(i+m) = (((illum_min_ideal+tmp)*illum_relative_response)*alfa*10^(-6))*rss;
+        v_sinal_amp(i+m) = ((((illum_min_ideal+tmp)*illum_relative_response)*alfa*10^(-6))*rss*ganho)-offset;
+        v_sinal_ideal(i+m) = (illum_min_ideal*alfa*10^(-6))*rss;
+        v_sinal_ideal_amp(i+m) = ((((illum_min_ideal)*illum_relative_response)*alfa*10^(-6))*rss*ganho)-offset;
+        lux_sinal(i+m)= (illum_min_ideal+tmp)*illum_relative_response;
+        lux_sinal_ideal(i+m)=illum_min_ideal;
+        if ((i+m)==qt_amostras) break; end
+    end
+    i=i+m;
+    if (i==qt_amostras) break; end
+    %sinal baixo
+    for i=i+1:i+n_amostras_low,
+        v_sinal(i) = ((illum_min_ideal*illum_relative_response)*alfa*10^(-6))*rss;
+        v_sinal_amp(i) = (((illum_min_ideal*illum_relative_response)*alfa*10^(-6))*rss*ganho)-offset;
+        v_sinal_ideal(i) = (illum_min_ideal*alfa*10^(-6))*rss;
+        v_sinal_ideal_amp(i) = (((illum_min_ideal*illum_relative_response)*alfa*10^(-6))*rss*ganho)-offset;
+        lux_sinal(i)= illum_min_ideal*illum_relative_response;
+        lux_sinal_ideal(i)=illum_min_ideal;
+        if (i==qt_amostras) break; end
+    end
+end
