@@ -11,7 +11,7 @@ rss = 10^4; %podemos truncar Rss para um valor maior ou igual a 357 Ohms para Vr
 v_max_amp = 4.5; %tensao maxima no amplificador
 v_min_amp = .5; %tensao minima no amplificador
 rf=10^5;
-duracao = .8; %duracao em segundos
+duracao = 1000; %duracao em segundos
 qt_amostras=duracao*1000;
 r=0.05; %raio em metros
 v=.6; %velocidade em m/s
@@ -180,11 +180,11 @@ while i<qt_amostras
 end
 
 intervalo_temp = 0 : 1 : qt_amostras-1;
-subplot(3,2,1),plot(intervalo_temp, v_sinal),hold,plot(intervalo_temp, v_sinal_ideal,'r');
+subplot(4,2,1),plot(intervalo_temp, v_sinal),hold,plot(intervalo_temp, v_sinal_ideal,'r');
 title('Sinal gerado pelo sensor real(azul) e ideal(vermelho) do sensor'); xlabel('Tempo(ms)'); ylabel('Tensão(V)');
-subplot(3,2,3),plot(intervalo_temp, lux_sinal),hold,plot(intervalo_temp, lux_sinal_ideal,'r');
+subplot(4,2,3),plot(intervalo_temp, lux_sinal),hold,plot(intervalo_temp, lux_sinal_ideal,'r');
 title('Luminância atingindo o sensor real(azul) e ideal(vermelho) do sensor'); xlabel('Tempo(ms)'); ylabel('Luminância(Lux)');
-subplot(3,2,5),plot(intervalo_temp, v_sinal_amp),hold on,plot(intervalo_temp, v_sinal_ideal_amp,'r'),hold on,plot(intervalo_temp, v_sinal_comp,'g');
+subplot(4,2,5),plot(intervalo_temp, v_sinal_amp),hold on,plot(intervalo_temp, v_sinal_ideal_amp,'r'),hold on,plot(intervalo_temp, v_sinal_comp,'g');
 title('Amplificação do sinal gerado pelo sensor real(azul) e ideal(vermelho) do sensor'); xlabel('Tempo(ms)'); ylabel('Tensão(V)');
 
 %######## GERANDO SINAL RANDOMICO REAL E IDEAL ########
@@ -289,11 +289,11 @@ while i<qt_amostras
     v_counter=v_counter+1;
 end
 
-subplot(3,2,2),plot(intervalo_temp, v_sinal_r),hold on,plot(intervalo_temp, v_sinal_r_ideal,'r');
+subplot(4,2,2),plot(intervalo_temp, v_sinal_r),hold on,plot(intervalo_temp, v_sinal_r_ideal,'r');
 title('Sinal randomico gerado pelo sensor real(azul) e ideal(vermelho) do sensor'); xlabel('Tempo(ms)'); ylabel('Tensão(V)');
-subplot(3,2,4),plot(intervalo_temp, lux_sinal_r),hold on,plot(intervalo_temp, lux_sinal_r_ideal,'r');
+subplot(4,2,4),plot(intervalo_temp, lux_sinal_r),hold on,plot(intervalo_temp, lux_sinal_r_ideal,'r');
 title('Luminância randomico atingindo o sensor real(azul) e ideal(vermelho) do sensor'); xlabel('Tempo(ms)'); ylabel('Luminância(Lux)');
-subplot(3,2,6),plot(intervalo_temp, v_sinal_r_amp),hold on;plot(intervalo_temp, v_sinal_r_ideal_amp,'r'),hold on; plot(intervalo_temp, v_sinal_r_comp,'g');
+subplot(4,2,6),plot(intervalo_temp, v_sinal_r_amp),hold on;plot(intervalo_temp, v_sinal_r_ideal_amp,'r'),hold on; plot(intervalo_temp, v_sinal_r_comp,'g');
 title('Amplificação do sinal randomico gerado pelo sensor real(azul) e ideal(vermelho) do sensor'); xlabel('Tempo(ms)'); ylabel('Tensão(V)');
 
 i=1;
@@ -301,17 +301,25 @@ periodo=0;
 flag_high=0;
 flag_low=0;
 tmp_v=1;
-%while i<qt_amostras
-%    if( v_sinal_r_comp(i) == vcc && flag_high==0)
-%        flag_high=1;
-%        i_periodo=i;
-%    end
-%    if (v_sinal_r_comp(i) == 0 && flag_high==1)
-%        flag_low=1;
-%    end
-%    if (v_sinal_r_comp(i) == vcc && flag_high==1 && flag_low==1)
-%        f_periodo=i;
-%        v_calc(tmp_v) = 2*pi*r/(f_periodo-i_periodo)*1000;
-%        tmp_v=tmp_v+1;
-%    end
-%end
+iteste=0;
+while i<qt_amostras
+    iteste=v_sinal_r_comp(i);
+    if( v_sinal_r_comp(i) == vcc && flag_high==0)
+        flag_high=1;
+        i_periodo=i;
+    end
+    if (v_sinal_r_comp(i) == 0 && flag_high==1 && flag_low==0)
+        flag_low=1;
+    end
+    if (v_sinal_r_comp(i) == vcc && flag_high==1 && flag_low==1)
+        f_periodo=i;
+        v_calc(tmp_v) = 2*pi*r/(f_periodo-i_periodo)*1000;
+        flag_high=0;
+        flag_low=0;
+        tmp_v=tmp_v+1;
+    end
+    i=i+1;
+end
+unidade = 1 : 1 : tmp_v-1;
+subplot(4,2,8),plot(unidade,v_calc);
+title('Velocidade randomica'); xlabel('Unidade'); ylabel('Velocidade(m/s)');
