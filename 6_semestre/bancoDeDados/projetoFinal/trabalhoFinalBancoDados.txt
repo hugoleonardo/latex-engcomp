@@ -75,3 +75,6 @@ Observações:
 3) Fazer considerações sobre o que foi omitido por motivo de complexidade, mas que é importante para melhor eficiência na gerência no tráfego aéreo.
 
 4) Tivemos que amarrar o fato de que o piloto que requisitou o plano de voo é o comandante de todos os vôos associados àquele plano (no caso do plano repetitivo)
+
+
+1314X195
