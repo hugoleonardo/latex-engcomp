@@ -14,7 +14,7 @@
 \author{Danilo Souza, Hugo Santos, Welton Ara\'ujo
 
 %\thanks{Engenharia da Computa\c{c}\~ao, Universidade Federal do Par\'a, Bel\'em-PA, Brasil}
-Emails: \{dhcsouza, hoggosan, weltonmaxx007\}@gmail.com\\
+Emails: \{dhcsouza, huggosan, weltonmaxx007\}@gmail.com\\
 Matr\'iculas: 10080000801, 10080000701, 10080000501}
 
 \maketitle
@@ -44,59 +44,74 @@ O projeto consiste em posicionar um led no furo de uma roda, esta acoplada a um 
 Este sinal precisa ser amplificado devido à variação de tensão gerada pelo sensor ser muito baixa. Em seguida,o sinal amplificado passará por um comparador que irá verificar se o nível está alto ou baixo em relação ao valor de referência na porta negativa deste dispositivo. O programa criado irá calcular o tempo entre cada vez que uma tensão de nível alto for detectada. A partir disto, conhecendo esse tempo juntamente com o raio da circunferência da roda, será possível determinar a que velocidade a roda está girando.
 	
 Em resumo, o projeto segue os seguintes passos de fucnionamento:
-	\begin{itemize}
-		\item Sensor de luz capta a alta luminância do led
-		\item A saída do sensor é amplificada
-		\item A saida do amplificador é comparada
-		\item A saida alta do comparador é usada como referência para calcular o período de revolução
-		\item Usando o período é possivel determinar a velocidade
-	\end{itemize}
+\begin{itemize}
+	\item Sensor de luz capta a alta luminância do led
+	\item A saída do sensor é amplificada
+	\item A saida do amplificador é comparada
+	\item A saida alta do comparador é usada como referência para calcular o período de revolução
+	\item Usando o período é possivel determinar a velocidade
+\end{itemize}
 		
 \section{Descrição do sensor}
 O sensor utilizado foi LLS05-A fabricado por \textit{Senba Optical Electronics CO., LTD.}, seu \textit{datasheet} se encontra em \cite{datasheet} e custa cerca de \$0,32 segundo \cite{preco}. Este dispositivo tem um comportamento linear em relação à luminância e à corrente que o atinge. O gráfico está na Figura \ref{fig:luxXCorrente}. A tensão de saída do sensor é calculada pela fórmula Vout=Rss*i, onde Rss é o resistor de limitação de corrente máxima pelo sensor. Seu valor mínimo é de 357 \(\Omega\) para uma dissipação máxima de calor definida pelo fabricante de 70 mW. Porém foi usado um resistor de 10 K\(\Omega\) no lugar do Rss por recomendação do fabricante.
 
 \begin{figure}[h]
-\centering
-\includegraphics[width=9cm]{figures/luxXCorrente.png}
-\caption{Gráfico Lux X Corrente retirado de \cite{datasheet}}
-\label{fig:luxXCorrente}
+	\centering
+	\includegraphics[width=9cm]{figures/luxXCorrente.png}
+	\caption{Gráfico Lux X Corrente retirado de \cite{datasheet}}
+	\label{fig:luxXCorrente}
 \end{figure}
 
 Outra característica importante é o tempo de resposta do fotosensor. O tempo de subida e descida da tensão é de 8.5 ms. Isto faz com que o crescimento da tensão a partir de uma luminosidade não seja instantãnea. A Figura \ref{fig:tempoRespostaSensor} mostra a resposta ideal e real do sensor.
 
 \begin{figure}[h]
-\centering
-\includegraphics[width=9cm]{figures/tempoRespostaSensor.png}
-\caption{Gráfico do tempo de resposta do sensor. Em cima é a resposta ideal e abaixo é a resposta real, tr e tf valem 8,5 ms,  retirado de \cite{datasheet}}
-\label{fig:tempoRespostaSensor}
+	\centering
+	\includegraphics[width=9cm]{figures/tempoRespostaSensor.png}
+	\caption{Gráfico do tempo de resposta do sensor. Em cima é a resposta ideal e abaixo é a resposta real, tr e tf valem 8,5 ms,  retirado de \cite{datasheet}}
+	\label{fig:tempoRespostaSensor}
 \end{figure}
 
 Tratando-se de um componente eletrônico, a percepção de luminosidade captada pelo sensor não é exatamente igual ao que o olho humano capta. Além disso, existem faixas de frequência da luz onde existe maior e menor sensibilidade. A Figura \ref{fig:respostaSpectral} mostra a resposta espectral do sensor. É possível perceber que o sensor somente capta 70\% de luminosidade da faixa da visão humana. 
 		
 \begin{figure}[h]
-\centering
-\includegraphics[width=9cm]{figures/respostaSpectral.png}
-\caption{Gráfico da resposta espectral do sensor,  retirado de \cite{datasheet}}
-\label{fig:respostaSpectral}
+	\centering
+	\includegraphics[width=9cm]{figures/respostaSpectral.png}
+	\caption{Gráfico da resposta espectral do sensor,  retirado de \cite{datasheet}}
+	\label{fig:respostaSpectral}
 \end{figure}		
 		
 \section{Descrição da Simulação}
 
 A simulação foi realizado no MatLab e foram gerados diversos gráficos para descrever o compartamento de cada etapa do projeto. A equação do sensor LSS05-A foi determinada a partir de dados do seu \textit{datasheet}. Os seguintes sinais (vetores) foram criados:
-	\begin{itemize}
-		\item Sinal que simula o giro da roda (lux X tempo).
-		\item Sinal que simula a captação da luminância do led pelo sensor, considerando atrasos e perdas (lux X tempo).
-		\item Sinal que simula a conversão dos valores em lux para tensão na saída do sensor (tensão X tempo).
-	\end{itemize}
+\begin{itemize}
+	\item Sinal que simula o giro da roda (lux X tempo).
+	\item Sinal que simula a captação da luminância do led pelo sensor, considerando atrasos e perdas (lux X tempo).
+	\item Sinal que simula a conversão dos valores em lux para tensão na saída do sensor (tensão X tempo).
+\end{itemize}
 	
-	O circuito
+O comportamento representado na simulação tem seu esquemático mostrado na Figura \ref{fig:circuito}. Nela é possível visualizar a forma como o sensor LLS05-A é ligado. A passagem de sua saída pelo amplificador normaliza o sinal entre 4,5 a 0,5 Volts, valores de grandeza os quais o comparador pode atuar com  margens de segurança.
 
+Comparadores geralmente já vêm contidos dentro de microcontroladores, portanto o microcontrolador recebe diretamente o sinal analógico. Utilizando um valor de referência de 2,5V, a saída do comparador subirá o sinal para 5V, caso a entrada seja maior que a referência, e para 0 caso seja menor que 2,5 Volts.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=9cm]{figures/circuito.png}
+	\caption{Esquemático simulado}
+	\label{fig:circuito}
+\end{figure}
+
+Dentro do programa do matlab, foi simulado o sensor captando somente 70\% do valor da luminosidade real, alguns gráficos mostram como seria o funcionamento ideal e o real. A Figura \ref{fig:velCte} mostra o comportamento do sinal considerando uma velocidade de 0,6 m/s, raio da roda igual a 0,05 metros e o ângulo da janela por onde passa a luz de \(\pi\)/16 radianos. Nela é possivel perceber que a subida e a descida não sobem imediatamente, diferentemente do sinal ideal e, também, a saída do comparador sobe o sinal para 5 Volts a partir de 2,5V.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=9cm]{figures/velCte.png}
+	\caption{Gráfico superior representa a tensão de saída real(em azul) e ideal(em vermelho) do sensor; Gráfico do meio representa a luminosidade real(em azul) e ideal(em vermelho) captada pelo sensor; Gráfico inferior representa a conversão do sinal amplificado(em azul) em outro sinal(em verde) ao passar pelo comparador}
+	\label{fig:velCte}
+\end{figure}
 
 \begin{thebibliography}{1}
-
  	\bibitem{datasheet} Datasheet, \url{www.futurlec.com/Light_Sensor.shtml}, acesso em 13/02/2013.
 	\bibitem{preco} Alibaba,com, \url{http://spanish.alibaba.com/product-gs/lls05-a-5mm-photo-sensors-527748246.html}, acesso em 13/02/2013.
-
 \end{thebibliography}
 
 \bibliographystyle{plain}
