@@ -11,15 +11,8 @@ rss = 10^4; %podemos truncar Rss para um valor maior ou igual a 357 Ohms para Vr
 v_max_amp = 4.5; %tensao maxima no amplificador
 v_min_amp = .5; %tensao minima no amplificador
 rf=10^5;
-<<<<<<< HEAD
 duracao = 20; %duracao em segundos
 qt_amostras=duracao*1000;
-=======
-duracao = 1000; %duracao em segundos
-qt_amostras=duracao*100;
-%duracao = .8; %duracao em segundos
-%qt_amostras=duracao*1000;
->>>>>>> 7fd352953a95515f7607bab80def2e8554a8f078
 r=0.05; %raio em metros
 v=.6; %velocidade em m/s
 t=2*pi*r/v;
@@ -328,7 +321,6 @@ while i<qt_amostras
     end
     i=i+1;
 end
-<<<<<<< HEAD
 for i=1:tmp_v-1,
     v_r_n(i)=v_r(i);
 end
@@ -338,13 +330,6 @@ subplot(3,1,1),stem(unidade1,v_r_n);
 title('Velocidade real'); xlabel('Unidade'); ylabel('Velocidade(m/s)');
 unidade2 = 1 : 1 : tmp_v-1;
 subplot(3,1,2),stem(unidade2,v_calc);
-=======
-unidade1 = 1 : 1 : v_counter-1;
-subplot(4,2,7),plot(unidade1,v_r);
-title('Velocidade real'); xlabel('Unidade'); ylabel('Velocidade(m/s)');
-unidade2 = 1 : 1 : tmp_v-1;
-subplot(4,2,8),plot(unidade2,v_calc);
->>>>>>> 7fd352953a95515f7607bab80def2e8554a8f078
 title('Velocidade randomica'); xlabel('Unidade'); ylabel('Velocidade(m/s)');
 subplot(3,1,3),stem(unidade2,erro);
 title('Velocidade randomica'); xlabel('Unidade'); ylabel('Erro (%)');
