@@ -104,7 +104,7 @@ Tratando-se de um componente eletrônico, a percepção de luminosidade captada pel
 		
 \section{Descrição da Simulação}
 
-<<<<<<< HEAD
+
 Seguindo a proposta inicial do projeto, toda a simulação foi realizada no MatLab\textregistered, desde os cálculos dos componentes do circuito, passando pela simulação do disco girando, até o cálculo das velocidades.
 As principais variáveis envolvidas são:
 	\begin{itemize}
@@ -153,9 +153,7 @@ Na simulação foram gerados diversos gráficos para descrever o compartamento de c
 			\lstinputlisting[language=Matlab, label=comp5, caption={Cálculo realizado no comparador na 5\textordfeminine etapa (Sinal baixo)}]{../code/comparador5Etapa.m}
 		\end{itemize}
 	
-\begin{thebibliography}{1}
-=======
-A simulação foi realizado no MatLab e foram gerados diversos gráficos para descrever o compartamento de cada etapa do projeto. A equação do sensor LSS05-A foi determinada a partir de dados do seu \textit{datasheet}. Os seguintes sinais (vetores) foram criados:
+A simulação foi realizada no MatLab e foram gerados diversos gráficos para descrever o compartamento de cada etapa do projeto. A equação do sensor LSS05-A foi determinada a partir de dados do seu \textit{datasheet}. Os seguintes sinais (vetores) foram criados:
 \begin{itemize}
 	\item Sinal que simula o giro da roda (lux X tempo).
 	\item Sinal que simula a captação da luminância do led pelo sensor, considerando atrasos e perdas (lux X tempo).
@@ -172,7 +170,7 @@ Comparadores geralmente já vêm contidos dentro de microcontroladores, portanto o
 	\caption{Esquemático simulado}
 	\label{fig:circuito}
 \end{figure}
->>>>>>> a186e01bd7aa5f3377f00f71dad0552370b6f7c5
+
 
 No matlab, foi simulado o sensor captando somente 70\% do valor da luminosidade real, alguns gráficos mostram como seria o funcionamento ideal e o real. A Figura \ref{fig:velCte} mostra o comportamento do sinal considerando uma velocidade de 0,6 m/s, raio da roda igual a 0,05 metros, o ângulo da janela por onde passa a luz de \(\pi\)/16 radianos e duraçao de 0,8 segundos. Nela é possivel perceber que a subida e a descida não sobem imediatamente, diferentemente do sinal ideal e, também, a saída do comparador sobe o sinal para 5 Volts a partir de 2,5V. Percebe-se também que a luz só captada em um trecho muito curto da roda, isto é, em 1/32 de toda a circunferência da roda.
 
@@ -215,7 +213,5 @@ A partir da Figura \ref{fig:velVar} é possível calcular-se quatro velocidades di
 \end{thebibliography}
 
 \bibliographystyle{plain}
-
-
 
 \end{document}
