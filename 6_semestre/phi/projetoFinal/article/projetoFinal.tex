@@ -100,7 +100,7 @@ Comparadores geralmente já vêm contidos dentro de microcontroladores, portanto o
 	\label{fig:circuito}
 \end{figure}
 
-Dentro do programa do matlab, foi simulado o sensor captando somente 70\% do valor da luminosidade real, alguns gráficos mostram como seria o funcionamento ideal e o real. A Figura \ref{fig:velCte} mostra o comportamento do sinal considerando uma velocidade de 0,6 m/s, raio da roda igual a 0,05 metros e o ângulo da janela por onde passa a luz de \(\pi\)/16 radianos. Nela é possivel perceber que a subida e a descida não sobem imediatamente, diferentemente do sinal ideal e, também, a saída do comparador sobe o sinal para 5 Volts a partir de 2,5V.
+No matlab, foi simulado o sensor captando somente 70\% do valor da luminosidade real, alguns gráficos mostram como seria o funcionamento ideal e o real. A Figura \ref{fig:velCte} mostra o comportamento do sinal considerando uma velocidade de 0,6 m/s, raio da roda igual a 0,05 metros, o ângulo da janela por onde passa a luz de \(\pi\)/16 radianos e duraçao de 0,8 segundos. Nela é possivel perceber que a subida e a descida não sobem imediatamente, diferentemente do sinal ideal e, também, a saída do comparador sobe o sinal para 5 Volts a partir de 2,5V. Percebe-se também que a luz só captada em um trecho muito curto da roda, isto é, em 1/32 de toda a circunferência da roda.
 
 \begin{figure}[h]
 	\centering
@@ -108,6 +108,32 @@ Dentro do programa do matlab, foi simulado o sensor captando somente 70\% do val
 	\caption{Gráfico superior representa a tensão de saída real(em azul) e ideal(em vermelho) do sensor; Gráfico do meio representa a luminosidade real(em azul) e ideal(em vermelho) captada pelo sensor; Gráfico inferior representa a conversão do sinal amplificado(em azul) em outro sinal(em verde) ao passar pelo comparador}
 	\label{fig:velCte}
 \end{figure}
+
+Outra simulação foi feita utilizando as mesmas grandezas da simulaçao com velocidade constante, no entanto a duração passar a ser 3 segundos e a velocidade de pico em pico varia aleatoriamente. A Figura \ref{fig:velVar} mostra o comportamento do sinal.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=9cm]{figures/velVar.png}
+	\caption{Gráfico superior representa a tensão de saída real(em azul) e ideal(em vermelho) do sensor; Gráfico do meio representa a luminosidade real(em azul) e ideal(em vermelho) captada pelo sensor; Gráfico inferior representa a conversão do sinal amplificado(em azul) em outro sinal(em verde) ao passar pelo comparador}
+	\label{fig:velVar}
+\end{figure}
+
+A partir da Figura \ref{fig:velVar} é possível calcular-se quatro velocidades diferentes, pois só existem 5 picos. A Tabela \ref{tab:simVelVar} mostra os resultados da simulação.
+
+\begin{table}
+  \centering
+  \caption{Velocidade real, calculada e o erro}
+  %\vspace{0.5cm}
+  \label{tab:variaveis}
+  \begin{tabular}{|c|c|c|} \hline
+    Velocidade real 	& Velocidade calculada 	& Erro		\\ \hline
+    0,2277				& 0,2291	   			& 0,62\%	\\ \hline
+    0,9861				& 1,0167	   			& 3,10\%	\\ \hline  
+    0,5356				& 0,5454	  			& 1,82\%	\\ \hline
+    0,8020				& 0,8224	  			& 2,53\%	\\ \hline
+  \end{tabular}
+  \label{tab:simVelVar}
+\end{table} 
 
 \begin{thebibliography}{1}
  	\bibitem{datasheet} Datasheet, \url{www.futurlec.com/Light_Sensor.shtml}, acesso em 13/02/2013.

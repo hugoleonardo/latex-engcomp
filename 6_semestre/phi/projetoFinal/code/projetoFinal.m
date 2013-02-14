@@ -11,7 +11,7 @@ rss = 10^4; %podemos truncar Rss para um valor maior ou igual a 357 Ohms para Vr
 v_max_amp = 4.5; %tensao maxima no amplificador
 v_min_amp = .5; %tensao minima no amplificador
 rf=10^5;
-duracao = 20; %duracao em segundos
+duracao = 3; %duracao em segundos
 qt_amostras=duracao*1000;
 r=0.05; %raio em metros
 v=.6; %velocidade em m/s
@@ -184,7 +184,7 @@ subplot(3,2,1),plot(intervalo_temp, v_sinal),hold,plot(intervalo_temp, v_sinal_i
 title('Sinal gerado pelo sensor real(azul) e ideal(vermelho)'); xlabel('Tempo(ms)'); ylabel('Tensão(V)');
 subplot(3,2,3),plot(intervalo_temp, lux_sinal),hold,plot(intervalo_temp, lux_sinal_ideal,'r');
 title('Luminância atingindo o sensor real(azul) e ideal(vermelho)'); xlabel('Tempo(ms)'); ylabel('Luminância(Lux)');
-subplot(3,2,5),plot(intervalo_temp, v_sinal_amp),hold on,plot(intervalo_temp, v_sinal_comp,'g');
+subplot(3,2,5),plot(intervalo_temp, v_sinal_amp),hold on,plot(intervalo_temp, v_sinal_comp,'r');
 title('Amplificação do sinal randomico gerado pelo sensor(azul) e do comparador(vermelho)'); xlabel('Tempo(ms)'); ylabel('Tensão(V)');
 
 %######## GERANDO SINAL RANDOMICO REAL E IDEAL ########
@@ -290,9 +290,9 @@ while i<qt_amostras
 end
 
 subplot(3,2,2),plot(intervalo_temp, v_sinal_r),hold on,plot(intervalo_temp, v_sinal_r_ideal,'r');
-title('Sinal randomico gerado pelo sensor real(azul) e ideal(vermelho) do sensor'); xlabel('Tempo(ms)'); ylabel('Tensão(V)');
+title('Sinal randomico gerado pelo sensor real(azul) e ideal(vermelho)'); xlabel('Tempo(ms)'); ylabel('Tensão(V)');
 subplot(3,2,4),plot(intervalo_temp, lux_sinal_r),hold on,plot(intervalo_temp, lux_sinal_r_ideal,'r');
-title('Luminância randomico atingindo o sensor real(azul) e ideal(vermelho) do sensor'); xlabel('Tempo(ms)'); ylabel('Luminância(Lux)');
+title('Luminância randomico atingindo o sensor real(azul) e ideal(vermelho)'); xlabel('Tempo(ms)'); ylabel('Luminância(Lux)');
 subplot(3,2,6),plot(intervalo_temp, v_sinal_r_amp),hold on; plot(intervalo_temp, v_sinal_r_comp,'r');
 title('Amplificação do sinal randomico gerado pelo sensor(azul) e do comparador(vermelho)'); xlabel('Tempo(ms)'); ylabel('Tensão(V)');
 
