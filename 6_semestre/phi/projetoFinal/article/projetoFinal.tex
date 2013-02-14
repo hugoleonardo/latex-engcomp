@@ -1,6 +1,10 @@
 \documentclass[article]{IEEEtran}
-%\usepackage[utf8]{inputenc}
+\usepackage[latin1]{inputenc}
 \usepackage[pdftex]{graphicx}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{mathtools}
+\urlstyle{same} 
 \graphicspath{./}
 
 \begin{document}
@@ -27,30 +31,76 @@ sensor de luz, sensor de velocidade, LLS05-A
 
 \section{Introdução}
  
- Medir grandezas do mundo real e ter essas medições disponíveis em tempo real é algo bastante comum nos dias atuais, seja para fins de controle, segurança ou simplesmente entretenimento, essas medições devem possuir uma boa margem de confiabilidade dentro das aplicações que as requerem. Neste contexto temos as medições de velocidade que são largamente utilizada nas mais diversas aplicações, desde velocidade de automóveis de brinquedos até a velocidade de elétrons dentro de um acelerador de partículas. \\
- Cada aplicação demanda diferentes requisitos para a construção destes sensores, que podem ser simples ou sofisticados e isso implica naturalmente no preço final do produto. \\
- Este artigo tem por objetivo mostrar como utilizar um sensor de luz para medir a velocidade de um motor, este que pode estar acoplado a uma roda de um veículo ou a inúmeras outras aplicações, principalmente na indústria.
- \section{Descrição do Projeto}
+Medir grandezas do mundo real e ter essas medições disponíveis em tempo real é algo bastante comum nos dias atuais, seja para fins de controle, segurança ou simplesmente entretenimento. Neste contexto, temos as medições de velocidade que são largamente utilizada nas mais diversas aplicações, desde velocidade de automóveis de brinquedos até a velocidade de elétrons dentro de um acelerador de partículas.
+ 
+Cada aplicação demanda diferentes requisitos para a construção destes sensores, que podem ser simples ou sofisticados e isso implica naturalmente no preço final do produto.
+ 
+Este artigo tem por objetivo mostrar como utilizar um sensor de luz para medir a velocidade de um objeto conduzido por uma roda contendo um único furo. Pode possuir inúmeras outras aplicações, principalmente na indústria.
+ 
+\section{Descrição do Projeto}
 
-	O projeto consistem em posicionar um led no furo de uma roda, esta acoplada a um motor, e posicionar um sensor de luz de tal forma que a cada volta completa o led passe exatamente na frente do sensor. Dessa forma a luminância no sensor irá aumentar e consequentemente haverá um aumento na corrente de saída. \\
-	Este sinal precisa ser amplificado a saída do amplificador irá para um comparador que irá verificar se o nível está alto ou baixo. O programa criado irá calcular o tempo entre cada vez que o sensor emitir um sinal de nível alto e conhecendo esse tempo juntamente com o raio da circunferência, será possível determinar a que velocidade a roda está girando. \\
-	Em resumo, o projeto segue os seguintes passos de fucnionamento:
-		\begin{itemize}
-			\item Sensor de luz capta a alta luminância do led
-			\item A saída do sensor é amplificada
-			\item A saida do amplificador é comparada
-			\item A saida alta do comparador é usada como referência para calcular o periodo de revolução
-			\item Usando o período é possivel determinar a velocidade
-		\end{itemize}
+O projeto consiste em posicionar um led no furo de uma roda, esta acoplada a um motor, e posicionar um sensor de luz de tal forma que a cada volta completa o led passe exatamente na frente do sensor. Dessa forma, a luminância no sensor irá aumentar e consequentemente haverá um aumento na sua tensão de saída.
+	
+Este sinal precisa ser amplificado devido à variação de tensão gerada pelo sensor ser muito baixa. Em seguida,o sinal amplificado passará por um comparador que irá verificar se o nível está alto ou baixo em relação ao valor de referência na porta negativa deste dispositivo. O programa criado irá calcular o tempo entre cada vez que uma tensão de nível alto for detectada. A partir disto, conhecendo esse tempo juntamente com o raio da circunferência da roda, será possível determinar a que velocidade a roda está girando.
+	
+Em resumo, o projeto segue os seguintes passos de fucnionamento:
+	\begin{itemize}
+		\item Sensor de luz capta a alta luminância do led
+		\item A saída do sensor é amplificada
+		\item A saida do amplificador é comparada
+		\item A saida alta do comparador é usada como referência para calcular o período de revolução
+		\item Usando o período é possivel determinar a velocidade
+	\end{itemize}
+		
+\section{Descrição do sensor}
+O sensor utilizado foi LLS05-A fabricado por \textit{Senba Optical Electronics CO., LTD.}, seu \textit{datasheet} se encontra em \cite{datasheet} e custa cerca de \$0,32 segundo \cite{preco}. Este dispositivo tem um comportamento linear em relação à luminância e à corrente que o atinge. O gráfico está na Figura \ref{fig:luxXCorrente}. A tensão de saída do sensor é calculada pela fórmula Vout=Rss*i, onde Rss é o resistor de limitação de corrente máxima pelo sensor. Seu valor mínimo é de 357 \(\Omega\) para uma dissipação máxima de calor definida pelo fabricante de 70 mW. Porém foi usado um resistor de 10 K\(\Omega\) no lugar do Rss por recomendação do fabricante.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=9cm]{figures/luxXCorrente.png}
+\caption{Gráfico Lux X Corrente retirado de \cite{datasheet}}
+\label{fig:luxXCorrente}
+\end{figure}
+
+Outra característica importante é o tempo de resposta do fotosensor. O tempo de subida e descida da tensão é de 8.5 ms. Isto faz com que o crescimento da tensão a partir de uma luminosidade não seja instantãnea. A Figura \ref{fig:tempoRespostaSensor} mostra a resposta ideal e real do sensor.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=9cm]{figures/tempoRespostaSensor.png}
+\caption{Gráfico do tempo de resposta do sensor. Em cima é a resposta ideal e abaixo é a resposta real, tr e tf valem 8,5 ms,  retirado de \cite{datasheet}}
+\label{fig:tempoRespostaSensor}
+\end{figure}
+
+Tratando-se de um componente eletrônico, a percepção de luminosidade captada pelo sensor não é exatamente igual ao que o olho humano capta. Além disso, existem faixas de frequência da luz onde existe maior e menor sensibilidade. A Figura \ref{fig:respostaSpectral} mostra a resposta espectral do sensor. É possível perceber que o sensor somente capta 70\% de luminosidade da faixa da visão humana. 
+		
+\begin{figure}[h]
+\centering
+\includegraphics[width=9cm]{figures/respostaSpectral.png}
+\caption{Gráfico da resposta espectral do sensor,  retirado de \cite{datasheet}}
+\label{fig:respostaSpectral}
+\end{figure}		
 		
 \section{Descrição da Simulação}
 
-	A simulação foi realizado no MatLab e foram gerados diversos gráficos para descrever o compartamento de cada etapa do projeto. A equação do sensor LSS05-A foi determinada a partir de dados do seu \textit{datasheet}. Os seguintes sinais (vetores) foram criados:
-		\begin{itemize}
-			\item Sinal que simula o giro da roda (lux X tempo).
-			\item Sinal que simula a captação da luminância do led pelo sensor, considerando atrasos e 						perdas (lux X tempo).
-			\item Sinal que simula a conversão dos valores em lux para tensão na saída do sensor (tensão 					X tempo).
-		\end{itemize}
+A simulação foi realizado no MatLab e foram gerados diversos gráficos para descrever o compartamento de cada etapa do projeto. A equação do sensor LSS05-A foi determinada a partir de dados do seu \textit{datasheet}. Os seguintes sinais (vetores) foram criados:
+	\begin{itemize}
+		\item Sinal que simula o giro da roda (lux X tempo).
+		\item Sinal que simula a captação da luminância do led pelo sensor, considerando atrasos e perdas (lux X tempo).
+		\item Sinal que simula a conversão dos valores em lux para tensão na saída do sensor (tensão X tempo).
+	\end{itemize}
+	
+	O circuito
+
+
+\begin{thebibliography}{1}
+
+ 	\bibitem{datasheet} Datasheet, \url{www.futurlec.com/Light_Sensor.shtml}, acesso em 13/02/2013.
+	\bibitem{preco} Alibaba,com, \url{http://spanish.alibaba.com/product-gs/lls05-a-5mm-photo-sensors-527748246.html}, acesso em 13/02/2013.
+
+\end{thebibliography}
+
+\bibliographystyle{plain}
+
 
 
 \end{document}
