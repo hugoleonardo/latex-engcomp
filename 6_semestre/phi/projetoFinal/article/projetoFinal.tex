@@ -6,6 +6,25 @@
 \usepackage{mathtools}
 \urlstyle{same} 
 \graphicspath{./}
+\usepackage{listings}
+\lstset{ 
+        language=Matlab,                                % choose the language of the code
+%       basicstyle=10pt,                                % the size of the fonts that are used for the code
+        numbers=left,                                   % where to put the line-numbers
+        numberstyle=\footnotesize,                      % the size of the fonts that are used for the line-numbers
+        stepnumber=1,                                           % the step between two line-numbers. If it's 1 each line will be numbered
+        numbersep=5pt,                                  % how far the line-numbers are from the code
+%       backgroundcolor=\color{white},          % choose the background color. You must add \usepackage{color}
+        showspaces=false,                               % show spaces adding particular underscores
+        showstringspaces=false,                         % underline spaces within strings
+        showtabs=false,                                         % show tabs within strings adding particular underscores
+%       frame=single,                                           % adds a frame around the code
+%       tabsize=2,                                              % sets default tabsize to 2 spaces
+%       captionpos=b,                                           % sets the caption-position to bottom
+        breaklines=true,                                        % sets automatic line breaking
+        breakatwhitespace=false,                        % sets if automatic breaks should only happen at whitespace
+        escapeinside={\%*}{*)}                          % if you want to add a comment within your code
+}
 
 \begin{document}
 
@@ -39,9 +58,9 @@ Este artigo tem por objetivo mostrar como utilizar um sensor de luz para medir a
  
 \section{Descrição do Projeto}
 
-O projeto consiste em posicionar um led no furo de uma roda, esta acoplada a um motor, e posicionar um sensor de luz de tal forma que a cada volta completa o led passe exatamente na frente do sensor. Dessa forma, a luminância no sensor irá aumentar e consequentemente haverá um aumento na sua tensão de saída.
+O projeto consiste em posicionar um led no furo de uma roda, acoplada a um motor, e posicionar um sensor de luz de tal forma que a cada volta completa o led passe exatamente na frente do sensor. Dessa forma, a luminância medida no sensor irá aumentar e consequentemente sua tensão de saída também.
 	
-Este sinal precisa ser amplificado devido à variação de tensão gerada pelo sensor ser muito baixa. Em seguida,o sinal amplificado passará por um comparador que irá verificar se o nível está alto ou baixo em relação ao valor de referência na porta negativa deste dispositivo. O programa criado irá calcular o tempo entre cada vez que uma tensão de nível alto for detectada. A partir disto, conhecendo esse tempo juntamente com o raio da circunferência da roda, será possível determinar a que velocidade a roda está girando.
+Este sinal precisa ser amplificado devido à variação de tensão na saida do sensor ser muito baixa. Em seguida, o sinal amplificado passará por um comparador que irá verificar se o nível está alto ou baixo em relação ao valor de referência, que neste caso é de 2.5 volts. O programa criado irá calcular o tempo entre cada vez que uma tensão de nível alto for detectada. A partir disto, conhecendo esse tempo juntamente com o raio da circunferência da roda, será possível determinar a que velocidade a roda está girando.
 	
 Em resumo, o projeto segue os seguintes passos de fucnionamento:
 	\begin{itemize}
@@ -61,7 +80,7 @@ O sensor utilizado foi LLS05-A fabricado por \textit{Senba Optical Electronics C
 \caption{Gráfico Lux X Corrente retirado de \cite{datasheet}}
 \label{fig:luxXCorrente}
 \end{figure}
-
+Analisando a figura \ref{fig:luxXCorrente} verifica-se que a equação de resposta do sensor é $ I_{lux} = \alpha * L_{ux} $, onde $ \alpha = 1,125 $. \\
 Outra característica importante é o tempo de resposta do fotosensor. O tempo de subida e descida da tensão é de 8.5 ms. Isto faz com que o crescimento da tensão a partir de uma luminosidade não seja instantãnea. A Figura \ref{fig:tempoRespostaSensor} mostra a resposta ideal e real do sensor.
 
 \begin{figure}[h]
@@ -71,7 +90,7 @@ Outra característica importante é o tempo de resposta do fotosensor. O tempo de 
 \label{fig:tempoRespostaSensor}
 \end{figure}
 
-Tratando-se de um componente eletrônico, a percepção de luminosidade captada pelo sensor não é exatamente igual ao que o olho humano capta. Além disso, existem faixas de frequência da luz onde existe maior e menor sensibilidade. A Figura \ref{fig:respostaSpectral} mostra a resposta espectral do sensor. É possível perceber que o sensor somente capta 70\% de luminosidade da faixa da visão humana. 
+Tratando-se de um componente eletrônico, a percepção de luminosidade captada pelo sensor não é exatamente igual ao que o olho humano capta. Além disso, existem faixas de frequência da luz onde existe maior e menor sensibilidade. A Figura \ref{fig:respostaSpectral} mostra a resposta espectral do sensor. É possível perceber que o sensor capta somente 70\% de luminosidade do espectro de luz humano. 
 		
 \begin{figure}[h]
 \centering
@@ -82,16 +101,52 @@ Tratando-se de um componente eletrônico, a percepção de luminosidade captada pel
 		
 \section{Descrição da Simulação}
 
-A simulação foi realizado no MatLab e foram gerados diversos gráficos para descrever o compartamento de cada etapa do projeto. A equação do sensor LSS05-A foi determinada a partir de dados do seu \textit{datasheet}. Os seguintes sinais (vetores) foram criados:
+Seguindo a proposta inicial do projeto, toda a simulação foi realizada no MatLab\textregistered, desde os cálculos dos componentes do circuito, passando pela simulação do disco girando, até o cálculo das velocidades.
+As principais variáveis envolvidas são:
 	\begin{itemize}
-		\item Sinal que simula o giro da roda (lux X tempo).
-		\item Sinal que simula a captação da luminância do led pelo sensor, considerando atrasos e perdas (lux X tempo).
-		\item Sinal que simula a conversão dos valores em lux para tensão na saída do sensor (tensão X tempo).
+		\item A tensão real de saída do sensor: \textit{v\_sinal}.
+		\item A luminância real capturada pelo sensor: \textit{lux\_sinal}.
+		\item O resistor que limita a potência dissipada no sensor: \textit{rss}.
+		\item O raio da roda \textit{r}
 	\end{itemize}
+
+\subsection{Pontos Críticos do Projeto}
+	Os principais pontos que devem ser levados em consideração são o tempo de resposta do sensor e a resposta relativa da luminância, âmbos mostrados nas figuras \ref{fig:tempoRespostaSensor} e \ref{fig:respostaSpectral} respectivamente. Para contornar esses fatores e simplificar a simulação, porém ser perder a confiabilidade, o tempo de resposta utilizado foi de 9 ms.
+
+Na simulação foram gerados diversos gráficos para descrever o compartamento de cada etapa do projeto. A equação do sensor LSS05-A foi determinada a partir de dados do seu \textit{datasheet}. Os seguintes sinais (vetores) foram criados:
+	\begin{itemize}
+		\item Sinal de tensão (real e ideal) gerado pelo sensor, que simula o giro da roda(tensão X tempo).
+		\item Sinal de luminância (real e ideal) gerado pelo sensor, que simula o giro da roda(lux X tempo).
+		\item Sinal de tensão do sensor (real e ideal) amplificado.
+	\end{itemize}
+	Para os 3 sinais acima, foram gerados versões randômicas que simulam uma variação no período de revolução da roda e a partir desses períodos foram calculadas as velocidades, representadas em um gráfico que indica a curva de variação destas. \\
+	O código abaixo, mostra que os 6 vetores, com valores reais e ideias, são preenchidos na mesma iteração.
+	\lstinputlisting[language=Matlab, label=vetores, caption={Iteração de preenchimento dos vetores acima citados}]{../code/preenchimentoVetores.m}
 	
-	O circuito
-
-
+	O preenchimento desses vetores ocorre em cinco situações diferentes, detalhadas abaixo
+		\begin{itemize}
+			\item 1\textordfeminine Etapa: O sistema está em repouso, com o led à frente do sensor
+			\item 2\textordfeminine Etapa: Determinar os valores para a subida do tempo de resposta do sensor
+			\item 3\textordfeminine Etapa: Determinar os valores para o período em que o led está passando pelo sensor (leitura do sensor está perto do valor máximo)
+			\item 4\textordfeminine Etapa: Determinar os valores para a descida do tempo de resposta do sensor
+			\item 5\textordfeminine Etapa: Preencher os vetores com os valores mínimos de leitura (o led não está mais à frente do sensor)
+		\end{itemize}
+		
+	A diferença entre as etapas está somente na comparação do sinal, que vai determinar nível lógico alto ou baixo, a partir disso calcular o período entre os níveis lógicos altos e determinar a velocidade.\\
+	As variáveis \textit{v\_sinal\_r\_amp}, \textit{v\_ref\_comp} e \textit{v\_sinal\_r\_comp} indicam a tensão do sinal real amplificado, a tensão de referência do comparador e a tensão do sinal real comparado, respectivamente.
+		\begin{itemize}
+			\item 1\textordfeminine Etapa
+			\lstinputlisting[language=Matlab, label=comp1, caption={Cálculo realizado no comparador na 1\textordfeminine etapa (Sistema em repouso)}]{../code/comparador1Etapa.m}
+			\item 2\textordfeminine Etapa
+			\lstinputlisting[language=Matlab, label=comp2, caption={Cálculo realizado no comparador na 2\textordfeminine etapa (Borda de subida)}]{../code/comparador2Etapa.m}
+			\item 3\textordfeminine Etapa
+			\lstinputlisting[language=Matlab, label=comp3, caption={Cálculo realizado no comparador na 3\textordfeminine etapa (Sinal alto)}]{../code/comparador3Etapa.m}
+			\item 4\textordfeminine Etapa
+			\lstinputlisting[language=Matlab, label=comp4, caption={Cálculo realizado no comparador na 4\textordfeminine etapa (Borda de descida)}]{../code/comparador4Etapa.m}
+			\item 5\textordfeminine Etapa
+			\lstinputlisting[language=Matlab, label=comp5, caption={Cálculo realizado no comparador na 5\textordfeminine etapa (Sinal baixo)}]{../code/comparador5Etapa.m}
+		\end{itemize}
+	
 \begin{thebibliography}{1}
 
  	\bibitem{datasheet} Datasheet, \url{www.futurlec.com/Light_Sensor.shtml}, acesso em 13/02/2013.
