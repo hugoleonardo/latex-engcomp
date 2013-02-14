@@ -11,13 +11,10 @@ rss = 10^4; %podemos truncar Rss para um valor maior ou igual a 357 Ohms para Vr
 v_max_amp = 4.5; %tensao maxima no amplificador
 v_min_amp = .5; %tensao minima no amplificador
 rf=10^5;
-<<<<<<< HEAD
 duracao = 1000; %duracao em segundos
-qt_amostras=duracao*10;
-=======
-duracao = .8; %duracao em segundos
-qt_amostras=duracao*1000;
->>>>>>> caed3111d6ebb1f9e556600b3efc2eee39013abc
+qt_amostras=duracao*100;
+%duracao = .8; %duracao em segundos
+%qt_amostras=duracao*1000;
 r=0.05; %raio em metros
 v=.6; %velocidade em m/s
 t=2*pi*r/v;
@@ -326,8 +323,8 @@ while i<qt_amostras
     i=i+1;
 end
 unidade1 = 1 : 1 : v_counter-1;
-subplot(4,2,7),stem(unidade1,v_r);
+subplot(4,2,7),plot(unidade1,v_r);
 title('Velocidade real'); xlabel('Unidade'); ylabel('Velocidade(m/s)');
 unidade2 = 1 : 1 : tmp_v-1;
-subplot(4,2,8),stem(unidade2,v_calc);
+subplot(4,2,8),plot(unidade2,v_calc);
 title('Velocidade randomica'); xlabel('Unidade'); ylabel('Velocidade(m/s)');
