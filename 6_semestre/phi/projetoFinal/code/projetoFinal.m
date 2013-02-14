@@ -11,8 +11,13 @@ rss = 10^4; %podemos truncar Rss para um valor maior ou igual a 357 Ohms para Vr
 v_max_amp = 4.5; %tensao maxima no amplificador
 v_min_amp = .5; %tensao minima no amplificador
 rf=10^5;
+<<<<<<< HEAD
 duracao = 1000; %duracao em segundos
 qt_amostras=duracao*10;
+=======
+duracao = .8; %duracao em segundos
+qt_amostras=duracao*1000;
+>>>>>>> caed3111d6ebb1f9e556600b3efc2eee39013abc
 r=0.05; %raio em metros
 v=.6; %velocidade em m/s
 t=2*pi*r/v;
@@ -181,11 +186,11 @@ end
 
 intervalo_temp = 0 : 1 : qt_amostras-1;
 subplot(4,2,1),plot(intervalo_temp, v_sinal),hold,plot(intervalo_temp, v_sinal_ideal,'r');
-title('Sinal gerado pelo sensor real(azul) e ideal(vermelho) do sensor'); xlabel('Tempo(ms)'); ylabel('Tensão(V)');
+title('Sinal gerado pelo sensor real(azul) e ideal(vermelho)'); xlabel('Tempo(ms)'); ylabel('Tensão(V)');
 subplot(4,2,3),plot(intervalo_temp, lux_sinal),hold,plot(intervalo_temp, lux_sinal_ideal,'r');
-title('Luminância atingindo o sensor real(azul) e ideal(vermelho) do sensor'); xlabel('Tempo(ms)'); ylabel('Luminância(Lux)');
-subplot(4,2,5),plot(intervalo_temp, v_sinal_amp),hold on,plot(intervalo_temp, v_sinal_ideal_amp,'r'),hold on,plot(intervalo_temp, v_sinal_comp,'g');
-title('Amplificação do sinal gerado pelo sensor real(azul) e ideal(vermelho) do sensor'); xlabel('Tempo(ms)'); ylabel('Tensão(V)');
+title('Luminância atingindo o sensor real(azul) e ideal(vermelho)'); xlabel('Tempo(ms)'); ylabel('Luminância(Lux)');
+subplot(4,2,5),plot(intervalo_temp, v_sinal_amp),hold on,plot(intervalo_temp, v_sinal_comp,'g');
+title('Amplificação do sinal randomico gerado pelo sensor(azul) e do comparador(vermelho)'); xlabel('Tempo(ms)'); ylabel('Tensão(V)');
 
 %######## GERANDO SINAL RANDOMICO REAL E IDEAL ########
 v_sinal_r_comp(qt_amostras)=0;
@@ -193,11 +198,11 @@ i=1;
 v_counter=1;
 while i<qt_amostras
     v2_r(v_counter)=rand([1 9000],1,1)*10;
-    v_r=rand([1 9000],1,1);
+    v_r(v_counter)=rand([1 9000],1,1);
     %tr=2*pi*r/v_r(v_counter);
-    tr=2*pi*r/v_r;
+    tr=2*pi*r/v_r(v_counter);
     %t_phi = phi*r/v_r(v_counter); %tempo da luz na abertura
-    t_phi = phi*r/v_r; %tempo da luz na abertura
+    t_phi = phi*r/v_r(v_counter); %tempo da luz na abertura
     
     n_amostras_t_phi = round(t_phi*1000);
     n_amostras_transicao = t_r;
@@ -293,8 +298,8 @@ subplot(4,2,2),plot(intervalo_temp, v_sinal_r),hold on,plot(intervalo_temp, v_si
 title('Sinal randomico gerado pelo sensor real(azul) e ideal(vermelho) do sensor'); xlabel('Tempo(ms)'); ylabel('Tensão(V)');
 subplot(4,2,4),plot(intervalo_temp, lux_sinal_r),hold on,plot(intervalo_temp, lux_sinal_r_ideal,'r');
 title('Luminância randomico atingindo o sensor real(azul) e ideal(vermelho) do sensor'); xlabel('Tempo(ms)'); ylabel('Luminância(Lux)');
-subplot(4,2,6),plot(intervalo_temp, v_sinal_r_amp),hold on;plot(intervalo_temp, v_sinal_r_ideal_amp,'r'),hold on; plot(intervalo_temp, v_sinal_r_comp,'g');
-title('Amplificação do sinal randomico gerado pelo sensor real(azul) e ideal(vermelho) do sensor'); xlabel('Tempo(ms)'); ylabel('Tensão(V)');
+subplot(4,2,6),plot(intervalo_temp, v_sinal_r_amp),hold on; plot(intervalo_temp, v_sinal_r_comp,'r');
+title('Amplificação do sinal randomico gerado pelo sensor(azul) e do comparador(vermelho)'); xlabel('Tempo(ms)'); ylabel('Tensão(V)');
 
 i=1;
 periodo=0;
@@ -305,14 +310,14 @@ iteste=0;
 while i<qt_amostras
     iteste=v_sinal_r_comp(i);
     if( v_sinal_r_comp(i) == vcc && flag_high==0)
-        flag_high=1;
+        flag_high=1;% primeira amostra q o sinal sobe
         i_periodo=i;
     end
     if (v_sinal_r_comp(i) == 0 && flag_high==1 && flag_low==0)
-        flag_low=1;
+        flag_low=1;% checa se houve a descida do sinal
     end
     if (v_sinal_r_comp(i) == vcc && flag_high==1 && flag_low==1)
-        f_periodo=i;
+        f_periodo=i;% checa subida e descida de sinal e a nova subida
         v_calc(tmp_v) = 2*pi*r/(f_periodo-i_periodo)*1000;
         flag_high=0;
         flag_low=0;
@@ -320,6 +325,9 @@ while i<qt_amostras
     end
     i=i+1;
 end
-unidade = 1 : 1 : tmp_v-1;
-subplot(4,2,8),plot(unidade,v_calc);
+unidade1 = 1 : 1 : v_counter-1;
+subplot(4,2,7),stem(unidade1,v_r);
+title('Velocidade real'); xlabel('Unidade'); ylabel('Velocidade(m/s)');
+unidade2 = 1 : 1 : tmp_v-1;
+subplot(4,2,8),stem(unidade2,v_calc);
 title('Velocidade randomica'); xlabel('Unidade'); ylabel('Velocidade(m/s)');
