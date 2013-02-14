@@ -62,13 +62,13 @@ div, p, td {font-family: Tahoma, Verdana, Arial, MS Sans Serif; color: black; fo
         </tr>
         <tr>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0"><b>numeroSerie</b></td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0"><b>INTEGER</b></td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0"><b>VARCHAR(20)</b></td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">PK</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">NN</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">UNSIGNED </td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Idetificador da aeronave provido pela fabricante</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">AI</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
         </tr>
         <tr>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0"><b>ModeloAeronaves_idModeloAeronaves</b></td>
@@ -167,7 +167,7 @@ div, p, td {font-family: Tahoma, Verdana, Arial, MS Sans Serif; color: black; fo
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">codigoICAO</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">CHAR(4)</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">NN</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Identificador internacional de aeroportos</td>
@@ -177,7 +177,7 @@ div, p, td {font-family: Tahoma, Verdana, Arial, MS Sans Serif; color: black; fo
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">localidade</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">VARCHAR(40)</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">NN</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Cidade em que o aeroporto está localizado</td>
@@ -330,14 +330,24 @@ div, p, td {font-family: Tahoma, Verdana, Arial, MS Sans Serif; color: black; fo
           <td class="fontSB" style="border-bottom: 1px solid #606060" width="1%">AutoInc</td>
         </tr>
         <tr>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0"><b>matricula</b></td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0"><b>cpf</b></td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0"><b>INTEGER</b></td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">PK</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">NN</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">UNSIGNED </td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Matrícula do controlador na empresa (ANAC)</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">AI</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">CPF do piloto</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
+        </tr>
+        <tr>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">matricula</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">INTEGER</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">UNSIGNED </td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Matrícula do controlador na empresa (INFRAERO)</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
         </tr>
         <tr>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">endereco</td>
@@ -353,7 +363,7 @@ div, p, td {font-family: Tahoma, Verdana, Arial, MS Sans Serif; color: black; fo
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">nome</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">VARCHAR(50)</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">NN</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Nome do controlador</td>
@@ -373,7 +383,7 @@ div, p, td {font-family: Tahoma, Verdana, Arial, MS Sans Serif; color: black; fo
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">email</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">VARCHAR(20)</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">NN</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">E-mail para contato do controlador</td>
@@ -404,7 +414,7 @@ div, p, td {font-family: Tahoma, Verdana, Arial, MS Sans Serif; color: black; fo
         <tr>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">PRIMARY</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">PRIMARY</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">matricula<br></td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">cpf<br></td>
         </tr>
 
       </table>
@@ -629,9 +639,19 @@ div, p, td {font-family: Tahoma, Verdana, Arial, MS Sans Serif; color: black; fo
           <td class="fontSB" style="border-bottom: 1px solid #606060" width="1%">AutoInc</td>
         </tr>
         <tr>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0"><b>matricula</b></td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0"><b>INTEGER</b></td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0"><b>cpf</b></td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0"><b>CHAR(11)</b></td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">PK</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">NN</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">CPF do piloto</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
+        </tr>
+        <tr>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">matricula</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">INTEGER</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">NN</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">UNSIGNED </td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
@@ -662,7 +682,7 @@ div, p, td {font-family: Tahoma, Verdana, Arial, MS Sans Serif; color: black; fo
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">endereco</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">VARCHAR(100)</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">NN</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Endereço do piloto</td>
@@ -672,7 +692,7 @@ div, p, td {font-family: Tahoma, Verdana, Arial, MS Sans Serif; color: black; fo
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">nome</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">VARCHAR(50)</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">NN</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Nome do piloto</td>
@@ -692,7 +712,7 @@ div, p, td {font-family: Tahoma, Verdana, Arial, MS Sans Serif; color: black; fo
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">email</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">VARCHAR(20)</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">NN</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">E-mail de contato do piloto</td>
@@ -733,7 +753,7 @@ div, p, td {font-family: Tahoma, Verdana, Arial, MS Sans Serif; color: black; fo
         <tr>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">PRIMARY</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">PRIMARY</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">matricula<br></td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">cpf<br></td>
         </tr>
         <tr>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">Piloto_FKCiaAerea</td>
@@ -855,6 +875,26 @@ div, p, td {font-family: Tahoma, Verdana, Arial, MS Sans Serif; color: black; fo
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">AI</td>
         </tr>
         <tr>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Controlador_cpf</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">INTEGER</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">NN</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">UNSIGNED </td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
+        </tr>
+        <tr>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Piloto_cpf</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">CHAR(11)</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">NN</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
+        </tr>
+        <tr>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Aeronaves_ModeloAeronaves_idModeloAeronaves</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">INTEGER</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
@@ -876,22 +916,12 @@ div, p, td {font-family: Tahoma, Verdana, Arial, MS Sans Serif; color: black; fo
         </tr>
         <tr>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Aeronaves_numeroSerie</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">INTEGER</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">VARCHAR(20)</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">NN</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">UNSIGNED </td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Identificador da aeronave que irá realizar o vôo</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-        </tr>
-        <tr>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Controlador_matricula</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">INTEGER</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">NN</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">UNSIGNED </td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Identificador do controlador que autorizou o plano de vôo</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
         </tr>
         <tr>
@@ -902,16 +932,6 @@ div, p, td {font-family: Tahoma, Verdana, Arial, MS Sans Serif; color: black; fo
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">UNSIGNED </td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Identificador do tipo de plano de vôo</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-        </tr>
-        <tr>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Piloto_matricula</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">INTEGER</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">NN</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">UNSIGNED </td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Identificador do piloto responsável pelo plano de vôo</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
         </tr>
         <tr>
@@ -948,7 +968,7 @@ div, p, td {font-family: Tahoma, Verdana, Arial, MS Sans Serif; color: black; fo
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">outroDados</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">VARCHAR</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">NN</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Informações adicionais</td>
@@ -968,7 +988,7 @@ div, p, td {font-family: Tahoma, Verdana, Arial, MS Sans Serif; color: black; fo
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">altitudeCruzeiro</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">INTEGER</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">NN</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">UNSIGNED </td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Altitude de cruzeiro prevista para o vôo</td>
@@ -1024,7 +1044,7 @@ div, p, td {font-family: Tahoma, Verdana, Arial, MS Sans Serif; color: black; fo
         <tr>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">PlanoVoo_FKPiloto</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">Index</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Piloto_matricula<br></td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Piloto_cpf<br></td>
         </tr>
         <tr>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">PlanoVoo_FKTipoPlanoVoo</td>
@@ -1034,7 +1054,7 @@ div, p, td {font-family: Tahoma, Verdana, Arial, MS Sans Serif; color: black; fo
         <tr>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">PlanoVoo_FKControlador</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">Index</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Controlador_matricula<br></td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Controlador_cpf<br></td>
         </tr>
         <tr>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">PlanoVoo_FKAeronaves</td>
@@ -1352,13 +1372,13 @@ div, p, td {font-family: Tahoma, Verdana, Arial, MS Sans Serif; color: black; fo
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
         </tr>
         <tr>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0"><b>Controlador_matricula</b></td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0"><b>Controlador_cpf</b></td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0"><b>INTEGER</b></td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">PK</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">NN</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">UNSIGNED </td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Identificador de cada controlador que controla um vôo</td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0">&nbsp;</td>
         </tr>
 
@@ -1376,7 +1396,7 @@ div, p, td {font-family: Tahoma, Verdana, Arial, MS Sans Serif; color: black; fo
         <tr>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">PRIMARY</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">PRIMARY</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Voo_idVoo<br>Controlador_matricula<br></td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Voo_idVoo<br>Controlador_cpf<br></td>
         </tr>
         <tr>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">Voo_has_Controlador_FKVoo</td>
@@ -1386,7 +1406,7 @@ div, p, td {font-family: Tahoma, Verdana, Arial, MS Sans Serif; color: black; fo
         <tr>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">Voo_has_Controlador_FKControlador</td>
           <td class="fontS" style="border-bottom: 1px solid #C0C0C0" valign="top">Index</td>
-          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Controlador_matricula<br></td>
+          <td class="fontS" style="border-bottom: 1px solid #C0C0C0">Controlador_cpf<br></td>
         </tr>
 
       </table>
