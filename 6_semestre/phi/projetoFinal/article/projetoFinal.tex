@@ -42,7 +42,9 @@ Matr\'iculas: 10080000801, 10080000701, 10080000501}
 \maketitle
 
 \begin{abstract}
-
+Measuring analogic values from the real world and displaying this measurements in real time is a very common practice nowadays, either for control, safety or just entertainment. Among this context, there is speed measurements that are widelt used in many applications, from toy vehicles to the velocity of an electron in a particle accelerator.
+Each type of application has it's own needs in order to build the sensors that are capable of measure these analogic values, that can be either simple or sophisticated, and this implies on the product's final price.
+This article has the aim to show a simulation and result of system that measures velocity of an object using just a cheap and very simple light sensor and a LED (Light-Emitting Diode).
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -55,7 +57,7 @@ sensor de luz, sensor de velocidade, LLS05-A
  
 Medir grandezas do mundo real e ter essas medições disponíveis em tempo real é algo bastante comum nos dias atuais, seja para fins de controle, segurança ou simplesmente entretenimento. Neste contexto, temos as medições de velocidade que são largamente utilizada nas mais diversas aplicações, desde velocidade de automóveis de brinquedos até a velocidade de elétrons dentro de um acelerador de partículas.
  
-Cada aplicação demanda diferentes requisitos para a construção destes sensores, que podem ser simples ou sofisticados e isso implica naturalmente no preço final do produto.
+Cada aplicação demanda diferentes requisitos para a construção destes sensores, capazes de medir tais grandezas, que podem ser simples ou sofisticados e isso implica naturalmente no preço final do produto.
  
 Este artigo tem por objetivo mostrar como utilizar um sensor de luz para medir a velocidade de um objeto conduzido por uma roda contendo um único furo. Pode possuir inúmeras outras aplicações, principalmente na indústria.
  
@@ -83,7 +85,7 @@ O sensor utilizado foi LLS05-A fabricado por \textit{Senba Optical Electronics C
 	\caption{Gráfico Lux X Corrente retirado de \cite{datasheet}}
 	\label{fig:luxXCorrente}
 \end{figure}
-Analisando a figura \ref{fig:luxXCorrente} verifica-se que a equação de resposta do sensor é $ I_{lux} = \alpha * L_{ux} $, onde $ \alpha = 1,125 $. \\
+Analisando a figura \ref{fig:luxXCorrente} verifica-se que a equação de resposta do sensor é $ I_{lux} = \alpha L_{ux} $, onde $ \alpha = 1,125 $. \\
 Outra característica importante é o tempo de resposta do fotosensor. O tempo de subida e descida da tensão é de 8.5 ms. Isto faz com que o crescimento da tensão a partir de uma luminosidade não seja instantãnea. A Figura \ref{fig:tempoRespostaSensor} mostra a resposta ideal e real do sensor.
 
 \begin{figure}[h]
@@ -177,7 +179,27 @@ Comparadores geralmente já vêm contidos dentro de microcontroladores, portanto o
 \end{figure}
 
 
-No MatLab\textregistered, foi simulado o sensor captando somente 70\% do valor da luminosidade real, alguns gráficos mostram como seria o funcionamento ideal e o real. A Figura \ref{fig:velCte} mostra o comportamento do sinal considerando uma velocidade de 0,6 m/s, raio da roda igual a 0,05 metros, o ângulo da janela por onde passa a luz de \(\pi\)/16 radianos e duraçao de 0,8 segundos. Nela é possivel perceber que a subida e a descida não sobem imediatamente, diferentemente do sinal ideal e, também, a saída do comparador sobe o sinal para 5 Volts a partir de 2,5V. Percebe-se também que a luz só captada em um trecho muito curto da roda, isto é, em 1/32 de toda a circunferência da roda.
+No MatLab\textregistered, foi simulado o sensor captando somente 70\% do valor da luminosidade real, alguns gráficos mostram como seria o funcionamento ideal e o real. A Figura \ref{fig:velCte} mostra o comportamento do sinal considerando uma velocidade de 0,6 m/s, raio da roda igual a 0,05 metros, o ângulo da janela por onde passa a luz de \(\pi\)/16 radianos e duraçao de 0,8 segundos. Nela é possivel perceber que a subida e a descida não ocorrem imediatamente, diferentemente do sinal ideal e também da a saída do comparador, que é 5 Volts (sinal lógico alto) a partir de 2,5V. Percebe-se também que a luz só captada em um trecho muito curto da roda, isto é, em 1/32 de toda a circunferência da roda.
+
+Os cálculos da velocidade variam de acordo com o período \textit{T} e o raio \textit{r}. A velocidade \textit{v} é dada por 
+
+	\begin{equation}\label{(1)}
+		\textit{v} = \omega\textit{r}
+	\end{equation}, onde	
+
+	\begin{equation}\label{(2)}
+		\omega = 2\pi/\textit{T}
+	\end{equation}	
+
+O sinal com as velocidades reais é utilizado para gerar o sinal real de leitura do sensor, Figura \ref{fig:velVar} (a). Com a velocidade é possivel determinar o período e por fim encontrar os intervalos entre os picos de medição do sensor (sinal alto). O sensor realiza a leitura deste sinal e utilizando o processo inverso, encontra a velocidade a partir do período, levando em consideração os atrasos e limitações na medição.
+
+A velocidade máxima medida pelo sensor é a velocidade em que o período \textit{T} é igual ao atraso de leitura do sensor (período para velocidade máxima mostrado em (\ref{(3)}), esta velocidade depende tambem do raio, uma vez que a velocidade é determinada substituindo-se (\ref{(2)}) em (\ref{(1)}).
+
+	\begin{equation}\label{(3)}
+		\textit{T}_{vmax} = 8.5 \textit{ms}
+	\end{equation}
+	
+	As Figuras XX e XX mostram a comparação entre as velocidades reais e calculadas e o erro decorrente das perdas na medição, respectivamente.
 
 \begin{figure}[h]
 	\centering
