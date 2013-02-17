@@ -156,7 +156,7 @@ Na simulação foram gerados diversos gráficos para descrever o compartamento de c
 			\lstinputlisting[language=Matlab, label=comp5, caption={Cálculo realizado no comparador na 5\textordfeminine etapa (Sinal baixo)}]{../code/comparador5Etapa.m}
 		\end{itemize}
 
-	Para os vetores que guardam os valores finais  de velocidade, são utilizadas duas flags, \textit{flag\_high} e \textit{flag\_low}, utilizadas para chegar a subida e a descida do sinal ao longo do período de medição. O fluxograma representado na Figura \ref{fig:fluxograma} mostra a sequência de execução do programa.
+	Para os vetores que guardam os valores finais  de velocidade, são utilizadas duas flags, \textit{flag\_high} e \textit{flag\_low}, utilizadas para checar a subida e a descida do sinal ao longo do período de medição. O fluxograma representado na Figura \ref{fig:fluxograma} mostra a sequência de execução do programa.
 	
 \begin{figure}[h]
 	\centering
@@ -233,6 +233,11 @@ A partir da Figura \ref{fig:velVar} é possível calcular-se quatro velocidades di
   \end{tabular}
   \label{tab:simVelVar}
 \end{table} 
+
+\section{Considerações Finais}
+
+	Como apresentado neste artigo, é possível criar soluções simples e de baixo custo, entretanto a simplicidade pode estar somente na operação, no caso apresentado, seria mais fácil simplesmenta usar um sensor de velocidade já pronto, pegar suas saídas e utilizar na aplicação, entretanto, isto poderia significar um alto custo em larga escala. Contudo, o projeto da solução mais barata pode não ser trivial, visto que existem lacunas a serem preenchidas.\\
+	Essa relação entre \textit{custo do projeto X custo de produção em escala} é fundamental para decidir a abordagem de solução para uma determinada aplicação em qualquer que seja a área de atuação.
 
 \begin{thebibliography}{1}
  	\bibitem{datasheet} Datasheet, \url{www.futurlec.com/Light_Sensor.shtml}, acesso em 13/02/2013.
