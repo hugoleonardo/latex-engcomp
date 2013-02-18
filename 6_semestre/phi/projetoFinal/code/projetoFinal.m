@@ -11,10 +11,10 @@ rss = 10^4; %podemos truncar Rss para um valor maior ou igual a 357 Ohms para Vr
 v_max_amp = 4.5; %tensao maxima no amplificador
 v_min_amp = .5; %tensao minima no amplificador
 rf=10^5;
-duracao = 3; %duracao em segundos
+duracao = 20; %duracao em segundos
 qt_amostras=duracao*1000;
 r=0.05; %raio em metros
-v=.6; %velocidade em m/s
+v=0.6; %velocidade em m/s
 t=2*pi*r/v;
 t_r=9; %tempo de resposta de leitura do sensor em ms
 
@@ -191,10 +191,12 @@ title('Amplificação do sinal randomico gerado pelo sensor(azul) e do comparador(
 v_sinal_r_comp(qt_amostras)=0;
 i=1;
 v_counter=1;
+v_tmp=1.0;
 while i<qt_amostras
-    v2_r(v_counter)=rand([1 9000],1,1)*10;
-    v_r(v_counter)=rand([1 9000],1,1);
-    %tr=2*pi*r/v_r(v_counter);
+    %v2_r(v_counter)=rand([1 9000],1,1)*10;
+    v_tmp=v_tmp+0.01;
+    v_r(v_counter)=v_tmp;
+    %v_r(v_counter)=rand([1 9000],1,1)*10;
     tr=2*pi*r/v_r(v_counter);
     %t_phi = phi*r/v_r(v_counter); %tempo da luz na abertura
     t_phi = phi*r/v_r(v_counter); %tempo da luz na abertura
@@ -325,11 +327,9 @@ for i=1:tmp_v-1,
     v_r_n(i)=v_r(i);
 end
 figure; 
-unidade1 = 1 : 1 : tmp_v-1;
-subplot(3,1,1),stem(unidade1,v_r_n);
-title('Velocidade real'); xlabel('Unidade'); ylabel('Velocidade(m/s)');
-unidade2 = 1 : 1 : tmp_v-1;
-subplot(3,1,2),stem(unidade2,v_calc);
-title('Velocidade randomica'); xlabel('Unidade'); ylabel('Velocidade(m/s)');
-subplot(3,1,3),stem(unidade2,erro);
-title('Velocidade randomica'); xlabel('Unidade'); ylabel('Erro (%)');
+unidade = 1 : 1 : tmp_v-1;
+subplot(2,1,1),plot(unidade,v_r_n), hold on, plot(unidade,v_calc,'r');
+title('Velocidade real(vermelho) e calculada(azul)'); xlabel('Unidade'); ylabel('Velocidade(m/s)');
+%title('Velocidade randomica'); xlabel('Unidade'); ylabel('Velocidade(m/s)');
+subplot(2,1,2),plot(unidade,erro);
+title('Erro'); xlabel('Unidade'); ylabel('Erro (%)');

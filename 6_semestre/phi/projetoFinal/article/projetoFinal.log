@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2012.11.22)  14 FEB 2013 11:54
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.6.25)  14 FEB 2013 16:07
 entering extended mode
 **projetoFinal.tex
 
-(C:\Users\Hugo\latex-engcomp\6_semestre\phi\projetoFinal\article\projetoFinal.t
-ex
+(E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\6_semestre\phi\projetoFinal\ar
+ticle\projetoFinal.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -15,7 +15,9 @@ an, ngerman-x-2009-06-19, nynorsk, oriya, panjabi, pinyin, polish, portuguese,
 romanian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swis
 sgerman, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, u
 senglishmax, welsh, loaded.
-(C:\Users\Hugo\latex-engcomp\6_semestre\phi\projetoFinal\article\IEEEtran.cls
+
+(E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\6_semestre\phi\projetoFinal\ar
+ticle\IEEEtran.cls
 Document Class: IEEEtran 2007/03/05 V1.7a by Michael Shell
 -- See the "IEEEtran_HOWTO" manual for usage information.
 -- http://www.michaelshell.org/tex/ieeetran/
@@ -26,7 +28,7 @@ Document Class: IEEEtran 2007/03/05 V1.7a by Michael Shell
 \@IEEEtrantmptoksA=\toks14
 LaTeX Font Info:    Try loading font information for OT1+ptm on input line 366.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 -- Using 8.5in x 11in (letter) paper.
@@ -99,39 +101,39 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
 \@IEEEtmpitemindent=\dimen116
 \c@IEEEbiography=\count90
 \@IEEEtranrubishbin=\box26
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\inputenc.sty"
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks15
 \inpenc@posthook=\toks16
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\latin1.def"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\latin1.def"
 File: latin1.def 2008/03/30 v1.1d Input encoding file
 ))
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks17
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
 File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count91
@@ -139,19 +141,19 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen117
 \Gin@req@width=\dimen118
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\cite\cite.sty"
+(C:\Users\Jass\AppData\Roaming\MiKTeX\2.9\tex\latex\cite\cite.sty
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 373.
 Package: cite 2010/09/10  v 5.3
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
 \Urlmuskip=\muskip10
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\mh\mathtools.sty"
+(C:\Users\Jass\AppData\Roaming\MiKTeX\2.9\tex\latex\mh\mathtools.sty
 Package: mathtools 2013/02/12 v1.13 mathematical typesetting tools
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\tools\calc.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\calc.sty"
 Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Acount=\count92
 \calc@Bcount=\count93
@@ -164,27 +166,27 @@ LaTeX Info: Redefining \addtolength on input line 77.
 \calc@Ccount=\count94
 \calc@Cskip=\skip46
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\mh\mhsetup.sty"
+(C:\Users\Jass\AppData\Roaming\MiKTeX\2.9\tex\latex\mh\mhsetup.sty
 Package: mhsetup 2010/01/21 v1.2a programming setup (MH)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsmath.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsmath.sty"
 Package: amsmath 2000/07/18 v2.13 AMS math features
 \@mathmargin=\skip47
 
 For additional information on amsmath, use the `?' option.
-("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amstext.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amstext.sty"
 Package: amstext 2000/06/29 v2.01
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsgen.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsgen.sty"
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks18
 \ex@=\dimen121
 ))
-("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsbsy.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsbsy.sty"
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen122
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsopn.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsopn.sty"
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count95
@@ -237,47 +239,77 @@ LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
 \l_MT_above_shortintertext_sep=\dimen135
 \l_MT_below_shortintertext_sep=\dimen136
 )
+(C:\Users\Jass\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\listings.sty
+\lst@mode=\count108
+\lst@gtempboxa=\box29
+\lst@token=\toks23
+\lst@length=\count109
+\lst@currlwidth=\dimen137
+\lst@column=\count110
+\lst@pos=\count111
+\lst@lostspace=\dimen138
+\lst@width=\dimen139
+\lst@newlines=\count112
+\lst@lineno=\count113
+\lst@maxwidth=\dimen140
+
+(C:\Users\Jass\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstmisc.sty
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+\c@lstnumber=\count114
+\lst@skipnumbers=\count115
+\lst@framebox=\box30
+)
+(C:\Users\Jass\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\listings.cfg
+File: listings.cfg 2007/02/22 1.4 listings configuration
+))
+Package: listings 2007/02/22 1.4 (Carsten Heinz)
+
+(C:\Users\Jass\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
 
 LaTeX Warning: Unused global option(s):
     [article].
 
 
-(C:\Users\Hugo\latex-engcomp\6_semestre\phi\projetoFinal\article\projetoFinal.a
-ux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
- ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+(E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\6_semestre\phi\projetoFinal\ar
+ticle\projetoFinal.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+
+(C:\Users\Jass\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count108
-\scratchdimen=\dimen137
-\scratchbox=\box29
-\nofMPsegments=\count109
-\nofMParguments=\count110
-\everyMPshowfont=\toks23
-\MPscratchCnt=\count111
-\MPscratchDim=\dimen138
-\MPnumerator=\count112
-\makeMPintoPDFobject=\count113
-\everyMPtoPDFconversion=\toks24
+\scratchcounter=\count116
+\scratchdimen=\dimen141
+\scratchbox=\box31
+\nofMPsegments=\count117
+\nofMParguments=\count118
+\everyMPshowfont=\toks24
+\MPscratchCnt=\count119
+\MPscratchDim=\dimen142
+\MPnumerator=\count120
+\makeMPintoPDFobject=\count121
+\everyMPtoPDFconversion=\toks25
 )
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 20.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omsptm.fd"
+\c@lstlisting=\count122
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 42.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omsptm.fd"
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <11> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 20.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 42.
 
-Underfull \hbox (badness 2582) in paragraph at lines 36--37
+Underfull \hbox (badness 2582) in paragraph at lines 58--59
 []\OT1/ptm/m/n/10 Cada aplica[][]ao de-manda difer-entes req-ui-si-tos para a
  []
 
@@ -285,10 +317,10 @@ Underfull \hbox (badness 2582) in paragraph at lines 36--37
 File: figures/luxXCorrente.png Graphic file (type png)
 
 <use figures/luxXCorrente.png>
-Package pdftex.def Info: figures/luxXCorrente.png used on input line 60.
+Package pdftex.def Info: figures/luxXCorrente.png used on input line 82.
 (pdftex.def)             Requested size: 256.0748pt x 195.26186pt.
 
-Overfull \hbox (4.0748pt too wide) in paragraph at lines 60--61
+Overfull \hbox (4.0748pt too wide) in paragraph at lines 82--83
  [][] 
  []
 
@@ -296,11 +328,11 @@ Overfull \hbox (4.0748pt too wide) in paragraph at lines 60--61
 File: figures/tempoRespostaSensor.png Graphic file (type png)
 
 <use figures/tempoRespostaSensor.png>
-Package pdftex.def Info: figures/tempoRespostaSensor.png used on input line 69.
+Package pdftex.def Info: figures/tempoRespostaSensor.png used on input line 91.
 
 (pdftex.def)             Requested size: 256.0748pt x 142.35583pt.
 
-Overfull \hbox (4.0748pt too wide) in paragraph at lines 69--70
+Overfull \hbox (4.0748pt too wide) in paragraph at lines 91--92
  [][] 
  []
 
@@ -311,78 +343,158 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: figures/respostaSpectral.png Graphic file (type png)
 
 <use figures/respostaSpectral.png>
-Package pdftex.def Info: figures/respostaSpectral.png used on input line 78.
+Package pdftex.def Info: figures/respostaSpectral.png used on input line 100.
 (pdftex.def)             Requested size: 256.0748pt x 157.34436pt.
 
-Overfull \hbox (4.0748pt too wide) in paragraph at lines 78--79
+Overfull \hbox (4.0748pt too wide) in paragraph at lines 100--101
  [][] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 108.
+[1{C:/Users/Jass/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 
- <C:/Users/Hugo/latex-engcomp/6_semestre/phi/projetoFinal/article/figures/luxXC
-orrente.png>]
-<figures/circuito.png, id=15, 724.95844pt x 459.96844pt>
+ <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/6_semestre/phi/projetoFinal/a
+rticle/figures/luxXCorrente.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 118--119
+[]\OT1/ptm/m/n/10 Os prin-ci-pais pon-tos que de-vem ser lev-a-dos em
+ []
+
+
+Underfull \hbox (badness 2285) in paragraph at lines 118--119
+\OT1/ptm/m/n/10 considera[][]ao s[]ao o tempo de re-sposta do sen-sor e a
+ []
+
+
+Underfull \hbox (badness 4403) in paragraph at lines 118--119
+\OT1/ptm/m/n/10 re-sposta rel-a-tiva da lu-min[]ancia, []ambos mostra-dos nas
+ []
+
+
+(E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\6_semestre\phi\projetoFinal\co
+de\preenchimentoVetores.m)
+(E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\6_semestre\phi\projetoFinal\co
+de\comparador1Etapa.m
+Overfull \hbox (20.09729pt too wide) in paragraph at lines 148--1
+[][]  
+ []
+
+LaTeX Font Info:    Try loading font information for OML+ptm on input line 1.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omlptm.fd"
+File: omlptm.fd 
+)
+LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <10> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 1.
+ [2 <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/6_semestre/phi/projetoFina
+l/article/figures/tempoRespostaSensor.png> <E:/Danilo/Desktop/backup1/EngComp/l
+atex-engcomp/6_semestre/phi/projetoFinal/article/figures/respostaSpectral.png>]
+)
+(E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\6_semestre\phi\projetoFinal\co
+de\comparador2Etapa.m)
+(E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\6_semestre\phi\projetoFinal\co
+de\comparador3Etapa.m)
+(E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\6_semestre\phi\projetoFinal\co
+de\comparador4Etapa.m)
+(E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\6_semestre\phi\projetoFinal\co
+de\comparador5Etapa.m)
+<figures/projetoFinalPHI.png, id=20, 694.595pt x 1240.635pt>
+File: figures/projetoFinalPHI.png Graphic file (type png)
+
+<use figures/projetoFinalPHI.png>
+Package pdftex.def Info: figures/projetoFinalPHI.png used on input line 163.
+(pdftex.def)             Requested size: 256.0748pt x 457.39973pt.
+
+Overfull \hbox (4.0748pt too wide) in paragraph at lines 163--164
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<figures/circuito.png, id=22, 724.95844pt x 459.96844pt>
 File: figures/circuito.png Graphic file (type png)
 
 <use figures/circuito.png>
-Package pdftex.def Info: figures/circuito.png used on input line 98.
+Package pdftex.def Info: figures/circuito.png used on input line 176.
 (pdftex.def)             Requested size: 256.0748pt x 162.47227pt.
 
-Overfull \hbox (4.0748pt too wide) in paragraph at lines 98--99
+Overfull \hbox (4.0748pt too wide) in paragraph at lines 176--177
  [][] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figures/velCte.png, id=16, 453.94594pt x 392.96812pt>
+<figures/velCte.png, id=23, 453.94594pt x 392.96812pt>
 File: figures/velCte.png Graphic file (type png)
 
 <use figures/velCte.png>
-Package pdftex.def Info: figures/velCte.png used on input line 107.
+Package pdftex.def Info: figures/velCte.png used on input line 188.
 (pdftex.def)             Requested size: 256.0748pt x 221.67961pt.
 
-Overfull \hbox (4.0748pt too wide) in paragraph at lines 107--108
+Overfull \hbox (4.0748pt too wide) in paragraph at lines 188--189
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 114--115
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<figures/velVar.png, id=24, 465.99094pt x 549.55313pt>
+File: figures/velVar.png Graphic file (type png)
+
+<use figures/velVar.png>
+Package pdftex.def Info: figures/velVar.png used on input line 197.
+(pdftex.def)             Requested size: 256.0748pt x 302.00359pt.
+
+Overfull \hbox (4.0748pt too wide) in paragraph at lines 197--198
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [3 <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/6_semestre/phi/projetoFina
+l/article/figures/projetoFinalPHI.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 227--228
 []\OT1/ptm/m/n/8 Alibaba,com, $http : / / spanish . alibaba . com / product-[]g
 s /$
  []
 
-[2 <C:/Users/Hugo/latex-engcomp/6_semestre/phi/projetoFinal/article/figures/tem
-poRespostaSensor.png> <C:/Users/Hugo/latex-engcomp/6_semestre/phi/projetoFinal/
-article/figures/respostaSpectral.png> <C:/Users/Hugo/latex-engcomp/6_semestre/p
-hi/projetoFinal/article/figures/circuito.png> <C:/Users/Hugo/latex-engcomp/6_se
-mestre/phi/projetoFinal/article/figures/velCte.png>]
-(C:\Users\Hugo\latex-engcomp\6_semestre\phi\projetoFinal\article\projetoFinal.a
-ux) ) 
+[4 <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp/6_semestre/phi/projetoFinal
+/article/figures/circuito.png> <E:/Danilo/Desktop/backup1/EngComp/latex-engcomp
+/6_semestre/phi/projetoFinal/article/figures/velCte.png> <E:/Danilo/Desktop/bac
+kup1/EngComp/latex-engcomp/6_semestre/phi/projetoFinal/article/figures/velVar.p
+ng>]
+(E:\Danilo\Desktop\backup1\EngComp\latex-engcomp\6_semestre\phi\projetoFinal\ar
+ticle\projetoFinal.aux) ) 
 Here is how much of TeX's memory you used:
- 3215 strings out of 494045
- 48389 string characters out of 3148389
- 112395 words of memory out of 3000000
- 6490 multiletter control sequences out of 15000+200000
- 37576 words of font info for 75 fonts, out of 3000000 for 9000
+ 5501 strings out of 494045
+ 79396 string characters out of 3145972
+ 228595 words of memory out of 3000000
+ 8731 multiletter control sequences out of 15000+200000
+ 41485 words of font info for 79 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 33i,7n,25p,708b,335s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program F
-iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/ti
-mes/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><
-C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/
-MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on projetoFinal.pdf (2 pages, 162024 bytes).
+ 33i,7n,40p,708b,1694s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fon
+tname/8r.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+mi7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10
+.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.p
+fb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program
+ Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files (x8
+6)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2
+.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on projetoFinal.pdf (4 pages, 230117 bytes).
 PDF statistics:
- 47 PDF objects out of 1000 (max. 8388607)
+ 61 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
