@@ -124,7 +124,8 @@ Na simulação foram gerados diversos gráficos para descrever o compartamento de c
 		\item Sinal de tensão do sensor (real e ideal) amplificado.
 	\end{itemize}
 	
-	Para os 3 sinais acima, foram gerados versões randômicas que simulam uma variação no período de revolução da roda e a partir desses períodos foram calculadas as velocidades, representadas em um gráfico que indica a curva de variação destas. \\
+	Para os 3 sinais acima, foram gerados versões randômicas que simulam uma variação no período de revolução da roda e a partir desses períodos foram calculadas as velocidades, representadas em um gráfico que indica a curva de variação destas. 
+	
 	O código abaixo, mostra que os 6 vetores, com valores reais e ideias, são preenchidos na mesma iteração.
 	\lstinputlisting[language=Matlab, label=vetores, caption={Iteração de preenchimento dos vetores acima citados}]{../code/preenchimentoVetores.m}
 	
@@ -137,7 +138,8 @@ Na simulação foram gerados diversos gráficos para descrever o compartamento de c
 			\item 5\textordfeminine Etapa: Preencher os vetores com os valores mínimos de leitura (o led não está mais à frente do sensor)
 		\end{itemize}
 		
-	A diferença entre as etapas está somente na comparação do sinal, que vai determinar nível lógico alto ou baixo, a partir disso calcular o período entre os níveis lógicos altos e determinar a velocidade.\\
+	A diferença entre as etapas está somente na comparação do sinal, que vai determinar nível lógico alto ou baixo, a partir disso calcular o período entre os níveis lógicos altos e determinar a velocidade.
+	
 	As variáveis \textit{v\_sinal\_r\_amp}, \textit{v\_ref\_comp} e \textit{v\_sinal\_r\_comp} indicam a tensão do sinal real amplificado, a tensão de referência do comparador e a tensão do sinal real comparado, respectivamente.
 	
 	
@@ -177,7 +179,9 @@ Comparadores geralmente já vêm contidos dentro de microcontroladores, portanto o
 \end{figure}
 
 
-No MatLab\textregistered, foi simulado o sensor captando somente 70\% do valor da luminosidade real, alguns gráficos mostram como seria o funcionamento ideal e o real. A Figura \ref{fig:velCte} mostra o comportamento do sinal considerando uma velocidade de 0,6 m/s, raio da roda igual a 0,05 metros, o ângulo da janela por onde passa a luz de \(\pi\)/16 radianos e duraçao de 0,8 segundos. Nela é possivel perceber que a subida e a descida não sobem imediatamente, diferentemente do sinal ideal e, também, a saída do comparador sobe o sinal para 5 Volts a partir de 2,5V. Percebe-se também que a luz só captada em um trecho muito curto da roda, isto é, em 1/32 de toda a circunferência da roda.
+No MatLab\textregistered, foi simulado o sensor captando somente 70\% do valor da luminosidade real, alguns gráficos mostram como seria o funcionamento ideal e o real. A Figura \ref{fig:velCte} mostra o comportamento do sinal considerando uma velocidade de 0,6 m/s, raio da roda igual a 0,05 metros, o ângulo da janela por onde passa a luz de \(\pi\)/16 radianos e duraçao de 0,8 segundos.
+
+ Nela é possivel perceber que a subida e a descida não sobem imediatamente, diferentemente do sinal ideal e, também, a saída do comparador sobe o sinal para 5 Volts a partir de 2,5V. Percebe-se também que a luz só captada em um trecho muito curto da roda, isto é, em 1/32 de toda a circunferência da roda.
 
 \begin{figure}[h]
 	\centering
@@ -214,7 +218,8 @@ A partir da Figura \ref{fig:velVar} é possível calcular-se quatro velocidades di
 
 \section{Considerações Finais}
 
-	Como apresentado neste artigo, é possível criar soluções simples e de baixo custo, entretanto a simplicidade pode estar somente na operação, no caso apresentado, seria mais fácil simplesmenta usar um sensor de velocidade já pronto, pegar suas saídas e utilizar na aplicação, entretanto, isto poderia significar um alto custo em larga escala. Contudo, o projeto da solução mais barata pode não ser trivial, visto que existem lacunas a serem preenchidas.\\
+	Como apresentado neste artigo, é possível criar soluções simples e de baixo custo, entretanto a simplicidade pode estar somente na operação, no caso apresentado, seria mais fácil simplesmenta usar um sensor de velocidade já pronto, pegar suas saídas e utilizar na aplicação, entretanto, isto poderia significar um alto custo em larga escala. Contudo, o projeto da solução mais barata pode não ser trivial, visto que existem lacunas a serem preenchidas.
+	
 	Essa relação entre \textit{custo do projeto X custo de produção em escala} é fundamental para decidir a abordagem de solução para uma determinada aplicação em qualquer que seja a área de atuação.
 
 \begin{thebibliography}{1}
