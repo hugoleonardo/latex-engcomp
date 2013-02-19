@@ -191,10 +191,10 @@ title('Amplificação do sinal randomico gerado pelo sensor(azul) e do comparador(
 v_sinal_r_comp(qt_amostras)=0;
 i=1;
 v_counter=1;
-v_tmp=1.0;
+v_tmp=2.2;
 while i<qt_amostras
     %v2_r(v_counter)=rand([1 9000],1,1)*10;
-    v_tmp=v_tmp+0.01;
+    v_tmp=v_tmp-0.01;
     v_r(v_counter)=v_tmp;
     %v_r(v_counter)=rand([1 9000],1,1)*10;
     tr=2*pi*r/v_r(v_counter);
@@ -297,7 +297,7 @@ subplot(3,2,4),plot(intervalo_temp, lux_sinal_r),hold on,plot(intervalo_temp, lu
 title('Luminância randomico atingindo o sensor real(azul) e ideal(vermelho)'); xlabel('Tempo(ms)'); ylabel('Luminância(Lux)');
 subplot(3,2,6),plot(intervalo_temp, v_sinal_r_amp),hold on; plot(intervalo_temp, v_sinal_r_comp,'r');
 title('Amplificação do sinal randomico gerado pelo sensor(azul) e do comparador(vermelho)'); xlabel('Tempo(ms)'); ylabel('Tensão(V)');
-
+teste(v_counter)=0;
 i=1;
 periodo=0;
 flag_high=0;
@@ -315,9 +315,10 @@ while i<qt_amostras
     end
     if (v_sinal_r_comp(i) == vcc && flag_high==1 && flag_low==1)
         f_periodo=i;% checa subida e descida de sinal e a nova subida
-        v_calc(tmp_v) = 2*pi*r/(f_periodo-i_periodo)*1000;
+        v_calc(tmp_v) = 2*pi*r/(f_periodo-i_periodo+9)*1000;
         erro(tmp_v) = (v_calc(tmp_v)/v_r(tmp_v)-1)*100;
-        flag_high=0;
+        teste(tmp_v)= f_periodo-i_periodo;
+        i_periodo = i;
         flag_low=0;
         tmp_v=tmp_v+1;
     end
