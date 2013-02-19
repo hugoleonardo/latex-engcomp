@@ -4,6 +4,7 @@
 \usepackage{cite}
 \usepackage{url}
 \usepackage{mathtools}
+\usepackage{comment}
 \urlstyle{same} 
 \graphicspath{./}
 \usepackage{listings}
@@ -181,11 +182,11 @@ Comparadores geralmente já vêm contidos dentro de microcontroladores, portanto o
 \end{figure}
 
 
-<<<<<<< HEAD
+
 No MatLab\textregistered, foi simulado o sensor captando somente 70\% do valor da luminosidade real, alguns gráficos mostram como seria o funcionamento ideal e o real. A Figura \ref{fig:velCte} mostra o comportamento do sinal considerando uma velocidade de 0,6 m/s, raio da roda igual a 0,05 metros, o ângulo da janela por onde passa a luz de \(\pi\)/16 radianos e duraçao de 0,8 segundos.
 
  Nela é possivel perceber que a subida e a descida não sobem imediatamente, diferentemente do sinal ideal e, também, a saída do comparador sobe o sinal para 5 Volts a partir de 2,5V. Percebe-se também que a luz só captada em um trecho muito curto da roda, isto é, em 1/32 de toda a circunferência da roda.
-=======
+
 No MatLab\textregistered, foi simulado o sensor captando somente 70\% do valor da luminosidade real, alguns gráficos mostram como seria o funcionamento ideal e o real. A Figura \ref{fig:velCte} mostra o comportamento do sinal considerando uma velocidade de 0,6 m/s, raio da roda igual a 0,05 metros, o ângulo da janela por onde passa a luz de \(\pi\)/16 radianos e duraçao de 0,8 segundos. Nela é possivel perceber que a subida e a descida não ocorrem imediatamente, diferentemente do sinal ideal e também da a saída do comparador, que é 5 Volts (sinal lógico alto) a partir de 2,5V. Percebe-se também que a luz só captada em um trecho muito curto da roda, isto é, em 1/32 de toda a circunferência da roda.
 
 Os cálculos da velocidade variam de acordo com o período \textit{T} e o raio \textit{r}. A velocidade \textit{v} é dada por 
@@ -206,8 +207,24 @@ A velocidade máxima medida pelo sensor é a velocidade em que o período \textit{T
 		\textit{T}_{vmax} = 8.5 \textit{ms}
 	\end{equation}
 	
-	As Figuras XX e XX mostram a comparação entre as velocidades reais e calculadas e o erro decorrente das perdas na medição, respectivamente.
->>>>>>> f7fdb5509c0be1a21817df4980f6d410c1dd5ffd
+	As Figuras \ref{fig:compVel} e \ref{fig:erro} mostram a comparação entre as velocidades reais e calculadas e o erro decorrente das perdas na medição, respectivamente.
+	
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=9cm]{figures/comparacaoVelocidades.png}
+	\caption{Gráfico de comparação entre as velocidades reais (vermelho) e as calculadas (azul).}
+	\label{fig:compVel}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=9cm]{figures/erroVelocidade.png}
+	\caption{Gráfico que mostra a curva do erro em função do número de amostras.}
+	\label{fig:erro}
+\end{figure}
+
+Percebe-se pela análise dos dois gráficos acima, que quanto maior for a velocidade maior será o erro, por tanto este sistema é indicado para aplicações de baixa velocidade. Esse aspecto é uma das principais desvantagens de um sistema mais barato, a precisão não é muito eficiente quando há um aumento significativo nas grandezas medidas, ou seja, é ncessário refletir bastante sobre a relação \textit{custo X benefício}. Se algum ponto importante não for levado em conta na hora de fazer esse equilíbrio, o sistema pode ficar bem abaixo do esperado em termos de desempenho.
+
 
 \begin{figure}[h]
 	\centering
@@ -216,7 +233,9 @@ A velocidade máxima medida pelo sensor é a velocidade em que o período \textit{T
 	\label{fig:velCte}
 \end{figure}
 
-Outra simulação foi feita utilizando as mesmas grandezas da simulaçao com velocidade constante, no entanto a duração passar a ser 3 segundos e a velocidade de pico em pico varia aleatoriamente. A Figura \ref{fig:velVar} mostra o comportamento do sinal.
+Esses gráficos foram gerados utilizando uma roda com raio $ \textit{r} = 0.05m $, tempo total da simulação $ T_{sim} = 20s $ e com velocidade real crescente inicial $ V_{inicial} = 1.01 m/s $ crescento em uma progrressão aritmética (PA) com razão de 0.01.
+ 
+%Outra simulação foi feita utilizando as mesmas grandezas da simulaçao com velocidade constante, no entanto a duração passar a ser 3 segundos e a velocidade de pico em pico varia aleatoriamente. A Figura \ref{fig:velVar} mostra o comportamento do sinal.
 
 \begin{figure}[h]
 	\centering
@@ -225,8 +244,9 @@ Outra simulação foi feita utilizando as mesmas grandezas da simulaçao com veloci
 	\label{fig:velVar}
 \end{figure}
 
-A partir da Figura \ref{fig:velVar} é possível calcular-se quatro velocidades diferentes, pois só existem 5 picos. A Tabela \ref{tab:simVelVar} mostra os resultados da simulação.
+%A partir da Figura \ref{fig:velVar} é possível calcular-se quatro velocidades diferentes, pois só existem 5 picos. A Tabela \ref{tab:simVelVar} mostra os resultados da simulação.
 
+\begin{comment}
 \begin{table}
   \centering
   \caption{Velocidade real, calculada e o erro}
@@ -241,6 +261,7 @@ A partir da Figura \ref{fig:velVar} é possível calcular-se quatro velocidades di
   \end{tabular}
   \label{tab:simVelVar}
 \end{table} 
+\end{comment}
 
 \section{Considerações Finais}
 
