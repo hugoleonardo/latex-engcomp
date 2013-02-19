@@ -233,7 +233,7 @@ Percebe-se pela análise dos dois gráficos acima, que quanto maior for a velocida
 	\label{fig:velCte}
 \end{figure}
 
-Esses gráficos foram gerados utilizando uma roda com raio $ \textit{r} = 0.05m $, tempo total da simulação $ T_{sim} = 20s $ e com velocidade real crescente inicial $ V_{inicial} = 1.01 m/s $ crescento em uma progrressão aritmética (PA) com razão de 0.01.
+Esses gráficos da Figura \ref{fig:compVel} foram gerados utilizando uma roda com raio $ \textit{r} = 0.05m $, tempo total da simulação $ T_{sim} = 20s $ e com velocidade real crescente inicial $ V_{inicial} = 2.19 m/s $ em uma progressão aritmética (PA) com razão -0.01.
  
 %Outra simulação foi feita utilizando as mesmas grandezas da simulaçao com velocidade constante, no entanto a duração passar a ser 3 segundos e a velocidade de pico em pico varia aleatoriamente. A Figura \ref{fig:velVar} mostra o comportamento do sinal.
 
@@ -244,7 +244,7 @@ Esses gráficos foram gerados utilizando uma roda com raio $ \textit{r} = 0.05m $
 	\label{fig:velVar}
 \end{figure}
 
-%A partir da Figura \ref{fig:velVar} é possível calcular-se quatro velocidades diferentes, pois só existem 5 picos. A Tabela \ref{tab:simVelVar} mostra os resultados da simulação.
+%A partir da Figura \ref{fig:compVel} é possível calcular-se quatro velocidades diferentes, pois só existem 5 picos. A Tabela \ref{tab:simVelVar} mostra os resultados da simulação.
 
 \begin{comment}
 \begin{table}
@@ -254,10 +254,18 @@ Esses gráficos foram gerados utilizando uma roda com raio $ \textit{r} = 0.05m $
   \label{tab:variaveis}
   \begin{tabular}{|c|c|c|} \hline
     Velocidade real 	& Velocidade calculada 	& Erro		\\ \hline
-    0,2277				& 0,2291	   			& 0,62\%	\\ \hline
-    0,9861				& 1,0167	   			& 3,10\%	\\ \hline  
-    0,5356				& 0,5454	  			& 1,82\%	\\ \hline
-    0,8020				& 0,8224	  			& 2,53\%	\\ \hline
+    2,19				& 2,24	   				& 2,46\%	\\ \hline
+    2,18				& 2,22	   				& 2,20\%	\\ \hline  
+    2,17				& 2,21	  				& 2,67\%	\\ \hline
+    2,16				& 2,19	  				& 2,42\%	\\ \hline
+    1,69				& 1,70	   				& 1,02\%	\\ \hline
+    1,68				& 1,70	   				& 1,08\%	\\ \hline  
+    1,67				& 1,69	  				& 1,13\%	\\ \hline
+    1,66				& 1,68	  				& 1,20\%	\\ \hline
+	1,19				& 1,18	   				& -0,30\%	\\ \hline
+    1,18				& 1,17	   				& -0,66\%	\\ \hline  
+    1,17				& 1,16	  				& -0,55\%	\\ \hline
+    1,16				& 1,15	  				& -0,80\%	\\ \hline
   \end{tabular}
   \label{tab:simVelVar}
 \end{table} 

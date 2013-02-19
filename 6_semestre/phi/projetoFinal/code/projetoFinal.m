@@ -297,7 +297,7 @@ subplot(3,2,4),plot(intervalo_temp, lux_sinal_r),hold on,plot(intervalo_temp, lu
 title('Luminância randomico atingindo o sensor real(azul) e ideal(vermelho)'); xlabel('Tempo(ms)'); ylabel('Luminância(Lux)');
 subplot(3,2,6),plot(intervalo_temp, v_sinal_r_amp),hold on; plot(intervalo_temp, v_sinal_r_comp,'r');
 title('Amplificação do sinal randomico gerado pelo sensor(azul) e do comparador(vermelho)'); xlabel('Tempo(ms)'); ylabel('Tensão(V)');
-teste(v_counter)=0;
+%teste(v_counter)=0;
 i=1;
 periodo=0;
 flag_high=0;
@@ -317,7 +317,7 @@ while i<qt_amostras
         f_periodo=i;% checa subida e descida de sinal e a nova subida
         v_calc(tmp_v) = 2*pi*r/(f_periodo-i_periodo+9)*1000;
         erro(tmp_v) = (v_calc(tmp_v)/v_r(tmp_v)-1)*100;
-        teste(tmp_v)= f_periodo-i_periodo;
+        %teste(tmp_v)= f_periodo-i_periodo;
         i_periodo = i;
         flag_low=0;
         tmp_v=tmp_v+1;
@@ -330,7 +330,7 @@ end
 figure; 
 unidade = 1 : 1 : tmp_v-1;
 subplot(2,1,1),plot(unidade,v_r_n), hold on, plot(unidade,v_calc,'r');
-title('Velocidade real(vermelho) e calculada(azul)'); xlabel('Unidade'); ylabel('Velocidade(m/s)');
+title('Velocidade real(azul) e calculada(vermelho)'); xlabel('Unidade'); ylabel('Velocidade(m/s)');
 %title('Velocidade randomica'); xlabel('Unidade'); ylabel('Velocidade(m/s)');
 subplot(2,1,2),plot(unidade,erro);
 title('Erro'); xlabel('Unidade'); ylabel('Erro (%)');
