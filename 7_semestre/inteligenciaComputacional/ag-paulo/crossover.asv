@@ -1,0 +1,34 @@
+%==========================================================================
+% @desc Fazer o cruzamento com ponte de corte 
+%
+% @param pai1           - Pai em formato decimal
+% @param pai2           - Pai em formato decimal
+% @param nFilhos        - Numeros de filhos a serem gerados [1 ou 2]
+% @param tamCromossomo  - Numero de bits maximo de um cromossomo
+% @param taxaCross  -
+%==========================================================================
+function result=crossover(pai1,pai2, nFilhos, tamCromossomo, taxaCross, taxaMutacao);
+    
+    % Transformar em binario
+    pai1 = dec2bin(pai1,tamCromossomo)
+    pai2 = dec2bin(pai2,tamCromossomo)
+    % Tamanho do cromossomo
+    [iCromossomo jCromossomo] = size(pai1);
+    
+    % Cortar o cromossomo em algum lugar
+    corte = floor(jCromossomo * rand(1,1))+1;
+    
+    % Primeiro Filho
+    filhos(1, 1:corte) = pai1(1, 1:corte);
+    filhos(1, corte+1:jCromossomo) = pai2(1, corte+1:jCromossomo);
+        
+    if nFilhos == 2
+        % Segundo Filho
+        filhos(2, 1:corte) = pai2(1, 1:corte);
+        filhos(2, corte+1:jCromossomo) = pai1(1, corte+1:jCromossomo);
+    end
+    
+    % Retorno da funcao
+    result =filhos;
+
+end

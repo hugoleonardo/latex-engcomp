@@ -1,0 +1,27 @@
+%==========================================================================
+% @desc Fazer a mutacao de algum dos filhos
+%
+% @param filhos         - Filhos gerados em decimal, vetor LINHA
+% @param tamCromossomo  - Numero de bits maximo de um cromossomo
+% @param taxaMutacao    - Taxa de mutacao
+%==========================================================================
+function result=mutacao(filhos, tamCromossomo, taxaMutacao);
+
+    % Aplicar a mutacao?
+    mutacao = roleta([taxaMutacao 100-taxaMutacao], 1);
+
+    [nFilhos nJ] = size(filhos);
+       
+    filhos = dec2bin(filhos,tamCrom)
+    if mutacao(1,1) == 1       
+        % Escolher um filho para ser mutado
+        mutante = floor(nFilhos * rand(1,1))+1
+        nBit = floor(tamCromossomo * rand(1,1))+1
+        
+        bitAtual = filhos(mutante, nBit)
+    end
+
+    % Retorno da funcao
+    result =filhos;
+
+end
