@@ -46,14 +46,14 @@ matc =[
     3,0
     ];
 %Populacao Inicial
-npop = 15;
+npop = 5000;
 pop(npop,nlin,ncol) = 0;
 %Iniciando linhas
 for n=1:npop,
     for i=1:nlin,
         %se tiver apenas um grupo de X deve alocar um indice considerando o
         %numero de Xs do grupo para não extrapolar o numero de colunas
-        if(matl(i,2)<1)
+        if(matl(i,2) < 1)
             index(i,1) =  randi([1, ncol-matl(i,1)]+1);
             %preenche o unico grupo de Xs na matriz da linha i
             for x=index(i,1):(index(i,1)+matl(i,1)-1),
@@ -79,8 +79,8 @@ for n=1:npop,
 end
 
 %achar matriz de pop
-% k = squeeze(1,:,:) para a primeira matriz 2D
-% k = squeeze(2,:,:) para a segunda matriz 2D
+% k = squeeze(pop(1,:,:)) para a primeira matriz 2D
+% k = squeeze(pop(2,:,:)) para a segunda matriz 2D
 % vai até o npop
 
 %Avaliacao
@@ -88,13 +88,41 @@ end
 %checar o numero de Xs na coluna
 %Segundo passo
 %
-
-
-
+%inicializando variaveis de controle
+%eh possivel haver no maximo 4 pesos em 8 colunas ou 5 em 9 colunas
+%o round arredonda pra mais
+peso(round(ncol/2))=0;
+%flag para indicar sequencias de Xs
+flag=false;
 for n=1:npop,
+    tmp = squeeze(pop(n,:,:))
+    aval=0;
     for j=1:ncol,
+        %zera o contador de Xs a cada troca de coluna
+        contador_x=0;
+        %zera o contador de pesos a cada troca de coluna
+        contador_peso=0;
         for i=1:nlin,
-            pop(n,i,j); 
+            %encontra X da coluna
+            if(pop(n,i,j)==1)
+                contador_x=contador_x+1;
+            %nao tem um X, mas o flag eh verdadeiro
+            elseif(pop(n,i,j)==0 && contador_x~=0)
+                %indica a existencia de um novo peso
+                contador_peso=contador_peso+1;
+                %guarda o novo peso no vetor de pesos
+                peso(contador_peso)=contador_x;
+                contador_x=0;
+            end
+        end
+        %proporcao de aptidao da coluna na matriz de acordo com o numero de
+        %pesos achados
+        taxa_peso=1/(contador_peso*ncol);
+        for tmp=1:2,
+            if(peso(tmp)==matc(j,tmp))
+                aval=aval+taxa_peso;
+                aval=aval+0.5;
+            end
         end
     end
 end
