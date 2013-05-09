@@ -86,15 +86,11 @@ for l=1:n_lin,
                         % armazenamento só ocorre na próxima iteração
                 vet_indices_lin_temp(l,m) = count_1;
                 if mat_final(l,m) == 0
-                    qtd_indices = qtd_indices;
+                qtd_indices = qtd_indices;
                 end
             else 
-                    vet_indices_lin_temp(l,m-1) = count_1;
-                if mat_final(l,m-1) == 0
-                    qtd_indices = qtd_indices
-                else
-                    qtd_indices = qtd_indices +1
-                end
+                vet_indices_lin_temp(l,m-1) = count_1;
+                qtd_indices = qtd_indices +1
             end
             count_1 = 0;
             qtd_indices = qtd_indices
