@@ -45,14 +45,16 @@ matc =[
     4,0;
     3,0
     ];
+vet = [2;2;2;2;1;1;1;1];
 %Populacao Inicial
 npop = 5000;
 pop(npop,nlin,ncol) = 0;
+aval(npop) = 0;
 %Iniciando linhas
 for n=1:npop,
     for i=1:nlin,
         %se tiver apenas um grupo de X deve alocar um indice considerando o
-        %numero de Xs do grupo para não extrapolar o numero de colunas
+        %numero de Xs do grupo para nao extrapolar o numero de colunas
         if(matl(i,2) < 1)
             index(i,1) =  randi([1, ncol-matl(i,1)]+1);
             %preenche o unico grupo de Xs na matriz da linha i
@@ -81,7 +83,7 @@ end
 %achar matriz de pop
 % k = squeeze(pop(1,:,:)) para a primeira matriz 2D
 % k = squeeze(pop(2,:,:)) para a segunda matriz 2D
-% vai até o npop
+% vai ate o npop
 
 %Avaliacao
 %Primeiro passo
@@ -91,12 +93,11 @@ end
 %inicializando variaveis de controle
 %eh possivel haver no maximo 4 pesos em 8 colunas ou 5 em 9 colunas
 %o round arredonda pra mais
-peso(round(ncol/2))=0;
+peso(round(nlin/2))=0;
 %flag para indicar sequencias de Xs
 flag=false;
 for n=1:npop,
     tmp = squeeze(pop(n,:,:))
-    aval=0;
     for j=1:ncol,
         %zera o contador de Xs a cada troca de coluna
         contador_x=0;
@@ -104,25 +105,60 @@ for n=1:npop,
         contador_peso=0;
         for i=1:nlin,
             %encontra X da coluna
-            if(pop(n,i,j)==1)
+            if(i==nlin && pop(n,i,j)==1 && contador_x==0)
+                contador_peso=contador_peso+1;
+                peso(contador_peso)=1;
+                contador_x=0;
+            elseif(pop(n,i,j)==1)
                 contador_x=contador_x+1;
-            %nao tem um X, mas o flag eh verdadeiro
+            %se encontrar um vazio, checa se o contador saiu de zero para
+            %indicar se houve um grupo de Xs
             elseif(pop(n,i,j)==0 && contador_x~=0)
                 %indica a existencia de um novo peso
                 contador_peso=contador_peso+1;
                 %guarda o novo peso no vetor de pesos
                 peso(contador_peso)=contador_x;
                 contador_x=0;
+            %captura caso um grupo de X na ultima linha da coluna
+            end
+            if(contador_x>1 && i==nlin)
+                %indica a existencia de um novo peso
+                contador_peso=contador_peso+1;
+                %guarda o novo peso no vetor de pesos
+                peso(contador_peso)=contador_x;
+                contador_x=0;
+            end
+           
+        end
+        %a maior taxa de peso eh metade do total
+        %taxa_peso=1/(2*ncol);
+        
+        %a = 100/contador_peso;
+        %1 3 1 7 5 3 4 3
+        %2 1 5 1
+        %proporcao de aptidao da coluna na matriz de acordo com o numero de
+        %pesos achados, nesse caso eh se for maior de 2 pesos
+        %if(contador_peso>2)
+        %    taxa_peso=1/(contador_peso*ncol);
+        %end
+        cont=0;
+        for tmp=1:2,
+            if(peso(tmp)==matc(j,tmp) && matc(j,tmp)~=0)
+                cont=cont+1;
             end
         end
-        %proporcao de aptidao da coluna na matriz de acordo com o numero de
-        %pesos achados
-        taxa_peso=1/(contador_peso*ncol);
-        for tmp=1:2,
-            if(peso(tmp)==matc(j,tmp))
-                aval=aval+taxa_peso;
-                aval=aval+0.5;
-            end
+        
+        if(contador_peso<vet(j))
+            contador_peso = vet(j);
+        end
+        %taxa parcial da matriz na coluna atual
+        taxa_col = cont*(1/contador_peso);
+        %taxa parcial normalizada da matriz na coluna atual
+        taxa_col_n = taxa_col/ncol;
+        aval(n) = aval(n) + taxa_col_n;
+        %zera o vetor de pesos a cada coluna
+        for tmp=1:(round(nlin/2)),
+            peso(tmp)=0;
         end
     end
 end
