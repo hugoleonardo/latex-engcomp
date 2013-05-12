@@ -75,10 +75,7 @@ mat_col =   [1,2;
 n_lin = 9;
 n_col = 8;
 rand1 = rand(1); %numero aleatorio usado como criterio de decisão pra gerar matriz inicial (população inicial)
-t0 = 0; %temperatura inicial
-t = 0; %temperatura corrente
-p = 0; %critério de Metropolis
-p_1 = 0; % número aleatório que será comprar com o critério de Metropolis
+
 
 
 
@@ -105,17 +102,19 @@ vet_aptidao_lin (n_lin,1) = 0; % vetor que armazena as aptidões das linhas
 vet_aptidao_col (1,n_col) = 0; % vetor que armazena as aptidões das colunas
 qtd_indices = 0; % armazena o qtde de indices em uma linha da matriz
 t_inicial = 0; % temperatura inicial
-t =0; % temperatura corrente
-n_t = 0; % número de iterações com a mesma temperatura
+t =1; % temperatura corrente
+n_t = 1; % número de iterações com a mesma temperatura
+iter = 0; % variável que guarda o número de iterações realizadas
 n_ciclos = 0; % número de ciclos de resfriamento
+n_iteracoes = 0; % número de iterações realizadas
 mat_vizinho(n_lin,n_col) = 0; % matriz usada para armazenar as soluções vizinhas de X (X')
 mat_final (n_lin,n_col) = 0; % matriz que recebe a melhor solução encontrada (X*)
 mat_temp (n_lin,n_col) = 0; % matriz aleatória com 0's e 1's (solução inicial - X)
 delta_e = 0; % diferença entre os custos de f(X') - f(X) 
-
-
-
-% gera solução inicial
+alpha = 0.8; % cte de resfriamento
+k = 0;
+beta = 0.0001;
+% gera solução inicial (X)
 for i=1:n_lin,
     for j=1:n_col,
         if  (rand1 < 0.5)
@@ -129,7 +128,7 @@ for i=1:n_lin,
 end
 
 
-% Atribui X* = X
+% atribui X* = X
 for i=1:n_lin,
     for j=1:n_col,
         mat_final(i,j) = mat_temp(i,j);
@@ -137,11 +136,12 @@ for i=1:n_lin,
 end
 
 
+
 % ================================================================
 %                Cálculo da aptidão/custo da matriz final (X*)
 % ================================================================
 vet_indices_lin_temp (n_lin,n_col) = 0;
-vet_indices_lin_temp (n_lin,n_col) = 0;
+vet_indices_col_temp (n_lin,n_col) = 0;
 vet_aptidao_lin = 0;
 vet_aptidao_col = 0;
 aptidao_lin_avg = 0;
@@ -272,529 +272,529 @@ for m=1:n_col,
      qtd_indices = 0;
 end % marca o fim da leitura de uma coluna
 
-% percorre o vetor com a aptidão das linhas e encontra a média
-for i=1:n_lin
-    aptidao_lin_avg = aptidao_lin_avg + vet_aptidao_lin(i,1);
-end
-    aptidao_lin_avg = (aptidao_lin_avg)/n_lin;
+% encontra a média das aptidoes das linhas
+aptidao_lin_avg = mean(vet_aptidao_lin); 
 
-% percorre o vetor com a aptidão das colunas e encontra a média
-for i=1:n_col
-    aptidao_col_avg = aptidao_col_avg + vet_aptidao_col(1,i);
-end
-    aptidao_col_avg = (aptidao_col_avg)/n_col;
+% encontra a média das aptidoes das colunas
+aptidao_col_avg = mean(vet_aptidao_col); 
     
 % encontra a aptidão da matriz tirando a média entre as médias das aptidões das linhas e das colunas
 aptidao_avg_final = (aptidao_lin_avg + aptidao_col_avg)/2;
 custo_final = 1/aptidao_avg_final;
 
+
+
 % ================================================================
 %                Verificar condições de parada
 % ================================================================
-
-
-% ================================================================
-%                Cálculo da aptidão/custo da matriz corrente (X)
-% ================================================================
-vet_indices_lin_temp (n_lin,n_col) = 0;
-vet_indices_lin_temp (n_lin,n_col) = 0;
-vet_aptidao_lin = 0;
-vet_aptidao_col = 0;
-aptidao_lin_avg = 0;
-aptidao_col_avg = 0;
-% Percorre as linhas para calcular os índices
-for l=1:n_lin, 
-    for m=1:n_col,
-        if mat_temp(l,m) == 1;
-            count_1 = count_1+1; %variavel auxiliar para contar a quantidade de 's na linha
-            if m == n_col, 
-                vet_indices_lin_temp(l,m-1) = count_1; %verifica se o último elemento da linha é 1 e atribui o número de 1's à matriz com os indices
-                qtd_indices = qtd_indices +1; %quando chega na última coluna, se tiver um 1, incrementa a quantidade de índices na mesma iteração
-            end
-        else
-            if m == 1,  % verifica se o elemento é o primeiro da linha, se for, armazena no mesma posição, caso contrário armazena numa posição anterior,
-                        % isso é pra evitar que quando chegue na última
-                        % coluna não haja espaço para armazenar, pq o
-                        % armazenamento só ocorre após a leitura do último
-                        % 1 da sequência
-                vet_indices_lin_temp(l,m) = count_1;
-                if mat_temp(l,m) == 0
-                    qtd_indices = qtd_indices;
-                end
-            else    % se não for o primeiro elemento da linha, armazena o valor de count na posição anterior, dessa forma o valor do índice sempre será armazenado
-                    % na posição correspondente ao último 1 da sequência da
-                    % matriz que está sendo analisada 
-                vet_indices_lin_temp(l,m-1) = count_1;
-                    if mat_temp(l,m-1) == 0
-                        qtd_indices = qtd_indices; % verifca se o elemento anterior é zero, caso verdadeiro, mantém a quantidade de índices para que esta
-                                                   % só seja incrementada ao final de uma sequência de 1's
-                    else
-                qtd_indices = qtd_indices +1; % após a leitura de todos os 1's incrementa a quantidade de indíces no primeiro 0 seguinte
-                end
-            end
-            count_1 = 0; % se o valor do elemento for 0 o contador é zerado
-            qtd_indices = qtd_indices; % se o valor do elemento for igual a 0 mantém a quantidade de índices
-        end 
-    end % marca o fim da leitura de um elemento
-    count_1 = 0;
+while (t > 0.0001 && custo_final~= 0.01)
     
-    aptidao_lin_temp = 100/qtd_indices; %define a aptidão de cada grupo de 1's
-    
-    for m=1:n_col, % percorre a linha da matriz de índice correspondente para fazer a comparação com os índices reais
-        if vet_indices_lin_temp(l,m) ~= 0, % Verifica se encontra um elemento diferente de zero na matriz que guarda os índices,
-                                           % se encontrar incrementa
-                                           % passou_indice para guardar
-                                           % a ordem do índice (se o
-                                           % primeiro ou o segundo)
-            passou_indice = passou_indice + 1;
-            if (passou_indice == 1 || passou_indice == 2) && (vet_indices_lin_temp(l,m) == mat_lin(l,passou_indice))  
-                % verifica o índice com seu respectivo índice na matriz dos
-                % índices, respoeitando a ordem e se for igual atualiza a
-                % aptidão da linha
-                aptidao_lin = aptidao_lin + aptidao_lin_temp; % se o índice da matriz for igual ao índice real, a aptidão da linha é atualziada
-            end
-        else 
-            passou_indice = passou_indice; % Se o elemento da matriz de índices for 0, mantém o valor de passou_indice 
-            aptidao_lin = aptidao_lin;  % Se o elemento da matriz de índices for 0, mantém o valor da aptidão da linha
-        end
-    end
-    % marca o fim da leitura de um elemento
-     vet_aptidao_lin (l,1) = aptidao_lin;
-     aptidao_lin = 0;
-     passou_indice = 0;
-     qtd_indices = 0;
-end % marca o fim da leitura de uma linha
-     
-% Percorre as colunas para calcular os índices
-for m=1:n_col, 
-    for l=1:n_lin,
-        if mat_temp(l,m) == 1;
-            count_1 = count_1+1; %variavel auxiliar para contar a quantidade de 's na coluna
-            espaco = 0;
-            if l == n_lin, 
-                vet_indices_col_temp(l-1,m) = count_1; %verifica se o último elemento da coluna é 1 e atribui o número de 1's à matriz com os indices
-                qtd_indices = qtd_indices +1; %quando chega na última linha, se tiver um 1, incrementa a quantidade de índices na mesma iteração
-            end
-        else
-            if l == 1,  % verifica se o elemento é o primeiro da coluna, se for, armazena no mesma posição, caso contrário armazena numa posição anterior,
-                        % isso é pra evitar que quando chegue na última
-                        % linha não haja espaço para armazenar, pq o
-                        % armazenamento só ocorre após a leitura do último
-                        % 1 da sequência
-                vet_indices_lin_temp(l,m) = count_1;
-                if mat_temp(l,m) == 0
-                    qtd_indices = qtd_indices;  % verifca se o elemento anterior é zero, caso verdadeiro, mantém a quantidade de índices para que esta
-                                                % só seja incrementada ao final de uma sequência de 1's
-                end
-            else 
-                vet_indices_col_temp(l-1,m) = count_1;
-                if mat_temp(l-1,m) == 0
-                        qtd_indices = qtd_indices;
-                    else
-                qtd_indices = qtd_indices +1; % após a leitura de todos os 1's incrementa a quantidade de indíces no primeiro 0 seguinte
-                end
-            end
-            count_1 = 0; % se o valor do elemento for 0 o contador é zerado
-            qtd_indices = qtd_indices; % se o valor do elemento for igual a 0 mantém a quantidade de índices
-        end
-    end
-    % marca o fim da leitura de um elemento
-    count_1 = 0;
-    
-    aptidao_col_temp = 100/qtd_indices; %define a aptidão de cada grupo de 1's
-    
-    for l=1:n_lin, % percorre a coluna da matriz de índice correspondente para fazer a comparação com os índices reais
-        if vet_indices_col_temp(l,m) ~= 0, % Verifica se encontra um elemento diferente de zero na matriz que guarda os índices,
-                                           % se encontrar incrementa
-                                           % passou_indice para guardar
-                                           % a ordem do índice (se o
-                                           % primeiro ou o segundo)
-            passou_indice = passou_indice + 1;
-            if (passou_indice == 1 || passou_indice == 2) && (vet_indices_col_temp(l,m) == mat_col(m,passou_indice))
-                    % verifica o índice com seu respectivo índice na matriz dos
-                    % índices, respoeitando a ordem e se for igual atualiza a
-                    % aptidão da linha
-                aptidao_col = aptidao_col + aptidao_col_temp; % se o índice da matriz for igual ao índice real, a aptidão da coluna é atualziada
-            end
-        else 
-            passou_indice = passou_indice; % Se o elemento da matriz de índices for 0, mantém o valor de passou_indice
-            aptidao_col = aptidao_col; % Se o elemento da matriz de índices for 0, mantém o valor da aptidão da linha
-        end
-    end
-    % marca o fim da leitura de um elemento
-     vet_aptidao_col (1,m) = aptidao_col;
-     aptidao_col = 0;
-     passou_indice = 0;
-     qtd_indices = 0;
-end % marca o fim da leitura de uma coluna
-
-% percorre o vetor com a aptidão das linhas e encontra a média
-for i=1:n_lin
-    aptidao_lin_avg = aptidao_lin_avg + vet_aptidao_lin(i,1);
-end
-    aptidao_lin_avg = (aptidao_lin_avg)/n_lin;
-
-% percorre o vetor com a aptidão das colunas e encontra a média
-for i=1:n_col
-    aptidao_col_avg = aptidao_col_avg + vet_aptidao_col(1,i);
-end
-    aptidao_col_avg = (aptidao_col_avg)/n_col;
-    
-% encontra a aptidão da matriz tirando a média entre as médias das aptidões das linhas e das colunas
-aptidao_avg_temp = (aptidao_lin_avg + aptidao_col_avg)/2;
-custo_temp = 1/aptidao_avg_temp;
-
-
-% ================================================================
-%                Escolher matriz vizinha
-% ================================================================
-
-for i=1:n_lin
-   if vet_aptidao_lin(i,1) == 0,
-        if  (rand1 < 0.5)
-            mat_temp(i,j) = 1;
-        else
-            mat_temp(i,j) = 0;
-        end
-            rand1 = rand(1);
-   end
-end
-
-
-
-% ================================================================
-%                Cálculo da aptidão/custo da matriz vizinha (X')
-% ================================================================
-vet_indices_lin_temp (n_lin,n_col) = 0;
-vet_indices_lin_temp (n_lin,n_col) = 0;
-vet_aptidao_lin = 0;
-vet_aptidao_col = 0;
-aptidao_lin_avg = 0;
-aptidao_col_avg = 0;
-% Percorre as linhas para calcular os índices
-for l=1:n_lin, 
-    for m=1:n_col,
-        if mat_vizinho(l,m) == 1;
-            count_1 = count_1+1; %variavel auxiliar para contar a quantidade de 's na linha
-            if m == n_col, 
-                vet_indices_lin_temp(l,m-1) = count_1; %verifica se o último elemento da linha é 1 e atribui o número de 1's à matriz com os indices
-                qtd_indices = qtd_indices +1; %quando chega na última coluna, se tiver um 1, incrementa a quantidade de índices na mesma iteração
-            end
-        else
-            if m == 1,  % verifica se o elemento é o primeiro da linha, se for, armazena no mesma posição, caso contrário armazena numa posição anterior,
-                        % isso é pra evitar que quando chegue na última
-                        % coluna não haja espaço para armazenar, pq o
-                        % armazenamento só ocorre após a leitura do último
-                        % 1 da sequência
-                vet_indices_lin_temp(l,m) = count_1;
-                if mat_vizinho(l,m) == 0
-                    qtd_indices = qtd_indices;
-                end
-            else    % se não for o primeiro elemento da linha, armazena o valor de count na posição anterior, dessa forma o valor do índice sempre será armazenado
-                    % na posição correspondente ao último 1 da sequência da
-                    % matriz que está sendo analisada 
-                vet_indices_lin_temp(l,m-1) = count_1;
-                    if mat_vizinho(l,m-1) == 0
-                        qtd_indices = qtd_indices; % verifca se o elemento anterior é zero, caso verdadeiro, mantém a quantidade de índices para que esta
-                                                   % só seja incrementada ao final de uma sequência de 1's
-                    else
-                qtd_indices = qtd_indices +1; % após a leitura de todos os 1's incrementa a quantidade de indíces no primeiro 0 seguinte
-                end
-            end
-            count_1 = 0; % se o valor do elemento for 0 o contador é zerado
-            qtd_indices = qtd_indices; % se o valor do elemento for igual a 0 mantém a quantidade de índices
-        end 
-    end % marca o fim da leitura de um elemento
-    count_1 = 0;
-    
-    aptidao_lin_temp = 100/qtd_indices; %define a aptidão de cada grupo de 1's
-    
-    for m=1:n_col, % percorre a linha da matriz de índice correspondente para fazer a comparação com os índices reais
-        if vet_indices_lin_temp(l,m) ~= 0, % Verifica se encontra um elemento diferente de zero na matriz que guarda os índices,
-                                           % se encontrar incrementa
-                                           % passou_indice para guardar
-                                           % a ordem do índice (se o
-                                           % primeiro ou o segundo)
-            passou_indice = passou_indice + 1;
-            if (passou_indice == 1 || passou_indice == 2) && (vet_indices_lin_temp(l,m) == mat_lin(l,passou_indice))  
-                % verifica o índice com seu respectivo índice na matriz dos
-                % índices, respoeitando a ordem e se for igual atualiza a
-                % aptidão da linha
-                aptidao_lin = aptidao_lin + aptidao_lin_temp; % se o índice da matriz for igual ao índice real, a aptidão da linha é atualziada
-            end
-        else 
-            passou_indice = passou_indice; % Se o elemento da matriz de índices for 0, mantém o valor de passou_indice 
-            aptidao_lin = aptidao_lin;  % Se o elemento da matriz de índices for 0, mantém o valor da aptidão da linha
-        end
-    end
-    % marca o fim da leitura de um elemento
-     vet_aptidao_lin (l,1) = aptidao_lin;
-     aptidao_lin = 0;
-     passou_indice = 0;
-     qtd_indices = 0;
-end % marca o fim da leitura de uma linha
-     
-% Percorre as colunas para calcular os índices
-for m=1:n_col, 
-    for l=1:n_lin,
-        if mat_vizinho(l,m) == 1;
-            count_1 = count_1+1; %variavel auxiliar para contar a quantidade de 's na coluna
-            espaco = 0;
-            if l == n_lin, 
-                vet_indices_col_temp(l-1,m) = count_1; %verifica se o último elemento da coluna é 1 e atribui o número de 1's à matriz com os indices
-                qtd_indices = qtd_indices +1; %quando chega na última linha, se tiver um 1, incrementa a quantidade de índices na mesma iteração
-            end
-        else
-            if l == 1,  % verifica se o elemento é o primeiro da coluna, se for, armazena no mesma posição, caso contrário armazena numa posição anterior,
-                        % isso é pra evitar que quando chegue na última
-                        % linha não haja espaço para armazenar, pq o
-                        % armazenamento só ocorre após a leitura do último
-                        % 1 da sequência
-                vet_indices_lin_temp(l,m) = count_1;
-                if mat_vizinho(l,m) == 0
-                    qtd_indices = qtd_indices;  % verifca se o elemento anterior é zero, caso verdadeiro, mantém a quantidade de índices para que esta
-                                                % só seja incrementada ao final de uma sequência de 1's
-                end
-            else 
-                vet_indices_col_temp(l-1,m) = count_1;
-                if mat_vizinho(l-1,m) == 0
-                        qtd_indices = qtd_indices;
-                    else
-                qtd_indices = qtd_indices +1; % após a leitura de todos os 1's incrementa a quantidade de indíces no primeiro 0 seguinte
-                end
-            end
-            count_1 = 0; % se o valor do elemento for 0 o contador é zerado
-            qtd_indices = qtd_indices; % se o valor do elemento for igual a 0 mantém a quantidade de índices
-        end
-    end
-    % marca o fim da leitura de um elemento
-    count_1 = 0;
-    
-    aptidao_col_temp = 100/qtd_indices; %define a aptidão de cada grupo de 1's
-    
-    for l=1:n_lin, % percorre a coluna da matriz de índice correspondente para fazer a comparação com os índices reais
-        if vet_indices_col_temp(l,m) ~= 0, % Verifica se encontra um elemento diferente de zero na matriz que guarda os índices,
-                                           % se encontrar incrementa
-                                           % passou_indice para guardar
-                                           % a ordem do índice (se o
-                                           % primeiro ou o segundo)
-            passou_indice = passou_indice + 1;
-            if (passou_indice == 1 || passou_indice == 2) && (vet_indices_col_temp(l,m) == mat_col(m,passou_indice))
-                    % verifica o índice com seu respectivo índice na matriz dos
-                    % índices, respoeitando a ordem e se for igual atualiza a
-                    % aptidão da linha
-                aptidao_col = aptidao_col + aptidao_col_temp; % se o índice da matriz for igual ao índice real, a aptidão da coluna é atualziada
-            end
-        else 
-            passou_indice = passou_indice; % Se o elemento da matriz de índices for 0, mantém o valor de passou_indice
-            aptidao_col = aptidao_col; % Se o elemento da matriz de índices for 0, mantém o valor da aptidão da linha
-        end
-    end
-    % marca o fim da leitura de um elemento
-     vet_aptidao_col (1,m) = aptidao_col;
-     aptidao_col = 0;
-     passou_indice = 0;
-     qtd_indices = 0;
-end % marca o fim da leitura de uma coluna
-
-% percorre o vetor com a aptidão das linhas e encontra a média
-for i=1:n_lin
-    aptidao_lin_avg = aptidao_lin_avg + vet_aptidao_lin(i,1);
-end
-    aptidao_lin_avg = (aptidao_lin_avg)/n_lin;
-
-% percorre o vetor com a aptidão das colunas e encontra a média
-for i=1:n_col
-    aptidao_col_avg = aptidao_col_avg + vet_aptidao_col(1,i);
-end
-    aptidao_col_avg = (aptidao_col_avg)/n_col;
-    
-% encontra a aptidão da matriz tirando a média entre as médias das aptidões das linhas e das colunas
-aptidao_avg_vizinho = (aptidao_lin_avg + aptidao_col_avg)/2;
-custo_vizinho = 1/aptidao_avg_vizinho;
-
-delta_e = (custo_vizinho - custo_temp);
-p = exp(-(delta_e)/t);
-        if delta_e < 0,
-            % se delta_E < 0, fazer X = X'
-            for i=1:n_lin,
-                for j=1:n_col,
-                    mat_temp(i,j) = mat_vizinho(i,j);
-                end        
-            end
-            if custo_vizinho < custo_final
-                % se f(X') < f(X*), fazer X* = X' e atualiza o custo da
-                % matriz final
-                for i=1:n_lin,
-                    for j=1:n_col,
-                        mat_final(i,j) = mat_vizinho(i,j);
-                    end        
-                end
-                    % ================================================================
-                    %                Cálculo da aptidão/custo da matriz final (X*)
-                    % ================================================================
-                    vet_indices_lin_temp (n_lin,n_col) = 0;
-                    vet_indices_lin_temp (n_lin,n_col) = 0;
-                    vet_aptidao_lin = 0;
-                    vet_aptidao_col = 0;
-                    aptidao_lin_avg = 0;
-                    aptidao_col_avg = 0;
-                    % Percorre as linhas para calcular os índices
-                    for l=1:n_lin, 
-                        for m=1:n_col,
-                            if mat_final(l,m) == 1;
-                                count_1 = count_1+1; %variavel auxiliar para contar a quantidade de 's na linha
-                                if m == n_col, 
-                                    vet_indices_lin_temp(l,m-1) = count_1; %verifica se o último elemento da linha é 1 e atribui o número de 1's à matriz com os indices
-                                    qtd_indices = qtd_indices +1; %quando chega na última coluna, se tiver um 1, incrementa a quantidade de índices na mesma iteração
-                                end
-                            else
-                                if m == 1,  % verifica se o elemento é o primeiro da linha, se for, armazena no mesma posição, caso contrário armazena numa posição anterior,
-                                            % isso é pra evitar que quando chegue na última
-                                            % coluna não haja espaço para armazenar, pq o
-                                            % armazenamento só ocorre após a leitura do último
-                                            % 1 da sequência
-                                    vet_indices_lin_temp(l,m) = count_1;
-                                    if mat_final(l,m) == 0
-                                        qtd_indices = qtd_indices;
-                                    end
-                                else    % se não for o primeiro elemento da linha, armazena o valor de count na posição anterior, dessa forma o valor do índice sempre será armazenado
-                                        % na posição correspondente ao último 1 da sequência da
-                                        % matriz que está sendo analisada 
-                                    vet_indices_lin_temp(l,m-1) = count_1;
-                                        if mat_final(l,m-1) == 0
-                                            qtd_indices = qtd_indices; % verifca se o elemento anterior é zero, caso verdadeiro, mantém a quantidade de índices para que esta
-                                                                       % só seja incrementada ao final de uma sequência de 1's
-                                        else
-                                    qtd_indices = qtd_indices +1; % após a leitura de todos os 1's incrementa a quantidade de indíces no primeiro 0 seguinte
-                                    end
-                                end
-                                count_1 = 0; % se o valor do elemento for 0 o contador é zerado
-                                qtd_indices = qtd_indices; % se o valor do elemento for igual a 0 mantém a quantidade de índices
-                            end 
-                        end % marca o fim da leitura de um elemento
-                        count_1 = 0;
-
-                        aptidao_lin_temp = 100/qtd_indices; %define a aptidão de cada grupo de 1's
-
-                        for m=1:n_col, % percorre a linha da matriz de índice correspondente para fazer a comparação com os índices reais
-                            if vet_indices_lin_temp(l,m) ~= 0, % Verifica se encontra um elemento diferente de zero na matriz que guarda os índices,
-                                                               % se encontrar incrementa
-                                                               % passou_indice para guardar
-                                                               % a ordem do índice (se o
-                                                               % primeiro ou o segundo)
-                                passou_indice = passou_indice + 1;
-                                if (passou_indice == 1 || passou_indice == 2) && (vet_indices_lin_temp(l,m) == mat_lin(l,passou_indice))  
-                                    % verifica o índice com seu respectivo índice na matriz dos
-                                    % índices, respoeitando a ordem e se for igual atualiza a
-                                    % aptidão da linha
-                                    aptidao_lin = aptidao_lin + aptidao_lin_temp; % se o índice da matriz for igual ao índice real, a aptidão da linha é atualziada
-                                end
-                            else 
-                                passou_indice = passou_indice; % Se o elemento da matriz de índices for 0, mantém o valor de passou_indice 
-                                aptidao_lin = aptidao_lin;  % Se o elemento da matriz de índices for 0, mantém o valor da aptidão da linha
-                            end
-                        end
-                        % marca o fim da leitura de um elemento
-                         vet_aptidao_lin (l,1) = aptidao_lin;
-                         aptidao_lin = 0;
-                         passou_indice = 0;
-                         qtd_indices = 0;
-                    end % marca o fim da leitura de uma linha
-
-                    % Percorre as colunas para calcular os índices
-                    for m=1:n_col, 
-                        for l=1:n_lin,
-                            if mat_final(l,m) == 1;
-                                count_1 = count_1+1; %variavel auxiliar para contar a quantidade de 's na coluna
-                                espaco = 0;
-                                if l == n_lin, 
-                                    vet_indices_col_temp(l-1,m) = count_1; %verifica se o último elemento da coluna é 1 e atribui o número de 1's à matriz com os indices
-                                    qtd_indices = qtd_indices +1; %quando chega na última linha, se tiver um 1, incrementa a quantidade de índices na mesma iteração
-                                end
-                            else
-                                if l == 1,  % verifica se o elemento é o primeiro da coluna, se for, armazena no mesma posição, caso contrário armazena numa posição anterior,
-                                            % isso é pra evitar que quando chegue na última
-                                            % linha não haja espaço para armazenar, pq o
-                                            % armazenamento só ocorre após a leitura do último
-                                            % 1 da sequência
-                                    vet_indices_lin_temp(l,m) = count_1;
-                                    if mat_final(l,m) == 0
-                                        qtd_indices = qtd_indices;  % verifca se o elemento anterior é zero, caso verdadeiro, mantém a quantidade de índices para que esta
-                                                                    % só seja incrementada ao final de uma sequência de 1's
-                                    end
-                                else 
-                                    vet_indices_col_temp(l-1,m) = count_1;
-                                    if mat_final(l-1,m) == 0
-                                            qtd_indices = qtd_indices;
-                                        else
-                                    qtd_indices = qtd_indices +1; % após a leitura de todos os 1's incrementa a quantidade de indíces no primeiro 0 seguinte
-                                    end
-                                end
-                                count_1 = 0; % se o valor do elemento for 0 o contador é zerado
-                                qtd_indices = qtd_indices; % se o valor do elemento for igual a 0 mantém a quantidade de índices
-                            end
-                        end
-                        % marca o fim da leitura de um elemento
-                        count_1 = 0;
-
-                        aptidao_col_temp = 100/qtd_indices; %define a aptidão de cada grupo de 1's
-
-                        for l=1:n_lin, % percorre a coluna da matriz de índice correspondente para fazer a comparação com os índices reais
-                            if vet_indices_col_temp(l,m) ~= 0, % Verifica se encontra um elemento diferente de zero na matriz que guarda os índices,
-                                                               % se encontrar incrementa
-                                                               % passou_indice para guardar
-                                                               % a ordem do índice (se o
-                                                               % primeiro ou o segundo)
-                                passou_indice = passou_indice + 1;
-                                if (passou_indice == 1 || passou_indice == 2) && (vet_indices_col_temp(l,m) == mat_col(m,passou_indice))
-                                        % verifica o índice com seu respectivo índice na matriz dos
-                                        % índices, respoeitando a ordem e se for igual atualiza a
-                                        % aptidão da linha
-                                    aptidao_col = aptidao_col + aptidao_col_temp; % se o índice da matriz for igual ao índice real, a aptidão da coluna é atualziada
-                                end
-                            else 
-                                passou_indice = passou_indice; % Se o elemento da matriz de índices for 0, mantém o valor de passou_indice
-                                aptidao_col = aptidao_col; % Se o elemento da matriz de índices for 0, mantém o valor da aptidão da linha
-                            end
-                        end
-                        % marca o fim da leitura de um elemento
-                         vet_aptidao_col (1,m) = aptidao_col;
-                         aptidao_col = 0;
-                         passou_indice = 0;
-                         qtd_indices = 0;
-                    end % marca o fim da leitura de uma coluna
-
-                    % percorre o vetor com a aptidão das linhas e encontra a média
-                    for i=1:n_lin
-                        aptidao_lin_avg = aptidao_lin_avg + vet_aptidao_lin(i,1);
+    while n_t > 0
+        % ================================================================
+        %                Cálculo da aptidão/custo da matriz corrente (X)
+        % ================================================================
+        vet_indices_lin_temp (n_lin,n_col) = 0;
+        vet_indices_col_temp (n_lin,n_col) = 0;
+        vet_aptidao_lin = 0;
+        vet_aptidao_col = 0;
+        aptidao_lin_avg = 0;
+        aptidao_col_avg = 0;
+        % Percorre as linhas para calcular os índices
+        for l=1:n_lin, 
+            for m=1:n_col,
+                if mat_temp(l,m) == 1;
+                    count_1 = count_1+1; %variavel auxiliar para contar a quantidade de 's na linha
+                    if m == n_col, 
+                        vet_indices_lin_temp(l,m-1) = count_1; %verifica se o último elemento da linha é 1 e atribui o número de 1's à matriz com os indices
+                        qtd_indices = qtd_indices +1; %quando chega na última coluna, se tiver um 1, incrementa a quantidade de índices na mesma iteração
                     end
-                        aptidao_lin_avg = (aptidao_lin_avg)/n_lin;
-
-                    % percorre o vetor com a aptidão das colunas e encontra a média
-                    for i=1:n_col
-                        aptidao_col_avg = aptidao_col_avg + vet_aptidao_col(1,i);
+                else
+                    if m == 1,  % verifica se o elemento é o primeiro da linha, se for, armazena no mesma posição, caso contrário armazena numa posição anterior,
+                                % isso é pra evitar que quando chegue na última
+                                % coluna não haja espaço para armazenar, pq o
+                                % armazenamento só ocorre após a leitura do último
+                                % 1 da sequência
+                        vet_indices_lin_temp(l,m) = count_1;
+                        if mat_temp(l,m) == 0
+                            qtd_indices = qtd_indices;
+                        end
+                    else    % se não for o primeiro elemento da linha, armazena o valor de count na posição anterior, dessa forma o valor do índice sempre será armazenado
+                            % na posição correspondente ao último 1 da sequência da
+                            % matriz que está sendo analisada 
+                        vet_indices_lin_temp(l,m-1) = count_1;
+                            if mat_temp(l,m-1) == 0
+                                qtd_indices = qtd_indices; % verifca se o elemento anterior é zero, caso verdadeiro, mantém a quantidade de índices para que esta
+                                                           % só seja incrementada ao final de uma sequência de 1's
+                            else
+                        qtd_indices = qtd_indices +1; % após a leitura de todos os 1's incrementa a quantidade de indíces no primeiro 0 seguinte
+                        end
                     end
-                        aptidao_col_avg = (aptidao_col_avg)/n_col;
+                    count_1 = 0; % se o valor do elemento for 0 o contador é zerado
+                    qtd_indices = qtd_indices; % se o valor do elemento for igual a 0 mantém a quantidade de índices
+                end 
+            end % marca o fim da leitura de um elemento
+            count_1 = 0;
 
-                    % encontra a aptidão da matriz tirando a média entre as médias das aptidões das linhas e das colunas
-                    aptidao_avg_final = (aptidao_lin_avg + aptidao_col_avg)/2;
-                    custo_final = 1/aptidao_avg_final;
+            aptidao_lin_temp = 100/qtd_indices; %define a aptidão de cada grupo de 1's
+
+            for m=1:n_col, % percorre a linha da matriz de índice correspondente para fazer a comparação com os índices reais
+                if vet_indices_lin_temp(l,m) ~= 0, % Verifica se encontra um elemento diferente de zero na matriz que guarda os índices,
+                                                   % se encontrar incrementa
+                                                   % passou_indice para guardar
+                                                   % a ordem do índice (se o
+                                                   % primeiro ou o segundo)
+                    passou_indice = passou_indice + 1;
+                    if (passou_indice == 1 || passou_indice == 2) && (vet_indices_lin_temp(l,m) == mat_lin(l,passou_indice))  
+                        % verifica o índice com seu respectivo índice na matriz dos
+                        % índices, respoeitando a ordem e se for igual atualiza a
+                        % aptidão da linha
+                        aptidao_lin = aptidao_lin + aptidao_lin_temp; % se o índice da matriz for igual ao índice real, a aptidão da linha é atualziada
+                    end
+                else 
+                    passou_indice = passou_indice; % Se o elemento da matriz de índices for 0, mantém o valor de passou_indice 
+                    aptidao_lin = aptidao_lin;  % Se o elemento da matriz de índices for 0, mantém o valor da aptidão da linha
+                end
             end
-        else 
-            p_1 = rand(1);
-            if p_1 < p,
-                for i=1:n_lin,
-                    for j=1:n_col,
-                        mat_temp(i,j) = mat_vizinho(i,j);
-                    end        
+            % marca o fim da leitura de um elemento
+             vet_aptidao_lin (l,1) = aptidao_lin;
+             aptidao_lin = 0;
+             passou_indice = 0;
+             qtd_indices = 0;
+        end % marca o fim da leitura de uma linha
+
+        % Percorre as colunas para calcular os índices
+        for m=1:n_col, 
+            for l=1:n_lin,
+                if mat_temp(l,m) == 1;
+                    count_1 = count_1+1; %variavel auxiliar para contar a quantidade de 's na coluna
+                    espaco = 0;
+                    if l == n_lin, 
+                        vet_indices_col_temp(l-1,m) = count_1; %verifica se o último elemento da coluna é 1 e atribui o número de 1's à matriz com os indices
+                        qtd_indices = qtd_indices +1; %quando chega na última linha, se tiver um 1, incrementa a quantidade de índices na mesma iteração
+                    end
+                else
+                    if l == 1,  % verifica se o elemento é o primeiro da coluna, se for, armazena no mesma posição, caso contrário armazena numa posição anterior,
+                                % isso é pra evitar que quando chegue na última
+                                % linha não haja espaço para armazenar, pq o
+                                % armazenamento só ocorre após a leitura do último
+                                % 1 da sequência
+                        vet_indices_lin_temp(l,m) = count_1;
+                        if mat_temp(l,m) == 0
+                            qtd_indices = qtd_indices;  % verifca se o elemento anterior é zero, caso verdadeiro, mantém a quantidade de índices para que esta
+                                                        % só seja incrementada ao final de uma sequência de 1's
+                        end
+                    else 
+                        vet_indices_col_temp(l-1,m) = count_1;
+                        if mat_temp(l-1,m) == 0
+                                qtd_indices = qtd_indices;
+                            else
+                        qtd_indices = qtd_indices +1; % após a leitura de todos os 1's incrementa a quantidade de indíces no primeiro 0 seguinte
+                        end
+                    end
+                    count_1 = 0; % se o valor do elemento for 0 o contador é zerado
+                    qtd_indices = qtd_indices; % se o valor do elemento for igual a 0 mantém a quantidade de índices
+                end
+            end
+            % marca o fim da leitura de um elemento
+            count_1 = 0;
+
+            aptidao_col_temp = 100/qtd_indices; %define a aptidão de cada grupo de 1's
+
+            for l=1:n_lin, % percorre a coluna da matriz de índice correspondente para fazer a comparação com os índices reais
+                if vet_indices_col_temp(l,m) ~= 0, % Verifica se encontra um elemento diferente de zero na matriz que guarda os índices,
+                                                   % se encontrar incrementa
+                                                   % passou_indice para guardar
+                                                   % a ordem do índice (se o
+                                                   % primeiro ou o segundo)
+                    passou_indice = passou_indice + 1;
+                    if (passou_indice == 1 || passou_indice == 2) && (vet_indices_col_temp(l,m) == mat_col(m,passou_indice))
+                            % verifica o índice com seu respectivo índice na matriz dos
+                            % índices, respoeitando a ordem e se for igual atualiza a
+                            % aptidão da linha
+                        aptidao_col = aptidao_col + aptidao_col_temp; % se o índice da matriz for igual ao índice real, a aptidão da coluna é atualziada
+                    end
+                else 
+                    passou_indice = passou_indice; % Se o elemento da matriz de índices for 0, mantém o valor de passou_indice
+                    aptidao_col = aptidao_col; % Se o elemento da matriz de índices for 0, mantém o valor da aptidão da linha
+                end
+            end
+            % marca o fim da leitura de um elemento
+             vet_aptidao_col (1,m) = aptidao_col;
+             aptidao_col = 0;
+             passou_indice = 0;
+             qtd_indices = 0;
+        end % marca o fim da leitura de uma coluna
+
+        % encontra a média das aptidoes das linhas
+        aptidao_lin_avg = mean(vet_aptidao_lin); 
+
+        % encontra a média das aptidoes das colunas
+        aptidao_col_avg = mean(vet_aptidao_col); 
+
+        % encontra a aptidão da matriz tirando a média entre as médias das aptidões das linhas e das colunas
+        aptidao_avg_temp = (aptidao_lin_avg + aptidao_col_avg)/2;
+        custo_temp = 1/aptidao_avg_temp;
+
+
+        % ================================================================
+        %                Escolher matriz vizinha
+        % ================================================================
+        %{
+        for i=1:n_lin
+            for j=1:n_col
+                if vet_aptidao_lin(i,1) == 0,
+                    if  (rand1 < 0.5)
+                        mat_vizinho(i,j) = 1;
+                    else
+                        mat_vizinho(i,j) = 0;
+                    end
+                        rand1 = rand(1);
+                else
+                    mat_vizinho(i,j) = mat_temp(i,j);
                 end
             end
         end
-% ================================================================
-%                Atualizar T (temperatura corrente)
-% ================================================================    
-        
+        %}
+        for i=1:n_lin,
+            for j=1:n_col,
+                if  (rand1 < 0.5)
+                    mat_vizinho(i,j) = 1;
+                else
+                    mat_vizinho(i,j) = 0;
+                end
+                    rand1 = rand(1);
+            end
+        end
+        %}
+
+        % ================================================================
+        %            Cálculo da aptidão/custo da matriz vizinha (X')
+        % ================================================================
+        vet_indices_lin_temp (n_lin,n_col) = 0;
+        vet_indices_col_temp (n_lin,n_col) = 0;
+        vet_aptidao_lin = 0;
+        vet_aptidao_col = 0;
+        aptidao_lin_avg = 0;
+        aptidao_col_avg = 0;
+        % Percorre as linhas para calcular os índices
+        for l=1:n_lin, 
+            for m=1:n_col,
+                if mat_vizinho(l,m) == 1;
+                    count_1 = count_1+1; %variavel auxiliar para contar a quantidade de 's na linha
+                    if m == n_col, 
+                        vet_indices_lin_temp(l,m-1) = count_1; %verifica se o último elemento da linha é 1 e atribui o número de 1's à matriz com os indices
+                        qtd_indices = qtd_indices +1; %quando chega na última coluna, se tiver um 1, incrementa a quantidade de índices na mesma iteração
+                    end
+                else
+                    if m == 1,  % verifica se o elemento é o primeiro da linha, se for, armazena no mesma posição, caso contrário armazena numa posição anterior,
+                                % isso é pra evitar que quando chegue na última
+                                % coluna não haja espaço para armazenar, pq o
+                                % armazenamento só ocorre após a leitura do último
+                                % 1 da sequência
+                        vet_indices_lin_temp(l,m) = count_1;
+                        if mat_vizinho(l,m) == 0
+                            qtd_indices = qtd_indices;
+                        end
+                    else    % se não for o primeiro elemento da linha, armazena o valor de count na posição anterior, dessa forma o valor do índice sempre será armazenado
+                            % na posição correspondente ao último 1 da sequência da
+                            % matriz que está sendo analisada 
+                        vet_indices_lin_temp(l,m-1) = count_1;
+                            if mat_vizinho(l,m-1) == 0
+                                qtd_indices = qtd_indices; % verifca se o elemento anterior é zero, caso verdadeiro, mantém a quantidade de índices para que esta
+                                                           % só seja incrementada ao final de uma sequência de 1's
+                            else
+                        qtd_indices = qtd_indices +1; % após a leitura de todos os 1's incrementa a quantidade de indíces no primeiro 0 seguinte
+                        end
+                    end
+                    count_1 = 0; % se o valor do elemento for 0 o contador é zerado
+                    qtd_indices = qtd_indices; % se o valor do elemento for igual a 0 mantém a quantidade de índices
+                end 
+            end % marca o fim da leitura de um elemento
+            count_1 = 0;
+
+            aptidao_lin_temp = 100/qtd_indices; %define a aptidão de cada grupo de 1's
+
+            for m=1:n_col, % percorre a linha da matriz de índice correspondente para fazer a comparação com os índices reais
+                if vet_indices_lin_temp(l,m) ~= 0, % Verifica se encontra um elemento diferente de zero na matriz que guarda os índices,
+                                                   % se encontrar incrementa
+                                                   % passou_indice para guardar
+                                                   % a ordem do índice (se o
+                                                   % primeiro ou o segundo)
+                    passou_indice = passou_indice + 1;
+                    if (passou_indice == 1 || passou_indice == 2) && (vet_indices_lin_temp(l,m) == mat_lin(l,passou_indice))  
+                        % verifica o índice com seu respectivo índice na matriz dos
+                        % índices, respoeitando a ordem e se for igual atualiza a
+                        % aptidão da linha
+                        aptidao_lin = aptidao_lin + aptidao_lin_temp; % se o índice da matriz for igual ao índice real, a aptidão da linha é atualziada
+                    end
+                else 
+                    passou_indice = passou_indice; % Se o elemento da matriz de índices for 0, mantém o valor de passou_indice 
+                    aptidao_lin = aptidao_lin;  % Se o elemento da matriz de índices for 0, mantém o valor da aptidão da linha
+                end
+            end
+            % marca o fim da leitura de um elemento
+             vet_aptidao_lin (l,1) = aptidao_lin;
+             aptidao_lin = 0;
+             passou_indice = 0;
+             qtd_indices = 0;
+        end % marca o fim da leitura de uma linha
+
+        % Percorre as colunas para calcular os índices
+        for m=1:n_col, 
+            for l=1:n_lin,
+                if mat_vizinho(l,m) == 1;
+                    count_1 = count_1+1; %variavel auxiliar para contar a quantidade de 's na coluna
+                    espaco = 0;
+                    if l == n_lin, 
+                        vet_indices_col_temp(l-1,m) = count_1; %verifica se o último elemento da coluna é 1 e atribui o número de 1's à matriz com os indices
+                        qtd_indices = qtd_indices +1; %quando chega na última linha, se tiver um 1, incrementa a quantidade de índices na mesma iteração
+                    end
+                else
+                    if l == 1,  % verifica se o elemento é o primeiro da coluna, se for, armazena no mesma posição, caso contrário armazena numa posição anterior,
+                                % isso é pra evitar que quando chegue na última
+                                % linha não haja espaço para armazenar, pq o
+                                % armazenamento só ocorre após a leitura do último
+                                % 1 da sequência
+                        vet_indices_lin_temp(l,m) = count_1;
+                        if mat_vizinho(l,m) == 0
+                            qtd_indices = qtd_indices;  % verifca se o elemento anterior é zero, caso verdadeiro, mantém a quantidade de índices para que esta
+                                                        % só seja incrementada ao final de uma sequência de 1's
+                        end
+                    else 
+                        vet_indices_col_temp(l-1,m) = count_1;
+                        if mat_vizinho(l-1,m) == 0
+                                qtd_indices = qtd_indices;
+                            else
+                        qtd_indices = qtd_indices +1; % após a leitura de todos os 1's incrementa a quantidade de indíces no primeiro 0 seguinte
+                        end
+                    end
+                    count_1 = 0; % se o valor do elemento for 0 o contador é zerado
+                    qtd_indices = qtd_indices; % se o valor do elemento for igual a 0 mantém a quantidade de índices
+                end
+            end
+            % marca o fim da leitura de um elemento
+            count_1 = 0;
+
+            aptidao_col_temp = 100/qtd_indices; %define a aptidão de cada grupo de 1's
+
+            for l=1:n_lin, % percorre a coluna da matriz de índice correspondente para fazer a comparação com os índices reais
+                if vet_indices_col_temp(l,m) ~= 0, % Verifica se encontra um elemento diferente de zero na matriz que guarda os índices,
+                                                   % se encontrar incrementa
+                                                   % passou_indice para guardar
+                                                   % a ordem do índice (se o
+                                                   % primeiro ou o segundo)
+                    passou_indice = passou_indice + 1;
+                    if (passou_indice == 1 || passou_indice == 2) && (vet_indices_col_temp(l,m) == mat_col(m,passou_indice))
+                            % verifica o índice com seu respectivo índice na matriz dos
+                            % índices, respoeitando a ordem e se for igual atualiza a
+                            % aptidão da linha
+                        aptidao_col = aptidao_col + aptidao_col_temp; % se o índice da matriz for igual ao índice real, a aptidão da coluna é atualziada
+                    end
+                else 
+                    passou_indice = passou_indice; % Se o elemento da matriz de índices for 0, mantém o valor de passou_indice
+                    aptidao_col = aptidao_col; % Se o elemento da matriz de índices for 0, mantém o valor da aptidão da linha
+                end
+            end
+            % marca o fim da leitura de um elemento
+             vet_aptidao_col (1,m) = aptidao_col;
+             aptidao_col = 0;
+             passou_indice = 0;
+             qtd_indices = 0;
+        end % marca o fim da leitura de uma coluna
+
+        % encontra a média das aptidoes das linhas
+        aptidao_lin_avg = mean(vet_aptidao_lin); 
+
+        % encontra a média das aptidoes das colunas
+        aptidao_col_avg = mean(vet_aptidao_col); 
+
+        % encontra a aptidão da matriz tirando a média entre as médias das aptidões das linhas e das colunas
+        aptidao_avg_vizinho = (aptidao_lin_avg + aptidao_col_avg)/2;
+        custo_vizinho = 1/aptidao_avg_vizinho;
+
+        delta_e = (custo_vizinho - custo_temp);
+        p = exp(-(delta_e)/t);
+                if delta_e < 0,
+                    % se delta_E < 0, fazer X = X'
+                    for i=1:n_lin,
+                        for j=1:n_col,
+                            mat_temp(i,j) = mat_vizinho(i,j);
+                        end        
+                    end
+                    if custo_vizinho < custo_final
+                        % se f(X') < f(X*), fazer X* = X' e atualiza o custo da
+                        % matriz final
+                        for i=1:n_lin,
+                            for j=1:n_col,
+                                mat_final(i,j) = mat_vizinho(i,j);
+                            end        
+                        end
+                            % ================================================================
+                            %                Cálculo da aptidão/custo da matriz final (X*)
+                            % ================================================================
+                            vet_indices_lin_temp (n_lin,n_col) = 0;
+                            vet_indices_col_temp (n_lin,n_col) = 0;
+                            vet_aptidao_lin = 0;
+                            vet_aptidao_col = 0;
+                            aptidao_lin_avg = 0;
+                            aptidao_col_avg = 0;
+                            % Percorre as linhas para calcular os índices
+                            for l=1:n_lin, 
+                                for m=1:n_col,
+                                    if mat_final(l,m) == 1;
+                                        count_1 = count_1+1; %variavel auxiliar para contar a quantidade de 's na linha
+                                        if m == n_col, 
+                                            vet_indices_lin_temp(l,m-1) = count_1; %verifica se o último elemento da linha é 1 e atribui o número de 1's à matriz com os indices
+                                            qtd_indices = qtd_indices +1; %quando chega na última coluna, se tiver um 1, incrementa a quantidade de índices na mesma iteração
+                                        end
+                                    else
+                                        if m == 1,  % verifica se o elemento é o primeiro da linha, se for, armazena no mesma posição, caso contrário armazena numa posição anterior,
+                                                    % isso é pra evitar que quando chegue na última
+                                                    % coluna não haja espaço para armazenar, pq o
+                                                    % armazenamento só ocorre após a leitura do último
+                                                    % 1 da sequência
+                                            vet_indices_lin_temp(l,m) = count_1;
+                                            if mat_final(l,m) == 0
+                                                qtd_indices = qtd_indices;
+                                            end
+                                        else    % se não for o primeiro elemento da linha, armazena o valor de count na posição anterior, dessa forma o valor do índice sempre será armazenado
+                                                % na posição correspondente ao último 1 da sequência da
+                                                % matriz que está sendo analisada 
+                                            vet_indices_lin_temp(l,m-1) = count_1;
+                                                if mat_final(l,m-1) == 0
+                                                    qtd_indices = qtd_indices; % verifca se o elemento anterior é zero, caso verdadeiro, mantém a quantidade de índices para que esta
+                                                                               % só seja incrementada ao final de uma sequência de 1's
+                                                else
+                                            qtd_indices = qtd_indices +1; % após a leitura de todos os 1's incrementa a quantidade de indíces no primeiro 0 seguinte
+                                            end
+                                        end
+                                        count_1 = 0; % se o valor do elemento for 0 o contador é zerado
+                                        qtd_indices = qtd_indices; % se o valor do elemento for igual a 0 mantém a quantidade de índices
+                                    end 
+                                end % marca o fim da leitura de um elemento
+                                count_1 = 0;
+
+                                aptidao_lin_temp = 100/qtd_indices; %define a aptidão de cada grupo de 1's
+
+                                for m=1:n_col, % percorre a linha da matriz de índice correspondente para fazer a comparação com os índices reais
+                                    if vet_indices_lin_temp(l,m) ~= 0, % Verifica se encontra um elemento diferente de zero na matriz que guarda os índices,
+                                                                       % se encontrar incrementa
+                                                                       % passou_indice para guardar
+                                                                       % a ordem do índice (se o
+                                                                       % primeiro ou o segundo)
+                                        passou_indice = passou_indice + 1;
+                                        if (passou_indice == 1 || passou_indice == 2) && (vet_indices_lin_temp(l,m) == mat_lin(l,passou_indice))  
+                                            % verifica o índice com seu respectivo índice na matriz dos
+                                            % índices, respoeitando a ordem e se for igual atualiza a
+                                            % aptidão da linha
+                                            aptidao_lin = aptidao_lin + aptidao_lin_temp; % se o índice da matriz for igual ao índice real, a aptidão da linha é atualziada
+                                        end
+                                    else 
+                                        passou_indice = passou_indice; % Se o elemento da matriz de índices for 0, mantém o valor de passou_indice 
+                                        aptidao_lin = aptidao_lin;  % Se o elemento da matriz de índices for 0, mantém o valor da aptidão da linha
+                                    end
+                                end
+                                % marca o fim da leitura de um elemento
+                                 vet_aptidao_lin (l,1) = aptidao_lin;
+                                 aptidao_lin = 0;
+                                 passou_indice = 0;
+                                 qtd_indices = 0;
+                            end % marca o fim da leitura de uma linha
+
+                            % Percorre as colunas para calcular os índices
+                            for m=1:n_col, 
+                                for l=1:n_lin,
+                                    if mat_final(l,m) == 1;
+                                        count_1 = count_1+1; %variavel auxiliar para contar a quantidade de 's na coluna
+                                        espaco = 0;
+                                        if l == n_lin, 
+                                            vet_indices_col_temp(l-1,m) = count_1; %verifica se o último elemento da coluna é 1 e atribui o número de 1's à matriz com os indices
+                                            qtd_indices = qtd_indices +1; %quando chega na última linha, se tiver um 1, incrementa a quantidade de índices na mesma iteração
+                                        end
+                                    else
+                                        if l == 1,  % verifica se o elemento é o primeiro da coluna, se for, armazena no mesma posição, caso contrário armazena numa posição anterior,
+                                                    % isso é pra evitar que quando chegue na última
+                                                    % linha não haja espaço para armazenar, pq o
+                                                    % armazenamento só ocorre após a leitura do último
+                                                    % 1 da sequência
+                                            vet_indices_lin_temp(l,m) = count_1;
+                                            if mat_final(l,m) == 0
+                                                qtd_indices = qtd_indices;  % verifca se o elemento anterior é zero, caso verdadeiro, mantém a quantidade de índices para que esta
+                                                                            % só seja incrementada ao final de uma sequência de 1's
+                                            end
+                                        else 
+                                            vet_indices_col_temp(l-1,m) = count_1;
+                                            if mat_final(l-1,m) == 0
+                                                    qtd_indices = qtd_indices;
+                                                else
+                                            qtd_indices = qtd_indices +1; % após a leitura de todos os 1's incrementa a quantidade de indíces no primeiro 0 seguinte
+                                            end
+                                        end
+                                        count_1 = 0; % se o valor do elemento for 0 o contador é zerado
+                                        qtd_indices = qtd_indices; % se o valor do elemento for igual a 0 mantém a quantidade de índices
+                                    end
+                                end
+                                % marca o fim da leitura de um elemento
+                                count_1 = 0;
+
+                                aptidao_col_temp = 100/qtd_indices; %define a aptidão de cada grupo de 1's
+
+                                for l=1:n_lin, % percorre a coluna da matriz de índice correspondente para fazer a comparação com os índices reais
+                                    if vet_indices_col_temp(l,m) ~= 0, % Verifica se encontra um elemento diferente de zero na matriz que guarda os índices,
+                                                                       % se encontrar incrementa
+                                                                       % passou_indice para guardar
+                                                                       % a ordem do índice (se o
+                                                                       % primeiro ou o segundo)
+                                        passou_indice = passou_indice + 1;
+                                        if (passou_indice == 1 || passou_indice == 2) && (vet_indices_col_temp(l,m) == mat_col(m,passou_indice))
+                                                % verifica o índice com seu respectivo índice na matriz dos
+                                                % índices, respoeitando a ordem e se for igual atualiza a
+                                                % aptidão da linha
+                                            aptidao_col = aptidao_col + aptidao_col_temp; % se o índice da matriz for igual ao índice real, a aptidão da coluna é atualziada
+                                        end
+                                    else 
+                                        passou_indice = passou_indice; % Se o elemento da matriz de índices for 0, mantém o valor de passou_indice
+                                        aptidao_col = aptidao_col; % Se o elemento da matriz de índices for 0, mantém o valor da aptidão da linha
+                                    end
+                                end
+                                % marca o fim da leitura de um elemento
+                                 vet_aptidao_col (1,m) = aptidao_col;
+                                 aptidao_col = 0;
+                                 passou_indice = 0;
+                                 qtd_indices = 0;
+                            end % marca o fim da leitura de uma coluna
+
+                            % encontra a média das aptidoes das linhas
+                            aptidao_lin_avg = mean(vet_aptidao_lin); 
+
+                            % encontra a média das aptidoes das colunas
+                            aptidao_col_avg = mean(vet_aptidao_col); 
+
+                            % encontra a aptidão da matriz tirando a média entre as médias das aptidões das linhas e das colunas
+                            aptidao_avg_final = (aptidao_lin_avg + aptidao_col_avg)/2;
+                            custo_final = 1/aptidao_avg_final;
+                    end
+                else 
+                    p_1 = rand(1);
+                    if p_1 < p,
+                        for i=1:n_lin,
+                            for j=1:n_col,
+                                mat_temp(i,j) = mat_vizinho(i,j);
+                            end        
+                        end
+                    end
+                end
+        % ================================================================
+        %                Atualizar T (temperatura corrente)
+        % ================================================================    
+        n_t = n_t - 1;
+    end
+    %k = k+1;
+    %t = alpha*t;
+    t = t/(1+(beta*t)); 
+    %t = 1/ log10(1+k);
+    n_ciclos = n_ciclos+1;
+end
 
 
     
