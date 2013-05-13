@@ -124,7 +124,7 @@ vet_n_temperatura (1,n_temperatura+1) = 0;
 % ******************* Parâmetros do SA **************************
 %t =1; % temperatura corrente
 t_inicial = 1; % temperatura auxiliar que vai ajudar na variação da temperatura
-alpha = 0.9; % cte de resfriamento
+alpha = 0.75; % cte de resfriamento
 k = 1;
 beta = 0.00001;
 temperatura_congelamento = 0.00001;
@@ -303,7 +303,8 @@ aptidao_avg_final = (aptidao_lin_avg + aptidao_col_avg)/2;
 custo_final = 1/aptidao_avg_final;
 
 
-while (t_inicial <= t_max),
+while (t_inicial <= t_max)
+    while alpha 
         % ================================================================
         %                Verificar condições de parada
         % ================================================================
@@ -845,6 +846,7 @@ while (t_inicial <= t_max),
         t_inicial = 2^(n_temperatura)
         vet_n_temperatura(1,n_temperatura) = t_inicial;
         vet_resultado_avg_aptidao(1,n_temperatura) = mean(vet_resultado_aptidao);
+    end
 end
 
 n_iteracoes = 1 : 1 : iter;
