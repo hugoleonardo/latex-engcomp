@@ -225,7 +225,7 @@ while(geracao < n_geracoes)
         %decrescente de avaliacao
         [aval_escolhidos_ordenado,torneio_imelhores] = sort(aval_escolhidos(:),'descend');
         
-        %guarda os indices dos elementos de melhor avaliacao
+        %acha o index do elemento de melhor avaliacao
         index_maior1 = torneio(torneio_imelhores(1));
         index_maior2 = torneio(torneio_imelhores(2));
         
