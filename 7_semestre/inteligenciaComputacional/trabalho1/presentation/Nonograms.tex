@@ -1,0 +1,171 @@
+\documentclass{beamer}
+
+% Setup appearance:
+
+\usetheme{Darmstadt}
+\usefonttheme[onlylarge]{structurebold}
+\setbeamerfont*{frametitle}{size=\normalsize,series=\bfseries}
+\setbeamertemplate{navigation symbols}{}
+
+
+% Standard packages
+
+\usepackage[brazil]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}% http://ctan.org/pkg/amsmath
+%\usepackage[table]{xcolor}
+ 
+% Setup TikZ
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\tikzstyle{block}=[draw opacity=0.7,line width=1.4cm]
+
+%diretÃ³rio das figuras
+\graphicspath{../article}
+
+\title[Extreme Chock]{%
+Nanograms%
+}
+
+\author[Souza,Medeiros,Santos,Araújo]{
+     Danilo~Souza\and
+     Hugo~Santos\and
+     Iago~Medeiros\and
+     Welton~Araújo
+     }
+
+
+\institute[Belém]{
+  \inst{1}%
+  Universidade Federal do Pará
+  }
+\date[Belém 2012]{
+  14 de Maio de 2013
+  }
+
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\section{Introdução}
+\begin{frame}{Nonograms}  
+  \begin{itemize}
+    \item	Algoritmo Genético (AG)
+    \item	Simulated Annealing (SA)
+  \end{itemize}
+\end{frame}
+
+\section{Nonograms}
+\begin{frame}{Nonograms (Hanjie ou Griddlers)}
+	\begin{itemize}
+		\item No problema é dada uma matriz com um certo número de linhas e colunas. Deve-se preencher a matriz de acordo com os números sugeridos em cada linha e matriz.
+		\item Os números sugeridos são chamados de pesos. Haverá pesos em cada linha e cada coluna. No nosso exemplo, só há uma solução possível para o nosso problema.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Sobre os Pesos}
+	\begin{itemize}
+	\item Então, se em uma linha está escrito os pesos (2 3), significa que naquela linha, teremos duas e três celulas preenchidas respectivamente com, pelo menos, uma célula em branco (não preenchida) entre elas.
+	\item Dessa forma, cada distribuição de peso informada nas linhas e colunas matriz, renderá uma solução única (uma imagem única).
+	\end{itemize}
+\end{frame}   
+
+\begin{frame}{Nonograms em outras mídias}
+	\begin{itemize}
+	\item Começou a ser publicado em revistas japonesas a partir de 1987. No Brasil, foi publicado pela editora Coquetel na revista chamada Logic Pix.
+	\item Nos videogames, teve mais sucesso. Foram lançados várias versões para o Gameboy e Snes. Entre elas o Mario Picross. Posteriormente, o NDS recebeu os jogos Picross DS e Picross 3D.
+	\end{itemize}
+\end{frame} 
+
+\section{AG}
+\begin{frame}{Modelando AG para o problema}
+	\begin{itemize}
+		\item Indivíduo é a matriz.
+		\item População inicial é gerada randomicamente, com a linha certa e coluna errada.
+		\item Taxa de crossover: 75%
+		\item Pais são escolhidos por torneio (3).
+		\item Nova população é composta pelos pais e por seus filhos. População antiga é descartada.
+		\item Solução ideal: quem tiver aptidão média máxima.
+	\end{itemize}
+\end{frame}
+
+\section{Simulated Annealing}
+\begin{frame}{Simulated Annealing (SA)}
+	\begin{itemize}
+		\item Também chamado de recozimento simulado.
+		\item Simula o processo físico de recozimento de metais e o problema de otimização
+		\item Está classificado na categoria de algoritmo metaheurístico.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Princípio da Mecânica Estatística}
+	\begin{itemize}
+		\item \textit{SA} se baseia nos princípios da mecânica estatística
+		\item É uma área interessada em estudar o comportamento termodinâmico dos materiais
+		\item O algoritmo foi proposto por Scoot Kirkpatrick (1983), baseado no algoritmo de Metropolis (1953)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Explicando a teoria do recozimento}
+	\begin{itemize}
+		\item Nesse problema, busca-se encontrar uma solução ótima para o processo de fabricação de metais
+		\item O sólido é aquecido além do seu ponto de fusão (temperatura altíssima) e depois é resfriado gradualmente até uma temperatura desejada (ou estável)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Sobre o resfriamento}
+	\begin{itemize}
+		\item O resfriamento devagar garante uma estrutura cristalina livre de imperfeições (baixa energia interna)
+		\item Se o resfriamento for feito de forma muito rápida (ou descuidada), teremos uma estrutura com cristais defeituosos ou que a estrutura se torne vidro (que é uma solução apenas ótima localmente).
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Sobre a variação de energia}
+	\begin{itemize}
+		\item Um dos conceitos fundamentais para o recozimento simulado é o cálculo da energia interna no material.
+	\end{itemize}
+	\begin{equation}
+		P(\Delta E) = e^\frac{-\Delta E}{k_bT}
+	\end{equation}
+	\begin{itemize}
+		\item Essa exponencial também é chamada de Critério de Metropolis
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Sobre a variação de energia}
+	\begin{itemize}
+		\item A cada passo do algoritmo, verifica-se se o novo estado é de energia menor (menos custoso) que o estado atual (mais custoso). 
+	\end{itemize}
+	Se sim, troca.
+	Se não, mantém.
+	\begin{itemize}
+		\item O custo, no nosso exemplo, é simbolizado pelo inverso da aptidão média da matriz.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Sobre a variação de temperatura}
+	\begin{itemize}
+		\item Podemos usar várias equações para a taxa de resfriamento 
+		\item Geométrica $T = \alpha T$
+		\item $T = \frac{T}{(1 + \beta T)}$
+		\item $T = \frac{c}{[\log (1+k)]}$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Modelando SA para o problema}
+	\begin{itemize}
+		\item Indivíduo é a matriz.
+		\item Taxa de resfriamento adotada: geométrica com índices (0.8 ou 0.95 ou 0.99).
+		\item Algoritmo trocará o indivíduo atual por um novo, se o novo for menos custoso (maior aptidão média).
+	\end{itemize}
+\end{frame}
+
+\end{document}
