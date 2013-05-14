@@ -16,9 +16,9 @@
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}% http://ctan.org/pkg/amsmath
 %\usepackage[table]{xcolor}
- 
-% Setup TikZ
+\usepackage{multicol} 
 
+% Setup TikZ
 \usepackage{tikz}
 \usetikzlibrary{arrows}
 \tikzstyle{block}=[draw opacity=0.7,line width=1.4cm]
@@ -97,7 +97,20 @@ Nanograms%
 	\end{itemize}
 \end{frame}
 
+\subsection{Crossover}
+\begin{frame}{Crossover}
+
+\end{frame}
+
+\subsection{Mutação}
+\begin{frame}{Mutação}
+
+\end{frame}
+
 \section{Simulated Annealing}
+
+\subsection{Explicando o SA}
+
 \begin{frame}{Simulated Annealing (SA)}
 	\begin{itemize}
 		\item Também chamado de recozimento simulado.
@@ -121,6 +134,7 @@ Nanograms%
 	\end{itemize}
 \end{frame}
 
+
 \begin{frame}{Sobre o resfriamento}
 	\begin{itemize}
 		\item O resfriamento devagar garante uma estrutura cristalina livre de imperfeições (baixa energia interna)
@@ -128,7 +142,7 @@ Nanograms%
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Sobre a variação de energia}
+\begin{frame}{Sobre a variação de Energia}
 	\begin{itemize}
 		\item Um dos conceitos fundamentais para o recozimento simulado é o cálculo da energia interna no material.
 	\end{itemize}
@@ -140,32 +154,184 @@ Nanograms%
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Sobre a variação de energia}
+\begin{frame}{Sobre a variação de Energia e Temperatura}
 	\begin{itemize}
 		\item A cada passo do algoritmo, verifica-se se o novo estado é de energia menor (menos custoso) que o estado atual (mais custoso). 
 	\end{itemize}
 	Se sim, troca.
+	
 	Se não, mantém.
 	\begin{itemize}
 		\item O custo, no nosso exemplo, é simbolizado pelo inverso da aptidão média da matriz.
 	\end{itemize}
-\end{frame}
-
-\begin{frame}{Sobre a variação de temperatura}
 	\begin{itemize}
 		\item Podemos usar várias equações para a taxa de resfriamento 
-		\item Geométrica $T = \alpha T$
-		\item $T = \frac{T}{(1 + \beta T)}$
-		\item $T = \frac{c}{[\log (1+k)]}$
+			\begin{itemize}
+				\item $T = \alpha T$
+				\item $T = \frac{T}{(1 + \beta T)}$
+				\item $T = \frac{c}{[\log (1+k)]}$
+			\end{itemize}	
 	\end{itemize}
 \end{frame}
 
+\subsection{Modelagem do SA}
 \begin{frame}{Modelando SA para o problema}
 	\begin{itemize}
 		\item Indivíduo é a matriz.
-		\item Taxa de resfriamento adotada: geométrica com índices (0.8 ou 0.95 ou 0.99).
-		\item Algoritmo trocará o indivíduo atual por um novo, se o novo for menos custoso (maior aptidão média).
+		\item Variação da temperatura inicial: $ t\_inicial = 2^{n\_temperatura} $
+		\item Taxa de resfriamento adotada: $T = \alpha T$ com $\alpha = 0.8$ e $\alpha = 0.95$.
+		\item Número de iterações com a mesma temperatura (N\_t): 10, 100 e 1000
+		\item Algoritmo trocará o indivíduo atual por um novo, se o novo for menos custoso (maior aptidão 				média).
+		\item Escolha da solução inicial
+		\item Escolha do vizinho
+			\begin{itemize}
+				\item Método 1: Aleatória
+				\item Método 2: Escolhe aleatoriamente uma linha ou coluna da matriz para corrigir
+			\end{itemize}
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{O Programa}
+	\begin{itemize}
+		\item Definir uma solução inicial
+		\item Escolher um vizinho
+		\item Comparar os custos
+			\begin{itemize}
+				\item Média das linhas (aptidao\_lin\_avg)
+				\item Média das colunas (aptidao\_col\_avg)
+				\item Média da matriz (aptidao\_avg\_final)
+				\item Custo = 1/Média da matriz
+			\end{itemize}
+		\item Termina um ciclo de resfriamento	
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{A simulação}
+	\begin{itemize}
+		\item Cria um loop que varia a temperatura inicial
+		\item Temperaturas máximas simuladas: 2048 e 131072
+		\item Calcula a aptidão média de cada temperatura (vet\_resultado\_aptidao)
+		\item Armazena a aptidão média de cada temperatura (vet\_resultado\_avg\_aptidao) 	
+	\end{itemize}
+\end{frame}
+
+\subsection{Resultados}
+
+\begin{frame}{Resultados SA - T\_max = 2048 e N\_t = 10}
+	\begin{multicols}{2}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.35]{./pictures/grafico_SA_nt10_alpha08_temp2048.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:alpha08nt10tmax2048}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.35]{./pictures/grafico_SA_nt10_alpha095_temp2048.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:alpha095nt10tmax2048}
+		\end{figure}
+	\end{multicols}	
+\end{frame}
+
+\begin{frame}{Resultados SA - T\_max = 2048 e N\_t = 100}
+	\begin{multicols}{2}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.35]{./pictures/grafico_SA_nt100_alpha08_temp2048.png}
+			%\caption{$ \alpha = 0.8$, N_t = 100, T_max = 2048}
+			\label{fig:alpha08nt100tmax2048}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.35]{./pictures/grafico_SA_nt100_alpha095_temp2048.png}
+			%\caption{$ \alpha = 0.8$, N_t = 100, T_max = 2048}
+			\label{fig:alpha095nt100tmax2048}
+		\end{figure}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Resultados SA - T\_max = 2048 e N\_t = 1000}
+	\begin{multicols}{2}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.35]{./pictures/grafico_SA_nt1000_alpha08_temp2048.png}
+			%\caption{$ \alpha = 0.8$, N_t = 100, T_max = 2048}
+			\label{fig:alpha08nt1000tmax2048}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.35]{./pictures/grafico_SA_nt1000_alpha095_temp2048.png}
+			%\caption{$ \alpha = 0.8$, N_t = 100, T_max = 2048}
+			\label{fig:alpha095nt1000tmax2048}
+		\end{figure}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Resultados SA - N\_t = 10 e $\alpha = 0.8$}
+	\begin{multicols}{2}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.35]{./pictures/grafico_SA_nt10_alpha08_temp2048.png}
+			%\caption{$ \alpha = 0.8$, N_t = 100, T_max = 2048}
+			\label{fig:alpha08nt10tmax2048}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.35]{./pictures/grafico_SA_nt10_alpha08_temp131072.png}
+			%\caption{$ \alpha = 0.8$, N_t = 100, T_max = 2048}
+			\label{fig:alpha08nt10tmax131072}
+		\end{figure}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Resultados SA - N\_t = 100 e $\alpha = 0.8$}
+	\begin{multicols}{2}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.35]{./pictures/grafico_SA_nt100_alpha08_temp2048.png}
+			%\caption{$ \alpha = 0.8$, N_t = 100, T_max = 2048}
+			\label{fig:alpha08nt100tmax2048}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.35]{./pictures/grafico_SA_nt100_alpha08_temp131072.png}
+			%\caption{$ \alpha = 0.8$, N_t = 100, T_max = 2048}
+			\label{fig:alpha08nt100tmax131072}
+		\end{figure}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Resultados SA - N\_t = 1000 e $\alpha = 0.8$}
+	\begin{multicols}{2}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.35]{./pictures/grafico_SA_nt1000_alpha08_temp2048.png}
+			%\caption{$ \alpha = 0.8$, N_t = 100, T_max = 2048}
+			\label{fig:alpha08nt1000tmax2048}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.35]{./pictures/grafico_SA_nt1000_alpha08_temp131072.png}
+			%\caption{$ \alpha = 0.8$, N_t = 100, T_max = 2048}
+			\label{fig:alpha08nt1000tmax131072}
+		\end{figure}
+	\end{multicols}
+\end{frame}
+
+\section{Conclusões}
+	\begin{frame}
+		\begin{itemize}
+			\item Sobre o AG
+				\begin{itemize}
+				\item teste
+				\end{itemize}
+			\item Sobre o SA
+				\begin{itemize}
+					\item Temperaturas muito altas não convergem par uma solução ótima
+					\item Quanto mais lento for o resfriamento melhor
+					\item O número de iterações com a mesma temperatura é um fator importante
+				\end{itemize}
+		\end{itemize}
+	\end{frame}
 \end{document}
