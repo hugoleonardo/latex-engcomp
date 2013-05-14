@@ -170,9 +170,14 @@ while(geracao < n_geracoes)
                 n
                 geracao
                 squeeze(ger_atual(n,:,:))
-                max_
-                intervalo = 1:1:n_geracoes;
-                plot(intervalo, max_aval);
+                max_aval(geracao)=1;
+                solucao(geracao)=1;
+                for k=1:geracao,
+                    solucao(k)=max_aval(k);
+                end
+                intervalo = 1:1:geracao;
+                plot(intervalo, solucao);
+                title('Aptidão por geração'); xlabel('Geração'); ylabel('Aptidão');
                 pause;
             end
             
@@ -352,44 +357,68 @@ while(geracao < n_geracoes)
                 end
             end
             peso_selecionado_mut = randi([1,contador_peso_mut]);
-            %mapeamento para a mutação
+            
+            %mapeamento para a mutacao
             for i=1:ncol,
+                %se o primeiro elemento da linha selecionada for igual a 1
                 if(ger_atual(n,linha_mut,i)==1 && i==1)
+                    %o campo associado do vetor auxiliar fica = a 1
                     aux_mut(i) = 1;
+                    %essa flag é ativada para mostrar que uma sequencia de
+                    %x foi achada
                     flag_mut = true;
+                    %auxiliar para achar o peso selecionado
                     parte_mut = parte_mut+1;
+                    %se achar o peso selecionado entra no if e encontra o
+                    %primeiro indice desse peso
                     if(parte_mut==peso_selecionado_mut)
                         index_mut(1) = 1;
                     end
                 end
-                
+                 %se o campo for igual a 1
                 if(ger_atual(n,linha_mut,i)==1)
+                    %indica que encontrou um grupo de 1
                     if(flag_mut~=true)
+                        %incrementa o auxiliar
                         parte_mut = parte_mut+1;
                         flag_mut = true;
+                        
+                    %se achar o peso selecionado entra no if e encontra o
+                    %primeiro indice desse peso
                         if(parte_mut==peso_selecionado_mut)
                             index_mut(1) = i;
                         end
                     end
+                    %coloca um numero 2 ao lado esquerdo do grupo de 1's
+                    %que nao foi selecionado para a mutacao, so entrara
+                    %quando existir mais de um grupo de 1's
                     if(contador_peso_mut>1 && parte_mut~=peso_selecionado_mut && i~=1)
                         if(aux_mut(i-1)==0)
                             aux_mut(i-1)=2;
                         end
                     end
                     aux_mut(i) = 1;
+                    %se o grupo selecionado estiver terminando no final da
+                    %linha pega-se o index final deste grupo.
                     if(i==ncol && parte_mut==peso_selecionado_mut)
                         index_mut(2) = i;
                     end
                 end
-                
+                %se encontrar um 0 coloca-se o campo do vetor auxiliar
+                %igual a 0
                 if(ger_atual(n,linha_mut,i)==0)
                     aux_mut(i) = 0;
                 end
-                
+                %indica que foi percorrido o grupo inteiro de 1's e
+                %encontrou-se outro 0
                 if(ger_atual(n,linha_mut,i)==0 && flag_mut==true)
+                    %se o grupo nao for o selecionado coloca-se um 2 para
+                    %realizar o mapeamento
                     if(parte_mut~=peso_selecionado_mut)
                         aux_mut(i) = 2;
                     end
+                    %se for o grupo selecionado para a mutacao o indice
+                    %final é guardado
                     if(parte_mut==peso_selecionado_mut)
                         index_mut(2) = i-1;
                     end
@@ -398,39 +427,64 @@ while(geracao < n_geracoes)
             end
             %esquerda = 1 e direita = 2
             left_or_right_mut = randi(1:2);
+            %numero de casas da mutacao
             casas_mut = randi([1,ncol - sum(peso_mut)]);
             
             %mutação para a esquerda
             if(left_or_right_mut == 1)
+                %enquanto houver chance de mutacao
                 while(casas_mut>1)
+                    %verificar se é possível andar para a esquerda sem que
+                    %estoure o tamanho do vetor
                     if(index_mut(1)-casas_mut<1)
                         casas_mut = casas_mut-1;
                     else
+                        %com este verificador é possível saber se é
+                        %possível realizar a mutacao, ela só será possível
+                        %se os campos varridos foram sempre 1
                         for i=index_mut(1)-casas_mut:index_mut(1)-1
                             verificador_mut = aux_mut(i)+verificador_mut;
                         end
+                        %se o verificador for igual a 0 a mutacao é
+                        %possível
                         if(verificador_mut==0)
+                            %adiciona 1 nos campos onde o shift sera
+                            %realizado
                             for i=index_mut(1)-casas_mut:index_mut(1)-1
                                 aux_mut(i) = 1;
                             end
+                            %zera os campos do antigo lugar do grupo de 1's
                             for i=index_mut(2)-casas_mut+1:index_mut(2)
                                 aux_mut(i)=0;
                             end
+                            %se a mutacao foi realizada o numero de casas e
+                            %zerado, que realizara a quebra do loop
                             casas_mut = 0;
                         else
+                            %se a mutacao nao pode ser realizada o numero
+                            %de casas para a mutacao e decrescido de 1 ate
+                            %que a mutacao seja possivel
                             casas_mut = casas_mut-1;
                         end
                     end
                 end
                 %mutação para direita
             else
+                %enquanto houver chance de mutacao
                 while(casas_mut>1)
+                    %verificar se é possível andar para a direita sem que
+                    %estoure o tamanho do vetor
                     if(index_mut(2)+casas_mut>ncol)
                         casas_mut = casas_mut-1;
                     else
+                        %com este verificador é possível saber se é
+                        %possível realizar a mutacao, ela só será possível
+                        %se os campos varridos foram sempre 1
                         for i=index_mut(2)+1:index_mut(2)+casas_mut
                             verificador_mut = aux_mut(i)+verificador_mut;
                         end
+                        %se o verificador for igual a 0 a mutacao é
+                        %possível
                         if(verificador_mut==0)
                             for i=index_mut(2)+1:index_mut(2)+casas_mut
                                 aux_mut(i) = 1;
@@ -460,6 +514,14 @@ while(geracao < n_geracoes)
     
   
 end
+
+solucao(geracao-1)=0;
+for k=1:n_geracoes-1,
+    solucao(k)=max_aval(k);
+end
+intervalo = 1:1:n_geracoes-1;
+plot(intervalo, solucao);
+title('Aptidão por geração'); xlabel('Geração'); ylabel('Aptidão');
 
 
 
