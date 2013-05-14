@@ -97,9 +97,81 @@ Nanograms%
 	\end{itemize}
 \end{frame}
 
-\subsection{Crossover}
-\begin{frame}{Crossover}
+\subsection{Princípios básicos}
+\begin{frame}{Definiçoes básicas}
+	\begin{itemize}
+		\item Indivíduo: matriz 9x8
+		\item Codificaçao: binária
+		\item Funçao de aptidão: porcentagem certa
+		\item Reproduçao: troca de linhas
+		\item Convergência: ?????
+	\end{itemize}
+\end{frame}
 
+\subsection{Populaçao Inicial}
+\begin{frame}{Processo}
+	\begin{itemize}
+		\item Gera-se uma quantidade de indivíduos que se mantida de geração em geração
+		\item As linhas são geradas de forma aleatória, porém os critérios das linhas serão sempre respeitados
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Exemplo}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.5] {./pictures/exemploMatriz.png}
+		%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+		\label{fig:exemploMatriz}
+	\end{figure}
+\end{frame}
+
+\subsection{Avaliação}
+\begin{frame}{Processo}
+	\begin{itemize}
+		\item Cada indivíduo é avaliado de acordo com a sua porcentagem de aproximação da resposta
+		\item A nota é é particionada por coluna e também por elemento certo na coluna
+		\item Cada coluna retorna uma avaliaçao, corresponde a 1/8 do valor da avaliaçao do indivíduo
+		\item Uma média ponderada com a avaliação de cada coluna é a avaliação de um indivíduo
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Exemplo 1 - 2 grupos esperados e 2 grupos achados}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.5] {./pictures/avalExemplo1.png}
+		%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+		\label{fig:avalExemplo1}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Exemplo 2 - 2 grupos esperados e 3 grupos achados}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.5] {./pictures/avalExemplo2.png}
+		%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+		\label{fig:avalExemplo2}
+	\end{figure}
+\end{frame}
+
+\subsection{Seleção}
+\begin{frame}{Processo}
+	\begin{itemize}
+		\item Realizada por torneio
+		\item O escolhido é marcado para não poder ser escolhido novamente dentro de um novo torneio
+		\item Caso o vencedor de um torneio seja alguém que já tenha sido escolhido, o segundo colocado é escolhido. Caso o segundo também tenha sido, o terceiro é escolhido.
+		\item Metade da população da próxima geração é selecionada no torneio
+	\end{itemize}
+\end{frame}
+
+\subsection{Reprodução}
+\begin{frame}{Processo}
+	\begin{itemize}
+		\item Cruza-se dois indivíduos aleatórios da população selecionada por torneio
+		\item Podem cruzar ou não, depende da taxa de crossover
+		\item Crossover de ponto único escolhido aleatoriamente
+		\item A parte 1 vem do pai 1 e parte 2 vem do pai 2, ou vice-versa
+		\item Há cruzamentos até que a próxima geração o mesmo número de indivíduos da geração atual
+	\end{itemize}
 \end{frame}
 
 \subsection{Mutação}
