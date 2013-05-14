@@ -86,7 +86,7 @@ Nanograms%
 	\begin{itemize}
 		\item Indivíduo é a matriz.
 		\item População inicial é gerada randomicamente, com a linha certa e coluna errada
-		\item Taxa de crossover: 75%
+		\item Taxa de crossover: 75\%
 		\item Pais são escolhidos por torneio
 		\item Nova população é composta pelos pais e por seus filhos. População antiga é descartada
 		\item Solução ideal: quem tiver aptidão média máxima.
@@ -100,15 +100,15 @@ Nanograms%
 		\item Codificaçao: binária
 		\item Funçao de aptidão: porcentagem certa
 		\item Reproduçao: troca de linhas
-		\item Convergência: ?????
+%		\item Convergência: ?????
 	\end{itemize}
 \end{frame}
 
 \subsection{Populaçao Inicial}
 \begin{frame}{Processo}
 	\begin{itemize}
-		\item Gera-se uma quantidade de indivíduos que se mantida de geração em geração
-		\item As linhas são geradas de forma aleatória, porém os critérios das linhas serão sempre respeitados
+		\item Gera-se uma quantidade de indivíduos que se mantém de geração em geração
+		\item As linhas são geradas de forma aleatória, porém os critérios das linhas são sempre respeitados
 	\end{itemize}
 \end{frame}
 
@@ -166,7 +166,7 @@ Nanograms%
 		\item Podem cruzar ou não, depende da taxa de crossover
 		\item Crossover de ponto único escolhido aleatoriamente
 		\item A parte 1 vem do pai 1 e parte 2 vem do pai 2, ou vice-versa
-		\item Há cruzamentos até que a próxima geração o mesmo número de indivíduos da geração atual
+		\item Há cruzamentos até que a próxima geração tenha o mesmo número de indivíduos da geração atual
 	\end{itemize}
 \end{frame}
 
@@ -226,6 +226,66 @@ Nanograms%
 		\item Se após várias verificações, o número de casa for decrescido até chegar a zero, a mutação não é realizada	
 	\end{itemize}
 \end{frame}
+
+\subsection{Resultados}
+\begin{frame}{Simulações sem solução}
+	\begin{multicols}{2}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.25]{./pictures/semSolucao1.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:semSolucao1}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.25]{./pictures/semSolucao2.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:semSolucao2}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.25]{./pictures/semSolucao3.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:semSolucao3}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.25]{./pictures/semSolucao4.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:semSolucao4}
+		\end{figure}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Simulações com solução}
+	\begin{multicols}{2}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.25]{./pictures/solucao1.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:solucao1}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.25]{./pictures/solucao2.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:solucao2}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.25]{./pictures/solucao3.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:solucao3}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.25]{./pictures/solucao4.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:solucao4}
+		\end{figure}
+	\end{multicols}
+\end{frame}
+
 
 \section{Simulated Annealing}
 
@@ -444,7 +504,10 @@ Nanograms%
 		\begin{itemize}
 			\item Sobre o AG
 				\begin{itemize}
-				\item teste
+					\item O AG mostrou-se uma boa forma de se resolver o problema proposto
+					\item Mostrou-se mais rápido que o SA e ainda achou a solução
+					\item Mutação teve um papel de destaque
+					\item Tempo de execução baixo
 				\end{itemize}
 			\item Sobre o SA
 				\begin{itemize}
