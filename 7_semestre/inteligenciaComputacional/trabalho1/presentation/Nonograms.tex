@@ -175,8 +175,60 @@ Nanograms%
 \end{frame}
 
 \subsection{Mutação}
-\begin{frame}{Mutação}
+\begin{frame}{Processo}
+	\begin{itemize}
+		\item A mutação é feita em apenas uma linha da matriz, selecionada aleatoriamente
+		\item A mutação altera apenas um grupo de 1\textquotesingle s
+		\item A mudança ocorre movendo o grupo para a direita ou esquerda
+		\item É necessário mapear a matriz para saber se mutação é possível
+	\end{itemize}
+\end{frame}
 
+\begin{frame}{Mapeamento}
+	\begin{itemize}
+		\item O mapeamento é realizado colocando-se em um vetor auxiliar todos os 1\textquotesingle s da linha em que ocorre a mutação
+		\item Ao lado de cada grupo de 1\textquotesingle s não selecionado, marca-se com o número 2, indicando que não é possível chegar naquele campo 
+			\begin{figure}[h]
+				\centering
+				\includegraphics[scale=0.75]{./pictures/exemplo_mutacao_1.png}
+				%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+				\label{fig:exemplomutacao1}
+			\end{figure}	
+		\item Nesta linha foi selecionado o primeiro grupo de 1\textquotesingle s com 3 casas para a direita
+	\end{itemize}	
+\end{frame}
+
+\begin{frame}{Mapeamento}
+	\begin{itemize}
+		\item O mapeamento deste exemplo fica da seguinte forma:
+			\begin{figure}[h]
+				\centering
+				\includegraphics[scale=0.75]{./pictures/exemplo_mutacao_2.png}
+				%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+				\label{fig:exemplomutacao2}
+			\end{figure}		
+		\item O grupo que não foi selecionado tem um 2 no campo logo anterior ao grupo
+		\item É realizada uma tentativa de mutação com 3 casas para a direita, como isto não é possível, então este número é decrescido de 1 e a mutação é realizada
+			\begin{figure}[h]
+				\centering
+				\includegraphics[scale=0.75]{./pictures/exemplo_mutacao_3.png}
+				%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+				\label{fig:exemplomutacao3}
+			\end{figure}	
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Mapeamento}
+	\begin{itemize}
+		\item Por último os números 2 da matriz são zerados
+			\begin{figure}[h]
+				\centering
+				\includegraphics[scale=0.75]{./pictures/exemplo_mutacao_4.png}
+				%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+				\label{fig:exemplomutacao4}
+			\end{figure}
+		\item Se após várias verificações, o número de casa for decrescido até chegar a zero, a mutação não é realizada	
+	\end{itemize}
 \end{frame}
 
 \section{Simulated Annealing}
