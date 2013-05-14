@@ -16,7 +16,8 @@
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}% http://ctan.org/pkg/amsmath
 %\usepackage[table]{xcolor}
-\usepackage{multicol} 
+\usepackage{multicol}
+\usepackage{textcomp} 
 
 % Setup TikZ
 \usepackage{tikz}
@@ -54,13 +55,8 @@ Nanograms%
   \titlepage
 \end{frame}
 
-
-\section{Introdução}
-\begin{frame}{Nonograms}  
-  \begin{itemize}
-    \item	Algoritmo Genético (AG)
-    \item	Simulated Annealing (SA)
-  \end{itemize}
+\begin{frame}
+  \tableofcontents
 \end{frame}
 
 \section{Nonograms}
@@ -186,15 +182,15 @@ Nanograms%
 
 \begin{frame}{Mapeamento}
 	\begin{itemize}
-		\item O mapeamento é realizado colocando-se em um vetor auxiliar todos os 1\textquotesingle s da linha em que ocorre a mutação
-		\item Ao lado de cada grupo de 1\textquotesingle s não selecionado, marca-se com o número 2, indicando que não é possível chegar naquele campo 
+		\item O mapeamento é realizado colocando-se em um vetor auxiliar todos os 1\textquotesingle s da 				linha em que ocorre a mutação
+		\item Ao lado de cada grupo de 1\textquotesingle s não selecionado, marca-se com o número 2,	 				indicando que não é possível chegar naquele campo 
 			\begin{figure}[h]
 				\centering
 				\includegraphics[scale=0.75]{./pictures/exemplo_mutacao_1.png}
 				%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
 				\label{fig:exemplomutacao1}
 			\end{figure}	
-		\item Nesta linha foi selecionado o primeiro grupo de 1\textquotesingle s com 3 casas para a direita
+		\item Nesta linha foi selecionado o primeiro grupo de 1\textquotesingle s com 3 casas para a 				direita
 	\end{itemize}	
 \end{frame}
 
