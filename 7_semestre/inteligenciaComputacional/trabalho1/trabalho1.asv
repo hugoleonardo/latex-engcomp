@@ -486,23 +486,14 @@ while(geracao < n_geracoes)
                         %se o verificador for igual a 0 a mutacao é
                         %possível
                         if(verificador_mut==0)
-                            %adiciona 1 nos campos onde o shift sera
-                            %realizado
                             for i=index_mut(2)+1:index_mut(2)+casas_mut
                                 aux_mut(i) = 1;
                             end
-                            %zera os campos do antigo lugar do grupo de 1's
                             for i=index_mut(1):index_mut(1)+casas_mut-1
                                 aux_mut(i)=0;
                             end
-                            %se a mutacao foi realizada o numero de casas e
-                            %zerado, que realizara a quebra do loop
                             casas_mut = 0;
                         else
-                            
-                            %se a mutacao nao pode ser realizada o numero
-                            %de casas para a mutacao e decrescido de 1 ate
-                            %que a mutacao seja possivel
                             casas_mut = casas_mut-1;
                         end
                     end
@@ -513,10 +504,8 @@ while(geracao < n_geracoes)
                 peso_mut(aux)=0;
             end
             for j=1:ncol,
-                %zera os lugares onde existe 2
                 if(aux_mut(j)==2)
                 aux_mut(j)=0;
-                %substitui a linha pela linha mutada
                 end
                 ger_atual(n,linha_mut,j) = aux_mut(j);
             end
