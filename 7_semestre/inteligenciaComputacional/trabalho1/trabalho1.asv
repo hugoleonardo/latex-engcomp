@@ -170,13 +170,9 @@ while(geracao < n_geracoes)
                 n
                 geracao
                 squeeze(ger_atual(n,:,:))
-                max_aval(geracao)=1;
-                solucao(geracao)=1;
-                for k=1:geracao,
-                    solucao(k)=max_aval(k);
-                end
-                intervalo = 1:1:geracao;
-                plot(intervalo, solucao);
+                max_
+                intervalo = 1:1:n_geracoes;
+                plot(intervalo, max_aval);
                 pause;
             end
             
