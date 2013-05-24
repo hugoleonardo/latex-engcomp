@@ -1,0 +1,24 @@
+
+1) 	i) k = 2, 
+		tal = 0.1 : Ts = 0.404
+		tal = 1 : Ts = 3.92
+		tal = 10: Ts = 39.1
+	ii) psi = 1;
+		k = 0.1 : Ts = 4.1
+		k = 1 : Ts = 4.1
+		k = 10 : Ts = 4.1
+2)	i) Wn = 2, k = 8
+		psi = 1 : o sistema se aproxima de um sistema de 1ª ordem, pois o valor de psi é alto, Ts = 0.921 , Vr = 8
+		psi = 0.7 Ts = 2.99 , Mp (2%) = 0.046 ,Tp = 2.2, Vp = 8.368, Vr = 8
+		psi = 0.2 Ts = 9.6823, Mp (2%) = 0.486365 ,Tp = 1.805, Vp = 11.8906, Vr = 8
+	ii) Wn = 10, k = 8	
+		psi = 1 o sistema se aproxima de um sistema de 1ª ordem, pois o valor do numerador é alto, Ts = 19.4 , Vr = 200
+		psi = 0.7  o sistema se aproxima de um sistema de 1ª ordem, pois o valor do numerador é alto, Ts = 13.5 , Vr = 200 //("Ts = , Mp (2%) = ,Tp = , Vp = , Vr =")
+		psi = 0.2 o sistema se aproxima de um sistema de 1ª ordem, pois o valor do numerador é alto, Ts = 2.625 , Vr = 200
+3)	K = 12.5
+	Kn = 0.178
+	Ts = 1.49
+	Mp = 0.21
+	Tp = 1
+	
+	Mp = (Vp - Vr)/Vr)*100
