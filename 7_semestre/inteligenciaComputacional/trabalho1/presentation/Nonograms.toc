@@ -1,0 +1,16 @@
+\beamer@endinputifotherversion {3.24pt}
+\select@language {brazil}
+\beamer@sectionintoc {1}{Nonograms}{3}{0}{1}
+\beamer@sectionintoc {2}{AG}{6}{0}{2}
+\beamer@subsectionintoc {2}{1}{Princ\IeC {\'\i }pios b\'asicos}{7}{0}{2}
+\beamer@subsectionintoc {2}{2}{Popula\c cao Inicial}{8}{0}{2}
+\beamer@subsectionintoc {2}{3}{Avalia\c c\~ao}{10}{0}{2}
+\beamer@subsectionintoc {2}{4}{Sele\c c\~ao}{13}{0}{2}
+\beamer@subsectionintoc {2}{5}{Reprodu\c c\~ao}{14}{0}{2}
+\beamer@subsectionintoc {2}{6}{Muta\c c\~ao}{15}{0}{2}
+\beamer@subsectionintoc {2}{7}{Resultados}{19}{0}{2}
+\beamer@sectionintoc {3}{Simulated Annealing}{21}{0}{3}
+\beamer@subsectionintoc {3}{1}{Explicando o SA}{21}{0}{3}
+\beamer@subsectionintoc {3}{2}{Modelagem do SA}{27}{0}{3}
+\beamer@subsectionintoc {3}{3}{Resultados}{30}{0}{3}
+\beamer@sectionintoc {4}{Conclus\~oes}{36}{0}{4}
