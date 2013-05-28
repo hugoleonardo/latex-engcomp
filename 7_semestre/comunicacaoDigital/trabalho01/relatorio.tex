@@ -168,4 +168,36 @@ Os efeitos do número de ní­veis do quantizador tiveram grande influência para qu
 				\end{itemize}
 		\end{itemize}
 	Após estas análises, percebe-se que é importante manter um equilíbrio entre o número de coeficientes que será utilizado na série de Fourier e o período do sinal a ser representado. Foi possível também constatar por meio destas simulações o conhecimento aprendido em sala de aula, de que quanto mais coeficientes na série melhor será a representação do sinal, neste caso a função $sinc$.
+\chapter{Transformada de Fourier}
+
+\section{Funcionamento}
+O código mostra o cálculo da transformada de fourier de: 
+\begin{equation}
+e^{-2tu(t)}
+\end{equation} 
+É necessário, para o código, que se calcule os valores de $T_{0}$ e $T_{s}$. Os valores usados são $T_{s} = 1/64$ e $T_{0} = 4$. Assim $N_{0}$ fica igual a 256 amostras.
+
+\section{Resultados}
+Se os valores de $T_{0}$ e $T_{s}$ forem modificados, o sinal perde a característica que realmente deveria ter, se o $T_{s}$ for aumentado deixando o $T_{0}$ constante o sinal perde a caracteristica de exponencial e passa a ter o formato de um polinômio de segundo grau. Com o $T_{0}$ sendo aumentado e o $T_{s}$ mantido constante a exponencial convergirá rapidamente. Os dois elementos variados aumenta o número de amostrar $N_{0}$ mas apenas o $T_{s}$ esta diretamente ligado ao sinal usado na transformada e por isso acaba mudando a característica do mesmo.
+
+%\begin{multicols}{1}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.75]{./pictures/cap3grafico1.png}
+	\caption{ Ts =1/8, T0 = 4}
+	%\label{fig:semSolucao1}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.75]{./pictures/cap3grafico2.png}
+	\caption{ Ts = 1/64, N0 = 16}
+	%\label{fig:semSolucao2}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.75]{./pictures/cap3grafico3.png}
+	\caption{Ts=1/64, T0=4}
+	%\label{fig:semSolucao4}
+\end{figure}
+%\end{multicols}
 \end{document}
