@@ -1,0 +1,5 @@
+Variando-se a nova taxa de amostragem, percebe-se que quanto mais próximo da original, mais parecidos ficam os sinais. Porém, diminuindo-se para 1/10 da original, é possível ver que existe um delay da posição real onde a onda deveria se originar, isto é, ela vai se atrasando em relação a sinal original. Além do atraso, o sinal capturado torna-se cada vez mais distorcido.
+
+A uma baixa taxa de amostragem, o quantizador de 16 bits mostrou uma grande perda de eficiência, pois os valores capturados por eles são visualvelmente próximos do que se espera, porém o grande espaçamento entre as amostras faz com que a reconstrução seja ineficiente.
+
+Os efeitos do número de niveis do quantizador tiveram grande influência para que o sinal reconstruído fosse mais parecido com o sinal original. Isto ocorre porque os valores do quantizador de 16 bits tem uma resposta mais próxima do valor amostrado. Portanto, uma precisão mais alta, também tem grande influência para a reconstrução do sinal
