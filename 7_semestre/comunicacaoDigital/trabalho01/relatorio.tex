@@ -9,7 +9,7 @@
 \usepackage{graphicx}
 \usepackage{lipsum}
 
-\title{Quantização}
+\title{Exemplos}
 
 \begin{document}
 
@@ -64,7 +64,10 @@ Os efeitos do número de ní­veis do quantizador tiveram grande influência para qu
 \chapter{Cálculo dos Coeficientes da Série de Fourier}
 
 \section{Descrição do Script}
-	O script é utilizado para fazer o cálculo numérico dos coeficientes da série de Fourier da função $\Delta(t/2)$. O algoritmo do programa está definido abaixo.
+	O script é utilizado para fazer o cálculo numérico dos coeficientes da série de Fourier da função $\Delta(t/2)$, utilizando a fórmula da transformada inversa mostrada na equação \ref{eq:formcoef} . O algoritmo do programa está definido abaixo.
+		\begin{equation} \label{eq:formcoef}
+			D_{n} = 1/T  \int\limits_T{g(t)e^{-j2\pi f_{0}t}} dt			
+		\end{equation}
 		\begin{enumerate}
 			\item Inicialmente cria-se um script que define 					a função triangular $Delta(t)$
 			\item Define-se o período do sinal (de 'a' a 						'b')
