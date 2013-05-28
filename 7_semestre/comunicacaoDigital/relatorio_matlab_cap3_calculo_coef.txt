@@ -1,0 +1,34 @@
+Observaçõs MatLab capítulo 3 - Cálculo númerico dos coeficientes da série de Fourier do sinal Delta(t/2)
+
+Descrição do script:
+	Inicialmente cria-se um script que define a função triangular Delta(t)
+	Define-se o período do sinal (de 'a' a 'b')
+	Define-se a tolerância para o erro de integração
+	Define-se o número de coeficientes da série de Fourier (N)
+	O programa utilizada a função 'quad' do matlab para calcular as integrais de série
+	O programa calcula D(0) e armazena na posição D(N+1) do vetor (meio do vetor)
+	O programa calcula D(1) até D(N) e armazena na posição D(N+2),...,D(2N+1) do vetor
+	O programa calcula D(-N) até D(-1) e armazena na posição D(1),...,D(N) do vetor 
+
+Modificações:
+	No programa original do livro, havia um erro na plotagem do gráfico, pois o intervalo não estava definido, o código original era:
+		s1=plot([-N,N],abs(D)); e s2=plot([-N,N],angle(D));
+	Quando na verdade era preciso definir um intervalo que variasse de 1 indo de -N a N, a baixo o código alterado:
+		intervalo = -N : 1 : N;
+		s1=plot(intervalo,abs(D)); e s2=plot(intervalo,angle(D));
+
+Conclusões:
+	Um número grande de coeficientes e recomendado somente quando o período do sinal é também grande, pois muitos coeficientes para um sinal com período curto,
+	geram réplicas indesejadas ao longo do spectro da série, réplicas que parecem o sinal original, mas na verdade são uma aproximação muito falha
+	Para o cálculo dos coeficientes
+		Módulo do sinal resultante:
+			Período constante
+				Quanto menor o número de coeficientes da séria mais o sinal resultante se aproxima de um sinal triangular invertido
+				Quanto maior o número de coeficientes da série mais o sinal resultante se aproxima de um sinc. Sendo que o valor 
+				do coeficiente D0 tende a O (zero)
+			Número de coeficientes constante
+				
+		Fase do sinal resultante
+			Quanto maior o período do sinal mais a fase se aproxima de 0 constante durante toda a série, sendo que quanto menor é 
+				o módulo maior é a fase e vice-versa
+			Quanto menor o período do sinal maior é a variação da fase
