@@ -9,7 +9,7 @@
 \usepackage{graphicx}
 \usepackage{lipsum}
 
-\title{Exemplos}
+\title{Exemplos de Aplicações em Comunicação Digital usando $MatLab^{\copyright}$}
 
 \begin{document}
 
@@ -17,53 +17,20 @@
 
 %\title{Medição de Velocidade usando um Sensor de Luminosidade}
 
-\author{Danilo Souza, Hugo Santos, Welton Araújo}
-%Matr\'iculas: 10080000801, 10080000701, 10080000501}
+\author{Danilo Souza - 10080000801, Hugo Santos - 10080000701, Welton Araújo - 10080000501}
+%Matrículas: {10080000801, 10080000701, 10080000501}
 %\thanks{Engenharia da Computa\c{c}\~ao, Universidade Federal do Par\'a, Bel\'em-PA, Brasil}
 \maketitle
 
+\tableofcontents
+
+
 %Emails: \{dhcsouza, huggosan, weltonmaxx007\}@gmail.com\\
-\chapter{Quantização de um sinal PCM}
-\section{Funcionamento}
-O código gera um sinal a partir de 2 senóides, uma com 1Hz  e outra com 2Hz de frequência. Em seguida, gera-se o sinal a uma taxa de amostragem de 500Hz com duração de 1 segundo. O objetivo principal é mostrar os efeitos do número de ní­veis de quantização para efetuar a reconstrução a partir do sinal amostrado capturado posteriormente nas taxas de amostragem 100Hz, 50Hz, 25Hz e 12.5Hz.
 
-\section{Resultados}
-Variando-se a taxa de amostragem descrescentemente, percebe-se que quanto maior ela era, melhor é a reconstruçao de sinal amostrado. Porém, diminuindo-se gradativamente, é possí­vel constatar a existência de um atraso onde o sinal reconstruído. Além do atraso, o sinal capturado torna-se cada vez mais distorcido.
-
-%\begin{multicols}{1}
-\begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.75]{./pictures/cap6CapTs001.png}
-	%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
-	%\label{fig:semSolucao1}
-\end{figure}
-\begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.75]{./pictures/cap6CapTs002.png}
-	%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
-	%\label{fig:semSolucao2}
-\end{figure}
-\begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.75]{./pictures/cap6CapTs004.png}
-	%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
-	%\label{fig:semSolucao3}
-	\end{figure}
-\begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.75]{./pictures/cap6CapTs008.png}
-	%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
-	%\label{fig:semSolucao4}
-\end{figure}
-%\end{multicols}
-
-A uma baixa taxa de amostragem, o quantizador de 16 bits mostrou uma grande perda de eficiência, pois os valores capturados por eles são visualmente próximos do que se espera em taxas de amostragem mais altas, no entanto o grande espaçaamento entre as amostras faz com que a reconstrução seja ineficiente.
-
-Os efeitos do número de ní­veis do quantizador tiveram grande influência para que o sinal reconstruí­do fosse mais parecido com o sinal original. Isto ocorre porque os valores do quantizador de 16 bits tem uma resposta mais próxima do valor amostrado. Portanto, uma precisão mais alta, também tem grande influência para a reconstruçao do sinal.
 
 \chapter{Cálculo dos Coeficientes da Série de Fourier}
 
-\section{Descrição do Script}
+\section{Funcionamento do Script}
 	O script é utilizado para fazer o cálculo numérico dos coeficientes da série de Fourier da função $\Delta(t/2)$, utilizando a fórmula da transformada inversa mostrada na equação \ref{eq:formcoef} . O algoritmo do programa está definido abaixo.
 		\begin{equation} \label{eq:formcoef}
 			D_{n} = 1/T  \int\limits_T{g(t)e^{-j2\pi f_{0}t}} dt			
@@ -94,7 +61,7 @@ Os efeitos do número de ní­veis do quantizador tiveram grande influência para qu
 		\end{enumerate}				
 		
 
-\section{Conclusões}
+\section{Resultados}
 
 	Um número grande de coeficientes e recomendado somente quando o período do sinal é também grande, pois muitos coeficientes para um sinal com período curto,
 	geram réplicas indesejadas ao longo do spectro da série, réplicas que parecem o sinal original, mas na verdade são uma aproximação muito falha. Para o cálculo dos coeficientes:
@@ -170,7 +137,7 @@ Os efeitos do número de ní­veis do quantizador tiveram grande influência para qu
 	Após estas análises, percebe-se que é importante manter um equilíbrio entre o número de coeficientes que será utilizado na série de Fourier e o período do sinal a ser representado. Foi possível também constatar por meio destas simulações o conhecimento aprendido em sala de aula, de que quanto mais coeficientes na série melhor será a representação do sinal, neste caso a função $sinc$.
 \chapter{Transformada de Fourier}
 
-\section{Funcionamento}
+\section{Funcionamento do Script}
 O código mostra o cálculo da transformada de fourier de: 
 \begin{equation}
 e^{-2tu(t)}
@@ -200,4 +167,45 @@ Se os valores de $T_{0}$ e $T_{s}$ forem modificados, o sinal perde a caracterís
 	%\label{fig:semSolucao4}
 \end{figure}
 %\end{multicols}
+
+
+\chapter{Quantização de um sinal PCM}
+
+\section{Funcionamento do Script}
+O código gera um sinal a partir de 2 senóides, uma com 1Hz  e outra com 2Hz de frequência. Em seguida, gera-se o sinal a uma taxa de amostragem de 500Hz com duração de 1 segundo. O objetivo principal é mostrar os efeitos do número de ní­veis de quantização para efetuar a reconstrução a partir do sinal amostrado capturado posteriormente nas taxas de amostragem 100Hz, 50Hz, 25Hz e 12.5Hz.
+
+\section{Resultados}
+Variando-se a taxa de amostragem descrescentemente, percebe-se que quanto maior ela era, melhor é a reconstruçao de sinal amostrado. Porém, diminuindo-se gradativamente, é possí­vel constatar a existência de um atraso onde o sinal reconstruído. Além do atraso, o sinal capturado torna-se cada vez mais distorcido.
+
+%\begin{multicols}{1}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.75]{./pictures/cap6CapTs001.png}
+	%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+	%\label{fig:semSolucao1}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.75]{./pictures/cap6CapTs002.png}
+	%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+	%\label{fig:semSolucao2}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.75]{./pictures/cap6CapTs004.png}
+	%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+	%\label{fig:semSolucao3}
+	\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.75]{./pictures/cap6CapTs008.png}
+	%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+	%\label{fig:semSolucao4}
+\end{figure}
+%\end{multicols}
+
+A uma baixa taxa de amostragem, o quantizador de 16 bits mostrou uma grande perda de eficiência, pois os valores capturados por eles são visualmente próximos do que se espera em taxas de amostragem mais altas, no entanto o grande espaçaamento entre as amostras faz com que a reconstrução seja ineficiente.
+
+Os efeitos do número de ní­veis do quantizador tiveram grande influência para que o sinal reconstruí­do fosse mais parecido com o sinal original. Isto ocorre porque os valores do quantizador de 16 bits tem uma resposta mais próxima do valor amostrado. Portanto, uma precisão mais alta, também tem grande influência para a reconstruçao do sinal.
+
 \end{document}
