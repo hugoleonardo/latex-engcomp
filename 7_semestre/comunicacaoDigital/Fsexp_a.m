@@ -7,10 +7,10 @@
 echo off; clear; clf;
 
 j = sqrt(-1); % Define j para álgebra complexa
-b=2; a=-2; % Definição de um período do sinal
+b=1024; a=-1024; % Definição de um período do sinal
 tol = 1.e-5; % Especificação da tolerância para erro de integração
 T = b-a; % comprimento de um período
-N = 100; % Número de componentes da série de Fourier
+N = 3000; % Número de componentes da série de Fourier
 
 Fi = [-N,N]*2*pi/T % Especificação do intervalo de frequeências
 % D_0 é calculado e armazenado em D(N+1);

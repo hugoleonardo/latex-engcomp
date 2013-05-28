@@ -23,7 +23,7 @@
 \maketitle
 
 %Emails: \{dhcsouza, huggosan, weltonmaxx007\}@gmail.com\\
-
+\chapter{Quantização de um sinal PCM}
 \section{Funcionamento}
 O código gera um sinal a partir de 2 senóides, uma com 1Hz  e outra com 2Hz de frequência. Em seguida, gera-se o sinal a uma taxa de amostragem de 500Hz com duração de 1 segundo. O objetivo principal é mostrar os efeitos do número de ní­veis de quantização para efetuar a reconstrução a partir do sinal amostrado capturado posteriormente nas taxas de amostragem 100Hz, 50Hz, 25Hz e 12.5Hz.
 
@@ -33,25 +33,25 @@ Variando-se a taxa de amostragem descrescentemente, percebe-se que quanto maior 
 %\begin{multicols}{1}
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.25]{./pictures/cap6CapTs001.png}
+	\includegraphics[scale=0.75]{./pictures/cap6CapTs001.png}
 	%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
 	%\label{fig:semSolucao1}
 \end{figure}
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.25]{./pictures/cap6CapTs002.png}
+	\includegraphics[scale=0.75]{./pictures/cap6CapTs002.png}
 	%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
 	%\label{fig:semSolucao2}
 \end{figure}
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.25]{./pictures/cap6CapTs004.png}
+	\includegraphics[scale=0.75]{./pictures/cap6CapTs004.png}
 	%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
 	%\label{fig:semSolucao3}
 	\end{figure}
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.25]{./pictures/cap6CapTs008.png}
+	\includegraphics[scale=0.75]{./pictures/cap6CapTs008.png}
 	%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
 	%\label{fig:semSolucao4}
 \end{figure}
@@ -61,4 +61,108 @@ A uma baixa taxa de amostragem, o quantizador de 16 bits mostrou uma grande perd
 
 Os efeitos do número de ní­veis do quantizador tiveram grande influência para que o sinal reconstruí­do fosse mais parecido com o sinal original. Isto ocorre porque os valores do quantizador de 16 bits tem uma resposta mais próxima do valor amostrado. Portanto, uma precisão mais alta, também tem grande influência para a reconstruçao do sinal.
 
+\chapter{Cálculo dos Coeficientes da Série de Fourier}
+
+\section{Descrição do Script}
+	O script é utilizado para fazer o cálculo numérico dos coeficientes da série de Fourier da função $\Delta(t/2)$. O algoritmo do programa está definido abaixo.
+		\begin{enumerate}
+			\item Inicialmente cria-se um script que define 					a função triangular $Delta(t)$
+			\item Define-se o período do sinal (de 'a' a 						'b')
+			\item Define-se a tolerância para o erro de integração
+			\item Define-se o número de coeficientes da série de Fourier (N)
+			\item O programa utilizada a função 'quad' do matlab para calcular as integrais de série
+			\item O programa calcula $D_{0}$ e armazena na posição $D_{N+1}$ do vetor (meio do vetor)
+			\item O programa calcula $D_{1}$ até $D_{N}$ e armazena na posição $D_{N+2},...,D_{2N+1}$ do vetor
+			\item O programa calcula $D_{-N}$ até $D_{-1}$ e armazena na posição $D_{1},...,D_{N}$ do vetor 
+		\end{enumerate}
+
+\section{Modificações no código}
+	No programa original do livro, havia um erro na plotagem do gráfico, pois o intervalo não estava definido, o código original era:
+	\linebreak
+	\begin{enumerate}
+	\item s1=plot([-N,N],abs(D)); e s2=plot([-N,N],angle(D));
+	\end{enumerate}
+
+	Quando na verdade era preciso definir um intervalo que variasse de 1 indo de $-N$ a $N$, segue abaixo o código alterado:
+		\linebreak
+		\begin{enumerate}
+			\item intervalo = -N : 1 : N;
+			\item s1=plot(intervalo,abs(D)); e s2=plot(intervalo,angle(D));		
+		\end{enumerate}				
+		
+
+\section{Conclusões}
+
+	Um número grande de coeficientes e recomendado somente quando o período do sinal é também grande, pois muitos coeficientes para um sinal com período curto,
+	geram réplicas indesejadas ao longo do spectro da série, réplicas que parecem o sinal original, mas na verdade são uma aproximação muito falha. Para o cálculo dos coeficientes:
+		\begin{itemize}
+			\item Módulo do sinal da série de Fourier
+				\begin{itemize}
+					\item Período constante	
+						\begin{itemize}
+							\item Quanto menor o número de coeficientes da séria mais o sinal da série se aproxima da parte de cima da função $sinc$. Conforme mostrado nas figuras \ref{fig:n500periodo2048}, \ref{fig:n1000periodo2048}, \ref{fig:n3000periodo2048}. Podemos perceber na figura \ref{fig:n11000periodo2048} que o número de coeficientes é muito grande se comparado ao período, portanto, começam a  apaecer réplicas indesejadas.
+							\begin{figure}[h]
+								\centering
+								\includegraphics[scale=0.75]{./pictures/calculo_coef_N_500_a-1024_b_1024_tol_-5.png}
+								\caption{$N = 100$, $Periodo = 2048$}
+								\label{fig:n500periodo2048}
+							\end{figure}
+							\begin{figure}[h]
+								\centering
+								\includegraphics[scale=0.75]{./pictures/calculo_coef_N_1000_a-1024_b_1024_tol_-5.png}
+								\caption{$N = 100$, $Periodo = 2048$}
+								\label{fig:n1000periodo2048}
+							\end{figure}							
+							\begin{figure}[h]
+								\centering
+								\includegraphics[scale=0.75]{./pictures/calculo_coef_N_3000_a-1024_b_1024_tol_-5.png}
+								\caption{$N = 3000$, $Periodo = 2048$}
+								\label{fig:n3000periodo2048}
+							\end{figure}		
+							\begin{figure}[h]
+								\centering
+								\includegraphics[scale=0.75]{./pictures/calculo_coef_N_11000_a-1024_b_1024_tol_-5.png}
+								\caption{$N = 11000$, $Periodo = 2048$}
+								\label{fig:n11000periodo2048}
+							\end{figure}							
+							\item Quanto maior o número de coeficientes da série mais o sinal resultante se aproxima de um sinc. Sendo que o valor 
+				do coeficiente D0 tende a O (zero).
+						\end{itemize}
+					\item Número de Coeficientes constante
+						\begin{itemize}
+							\item Quanto menor o periodo, mais réplicas indesejadas aparecem. Conforme mostrado nas figuras \ref{fig:n100periodo128}, \ref{fig:n100periodo64}, \ref{fig:n100periodo32}.
+								\begin{figure}[h]
+								\centering
+								\includegraphics[scale=0.75]{./pictures/calculo_coef_N_100_a-64_b_64_tol_-5.png}
+								\caption{$N = 100$, $Periodo = 128$}
+								\label{fig:n100periodo128}
+							\end{figure}
+							\begin{figure}[h]
+								\centering
+								\includegraphics[scale=0.75]{./pictures/calculo_coef_N_100_a-32_b_32_tol_-5.png}
+								\caption{$N = 100$, $Periodo = 64$}
+								\label{fig:n100periodo64}
+							\end{figure}
+							\begin{figure}[h]
+								\centering
+								\includegraphics[scale=0.75]{./pictures/calculo_coef_N_100_a-16_b_16_tol_-5.png}
+								\caption{$N = 100$, $Periodo = 32$}
+								\label{fig:n100periodo32}
+							\end{figure}
+							\item Quanto maior o período, mais o sinal se aproxima da função $sinc$, porém se o período for muito grande, o $sinc$ é truncado cada vez mais no começo, tornando visível somente o começo do sinal. Conforme figura \ref{fig:n100periodo512}					
+							\begin{figure}[h]
+								\centering
+								\includegraphics[scale=0.75]{./pictures/calculo_coef_N_100_a-256_b_256_tol_-5.png}
+								\caption{$N = 100$, $Periodo = 512$}
+								\label{fig:n100periodo512}
+							\end{figure}
+						\end{itemize}
+				\end{itemize}								
+			\item Fase do sinal da série de Fourier
+				\begin{itemize}
+					\item Quanto maior o período do sinal mais a fase se aproxima de 0 constante durante toda a série, sendo que quanto menor é o módulo maior é a fase e vice-versa.
+					\item Quanto menor o período do sinal maior é a variação da fase				
+				\end{itemize}
+		\end{itemize}
+	Após estas análises, percebe-se que é importante manter um equilíbrio entre o número de coeficientes que será utilizado na série de Fourier e o período do sinal a ser representado. Foi possível também constatar por meio destas simulações o conhecimento aprendido em sala de aula, de que quanto mais coeficientes na série melhor será a representação do sinal, neste caso a função $sinc$.
 \end{document}
