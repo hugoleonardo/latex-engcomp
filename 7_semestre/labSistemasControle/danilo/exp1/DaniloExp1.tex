@@ -1,0 +1,233 @@
+\documentclass[10pt,a4paper]{report}
+%\usepackage[utf8]{inputenc}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{multicol, blindtext}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{lipsum}
+
+\title{Experimento 1 com $MatLab^{\copyright}$ - Sistemas de Controle}
+
+\begin{document}
+
+
+
+%\title{Medição de Velocidade usando um Sensor de Luminosidade}
+
+\author{Danilo Souza - 10080000801}
+%Matrículas: {10080000801, 10080000701, 10080000501}
+%\thanks{Engenharia da Computa\c{c}\~ao, Universidade Federal do Par\'a, Bel\'em-PA, Brasil}
+\maketitle
+
+\tableofcontents
+
+\chapter{Questao 1}
+
+	Foi simulado um sistema com um degrau de entrada e função de transferência mostrada na equação \ref{eq:sistordem1}, os parâmetros simulados serão descritos abaixo, juntamente com os respectivos resultados (que para este sistema será o valor do tempo de estabilização $T_{s}$).
+	
+	
+	
+	\begin{equation}\label{eq:sistordem1}
+		\frac{C(s)}{R(s)} = \frac{K}{\tau s+1}
+	\end{equation}
+
+\section{Simulação}
+
+	\begin{itemize}
+		\item Item i
+			\begin{enumerate} 
+				\item $K = 2$ e $\tau = 0,1$ : $T_{s} = 0.404$ (Figura \ref{fig:questao1k2tau01})
+					\begin{figure}[h]
+						\centering
+						\includegraphics[scale=0.75]{./pictures/1_questao_item_i_tau_0,1.png}
+						\caption{$K = 2$, $\tau = 0,1$}
+						\label{fig:questao1k2tau01}
+					\end{figure}
+				\item $K = 2$ e $\tau = 1$ : $T_{s} = 3,92$ (Figura \ref{fig:questao1k2tau1})
+					\begin{figure}[h]
+						\centering
+						\includegraphics[scale=0.75]{./pictures/1_questao_item_i_tau_1.png}
+						\caption{$K = 2$, $\tau = 1$}
+						\label{fig:questao1k2tau1}
+					\end{figure}
+				\item $K = 2$ e $\tau = 10$ : $T_{s} = 39,1$ (Figura \ref{fig:questao1k2tau10})
+					\begin{figure}[h]
+						\centering
+						\includegraphics[scale=0.75]{./pictures/1_questao_item_i_tau_10.png}
+						\caption{$K = 2$, $\tau = 10$}
+						\label{fig:questao1k2tau10}
+					\end{figure}
+			\end{enumerate}
+		\item Item ii
+			\begin{enumerate}
+				\item $\tau=1$ e $K=0,1$ : $T_{s} = 4.1$ (Figura \ref{fig:questao1k01tau1})
+					\begin{figure}[h]
+						\centering
+						\includegraphics[scale=0.75]{./pictures/1_questao_item_ii_k_0,1.png}
+						\caption{$K = 0,1$, $\tau = 1$}
+						\label{fig:questao1k01tau1}
+					\end{figure}
+				\item $\tau=1$ e $K=1$ : $T_{s} = 4.1$ (Figura \ref{fig:questao1k1tau1})
+					\begin{figure}[h]
+						\centering
+						\includegraphics[scale=0.75]{./pictures/1_questao_item_ii_k_1.png}
+						\caption{$K = 1$, $\tau = 1$}
+						\label{fig:questao1k1tau1}
+					\end{figure}
+				\item $\tau=1$ e $K=10$ : $T_{s} = 4.1$ (Figura \ref{fig:questao1k10tau1})
+					\begin{figure}[h]
+						\centering
+						\includegraphics[scale=0.75]{./pictures/1_questao_item_ii_k_10.png}
+						\caption{$K = 10$, $\tau = 1$}
+						\label{fig:questao1k10tau1}
+					\end{figure}
+			\end{enumerate}	
+	\end{itemize}
+	
+	Calculando a resposta analítica (no domínio de tempo), utilizando expansão em frações parciais e transformada de Laplace. As equações temporais para todas as simulações encontram-se abaixo:
+			
+		\begin{itemize}
+			\item Item i
+				\begin{enumerate}
+					\item $K=2$, $\tau = 0,1$	
+						\[ \frac{1}{s}\frac{2}{0,1s+1}\]
+						\[ \frac{A}{s}\frac{B}{0,1s+1}\]
+						\[ A = s\frac{2}{s(0,1s+1)}\mid s=0 = 2\]
+						\[ B = 0,1s+1\frac{2}{s(0,1s+1)}\mid s=-10 = -0,2\]
+						\[ C(s) = \frac{2}{s} - \frac{0,1}{s+10}\]
+						\[ c(t) = 2 - 0,1e^{-10t}\]
+					\item $K=2$, $\tau = 1$
+						\[ \frac{1}{s}\frac{2}{1s+1}\]
+						\[ \frac{A}{s}\frac{B}{s+1}\]
+						\[ A = s\frac{2}{s(s+1)}\mid s=0 = 2\]
+						\[ B = s+1\frac{2}{s(s+1)}\mid s=-1 = -2\]
+						\[ c(t) = 2 - 2e^{-t}\]
+					\item $K=2$, $\tau = 10$
+						\[ \frac{1}{s}\frac{2}{10s+1}\]
+						\[ \frac{A}{s}\frac{B}{10s+1}\]
+						\[ A = s\frac{2}{s(10s+1)}\mid s=0 = 2\]
+						\[ B = 10s+1\frac{2}{s(10s+1)}\mid s=-1/10 = -20\]
+						\[ c(t) = 2 - 2e^{-t/10}\]
+					
+							\end{enumerate}	
+			\item Item ii
+				\begin{enumerate}
+					\item $\tau=1$, $K=0,1$
+						\[ \frac{1}{s}\frac{0,1}{s+1}\]
+						\[ \frac{A}{s}\frac{B}{s+1}\]
+						\[ A = s\frac{0,1}{s(s+1)}\mid s=0 = 0,1\]
+						\[ B = s+1\frac{0,1}{s(s+1)}\mid s=-1 = -0,1\]
+						\[ c(t) = 0,1 - 0,1e^{-t}\]
+					\item $\tau=1$, $K=1$ 			
+						\[ \frac{1}{s}\frac{1}{s+1}\]
+						\[ \frac{A}{s}\frac{B}{s+1}\]
+						\[ A = s\frac{1}{s(s+1)}\mid s=0 = 1\]
+						\[ B = s+1\frac{1}{s(s+1)}\mid s=-1 = -1\]
+						\[ c(t) = 1 - 1e^{-t}\]
+					\item $\tau=1$, $K=10$ 			
+						\[ \frac{10}{s}\frac{1}{s+1}\]
+						\[ \frac{A}{s}\frac{B}{s+1}\]
+						\[ A = s\frac{10}{s(s+1)}\mid s=0 = 10\]
+						\[ B = s+1\frac{10}{s(s+1)}\mid s=-1 = -10\]
+						\[ c(t) = 10 - 10e^{-t}\]
+				\end{enumerate}
+		\end{itemize}	
+	
+\section{Resultados}
+
+\chapter{Questao 2}
+
+	Para a simulação de um sistema de $2^{a}$ ordem, que possui função de transferência descrita na equação \ref{eq:sistordem2}, os parâmetros simulados estao descritos abaixo, juntamente com seus respectivos resultados. Nesse sistema, os valores analisados são: Tempo de estabilização ($T_{s}$), Máximo de sobressinal ($M_{p}$), Tempo do valor de pico ($T_{p}$), Valor de pico ($V_{p}$), Valor de regime ($V_{r}$)
+	
+		\begin{equation}\label{eq:sistordem2}
+			\frac{C(s)}{R(s)} = \frac{Kw_{n}^{2}}{s^{2} + 2\xi w_{n}s + w_{n}^{2}}
+		\end{equation}
+		
+
+\section{Simulação}
+
+\begin{itemize}
+			\item Item i
+				\begin{enumerate}
+					\item $w_{n} = 2$, $K=8$, $\xi=1$, $T_{s} = 0.921$, $V_{r} = 8$ (Figura \ref{fig:questao2xi1wn2}
+						\begin{figure}[h]
+						\centering
+						\includegraphics[scale=0.75]{./pictures/2_questao_item_i_psi_1.png}
+						\caption{$K = 8$, $w_{n} = 2$, $\xi=1$}
+						\label{fig:questao2xi1wn2}
+					\end{figure}
+					\item $w_{n} = 2$, $K=8$, $\xi=0,7$, $T_{s} = 2.99$, $M_{p} = 4,6$, $T_{p} = 2.2$, $V_{p} = 8.368$, $V_{r} = 8$ \ref{fig:questao2xi07wn2}
+						\begin{figure}[h]
+						\centering
+						\includegraphics[scale=0.75]{./pictures/2_questao_item_i_psi_0,7.png}
+						\caption{$K = 8$, $w_{n} = 2$, $\xi=0,7$}
+						\label{fig:questao2xi07wn2}
+					\end{figure}
+					\item $w_{n} = 2$, $K=8$, $\xi=0,2$, $T_{s} = 9,6823$, $M_{p} = 48,6365$, $T_{p} = 1,805$, $V_{p} = 11,8906$, $V_{r} = 8$ (Figura \ref{fig:questao2xi02wn2}
+						\begin{figure}[h]
+							\centering
+							\includegraphics[scale=0.75]{./pictures/2_questao_item_i_psi_0,2.png}
+							\caption{$K = 8$, $w_{n} = 2$, $\xi=0,2$}
+							\label{fig:questao2xi02wn2}
+						\end{figure}
+				\end{enumerate}
+			\item Item ii
+				\begin{enumerate}
+					\item $w_{n} = 2$, $K=8$, $\xi=1$,
+					\item $w_{n} = 2$, $K=8$, $\xi=0,7$,
+					\item $w_{n} = 2$, $K=8$, $\xi=0,2$,
+				\end{enumerate}
+		\end{itemize}
+		
+		Calculando os valores do tempo te pico ($T_{p}$) utilizando as equações \ref{calcwd} e \ref{calctp}, observamos que os valores simulados estão muito próximos dos valores esperados. É importante ressaltar que para os sistemas que se aproximam de sistemas de $1^{a}$ ordem, o valor de $T_{p}$ não pode ser estimado usando as fórmulas acima.
+		
+		\begin{equation}\label{calcwd}
+			w_{d} = w_{n}\sqrt{1-\xi^{2}}
+		\end{equation}
+		
+		\begin{equation}\label{calctp}
+			T_{p} = \frac{\pi}{w_{d}}
+		\end{equation}
+		
+		\begin{itemize}
+			\item Item i
+				\begin{enumerate}
+					\item $w_{n} = 2$ e $\xi = 0,7$
+						\[ w_{d} = 2\sqrt{1-0,7^{2}} = 1,428\]
+						\[ T_{p} = \frac{\pi}{1,428} = 2,19\]
+					\item $w_{n} = 2$ e $\xi = 0,2$
+						\[ w_{d} = 2\sqrt{1-0,2^{2}} = 1,9595\]
+						\[ T_{p} = \frac{\pi}{1,9595} = 1,603\]
+				\end{enumerate}
+			\item Item ii
+				\begin{enumerate}
+					\item $w_{n} = 10$ e $\xi = 0,7$
+						\[ w_{d} = 10\sqrt{1-0,7^{2}} = 7,1414\]
+						\[ T_{p} = \frac{\pi}{7,1414} = 0,4399\]
+					\item $w_{n} = 10$ e $\xi = 0,2$
+						\[ w_{d} = 10\sqrt{1-0,2^{2}} = 9,7979\]
+						\[ T_{p} = \frac{\pi}{9,7979} = 0,32\]
+				
+				\end{enumerate}
+		\end{itemize}
+\section{Resultados}
+
+\chapter{Questao 3}
+	Para que a resposta ao degrau unitáiro do sistema, dada pela equação \ref{eq:quest3}, tenha como parâmetros ficos, $M_{p}$ = 0,2 e $T_{p}$  = 1
+	
+		\begin{equation}\label{eq:quest3}
+			\frac{C(s)}{R(s)} = \frac{K}{s^{2} + (1+KK_{k})s + K}
+		\end{equation}
+\section{Simulação}
+		Os valores encontrados foram:
+			\begin{itemize}
+				\item $K = 12,5$
+				\item $K_{h} = 0,178
+				\item T_{s} = 1,49$ 
+			\end{itemize}
+\section{Resultados}
+
+\end{document}
