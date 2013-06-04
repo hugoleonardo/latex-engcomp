@@ -1,0 +1,24 @@
+i)
+Para Wn=2, K=8, E=1
+Ts ~= 2.893
+Tp não foi necessário porque o sistema se comportou de forma equivalente a uma sistema de primeira ordem
+
+Para Wn=2, K=8, E=0.7
+a)
+Ts ~= 2.957
+Vp ~= 8.367
+Mp ~= 4.5875
+
+b)
+Tp ~= 2.157
+
+Para Wn=2, K=8, E=0.2
+a)
+Ts ~= X
+Vp ~= X
+Mp ~= X
+
+b)
+Tp ~= X
+
+

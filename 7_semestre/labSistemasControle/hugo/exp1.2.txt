@@ -1,0 +1,22 @@
+T influencia o Ts, pois quanto maior o Ts, menor o Z, menor o Ts.
+i)
+Para K=2 e T=0.1
+Ts ~= 0.37
+
+Para K=2 e T=1
+Ts ~= 3.957
+
+Para K=2 e T=10
+Ts ~= 39.18
+
+K não exerce nenhuma influência sobre o valor de Ts
+ii)
+Para T=1 e K=0.1
+Ts ~= 3.957
+
+Para T=1 e K=1
+Ts ~= 3.957
+
+Para T=1 e K=10
+Ts ~= 3.957
+
