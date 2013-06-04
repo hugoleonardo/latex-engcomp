@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2012.11.22)  3 JUN 2013 20:59
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2012.11.22)  3 JUN 2013 22:33
 entering extended mode
 **relatorio.tex
 
@@ -342,12 +342,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 23.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
-)
-Overfull \hbox (118.60504pt too wide) in paragraph at lines 23--23
- [][] 
- []
-
-[1
+) [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
 (C:\Users\Hugo\Documents\GitHub\latex-engcomp\7_semestre\labSistemasControle\hu
@@ -360,121 +355,103 @@ Chapter 1.
 
 LaTeX Warning: Reference `eq:formcoef' on page 2 undefined on input line 34.
 
-<./pictures/i_w2_k8_e1.png, id=15, 578.16pt x 433.62pt>
+[2
+
+] <./pictures/i_w2_k8_e1.png, id=22, 578.16pt x 433.62pt>
 File: ./pictures/i_w2_k8_e1.png Graphic file (type png)
 
 <use ./pictures/i_w2_k8_e1.png>
-Package pdftex.def Info: ./pictures/i_w2_k8_e1.png used on input line 49.
-(pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
+Package pdftex.def Info: ./pictures/i_w2_k8_e1.png used on input line 93.
+(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<./pictures/i_w2_k8_e07.png, id=16, 578.16pt x 433.62pt>
+<./pictures/i_w2_k8_e07.png, id=23, 578.16pt x 433.62pt>
 File: ./pictures/i_w2_k8_e07.png Graphic file (type png)
 
 <use ./pictures/i_w2_k8_e07.png>
-Package pdftex.def Info: ./pictures/i_w2_k8_e07.png used on input line 55.
-(pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
+Package pdftex.def Info: ./pictures/i_w2_k8_e07.png used on input line 99.
+(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./pictures/i_w2_k8_e02.png, id=17, 578.16pt x 433.62pt>
+<./pictures/i_w2_k8_e02.png, id=24, 578.16pt x 433.62pt>
 File: ./pictures/i_w2_k8_e02.png Graphic file (type png)
 
 <use ./pictures/i_w2_k8_e02.png>
-Package pdftex.def Info: ./pictures/i_w2_k8_e02.png used on input line 61.
-(pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
+Package pdftex.def Info: ./pictures/i_w2_k8_e02.png used on input line 105.
+(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./pictures/ii_w10_k8_e1.png, id=18, 578.16pt x 433.62pt>
+<./pictures/ii_w10_k8_e1.png, id=25, 578.16pt x 433.62pt>
 File: ./pictures/ii_w10_k8_e1.png Graphic file (type png)
 
 <use ./pictures/ii_w10_k8_e1.png>
-Package pdftex.def Info: ./pictures/ii_w10_k8_e1.png used on input line 70.
-(pdftex.def)             Requested size: 433.61893pt x 325.2142pt.
-
-Overfull \hbox (88.61893pt too wide) in paragraph at lines 70--71
- [][] 
- []
+Package pdftex.def Info: ./pictures/ii_w10_k8_e1.png used on input line 111.
+(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./pictures/ii_w10_k8_e07.png, id=19, 578.16pt x 433.62pt>
+<./pictures/ii_w10_k8_e07.png, id=26, 578.16pt x 433.62pt>
 File: ./pictures/ii_w10_k8_e07.png Graphic file (type png)
 
 <use ./pictures/ii_w10_k8_e07.png>
-Package pdftex.def Info: ./pictures/ii_w10_k8_e07.png used on input line 76.
-(pdftex.def)             Requested size: 433.61893pt x 325.2142pt.
-
-Overfull \hbox (88.61893pt too wide) in paragraph at lines 76--77
- [][] 
- []
+Package pdftex.def Info: ./pictures/ii_w10_k8_e07.png used on input line 117.
+(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./pictures/ii_w10_k8_e02.png, id=20, 578.16pt x 433.62pt>
+<./pictures/ii_w10_k8_e02.png, id=27, 578.16pt x 433.62pt>
 File: ./pictures/ii_w10_k8_e02.png Graphic file (type png)
 
 <use ./pictures/ii_w10_k8_e02.png>
-Package pdftex.def Info: ./pictures/ii_w10_k8_e02.png used on input line 82.
-(pdftex.def)             Requested size: 433.61893pt x 325.2142pt.
-
-Overfull \hbox (88.61893pt too wide) in paragraph at lines 82--83
- [][] 
- []
+Package pdftex.def Info: ./pictures/ii_w10_k8_e02.png used on input line 123.
+(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[2
-
-] [3 <C:/Users/Hugo/Documents/GitHub/latex-engcomp/7_semestre/labSistemasContro
-le/hugo/pictures/i_w2_k8_e1.png (PNG copy)> <C:/Users/Hugo/Documents/GitHub/lat
-ex-engcomp/7_semestre/labSistemasControle/hugo/pictures/i_w2_k8_e07.png (PNG co
-py)>] [4 <C:/Users/Hugo/Documents/GitHub/latex-engcomp/7_semestre/labSistemasCo
-ntrole/hugo/pictures/i_w2_k8_e02.png (PNG copy)> <C:/Users/Hugo/Documents/GitHu
-b/latex-engcomp/7_semestre/labSistemasControle/hugo/pictures/ii_w10_k8_e1.png (
-PNG copy)>] [5 <C:/Users/Hugo/Documents/GitHub/latex-engcomp/7_semestre/labSist
-emasControle/hugo/pictures/ii_w10_k8_e07.png (PNG copy)>] [6 <C:/Users/Hugo/Doc
-uments/GitHub/latex-engcomp/7_semestre/labSistemasControle/hugo/pictures/ii_w10
-_k8_e02.png (PNG copy)>]
+[3 <C:/Users/Hugo/Documents/GitHub/latex-engcomp/7_semestre/labSistemasControle
+/hugo/pictures/i_w2_k8_e1.png (PNG copy)>] [4 <C:/Users/Hugo/Documents/GitHub/l
+atex-engcomp/7_semestre/labSistemasControle/hugo/pictures/i_w2_k8_e07.png (PNG 
+copy)> <C:/Users/Hugo/Documents/GitHub/latex-engcomp/7_semestre/labSistemasCont
+role/hugo/pictures/i_w2_k8_e02.png (PNG copy)>] [5 <C:/Users/Hugo/Documents/Git
+Hub/latex-engcomp/7_semestre/labSistemasControle/hugo/pictures/ii_w10_k8_e1.png
+ (PNG copy)> <C:/Users/Hugo/Documents/GitHub/latex-engcomp/7_semestre/labSistem
+asControle/hugo/pictures/ii_w10_k8_e07.png (PNG copy)>] [6 <C:/Users/Hugo/Docum
+ents/GitHub/latex-engcomp/7_semestre/labSistemasControle/hugo/pictures/ii_w10_k
+8_e02.png (PNG copy)>]
 (C:\Users\Hugo\Documents\GitHub\latex-engcomp\7_semestre\labSistemasControle\hu
 go\relatorio.aux)
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 3033 strings out of 494045
- 40587 string characters out of 3148389
- 181846 words of memory out of 3000000
- 6287 multiletter control sequences out of 15000+200000
- 14667 words of font info for 56 fonts, out of 3000000 for 9000
+ 3022 strings out of 494045
+ 40439 string characters out of 3148389
+ 181830 words of memory out of 3000000
+ 6278 multiletter control sequences out of 15000+200000
+ 12743 words of font info for 49 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 27i,7n,22p,339b,216s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,6n,22p,276b,233s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Hugo\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\t
-crm1200.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.p
+crm1000.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.p
 fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/P
 rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program F
 iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.
-pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on relatorio.pdf (7 pages, 215563 bytes).
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.
+pfb>
+Output written on relatorio.pdf (7 pages, 202731 bytes).
 PDF statistics:
- 81 PDF objects out of 1000 (max. 8388607)
+ 77 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

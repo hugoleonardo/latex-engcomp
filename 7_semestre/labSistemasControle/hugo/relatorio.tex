@@ -9,7 +9,7 @@
 \usepackage{graphicx}
 \usepackage{lipsum}
 
-\title{Exemplos de Aplicações em Comunicação Digital usando $MatLab^{\copyright}$}
+\title{Laboratório de Sistemas de Controle - Relatório 1}
 
 \begin{document}
 
@@ -17,7 +17,7 @@
 
 %\title{Medição de Velocidade usando um Sensor de Luminosidade}
 
-\author{Danilo Souza - 10080000801, Hugo Santos - 10080000701, Welton Araújo - 10080000501}
+\author{Hugo Santos - 10080000701}
 %Matrículas: {10080000801, 10080000701, 10080000501}
 %\thanks{Engenharia da Computa\c{c}\~ao, Universidade Federal do Par\'a, Bel\'em-PA, Brasil}
 \maketitle
@@ -28,7 +28,7 @@
 %Emails: \{dhcsouza, huggosan, weltonmaxx007\}@gmail.com\\
 
 
-\chapter{Cálculo dos Coeficientes da Série de Fourier}
+\chapter{Questão 2}
 
 \section{Funcionamento do Script}
 	O script é utilizado para fazer o cálculo numérico dos coeficientes da série de Fourier da função $\Delta(t/2)$, utilizando a fórmula da transformada inversa mostrada na equação \ref{eq:formcoef} . O algoritmo do programa está definido abaixo.
@@ -40,52 +40,89 @@
 	\[ \dfrac{C(s)}{R(s)} = \dfrac{K}{s^{2} + (1+KK_{h})s + K} \]
 
 	\[ w_{d} = w_{n}\sqrt[]{1-\xi^{2}} \]
+\begin{itemize}
+	\item Para $w_{n}$=2, k=8 e $\xi$=1 mostrado na Figura \ref{fig:i_w2_k8_e1}
+	\begin{itemize}
+		\item $T_{s}$=2.893
+		\item $T_{p}$ não foi necessário porque o sistema se comportou como um sistema de ordem 1
+	\end{itemize}
+	\item Para $w_{n}$=2, k=8 e $\xi$=0.7  mostrado na Figura \ref{fig:i_w2_k8_e07}
+	\begin{itemize}
+		\item $T_{s}$=2.893
+		\item $V_{p}$=8.367
+		\item $M_{p}$=4.5875
+		\item $T_{p}$=2.157
+		\item $T_{p}$=2.199 calculado
+	\end{itemize}
+	\item Para $w_{n}$=2, k=8 e $\xi$=0.2  mostrado na Figura \ref{fig:i_w2_k8_e02}
+	\begin{itemize}
+		\item $T_{s}$=9.535
+		\item $V_{p}$=12.17
+		\item $M_{p}$=52.12
+		\item $T_{p}$=1.535
+		\item $T_{p}$=1.603 calculado
+	\end{itemize}
+	\item Para $w_{n}$=10, k=8 e $\xi$=1 mostrado na Figura \ref{fig:ii_w10_k8_e1}
+	\begin{itemize}
+		\item $T_{s}$=0.56
+		\item $T_{p}$ não foi necessário porque o sistema se comportou como um sistema de ordem 1
+	\end{itemize}
+	\item Para $w_{n}$=10, k=8 e $\xi$=0.7 mostrado na Figura \ref{fig:ii_w10_k8_e07}
+	\begin{itemize}
+		\item $T_{s}$=0.6
+		\item $V_{p}$=8.367
+		\item $M_{p}$=4.5875
+		\item $T_{p}$=0.448
+		\item $T_{p}$=0.439 calculado
+	\end{itemize}
+	\item Para $w_{n}$=10, k=8 e $\xi$=0.2 mostrado na Figura \ref{fig:ii_w10_k8_e02}
+	\begin{itemize}
+		\item $T_{s}$=1.856
+		\item $V_{p}$=12.19
+		\item $M_{p}$=52.37
+		\item $T_{p}$=0.33
+		\item $T_{p}$=0.32 calculado
+	\end{itemize}
+\end{itemize}
 	
-	Os efeitos do $\xi$ foram relacionados ao tempo de estabilização e à tensão de pico. O comportamento é mostrado nas Figuras \ref{fig:i_w2_k8_e1}, \ref{fig:i_w2_k8_e07} e \ref{fig:i_w2_k8_e02} para, respectivamente, os valores $\xi$ = 1, 0.7, 0.2 e $w_{n}$ = 2.
+	Os efeitos do $\xi$ foram relacionados ao tempo de estabilização e à tensão de pico. Os efeitos do $w_{n}$ tiveram grande influência sobre o tempo de resposta, pois com um valor maior, o $T_{p}$ diminue.
 	
 
 \begin{figure}[h]
 \centering
-	\includegraphics[scale=0.5]{./pictures/i_w2_k8_e1.png}
+	\includegraphics[scale=0.4]{./pictures/i_w2_k8_e1.png}
 	\caption{Para $w_{n}$=2, k = 8 e $\xi$ = 1}
 	\label{fig:i_w2_k8_e1}
 \end{figure}
 \begin{figure}[h]
 \centering
-	\includegraphics[scale=0.5]{./pictures/i_w2_k8_e07.png}
+	\includegraphics[scale=0.4]{./pictures/i_w2_k8_e07.png}
 	\caption{Para $w_{n}$=2, k = 8 e $\xi$ = 0.7}
 	\label{fig:i_w2_k8_e07}
 \end{figure}
 \begin{figure}[h]
 \centering
-	\includegraphics[scale=0.5]{./pictures/i_w2_k8_e02.png}
+	\includegraphics[scale=0.4]{./pictures/i_w2_k8_e02.png}
 	\caption{Para $w_{n}$=2, k = 8 e $\xi$ = 0.2}
 	\label{fig:i_w2_k8_e02}
 \end{figure}
-
-	Os efeitos do $w_{n}$ tiveram grande influência sobre o tempo de resposta, pois com um valor maior, o $T_{p}$ diminue. As Figuras \ref{fig:i_w10_k8_e1}, \ref{fig:i_w10_k8_e07} e \ref{fig:i_w10_k8_e02} mostram o comportamento do sinal para, respectivamente, os valores $\xi$ = 1, 0.7, 0.2 e $w_{n}$ = 10.
-
 \begin{figure}[h]
 \centering
-	\includegraphics[scale=0.75]{./pictures/ii_w10_k8_e1.png}
+	\includegraphics[scale=0.4]{./pictures/ii_w10_k8_e1.png}
 	\caption{Para $w_{n}$=10, k = 8 e $\xi$ = 1}
-	\label{fig:i_w10_k8_e1}
+	\label{fig:ii_w10_k8_e1}
 \end{figure}
 \begin{figure}[h]
 \centering
-	\includegraphics[scale=0.75]{./pictures/ii_w10_k8_e07.png}
+	\includegraphics[scale=0.4]{./pictures/ii_w10_k8_e07.png}
 	\caption{Para $w_{n}$=10, k = 8 e $\xi$ = 0.7}
-	\label{fig:i_w10_k8_e07}
+	\label{fig:ii_w10_k8_e07}
 \end{figure}
 \begin{figure}[h]
 \centering
-	\includegraphics[scale=0.75]{./pictures/ii_w10_k8_e02.png}
+	\includegraphics[scale=0.4]{./pictures/ii_w10_k8_e02.png}
 	\caption{Para $w_{n}$=10, k = 8 e $\xi$ = 0.2}
-	\label{fig:i_w10_k8_e02}
+	\label{fig:ii_w10_k8_e02}
 \end{figure}
-
-\section{Resultados}
-Se os valores de $T_{0}$ e $T_{s}$ forem modificados, o sinal perde a característica que realmente 
-
 
 \end{document}
