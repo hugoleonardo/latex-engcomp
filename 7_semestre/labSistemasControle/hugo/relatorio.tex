@@ -1,4 +1,4 @@
-\documentclass[10pt,a4paper]{report}
+\documentclass[10pt,a4paper]{article}
 %\usepackage[utf8]{inputenc}
 \usepackage[latin1]{inputenc}
 \usepackage{amsmath}
@@ -9,37 +9,160 @@
 \usepackage{graphicx}
 \usepackage{lipsum}
 
-\title{Laboratório de Sistemas de Controle - Relatório 1}
+\title{	\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.75]{./pictures/logoufpa.jpg}
+			\label{fig:logoufpa}
+		\end{figure}
+		Universidade Federal do Pará \linebreak
+		Instituto de Tecnologia \linebreak
+		Faculdade de Engenharia de Computação e Telecomunicações \linebreak
+		Laboratório de Sistemas de Controle \linebreak 
+		Prof$^{a}$ Adriana Castro \linebreak
+		\linebreak		
+		Relatório 1
+		}
+
 
 \begin{document}
-
-
-
-%\title{Medição de Velocidade usando um Sensor de Luminosidade}
-
 \author{Hugo Santos - 10080000701}
-%Matrículas: {10080000801, 10080000701, 10080000501}
-%\thanks{Engenharia da Computa\c{c}\~ao, Universidade Federal do Par\'a, Bel\'em-PA, Brasil}
 \maketitle
+\pagebreak
+\section{Questao 1}
 
-\tableofcontents
-
-
-%Emails: \{dhcsouza, huggosan, weltonmaxx007\}@gmail.com\\
-
-
-\chapter{Questão 2}
-
-\section{Funcionamento do Script}
-	O script é utilizado para fazer o cálculo numérico dos coeficientes da série de Fourier da função $\Delta(t/2)$, utilizando a fórmula da transformada inversa mostrada na equação \ref{eq:formcoef} . O algoritmo do programa está definido abaixo.
-
-	\[ t_{p} = \dfrac{\pi}{w_{d}} \]
+	Simulação de um sistema com entrada igual a um degrau e com função de transferência igual à equação \ref{eq:sistordem1}. Na primeira parte, manteve-se o K constante e variou-se o $\tau$ entre os valores 0.1, 1 e 10. No segundo caso, $\tau$ foi mantido constante e variou-se o K entre os valores 0.1, 1 e 10. O critério de avaliaçao é o tempo de estabilização $T_{s}$).
 	
-	\[ \dfrac{C(s)}{R(s)} = \dfrac{kw_{n}^{2}}{s^{2} + 2\xi w_{n} s + w^{2}_{n}} \]
+\begin{equation}\label{eq:sistordem1}
+	\frac{C(s)}{R(s)} = \frac{K}{\tau s+1}
+\end{equation}
 
-	\[ \dfrac{C(s)}{R(s)} = \dfrac{K}{s^{2} + (1+KK_{h})s + K} \]
+\subsection{Simulação}
 
-	\[ w_{d} = w_{n}\sqrt[]{1-\xi^{2}} \]
+	No item \textit{i} percebeu-se que o $T_{s}$ subia praticamente com a mesma proporção de crescimento do K. Como mostrado nos dados logo abaixo e nas Figuras \ref{fig:questao1k2tau01}, \ref{fig:questao1k2tau1} e \ref{fig:questao1k2tau01}
+\begin{itemize}
+	\item Item i
+	\begin{itemize} 
+		\item Para $K = 2$ e $\tau = 0,1$ : $T_{s} = 0,37$ mostrado na Figura \ref{fig:questao1k2tau01}
+		
+		\item Para $K = 2$ e $\tau = 1$ : $T_{s} = 3,957$ mostrado na Figura \ref{fig:questao1k2tau1}
+
+		\item Para $K = 2$ e $\tau = 10$ : $T_{s} = 39,18$ mostrado na Figura \ref{fig:questao1k2tau10}
+		
+	\end{itemize}
+\end{itemize}
+
+	No item \textit{ii} percebeu-se que o $T_{s}$ permaneceu constante devido a independência de K com o valor do $T_{s}$. Como mostrado nos dados logo abaixo e nas Figuras \ref{fig:questao1k01tau1}, \ref{fig:questao1k1tau1} e \ref{fig:questao1k10tau1}.
+\begin{itemize}
+	\item Item ii
+	\begin{itemize}
+		\item Para $\tau=1$ e $K=0,1$ : $T_{s} = 3,957$ (Figura \ref{fig:questao1k01tau1})
+		
+		\item Para $\tau=1$ e $K=1$ : $T_{s} = 3,957$ (Figura \ref{fig:questao1k1tau1})
+		
+		\item Para $\tau=1$ e $K=10$ : $T_{s} = 3,957$ (Figura \ref{fig:questao1k10tau1})
+		
+	\end{itemize}	
+\end{itemize}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.75]{./pictures/1_questao_item_i_tau_0,1.png}
+	\caption{Para $K = 2$ e $\tau = 0,1$}
+	\label{fig:questao1k2tau01}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.75]{./pictures/1_questao_item_i_tau_1.png}
+	\caption{Para $K = 2$ e $\tau = 1$}
+	\label{fig:questao1k2tau1}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.75]{./pictures/1_questao_item_i_tau_10.png}
+	\caption{Para $K = 2$ e $\tau = 10$}
+	\label{fig:questao1k2tau10}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.75]{./pictures/1_questao_item_ii_k_0,1.png}
+	\caption{Para $K = 0.1$ e $\tau = 1$}
+	\label{fig:questao1k01tau1}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.75]{./pictures/1_questao_item_ii_k_1.png}
+	\caption{Para $K = 1$ e $\tau = 1$}
+	\label{fig:questao1k1tau1}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.75]{./pictures/1_questao_item_ii_k_10.png}
+	\caption{Para $K = 10$ e $\tau = 1$}
+	\label{fig:questao1k10tau1}
+\end{figure}	
+	
+	O Cálculo da resposta analítica (no domínio de tempo) é dado abaixo, utilizou-se expansão em frações parciais e transformada de Laplace.
+			
+		\begin{itemize}
+			\item Item i
+				\begin{itemize}
+					\item $K=2$, $\tau = 0,1$	
+						\[ \frac{1}{s}\frac{2}{0,1s+1}\]
+						\[ \frac{A}{s}\frac{B}{0,1s+1}\]
+						\[ A = s\frac{2}{s(0,1s+1)}\mid s=0 = 2\]
+						\[ B = 0,1s+1\frac{2}{s(0,1s+1)}\mid s=-10 = -0,2\]
+						\[ C(s) = \frac{2}{s} - \frac{0,1}{s+10}\]
+						\[ c(t) = 2 - 0,1e^{-10t}\]
+					\item $K=2$, $\tau = 1$
+						\[ \frac{1}{s}\frac{2}{1s+1}\]
+						\[ \frac{A}{s}\frac{B}{s+1}\]
+						\[ A = s\frac{2}{s(s+1)}\mid s=0 = 2\]
+						\[ B = s+1\frac{2}{s(s+1)}\mid s=-1 = -2\]
+						\[ c(t) = 2 - 2e^{-t}\]
+					\item $K=2$, $\tau = 10$
+						\[ \frac{1}{s}\frac{2}{10s+1}\]
+						\[ \frac{A}{s}\frac{B}{10s+1}\]
+						\[ A = s\frac{2}{s(10s+1)}\mid s=0 = 2\]
+						\[ B = 10s+1\frac{2}{s(10s+1)}\mid s=-1/10 = -20\]
+						\[ c(t) = 2 - 2e^{-t/10}\]
+					
+							\end{itemize}	
+			\item Item ii
+				\begin{itemize}
+					\item $\tau=1$, $K=0,1$
+						\[ \frac{1}{s}\frac{0,1}{s+1}\]
+						\[ \frac{A}{s}\frac{B}{s+1}\]
+						\[ A = s\frac{0,1}{s(s+1)}\mid s=0 = 0,1\]
+						\[ B = s+1\frac{0,1}{s(s+1)}\mid s=-1 = -0,1\]
+						\[ c(t) = 0,1 - 0,1e^{-t}\]
+					\item $\tau=1$, $K=1$ 			
+						\[ \frac{1}{s}\frac{1}{s+1}\]
+						\[ \frac{A}{s}\frac{B}{s+1}\]
+						\[ A = s\frac{1}{s(s+1)}\mid s=0 = 1\]
+						\[ B = s+1\frac{1}{s(s+1)}\mid s=-1 = -1\]
+						\[ c(t) = 1 - 1e^{-t}\]
+					\item $\tau=1$, $K=10$ 			
+						\[ \frac{10}{s}\frac{1}{s+1}\]
+						\[ \frac{A}{s}\frac{B}{s+1}\]
+						\[ A = s\frac{10}{s(s+1)}\mid s=0 = 10\]
+						\[ B = s+1\frac{10}{s(s+1)}\mid s=-1 = -10\]
+						\[ c(t) = 10 - 10e^{-t}\]
+				\end{itemize}
+		\end{itemize}	
+
+\section{Questão 2}
+
+	Simulação de um sistema de $2^{a}$ ordem com função de transferência igual à equação \ref{eq:sistordem2}. Na primeira parte, manteve-se $w_{n}$ em 2 e K em 8 constantes e variou-se o $\xi$ entre 1, 0.7 e 0.2. No segundo caso, foram usados os mesmos cirtérios da primeira parte, porém $w_{n}$ valia 10. Os critérios analisados foram o tempo de estabilização ($T_{s}$), o máximo de sobressinal ($M_{p}$), o tempo do valor de pico ($T_{p}$), o valor de pico ($V_{p}$) e valor de regime ($V_{r}$).
+	
+\begin{equation}\label{eq:sistordem2}
+	\frac{C(s)}{R(s)} = \frac{Kw_{n}^{2}}{s^{2} + 2\xi w_{n}s + w_{n}^{2}}
+\end{equation}
+
+\subsection{Simulação}
+
+	Os efeitos do $\xi$ foram relacionados ao tempo de estabilização e à tensão de pico. Os efeitos do $w_{n}$ tiveram grande influência sobre o tempo de resposta, pois com um valor maior, o $T_{p}$ diminue.
+
+
 \begin{itemize}
 	\item Para $w_{n}$=2, k=8 e $\xi$=1 mostrado na Figura \ref{fig:i_w2_k8_e1}
 	\begin{itemize}
@@ -85,44 +208,66 @@
 	\end{itemize}
 \end{itemize}
 	
-	Os efeitos do $\xi$ foram relacionados ao tempo de estabilização e à tensão de pico. Os efeitos do $w_{n}$ tiveram grande influência sobre o tempo de resposta, pois com um valor maior, o $T_{p}$ diminue.
-	
-
 \begin{figure}[h]
 \centering
-	\includegraphics[scale=0.4]{./pictures/i_w2_k8_e1.png}
+	\includegraphics[scale=0.6]{./pictures/i_w2_k8_e1.png}
 	\caption{Para $w_{n}$=2, k = 8 e $\xi$ = 1}
 	\label{fig:i_w2_k8_e1}
 \end{figure}
 \begin{figure}[h]
 \centering
-	\includegraphics[scale=0.4]{./pictures/i_w2_k8_e07.png}
+	\includegraphics[scale=0.6]{./pictures/i_w2_k8_e07.png}
 	\caption{Para $w_{n}$=2, k = 8 e $\xi$ = 0.7}
 	\label{fig:i_w2_k8_e07}
 \end{figure}
 \begin{figure}[h]
 \centering
-	\includegraphics[scale=0.4]{./pictures/i_w2_k8_e02.png}
+	\includegraphics[scale=0.6]{./pictures/i_w2_k8_e02.png}
 	\caption{Para $w_{n}$=2, k = 8 e $\xi$ = 0.2}
 	\label{fig:i_w2_k8_e02}
 \end{figure}
 \begin{figure}[h]
 \centering
-	\includegraphics[scale=0.4]{./pictures/ii_w10_k8_e1.png}
+	\includegraphics[scale=0.6]{./pictures/ii_w10_k8_e1.png}
 	\caption{Para $w_{n}$=10, k = 8 e $\xi$ = 1}
 	\label{fig:ii_w10_k8_e1}
 \end{figure}
 \begin{figure}[h]
 \centering
-	\includegraphics[scale=0.4]{./pictures/ii_w10_k8_e07.png}
+	\includegraphics[scale=0.6]{./pictures/ii_w10_k8_e07.png}
 	\caption{Para $w_{n}$=10, k = 8 e $\xi$ = 0.7}
 	\label{fig:ii_w10_k8_e07}
 \end{figure}
 \begin{figure}[h]
 \centering
-	\includegraphics[scale=0.4]{./pictures/ii_w10_k8_e02.png}
+	\includegraphics[scale=0.6]{./pictures/ii_w10_k8_e02.png}
 	\caption{Para $w_{n}$=10, k = 8 e $\xi$ = 0.2}
 	\label{fig:ii_w10_k8_e02}
 \end{figure}
+
+\section{Questao 3}
+	Dada a equação \ref{eq:quest3}. a resposta ao degrau a partir de $M_{p}$ = 0,2 e $T_{p}$  = 1
+	
+\begin{equation}\label{eq:quest3}
+	\frac{C(s)}{R(s)} = \frac{K}{s^{2} + (1+KK_{k})s + K}
+\end{equation}
+
+\subsection{Simulação}
+	Os valores encontrados são:
+	\begin{itemize}
+		\item $K = 12,5$
+		\item $K_{h} = 0,178$
+		\item $T_{s} = 1,49$ 
+		\item $M{p} = 0,2$
+	\end{itemize}
+	
+Os valores lidos na simulação foram os mesmos esperados, através dos cálculos, pela resposta ao degrau. A Figura \ref{fig:3questao} mostra o comportamento do sistema no tempo.
+	
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.75]{./pictures/3_questao.png}
+	\caption{Para $M_{p} = 0,2$ e $T_{s} = 1$}
+	\label{fig:3questao}
+\end{figure}			
 
 \end{document}

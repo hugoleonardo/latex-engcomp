@@ -1,2 +1,0 @@
-\contentsline {chapter}{\numberline {1}Quest\~ao 2}{2}
-\contentsline {section}{\numberline {1.1}Funcionamento do Script}{2}

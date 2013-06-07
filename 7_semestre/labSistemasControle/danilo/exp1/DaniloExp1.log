@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2012.11.22)  3 JUN 2013 22:33
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2012.11.22)  7 JUN 2013 13:29
 entering extended mode
-**relatorio.tex
+**DaniloExp1.tex
 
-(C:\Users\Hugo\Documents\GitHub\latex-engcomp\7_semestre\labSistemasControle\hu
-go\relatorio.tex
+(C:\Users\Hugo\Documents\GitHub\latex-engcomp\7_semestre\labSistemasControle\da
+nilo\exp1\DaniloExp1.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -299,28 +299,27 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 Package: lipsum 2011/04/14 v1.2 150 paragraphs of Lorem Ipsum dummy text
 \c@lips@count=\count128
 )
-(C:\Users\Hugo\Documents\GitHub\latex-engcomp\7_semestre\labSistemasControle\hu
-go\relatorio.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 14.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 14.
+(C:\Users\Hugo\Documents\GitHub\latex-engcomp\7_semestre\labSistemasControle\da
+nilo\exp1\DaniloExp1.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 24.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 24.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 14.
-
-("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+LaTeX Font Info:    ... okay on input line 24.
+ ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count129
 \scratchdimen=\dimen122
@@ -334,124 +333,235 @@ LaTeX Font Info:    ... okay on input line 14.
 \makeMPintoPDFobject=\count134
 \everyMPtoPDFconversion=\toks23
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 23.
+LaTeX Font Info:    Try loading font information for U+msa on input line 29.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 23.
+LaTeX Font Info:    Try loading font information for U+msb on input line 29.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 ) [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-(C:\Users\Hugo\Documents\GitHub\latex-engcomp\7_semestre\labSistemasControle\hu
-go\relatorio.toc)
+(C:\Users\Hugo\Documents\GitHub\latex-engcomp\7_semestre\labSistemasControle\da
+nilo\exp1\DaniloExp1.toc)
 \tf@toc=\write3
  [1
 
 ]
+(C:\Users\Hugo\Documents\GitHub\latex-engcomp\7_semestre\labSistemasControle\da
+nilo\exp1\DaniloExp1.lof)
+\tf@lof=\write4
+ [2
+
+]
 Chapter 1.
+<./pictures/1_questao_item_i_tau_0,1.png, id=20, 422.32782pt x 319.1925pt>
+File: ./pictures/1_questao_item_i_tau_0,1.png Graphic file (type png)
 
-LaTeX Warning: Reference `eq:formcoef' on page 2 undefined on input line 34.
-
-[2
-
-] <./pictures/i_w2_k8_e1.png, id=22, 578.16pt x 433.62pt>
-File: ./pictures/i_w2_k8_e1.png Graphic file (type png)
-
-<use ./pictures/i_w2_k8_e1.png>
-Package pdftex.def Info: ./pictures/i_w2_k8_e1.png used on input line 93.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
-
-<./pictures/i_w2_k8_e07.png, id=23, 578.16pt x 433.62pt>
-File: ./pictures/i_w2_k8_e07.png Graphic file (type png)
-
-<use ./pictures/i_w2_k8_e07.png>
-Package pdftex.def Info: ./pictures/i_w2_k8_e07.png used on input line 99.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
+<use ./pictures/1_questao_item_i_tau_0,1.png>
+Package pdftex.def Info: ./pictures/1_questao_item_i_tau_0,1.png used on input 
+line 52.
+(pdftex.def)             Requested size: 316.74509pt x 239.39378pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./pictures/i_w2_k8_e02.png, id=24, 578.16pt x 433.62pt>
-File: ./pictures/i_w2_k8_e02.png Graphic file (type png)
+<./pictures/1_questao_item_i_tau_1.png, id=21, 423.08063pt x 316.93407pt>
+File: ./pictures/1_questao_item_i_tau_1.png Graphic file (type png)
 
-<use ./pictures/i_w2_k8_e02.png>
-Package pdftex.def Info: ./pictures/i_w2_k8_e02.png used on input line 105.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<./pictures/ii_w10_k8_e1.png, id=25, 578.16pt x 433.62pt>
-File: ./pictures/ii_w10_k8_e1.png Graphic file (type png)
-
-<use ./pictures/ii_w10_k8_e1.png>
-Package pdftex.def Info: ./pictures/ii_w10_k8_e1.png used on input line 111.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
+<use ./pictures/1_questao_item_i_tau_1.png>
+Package pdftex.def Info: ./pictures/1_questao_item_i_tau_1.png used on input li
+ne 59.
+(pdftex.def)             Requested size: 317.3097pt x 237.69997pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./pictures/ii_w10_k8_e07.png, id=26, 578.16pt x 433.62pt>
-File: ./pictures/ii_w10_k8_e07.png Graphic file (type png)
+<./pictures/1_questao_item_i_tau_10.png, id=22, 421.575pt x 318.43968pt>
+File: ./pictures/1_questao_item_i_tau_10.png Graphic file (type png)
 
-<use ./pictures/ii_w10_k8_e07.png>
-Package pdftex.def Info: ./pictures/ii_w10_k8_e07.png used on input line 117.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<./pictures/ii_w10_k8_e02.png, id=27, 578.16pt x 433.62pt>
-File: ./pictures/ii_w10_k8_e02.png Graphic file (type png)
-
-<use ./pictures/ii_w10_k8_e02.png>
-Package pdftex.def Info: ./pictures/ii_w10_k8_e02.png used on input line 123.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
+<use ./pictures/1_questao_item_i_tau_10.png>
+Package pdftex.def Info: ./pictures/1_questao_item_i_tau_10.png used on input l
+ine 66.
+(pdftex.def)             Requested size: 316.18047pt x 238.82918pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[3 <C:/Users/Hugo/Documents/GitHub/latex-engcomp/7_semestre/labSistemasControle
-/hugo/pictures/i_w2_k8_e1.png (PNG copy)>] [4 <C:/Users/Hugo/Documents/GitHub/l
-atex-engcomp/7_semestre/labSistemasControle/hugo/pictures/i_w2_k8_e07.png (PNG 
-copy)> <C:/Users/Hugo/Documents/GitHub/latex-engcomp/7_semestre/labSistemasCont
-role/hugo/pictures/i_w2_k8_e02.png (PNG copy)>] [5 <C:/Users/Hugo/Documents/Git
-Hub/latex-engcomp/7_semestre/labSistemasControle/hugo/pictures/ii_w10_k8_e1.png
- (PNG copy)> <C:/Users/Hugo/Documents/GitHub/latex-engcomp/7_semestre/labSistem
-asControle/hugo/pictures/ii_w10_k8_e07.png (PNG copy)>] [6 <C:/Users/Hugo/Docum
-ents/GitHub/latex-engcomp/7_semestre/labSistemasControle/hugo/pictures/ii_w10_k
-8_e02.png (PNG copy)>]
-(C:\Users\Hugo\Documents\GitHub\latex-engcomp\7_semestre\labSistemasControle\hu
-go\relatorio.aux)
+<./pictures/1_questao_item_ii_k_0,1.png, id=23, 422.32782pt x 319.1925pt>
+File: ./pictures/1_questao_item_ii_k_0,1.png Graphic file (type png)
 
-LaTeX Warning: There were undefined references.
+<use ./pictures/1_questao_item_ii_k_0,1.png>
+Package pdftex.def Info: ./pictures/1_questao_item_ii_k_0,1.png used on input l
+ine 76.
+(pdftex.def)             Requested size: 316.74509pt x 239.39378pt.
 
- ) 
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<./pictures/1_questao_item_ii_k_1.png, id=24, 423.08063pt x 318.43968pt>
+File: ./pictures/1_questao_item_ii_k_1.png Graphic file (type png)
+
+<use ./pictures/1_questao_item_ii_k_1.png>
+Package pdftex.def Info: ./pictures/1_questao_item_ii_k_1.png used on input lin
+e 83.
+(pdftex.def)             Requested size: 317.3097pt x 238.82918pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<./pictures/1_questao_item_ii_k_10.png, id=25, 421.575pt x 319.1925pt>
+File: ./pictures/1_questao_item_ii_k_10.png Graphic file (type png)
+
+<use ./pictures/1_questao_item_ii_k_10.png>
+Package pdftex.def Info: ./pictures/1_questao_item_ii_k_10.png used on input li
+ne 90.
+(pdftex.def)             Requested size: 316.18047pt x 239.39378pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[3
+
+] [4 <C:/Users/Hugo/Documents/GitHub/latex-engcomp/7_semestre/labSistemasContro
+le/danilo/exp1/pictures/1_questao_item_i_tau_0,1.png>] [5 <C:/Users/Hugo/Docume
+nts/GitHub/latex-engcomp/7_semestre/labSistemasControle/danilo/exp1/pictures/1_
+questao_item_i_tau_1.png>] [6 <C:/Users/Hugo/Documents/GitHub/latex-engcomp/7_s
+emestre/labSistemasControle/danilo/exp1/pictures/1_questao_item_i_tau_10.png>] 
+[7 <C:/Users/Hugo/Documents/GitHub/latex-engcomp/7_semestre/labSistemasControle
+/danilo/exp1/pictures/1_questao_item_ii_k_0,1.png> <C:/Users/Hugo/Documents/Git
+Hub/latex-engcomp/7_semestre/labSistemasControle/danilo/exp1/pictures/1_questao
+_item_ii_k_1.png>] [8 <C:/Users/Hugo/Documents/GitHub/latex-engcomp/7_semestre/
+labSistemasControle/danilo/exp1/pictures/1_questao_item_ii_k_10.png>]
+Chapter 2.
+<./pictures/2_questao_item_i_psi_1.png, id=49, 422.32782pt x 316.93407pt>
+File: ./pictures/2_questao_item_i_psi_1.png Graphic file (type png)
+
+<use ./pictures/2_questao_item_i_psi_1.png>
+Package pdftex.def Info: ./pictures/2_questao_item_i_psi_1.png used on input li
+ne 167.
+(pdftex.def)             Requested size: 316.74509pt x 237.69997pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<./pictures/2_questao_item_i_psi_0,7.png, id=50, 422.32782pt x 317.68687pt>
+File: ./pictures/2_questao_item_i_psi_0,7.png Graphic file (type png)
+
+<use ./pictures/2_questao_item_i_psi_0,7.png>
+Package pdftex.def Info: ./pictures/2_questao_item_i_psi_0,7.png used on input 
+line 174.
+(pdftex.def)             Requested size: 316.74509pt x 238.26456pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<./pictures/2_questao_item_i_psi_0,2.png, id=51, 422.32782pt x 319.1925pt>
+File: ./pictures/2_questao_item_i_psi_0,2.png Graphic file (type png)
+
+<use ./pictures/2_questao_item_i_psi_0,2.png>
+Package pdftex.def Info: ./pictures/2_questao_item_i_psi_0,2.png used on input 
+line 181.
+(pdftex.def)             Requested size: 316.74509pt x 239.39378pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<./pictures/2_questao_item_ii_psi_1.png, id=52, 422.32782pt x 319.1925pt>
+File: ./pictures/2_questao_item_ii_psi_1.png Graphic file (type png)
+
+<use ./pictures/2_questao_item_ii_psi_1.png>
+Package pdftex.def Info: ./pictures/2_questao_item_ii_psi_1.png used on input l
+ine 191.
+(pdftex.def)             Requested size: 316.74509pt x 239.39378pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<./pictures/2_questao_item_ii_psi_0,7.png, id=53, 422.32782pt x 317.68687pt>
+File: ./pictures/2_questao_item_ii_psi_0,7.png Graphic file (type png)
+
+<use ./pictures/2_questao_item_ii_psi_0,7.png>
+Package pdftex.def Info: ./pictures/2_questao_item_ii_psi_0,7.png used on input
+ line 198.
+(pdftex.def)             Requested size: 316.74509pt x 238.26456pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<./pictures/2_questao_item_ii_psi_0,2.png, id=54, 423.08063pt x 318.43968pt>
+File: ./pictures/2_questao_item_ii_psi_0,2.png Graphic file (type png)
+
+<use ./pictures/2_questao_item_ii_psi_0,2.png>
+Package pdftex.def Info: ./pictures/2_questao_item_ii_psi_0,2.png used on input
+ line 205.
+(pdftex.def)             Requested size: 317.3097pt x 238.82918pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[9
+
+] [10 <C:/Users/Hugo/Documents/GitHub/latex-engcomp/7_semestre/labSistemasContr
+ole/danilo/exp1/pictures/2_questao_item_i_psi_1.png>] [11 <C:/Users/Hugo/Docume
+nts/GitHub/latex-engcomp/7_semestre/labSistemasControle/danilo/exp1/pictures/2_
+questao_item_i_psi_0,7.png>] [12 <C:/Users/Hugo/Documents/GitHub/latex-engcomp/
+7_semestre/labSistemasControle/danilo/exp1/pictures/2_questao_item_i_psi_0,2.pn
+g> <C:/Users/Hugo/Documents/GitHub/latex-engcomp/7_semestre/labSistemasControle
+/danilo/exp1/pictures/2_questao_item_ii_psi_1.png>] [13 <C:/Users/Hugo/Document
+s/GitHub/latex-engcomp/7_semestre/labSistemasControle/danilo/exp1/pictures/2_qu
+estao_item_ii_psi_0,7.png> <C:/Users/Hugo/Documents/GitHub/latex-engcomp/7_seme
+stre/labSistemasControle/danilo/exp1/pictures/2_questao_item_ii_psi_0,2.png>]
+Chapter 3.
+<./pictures/3_questao.png, id=72, 421.575pt x 319.1925pt>
+File: ./pictures/3_questao.png Graphic file (type png)
+
+<use ./pictures/3_questao.png>
+Package pdftex.def Info: ./pictures/3_questao.png used on input line 272.
+(pdftex.def)             Requested size: 316.18047pt x 239.39378pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (2.00058pt too wide) in paragraph at lines 278--279
+\OT1/cmr/m/n/10 Os val-ores en-con-tra-dos na sim-ulac~ao con-ferem com os val
+-ores obti-dos nos calculos
+ []
+
+[14
+
+] [15 <C:/Users/Hugo/Documents/GitHub/latex-engcomp/7_semestre/labSistemasContr
+ole/danilo/exp1/pictures/3_questao.png>]
+(C:\Users\Hugo\Documents\GitHub\latex-engcomp\7_semestre\labSistemasControle\da
+nilo\exp1\DaniloExp1.aux) ) 
 Here is how much of TeX's memory you used:
- 3022 strings out of 494045
- 40439 string characters out of 3148389
- 181830 words of memory out of 3000000
- 6278 multiletter control sequences out of 15000+200000
- 12743 words of font info for 49 fonts, out of 3000000 for 9000
+ 3084 strings out of 494045
+ 42770 string characters out of 3148389
+ 185150 words of memory out of 3000000
+ 6328 multiletter control sequences out of 15000+200000
+ 14667 words of font info for 56 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 27i,6n,22p,276b,233s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\Hugo\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\t
-crm1000.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.p
-fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/P
-rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program F
-iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.
-pfb>
-Output written on relatorio.pdf (7 pages, 202731 bytes).
+ 27i,7n,22p,567b,354s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\Hugo\AppData\Local\MiKTeX\2.9\fonts\pk\lj
+four\jknappen\ec\dpi600\tcrm1000.pk> <C:\Users\Hugo\AppData\Local\MiKTeX\2.9\fo
+nts\pk\ljfour\jknappen\ec\dpi600\tcrm1200.pk><C:/Program Files/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
+sfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12
+.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/
+Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program F
+iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmsy7.pfb>
+Output written on DaniloExp1.pdf (16 pages, 219696 bytes).
 PDF statistics:
- 77 PDF objects out of 1000 (max. 8388607)
+ 125 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
 
