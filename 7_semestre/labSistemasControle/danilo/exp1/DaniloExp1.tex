@@ -9,13 +9,19 @@
 \usepackage{graphicx}
 \usepackage{lipsum}
 
-\title{Experimento 1 com $MatLab^{\copyright}$ - Sistemas de Controle}
+\title{	\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.75]{./pictures/logoufpa.png}
+			\label{fig:logoufpa}
+		\end{figure}
+		Universidade Federal do Pará \linebreak
+		Instituto de Tecnologia \linebreak
+		Faculdade de Engenharia de Computação e Telecomunicações \linebreak
+		Sistemas de Controle \linebreak
+		Experimento 1 com $MatLab^{\copyright}$ \linebreak
+		Prof$^{a}$ Adriana Castro}
 
 \begin{document}
-
-
-
-%\title{Medição de Velocidade usando um Sensor de Luminosidade}
 
 \author{Danilo Souza - 10080000801}
 %Matrículas: {10080000801, 10080000701, 10080000501}
@@ -23,6 +29,7 @@
 \maketitle
 
 \tableofcontents
+\listoffigures
 
 \chapter{Questao 1}
 
@@ -136,7 +143,9 @@
 				\end{enumerate}
 		\end{itemize}	
 	
-\section{Resultados}
+\section{Conclusões}
+
+		Conforme mostrados nos valores obtidos na simulação, percebemos que apenas o $\tau$ influencia no tempo de estabilização, quanto maior seu valor, maior o tempo de estabilização, sendo que este crescimento é linear, nesse caso, smpre que o valor de $\tau$ é multiplicado por 10, o tempos de estabilização ($T_{s}$) também é multiplicado por 10. O valor de $K$ não influencia no tempo de estabilização, apesar do valor ter mudado em relação a $K = 2$, sempre que o valor de $K$ é multiplicado por 10 $T{s}$ permanece constante e igual a 4,1. 
 
 \chapter{Questao 2}
 
@@ -152,21 +161,21 @@
 \begin{itemize}
 			\item Item i
 				\begin{enumerate}
-					\item $w_{n} = 2$, $K=8$, $\xi=1$, $T_{s} = 0.921$, $V_{r} = 8$ (Figura \ref{fig:questao2xi1wn2}
+					\item $w_{n} = 2$, $K=8$, $\xi=1$, $T_{s} = 0.921$, $V_{r} = 8$ (Figura \ref{fig:questao2xi1wn2})
 						\begin{figure}[h]
-						\centering
-						\includegraphics[scale=0.75]{./pictures/2_questao_item_i_psi_1.png}
-						\caption{$K = 8$, $w_{n} = 2$, $\xi=1$}
-						\label{fig:questao2xi1wn2}
-					\end{figure}
-					\item $w_{n} = 2$, $K=8$, $\xi=0,7$, $T_{s} = 2.99$, $M_{p} = 4,6$, $T_{p} = 2.2$, $V_{p} = 8.368$, $V_{r} = 8$ \ref{fig:questao2xi07wn2}
+							\centering
+							\includegraphics[scale=0.75]{./pictures/2_questao_item_i_psi_1.png}
+							\caption{$K = 8$, $w_{n} = 2$, $\xi=1$}
+							\label{fig:questao2xi1wn2}
+						\end{figure}
+					\item $w_{n} = 2$, $K=8$, $\xi=0,7$, $T_{s} = 2.99$, $M_{p} = 4,6$, $T_{p} = 2.2$, $V_{p} = 8.368$, $V_{r} = 8$ (Figura \ref{fig:questao2xi07wn2})
 						\begin{figure}[h]
-						\centering
-						\includegraphics[scale=0.75]{./pictures/2_questao_item_i_psi_0,7.png}
-						\caption{$K = 8$, $w_{n} = 2$, $\xi=0,7$}
-						\label{fig:questao2xi07wn2}
-					\end{figure}
-					\item $w_{n} = 2$, $K=8$, $\xi=0,2$, $T_{s} = 9,6823$, $M_{p} = 48,6365$, $T_{p} = 1,805$, $V_{p} = 11,8906$, $V_{r} = 8$ (Figura \ref{fig:questao2xi02wn2}
+							\centering
+							\includegraphics[scale=0.75]{./pictures/2_questao_item_i_psi_0,7.png}
+							\caption{$K = 8$, $w_{n} = 2$, $\xi=0,7$}
+							\label{fig:questao2xi07wn2}
+						\end{figure}
+					\item $w_{n} = 2$, $K=8$, $\xi=0,2$, $T_{s} = 9,6823$, $M_{p} = 48,6365$, $T_{p} = 1,805$, $V_{p} = 11,8906$, $V_{r} = 8$ (Figura \ref{fig:questao2xi02wn2})
 						\begin{figure}[h]
 							\centering
 							\includegraphics[scale=0.75]{./pictures/2_questao_item_i_psi_0,2.png}
@@ -176,13 +185,31 @@
 				\end{enumerate}
 			\item Item ii
 				\begin{enumerate}
-					\item $w_{n} = 2$, $K=8$, $\xi=1$,
-					\item $w_{n} = 2$, $K=8$, $\xi=0,7$,
-					\item $w_{n} = 2$, $K=8$, $\xi=0,2$,
+					\item $w_{n} = 10$, $K=8$, $\xi=1$, $T_{s} = 0.56$, $V_{r} = 8$ (Figura \ref{fig:questao2xi1wn10})
+						\begin{figure}[h]
+							\centering
+							\includegraphics[scale=0.75]{./pictures/2_questao_item_ii_psi_1.png}
+							\caption{$K = 8$, $w_{n} = 10$, $\xi=1$}
+							\label{fig:questao2xi1wn10}
+						\end{figure}					
+					\item $w_{n} = 10$, $K=8$, $\xi=0,7$, $\xi=1$, $T_{s} = 0,6$, $M_{p} = 4,5875$, $T_{p} = 0,448$, $V_{p} = 8,367$, $V_{r} = 8$ (Figura \ref{fig:questao2xi07wn10})
+						\begin{figure}[h]
+							\centering
+							\includegraphics[scale=0.75]{./pictures/2_questao_item_ii_psi_0,7.png}
+							\caption{$K = 8$, $w_{n} = 10$, $\xi=0,7$}
+							\label{fig:questao2xi07wn10}
+						\end{figure}					
+					\item $w_{n} = 10$, $K=8$, $\xi=0,2$,$\xi=1$, $T_{s} = 1,856$, $M_{p} = 52,37$, $T_{p} = 0,33$, $V_{p} = 12,19$, $V_{r} = 8$ (Figura \ref{fig:questao2xi02wn10})
+						\begin{figure}[h]
+							\centering
+							\includegraphics[scale=0.75]{./pictures/2_questao_item_ii_psi_0,2.png}
+							\caption{$K = 8$, $w_{n} = 10$, $\xi=0,2$}
+							\label{fig:questao2xi02wn10}
+						\end{figure}					
 				\end{enumerate}
 		\end{itemize}
 		
-		Calculando os valores do tempo te pico ($T_{p}$) utilizando as equações \ref{calcwd} e \ref{calctp}, observamos que os valores simulados estão muito próximos dos valores esperados. É importante ressaltar que para os sistemas que se aproximam de sistemas de $1^{a}$ ordem, o valor de $T_{p}$ não pode ser estimado usando as fórmulas acima.
+		Calculando os valores do tempo de pico ($T_{p}$) utilizando as equações \ref{calcwd} e \ref{calctp}, observamos que os valores simulados estão muito próximos dos valores esperados. É importante ressaltar que para os sistemas que se aproximam de sistemas de $1^{a}$ ordem, o valor de $T_{p}$ não existe, pois o sistema se comporta como um sistema de $1^{a}$ ordem.
 		
 		\begin{equation}\label{calcwd}
 			w_{d} = w_{n}\sqrt{1-\xi^{2}}
@@ -213,10 +240,21 @@
 				
 				\end{enumerate}
 		\end{itemize}
-\section{Resultados}
+\section{Conclusões}
+	Para o sistema de segunda ordem, podemos observar aspectos importantes reacionados aos parâmetros da equação \ref{eq:sistordem2}. 
+	
+	O valor de $K$ determina o valor de referência do sistema ($V_{r}$), independente do valor de $w_{n}$ e de $\xi$, $V_{r}$ permanece e constante e igual a 8 para todos os casos. 
+	
+	O valor do coeficiente de amortecimento ($\xi$) tem influência nos tempos de estabilização ($T_{s}$) e de pico ($T_{p}$), quanto menos amortecido o sistema, ou seja, quanto menor o valor de $\xi$, mais demorada é sua estabilização e maior será o tempo que o sistema leva para atingir seu valor de pico. Este parâmetro influencia também no valor de pico ($V_{p}$), pois quanto menor for o amortecimento do sistema, maior será seu valor de pico.
+	
+	O valor de $w_{n}$ tem influência nos valores de $T_{s}$ e $T_{p}$, esta influencia é de uma forma geral, ou seja, a resposta é comprimida e os tempos do sistema reduzem de forma conjunta, a resposta fica mais rápida, porque todos os tempos são reduzidos, seguindo sempre as regras de variação de $\xi$.
+	
+	
+	
+	
 
 \chapter{Questao 3}
-	Para que a resposta ao degrau unitáiro do sistema, dada pela equação \ref{eq:quest3}, tenha como parâmetros ficos, $M_{p}$ = 0,2 e $T_{p}$  = 1
+	Para que a resposta ao degrau unitáiro do sistema, dada pela equação \ref{eq:quest3}, tenha como parâmetros fixos, $M_{p}$ = 0,2 e $T_{p}$  = 1
 	
 		\begin{equation}\label{eq:quest3}
 			\frac{C(s)}{R(s)} = \frac{K}{s^{2} + (1+KK_{k})s + K}
@@ -225,9 +263,17 @@
 		Os valores encontrados foram:
 			\begin{itemize}
 				\item $K = 12,5$
-				\item $K_{h} = 0,178
-				\item T_{s} = 1,49$ 
+				\item $K_{h} = 0,178$
+				\item $T_{s} = 1,49$ 
+				\item $M{p} = 0,2$
 			\end{itemize}
-\section{Resultados}
-
+				\begin{figure}[h]
+					\centering
+					\includegraphics[scale=0.75]{./pictures/3_questao.png}
+					\caption{$M_{p} = 0,2$, $T_{s} = 1$}
+					\label{fig:3questao}
+				\end{figure}			
+			
+\section{Conclusões}
+		Os valores encontrados na simulação conferem com os valores obtidos nos cálculos feitos em sala de aula, conforme mostrado na figura \ref{fig:3questao}.
 \end{document}
