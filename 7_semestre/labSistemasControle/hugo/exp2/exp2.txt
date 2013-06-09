@@ -1,0 +1,57 @@
+Sistema ordem 1
+A=-1
+B=2
+C=1
+D=0
+
+Ts = 3,917
+vreferencia = 2
+Vregime = 4
+
+k = Vregime / Vreferencia : k = 2
+
+tal = Ts/4 : tal = 0.9792
+
+C(s)/R(s) = k/(tal*s+1) = 2/(0.9792s + 1)
+
+###########################################
+Sistem ordem 2
+
+C(s)/R(s) = K Wn^2 / s^2 + 2 xi s + Wn^2 
+
+Vregime = 2
+Vpico = 2.4
+Vreferencia = 2
+
+k = Vregime / Vreferencia : k = 2
+
+Mp = Vpico - Vregime / Vregime = 0.20
+
+-------------------------------------------
+
+Mp = e^[-xi*pi/sqrt(1-xi^2) ]
+
+ln(Mp) = -xi*pi/sqrt(1-xi^2)
+
+ln(Mp)^2 = xi^2*pi^2/(1-xi^2)
+
+ln(mp)^2 - ln(mp)^2 * xi^2 = xi^2*pi^2
+
+xi^2 = ln(Mp)^2 / ln(Mp)^2 + pi^2
+
+-xi = ln(Mp) / sqrt(ln(Mp)^2 + pi^2)
+
+xi = 0.4559
+
+------------------------------------------
+
+Tp = 1.768
+
+Tp = pi / Wn sqrt(1-xi^2)
+
+Wn = pi / Tp sqrt(1-xi^2)
+Wn = 1.9965
+
+Wn^2 = 3.9859
+
+2*xi*Wn = 1.8204
