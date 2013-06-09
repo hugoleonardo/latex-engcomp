@@ -1,0 +1,50 @@
+
+
+	1)
+		K = Vregime/Vreferência(referência = valor do degrau)
+		Ts = 3,917
+		Vregime = 4
+		Vreferência = 2 (entrada degrau)
+		K = 2
+		\tau = 0,9792
+		
+		C(s)/R(s) = 2/0,9792s +1
+
+		Ts(simulado) = 3,83
+		
+	2)  Vregime = 2
+		Vpico = 2.4
+		Mp = (Vpico - Vregime)/Vregime *100 = 20
+		xi = 0.4559
+		Tp = 1.768
+		Vreferência = 2 (valor do degrau)
+		
+		K = Vregime/Veferência
+		
+		Cálculo de xi
+		-1.6094 = -xi*pi/sqrt(1- xi²)
+		
+		sqrt(1- xi²) =  xi*pi/1.6094
+		
+		1 - xi² = xi²*pi²/2.5902
+		
+		1 - xi² = 3.8104xi²
+		
+		1 = 4.8104xi²
+		
+		xi = 0.4559
+		
+		Cálculo de wn
+		
+		Tp = pi/wn*sqrt(1- xi²)
+		
+		sqrt(1- xi²) = pi/wn*Tp
+		
+		
+		1 - xi² = pi²/wn²*Tp²
+		wn² -wn²xi² = pi²/Tp²
+		
+		0.7922wn² = 3.1514
+		
+		wn = 1.9945
+		
