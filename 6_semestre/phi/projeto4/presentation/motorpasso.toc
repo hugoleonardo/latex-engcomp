@@ -1,0 +1,7 @@
+\beamer@endinputifotherversion {3.26pt}
+\select@language {brazil}
+\beamer@sectionintoc {1}{Introdu\c c\~ao}{2}{0}{1}
+\beamer@sectionintoc {2}{Descri\c c\~ao do projeto}{3}{0}{2}
+\beamer@sectionintoc {3}{Fluxograma}{4}{0}{3}
+\beamer@sectionintoc {4}{Rotinas}{5}{0}{4}
+\beamer@sectionintoc {5}{Implementa\c c\~ao no Proteus}{8}{0}{5}
