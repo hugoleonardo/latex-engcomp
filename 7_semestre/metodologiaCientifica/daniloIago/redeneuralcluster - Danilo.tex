@@ -81,25 +81,57 @@ Virtuais Web%
 	\begin{frame}{Arquitetura do Xen}
 		\begin{itemize}
 			\item Utiliza para-virtualização
+			\item Possui um \textit{kernel} modificado (\textit{dom0}
+			\item O \textit{hypervisor} faz o mapeamento de recursos físicos em virtuais
+			\item As VM's rodam no Domínio U (\textit{domU}
 		\end{itemize}
 	\end{frame}
 
 \subsection{Introdução à Redes Neurais Artificias (RNA)}
 
 	\begin{frame}
-	
+		\begin{itemize}
+			\item São modelos computacionais
+				\begin{itemize}
+					\item Adquirir, armazenar e utilizar conhecimento
+					\item Generalizar determinados sistemas
+					\item Agrupar e organizar dados
+				\end{itemize}
+			\item Compostos por neurônios (unidades de processamento)
+			\item Interligada por sinapses (conexões)
+			\item Agrupados em camadas
+			\begin{figure}[h]
+				\centering
+				\includegraphics[scale=0.35]{./pictures/redes_neurais_camadas.png}
+				\label{fig:logoufpa}
+			\end{figure}			
+		\end{itemize}
 	\end{frame}
 
 \section{Trabalhos Relacionados}
 
-	\begin{frame}{}
-	
-	\end{frame}
-
 \subsection{Gerência de VM's}
 
 	\begin{frame}
-	
+		O autor cita três trabalhos referente sobre gerência inteligente de VM's
+		\begin{itemize}
+			\item Utilizando Balanceamento de carga
+				\begin{itemize}
+					\item Analisa os recursos dos \textit{hosts}
+					\item Migra as VM's de acordo com a quantdade de recursos disponíveis
+				\end{itemize}
+			\item Utilizando um controlador \textit{lookahead}
+				\begin{itemize}
+					\item Analisa a quantidade de conexões e o tempo médio de resposta
+					\item Define a quantidade de \textit{hosts} que devem ser ativados
+				\end{itemize}
+			\item Utilizando múltiplos domínios
+				\begin{itemize}
+					\item Um \textit{host} e suas VM's formam um domínio
+					\item O sistema analisa	a demanda de CPU e memória das VM's
+					\item O sistema migra as VM's caso os recursos de um domínio estejam esgotados
+				\end{itemize}
+		\end{itemize}
 	\end{frame}
 
 \subsection{Balanceamento de Carga utilizando RNA}
@@ -166,13 +198,5 @@ Virtuais Web%
 	\begin{frame}
 	
 	\end{frame}
-
-
-
-
-
-
-
-
-
+	
 \end{document}
