@@ -178,20 +178,43 @@ Virtuais Web%
 \section{Testes}
 
 	\begin{frame}
-	
+		\begin{itemize}
+			\item Os testes foram feitos usando como infra-estrutura um conjunto de servidores executando Linux
+			\item Os indicadores avaliados nos testes foram potência elétrica consumida e tempo de resposta da aplicação
+		\end{itemize}
+		\begin{figure}
+			\centering
+			\includegraphics[scale=0.45]{./pictures/infra.png}
+		\end{figure}
 	\end{frame}
 
 \subsection{Avaliação}
 
 	\begin{frame}
+	\begin{itemize}
 	
+
+		\item Ingá executa o sistema de gerência
+		\item No-break monitora a potência elétrica consumida
+		\item Icaraí simula solicitações de clientes Web
+		\item Ipanema é o alvo das requisições
+		\item Itaipú e Ilha são hospedeiros cluster e executam virtualizador Xen para hospedar VMs
+		\item Leme coleta informações e exibe em tempo real
+			\end{itemize}
 	\end{frame}
 
 \subsection{Workload utilizando site da NASA}
 
-	\begin{frame}
-	
-	\end{frame}
+\begin{frame}
+	 \begin{itemize}
+	 	\item Para avaliar o desempenho da rede neural, o log de acesso da página da NASA foi utilizado
+	 	\item As requisições foram normalizadas para 115/minuto (similar ao workload da Copa de 98) 
+	 \end{itemize}
+	 \begin{figure}
+	 	\centralized
+	 	\includegraphics[scale=0.45]{./pictures/workloadnasa.png}
+	 \end{figure}
+\end{frame}
 
 \section{Conclusão e Trabalhos futuros}
 
