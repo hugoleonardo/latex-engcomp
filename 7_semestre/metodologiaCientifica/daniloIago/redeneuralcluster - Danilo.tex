@@ -85,11 +85,16 @@ Virtuais Web%
 			\item O \textit{hypervisor} faz o mapeamento de recursos físicos em virtuais
 			\item As VM's rodam no Domínio U (\textit{domU}
 		\end{itemize}
+					\begin{figure}[h]
+				\centering
+				\includegraphics[scale=0.35]{./pictures/xen_arq.png}
+				\label{fig:zen_arq}
+			\end{figure}
 	\end{frame}
 
 \subsection{Introdução à Redes Neurais Artificias (RNA)}
 
-	\begin{frame}
+	\begin{frame}{O que é uma RNA?}
 		\begin{itemize}
 			\item São modelos computacionais
 				\begin{itemize}
@@ -103,16 +108,31 @@ Virtuais Web%
 			\begin{figure}[h]
 				\centering
 				\includegraphics[scale=0.35]{./pictures/redes_neurais_camadas.png}
-				\label{fig:logoufpa}
+				\label{fig:redesneuraiscamadas}
 			\end{figure}			
 		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Funcionamento da RNA}
+		\begin{itemize}
+			\item Neurônios são utilizados para armazenar informações
+			\item Cada sinapse é caracterizada por um peso
+			\item O somador adiciona as entradas ponderadas
+			\item A função de ativação restringe a saída entre [0,1] ou [-1,1]
+			\item O \textit{bias} é utilizado para aumentar ou diminuir a entrada da função de ativação
+		\end{itemize}
+			\begin{figure}[h]
+				\centering
+				\includegraphics[scale=0.45]{./pictures/neuronio_biologico_artificial.png}
+				\label{fig:neuroniobiologicoartificial}
+			\end{figure}	
 	\end{frame}
 
 \section{Trabalhos Relacionados}
 
 \subsection{Gerência de VM's}
 
-	\begin{frame}
+	\begin{frame}{Gerência de VM's}
 		O autor cita três trabalhos referente sobre gerência inteligente de VM's
 		\begin{itemize}
 			\item Utilizando Balanceamento de carga
@@ -136,20 +156,38 @@ Virtuais Web%
 
 \subsection{Balanceamento de Carga utilizando RNA}
 
-	\begin{frame}
+	\begin{frame}{Balanceamento de Carga utilizando RNA}
 	
 	\end{frame}
 
 \section{Modelo de RNA utilizado}
 
-	\begin{frame}
-	
+	\begin{frame}{Mapas Auto-Organizáveis}
+		Faz analogia com a região do córtex cerebral
+			\begin{itemize}
+				\item Aloca regiões específicas para atividades específicas
+				\item O grau de ativação dos neurônios diminui conforme se distancia da região de ativação 						inicial
+				\item RNA com duas camadas (Entrada I e saída U)
+				\item Geralmente são mapas $NxM$			
+			\end{itemize}
+			\begin{figure}[h]
+				\centering
+				\includegraphics[scale=0.45]{./pictures/mapa_neural.png}
+				\label{fig:mapaneural}
+			\end{figure}
 	\end{frame}
 
-\subsection{Mapas Auto-Organizáveis}
-
-	\begin{frame}
-	
+	\begin{frame}{A RNA do Artigo}
+		\begin{itemize}
+			\item 3 nós na interface de entrada (indicadores do cluster)
+				\begin{itemize}
+					\item Tempo de resposta
+					\item Potência consumida
+					\item Taxa de requisições
+				\end{itemize}
+			\item Uma mapa de 10x10 neurônios (captar o máximo de padrões posível)
+			\item Treinamento \textit{offline}
+		\end{itemize}
 	\end{frame}
 
 \section{Arquitetura Proposta}
