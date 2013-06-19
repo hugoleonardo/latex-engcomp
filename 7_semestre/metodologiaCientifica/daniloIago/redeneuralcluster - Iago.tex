@@ -136,11 +136,16 @@ Virtuais Web%
 	\end{frame}
 
 \section{Arquitetura Proposta}
-
+\subsection{Abordagem}
 	\begin{frame}
-				
+		\begin{itemize}
+			\item Substituir a política de gerenciamento original por rede neural, aprimorando os mecanismos de atuação no cluster
+			\item Definir os estados de operação no cluster de acordo com os parâmetros analisados
+			\item Propor intervenções específicas da API de atuação de acordo com o estado do cluster
+			\item Objetivo: economia de energia e manutenção do tempo de resposta das requisições
+		\end{itemize}
 	\end{frame}
-
+	
 \subsection{Parâmetros Analisados}	
 
 	\begin{frame} 
@@ -151,6 +156,43 @@ Virtuais Web%
 			\item Potência elétrica consumida
 		\end{itemize}
 	\end{frame}
+
+\subsection{Sistema Proposto}
+	\begin{frame}
+		\begin{figure}
+			\centering
+			\includegraphics[scale=0.45]{./pictures/arquitetura.png}
+		\end{figure}
+	\end{frame}
+	
+\subsection{Analisando Sistema Proposto}
+\begin{frame}
+	\begin{itemize}
+		\item Controlador: fornece a classificação do estado corrente conforme as medições coletadas
+		\item Atuador: aciona as funções de gerência da API de acordo com a ordem do Controlador 
+		\item Coletor: obtém através da API os dados monitorados por agentes que atuam nos hospedeiros do cluster
+		\item Balanceador: recebe requisições do usuário e as distribui para as VMs executadas nos servidores físicos hospedeiros. Deve reconhecer o estado atual e as diferentes localizações das VMs
+	\end{itemize}
+\end{frame}
+\subsection{Rede Neural}
+\begin{frame}
+
+	\begin{itemize}
+		\item Rede Neural atua no Controlador
+		\item 3 nós de entrada na interface de entrada
+		\item 10x10 neurônios 
+		\item Como treinamento, foi utilizado o workload do website da Copado Mundo de 1998
+	\end{itemize}
+
+\end{frame}
+\subsection{Workload Copa}
+	\begin{frame}{Workload Copa}
+					\begin{figure}
+				\centralized
+				\includegraphics[scale=0.5]{./pictures/copa.png}
+			\end{figure}
+	\end{frame}
+
 
 \subsection{Intervenções da API}
 
