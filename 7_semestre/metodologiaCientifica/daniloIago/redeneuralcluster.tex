@@ -59,7 +59,6 @@ Virtuais Web%
   \tableofcontents
 \end{frame}
 
-
 \section{Introdução}
 
 \subsection{Introdução Geral}
@@ -78,38 +77,149 @@ Virtuais Web%
 
 \subsection{Introdução à Virtualização}
 
-	\begin{frame}
-	\end{frame}
-
 	\begin{frame}{Arquitetura do Xen}
-	
+		\begin{itemize}
+			\item Utiliza para-virtualização
+			\item Possui um \textit{kernel} modificado (\textit{dom0}
+			\item O \textit{hypervisor} faz o mapeamento de recursos físicos em virtuais
+			\item As VM's rodam no Domínio U (\textit{domU}
+		\end{itemize}
+					\begin{figure}[h]
+				\centering
+				\includegraphics[scale=0.65]{./pictures/xen_arq.png}
+				\label{fig:zen_arq}
+			\end{figure}
 	\end{frame}
 
 \subsection{Introdução à Redes Neurais Artificias (RNA)}
 
-	\begin{frame}
+	\begin{frame}{O que é uma RNA?}
+		\begin{itemize}
+			\item São modelos computacionais
+				\begin{itemize}
+					\item Adquirir, armazenar e utilizar conhecimento
+					\item Generalizar determinados sistemas
+					\item Agrupar e organizar dados
+				\end{itemize}
+			\item Compostos por neurônios (unidades de processamento)
+			\item Interligada por sinapses (conexões)
+			\item Agrupados em camadas
+			\begin{figure}[h]
+				\centering
+				\includegraphics[scale=0.35]{./pictures/redes_neurais_camadas.png}
+				\label{fig:redesneuraiscamadas}
+			\end{figure}			
+		\end{itemize}
+	\end{frame}
 	
+	\begin{frame}{Funcionamento da RNA}
+		\begin{itemize}
+			\item Neurônios são utilizados para armazenar informações
+			\item Cada sinapse é caracterizada por um peso
+			\item O somador adiciona as entradas ponderadas
+			\item A função de ativação restringe a saída entre [0,1] ou [-1,1]
+			\item O \textit{bias} é utilizado para aumentar ou diminuir a entrada da função de ativação
+		\end{itemize}
+			\begin{figure}[h]
+				\centering
+				\includegraphics[scale=0.45]{./pictures/neuronio_biologico_artificial.png}
+				\label{fig:neuroniobiologicoartificial}
+			\end{figure}	
 	\end{frame}
-
 \section{Trabalhos Relacionados}
-
-	\begin{frame}{}
-
-	\end{frame}
 
 \subsection{Gerência de VM's}
 
-	\begin{frame}
-	
+	\begin{frame}{Gerência de VM's}
+		O autor cita três trabalhos sobre gerência inteligente de VM's
+		\begin{itemize}
+			\item Utilizando Balanceamento de carga
+				\begin{itemize}
+					\item Analisa os recursos dos \textit{hosts} [Megav 2007]
+					\item Migra as VM's de acordo com a quantdade de recursos disponíveis
+				\end{itemize}
+			\item Utilizando um controlador \textit{lookahead} [Kusic et al. 2008]
+				\begin{itemize}
+					\item Analisa a quantidade de conexões e o tempo médio de resposta
+					\item Define a quantidade de \textit{hosts} que devem ser ativados
+				\end{itemize}
+			\item Utilizando múltiplos domínios [Ruth et al. 2006]
+				\begin{itemize}
+					\item Um \textit{host} e suas VM's formam um domínio
+					\item O sistema analisa	a demanda de CPU e memória das VM's
+					\item O sistema migra as VM's caso os recursos de um domínio estejam esgotados
+				\end{itemize}
+		\end{itemize}
 	\end{frame}
 
 \subsection{Balanceamento de Carga utilizando RNA}
 
-	\begin{frame}
+	\begin{frame}{Balanceamento de Carga utilizando RNA}
+		O autor cita três trabalhos referentes ao uso de RNA's para balanceamento de carga	
+		\begin{itemize}
+			\item Controlar frequências de operação de CPU's [Souza et al. 2008] 
+				\begin{itemize}
+					\item Utiliza DFVS (\textit{Dynamic Voltage ans Frequency Scaling} para controlar o 								\textit{clock} das CPU's
+					\item Prove economia de energia mantendo o nível do serviço
+					\item Foram mapeadas frequência e taxa de ocupação das CPU's para associação com consumo 						de energia
+				\end{itemize}
+			\item Classificar estados de um servidor \textit{web} utilizando RNA [Simula et al. 2008]
+				\begin{itemize}		
+					\item Mapas auto-organizáveis com nove dimensões de entrada
+					\item Foram medidos uso de CPU, pacotes recebidos, blocos lidos/escritos do disco, etc.
+					\item A rede apresentou 4 estados de ocupação do servidor
+					\item Criação de uma política de tolerância a falhas baseada nesses estados
+				\end{itemize}
+		\end{itemize}
+	\end{frame}
 	
+	\begin{frame}{Balanceamento de Carga utilizando RNA}
+		\begin{itemize} 		
+ 			\item Classificar uso de memoria utilizando RNA [Lin 2006]
+				\begin{itemize}
+					\item Utiliza 3 indicadores de consumo de memória como entrada
+					\item A rede indicou 6 estados de consumo de memória
+					\item Um módulo atuador foi projeto com base nos valores desses estados
+					\item Este módulo substitui o \textit{OOM Killer} nativo do \textit{Linux}
+				\end{itemize}
+		\end{itemize}	
 	\end{frame}
 
 \section{Modelo de RNA utilizado}
+
+	\begin{frame}{Mapas Auto-Organizáveis}
+		Faz analogia com a região do córtex cerebral
+			\begin{itemize}
+				\item Aloca regiões específicas para atividades específicas
+				\item O grau de ativação dos neurônios diminui conforme se distancia da região de ativação 						inicial
+				\item RNA com duas camadas (Entrada I e saída U)
+				\item Geralmente são mapas $NxM$			
+			\end{itemize}
+			\begin{figure}[h]
+				\centering
+				\includegraphics[scale=0.45]{./pictures/mapa_neural.png}
+				\label{fig:mapaneural}
+			\end{figure}
+	\end{frame}
+
+	\begin{frame}{A RNA do Artigo}
+		\begin{itemize}
+			\item 3 nós na interface de entrada (indicadores do cluster)
+				\begin{itemize}
+					\item Tempo de resposta
+					\item Potência consumida
+					\item Taxa de requisições
+				\end{itemize}
+			\item Uma mapa de 10x10 neurônios (captar o máximo de padrões posível)
+			\item Treinamento \textit{offline} usando \textit{workload} de acesso ao site da Copa do Mundo de 1998
+		\end{itemize}
+			\begin{figure}[h]
+					%\centralized
+					\includegraphics[scale=0.4]{./pictures/copa.png}
+			\end{figure}
+	\end{frame}
+
+
 
 	\begin{frame}
 	
@@ -123,49 +233,106 @@ Virtuais Web%
 
 \section{Arquitetura Proposta}
 
-	\begin{frame}
+
+\subsection{Sistema proposto}
+	\begin{frame}{Abordagem}
+		\begin{itemize}
+			\item Substituir a política de gerenciamento original por rede neural, aprimorando os mecanismos de atuação no cluster
+			\item Definir os estados de operação no cluster de acordo com os parâmetros analisados
+			\item Propor intervenções específicas da API de atuação de acordo com o estado do cluster
+			\item Objetivo: economia de energia e manutenção do tempo de resposta das requisições
+		\end{itemize}
 	\end{frame}
 
-\subsection{Parâmetros Analisados}	
 
-	\begin{frame}
+	\begin{frame}{Sistema Proposto}
+		\begin{figure}
+			\centering
+			\includegraphics[scale=0.45]{./pictures/arquitetura.png}
+		\end{figure}
+	\end{frame}
 	
-	\end{frame}
 
+\begin{frame}{Analisando Sistema Proposto}
+	\begin{itemize}
+		\item Controlador: fornece a classificação do estado corrente conforme as medições coletadas
+		\item Atuador: aciona as funções de gerência da API de acordo com a ordem do Controlador 
+		\item Coletor: obtém através da API os dados monitorados por agentes que atuam nos hospedeiros do cluster
+		\item Balanceador: recebe requisições do usuário e as distribui para as VMs executadas nos servidores físicos hospedeiros. Deve reconhecer o estado atual e as diferentes localizações das VMs
+	\end{itemize}
+\end{frame}
+
+	\begin{frame}{Políticas de Reconfiguração}
+		\begin{itemize}
+			\item Região 1. TR 33,3\%, POT 31,8\%, REQ 22,2\%
+			\item Região 2. TR 56,3\%, POT 48,9\%, REQ 49,1\%
+			\item Região 3. TR 113,8\%, POT 93,6\%, REQ 91,2\%
+			\item Região 4. TR 73,5\%, POT 68,1\%, REQ 64,7\%
+			\item Região 5. TR 89,3\%, POT 85,6\%, REQ 81,6\%
+		\end{itemize}
+	\end{frame}
+	
 \subsection{Intervenções da API}
-
-	\begin{frame}
-	
+	\begin{frame} {Intervenções da API}
+		\begin{itemize}
+			\item Alterar frequência da CPU
+			\item Ativar/Inativar núcleo da CPU
+			\item Migrar VMs entre os servidores hospedeiros
+			\item Ativar/Inativar servidores físicos
+		\end{itemize}	
 	\end{frame}
 
-\subsection{Políticas de Reconfiguração}
 
-	\begin{frame}
-	
-	\end{frame}
 
 \section{Testes}
 
 	\begin{frame}
-	
+		\begin{itemize}
+			\item Os testes foram feitos usando como infra-estrutura um conjunto de servidores executando Linux
+			\item Os indicadores avaliados nos testes foram potência elétrica consumida e tempo de resposta da aplicação
+		\end{itemize}
+		\begin{figure}
+			\centering
+			\includegraphics[scale=0.45]{./pictures/infra.png}
+		\end{figure}
 	\end{frame}
 
 \subsection{Avaliação}
 
 	\begin{frame}
+	\begin{itemize}
 	
+
+		\item Ingá executa o sistema de gerência
+		\item No-break monitora a potência elétrica consumida
+		\item Icaraí simula solicitações de clientes Web
+		\item Ipanema é o alvo das requisições
+		\item Itaipú e Ilha são hospedeiros cluster e executam virtualizador Xen para hospedar VMs
+		\item Leme coleta informações e exibe em tempo real
+			\end{itemize}
 	\end{frame}
 
 \subsection{Workload utilizando site da NASA}
 
-	\begin{frame}
-	
-	\end{frame}
+\begin{frame}
+	 \begin{itemize}
+	 	\item Para avaliar o desempenho da rede neural, o log de acesso da página da NASA foi utilizado
+	 	\item As requisições foram normalizadas para 115/minuto (similar ao workload da Copa de 98) 
+	 \end{itemize}
+	 \begin{figure}[h]
+	 	%\centralized
+	 	\includegraphics[scale=0.45]{./pictures/workloadnasa.png}
+	 \end{figure}
+\end{frame}
 
 \section{Conclusão e Trabalhos futuros}
 
 	\begin{frame}
-	
+		\begin{itemize}
+			\item A rede apresentou desempenho satisfatório
+			\item MElhor desempenho em relação ao método sem RNA's
+			\item Investigar suporte para aplicações heterogêneas
+		\end{itemize}
 	\end{frame}
 
 
