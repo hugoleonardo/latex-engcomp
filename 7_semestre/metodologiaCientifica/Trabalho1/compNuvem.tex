@@ -1,0 +1,212 @@
+\documentclass{beamer}
+
+% Setup appearance:
+
+\usetheme{Darmstadt}
+\usefonttheme[onlylarge]{structurebold}
+\setbeamerfont*{frametitle}{size=\normalsize,series=\bfseries}
+\setbeamertemplate{navigation symbols}{}
+
+
+% Standard packages
+
+\usepackage[brazil]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}% http://ctan.org/pkg/amsmath
+%\usepackage[table]{xcolor}
+\usepackage{multicol}
+\usepackage{textcomp} 
+
+% Setup TikZ
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\tikzstyle{block}=[draw opacity=0.7,line width=1.4cm]
+
+%diretÃ³rio das figuras
+\graphicspath{../article}
+
+\title[Extreme Chock]{%
+Computaçao em Nuvem%
+}
+
+\author[Santos,Araújo]{
+     Hugo~Santos\and
+     Welton~Araújo
+     }
+
+
+\institute[Belém]{
+  \inst{1}%
+  Universidade Federal do Pará
+  }
+\date[Belém 2013]{
+  20 de Junho de 2013
+  }
+
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \tableofcontents
+\end{frame}
+
+\section{Introdução}
+\begin{frame}{O que é computação em nuvem?}
+\begin{itemize}
+	\item Por que usar o termo "nuvem"?
+	\begin{itemize}
+		\item Engloba um ambiente de interior desconhecido
+		\item Só se conhece seu início e seu fim
+		\item Esconde uma série de serviços e aplicações
+	\end{itemize}
+	\item Novo modelo de computação
+	\item Acesso à aplicações e serviços independentemente de plataforma
+	\item Requer conexão com a internet
+	\item \textit{Datacenters} para processamento e armazenamento de dados
+\end{itemize}
+\end{frame}
+
+\section{Características}
+\begin{frame}
+\begin{itemize}
+	\item Campos tecnológicos fundamentais
+	\begin{itemize}
+		\item Hardware
+		\begin{itemize}
+			\item Suporte à virtualização
+		\end{itemize}
+		\item Internet
+		\begin{itemize}
+			\item Web 2.0, serviços web
+		\end{itemize}
+		\item Gerenciamento de sistemas		 
+		\begin{itemize}
+			\item Computação independente(autonomic computing)
+			\item Automação de gerenciamento
+			\item Manutenção de Datacenter
+			\item Computação distribuída - \textit(utility $\&$ grid computing)
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\begin{itemize}
+	\item Elasticidade e escalonamento
+	\begin{itemize}
+		\item Recursos computacionais "infinitos"
+		\item Requisições dos usuários efetuadas rapidamente
+	\end{itemize}
+	\item Self-Service
+	\begin{itemize}
+		\item Portais de auto-atendimento
+		\item Instantaneidade 
+		\item Solicitação, personalização, pagamento sem intervenção humana
+	\end{itemize}
+	\item Faturamento e medição por uso
+	\begin{itemize}
+		\item Tarifação
+		\item Contabilidade
+		\item Monitoramento
+		\item Otimização do uso
+		\item Diferenciação por tipo de serviço
+		\begin{itemize}
+			\item Armazenamento
+			\item Processamento
+			\item Largura de banda
+		\end{itemize}
+		\item Relatório de demanda do usuário	 
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+	\item Amplo acesso à rede
+	\begin{itemize}
+		\item Sempre disponíveis
+		\item Acesso através de diferentes plataformas
+		\begin{itemize}
+			\item Smartphones
+			\item Laptops
+			\item PDAs
+		\end{itemize}
+	\end{itemize}
+	\item Customização
+	\begin{itemize}
+		\item Disparidade de uso entre usuários
+		\item Capacidade de personalização por tipo de serviço
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Camadas de arquitetura e tipos de nuvem}
+\begin{frame}{Classes de serviço}
+\begin{itemize}
+	\item Dividido nas camadas:
+	\begin{itemize}
+		\item Inferior
+		\item Intermediária
+		\item Superior
+	\end{itemize}
+	\item Dividido nos tipos:
+	\begin{itemize}
+		\item Infra-estrutura como serviço - IaaS(Infrastructure as a Service)
+		\item Plataforma como serviço - PaaS(Plataform as a Service)
+		\item Software como serviço - SaaS(Software as a Service)
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Infra-estrutura como Serviço - IaaS}
+\begin{itemize}
+	\item Recursos de hardware virtualizados
+	\begin{itemize}
+		\item Computação
+		\item Armazenamento
+		\item Comunicação
+	\end{itemize}
+	\item Servidores para softwares customizadas e sistemas operacionais
+	\item Interface única de administração da infra-estrutura
+	\begin{itemize}
+		\item Comunicação entre hosts, switches, roteadores e inclusão de equipamentos novos
+	\end{itemize}
+	\item Pertence à camada inferior e dá suporte para as outras camadas
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Plataforma como Serviço - PaaS}
+\begin{itemize}
+	\item Criação e implementação de aplicações pelo desenvolvedor
+	\item Quantidade de processadores e memória necessários para a execuçao não são responsabilidade do desenvolvedor
+	\item Alto nível de integração e compatibilidade
+	\begin{itemize}
+		\item Sistemas Operacionais
+		\item Linguagem de programação
+		\item Ambientes de desenvolvimento
+	\end{itemize}
+\end{itemize}
+\end{frame}
+%\begin{frame}{}
+%\begin{figure}[h]
+	%\centering
+	%\includegraphics[scale=0.5] {./pictures/exemploMatriz.png}
+	%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+	%\label{fig:exemploMatriz}
+%\end{figure}
+%\end{frame}
+
+\section{Conclusões}
+\begin{frame}
+\begin{itemize}
+	\item marralo
+\end{itemize}
+\end{frame}
+\end{document}
