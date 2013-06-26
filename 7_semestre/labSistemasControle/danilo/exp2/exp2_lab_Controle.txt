@@ -51,10 +51,11 @@
 		Kc = 50
 		Ts = 2.249
 		tau = 0.5623
-		M(s) = Kc/tauS +1
-		M(s) = 50/0.5623s + 1
-		G(s) = (1/K)*M(s)/1-M(s)
-		G(s) = 0,98/0.5623s +1
+		K = 0,98
+		M(s) = K/tauS +1
+		M(s) = 0,98/0.5623s + 1
+		G(s) = (1/Kc)*M(s)/1-M(s)
+		G(s) = 0,98/26,3150s +1
 	
 	2ª Ordem)
 		Bloco State Space
@@ -64,8 +65,6 @@
 			D = 0
 		Tp = 0.12
 		Mp = (Vpico - Vregime)/Vregime *100 = 20
-		Mp = 1.4686 - 0.98
-		Mp =  49.8571%
 		K = 0.98
 		Cálculo de xi
 		-0.6960 = -xi*pi/sqrt(1- xi²)
