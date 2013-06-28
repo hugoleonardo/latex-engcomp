@@ -15,32 +15,32 @@
 			\includegraphics[scale=0.75]{./pictures/logoufpa.png}
 			\label{fig:logoufpa}
 		\end{figure}
-		Universidade Federal do Pará \linebreak
+		Universidade Federal do Parï¿½ \linebreak
 		Instituto de Tecnologia \linebreak
-		Faculdade de Engenharia de Computação e Telecomunicações \linebreak
+		Faculdade de Engenharia de Computaï¿½ï¿½o e Telecomunicaï¿½ï¿½es \linebreak
 		Sistemas de Controle \linebreak
-		Experiência 2 com $MatLab^{\copyright}$ \linebreak
+		Experiï¿½ncia 2 com $MatLab^{\copyright}$ \linebreak
 		Prof$^{a}$ Adriana Castro}
 
 \begin{document}
 
 \author{Danilo Souza - 10080000801}
-%Matrículas: {10080000801, 10080000701, 10080000501}
+%Matrï¿½culas: {10080000801, 10080000701, 10080000501}
 %\thanks{Engenharia da Computa\c{c}\~ao, Universidade Federal do Par\'a, Bel\'em-PA, Brasil}
 \maketitle
 
 \tableofcontents
 \listoffigures
 
-\chapter{Questao 1 - Identifiação Direta}
+\chapter{Questao 1 - Identificaï¿½ï¿½o Direta}
 
 \section{Sistema de $1^{a}$ Ordem - Experimento 1}
 
-	Para este experimento foi utilizado um sistema de primeira ordem em malha aberta, conforme mostrado na Figura \ref{fig:sist1ordaberta}. Foi utilizado o bloco \textit{State-Space} do $MatLab^{\copyright}$ para simulação do sistema como uma caixa preta, para que então pudessem ser obtidos os valores de $T_{r_{5\%}}$ e $T_{s}$ e a partir destes calcular os valores de $\tau$, e $K$, utilizando as equações abaixo:
+	Para este experimento foi utilizado um sistema de primeira ordem em malha aberta, conforme mostrado na Figura \ref{fig:sist1ordaberta}. Foi utilizado o bloco \textit{State-Space} do $MatLab^{\copyright}$ para simulaï¿½ï¿½o do sistema como uma caixa preta, para que entï¿½o pudessem ser obtidos os valores de $T_{r_{5\%}}$ e $T_{s}$ e a partir destes calcular os valores de $\tau$, e $K$, utilizando as equaï¿½ï¿½es abaixo:
 	
 	\[K = \frac{V_{regime}}{V_{referencia}}\]  \[\tau = \frac{T_{r_{5\%}}}{3} \]
 	
-	Os valores obtidos foram $K = 2$ para um degrau com aplitude 2, $\tau = 0,9792$, $T_{s} = 9,917$
+	Os valores obtidos foram $K = 2$ para um degrau com aplitude 2 e $\tau = 0,9792$, $T_{s} = 9,917$
 
 		\begin{figure}[h]
 			\centering
@@ -49,22 +49,22 @@
 			\label{fig:sist1ordaberta}			
 		\end{figure}
 	
-	Após a obtenção desses valores, foi realizada uma simulação utilizando a seguinte equação de transferência:
+	Apï¿½s a obtenï¿½ï¿½o desses valores, foi realizada uma simulaï¿½ï¿½o utilizando a seguinte equaï¿½ï¿½o de transferï¿½ncia:
 	
 	\[ \frac{Y(s)}{U(s)} = \frac{2}{0,9792s +1} \]
 	
-	Para esta função de transfrência o valor de de $T_{s}$ foi 3,83. Podemos perceber que o valor foi muito próximo do anterior mostrando praticamente a mesma resposta do sistema, conform pode-se observar na Figura \ref{fig:sis1ordemcomparacao}.
+	Para esta funï¿½ï¿½o de transferï¿½ncia o valor de de $T_{s}$ foi 3,83. Podemos perceber que o valor foi muito prï¿½ximo do anterior mostrando praticamente a mesma resposta do sistema, conforme Figura \ref{fig:sis1ordemcomparacao}.
 	
 		\begin{figure}[h]
 			\centering
 			\includegraphics[scale=0.35]{./pictures/1ordem_direta_comparacao.png}
-			\caption{Comparação entre os sistemas de 1$^{a}$ ordem dado (em azul) e simulado (em verde)}
+			\caption{Comparaï¿½ï¿½o entre os sistemas de 1$^{a}$ ordem dado (em azul) e simulado (em verde)}
 			\label{fig:sis1ordemcomparacao}			
 		\end{figure}
 
 \section{Sistema de $2^{a}$ Ordem - Experimento 2}
 	
-	Para este experimento foi utilizado um sistema de segunda ordem em malha aberta, conforme mostrado na Figura \ref{fig:sist2ordaberta}. Foi utilizado o bloco \textit{State-Space} do $MatLab^{\copyright}$ para simulação do sistema como uma caixa preta, tendo como entrada um degrau de amplitude 2, para que então pudessem ser obtidos os valores de $K = 1$, $V_{regime} = 2$, $V_{pico} = 2,4$, $M_{p} = 0,2$ e $T_{p} = 1,768$.
+	Para este experimento foi utilizado um sistema de segunda ordem em malha aberta, conforme mostrado na Figura \ref{fig:sist2ordaberta}. Foi utilizado o bloco \textit{State-Space} do $MatLab^{\copyright}$ para simulaï¿½ï¿½o do sistema como uma caixa preta, tendo como entrada um degrau de amplitude 2, para que entï¿½o pudessem ser obtidos os valores de $K = 1$, $V_{regime} = 2$, $V_{pico} = 2,4$, $M_{p} = 0,2$ e $T_{p} = 1,768$.
 
 		\begin{figure}[h]
 			\centering
@@ -73,25 +73,25 @@
 			\label{fig:sist2ordaberta}			
 		\end{figure}
 	
-	 A partir destes foram obtidos, utilizando as equações abaixo, os valores de $\xi = 0,4559$ e $w_{n} = 1,9945$.  
+	 A partir destes foram obtidos, utilizando as equaï¿½ï¿½es abaixo, os valores de $\xi = 0,4559$ e $w_{n} = 1,9945$.  
 	 
 	 \[ M_{p} = e^{\frac{-\xi\pi}{\sqrt{1 - \xi^{2}}}}\] \[ T_{p} = \frac{\pi}{w_{n}\sqrt{1-\xi^{2}}}\]
 	 
-	A função de tranferência para os valores calculados é:
+	A funï¿½ï¿½o de transferï¿½ncia para os valores calculados ï¿½:
 		\[ \frac{Y(s)}{U(s)} = \frac{3,9780}{s^{2}+1,8186s+3,9780}\]	 
 		
-	Analisando o gráfico da Figura \ref{fig:sist2ordcomparacao}, percebemos que a resposta do sistema calculado é exatamente igual a resposta do sistema dado no experimento.
+	Analisando o grï¿½fico da Figura \ref{fig:sist2ordcomparacao}, percebemos que a resposta do sistema calculado ï¿½ exatamente igual a resposta do sistema dado no experimento.
 	
 		\begin{figure}[h]
 			\centering
 			\includegraphics[scale=0.35]{./pictures/2ordem_direta_comparacao.png}
-			\caption{Comparação entre os sistemas de 2$^{a}$ ordem dado (em azul) e simulado (em verde)}
+			\caption{Comparaï¿½ï¿½o entre os sistemas de 2$^{a}$ ordem dado (em azul) e simulado (em verde)}
 			\label{fig:sist2ordcomparacao}			
 		\end{figure}	
 
-\chapter{Questao 2 - Identificação Indireta}
+\chapter{Questao 2 - Identificaï¿½ï¿½o Indireta}
 
-O objetivo agora é descobrir a função de tranferência $G(s)$, quando ocorre um ganho $K_{c}$ em malhar fechada, por isso a identificação é denominada indireta, conforme diagrama da Figura \ref{fig:sistmalhafechada}. A função de transferência desse sistema é dada pela equação \ref{eq:ms}.
+O objetivo agora ï¿½ descobrir a funï¿½ï¿½o de transferï¿½ncia $G(s)$, quando ocorre um ganho $K_{c}$ em malhar fechada, por isso a identificaï¿½ï¿½o ï¿½ denominada indireta, conforme diagrama da Figura \ref{fig:sistmalhafechada}. A funï¿½ï¿½o de transferï¿½ncia desse sistema ï¿½ dada pela equaï¿½ï¿½o \ref{eq:ms}.
 
 		\begin{figure}[h]
 			\centering
@@ -104,7 +104,7 @@ O objetivo agora é descobrir a função de tranferência $G(s)$, quando ocorre um g
 			M(s) = \frac{K_{c}G(s)}{1+K_{c}G(s)}
 		\end{equation}			
 				
-A função $M(s)$ obtida através dos valores da simulação com o bloco \textit{State-Space}, com isso é feita uma comparação com as funções de transferência das Figuras \ref{fig:sist1ordaberta} e \ref{fig:sist2ordaberta} para determinar os valores de $\xi$ e $w_{n}$. Uma vez calculados esses valores podemos obter a função de tranferência do processo, $G(s)$, a partir de equação \ref{eq:ms}
+A funï¿½ï¿½o $M(s)$ obtida atravï¿½s dos valores da simulaï¿½ï¿½o com o bloco \textit{State-Space}, com isso ï¿½ feita uma comparaï¿½ï¿½o com as funï¿½ï¿½es de transferï¿½ncia das Figuras \ref{fig:sist1ordaberta} e \ref{fig:sist2ordaberta} para determinar os valores de $\xi$, $w_{n}$ e $\tau$. A partir desses valores podemos obter a funï¿½ï¿½o de transferï¿½ncia do processo, $G(s)$, utilizando a equaï¿½ï¿½o \ref{eq:ms}
 			
 		\begin{equation}\label{eq:gs}
 			G(s) = \frac{1}{K_{c}}\frac{M(s)}{1-M(s)}
@@ -115,16 +115,16 @@ A função $M(s)$ obtida através dos valores da simulação com o bloco \textit{Stat
 Para este experimento foram encontrados os valores de $T_{s} = 2,249$, $\tau = 0,5263$ e $K = 0,98$, portanto, temos que:
 
 		\[ M(s) = \frac{0,98}{0,5263s+1}\]
-		Partindo da equação \ref{eq:gs} obtemos:
+		Partindo da equaï¿½ï¿½o \ref{eq:gs} obtemos:
 		
 		\[ G(s) = \frac{0,98}{26,3150s+1}\]	
 		
-		O gráfico da Figura \ref{fig:sist1ordemindiretacomparacao} mostra os sistemas em malha fechada, como uma caixa preta, e a função $M(s)$ em malha aberta, que seria o equivalente ao primeiro. Podemos perceber que $M(s)$ em malha aberta é praticamente igual ao sistema em malha fechada.	
+		O grï¿½fico da Figura \ref{fig:sist1ordemindiretacomparacao} mostra os sistemas em malha fechada, como uma caixa preta, e a funï¿½ï¿½o $M(s)$ em malha aberta, que seria o equivalente ao primeiro. Podemos perceber que $M(s)$ em malha aberta ï¿½ praticamente igual ao sistema em malha fechada.	
 		
 		\begin{figure}[h]
 			\centering
 			\includegraphics[scale=0.75]{./pictures/1ordem_indireta_comparacao.png}
-			\caption{Comparação entre o sistema em malha fechada (azul) e $M(s)$ em malha aberta (verde)}
+			\caption{Comparaï¿½ï¿½o entre o sistema em malha fechada (azul) e $M(s)$ em malha aberta (verde)}
 			\label{fig:sist1ordemindiretacomparacao}			
 		\end{figure}
 	
@@ -135,16 +135,16 @@ Para este experimento foram encontrados os valores de $T_{p} = 0,12$, $M_{p} = 0
 
 		\[ M(s) = \frac{704,6878}{s^{2}+11,6004s+719,0692}\]
 		
-		Partindo da equação \ref{eq:gs} obtemos:
+		Partindo da equaï¿½ï¿½o \ref{eq:gs} obtemos:
 		
 		\[ G(s) = \frac{14,0938}{s^{2}+11,6004s+14,3814}\]
 		
-		O gráfico da Figura \ref{fig:sist2ordemindiretacomparacao} mostra os sistemas em malha fechada, como uma caixa preta, e a função $M(s)$ em malha aberta, que seria o equivalente ao primeiro. Podemos perceber que $M(s)$ em malha aberta igual ao sistema em malha fechada.	
+		O grï¿½fico da Figura \ref{fig:sist2ordemindiretacomparacao} mostra os sistemas em malha fechada, como uma caixa preta, e a funï¿½ï¿½o $M(s)$ em malha aberta, que seria o equivalente ao primeiro. Podemos perceber que $M(s)$ em malha aberta ï¿½ igual ao sistema em malha fechada.	
 		
 		\begin{figure}[h]
 			\centering
 			\includegraphics[scale=0.75]{./pictures/2ordem_indireta_comparacao.png}
-			\caption{Comparação entre o sistema em malha fechada (azul) e $M(s)$ em malha aberta (verde)}
+			\caption{Comparaï¿½ï¿½o entre o sistema em malha fechada (azul) e $M(s)$ em malha aberta (verde)}
 			\label{fig:sist2ordemindiretacomparacao}			
 		\end{figure}
 		
