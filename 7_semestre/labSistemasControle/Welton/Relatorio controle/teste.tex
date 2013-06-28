@@ -1,0 +1,217 @@
+\documentclass[10pt,a4paper]{article}
+%\usepackage[utf8]{inputenc}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{multicol, blindtext}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{lipsum}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{setspace}
+\title{
+		Universidade Federal do Pará \linebreak
+		Instituto de Tecnologia \linebreak
+		Faculdade de Engenharia de Computação e Telecomunicações \linebreak
+		Sistemas de Controle \linebreak
+		Experimento 1 com $MatLab^{\copyright}$ \linebreak
+		Prof$^{a}$ Adriana Castro}
+
+
+
+%\title{Experiência 1 de Sistemas de Controle}
+\begin{document}
+\author{Welton Araújo							
+Matrícula : 10080000501}
+%Matr\'icula: 10080000501}
+%\thanks{Engenharia da Computa\c{c}\~ao, Universidade Federal do Par\'a, Bel\'em-PA, Brasil}
+
+
+
+
+%Emails: \{weltonmaxx007\}@gmail.com\\
+
+\section{Sistemas de primeira ordem}
+Neste sistema de primeira ordem ocorrerá uma exponencial que irá crescer e depois de um tempo se estabilizará. Será variado o valor de k e $\tau$ na equação \begin{equation}
+\frac{k}{\tau s+1} 
+\end{equation}
+\subsection{Usando k = 2 e variando $\tau$ em 0.1, 1 e 10}
+O valor de $\tau$ irá influenciar diretamente no Ts, enquanto o valor de k influencia na amplitude do sinal da saíde, ou seja, no valor de estabilização.
+
+Através de uma análise rápida percebe-se que quanto maior o valor de $\tau$, maior será o tempo de estabilização(Ts) para esse sistema. Outro ponto a ser frizado é que com o valor de $\tau$ sendo multiplicado por 10 o tempo Ts também será, aproximadamente, multiplicado por 10.
+
+
+\textbf{Para k=2 e $\tau$=0.1 Ts ~= 0.37}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=8cm]{figures/i_k2_t01.png}
+\end{figure}			\[ \frac{1}{s}\frac{2}{0,1s+1}\]
+						\[ \frac{A}{s}\frac{B}{0,1s+1}\]
+						\[ A = s\frac{2}{s(0,1s+1)}\mid s=0 = 2\]
+						\[ B = 0,1s+1\frac{2}{s(0,1s+1)}\mid s=-10 = -0,2\]
+						\[ C(s) = \frac{2}{s} - \frac{0,2}{s+10}\]
+						\[ c(t) = 2 - 0,2e^{-10t}\]
+A Transformada inversa condiz com o gráfico, pois nela temos uma exponencial que é decrescente e que aos poucos vai se tornando zero, fazendo com que o valor de regime seja alcançado, no caso o valor 2.
+
+\textbf{Para k=2 e $\tau$=1 Ts ~= 3.957}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=8cm]{figures/i_k2_t1.png}
+\end{figure}			\[ \frac{1}{s}\frac{2}{1s+1}\]
+						\[ \frac{A}{s}\frac{B}{s+1}\]
+						\[ A = s\frac{2}{s(s+1)}\mid s=0 = 2\]
+						\[ B = s+1\frac{2}{s(s+1)}\mid s=-1 = -2\]
+						\[ c(t) = 2 - 2e^{-t}\]
+
+A Transformada inversa condiz com o gráfico, pois nela temos uma exponencial que é decrescente e que aos poucos vai se tornando zero, fazendo com que o valor de regime seja alcançado, no caso o valor 2. Aqui o Tempo de estabilização é maior pois diferente do exemplo acima a variável t não está multiplicada por 10.
+
+\textbf{Para k=2 e $\tau$=10 Ts ~= 39.18}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=8cm]{figures/i_k2_t10.png}
+\end{figure}		\[ \frac{1}{s}\frac{2}{10s+1}\]
+					\[ \frac{A}{s}\frac{B}{10s+1}\]
+					\[ A = s\frac{2}{s(10s+1)}\mid s=0 = 2\]
+					\[ B = 10s+1\frac{2}{s(10s+1)}\mid s=-1/10 = -20\]
+					\[ c(t) = 2 - 2e^{-t/10}\]
+Neste ultimo caso em que o valor de $\tau$=10 o Ts se torna ainda maior pois percebe-se que o valor de t é divido por 10 e assim causa um atraso no tempo de estabilização
+
+
+Em todos os casos o valor de regime permanente é igual a 2, como visto nos gráficos, tendo a influência somente de k.
+
+\subsection{usando $\tau$ = 1 e variando k em 0.1, 1 e 10}
+Nesta parte da experiência percebe-se que ocorre o crescimento do valor de regime permanente de acordo com o crescimento de k, na verdade eles possuem o mesmo valor para a equação dada. Em contrapartida como o valor de $\tau$ não é variado, o valor de Ts também ficará constante e este já foi calculado na subseção anterior: para $\tau$=1, Ts ~=3.957. Não importa se o valor de regime permanente aumente ou diminui, Ts sempre será constante para um $\tau$ constante. Esta é a prova de que k não influencia em Ts. \newline
+
+\textbf{Para k=0.1 e $\tau$=1 Ts ~= 3.957} 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=8cm]{figures/ii_t1_k01.png}
+\end{figure} 			\[ \frac{1}{s}\frac{0,1}{s+1}\]
+						\[ \frac{A}{s}\frac{B}{s+1}\]
+						\[ A = s\frac{0,1}{s(s+1)}\mid s=0 = 0,1\]
+						\[ B = s+1\frac{0,1}{s(s+1)}\mid s=-1 = -0,1\]
+						\[ c(t) = 0,1 - 0,1e^{-t}\]
+O resultado se torna parecido como no primeiro caso, o valor de k(agora igual a 0.1) aparece como o valor de regime permanente e a exponencial descrecente irá diminuir o seu valor até se tornar praticamente 0, assim chegando na estabilização.			
+
+\textbf{Para k=1 e $\tau$=1 Ts ~= 3.957}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=8cm]{figures/ii_t1_k1.png}
+\end{figure}			\[ \frac{1}{s}\frac{1}{s+1}\]
+						\[ \frac{A}{s}\frac{B}{s+1}\]
+						\[ A = s\frac{1}{s(s+1)}\mid s=0 = 1\]
+						\[ B = s+1\frac{1}{s(s+1)}\mid s=-1 = -1\]
+						\[ c(t) = 1 - 1e^{-t}\]
+Aqui se tem o resultado parecido com o exemplo acima, como o valor de $\tau$ não varia, a exponencial se torna a mesma e o Ts também, apenas é variado o valor de regime permanente, agora igual a 1.
+
+\textbf{Para k=10 e $\tau$=1 Ts ~= 3.957}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=8cm]{figures/ii_t1_k10.png}
+\end{figure}			\[ \frac{10}{s}\frac{1}{s+1}\]
+						\[ \frac{A}{s}\frac{B}{s+1}\]
+						\[ A = s\frac{10}{s(s+1)}\mid s=0 = 10\]
+						\[ B = s+1\frac{10}{s(s+1)}\mid s=-1 = -10\]
+						\[ c(t) = 10 - 10e^{-t}\]
+Aqui se tem o resultado parecido com o exemplo acima, como o valor de $\tau$ não varia, a exponencial se torna a mesma e o Ts também, apenas é variado o valor de regime permanente. Agora igual a 10.
+
+\section{Sistemas de segunda ordem}
+Em sistemas de segunda ordem não existirá uma exponencial como anteriormente, a resposta do sistema geralmente possui oscilações que serão analisadas e gerarão dados importantes para a análise desse tipo de sistema. A equação base para a experiência é: \begin{equation}
+\frac{k w_{n}^{2}}{s^{2}+2 \xi w_{n} s + w_{n}^{2}} 
+\end{equation}
+
+Sendo $\xi$ o coeficiente de amortecimento e $w_{n}$ a freqüência natural do sistema sem amortecimento.
+
+\subsection{usando $w_{n}$ = 2, k=8 e variando $\xi$ em 1, 0.7 e 0.2}
+
+Em sistemas de segunda ordem percebemos oscilações, diferente da exponencial que aparece em sistemas de primeira ordem. Um caso particular notado na experiência ocorreu setando o valor de $\xi$ em 1, neste caso a resposta fica bem parecida com um sistema de primeira ordem e não será necessário o cálculo dos valores do Tempo de Pico $T_{p}$, o máximo de sobresinal $M_{p}$ e o valor de pico $V_{p}$.
+
+O cálculo do tempo de pico foi feito com a equação dada, e confirmou os resultados obtidos pelo matlab, alguns ficaram próximos, pois a aproximação do matlab nem sempre mostra o resultado exato. A equação dada foi:
+		\begin{equation}
+			T_{p} = \frac{\pi}{w_{d}}
+		\end{equation}
+
+\textbf{Para k=8, $w_{n}$=2 e $\xi$ = 1}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=8cm]{figures/item_i_psi_1.png}
+\end{figure}
+
+Neste caso o sistema se comporta parecido como um de primeira ordem e por isso temos apenas o valor de Ts = 0.912.\newline
+
+\textbf{Para k=8, $w_{n}$=2 e $\xi$ = 0.7}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=8cm]{figures/item_i_psi_0,7.png}
+\end{figure}	\[ w_{d} = 2\sqrt{1-0,7^{2}} = 1,428\]
+				\[ T_{p} = \frac{\pi}{1,428} = 2,19\]
+
+No gráfico é notado que apareceu algumas oscilações, isso é o indicativo que temos uma resposta de um sistema de segunda ordem, o valor de $\xi$ influenciou neste comportamento. Assim pode-se calcular todos os valores requeridos.  $T_{s}$ = 2.99, $M_{p}$ = 4,6\%, $T_{p}$ = 2.2, $V_{p}$ = 8.368.\newline
+
+\textbf{Para k=8, $w_{n}$=2 e $\xi$ = 0.2}\newline
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=8cm]{figures/item_i_psi_0,2.png}
+\end{figure}		
+Este gráfico se comporta de forma parecida com o de cima, mas com a variação do valor de $\xi$ os valores que foram calculados se tornaram diferentes.  $T_{s}$ = 9,6823, $M_{p}$ = 48,6365\%, $T_{p}$ = 1,805, $V_{p}$ = 11,8906
+					\[ w_{d} = 2\sqrt{1-0,2^{2}} = 1,9595\]
+					\[ T_{p} = \frac{\pi}{1,9595} = 1,603\]	
+
+\subsection{usando $w_{n}$ = 10, k=8 e variando $\xi$ em 1, 0.7 e 0.2}
+
+\textbf{Para k=8, $w_{n}$=10 e $\xi$ = 1}
+
+Mesmo com o aumento do valor de $w_{n}$ a resposta ainda se comporta como um sistema de primeira ordem para $\xi$ igual a 1, então neste caso será apenas calculado o valor de Ts.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=8cm]{figures/item_ii_psi_1.png}
+\end{figure}
+
+O valor de Ts é de 0.56.\newline
+
+\textbf{Para k=8, $w_{n}$=10 e $\xi$ = 0.7}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=8cm]{figures/item_ii_psi_0,7.png}
+\end{figure}
+
+O valor de $w_{n}$ influencia diretamente nos valores de $t_{p}$ e $t_{s}$ diminuindo este valores, ou seja, deixando o valor de $\xi$ constante e aumentando $w_{n}$ ocorre a diminuição dos tempos de pico e de estabilização. Neste caso apesar da oscilação ser pequena, já é possivel calcular todos os parâmetros que um sistema de segunda ordem possui:  $T_{s}$ = 0,6, $M_{p}$ = 4,5875\%, $T_{p}$ = 0,448, $V_{p}$ = 8,367.
+Como o valor de $\xi$ é o mesmo(0.7) do que na questão anterior com $w_{n}$ = 2, os valores $V_{p}$ e $M_{p}$ não tiveram uma variação muito grande, o que mudará um pouco no caso de $\xi$ = 0.2.
+\newline
+						\[ w_{d} = 10\sqrt{1-0,7^{2}} = 7,1414\]
+						\[ T_{p} = \frac{\pi}{7,1414} = 0,4399\]
+
+
+\textbf{Para k=8, $w_{n}$=10 e $\xi$ = 0.2}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=8cm]{figures/item_ii_psi_0,2.png}
+\end{figure}
+O sistema se comporta de forma parecida com o exemplo acima mas as oscilações se tornam maiores e a grande diminuição do $\xi$ influencia nos valores de $V_{p}$ e $M_{p}$. $T_{s}$ = 1,856, $M_{p}$ = 52,37\%, $T_{p}$ = 0,33, $V_{p}$ = 12,19.		
+\[ w_{d} = 10\sqrt{1-0,2^{2}} = 9,7979\]
+						\[ T_{p} = \frac{\pi}{9,7979} = 0,32\]
+
+\section{Projeto}
+Para que a resposta ao degrau do sistema tenha valores fixos $M_{p}$ = 0,2 e $T_{p}$  = 1 precisamos realizar os calculos de K e $K_{h}$ que estão inseridos na fórmula 
+		\begin{equation}\label{eq:quest3}
+			\frac{C(s)}{R(s)} = \frac{K}{s^{2} + (1+KK_{h})s + K}
+		\end{equation}
+Os valores encontrados foram:
+			\begin{itemize}
+				\item $K = 12,5$
+				\item $K_{h} = 0,178$
+				\item $T_{s}(5\%) = 1,49$ 
+				\item $M{p} = 0,2$
+			\end{itemize}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=8cm]{figures/3_questao.png}
+\end{figure}
+
+O gráfico mostra a resposta no tempo e através dele foi encontrado os mesmos valores se comparados com aqueles que foram calculados.
+
+\end{document}

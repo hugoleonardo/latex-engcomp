@@ -1,0 +1,153 @@
+\documentclass[11pt,a4paper]{article}
+%\usepackage[utf8]{inputenc}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{multicol, blindtext}
+\usepackage[top=0.58in, bottom=0.9in]{geometry}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{lipsum}
+
+\title{	\begin{figure}[!h]
+			\centering
+			\includegraphics[scale=0.75]{./pictures/logoufpa.png}
+			\label{fig:logoufpa}
+		\end{figure}
+		Universidade Federal do Pará \linebreak
+		Instituto de Tecnologia \linebreak
+		Faculdade de Engenharia de Computação e Telecomunicações \linebreak
+		Sistemas de Controle \linebreak
+		Experiência 2 com $MatLab^{\copyright}$ \linebreak
+		Prof$^{a}$ Adriana Castro}
+		
+\begin{document}
+
+\author{Welton Araújo - 10080000501}
+%Matrículas: {10080000801, 10080000701, 10080000501}
+%\thanks{Engenharia da Computa\c{c}\~ao, Universidade Federal do Par\'a, Bel\'em-PA, Brasil}
+
+%\maketitle
+
+
+\section{Questao 1 - Identificação Direta}
+	A identificação direta, como o próprio nome ja diz, está relacionada em obter o resultado desejado de uma forma mais rápida, direta. Neste caso o que vai importar são a entrada e saída do sistema, dessa forma é possível recuperar a resposta do sistema. Foram feitos dois experimentos com identificação direta, um para sistema de primeira ordem e outro para sistema de segunda ordem.
+
+\subsection{Sistema de $1^{a}$ Ordem - Experimento 1}
+
+	Para este experimento o objetivo era encontrar a resposta do sistema de primeira ordem que tem como padronização a figura \ref{fig:sist1ordaberta}. Foi utilizado o bloco \textit{State-Space} do $MatLab^{\copyright}$ para simulação do sistema como uma caixa preta, para que então pudessem ser obtidos os valores de $T_{r_{5\%}}$ e $T_{s}$. A entrada do sistema foi um degrau de amplitude 2, este valor de amplitude é necessário para o cálculo de K como mostra a equação abaixo.
+	\[K = \frac{V_{Regime}}{V_{AmplitudeEntrada}}\]  \[\tau = \frac{T_{r_{5\%}}}{3} \]
+	
+	Os valores obtidos foram $K = 2$, $\tau = 0,9792$, $T_{s} = 3,917$
+
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[scale=0.55]{./pictures/sistema_1ordem_aberta.png}
+			\caption{Sistema padrão de 1$^{a}$ ordem}
+			\label{fig:sist1ordaberta}			
+		\end{figure}
+	
+	Após a obtenção desses valores, foi realizada uma simulação utilizando a seguinte equação de transferência:
+	
+	\[ \frac{Y(s)}{U(s)} = \frac{2}{0,9792s +1} \]
+	
+	Para esta função de transferência o valor de de $T_{s}$ foi 3,83. Podemos observar que os valores de $T_{s}$ foram muito próximos, o que justifica o fato de que a identificação foi bem sucedida. A Figura \ref{fig:sis1ordemcomparacao}. mostra uma comparação entre o sinal medido com a caixa preta(Azul) e o sinal simulado com a equação encontrada(Verde).
+	
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[scale=0.3]{./pictures/1ordem_direta_comparacao.png}
+			\caption{Comparação entre os sistemas de 1$^{a}$ ordem}
+			\label{fig:sis1ordemcomparacao}			
+		\end{figure}
+\subsection{Sistema de $2^{a}$ Ordem - Experimento 2}
+	
+	Analogamente ao experimento de primeira ordem o objetivo é encontrar diretamente um sistema de segunda ordem que tem como padrão a figura \ref{fig:sist2ordaberta}. Também foi utilizado o bloco \textit{State-Space} do $MatLab^{\copyright}$ para simulação do sistema como uma caixa preta, a entrada do sistema continuou sendo um degrau de amplitude 2, então através de medições no próprio gráfico gerado e alguns cálculos, foram obtidos os valores: $K = 1$, $V_{regime} = 2$, $V_{pico} = 2,4$, $M_{p} = 0,2$ e $T_{p} = 1,768$.
+
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.75]{./pictures/sistema_2ordem_aberta.png}
+			\caption{Sistema de 2$^{a}$ padrão}
+			\label{fig:sist2ordaberta}			
+		\end{figure}
+	
+	 Com estes valores foi possivel obter os valores de $\xi = 0,4559$ e $w_{n} = 1,9945$, através das fórmulas:  
+	 
+	 \[ M_{p} = e^{\frac{-\xi\pi}{\sqrt{1 - \xi^{2}}}}\] \[ T_{p} = \frac{\pi}{w_{n}\sqrt{1-\xi^{2}}}\]
+	 
+	A função de tranferência para os valores calculados é:
+		\[ \frac{Y(s)}{U(s)} = \frac{3,9780}{s^{2}+1,8186s+3,9780}\]	 
+		
+	Analisando o gráfico da Figura \ref{fig:sist2ordcomparacao}, Percebe-se que as duas curvas se tornaram muito parecidas, a curva com o bloco \textit{State-Space} está representada em azul e em verde esta representada a equação obtida.
+	
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.3]{./pictures/2ordem_direta_comparacao.png}
+			\caption{Comparação entre os sistemas de 2$^{a}$ ordem}
+			\label{fig:sist2ordcomparacao}			
+		\end{figure}	
+
+\section{Questao 2 - Identificação Indireta}
+
+A identificação indireta é chamada de tal forma pois agora não é possivel obter a função de transferência apenas com a entrada e saída do sistema, conforme a figura \ref{fig:sistmalhafechada} tem-se um sistema de malha fechada, com um ganho $K_{c}$ e uma resposta em malha aberta $G(s)$, é necessário conhecer o valor de $K_{c}$ para se obter a resposta em malha fechada e descobrir a resposta de $G(s)$, que é o objetivo, através da formula:
+
+\begin{equation}\label{eq:gs}
+			G(s) = \frac{1}{K_{c}}\frac{M(s)}{1-M(s)}
+\end{equation}
+%\begin{equation}\label{eq:ms}
+%
+%			M(s) = \frac{K_{c}G(s)}{1+K_{c}G(s)}
+%\end{equation}
+onde $M(s)$ é a resposta em malha fechada.
+
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.75]{./pictures/sist_malha_fechada.png}
+			\caption{Sistema em malha fechada}
+			\label{fig:sistmalhafechada}			
+		\end{figure}
+A função $M(s)$ é obtida através dos valores da simulação utilizando o bloco \textit{State-Space}, com os mesmos cálculos que foram feitos na identificação direta. 
+			
+								
+\subsection{Sistema de $1^{a}$ Ordem - Experimento 3}
+Neste experimento aplicou-se primeiramente o sistema em malha aberta, verificando que a resposta do sistema era muito lenta, assim foi necessário a aplicação do ganho $K_{c}$=4.5.
+
+Para este experimento foram encontrados os valores de $T_{s} = 2,249$, $\tau = 0,5263$ e $K = 0,98$, portanto, temos que:
+
+		\[ M(s) = \frac{0,98}{0,5263s+1}\]
+		Partindo da equação de $G(s)$  obtemos:
+		
+		\[ G(s) = \frac{0,98}{26,3150s+1}\]	
+		
+		O gráfico da Figura \ref{fig:sist1ordemindiretacomparacao} mostra os sistemas obtidos, em azul está o sistema simulado e em verde está o sistema $M(s)$ calculado.
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.75]{./pictures/1ordem_indireta_comparacao.png}
+			\caption{Comparação entre o sistema simulado e calculado}
+			\label{fig:sist1ordemindiretacomparacao}			
+		\end{figure}
+	
+
+\subsection{Sistema de $2^{a}$ Ordem - Experimento 4}
+Primeramente foi feita a simulação em malha aberta, sem o ganho $K_{c}$ e foi observado que não ocorreu sobressinal, o que descaracteriza o sistema de segunda ordem. Para consertar este erro aplicou-se um $K_{c}$ = 1.
+
+Para este experimento os valores encontrados foram $T_{p} = 0,12$, $M_{p} = 0,2$, $K = 0,98$, $\xi = 0,2163$, $w_{n} = 26,8155$, assim:
+
+		\[ M(s) = \frac{704,6878}{s^{2}+11,6004s+719,0692}\]
+		
+		Partindo da equação de $G(s)$ obtemos:
+		
+		\[ G(s) = \frac{14,0938}{s^{2}+11,6004s+14,3814}\]
+		
+		O gráfico da Figura \ref{fig:sist2ordemindiretacomparacao} mostra os sistemas obtidos, em azul está o sistema simulado e em verde está o sistema $M(s)$ calculado.	
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.75]{./pictures/2ordem_indireta_comparacao.png}
+			\caption{Comparação entre o sistema simulado e calculado}
+			\label{fig:sist2ordemindiretacomparacao}			
+		\end{figure}
+		
+		
+\end{document}

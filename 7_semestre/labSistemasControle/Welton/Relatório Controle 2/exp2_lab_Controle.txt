@@ -1,0 +1,83 @@
+	Identificação Direta (07/06/2013)
+
+	1)
+		K = Vregime/Vreferência(referência = valor do degrau)
+		Ts = 3,917
+		Vregime = 4
+		Vreferência = 2 (entrada degrau)
+		K = 2
+		\tau = 0,9792
+		
+		C(s)/R(s) = 2/0,9792s +1
+
+		Ts(simulado) = 3,83
+		
+	2)  Vregime = 2
+		Vpico = 2.4
+		Mp = (Vpico - Vregime)/Vregime *100 = 20
+		xi = 0.4559
+		Tp = 1.768
+		Vreferência = 2 (valor do degrau)
+		
+		K = Vregime/Veferência
+		
+		Cálculo de xi
+		-1.6094 = -xi*pi/sqrt(1- xi²)
+		sqrt(1- xi²) =  xi*pi/1.6094
+		1 - xi² = xi²*pi²/2.5902
+		1 - xi² = 3.8104xi²
+		1 = 4.8104xi²
+		xi = 0.4559
+		
+		Cálculo de wn
+		Tp = pi/wn*sqrt(1- xi²)
+		sqrt(1- xi²) = pi/wn*Tp
+		1 - xi² = pi²/wn²*Tp²
+		wn² -wn²xi² = pi²/Tp²
+		0.7922wn² = 3.1514
+		wn = 1.9945
+		
+	Identificação Indireta (14/06/2013)
+	
+	M(s) func de transferência de malha fechada
+	G(s) de malha aberta
+	Identificar M(s) e depois encontrar G(s) partindo de M(s), ou seja, indiretamente.
+	1ª Ordem)
+		Bloco State Space
+			A = -0,03
+			B = 1
+			C = 0,0333
+			D = 0
+		Kc = 50
+		Ts = 2.249
+		tau = 0.5623
+		K = 0,98
+		M(s) = K/tauS +1
+		M(s) = 0,98/0.5623s + 1
+		G(s) = (1/Kc)*M(s)/1-M(s)
+		G(s) = 0,98/26,3150s +1
+	
+	2ª Ordem)
+		Bloco State Space
+			A = [-12 -16; 1 0]
+			B = [1;0]
+			C = [0 16]
+			D = 0
+		Tp = 0.12
+		Mp = (Vpico - Vregime)/Vregime *100 = 20
+		K = 0.98
+		Cálculo de xi
+		-0.6960 = -xi*pi/sqrt(1- xi²)
+		1- xi² = xi²9.8696/0.4844	
+		1 - xi²	= 20.3749xi²
+		xi = sqrt(1/21.3749)
+		xi = 0.2163
+		
+		Cálculo de Wn
+		Tp = pi/wn*sqrt(1- xi²)
+		
+		0.12 = pi/wn*0.9763
+		wn = pi/0.12*0.9763
+		wn = 26.8155
+		
+		
