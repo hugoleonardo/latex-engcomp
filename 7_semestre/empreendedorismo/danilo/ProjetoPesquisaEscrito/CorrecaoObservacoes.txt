@@ -1,0 +1,19 @@
+Correção projetos Marco.
+
+	Arthur
+		01 - Já existem outros aplicativos que fazem algo parecido, porém somente para algumas cidades. Faltou argumentar e defender melhor a proposta
+		02 - A ideia é muito boa.
+		03 - Contratar programadores é uma boa opção para agilizar o desenvolvimento, porém não faz com que os envolvidos
+			 no projeto adquiram maior conhecimento sobre a tecnologia.
+		04 - A ideia de utilizar HTML5 para garantir compatibilidade é excelente. Faltou um diagrama básico explicando as principais
+			 transações feitas entre cliente e servidor.
+		05 - O orçamento está de acordo com os obejtivos.
+		06 - Talvez seja necessário um pouco mais de tempo, dada a complexidade dos testes que devem ser realizados.
+	Iago
+		01 - Solução simples e relativamente barata que dará retorno financeiro ao produtor. O projeto está bem escrito.
+		02 - Aumenta a qualidade do leite a passa uma maior segurança ao produtor para prevenção contra mastite bovina.
+		03 - Irá contribuir com conhecimento para os funcionários da fazenda e agregar know-how para este tipo de instalação.
+		04 - A metodologia está adequada.
+		05 - Faltou acrescentar o termostato no orçamento.
+		06 - O cronograma está coerente.
+		

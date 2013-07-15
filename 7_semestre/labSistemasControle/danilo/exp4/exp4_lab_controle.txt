@@ -1,0 +1,18 @@
+
+	Colocar os cálculos feitos em sala no relatório
+	
+	Experimento 1)
+		Ts = 387,05 (sem controlador)
+		Ts = 19,95 (com controlador P)
+		
+	Experimento 2)
+		Ts = 15,4 (com controlador PI)
+		V(regime) = 0,9908
+	
+	Experimento 3)
+		Ts = 0,805
+		Mp = 1,0193 (1%)
+		
+	Experimento 4) Ziegler-Nichols (utilizar o segundo método e fazer em casa)
+		
+			

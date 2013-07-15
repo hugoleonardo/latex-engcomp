@@ -1,0 +1,224 @@
+\documentclass{beamer}
+
+% Setup appearance:
+
+\usetheme{Darmstadt}
+\usefonttheme[onlylarge]{structurebold}
+\setbeamerfont*{frametitle}{size=\normalsize,series=\bfseries}
+\setbeamertemplate{navigation symbols}{}
+
+
+% Standard packages
+
+\usepackage[brazil]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}% http://ctan.org/pkg/amsmath
+%\usepackage[table]{xcolor}
+\usepackage{multicol}
+\usepackage{textcomp} 
+
+% Setup TikZ
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\tikzstyle{block}=[draw opacity=0.7,line width=1.4cm]
+
+%diretÃ³rio das figuras
+\graphicspath{../article}
+
+\title[Nursery]{%
+Nursery%
+}
+
+\author[Souza,Medeiros,Santos,Araújo]{
+     Danilo~Souza\and
+     Hugo~Santos\and
+     Iago~Medeiros\and
+     Welton~Araújo
+     }
+
+
+\institute[Belém]{
+  \inst{1}%
+  Universidade Federal do Pará
+  }
+\date[Belém 2012]{
+  16 de Julho de 2013
+  }
+
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \tableofcontents
+\end{frame}
+
+\section{Introdução}
+\subsection{Descrição da base de dados}
+	\begin{frame}{O Problema}
+		\begin{itemize}
+			\item Modelo de decisão hierárquica
+			\item Desenvolvido para classificar requerimentos à escolas infantis
+			\item Muito utilizado nos anos 80 na Slovênia
+			\item Os requerimentos rejeitados precisavam de uma explicação objetiva
+			\item A decisão final dependia de 3 principais fatores
+				\begin{itemize}
+					\item Ocupação dos pais e berçário da criança
+					\item Estruturas familiar e financeira
+					\item Condições sociais e de saúde da família
+				\end{itemize}
+			\item O modelo foi desenvolvido baseado no sistema DEX [M. Bohanec, V. Rajkovic: Expert system 					for decision making. Sistemica 1(1), pp. 145-157, 1990]
+		\end{itemize}		
+	\end{frame}
+	
+	\begin{frame}{Atributos e seus estados}	
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item \textit{parents} (Ocupação dos pais)
+				\begin{itemize}
+					\item usual, pretentious, great\_pret
+				\end{itemize}
+			\item \textit{has\_nurs} (Berçário da criança)
+				\begin{itemize}
+					\item proper, less\_proper, improper, critical, very\_crit 
+				\end{itemize}
+			\item \textit{form} (Estrutura familia)
+				\begin{itemize}
+					\item complete, completed, incomplete, foster
+				\end{itemize}		
+			\item \textit{children} (Número de crianças)
+				\begin{itemize}
+					\item 1, 2, 3, more
+			\end{itemize}						 
+			\item \textit{housing} (Condições de moradia)
+				\begin{itemize}
+					\item convenient, less\_conv, critical 
+				\end{itemize}
+			\item \textit{finance} (Condições financeiras)
+				\begin{itemize}
+					\item convenient, inconv
+				\end{itemize}
+			\item \textit{social} (Condições sociais)
+				\begin{itemize}
+					\item non-prob, slightly\_prob, problematic 
+				\end{itemize}
+			\item \textit{health} (Condições de saúde)
+				\begin{itemize}
+					\item recommended, priority, not\_recom
+				\end{itemize}
+			\end{itemize}
+		\end{multicols}	
+	\end{frame}
+
+\subsection{A ferramente WEKA}
+
+
+\section{Rede Neural}
+\subsection{O Momentum}
+
+	\begin{frame}{O \textit{momentum}}
+		\begin{itemize}
+			\item Utilizado para acelerar a convergência de rede
+			\item Adiciona uma fração proporcional à alteração enterior no cálculo dos pesos sinapticos
+			\item Aumenta a estabilidade do processo de aprendizagem			
+		\end{itemize}
+
+	\[w_{ij}(n+1) = w_{ij}(n) + \alpha e_{i}(n)x_{j}(n) + \beta[w_{ij}(n) - w_{ij}(n-1)]\]
+
+	\end{frame}
+	
+\subsection{A simulação}
+
+	\begin{frame}
+		\begin{itemize}
+			\item Parâmetros fixos
+				\begin{itemize}
+					\item Função de ativação: sigmóide
+					\item Rede de 1 Camada
+				\end{itemize}
+			\item Parâmetros variados para simulação
+				\begin{itemize}
+					\item Poncentagem da base de dados para treinamento da rede
+					\item Taxa de aprendizado
+					\item Coeficiente de inércia (\textit{momentum})
+					\item Número de ciclos (iterações) realizados
+				\end{itemize}
+			\item Parâmetros analisados nas simulações
+				\begin{itemize}
+					\item Taxa de erro de classificação
+					\item Tempo de construção do modelo
+				\end{itemize}
+		\end{itemize}
+	\end{frame}		
+	
+\subsection{Resultados}
+
+	\begin{frame}{Momento constante}
+		\begin{figure}[h]
+			%\centering
+			\includegraphics[scale=0.6]{./pictures/TodosCiclosMomento02Treino70VarTxAprendXerro.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:TodosCiclosMomento02Treino70VarTxAprendXerro}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}{Sem momento}
+		\begin{figure}[h]
+			%\centering
+			\includegraphics[scale=0.6]{./pictures/TodosCiclosMomento00Treino70VarAprendXerro.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:TodosCiclosMomento00Treino70VarAprendXerro}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}{Momento constante}
+		\begin{figure}[h]
+			%\centering
+			\includegraphics[scale=0.6]{./pictures/TodosCiclosMomento02Treino70VarTxAprendXtempo.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:TodosCiclosMomento02Treino70VarAprendXtempo}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}{Sem momento}
+		\begin{figure}[h]
+			%\centering
+			\includegraphics[scale=0.6]{./pictures/TodosCiclosMomento00Treino70VarAprendXtempo.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:TodosCiclosMomento00Treino70VarAprendXtempo}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}{Taxa de aprendizado constante}
+		\begin{figure}[h]
+			%\centering
+			\includegraphics[scale=0.6]{./pictures/TodosCiclosTxAprend02Treino70VarMomentoXerro.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:TodosCiclosTxAprend02Treino70VarMomentoXerro}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}{Resultados - Taxa de aprendizado constante}
+		\begin{figure}[h]
+			%\centering
+			\includegraphics[scale=0.6]{./pictures/TodosCiclosTxAprend02Treino70VarMomentoXtempo.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:TodosCiclosTxAprend02Treino70VarMomentoXtempo}
+		\end{figure}
+	\end{frame}
+\section{Floresta Randômica}
+
+\section{Prisma}
+
+\section{Outro Algoritmo}
+
+\section{Comparaçãoes e Conclusões}
+
+
+\end{document}
