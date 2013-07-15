@@ -1,0 +1,51 @@
+
+
+azul = Y(s)
+verde = U(s)
+vermelho = E(s)
+
+	(1)
+		Kp = 0,8
+			Vp = 0,4576
+			Tp = 3,54
+			Mp = (Vpico - Vregime)/Vregime *100 = 20
+			Mp = 0,0295
+			e(reg) = 0,555
+		Kp = 2
+			Vp = 0,7387
+			Tp = 2,275
+			Mp = 0.1071
+			e(reg) = 0,3334		
+		Kp = 20
+			Vp = 1,3890
+			Tp = 0,7895
+			Mp = 0,45
+			e(reg) = 0,05
+		Kp = 60
+			Vp = 1,5742
+			Tp = 0,4322
+			Mp = 0,5991
+			e(reg) = 0,0166
+	
+	(2)
+		Ti = 0.75
+			Vp = 1,1353
+			Mp = 0,1353
+			Ts2% = 7,887
+			e(reg) = 2,7*10-3
+		Ti = 1
+			Vp = 1,0432
+			Mp = 0,0432
+			Ts2% = 8,4
+			e(reg) = 7,105*10-4
+		Ti = 1,5
+			Vp = 0,9999
+			Mp =  -8.1495*10-05
+			Se comportou como um sistema de 1ª ordem
+			
+			
+			
+		
+			
+			
+			
