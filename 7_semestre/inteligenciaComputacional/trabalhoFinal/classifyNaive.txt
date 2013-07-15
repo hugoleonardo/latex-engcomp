@@ -1,0 +1,227 @@
+=== Run information ===
+
+Scheme:weka.classifiers.bayes.NaiveBayes 
+Relation:     adult
+Instances:    32561
+Attributes:   15
+              age
+              workclass
+              fnlwgt
+              education
+              education-num
+              marital-status
+              occupation
+              relationship
+              race
+              sex
+              capital-gain
+              capital-loss
+              hours-per-week
+              native-country
+              output
+Test mode:split 70.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+Naive Bayes Classifier
+
+                                     Class
+Attribute                             >50K       <=50K
+                                    (0.24)      (0.76)
+=======================================================
+age
+  mean                               44.105      36.849
+  std. dev.                          10.364     13.8028
+  weight sum                           7841       24720
+  precision                          1.0139      1.0139
+
+workclass
+  Private                            4964.0     17734.0
+  Self-emp-not-inc                    725.0      1818.0
+  Self-emp-inc                        623.0       495.0
+  Federal-gov                         372.0       590.0
+  Local-gov                           618.0      1477.0
+  State-gov                           354.0       946.0
+  Without-pay                           1.0        15.0
+  Never-worked                          1.0         8.0
+  ?                                     1.0         1.0
+  [total]                            7659.0     23084.0
+
+fnlwgt
+  mean                          188004.5163 190340.8916
+  std. dev.                     102535.4004 106480.1251
+  weight sum                           7841       24720
+  precision                         68.0196     68.0196
+
+education
+  Bachelors                          2222.0      3135.0
+  Some-college                       1388.0      5905.0
+  11th                                 61.0      1116.0
+  HS-grad                            1676.0      8827.0
+  Prof-school                         424.0       154.0
+  Assoc-acdm                          266.0       803.0
+  Assoc-voc                           362.0      1022.0
+  9th                                  28.0       488.0
+  7th-8th                              41.0       607.0
+  12th                                 34.0       401.0
+  Masters                             960.0       765.0
+  1st-4th                               7.0       163.0
+  10th                                 63.0       872.0
+  Doctorate                           307.0       108.0
+  5th-6th                              17.0       318.0
+  Preschool                             1.0        52.0
+  ?                                     1.0         1.0
+  [total]                            7858.0     24737.0
+
+education-num
+  mean                              11.6117      9.5951
+  std. dev.                           2.385      2.4361
+  weight sum                           7841       24720
+  precision                               1           1
+
+marital-status
+  Married-civ-spouse                 6693.0      8285.0
+  Divorced                            464.0      3981.0
+  Never-married                       492.0     10193.0
+  Separated                            67.0       960.0
+  Widowed                              86.0       909.0
+  Married-spouse-absent                35.0       385.0
+  Married-AF-spouse                    11.0        14.0
+  ?                                     1.0         1.0
+  [total]                            7849.0     24728.0
+
+occupation
+  Tech-support                        284.0       646.0
+  Craft-repair                        930.0      3171.0
+  Other-service                       138.0      3159.0
+  Sales                               984.0      2668.0
+  Exec-managerial                    1969.0      2099.0
+  Prof-specialty                     1860.0      2282.0
+  Handlers-cleaners                    87.0      1285.0
+  Machine-op-inspct                   251.0      1753.0
+  Adm-clerical                        508.0      3264.0
+  Farming-fishing                     116.0       880.0
+  Transport-moving                    321.0      1278.0
+  Priv-house-serv                       2.0       149.0
+  Protective-serv                     212.0       439.0
+  Armed-Forces                          2.0         9.0
+  ?                                     1.0         1.0
+  [total]                            7665.0     23083.0
+
+relationship
+  Wife                                746.0       824.0
+  Own-child                            68.0      5002.0
+  Husband                            5919.0      7276.0
+  Not-in-family                       857.0      7450.0
+  Other-relative                       38.0       945.0
+  Unmarried                           219.0      3229.0
+  ?                                     1.0         1.0
+  [total]                            7848.0     24727.0
+
+race
+  White                              7118.0     20700.0
+  Asian-Pac-Islander                  277.0       764.0
+  Amer-Indian-Eskimo                   37.0       276.0
+  Other                                26.0       247.0
+  Black                               388.0      2738.0
+  ?                                     1.0         1.0
+  [total]                            7847.0     24726.0
+
+sex
+  Female                             1180.0      9593.0
+  Male                               6663.0     15129.0
+  ?                                     1.0         1.0
+  [total]                            7844.0     24723.0
+
+capital-gain
+  mean                            4029.7337    149.7434
+  std. dev.                      14582.8927    965.1905
+  weight sum                           7841       24720
+  precision                        847.4492    847.4492
+
+capital-loss
+  mean                             194.5982     53.0209
+  std. dev.                        594.0944    310.1864
+  weight sum                           7841       24720
+  precision                         47.8681     47.8681
+
+hours-per-week
+  mean                              45.4355     38.8175
+  std. dev.                         10.9806     12.3267
+  weight sum                           7841       24720
+  precision                          1.0538      1.0538
+
+native-country
+  United-States                      7172.0     22000.0
+  Cambodia                              8.0        13.0
+  England                              31.0        61.0
+  Puerto-Rico                          13.0       103.0
+  Canada                               40.0        83.0
+  Germany                              45.0        94.0
+  Outlying-US(Guam-USVI-etc)            1.0        15.0
+  India                                41.0        61.0
+  Japan                                25.0        39.0
+  Greece                                9.0        22.0
+  South                                17.0        65.0
+  China                                21.0        56.0
+  Cuba                                 26.0        71.0
+  Iran                                 19.0        26.0
+  Honduras                              2.0        13.0
+  Philippines                          62.0       138.0
+  Italy                                26.0        49.0
+  Poland                               13.0        49.0
+  Jamaica                              11.0        72.0
+  Vietnam                               6.0        63.0
+  Mexico                               34.0       611.0
+  Portugal                              5.0        34.0
+  Ireland                               6.0        20.0
+  France                               13.0        18.0
+  Dominican-Republic                    3.0        69.0
+  Laos                                  3.0        17.0
+  Ecuador                               5.0        25.0
+  Taiwan                               21.0        32.0
+  Haiti                                 5.0        41.0
+  Columbia                              3.0        58.0
+  Hungary                               4.0        11.0
+  Guatemala                             4.0        62.0
+  Nicaragua                             3.0        33.0
+  Scotland                              4.0        10.0
+  Thailand                              4.0        16.0
+  Yugoslavia                            7.0        11.0
+  El-Salvador                          10.0        98.0
+  Trinadad&Tobago                       3.0        18.0
+  Peru                                  3.0        30.0
+  Hong                                  7.0        15.0
+  Holand-Netherlands                    1.0         2.0
+  ?                                     1.0         1.0
+  [total]                            7737.0     24325.0
+
+
+
+Time taken to build model: 5.76 seconds
+
+=== Evaluation on test split ===
+=== Summary ===
+
+Correctly Classified Instances        8179               83.7326 %
+Incorrectly Classified Instances      1589               16.2674 %
+Kappa statistic                          0.5019
+Mean absolute error                      0.1695
+Root mean squared error                  0.3677
+Relative absolute error                 46.5643 %
+Root relative squared error             86.6546 %
+Total Number of Instances             9768     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.521     0.065      0.711     0.521     0.601      0.896    >50K
+                 0.935     0.479      0.864     0.935     0.898      0.896    <=50K
+Weighted Avg.    0.837     0.382      0.828     0.837     0.828      0.896
+
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+ 1197 1102 |    a = >50K
+  487 6982 |    b = <=50K
+
