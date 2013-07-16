@@ -1,0 +1,102 @@
+\documentclass{beamer}
+
+% Setup appearance:
+
+\usetheme{Darmstadt}
+\usefonttheme[onlylarge]{structurebold}
+\setbeamerfont*{frametitle}{size=\normalsize,series=\bfseries}
+\setbeamertemplate{navigation symbols}{}
+
+
+% Standard packages
+
+\usepackage[brazil]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}% http://ctan.org/pkg/amsmath
+%\usepackage[table]{xcolor}
+\usepackage{multicol}
+\usepackage{textcomp} 
+
+% Setup TikZ
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\tikzstyle{block}=[draw opacity=0.7,line width=1.4cm]
+
+%diretÃ³rio das figuras
+\graphicspath{../article}
+
+\title[Nursery]{%
+Nursery%
+}
+
+\author[Souza,Medeiros,Santos,Araújo]{
+     Danilo~Souza\and
+     Hugo~Santos\and
+     Iago~Medeiros\and
+     Welton~Araújo
+     }
+
+
+\institute[Belém]{
+  \inst{1}%
+  Universidade Federal do Pará
+  }
+\date[Belém 2012]{
+  16 de Julho de 2013
+  }
+
+
+
+\begin{document}
+\section{Algoritmo Prisma}
+\begin{frame}{Algoritmo}
+\begin{itemize}
+	\item Para cada classe \textit{c} de 1 a \textit{n}:
+	\begin{itemize}
+		\item \textbf{Passo 1} - Calcular a probabilidade de ocorrência da classe c para cada par-atributo-valor
+		\item \textbf{Passo 2} - Selecionar o pa-atributo com a probabilidade máxima de ocorrência e crie um subconjunto de treinamento tomado como entrada compreendendo todas as instâncias que o par selecionado (para todas as classes)
+		\item \textbf{Passo 3} - Repetir os passos 1 e 2 para este subconjunto até o momento em que ele apresente apenas instências da classe c. A regra induzida é então a conjunçao de todos os pares atributo-valor selecionados na criaçao deste subconjunto homogêneo.
+		\item \textbf{Passo 4} - Remover todas as instâncias, que satisfaçam a regra formada, do conjunto de treinamento.
+	\end{itemize}	
+	\item Repetir a sequência de 1 a  até que todas as instâncias da classe \textit{c} tenham sido removidas.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Exemplo - parte I}
+\begin{figure}
+	\includegraphics[scale=0.7]{./prismaTabela1.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Exemplo - parte II}
+\begin{figure}
+	\includegraphics[scale=0.7]{./prismaTabela2.png}
+\end{figure}
+\end{frame}
+
+\subsection{Simulação}
+
+
+\begin{frame}{Exemplo - parte II}
+\begin{figure}
+	\includegraphics[scale=0.7]{./prismaTabela2.png}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Exemplo - parte II}
+\begin{figure}
+	\includegraphics[scale=0.7]{./prismaTabela2.png}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Exemplo - parte II}
+\begin{figure}
+	\includegraphics[scale=0.7]{./prismaTabela2.png}
+\end{figure}
+\end{frame}
+
+\end{document}

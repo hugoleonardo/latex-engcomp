@@ -220,6 +220,25 @@ Nursery%
 			\label{fig:TodosCiclosTxAprend02Treino70VarMomentoXtempo}
 		\end{figure}
 	\end{frame}
+	
+	\begin{frame}{Resultados - Taxa de aprendizado constante e momento = 0 \& momento = 0.2}
+		\begin{figure}[h]
+			%\centering
+			\includegraphics[scale=0.6]{./pictures/TxAprend02Treino70Mom02&00VarCiclosXerro.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:TxAprend02Treino70Mom02&00VarCiclosXerro}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}{Resultados - Taxa de aprendizado constante e momento = 0 \& momento = 0.2}
+		\begin{figure}[h]
+			%\centering
+			\includegraphics[scale=0.6]{./pictures/TxAprend02Treino70Mom02&00VarCiclosXtempo.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:TxAprend02Treino70Mom02&00VarCiclosXtempo}
+		\end{figure}
+	\end{frame}	
+	
 \section{Floresta Randômica}
 
 \begin{frame}{Floresta Randômica (Random Forest)}
@@ -351,7 +370,57 @@ Nursery%
 
 \section{Prisma}
 
-\section{Outro Algoritmo}
+\begin{frame}{Prisma}
+\begin{itemize}
+	\item Para cada classe \textit{c} de 1 a \textit{n}:
+	\begin{itemize}
+		\item \textbf{Passo 1} - Calcular a probabilidade de ocorrência da classe c para cada par-atributo-valor
+		\item \textbf{Passo 2} - Selecionar o pa-atributo com a probabilidade máxima de ocorrência e crie um subconjunto de treinamento tomado como entrada compreendendo todas as instâncias que o par selecionado (para todas as classes)
+		\item \textbf{Passo 3} - Repetir os passos 1 e 2 para este subconjunto até o momento em que ele apresente apenas instências da classe c. A regra induzida é então a conjunçao de todos os pares atributo-valor selecionados na criaçao deste subconjunto homogêneo.
+		\item \textbf{Passo 4} - Remover todas as instâncias, que satisfaçam a regra formada, do conjunto de treinamento.
+	\end{itemize}	
+	\item Repetir a sequência de 1 a  até que todas as instâncias da classe \textit{c} tenham sido removidas.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Exemplo - parte I}
+\begin{figure}
+	\includegraphics[scale=0.7]{./pictures/prismaTabela1.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Exemplo - parte II}
+\begin{figure}
+	\includegraphics[scale=0.7]{./pictures/prismaTabela2.png}
+\end{figure}
+\end{frame}
+
+\subsection{Simulação}
+
+
+\begin{frame}{Exemplo - parte II}
+\begin{figure}
+	\includegraphics[scale=0.7]{./pictures/PrismaVarTreinoXerro.png}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Exemplo - parte II}
+\begin{figure}
+	\includegraphics[scale=0.7]{./pictures/PrismaVarTreinoXtempo.png}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Exemplo - parte II}
+\begin{figure}
+	\includegraphics[scale=0.7]{./pictures/PrismaVarTreinoXerro&tempo.png}
+\end{figure}
+\end{frame}
+
+\section{Bagging}
+
+
 
 \section{Comparaçãoes e Conclusões}
 
