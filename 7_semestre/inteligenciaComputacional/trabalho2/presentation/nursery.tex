@@ -118,6 +118,14 @@ Nursery%
 
 \subsection{A ferramente WEKA}
 
+	\begin{frame}
+		\begin{itemize}
+			\item Programa que possui uma coleção de algoritmos de aprendizagem de máquina para usar em tarefas de mineração de dados
+			\item Desenvolvido pelo Machine Learning Group da Universidade de Waikato 
+			\item O Weka permite que se trabalhe sobre o dataset e traz ferramentas para: pré-processamento, classificação, regressão, clusterização, regras de associação e visualização 
+			\item Todos os nossos resultados foram feitos com o apoio do Weka
+		\end{itemize}
+	\end{frame}
 
 \section{Rede Neural}
 \subsection{O Momentum}
@@ -213,6 +221,133 @@ Nursery%
 		\end{figure}
 	\end{frame}
 \section{Floresta Randômica}
+
+\begin{frame}{Floresta Randômica (Random Forest)}
+		\begin{itemize}
+			\item Tudo começou em 1996, com o surgimento do meta-algoritmo de Bagging (Bootstrap Aggregating), por Leo Breiman 
+			\item Bootstrap ajuda a reduzir variância e overfitting
+				\begin{itemize}
+					\item Escolhe aleatoriamente amostras, Di, de um conjunto de treino, D
+					\item Esse conjunto de treino D tem reposição (ou seja, uma amostra pode ser escolhida mais de uma vez)
+					\item Tamanho do conjunto de treino: n
+					\item Tamanho do conjunto de amostra: n'
+					\item Geralmente n' < n
+					\item Quando n' for praticamente n, nota-se uma chance de 63\% de aparecer amostras não repetidas. Daqui que surgiu o nome de Bootstrap
+				\end{itemize}
+		\end{itemize}		
+	\end{frame}
+
+\begin{frame}{Floresta Randômica (Random Forest)}
+	\begin{itemize}
+		\item Em 2001, Breiman lançou o Random Forest
+		\item É um método usado para classificação (e regressão)
+		\item O método faz a construção de várias árvores de decisão, com a diferença de que não usa pruning (poda)
+		\item Algoritmo:
+			\begin{itemize}
+			 	\item Escolhe-se aleatoriamente a amostra (bootstrap) Di dentre D
+			 	\item Constrói a árvore Ti usando amostra Di
+			 	\item Em cada árvore Ti, escolhe aleatoriamente M variáveis e encontra a melhor divisão (split)
+			\end{itemize}
+		\item No fim, pode-se 
+			\begin{itemize}
+				\item pegar o voto majoritário (classificação)
+				\item calcular a média dos resultados (regressão)
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Exemplo de Random Forest}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.1]{./pictures/RandomForestIago.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:Random Forest}
+		\end{figure}
+	\end{frame}
+	
+\subsection{A simulação}
+
+	\begin{frame}
+		\begin{itemize}
+			\item Parâmetros variados para simulação
+				\begin{itemize}
+					\item Número de Árvores
+					\item Número de Níveis (profundidade)
+					\item Número de Atributos Utilizados
+					\item Poncentagem da base de dados para treinamento da rede
+				\end{itemize}
+			\item Parâmetros analisados nas simulações
+				\begin{itemize}
+					\item Taxa de erro de classificação
+					\item Tempo de construção do modelo
+				\end{itemize}
+		\end{itemize}
+	\end{frame}		
+	
+\subsection{Resultados}
+
+	\begin{frame}{Tempo x Profundidade}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.6]{./pictures/numArvores10Treino70VarNumNiveisXtempo.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:numArvores10Treino70VarNumNiveisXtempo}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}{Tempo x Treino (Split)}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.6]{./pictures/NumNiveis16NumArvores100VarTreinoXtempo.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:NumNiveis16NumArvores100VarTreinoXtempo}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}{Tempo x Árvores}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.6]{./pictures/NumNiveis16Treino70VarNumArvoresXtempo.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:NumNiveis16Treino70VarNumArvoresXtempo}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}{Erro x Profundidade}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.6]{./pictures/numArvores10Treino70VarNumNiveisXerro.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:numArvores10Treino70VarNumNiveisXerro}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}{Erro x Treino (Split)}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.6]{./pictures/NumNiveis16NumArvores100VarTreinoXerro.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:NumNiveis16NumArvores100VarTreinoXerro}
+		\end{figure}
+	\end{frame}	
+	
+	\begin{frame}{Erro x Árvores}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.6]{./pictures/NumNiveis16Treino70VarNumArvoresXerro.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:NumNiveis16Treino70VarNumArvoresXerro}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}{Erro x Atributos selecionados}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.6]{./pictures/NumArv100NumNiveis16Treino70VarNumFeatXerro.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:NumArv100NumNiveis16Treino70VarNumFeatXerro}
+		\end{figure}
+	\end{frame}
 
 \section{Prisma}
 
