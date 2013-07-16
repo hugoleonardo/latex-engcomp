@@ -1,0 +1,24 @@
+\begin{frame}{Algoritmo Prism
+\begin{itemize}
+	\item Para cada classe \textit{c} de 1 a \textit{n}:
+	\begin{itemize}
+		\item \textbf{Passo 1} - Calcular a probabilidade de ocorrência da classe c para cada par-atributo-valor
+		\item \textbf{Passo 2} - Selecionar o pa-atributo com a probabilidade máxima de ocorrência e crie um subconjunto de treinamento tomado como entrada compreendendo todas as instâncias que o par selecionado (para todas as classes)
+		\item \textbf{Passo 3} - Repetir os passos 1 e 2 para este subconjunto até o momento em que ele apresente apenas instências da classe c. A regra induzida é então a conjunçao de todos os pares atributo-valor selecionados na criaçao deste subconjunto homogêneo.
+		\item \textbf{Passo 4} - Remover todas as instâncias, que satisfaçam a regra formada, do conjunto de treinamento.
+		\item Repetir a sequência de 1 a  até que todas as instâncias da classe \textit{c} tenham sido removidas.
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Exemplo - parte I}
+\begin{figure}
+	\includegraphics[scale=1]{prismaTabela1.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Exemplo - parte II}
+\begin{figure}
+	\includegraphics[scale=1]{prismaTabela2.png}
+\end{figure}
+\end{frame}
