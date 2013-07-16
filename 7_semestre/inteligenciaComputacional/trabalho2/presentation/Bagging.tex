@@ -1,0 +1,108 @@
+\documentclass{beamer}
+
+% Setup appearance:
+
+\usetheme{Darmstadt}
+\usefonttheme[onlylarge]{structurebold}
+\setbeamerfont*{frametitle}{size=\normalsize,series=\bfseries}
+\setbeamertemplate{navigation symbols}{}
+
+
+% Standard packages
+
+\usepackage[brazil]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}% http://ctan.org/pkg/amsmath
+%\usepackage[table]{xcolor}
+\usepackage{multicol}
+\usepackage{textcomp} 
+
+% Setup TikZ
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\tikzstyle{block}=[draw opacity=0.7,line width=1.4cm]
+
+%diretÃ³rio das figuras
+\graphicspath{../article}
+
+\title[Nursery]{%
+Nursery%
+}
+
+\author[Souza,Medeiros,Santos,Araújo]{
+     Danilo~Souza\and
+     Hugo~Santos\and
+     Iago~Medeiros\and
+     Welton~Araújo
+     }
+
+
+\institute[Belém]{
+  \inst{1}%
+  Universidade Federal do Pará
+  }
+\date[Belém 2012]{
+  16 de Julho de 2013
+  }
+
+
+
+\begin{document}
+\section{Bagging usando Prisma e Rede Neural}
+\begin{frame}{Testes}
+\begin{itemize}
+		\item Também foram realizados testes com bagging em conjunto com o Prisma e Rede Neural.
+		\item No caso da Rede Neural foi utilizado o momento = 0.2, taxa de aprendizado = 0.2 e número de ciclos = 100. 
+		\item No exemplo utilizando o Weka, será variado a quantidade de registros utilizados(porcentagem) e o número de iterações.
+\end{itemize}	
+	
+\end{frame}
+
+\begin{frame}{Prisma - Variando o número de iterações}
+\begin{figure}
+	\includegraphics[scale=0.5]{./pictures/Bagging(prisma)QtdReg30Reg1VarNumItXerro.png}
+\end{figure}
+\begin{itemize}
+\item utilizando prisma normal o erro = 1.2088\%
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Prisma - Variando a quantidade de registros}
+\begin{figure}
+	\includegraphics[scale=0.5]{./pictures/Bagging(prisma)NumIt10Reg1VarQtdRegXerro.png}
+\end{figure}
+\begin{itemize}
+\item utilizando prisma normal o erro = 1.2088\%
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Rede Neural - Variando o número de iterações}
+\begin{figure}
+	\includegraphics[scale=0.5]{./pictures/Bagging(rede)QtdReg30Reg1VarNumItXerro.png}
+\end{figure}
+\begin{itemize}
+\item utilizando a Rede neural normal o erro = 0.0257%
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Rede Neural - Variando a quantidade de registros}
+\begin{figure}
+	\includegraphics[scale=0.5]{./pictures/Bagging(rede)NumIt10Reg1VarQtdRegXerro.png}
+\end{figure}
+\begin{itemize}
+\item utilizando a Rede neural normal o erro = 0.0257%
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Conclusões}
+\begin{itemize}
+\item Para uma base de dados pequena a mistura com o bagging não foi satisfatória.
+\item Não foi encontrada implementações que realizem a mistura entre os algoritmos como o Random Forest.
+\end{itemize}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,5 @@
+\beamer@endinputifotherversion {3.26pt}
+\select@language {brazil}
+\beamer@sectionintoc {1}{Algoritmo Prisma}{1}{0}{1}
+\beamer@subsectionintoc {1}{1}{Simula\c c\~ao}{4}{0}{1}
+\beamer@subsectionintoc {1}{2}{Resultados}{5}{0}{1}
