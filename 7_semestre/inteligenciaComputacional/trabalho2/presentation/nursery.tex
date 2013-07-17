@@ -116,7 +116,7 @@ Nursery%
 		\end{multicols}	
 	\end{frame}
 
-\subsection{A ferramente WEKA}
+\subsection{A ferramenta WEKA}
 
 	\begin{frame}
 		\begin{itemize}
@@ -141,7 +141,7 @@ Nursery%
 
 	\end{frame}
 	
-\subsection{A simulação}
+\subsection{Simulação}
 
 	\begin{frame}
 		\begin{itemize}
@@ -176,6 +176,15 @@ Nursery%
 		\end{figure}
 	\end{frame}
 	
+	\begin{frame}{Momento constante}
+		\begin{figure}[h]
+			%\centering
+			\includegraphics[scale=0.6]{./pictures/TodosCiclosMomento02Treino70VarTxAprendXtempo.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:TodosCiclosMomento02Treino70VarAprendXtempo}
+		\end{figure}
+	\end{frame}
+	
 	\begin{frame}{Sem momento}
 		\begin{figure}[h]
 			%\centering
@@ -185,15 +194,6 @@ Nursery%
 		\end{figure}
 	\end{frame}
 	
-	\begin{frame}{Momento constante}
-		\begin{figure}[h]
-			%\centering
-			\includegraphics[scale=0.6]{./pictures/TodosCiclosMomento02Treino70VarTxAprendXtempo.png}
-			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
-			\label{fig:TodosCiclosMomento02Treino70VarAprendXtempo}
-		\end{figure}
-	\end{frame}
-
 	\begin{frame}{Sem momento}
 		\begin{figure}[h]
 			%\centering
@@ -247,6 +247,8 @@ Nursery%
 			\item Bootstrap ajuda a reduzir variância e overfitting
 				\begin{itemize}
 					\item Escolhe aleatoriamente amostras, Di, de um conjunto de treino, D
+					\item De cada amostra, encontra o classifier.  
+					\item O classifier escolhido será o que mais aparecer, ou seja, tiver maior votos.			
 					\item Esse conjunto de treino D tem reposição (ou seja, uma amostra pode ser escolhida mais de uma vez)
 					\item Tamanho do conjunto de treino: n
 					\item Tamanho do conjunto de amostra: n'
@@ -284,7 +286,7 @@ Nursery%
 		\end{figure}
 	\end{frame}
 	
-\subsection{A simulação}
+\subsection{Simulação}
 
 	\begin{frame}
 		\begin{itemize}
@@ -375,18 +377,41 @@ Nursery%
 	\item Para cada classe \textit{c} de 1 a \textit{n}:
 	\begin{itemize}
 		\item \textbf{Passo 1} - Calcular a probabilidade de ocorrência da classe c para cada par-atributo-valor
-		\item \textbf{Passo 2} - Selecionar o pa-atributo com a probabilidade máxima de ocorrência e crie um subconjunto de treinamento tomado como entrada compreendendo todas as instâncias que o par selecionado (para todas as classes)
-		\item \textbf{Passo 3} - Repetir os passos 1 e 2 para este subconjunto até o momento em que ele apresente apenas instências da classe c. A regra induzida é então a conjunçao de todos os pares atributo-valor selecionados na criaçao deste subconjunto homogêneo.
+		\item \textbf{Passo 2} - Selecionar o par-atributo com a probabilidade máxima de ocorrência e crie um subconjunto de treinamento tomado como entrada compreendendo todas as instâncias que o par selecionado (para todas as classes)
+		\item \textbf{Passo 3} - Repetir os passos 1 e 2 para este subconjunto até o momento em que ele apresente apenas instâncias da classe \textit{c}. A regra induzida é então a conjunção de todos os pares atributo-valor selecionados na criação deste subconjunto homogêneo.
 		\item \textbf{Passo 4} - Remover todas as instâncias, que satisfaçam a regra formada, do conjunto de treinamento.
 	\end{itemize}	
-	\item Repetir a sequência de 1 a  até que todas as instâncias da classe \textit{c} tenham sido removidas.
+	\item Repetir a sequência de 1 a 4 até que todas as instâncias da classe \textit{c} tenham sido removidas.
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Exemplo - parte I}
-\begin{figure}
-	\includegraphics[scale=0.7]{./pictures/prismaTabela1.png}
-\end{figure}
+\begin{tabular}{|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
+\hline 
+Atributo-valor & Frequência (P) para classe = recommend & Frequência (T) para atributo-valor & Probabilidade (P/T) \\ 
+\hline 
+Finance = convenient & 4 & 8 & 0.5 \\ 
+\hline 
+Finance = inconven & 1 & 8 & 0.125 \\ 
+\hline 
+Housing = convenient & 1 & 8 & 0.125 \\ 
+\hline 
+Housing = less\_conv & 4 & 12 & 0.33 \\ 
+\hline 
+Housing = critical & 1 & 12 & 0.83 \\ 
+\hline 
+Children = 1 & 0 & 12 & 0 \\ 
+\hline 
+Children = 2 & 3 & 12 & 0.25 \\ 
+\hline 
+Children = 3 & 0 & 12 & 0 \\ 
+\hline 
+Children = more & 4 & 12 & 0.33 \\ 
+\hline 
+\end{tabular} 
+%\begin{figure}
+%	\includegraphics[scale=0.7]{./pictures/prismaTabela1.png}
+%\end{figure}
 \end{frame}
 
 \begin{frame}{Exemplo - parte II}
@@ -396,33 +421,124 @@ Nursery%
 \end{frame}
 
 \subsection{Simulação}
+\begin{frame}
+	\begin{itemize}
+		\item Parâmetro variado na simulação
+		\begin{itemize}
+			\item Porcentagem da base de dados para treinamento
+		\end{itemize}
+		\item Parâmetros avaliados nas simulações
+		\begin{itemize}
+			\item Taxa de erro de classificação
+			\item Tempo de construção do modelo
+		\end{itemize}
+	\end{itemize}
+\end{frame}
 
-
-\begin{frame}{Exemplo - parte II}
+\subsection{Resultados}
+\begin{frame}
 \begin{figure}
 	\includegraphics[scale=0.7]{./pictures/PrismaVarTreinoXerro.png}
 \end{figure}
 \end{frame}
 
 
-\begin{frame}{Exemplo - parte II}
+\begin{frame}
 \begin{figure}
 	\includegraphics[scale=0.7]{./pictures/PrismaVarTreinoXtempo.png}
 \end{figure}
 \end{frame}
 
 
-\begin{frame}{Exemplo - parte II}
+\begin{frame}
 \begin{figure}
 	\includegraphics[scale=0.7]{./pictures/PrismaVarTreinoXerro&tempo.png}
 \end{figure}
 \end{frame}
 
-\section{Bagging}
+\section{Bagging usando Prisma e Rede Neural}
+\subsection{Simulação}
+
+\begin{frame}{Testes}
+\begin{itemize}
+		\item Também foram realizados testes com bagging em conjunto com o Prisma e Rede Neural.
+		\item No caso da Rede Neural foi utilizado o momento = 0.2, taxa de aprendizado = 0.2 e número de ciclos = 100. 
+		\item No exemplo utilizando o Weka, será variado a quantidade de registros utilizados(porcentagem) e o número de iterações.
+\end{itemize}	
+	
+\end{frame}
+
+\begin{frame}{Prisma - Variando o número de iterações}
+\begin{figure}
+	\includegraphics[scale=0.5]{./pictures/Bagging(prisma)QtdReg30Reg1VarNumItXerro.png}
+\end{figure}
+\begin{itemize}
+\item utilizando prisma normal o erro = 1.2088\%
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Prisma - Variando a quantidade de registros}
+\begin{figure}
+	\includegraphics[scale=0.5]{./pictures/Bagging(prisma)NumIt10Reg1VarQtdRegXerro.png}
+\end{figure}
+\begin{itemize}
+\item utilizando prisma normal o erro = 1.2088\%
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Rede Neural - Variando o número de iterações}
+\begin{figure}
+	\includegraphics[scale=0.5]{./pictures/Bagging(rede)QtdReg30Reg1VarNumItXerro.png}
+\end{figure}
+\begin{itemize}
+\item utilizando a Rede neural normal o erro = 0.0257%
+\end{itemize}
+\end{frame}
 
 
+\begin{frame}{Rede Neural - Variando a quantidade de registros}
+\begin{figure}
+	\includegraphics[scale=0.5]{./pictures/Bagging(rede)NumIt10Reg1VarQtdRegXerro.png}
+\end{figure}
+\begin{itemize}
+\item utilizando a Rede neural normal o erro = 0.0257%
+\end{itemize}
+\end{frame}
+
+\subsection{Conclusões}
+\begin{frame}{Conclusões}
+\begin{itemize}
+\item Para uma base de dados pequena a mistura com o bagging não foi satisfatória.
+\item Não foi encontrada implementações que realizem a mistura entre os algoritmos como o Random Forest.
+\end{itemize}
+\end{frame}
 
 \section{Comparaçãoes e Conclusões}
 
+	\begin{frame}{Conclusões gerais}
+		\begin{itemize}
+			\item A rede neural encontrou o menor erro, porém com um tempo elevado
+			\item O algoritimo prisma obteve um erro satisfatório com o menor tempo
+			\item A utilização do algoritmo \textit{bagging} não se mostrou vantajosa para uma base de dados pequena
+			\item O algoritmo floresta randômica oferece um bom custo X benefício entre erro e tempo de execução
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\begin{figure}[h]
+			%\centering
+			\includegraphics[scale=0.5]{./pictures/ComparacaoErroTodosAlgoritmos.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:ComparacaoErroTodosAlgoritmos}
+		\end{figure}
+	\end{frame}
 
+	\begin{frame}
+		\begin{figure}[h]
+			%\centering
+			\includegraphics[scale=0.5]{./pictures/ComparacaoTempoTodosAlgoritmos.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:ComparacaoTempoTodosAlgoritmos}
+		\end{figure}
+	\end{frame}
 \end{document}
