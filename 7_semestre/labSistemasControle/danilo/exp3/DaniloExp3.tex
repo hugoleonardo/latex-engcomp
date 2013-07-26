@@ -1,0 +1,249 @@
+\documentclass[11pt,a4paper]{report}
+%\usepackage[utf8]{inputenc}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{multicol, blindtext}
+\usepackage[top=0.58in, bottom=0.9in]{geometry}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{lipsum}
+
+\title{	\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.75]{./pictures/logoufpa.png}
+			\label{fig:logoufpa}
+		\end{figure}
+		Universidade Federal do Pará \linebreak
+		Instituto de Tecnologia \linebreak
+		Faculdade de Engenharia de Computação e Telecomunicações \linebreak
+		Sistemas de Controle \linebreak
+		Experiência 3 com $MatLab^{\copyright}$ \linebreak
+		Prof$^{a}$ Adriana Castro}
+
+\begin{document}
+
+\author{Danilo Souza - 10080000801}
+\maketitle
+
+\tableofcontents
+\listoffigures
+
+\chapter{Questão 1 - Controlador Proporcional}
+	O sistema utilizado nos experimentos 1, 2, 3 e 4 é apresentado na Figura \ref{fig:sistemaexp3} e a função de transferência do processo a ser controlado é mostrada na equação \ref{eq:funcaoprocesso}
+	
+	\begin{equation}
+		G_{p}(s) = \frac{1}{s^{2}+2s+1}
+		\label{eq:funcaoprocesso}
+	\end{equation}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.75]{./pictures/sistemaExp3.png}
+		\caption{Sistema utilizado nas simulações}
+		\label{fig:sistemaexp3}
+	\end{figure}
+	
+	Neste primeiro experimento apenas o controlador porporcional foi utilizado com seu valores variando entre 0,8; 2; 20 e 60, os gráficos podem ser vistos nas Figuras \ref{fig:1questaokp08}, \ref{fig:1questaokp2}, \ref{fig:1questaokp20} e \ref{fig:1questaokp60}, respectivamente. As variáveis observadas foram $y(t)$ (saída do sistema, em azul), $u(t)$ (saída do controlador, em verde) e $e(t)$ (erro de regime, em vermelho).
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.75]{./pictures/1questaoKp08.png}
+		\caption{Kp = 0,8}
+		\label{fig:1questaokp08}
+	\end{figure}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.75]{./pictures/1questaoKp2.png}
+		\caption{Kp = 2}
+		\label{fig:1questaokp2}
+	\end{figure}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.75]{./pictures/1questaoKp20.png}
+		\caption{Kp = 20}
+		\label{fig:1questaokp20}
+	\end{figure}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.75]{./pictures/1questaoKp60.png}
+		\caption{Kp = 60}
+		\label{fig:1questaokp60}
+	\end{figure}
+
+	Os valores de máximo de sobre-sinal, erro de regime permanente são mostrados na Tabela \ref{tab:valoresexp1}
+	
+	\begin{table}
+	\centering
+		\begin{tabular}{|c|c|c|}
+			\hline 
+			Experimento  & Máximo de sobre-sinal ($M_{p}$) & Erro de regime permanente ($e(t)$) \\ 
+			\hline 
+			Experimento 1 - $K_{p} = 0,8$ & 0,0295 & 0,555 \\ 
+			\hline 
+			Experimento 2 - $K_{p} = 2$ & 0,1071 & 0,3334 \\ 
+			\hline 
+			Experimento 3 - $K_{p} = 20$ & 0,45 & 0,05 \\ 
+			\hline
+			Experimento 4 - $K_{p} = 60$ & 0,5991 & 0,0166 \\ 
+			\hline  
+		\end{tabular} 
+		\caption{Valores de $M_{p}$ e erro de regime do experimento 1}
+		\label{tab:valoresexp1}
+	\end{table}	
+	
+	Com os valores da tabela \ref{tab:valoresexp1} é possível constatar que conforme o valor de $K_{p}$ aumenta, o erro tende a zero, entretanto o máximo de sobre-sinal aumenta, tornando a resposta transitória mais instável. Isso pode ser percebido quando analisamos o sinal $u(t)$, é possivel observar que a saída do controlador apresenta maior oscilação conforme o aumento de $K_{p}$.
+	Esses valores confirmam o comportamento matemático das equações do cálculo de erro de regime do coeficiente de amortecimento, mostradas abaixo:
+	
+	\[ M_{p} = e^{\frac{-\xi \pi}{\sqrt{1- \xi^{2}}}} \] 
+	
+	\[e(\infty) = \frac{1}{1+K_{p}}\]
+	
+	Quanto maior o valor de $K_{p}$ maior será o denominador e menor será o valor do erro e quanto maior o valor de $M_{p}$ menor será o valor do coeficiente de amortecimento $\xi$, levando o sistema a instabilidade.
+	
+	 Este experimento confirma o que foi visto em sala com relação aos controladores proporcionais, é possível diminuir o erro de regime, porém a resposta transitória também sofrerá alterações e caso essas alterações não interfiram no funcionamento do sistema o controlador porporcional é uma vantagem, pois é barato e fácil de ser implementado.
+	
+	
+\chapter{Questão 2 - Controlador Proporcional e Integral}
+
+	Neste experimento o valor $K_{p}$ foi fixado em 0,5 e os valores $T_{i}$ variados entre 0.6; 1 e 1,5. As figuras \ref{fig:2questaoti075}, \ref{fig:2questaoti1} e \ref{fig:2questaoti15} e mostram os gráficos da simulação do sistema, respectivamente, sendo a função de transferência do controlador dada por:
+	\[  G_{c}(s) = K_{p}[1+(\frac{1}{T_{i}s})]\]
+	As varíaveis observadas foram as mesmas do experimento anterior mais o tempo de estabilização ($T_{s}$) utilizando critério de 2\%.
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.6]{./pictures/2questaoTi075.png}
+		\caption{Ti = 0.6}
+		\label{fig:2questaoti075}
+	\end{figure}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.6]{./pictures/2questaoTi1.png}
+		\caption{Ti = 1}
+		\label{fig:2questaoti1}
+	\end{figure}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.6]{./pictures/2questaoTi15.png}
+		\caption{Ti = 1,5}
+		\label{fig:2questaoti15}
+	\end{figure}
+	
+	\begin{table}
+	\centering
+		\begin{tabular}{|c|c|c|c|}
+		\hline 
+		Experimento  & Máximo de sobre-sinal ($M_{p}$) & Erro de regime ($e(t)$) & $T_{s}$ \\ 
+		\hline 
+		Experimento 1 - $T_{i} = 0.6$ & 0,1353 & $2,7x10^{-3}$ & 7,887 \\ 
+		\hline 
+		Experimento 2 - $T_{i} = 1$  & 0,0432 &  $7,105x10^{-4}$ & 8,4 \\ 
+		\hline 
+		Experimento 3 - $T_{i} = 1,5$  & XXX & 0 & XXX \\ 
+		\hline
+		\end{tabular} 
+	\caption{Valores de $M_{p}$, erro de regime e $T_{i}$ do experimento 2}
+	\label{tab:valoresexp2}	
+	\end{table}		
+	
+	Conforme mostrado nos gráficos e na tabela \ref{tab:valoresexp2} o máximo de sobre-sinal reduz, ou seja, o valor do coeficiente de amortecimento $\xi$ aumenta, à medida que o valor de $T_{i}$ aumenta, com isso é possivel controlar o comportamento da resposta transitória uma vez que o valor de $K_{p}$ foi estabelecido.
+	
+	 Podemos observar que para $T_{i} = 1,5$ o sistema se comporta como um sistema de $1^{a}$ ordem, onde $M_{p} = 0$. 
+	 
+	O erro do sistema é reduzido a zero (os valores mostrados na tabela não são exatamente devido ao erro de aproximação do $MatLab^{\copyright}$), isso ocorre porque o controlador Integral adiciona um zero em $s = \frac{-1}{T_{i}}$ e um pólo em $s = 0$ à função de transferência de malha aberta do sistema, aumentando assim a ordem e o tipo do sistema. 
+	
+	
+	
+\chapter{Questão 3 - Controlador Proporcional e Derivativo}
+
+	Neste experimento foi utilizado um controlador Porporcional e Derivativo. Foram simulados os seguintes cenários:
+		\begin{itemize}
+			\item Sistema sem controlador
+			\item Sistema somente com controlador Proporcional com $K_{p} = 10$
+			\item Sistema com controlador PD com  $K_{p} = 10$ e $K_{d} =2$, onde $K_{d} = K_{p}T_{d}$
+		\end{itemize}
+	A equação da função de transferência do controlador é mostrada abaixo:
+	\[ G_{c}(s) = K_{p}(1+T_{d}s)\]
+	
+	As figuras \ref{fig:3questaoSemControlador}, \ref{fig:3questaoControladorPropKp10}, \ref{fig:3questaoControladorPropDerivKp10Kd2} mostram os gráficos da simulação sem controlador, com controlador proporcional e com conrolador PD, respectivamente.
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.6]{./pictures/3questaoSemControlador.png}
+		\caption{Sem controlador}
+		\label{fig:3questaoSemControlador}
+	\end{figure}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.6]{./pictures/3questaoControladorPropKp10.png}
+		\caption{Controlador proporcional - Kp = 10}
+		\label{fig:3questaoControladorPropKp10}
+	\end{figure}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.6]{./pictures/3questaoControladorPropDerivKp10Kd2.png}
+		\caption{Controlador PD - Kp = 10 e Kd = 2}
+		\label{fig:3questaoControladorPropDerivKp10Kd2}
+	\end{figure}
+	
+	\begin{table}
+	\centering
+		\begin{tabular}{|c|c|c|c|}
+		\hline 
+		Experimento & $M_{p}$ & $T_{s}$ & $V_{regime}$ \\ 
+		\hline 
+		Sem controlador & 0,108 & 4,227 & 0,5 \\ 
+		\hline 
+		Controlador P & 0,3382 & 3,375 & 0,9091 \\ 
+		\hline 
+		Controlador PD  & 0,1296 & 1,556 & 0,9091 \\ 
+		\hline 
+		\end{tabular} 
+	\caption{Valores de $M_{p}, T_{s} e V_{regime}$ do experimento 3}
+	\label{tab:valoresexp3}	
+	\end{table}		
+	
+	Analisando os gráficos \ref{fig:3questaoSemControlador} e \ref{fig:3questaoControladorPropKp10} podemos confirmar a conclusão do experimento 1, onde a introdução de uma controlador P na malha melhora o ganho do sistema e diminui o tempo de estabilização, entretanto causa maior instabilidade, diminuindo o valor de $\xi$ (coeficiente de amortecimento), isto pode ser verificado com o aumento de $M_{p}$, a diminuição de $T_{s}$  e o aumento de $V_{regime}$ na tabela \ref{tab:valoresexp3}.
+	
+	Observando os gráficos \ref{fig:3questaoControladorPropKp10} e \ref{fig:3questaoControladorPropDerivKp10Kd2} percebemos que a introdução do controlador PD na malha manteve o ganho do sistema, como mostra o valor de de $V_{regime}$ na tabela \ref{tab:valoresexp3}, porém aumentou o valor de $\xi$ como poder ser observado com a redução do valor de $M_{p}$, aumentando assim o amortecimento e mlehorando a resposta transitória (estabilidade).
+	
+	Este experimento exemplifica de forma bastante contundente os efeitos de um controlador PD estudados em sala de aula, se mostrando uma excelente alternativa quando se precisa alterar somenta a resposta transitória do sistema.
+	
+\chapter{Questão 4 - Controlador Proporcional, Integral e Derivativo}
+
+	Neste experimento foi utilizado controlador Proporcional, Integral e Derivativo (PID), utilizando os seguintes parâmetros:
+		\begin{itemize}
+			\item $K_{p} = 20$
+			\item $T_{i} = 1,5$, onde $K_{i} = \frac{K_{p}}{T_{i}}$
+			\item $T_{d} = 0,3$, onde $K_{d} = K_{p}T_{d}$
+		\end{itemize}
+	Os gráficos mostrados nas Figuras \ref{fig:3questaoSemControlador} e \ref{fig:4questaoControladorPIDKp20Ti15Td03} mostram o compartamento do sistema sem controlador e com o controlador PID, respectivamente, que possui a seguinte função de transferência:
+	\[ G_{c}(s) = Kp[1 + (\frac{1}{T_{i}s}) + T_{d}s]\]
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.6]{./pictures/4questaoControladorPIDKp20Ti15Td03.png}
+		\caption{Controlador PD - Kp = 20, Kd = 6 e Ki = 13,33}
+		\label{fig:4questaoControladorPIDKp20Ti15Td03}
+	\end{figure}
+	
+	\begin{table}
+	\centering
+		\begin{tabular}{|c|c|c|c|}
+		\hline 
+		Experimento & $M_{p}$ & $T_{s}$ & $V_{regime}$ \\ 
+		\hline 
+		Sem controlador & 0,108 & 4,227 & 0,5 \\ 
+		\hline 
+		Com controlador PID & 0,0772 & 1,265 & 1 \\ 
+		\hline 
+		\end{tabular} 
+	\caption{Valores de $M_{p}, T_{s} e V_{regime}$ do experimento 4}
+	\label{tab:valoresexp4}
+	\end{table}
+
+	A partir dos gráficos citados acima podemos perceber que a introdução do controlador PID na malha nos permite maior controle de todos os parâmetros relacionados ao sistema, conforme mostrado na tabela \ref{tab:valoresexp4}, o valor do ganho é máximo, devido ao controlador Integral, que reduz o erro à zero, o tempo de resposta diminui mais de 3 vezes, devido ao controlador Proporcional, e o coeficiente de amortecimento, $\xi$, também aumenta devido ao controlador Derivativo. 
+	
+	Com isso podemos concluir que o controlador PID é mais completo que os outros, pois nos permite alterar todos os parâmetros de desempenho do sistema, permitindo corrigir qualquer processo. Naturalmente seu custo é maior do que só usar controlador P ou PI ou PD, porém proporciona maior liberdade para ajustar o desempenho de sistema conforme os requisitos necessários.
+		
+\end{document}
