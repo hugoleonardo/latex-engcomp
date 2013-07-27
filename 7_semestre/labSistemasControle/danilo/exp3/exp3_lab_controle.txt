@@ -41,7 +41,43 @@ vermelho = E(s)
 		Ti = 1,5
 			Vp = 0,9999
 			Mp =  -8.1495*10-05
+			e(reg) = 0
 			Se comportou como um sistema de 1ª ordem
+			
+	(3) 
+		Sem controlador
+			Mp = 0,108
+			Vregime = 0,5
+			Vpico = 0,5216
+			Ts2% =  4,227
+			Tp = 1,139
+		Controlador Proporcional (kp = 10)
+			Vp = 1,2166
+			Mp = 0,3382
+			Vregime = 0,9091
+			Ts2% = 3,375
+			Tp =  1,125
+		Controlador PD (kp = 10 e Kd = 2)
+			Vp = 1,0269
+			Vregime = 0,9091
+			Mp = 0,1296
+			Tp = 0,8986
+			Ts2% = 1,556
+			
+	(4)
+		Sem controlador
+			Mp = 0,108
+			Vregime = 0,5
+			Vpico = 0,5216
+			Ts2% =  4,227
+			Tp = 1,139
+		Controlador PID (Kp = 20 Ki = 13,33 Kd = 6)
+			Vpico = 1,0772
+			Vregime = 1
+			Mp = 0,0772
+			Ts2% = 1,265
+			Tp = 0,6169
+			
 			
 			
 			

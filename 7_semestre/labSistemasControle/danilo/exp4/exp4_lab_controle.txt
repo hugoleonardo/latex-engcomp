@@ -9,10 +9,14 @@
 		Ts = 15,4 (com controlador PI)
 		V(regime) = 0,9908
 	
-	Experimento 3)
+	Experimento 3) Ti = 1,03
 		Ts = 0,805
-		Mp = 1,0193 (1%)
+		Mp = 0,0193 (1%)
 		
 	Experimento 4) Ziegler-Nichols (utilizar o segundo método e fazer em casa)
 		
+		G(s) = 1/s³+6s²+5s
+		Mp(máx) = 0,25
+		Kp = 1,8
+		Verificar o que é o período de oscilação.
 			
