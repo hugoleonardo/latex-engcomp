@@ -45,7 +45,7 @@
 		Para garantir a eficácia do método, $G_{c}$ é calculado de tal forma que $M_{s}$ seja um sistema de $1^{a} ou 2^{a}$ ordem.
 		
 		Neste primeiro experimento, a função de transferência do processo a ser controlado	é dada pela equação \ref{eq:processo1}. O tempo de estabilização utilizado para o cálculo de $K_{p}$ foi $T_{s} = 20$, uma vez que o requisito do projeto é um tempo de estabilizzação menor ou igual a 20, utilizando o critério de 2\% para estabilização. A equação abaixo mostra como calcular o valor de $\tau$ para este critério:
-		\[ \tau = \frac{4}{T_{s}}\]
+		\[ \tau_{2\%} = \frac{T_{s}}{4}\]
 		
 		\begin{equation}
 			G_{p}(s) = \frac{2}{1+100s}
@@ -54,7 +54,7 @@
 		
 		A função de transferência de primeira ordem usada para comparar com $M(s)$ é dada por:
 			\[ G(s) = \frac{K}{\tau s +1}\], onde
-			\[ \tau = 5\], temos que 	
+			\[ \tau_{2\%} = 5\], temos que 	
 		\begin{equation}
 			G(s) = \frac{K}{5s+1}
 			\label{eq:funcaocomparacaoexp1}
@@ -69,7 +69,7 @@
 			\[ K_{p} = 9,5\]		
 		Substituindo este valor em $M(s)$ temos:
 			\[ M(s) = \frac{19}{100s+20}\]
-		Simulando o sistema em malha fechada, obtemos o gráfico mostrado na Figura \ref{fig:experimento1_com_controlador}. A figura  mostra as simulaçoes com controlador em malha fechada e sem controlador em malha aberta.
+		Simulando o sistema em malha fechada, obtemos o gráfico mostrado na Figura \ref{fig:experimento1_com_controlador}. A figura  mostra a comparação entre as simulaçoes com controlador em malha fechada (azul) e sem controlador em malha aberta (verde).
 		
 		\begin{figure}[h!]
 			\centering
@@ -82,13 +82,97 @@
 			\includegraphics[scale=0.75]{./pictures/experimento1_comparacao.png}
 			\caption{$T_{s} = 387,05$}
 			\label{fig:experimento1_comparacao}
-		\end{figure}
+		\end{figure}	
 		
-		Podemos perceber que o redução do tempo de estabilização foi de quase 20 vezes e está de acordo com o valor desejado, menor ou igual a 20. Mostrando a eficiência da adição de um controlador proporcional em reduzir o tempo de estabilização de um processo.
+		Podemos perceber que o redução do tempo de estabilização foi de quase 20 vezes e está de acordo com o valor desejado, menor ou igual a 20. Mostrando a eficiência de acrescentar um controlador proporcional, em reduzir o tempo de estabilização de um processo.
 		
 \chapter{Questão 2 - Controlador Porporcional e Integral}
 
+	Neste experimento foi utilizado o mesmo processo do experimento anterior que possui função de transferência mostrada na Equação \ref{eq:processo1}. Os requisitos deste projeto são mostrados abaixo:
+		\begin{itemize}
+			\item Saída sem sobre-sinal.
+			\item $T_{s} \leqslant 30$ (usando critério de 5\%.
+			\item Erro nulo para o degrau unitário.
+		\end{itemize}
+
+	Usando o mesmo procedimento anterior, com o critério de 5\%, temos que:
+		\[ \tau_{5\%} = \frac{T_{s}}{3} \]
+		\[ \tau_{5\%} = 10 \]
+		\[ G(s) = \frac{K}{10s +1}\]
+	A função $G(s)$ será usada para comparar com a função $M(s)$ de malha fechada.
+		\[ M(s) = \frac{G_{c}(s)G_{p}(s)}{1 + G_{c}(s)G_{p}(s)} \]
+	Onde:
+		\[ G_{c}(s) = K_{p}(1 + \frac{1}{T_{i}s} \]	
+	Portanto:
+		\[ M(s) = \frac{K_{p}(\frac{100s+1}{100s}\frac{2}{1+100s})}{1+ K_{p}(\frac{100s+1}{100s}\frac{2}					{1+100s})}\]
+		\[ M(s) = \frac{2K_{p}}{100s + 2K_{p}} \]
+	Normalizando $M(s)$ por $2K_{p}$:
+		\[ M(s) = \frac{1}{1+ \frac{100s}{2K_{p}}} \]
+	Igualando o termo em $s$ com o termo em $s$ de $ G(s) = \frac{K}{10s +1}$:
+		\[ \frac{100s}{2K_{p}} = 10s \]
+		\[ K_{p} = 5 \]
+	Após a introdução dos valores de $K_{p} e T_{i}$, a função $M(s)$ fica a seguinte:		
+		\[ M(s) = \frac{10}{10 + 100s}\]
+	
+	As Figuras \ref{fig:experimento2_com_controlador} e \ref{fig:experimento2_comparacao} mostram respectivamente, os gráficos do sistema com o controlador PI e o gráfico da comparação do sistema com controlador em malha fechada (azul) e sem o controlador em malha aberta(em verde)
+		
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[scale=0.75]{./pictures/experimento2_com_controlador.png}
+			\caption{$K_{p} = 5$}
+			\label{fig:experimento2_com_controlador}
+		\end{figure}
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[scale=0.6]{./pictures/experimento2_comparacao.png}
+			\caption{$K_{p} = 5$}
+			\label{fig:experimento2_comparacao}
+		\end{figure}
+		
+	O tempo de estabilização medido na simulação foi $T_{s} = 15,4$, atendendo ao critério do projeto, pode ser observado também que o erro do sistema foi a zero, atendendo o requisito de erro nulo ao degrau, e que o sistema se comporta como um sistema de primeira ordem, ou seja, sem sobre-sinal.
+	
+	Com este experimento foi possível constatar a eficácia de se introduzir um controlador PI para ajustar de maneira bastante satisfatória (o tempo de resposta alcança é a metade do requisitado no projeto) o desempenho do sistema.	
+	
 \chapter{Questao 3 - Controlador Integral}
 		
+	Neste experimento o processo a ser controlado possui função de transferência mostrada na Equação \ref{eq:processo2}. A função utilizada para comparaçãocom $M(s)$ nesse caso é a de um sistema de segunda ordem, mostrada na Equação \ref{eq:funcsegordem}.
+		\begin{equation}
+			G_{p}(s) = \frac{2}{1+0.2s}
+			\label{eq:processo2}
+		\end{equation}
+		\begin{equation}
+			G(s) = k\frac{\omega ^{2}_{n}}{s^{2}+2\xi \omega _{n}+\omega ^{2}_{n}}
+			\label{eq:funcsegordem}
+		\end{equation}			
+	Deseja-se projetar um controlador Integral para atender os seguintes requisitos:
+		\begin{itemize}
+			\item Sobre-sinal máximo de 2\% ($M_{p} = 0,02$).
+			\item Erro nulo para o degrau unitário.
+		\end{itemize}
+	A função de transferência do controlador Integral é:
+		\[ G_{c}(s) = \frac{K_{i}}{s}\]
+	Substituindo $M_{p} = 0,02$ na equação abaixo:
+		\[ M_{p} = e^{\frac{-\xi \pi}{\sqrt{1-\xi ^{2}}}}\]
+	Obtemos $\xi = 0,779$. Resolvendo para $M(s)$, temos:
+		\[ M(s) = \frac{\frac{K_{i}}{s}\frac{2}{1+0,2s}}{1+\frac{K_{i}}{s}\frac{2}{1+0,2s}}\]
+		\[ M(s) = \frac{2K_{i}}{0,2s^{2}+s+2K_{i}}\]
+	Normalizando $M(s)$ por 0,2:
+		\[ M(s) = \frac{10K_{i}}{s^{2}+5s+10K_{i}}\]
+	Comparando o termo em $s$ com $2\xi \omega _{n}$ e substituindo $\xi = 0,779$, obtém-se:
+		\[ 2\xi \omega _{n} = 5\]
+		\[ \omega _{n} = 3,209\]
+	Igualando o termo $\omega ^{2}_{n}$ a $10K_{i}$, temos:
+		\[ 10K_{i} = 10,297\]
+		\[ K_{i} = 1,0297\]
+	
+	De posse do valor de $K_{i}$ podemos simular o sistema em malha fechada. O gráfico mostrado na Figura \ref{fig:experimento3_comparacao} mostra a comparação entre as simulaçãoes sem controlador em malha aberta (verde) e com controlador (azul). Os valores observados na simulação foram $M_{p} = 0,0193$ e erro de regime nulo, por tanto o projeto está de acordo com as especificações.
+ 
+ 		\begin{figure}[h!]
+			\centering
+			\includegraphics[scale=0.6]{./pictures/experimento3_comparacao.png}
+			\caption{$K_{i} = 1,0279$}
+			\label{fig:experimento3_comparacao}
+		\end{figure}	
+	
 \chapter{Questão 4 - Método de Ziegler-Nichols}
 \end{document}
