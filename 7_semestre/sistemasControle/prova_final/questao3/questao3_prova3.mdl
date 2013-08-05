@@ -1,12 +1,12 @@
 Model {
-  Name			  "experiencia4"
+  Name			  "questao3_prova3"
   Version		  7.9
   MdlSubVersion		  0
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.11"
+    ComputedModelVersion    "1.3"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -21,15 +21,15 @@ Model {
   MinMaxOverflowArchiveMode "Overwrite"
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
-  Created		  "Fri Jun 28 15:13:26 2013"
+  Created		  "Mon Jul 29 19:54:41 2013"
   Creator		  "Danilo"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Danilo"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Aug 02 14:58:22 2013"
-  RTWModifiedTimeStamp	  297335858
-  ModelVersionFormat	  "1.%<AutoIncrement:11>"
+  LastModifiedDate	  "Tue Jul 30 09:12:23 2013"
+  RTWModifiedTimeStamp	  297028501
+  ModelVersionFormat	  "1.%<AutoIncrement:3>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -66,12 +66,13 @@ Model {
     $PropName		    "DataLoggingOverride"
     $ObjectID		    1
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
-    model_		    "experiencia3"
-    overrideMode_	    [0.0]
+    model_		    "questao3_prova3"
+    signals_		    []
+    overrideMode_	    [0U]
     Array {
       Type		      "Cell"
       Dimension		      1
-      Cell		      "experiencia3"
+      Cell		      "questao3_prova3"
       PropName		      "logAsSpecifiedByModels_"
     }
     Array {
@@ -132,7 +133,7 @@ Model {
 	  $ObjectID		  3
 	  Version		  "1.12.0"
 	  StartTime		  "0.0"
-	  StopTime		  "30.0"
+	  StopTime		  "20.0"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -710,10 +711,18 @@ Model {
       ContinuousStateAttributes	"''"
       Realization	      "auto"
     }
+    Block {
+      BlockType		      ZeroPole
+      Zeros		      "[1]"
+      Poles		      "[0 1]"
+      Gain		      "[1]"
+      AbsoluteTolerance	      "auto"
+      ContinuousStateAttributes	"''"
+    }
   }
   System {
-    Name		    "experiencia4"
-    Location		    [440, 121, 1116, 632]
+    Name		    "questao3_prova3"
+    Location		    [360, 157, 1143, 588]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -727,230 +736,12 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "26"
-    Block {
-      BlockType		      Reference
-      Name		      "PID Controller"
-      SID		      "1"
-      Ports		      [1, 1]
-      Position		      [240, 152, 280, 188]
-      ZOrder		      -6
-      LibraryVersion	      "1.260"
-      SourceBlock	      "simulink/Continuous/PID Controller"
-      SourceType	      "PID 1dof"
-      Controller	      "PID"
-      TimeDomain	      "Continuous-time"
-      SampleTime	      "1"
-      IntegratorMethod	      "Forward Euler"
-      FilterMethod	      "Forward Euler"
-      Form		      "Parallel"
-      P			      "0"
-      I			      "1.03"
-      D			      "0"
-      N			      "100"
-      InitialConditionSource  "internal"
-      InitialConditionForIntegrator "0"
-      InitialConditionForFilter	"0"
-      ExternalReset	      "none"
-      IgnoreLimit	      off
-      ZeroCross		      on
-      LimitOutput	      off
-      UpperSaturationLimit    "inf"
-      LowerSaturationLimit    "-inf"
-      LinearizeAsGain	      off
-      AntiWindupMode	      "none"
-      Kb		      "1"
-      TrackingMode	      off
-      Kt		      "1"
-      RndMeth		      "Floor"
-      SaturateOnIntegerOverflow	off
-      LockScale		      off
-      PParamMin		      "[]"
-      PParamMax		      "[]"
-      PParamDataTypeStr	      "Inherit: Inherit via internal rule"
-      IParamMin		      "[]"
-      IParamMax		      "[]"
-      IParamDataTypeStr	      "Inherit: Inherit via internal rule"
-      DParamMin		      "[]"
-      DParamMax		      "[]"
-      DParamDataTypeStr	      "Inherit: Inherit via internal rule"
-      NParamMin		      "[]"
-      NParamMax		      "[]"
-      NParamDataTypeStr	      "Inherit: Inherit via internal rule"
-      KbParamMin	      "[]"
-      KbParamMax	      "[]"
-      KbParamDataTypeStr      "Inherit: Inherit via internal rule"
-      KtParamMin	      "[]"
-      KtParamMax	      "[]"
-      KtParamDataTypeStr      "Inherit: Inherit via internal rule"
-      POutMin		      "[]"
-      POutMax		      "[]"
-      POutDataTypeStr	      "Inherit: Inherit via internal rule"
-      IOutMin		      "[]"
-      IOutMax		      "[]"
-      IOutDataTypeStr	      "Inherit: Inherit via internal rule"
-      DOutMin		      "[]"
-      DOutMax		      "[]"
-      DOutDataTypeStr	      "Inherit: Inherit via internal rule"
-      NOutMin		      "[]"
-      NOutMax		      "[]"
-      NOutDataTypeStr	      "Inherit: Inherit via internal rule"
-      KbOutMin		      "[]"
-      KbOutMax		      "[]"
-      KbOutDataTypeStr	      "Inherit: Inherit via internal rule"
-      KtOutMin		      "[]"
-      KtOutMax		      "[]"
-      KtOutDataTypeStr	      "Inherit: Inherit via internal rule"
-      IntegratorOutMin	      "[]"
-      IntegratorOutMax	      "[]"
-      IntegratorOutDataTypeStr "Inherit: Inherit via internal rule"
-      FilterOutMin	      "[]"
-      FilterOutMax	      "[]"
-      FilterOutDataTypeStr    "Inherit: Inherit via internal rule"
-      SumOutMin		      "[]"
-      SumOutMax		      "[]"
-      SumOutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SumI1OutMin	      "[]"
-      SumI1OutMax	      "[]"
-      SumI1OutDataTypeStr     "Inherit: Inherit via internal rule"
-      SumI2OutMin	      "[]"
-      SumI2OutMax	      "[]"
-      SumI2OutDataTypeStr     "Inherit: Inherit via internal rule"
-      SumI3OutMin	      "[]"
-      SumI3OutMax	      "[]"
-      SumI3OutDataTypeStr     "Inherit: Inherit via internal rule"
-      SumDOutMin	      "[]"
-      SumDOutMax	      "[]"
-      SumDOutDataTypeStr      "Inherit: Inherit via internal rule"
-      SumAccumDataTypeStr     "Inherit: Inherit via internal rule"
-      SumI1AccumDataTypeStr   "Inherit: Inherit via internal rule"
-      SumI2AccumDataTypeStr   "Inherit: Inherit via internal rule"
-      SumI3AccumDataTypeStr   "Inherit: Inherit via internal rule"
-      SumDAccumDataTypeStr    "Inherit: Inherit via internal rule"
-      SaturationOutMin	      "[]"
-      SaturationOutMax	      "[]"
-      SaturationOutDataTypeStr "Inherit: Same as input"
-      IntegratorContinuousStateAttributes "''"
-      IntegratorStateMustResolveToSignalObject off
-      IntegratorRTWStateStorageClass "Auto"
-      FilterContinuousStateAttributes "''"
-      FilterStateMustResolveToSignalObject off
-      FilterRTWStateStorageClass "Auto"
-    }
-    Block {
-      BlockType		      Reference
-      Name		      "PID Controller1"
-      SID		      "21"
-      Ports		      [1, 1]
-      Position		      [265, 322, 305, 358]
-      ZOrder		      -6
-      LibraryVersion	      "1.260"
-      SourceBlock	      "simulink/Continuous/PID Controller"
-      SourceType	      "PID 1dof"
-      Controller	      "PID"
-      TimeDomain	      "Continuous-time"
-      SampleTime	      "1"
-      IntegratorMethod	      "Forward Euler"
-      FilterMethod	      "Forward Euler"
-      Form		      "Parallel"
-      P			      "2.16"
-      I			      "2.16/4.935"
-      D			      "2.16*1.2337"
-      N			      "100"
-      InitialConditionSource  "internal"
-      InitialConditionForIntegrator "0"
-      InitialConditionForFilter	"0"
-      ExternalReset	      "none"
-      IgnoreLimit	      off
-      ZeroCross		      on
-      LimitOutput	      off
-      UpperSaturationLimit    "inf"
-      LowerSaturationLimit    "-inf"
-      LinearizeAsGain	      off
-      AntiWindupMode	      "none"
-      Kb		      "1"
-      TrackingMode	      off
-      Kt		      "1"
-      RndMeth		      "Floor"
-      SaturateOnIntegerOverflow	off
-      LockScale		      off
-      PParamMin		      "[]"
-      PParamMax		      "[]"
-      PParamDataTypeStr	      "Inherit: Inherit via internal rule"
-      IParamMin		      "[]"
-      IParamMax		      "[]"
-      IParamDataTypeStr	      "Inherit: Inherit via internal rule"
-      DParamMin		      "[]"
-      DParamMax		      "[]"
-      DParamDataTypeStr	      "Inherit: Inherit via internal rule"
-      NParamMin		      "[]"
-      NParamMax		      "[]"
-      NParamDataTypeStr	      "Inherit: Inherit via internal rule"
-      KbParamMin	      "[]"
-      KbParamMax	      "[]"
-      KbParamDataTypeStr      "Inherit: Inherit via internal rule"
-      KtParamMin	      "[]"
-      KtParamMax	      "[]"
-      KtParamDataTypeStr      "Inherit: Inherit via internal rule"
-      POutMin		      "[]"
-      POutMax		      "[]"
-      POutDataTypeStr	      "Inherit: Inherit via internal rule"
-      IOutMin		      "[]"
-      IOutMax		      "[]"
-      IOutDataTypeStr	      "Inherit: Inherit via internal rule"
-      DOutMin		      "[]"
-      DOutMax		      "[]"
-      DOutDataTypeStr	      "Inherit: Inherit via internal rule"
-      NOutMin		      "[]"
-      NOutMax		      "[]"
-      NOutDataTypeStr	      "Inherit: Inherit via internal rule"
-      KbOutMin		      "[]"
-      KbOutMax		      "[]"
-      KbOutDataTypeStr	      "Inherit: Inherit via internal rule"
-      KtOutMin		      "[]"
-      KtOutMax		      "[]"
-      KtOutDataTypeStr	      "Inherit: Inherit via internal rule"
-      IntegratorOutMin	      "[]"
-      IntegratorOutMax	      "[]"
-      IntegratorOutDataTypeStr "Inherit: Inherit via internal rule"
-      FilterOutMin	      "[]"
-      FilterOutMax	      "[]"
-      FilterOutDataTypeStr    "Inherit: Inherit via internal rule"
-      SumOutMin		      "[]"
-      SumOutMax		      "[]"
-      SumOutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SumI1OutMin	      "[]"
-      SumI1OutMax	      "[]"
-      SumI1OutDataTypeStr     "Inherit: Inherit via internal rule"
-      SumI2OutMin	      "[]"
-      SumI2OutMax	      "[]"
-      SumI2OutDataTypeStr     "Inherit: Inherit via internal rule"
-      SumI3OutMin	      "[]"
-      SumI3OutMax	      "[]"
-      SumI3OutDataTypeStr     "Inherit: Inherit via internal rule"
-      SumDOutMin	      "[]"
-      SumDOutMax	      "[]"
-      SumDOutDataTypeStr      "Inherit: Inherit via internal rule"
-      SumAccumDataTypeStr     "Inherit: Inherit via internal rule"
-      SumI1AccumDataTypeStr   "Inherit: Inherit via internal rule"
-      SumI2AccumDataTypeStr   "Inherit: Inherit via internal rule"
-      SumI3AccumDataTypeStr   "Inherit: Inherit via internal rule"
-      SumDAccumDataTypeStr    "Inherit: Inherit via internal rule"
-      SaturationOutMin	      "[]"
-      SaturationOutMax	      "[]"
-      SaturationOutDataTypeStr "Inherit: Same as input"
-      IntegratorContinuousStateAttributes "''"
-      IntegratorStateMustResolveToSignalObject off
-      IntegratorRTWStateStorageClass "Auto"
-      FilterContinuousStateAttributes "''"
-      FilterStateMustResolveToSignalObject off
-      FilterRTWStateStorageClass "Auto"
-    }
+    SIDHighWatermark	    "10"
     Block {
       BlockType		      Step
       Name		      "Step"
       SID		      "2"
-      Position		      [100, 155, 130, 185]
+      Position		      [120, 70, 150, 100]
       ZOrder		      -22
       Time		      "0"
       SampleTime	      "0"
@@ -958,26 +749,8 @@ Model {
     Block {
       BlockType		      Step
       Name		      "Step1"
-      SID		      "9"
-      Position		      [100, 45, 130, 75]
-      ZOrder		      -22
-      Time		      "0"
-      SampleTime	      "0"
-    }
-    Block {
-      BlockType		      Step
-      Name		      "Step2"
-      SID		      "16"
-      Position		      [100, 325, 130, 355]
-      ZOrder		      -22
-      Time		      "0"
-      SampleTime	      "0"
-    }
-    Block {
-      BlockType		      Step
-      Name		      "Step3"
-      SID		      "23"
-      Position		      [90, 425, 120, 455]
+      SID		      "6"
+      Position		      [140, 255, 170, 285]
       ZOrder		      -22
       Time		      "0"
       SampleTime	      "0"
@@ -985,9 +758,9 @@ Model {
     Block {
       BlockType		      Sum
       Name		      "Sum"
-      SID		      "5"
+      SID		      "3"
       Ports		      [2, 1]
-      Position		      [175, 160, 195, 180]
+      Position		      [220, 75, 240, 95]
       ZOrder		      -18
       ShowName		      off
       IconShape		      "round"
@@ -999,23 +772,9 @@ Model {
     Block {
       BlockType		      Sum
       Name		      "Sum1"
-      SID		      "17"
+      SID		      "7"
       Ports		      [2, 1]
-      Position		      [175, 330, 195, 350]
-      ZOrder		      -18
-      ShowName		      off
-      IconShape		      "round"
-      Inputs		      "|+-"
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      Sum
-      Name		      "Sum2"
-      SID		      "24"
-      Ports		      [2, 1]
-      Position		      [165, 430, 185, 450]
+      Position		      [235, 260, 255, 280]
       ZOrder		      -18
       ShowName		      off
       IconShape		      "round"
@@ -1029,7 +788,7 @@ Model {
       Name		      "To Workspace"
       SID		      "4"
       Ports		      [1]
-      Position		      [520, 155, 580, 185]
+      Position		      [630, 70, 690, 100]
       ZOrder		      -7
       VariableName	      "simout"
       MaxDataPoints	      "inf"
@@ -1038,89 +797,40 @@ Model {
     Block {
       BlockType		      ToWorkspace
       Name		      "To Workspace1"
-      SID		      "18"
+      SID		      "8"
       Ports		      [1]
-      Position		      [520, 325, 580, 355]
+      Position		      [670, 255, 730, 285]
       ZOrder		      -7
       VariableName	      "simout1"
       MaxDataPoints	      "inf"
       SampleTime	      "-1"
     }
     Block {
-      BlockType		      ToWorkspace
-      Name		      "To Workspace2"
-      SID		      "25"
-      Ports		      [1]
-      Position		      [510, 425, 570, 455]
-      ZOrder		      -7
-      VariableName	      "simout2"
-      MaxDataPoints	      "inf"
-      SampleTime	      "-1"
-    }
-    Block {
-      BlockType		      ToWorkspace
-      Name		      "To Workspace3"
-      SID		      "11"
-      Ports		      [1]
-      Position		      [520, 45, 580, 75]
-      ZOrder		      -7
-      VariableName	      "simout3"
-      MaxDataPoints	      "inf"
-      SampleTime	      "-1"
-    }
-    Block {
       BlockType		      TransferFcn
       Name		      "Transfer Fcn"
-      SID		      "3"
-      Position		      [365, 152, 425, 188]
+      SID		      "5"
+      Position		      [370, 63, 460, 107]
       ZOrder		      -9
-      Numerator		      "[2]"
-      Denominator	      "[0.2 1]"
+      Numerator		      "[45.4]"
+      Denominator	      "[1 12 44 48]"
     }
     Block {
       BlockType		      TransferFcn
       Name		      "Transfer Fcn1"
-      SID		      "14"
-      Position		      [365, 42, 425, 78]
+      SID		      "9"
+      Position		      [475, 248, 565, 292]
       ZOrder		      -9
-      Numerator		      "[2]"
-      Denominator	      "[0.2 1]"
+      Denominator	      "[1 13 32 20]"
     }
     Block {
-      BlockType		      TransferFcn
-      Name		      "Transfer Fcn2"
-      SID		      "19"
-      Position		      [365, 322, 430, 358]
-      ZOrder		      -9
-      Denominator	      "[1 6 5 0]"
-    }
-    Block {
-      BlockType		      TransferFcn
-      Name		      "Transfer Fcn3"
-      SID		      "26"
-      Position		      [355, 422, 420, 458]
-      ZOrder		      -9
-      Denominator	      "[1 6 5 0]"
-    }
-    Line {
-      SrcBlock		      "PID Controller"
-      SrcPort		      1
-      DstBlock		      "Transfer Fcn"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Transfer Fcn"
-      SrcPort		      1
-      Points		      [35, 0]
-      Branch {
-	DstBlock		"To Workspace"
-	DstPort			1
-      }
-      Branch {
-	Points			[0, 50; -280, 0]
-	DstBlock		"Sum"
-	DstPort			2
-      }
+      BlockType		      ZeroPole
+      Name		      "Zero-Pole"
+      SID		      "10"
+      Position		      [320, 243, 415, 297]
+      ZOrder		      -13
+      Zeros		      "[-0.0005]"
+      Poles		      "[-0.0001]"
+      Gain		      "[45.5]"
     }
     Line {
       SrcBlock		      "Step"
@@ -1131,78 +841,55 @@ Model {
     Line {
       SrcBlock		      "Sum"
       SrcPort		      1
-      DstBlock		      "PID Controller"
+      DstBlock		      "Transfer Fcn"
       DstPort		      1
     }
     Line {
-      SrcBlock		      "Transfer Fcn1"
+      SrcBlock		      "Transfer Fcn"
       SrcPort		      1
-      DstBlock		      "To Workspace3"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Step1"
-      SrcPort		      1
-      DstBlock		      "Transfer Fcn1"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Transfer Fcn2"
-      SrcPort		      1
-      Points		      [30, 0]
+      Points		      [105, 0]
       Branch {
-	DstBlock		"To Workspace1"
+	DstBlock		"To Workspace"
 	DstPort			1
       }
       Branch {
-	Points			[0, 50; -280, 0]
-	DstBlock		"Sum1"
+	Points			[0, 75; -340, 0]
+	DstBlock		"Sum"
 	DstPort			2
       }
     }
     Line {
-      SrcBlock		      "Step2"
+      SrcBlock		      "Step1"
       SrcPort		      1
       DstBlock		      "Sum1"
       DstPort		      1
     }
     Line {
-      SrcBlock		      "PID Controller1"
-      SrcPort		      1
-      DstBlock		      "Transfer Fcn2"
-      DstPort		      1
-    }
-    Line {
       SrcBlock		      "Sum1"
       SrcPort		      1
-      DstBlock		      "PID Controller1"
+      DstBlock		      "Zero-Pole"
       DstPort		      1
     }
     Line {
-      SrcBlock		      "Transfer Fcn3"
+      SrcBlock		      "Zero-Pole"
       SrcPort		      1
-      Points		      [30, 0]
+      DstBlock		      "Transfer Fcn1"
+      DstPort		      1
+    }
+    Line {
+      Labels		      [1, 0]
+      SrcBlock		      "Transfer Fcn1"
+      SrcPort		      1
+      Points		      [20, 0]
       Branch {
-	DstBlock		"To Workspace2"
+	DstBlock		"To Workspace1"
 	DstPort			1
       }
       Branch {
-	Points			[0, 50; -280, 0]
-	DstBlock		"Sum2"
+	Points			[0, 75; -345, 0]
+	DstBlock		"Sum1"
 	DstPort			2
       }
-    }
-    Line {
-      SrcBlock		      "Step3"
-      SrcPort		      1
-      DstBlock		      "Sum2"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Sum2"
-      SrcPort		      1
-      DstBlock		      "Transfer Fcn3"
-      DstPort		      1
     }
   }
 }
