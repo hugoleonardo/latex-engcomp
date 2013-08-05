@@ -1,0 +1,27 @@
+
+	Experimento 1)
+		G(s) = 2/s(s+1)
+			O sistema é estável para qualquer valor de K > 0, o LGR está todo no SPE.
+		G(s) = 2(s+2)/s(s+1)
+			O sistema continua com a mesma faixa de estabilidade, está mais afastado do eixo jw, tornando o sistema mais estável.
+			introduzir um zero torna o sistema mais estável	
+		G(s) = 2/s(s+1)(s+2)
+			Um pólo torna o sistema menos estável (K <= 3) - em cima do eixo é marginalmente estável
+	
+	Experimento 2)
+		Fazer em casa :D
+		Comparar com o esboço (sem refinamento)
+	
+	Experimento 3)
+		G(s) = 2/(s+0,1)
+		Ts(5%) = 3
+		Ts(5%) = 3/a = 3tau
+		a = -R
+		Ts(5%) = -3/R
+		R = -1
+		Ts(simulado) = 3,024
+	Experimento 4)
+		G(s) = 2/s(s+1)
+		Mp = 0,05 (5%)
+		K = 0,262
+		Mp(simulado) = 0,49 (4,9%)
