@@ -24,7 +24,12 @@
 %lgr = zpk([-2 -4],[0 -1 -3],1)
 
 %LGR 5
-lgr = zpk([-2 -5],[-4 -1 -3],1)
+%lgr = zpk([-0.456],[-1 -2 -3 -6],1)
+
+%####### Experimento 3
+lgr = zpk([],[-0.1],2)
+
+%###### Experimento 4
 
 rlocus(lgr)
 sgrid;
