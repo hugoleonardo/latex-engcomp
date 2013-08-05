@@ -175,4 +175,20 @@
 		\end{figure}	
 	
 \chapter{Questão 4 - Método de Ziegler-Nichols}
+	Para o sistema da Figura \ref{fig:experimento4_sistema} , os valores que mantém uma oscilação constante encontrados foram $K_{c} = 3.6$ e $P_{c} = 9.87$.
+	Calculando os valores de $K_{p}$, $T_{i}$ e $T_{d}$:
+		\[ K_{p} = 0.6*K_{c} = 0.6*3.6 = 2.16\]
+		\[ T_{i} = 0.5*P_{c} = 0.5*9.87 = 4.935\]
+		\[ T_{d} = 0.125*P_{c} = 0.125*9.87 = 1.2337\]
+	A função de transferência para este controlador PID é:
+		\[ G_{c}(s) = K_{p}(1 + \frac{T_{i}}{s} + T_{d}s) = 2.16(1 + \frac{4.935}{s} + 1.2337s)\]	
+	A Figura \ref{fig:experiment4_comparacao} mostra a comparação das respostas dos sistemas sem controlador (azul) e com controlador (verde). O máximo de sobre-sinal do sistema com controlador é $M_{p} = 23\%$ antendo ao requisito do projeto ($M_{p} \leqslant 25\%)$.
+	
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[scale=0.6]{./pictures/experiment4_comparacao.png}
+			\caption{Comparação entre os sistemas sem controlador (azul) e com controlador (verde)}
+			\label{fig:experiment4_comparacao}
+		\end{figure}
+		
 \end{document}

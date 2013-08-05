@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.6"
+    ComputedModelVersion    "1.11"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -27,9 +27,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Danilo"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Jul 25 23:09:18 2013"
-  RTWModifiedTimeStamp	  296693442
-  ModelVersionFormat	  "1.%<AutoIncrement:6>"
+  LastModifiedDate	  "Fri Aug 02 14:58:22 2013"
+  RTWModifiedTimeStamp	  297335858
+  ModelVersionFormat	  "1.%<AutoIncrement:11>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -67,7 +67,6 @@ Model {
     $ObjectID		    1
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "experiencia3"
-    signals_		    []
     overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
@@ -133,7 +132,7 @@ Model {
 	  $ObjectID		  3
 	  Version		  "1.12.0"
 	  StartTime		  "0.0"
-	  StopTime		  "20.0"
+	  StopTime		  "30.0"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -714,7 +713,7 @@ Model {
   }
   System {
     Name		    "experiencia4"
-    Location		    [355, 107, 1248, 619]
+    Location		    [440, 121, 1116, 632]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -728,7 +727,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "19"
+    SIDHighWatermark	    "26"
     Block {
       BlockType		      Reference
       Name		      "PID Controller"
@@ -841,9 +840,9 @@ Model {
     Block {
       BlockType		      Reference
       Name		      "PID Controller1"
-      SID		      "15"
+      SID		      "21"
       Ports		      [1, 1]
-      Position		      [240, 322, 280, 358]
+      Position		      [265, 322, 305, 358]
       ZOrder		      -6
       LibraryVersion	      "1.260"
       SourceBlock	      "simulink/Continuous/PID Controller"
@@ -854,9 +853,9 @@ Model {
       IntegratorMethod	      "Forward Euler"
       FilterMethod	      "Forward Euler"
       Form		      "Parallel"
-      P			      "1.8"
-      I			      "0"
-      D			      "0"
+      P			      "2.16"
+      I			      "2.16/4.935"
+      D			      "2.16*1.2337"
       N			      "100"
       InitialConditionSource  "internal"
       InitialConditionForIntegrator "0"
@@ -975,6 +974,15 @@ Model {
       SampleTime	      "0"
     }
     Block {
+      BlockType		      Step
+      Name		      "Step3"
+      SID		      "23"
+      Position		      [90, 425, 120, 455]
+      ZOrder		      -22
+      Time		      "0"
+      SampleTime	      "0"
+    }
+    Block {
       BlockType		      Sum
       Name		      "Sum"
       SID		      "5"
@@ -1003,6 +1011,20 @@ Model {
       SaturateOnIntegerOverflow	off
     }
     Block {
+      BlockType		      Sum
+      Name		      "Sum2"
+      SID		      "24"
+      Ports		      [2, 1]
+      Position		      [165, 430, 185, 450]
+      ZOrder		      -18
+      ShowName		      off
+      IconShape		      "round"
+      Inputs		      "|+-"
+      InputSameDT	      off
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
       BlockType		      ToWorkspace
       Name		      "To Workspace"
       SID		      "4"
@@ -1021,6 +1043,17 @@ Model {
       Position		      [520, 325, 580, 355]
       ZOrder		      -7
       VariableName	      "simout1"
+      MaxDataPoints	      "inf"
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "To Workspace2"
+      SID		      "25"
+      Ports		      [1]
+      Position		      [510, 425, 570, 455]
+      ZOrder		      -7
+      VariableName	      "simout2"
       MaxDataPoints	      "inf"
       SampleTime	      "-1"
     }
@@ -1059,7 +1092,14 @@ Model {
       SID		      "19"
       Position		      [365, 322, 430, 358]
       ZOrder		      -9
-      Numerator		      "[2]"
+      Denominator	      "[1 6 5 0]"
+    }
+    Block {
+      BlockType		      TransferFcn
+      Name		      "Transfer Fcn3"
+      SID		      "26"
+      Position		      [355, 422, 420, 458]
+      ZOrder		      -9
       Denominator	      "[1 6 5 0]"
     }
     Line {
@@ -1107,12 +1147,6 @@ Model {
       DstPort		      1
     }
     Line {
-      SrcBlock		      "PID Controller1"
-      SrcPort		      1
-      DstBlock		      "Transfer Fcn2"
-      DstPort		      1
-    }
-    Line {
       SrcBlock		      "Transfer Fcn2"
       SrcPort		      1
       Points		      [30, 0]
@@ -1133,9 +1167,41 @@ Model {
       DstPort		      1
     }
     Line {
+      SrcBlock		      "PID Controller1"
+      SrcPort		      1
+      DstBlock		      "Transfer Fcn2"
+      DstPort		      1
+    }
+    Line {
       SrcBlock		      "Sum1"
       SrcPort		      1
       DstBlock		      "PID Controller1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Transfer Fcn3"
+      SrcPort		      1
+      Points		      [30, 0]
+      Branch {
+	DstBlock		"To Workspace2"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 50; -280, 0]
+	DstBlock		"Sum2"
+	DstPort			2
+      }
+    }
+    Line {
+      SrcBlock		      "Step3"
+      SrcPort		      1
+      DstBlock		      "Sum2"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Sum2"
+      SrcPort		      1
+      DstBlock		      "Transfer Fcn3"
       DstPort		      1
     }
   }
