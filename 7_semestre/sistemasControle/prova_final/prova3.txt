@@ -1,0 +1,26 @@
+
+Prova III
+
+	Questão 1)
+		Sistema não compensado:
+			V(regime) = 0,8889
+			e(regime(simulado) = 0,1111
+			e(regime-calculado) = 0,1105
+		Sistema compensado:
+			V(regime) = 0,994
+			e(regime-simulado) = 0,006
+			
+	Questão 2)
+		Sistema não compensado:
+			V(regime) = 0,8889
+			e(regime) = 0,1105
+		Sistema compensado:
+			V(regime-simulado) = 0,9903
+			e(regime-calculado) = 0,011
+			e(regime-simulado) = 0,0097
+			Kpc = 11,1677
+			Pc = 0,05
+			Zc = 0,5584
+			Kpc = Kp(Zc/Pc)
+	
+	
