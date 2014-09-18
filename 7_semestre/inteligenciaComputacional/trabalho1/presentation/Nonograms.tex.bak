@@ -1,0 +1,520 @@
+\documentclass{beamer}
+
+% Setup appearance:
+
+\usetheme{Darmstadt}
+\usefonttheme[onlylarge]{structurebold}
+\setbeamerfont*{frametitle}{size=\normalsize,series=\bfseries}
+\setbeamertemplate{navigation symbols}{}
+
+
+% Standard packages
+
+\usepackage[brazil]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}% http://ctan.org/pkg/amsmath
+%\usepackage[table]{xcolor}
+\usepackage{multicol}
+\usepackage{textcomp} 
+
+% Setup TikZ
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\tikzstyle{block}=[draw opacity=0.7,line width=1.4cm]
+
+%diretÃ³rio das figuras
+\graphicspath{../article}
+
+\title[Extreme Chock]{%
+Nonograms%
+}
+
+\author[Souza,Medeiros,Santos,Araújo]{
+     Danilo~Souza\and
+     Hugo~Santos\and
+     Iago~Medeiros\and
+     Welton~Araújo
+     }
+
+
+\institute[Belém]{
+  \inst{1}%
+  Universidade Federal do Pará
+  }
+\date[Belém 2012]{
+  14 de Maio de 2013
+  }
+
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \tableofcontents
+\end{frame}
+
+\section{Nonograms}
+\begin{frame}{Nonograms (Hanjie ou Griddlers)}
+	\begin{itemize}
+		\item No problema é dada uma matriz com um certo número de linhas e colunas. Deve-se preencher a matriz de acordo com os números sugeridos em cada linha e matriz.
+		\item Os números sugeridos são chamados de pesos. Haverá pesos em cada linha e cada coluna. No nosso exemplo, só há uma solução possível para o nosso problema.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Sobre os Pesos}
+	\begin{itemize}
+	\item Então, se em uma linha está escrito os pesos (2 3), significa que naquela linha, teremos duas e três celulas preenchidas respectivamente com, pelo menos, uma célula em branco (não preenchida) entre elas.
+	\item Dessa forma, cada distribuição de peso informada nas linhas e colunas matriz, renderá uma solução única (uma imagem única).
+	\end{itemize}
+\end{frame}   
+
+\begin{frame}{Nonograms em outras mídias}
+	\begin{itemize}
+	\item Começou a ser publicado em revistas japonesas a partir de 1987. No Brasil, foi publicado pela editora Coquetel na revista chamada Logic Pix.
+	\item Nos videogames, teve mais sucesso. Foram lançados várias versões para o Gameboy e Snes. Entre elas o Mario Picross. Posteriormente, o NDS recebeu os jogos Picross DS e Picross 3D.
+	\end{itemize}
+\end{frame} 
+
+\section{AG}
+\begin{frame}{Modelando AG para o problema}
+	\begin{itemize}
+		\item Indivíduo é a matriz.
+		\item População inicial é gerada randomicamente, com a linha certa e coluna errada
+		\item Taxa de crossover: 75\%
+		\item Pais são escolhidos por torneio
+		\item Nova população é composta pelos pais e por seus filhos. População antiga é descartada
+		\item Solução ideal: quem tiver aptidão média máxima.
+	\end{itemize}
+\end{frame}
+
+\subsection{Princípios básicos}
+\begin{frame}{Definiçoes básicas}
+	\begin{itemize}
+		\item Indivíduo: matriz 9x8
+		\item Codificaçao: binária
+		\item Funçao de aptidão: porcentagem certa
+		\item Reproduçao: troca de linhas
+%		\item Convergência: ?????
+	\end{itemize}
+\end{frame}
+
+\subsection{Populaçao Inicial}
+\begin{frame}{Processo}
+	\begin{itemize}
+		\item Gera-se uma quantidade de indivíduos que se mantém de geração em geração
+		\item As linhas são geradas de forma aleatória, porém os critérios das linhas são sempre respeitados
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Exemplo}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.5] {./pictures/exemploMatriz.png}
+		%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+		\label{fig:exemploMatriz}
+	\end{figure}
+\end{frame}
+
+\subsection{Avaliação}
+\begin{frame}{Processo}
+	\begin{itemize}
+		\item Cada indivíduo é avaliado de acordo com a sua porcentagem de aproximação da resposta
+		\item A nota é é particionada por coluna e também por elemento certo na coluna
+		\item Cada coluna retorna uma avaliaçao, corresponde a 1/8 do valor da avaliaçao do indivíduo
+		\item Uma média ponderada com a avaliação de cada coluna é a avaliação de um indivíduo
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Exemplo 1 - 2 grupos esperados e 2 grupos achados}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.5] {./pictures/avalExemplo1.png}
+		%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+		\label{fig:avalExemplo1}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Exemplo 2 - 2 grupos esperados e 3 grupos achados}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.5] {./pictures/avalExemplo2.png}
+		%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+		\label{fig:avalExemplo2}
+	\end{figure}
+\end{frame}
+
+\subsection{Seleção}
+\begin{frame}{Processo}
+	\begin{itemize}
+		\item Realizada por torneio
+		\item O escolhido é marcado para não poder ser escolhido novamente dentro de um novo torneio
+		\item Caso o vencedor de um torneio seja alguém que já tenha sido escolhido, o segundo colocado é escolhido. Caso o segundo também tenha sido, o terceiro é escolhido.
+		\item Metade da população da próxima geração é selecionada no torneio
+	\end{itemize}
+\end{frame}
+
+\subsection{Reprodução}
+\begin{frame}{Processo}
+	\begin{itemize}
+		\item Cruza-se dois indivíduos aleatórios da população selecionada por torneio
+		\item Podem cruzar ou não, depende da taxa de crossover
+		\item Crossover de ponto único escolhido aleatoriamente
+		\item A parte 1 vem do pai 1 e parte 2 vem do pai 2, ou vice-versa
+		\item Há cruzamentos até que a próxima geração tenha o mesmo número de indivíduos da geração atual
+	\end{itemize}
+\end{frame}
+
+\subsection{Mutação}
+\begin{frame}{Processo}
+	\begin{itemize}
+		\item A mutação é feita em apenas uma linha da matriz, selecionada aleatoriamente
+		\item A mutação altera apenas um grupo de 1\textquotesingle s
+		\item A mudança ocorre movendo o grupo para a direita ou esquerda
+		\item É necessário mapear a matriz para saber se mutação é possível
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Mapeamento}
+	\begin{itemize}
+		\item O mapeamento é realizado colocando-se em um vetor auxiliar todos os 1\textquotesingle s da 				linha em que ocorre a mutação
+		\item Ao lado de cada grupo de 1\textquotesingle s não selecionado, marca-se com o número 2,	 				indicando que não é possível chegar naquele campo 
+			\begin{figure}[h]
+				\centering
+				\includegraphics[scale=0.75]{./pictures/exemplo_mutacao_1.png}
+				%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+				\label{fig:exemplomutacao1}
+			\end{figure}	
+		\item Nesta linha foi selecionado o primeiro grupo de 1\textquotesingle s com 3 casas para a 				direita
+	\end{itemize}	
+\end{frame}
+
+\begin{frame}{Mapeamento}
+	\begin{itemize}
+		\item O mapeamento deste exemplo fica da seguinte forma:
+			\begin{figure}[h]
+				\centering
+				\includegraphics[scale=0.75]{./pictures/exemplo_mutacao_2.png}
+				%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+				\label{fig:exemplomutacao2}
+			\end{figure}		
+		\item O grupo que não foi selecionado tem um 2 no campo logo anterior ao grupo
+		\item É realizada uma tentativa de mutação com 3 casas para a direita, como isto não é possível, então este número é decrescido de 1 e a mutação é realizada
+			\begin{figure}[h]
+				\centering
+				\includegraphics[scale=0.75]{./pictures/exemplo_mutacao_3.png}
+				%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+				\label{fig:exemplomutacao3}
+			\end{figure}	
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Mapeamento}
+	\begin{itemize}
+		\item Por último os números 2 da matriz são zerados
+			\begin{figure}[h]
+				\centering
+				\includegraphics[scale=0.75]{./pictures/exemplo_mutacao_4.png}
+				%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+				\label{fig:exemplomutacao4}
+			\end{figure}
+		\item Se após várias verificações, o número de casa for decrescido até chegar a zero, a mutação não é realizada	
+	\end{itemize}
+\end{frame}
+
+\subsection{Resultados}
+\begin{frame}{Simulações sem solução}
+	\begin{multicols}{2}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.25]{./pictures/semSolucao1.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:semSolucao1}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.25]{./pictures/semSolucao2.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:semSolucao2}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.25]{./pictures/semSolucao3.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:semSolucao3}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.25]{./pictures/semSolucao4.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:semSolucao4}
+		\end{figure}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Simulações com solução}
+	\begin{multicols}{2}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.25]{./pictures/solucao1.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:solucao1}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.25]{./pictures/solucao2.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:solucao2}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.25]{./pictures/solucao3.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:solucao3}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.25]{./pictures/solucao4.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:solucao4}
+		\end{figure}
+	\end{multicols}
+\end{frame}
+
+
+\section{Simulated Annealing}
+
+\subsection{Explicando o SA}
+
+\begin{frame}{Simulated Annealing (SA)}
+	\begin{itemize}
+		\item Também chamado de recozimento simulado.
+		\item Simula o processo físico de recozimento de metais e o problema de otimização
+		\item Está classificado na categoria de algoritmo metaheurístico.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Princípio da Mecânica Estatística}
+	\begin{itemize}
+		\item \textit{SA} se baseia nos princípios da mecânica estatística
+		\item É uma área interessada em estudar o comportamento termodinâmico dos materiais
+		\item O algoritmo foi proposto por Scoot Kirkpatrick (1983), baseado no algoritmo de Metropolis (1953)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Explicando a teoria do recozimento}
+	\begin{itemize}
+		\item Nesse problema, busca-se encontrar uma solução ótima para o processo de fabricação de metais
+		\item O sólido é aquecido além do seu ponto de fusão (temperatura altíssima) e depois é resfriado gradualmente até uma temperatura desejada (ou estável)
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Sobre o resfriamento}
+	\begin{itemize}
+		\item O resfriamento devagar garante uma estrutura cristalina livre de imperfeições (baixa energia interna)
+		\item Se o resfriamento for feito de forma muito rápida (ou descuidada), teremos uma estrutura com cristais defeituosos ou que a estrutura se torne vidro (que é uma solução apenas ótima localmente).
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Sobre a variação de Energia}
+	\begin{itemize}
+		\item Um dos conceitos fundamentais para o recozimento simulado é o cálculo da energia interna no material.
+	\end{itemize}
+	\begin{equation}
+		P(\Delta E) = e^\frac{-\Delta E}{k_bT}
+	\end{equation}
+	\begin{itemize}
+		\item Essa exponencial também é chamada de Critério de Metropolis
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Sobre a variação de Energia e Temperatura}
+	\begin{itemize}
+		\item A cada passo do algoritmo, verifica-se se o novo estado é de energia menor (menos custoso) que o estado atual (mais custoso). 
+	\end{itemize}
+	Se sim, troca.
+	
+	Se não, mantém.
+	\begin{itemize}
+		\item O custo, no nosso exemplo, é simbolizado pelo inverso da aptidão média da matriz.
+	\end{itemize}
+	\begin{itemize}
+		\item Podemos usar várias equações para a taxa de resfriamento 
+			\begin{itemize}
+				\item $T = \alpha T$
+				\item $T = \frac{T}{(1 + \beta T)}$
+				\item $T = \frac{c}{[\log (1+k)]}$
+			\end{itemize}	
+	\end{itemize}
+\end{frame}
+
+\subsection{Modelagem do SA}
+\begin{frame}{Modelando SA para o problema}
+	\begin{itemize}
+		\item Indivíduo é a matriz.
+		\item Variação da temperatura inicial: $ t\_inicial = 2^{n\_temperatura} $
+		\item Taxa de resfriamento adotada: $T = \alpha T$ com $\alpha = 0.8$ e $\alpha = 0.95$.
+		\item Número de iterações com a mesma temperatura (N\_t): 10, 100 e 1000
+		\item Algoritmo trocará o indivíduo atual por um novo, se o novo for menos custoso (maior aptidão 				média).
+		\item Escolha da solução inicial
+		\item Escolha do vizinho
+			\begin{itemize}
+				\item Método 1: Aleatória
+				\item Método 2: Escolhe aleatoriamente uma linha ou coluna da matriz para corrigir
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{O Programa}
+	\begin{itemize}
+		\item Definir uma solução inicial
+		\item Escolher um vizinho
+		\item Comparar os custos
+			\begin{itemize}
+				\item Média das linhas (aptidao\_lin\_avg)
+				\item Média das colunas (aptidao\_col\_avg)
+				\item Média da matriz (aptidao\_avg\_final)
+				\item Custo = 1/Média da matriz
+			\end{itemize}
+		\item Termina um ciclo de resfriamento	
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{A simulação}
+	\begin{itemize}
+		\item Cria um loop que varia a temperatura inicial
+		\item Temperaturas máximas simuladas: 2048 e 131072
+		\item Calcula a aptidão média de cada temperatura (vet\_resultado\_aptidao)
+		\item Armazena a aptidão média de cada temperatura (vet\_resultado\_avg\_aptidao) 	
+	\end{itemize}
+\end{frame}
+
+\subsection{Resultados}
+
+\begin{frame}{Resultados SA - T\_max = 2048 e N\_t = 10}
+	\begin{multicols}{2}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.35]{./pictures/grafico_SA_nt10_alpha08_temp2048.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:alpha08nt10tmax2048}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.35]{./pictures/grafico_SA_nt10_alpha095_temp2048.png}
+			%\caption{$ \alpha = 0.8$, N_t = 10, T_max = 2048}
+			\label{fig:alpha095nt10tmax2048}
+		\end{figure}
+	\end{multicols}	
+\end{frame}
+
+\begin{frame}{Resultados SA - T\_max = 2048 e N\_t = 100}
+	\begin{multicols}{2}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.35]{./pictures/grafico_SA_nt100_alpha08_temp2048.png}
+			%\caption{$ \alpha = 0.8$, N_t = 100, T_max = 2048}
+			\label{fig:alpha08nt100tmax2048}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.35]{./pictures/grafico_SA_nt100_alpha095_temp2048.png}
+			%\caption{$ \alpha = 0.8$, N_t = 100, T_max = 2048}
+			\label{fig:alpha095nt100tmax2048}
+		\end{figure}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Resultados SA - T\_max = 2048 e N\_t = 1000}
+	\begin{multicols}{2}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.35]{./pictures/grafico_SA_nt1000_alpha08_temp2048.png}
+			%\caption{$ \alpha = 0.8$, N_t = 100, T_max = 2048}
+			\label{fig:alpha08nt1000tmax2048}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.35]{./pictures/grafico_SA_nt1000_alpha095_temp2048.png}
+			%\caption{$ \alpha = 0.8$, N_t = 100, T_max = 2048}
+			\label{fig:alpha095nt1000tmax2048}
+		\end{figure}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Resultados SA - N\_t = 10 e $\alpha = 0.8$}
+	\begin{multicols}{2}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.35]{./pictures/grafico_SA_nt10_alpha08_temp2048.png}
+			%\caption{$ \alpha = 0.8$, N_t = 100, T_max = 2048}
+			\label{fig:alpha08nt10tmax2048}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.35]{./pictures/grafico_SA_nt10_alpha08_temp131072.png}
+			%\caption{$ \alpha = 0.8$, N_t = 100, T_max = 2048}
+			\label{fig:alpha08nt10tmax131072}
+		\end{figure}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Resultados SA - N\_t = 100 e $\alpha = 0.8$}
+	\begin{multicols}{2}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.35]{./pictures/grafico_SA_nt100_alpha08_temp2048.png}
+			%\caption{$ \alpha = 0.8$, N_t = 100, T_max = 2048}
+			\label{fig:alpha08nt100tmax2048}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.35]{./pictures/grafico_SA_nt100_alpha08_temp131072.png}
+			%\caption{$ \alpha = 0.8$, N_t = 100, T_max = 2048}
+			\label{fig:alpha08nt100tmax131072}
+		\end{figure}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Resultados SA - N\_t = 1000 e $\alpha = 0.8$}
+	\begin{multicols}{2}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.35]{./pictures/grafico_SA_nt1000_alpha08_temp2048.png}
+			%\caption{$ \alpha = 0.8$, N_t = 100, T_max = 2048}
+			\label{fig:alpha08nt1000tmax2048}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.35]{./pictures/grafico_SA_nt1000_alpha08_temp131072.png}
+			%\caption{$ \alpha = 0.8$, N_t = 100, T_max = 2048}
+			\label{fig:alpha08nt1000tmax131072}
+		\end{figure}
+	\end{multicols}
+\end{frame}
+
+\section{Conclusões}
+	\begin{frame}
+		\begin{itemize}
+			\item Sobre o AG
+				\begin{itemize}
+					\item O AG mostrou-se uma boa forma de se resolver o problema proposto
+					\item Mostrou-se mais rápido que o SA e ainda achou a solução
+					\item Mutação teve um papel de destaque
+					\item Tempo de execução baixo
+				\end{itemize}
+			\item Sobre o SA
+				\begin{itemize}
+					\item Temperaturas muito altas não convergem par uma solução ótima
+					\item Quanto mais lento for o resfriamento melhor
+					\item O número de iterações com a mesma temperatura é um fator importante
+				\end{itemize}
+		\end{itemize}
+	\end{frame}
+\end{document}

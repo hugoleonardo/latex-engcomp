@@ -1,0 +1,287 @@
+\documentclass[article]{IEEEtran}
+\usepackage[latin1]{inputenc}
+\usepackage[pdftex]{graphicx}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{mathtools}
+\usepackage{comment}
+\urlstyle{same} 
+\graphicspath{./}
+\usepackage{listings}
+\lstset{ 
+        language=Matlab,                                % choose the language of the code
+%       basicstyle=10pt,                                % the size of the fonts that are used for the code
+        numbers=left,                                   % where to put the line-numbers
+        numberstyle=\footnotesize,                      % the size of the fonts that are used for the line-numbers
+        stepnumber=1,                                           % the step between two line-numbers. If it's 1 each line will be numbered
+        numbersep=5pt,                                  % how far the line-numbers are from the code
+%       backgroundcolor=\color{white},          % choose the background color. You must add \usepackage{color}
+        showspaces=false,                               % show spaces adding particular underscores
+        showstringspaces=false,                         % underline spaces within strings
+        showtabs=false,                                         % show tabs within strings adding particular underscores
+%       frame=single,                                           % adds a frame around the code
+%       tabsize=2,                                              % sets default tabsize to 2 spaces
+%       captionpos=b,                                           % sets the caption-position to bottom
+        breaklines=true,                                        % sets automatic line breaking
+        breakatwhitespace=false,                        % sets if automatic breaks should only happen at whitespace
+        escapeinside={\%*}{*)}                          % if you want to add a comment within your code
+}
+
+\begin{document}
+
+
+
+
+\title{Medição de Velocidade usando um Sensor de Luminosidade}
+
+\author{Danilo Souza, Hugo Santos, Welton Ara\'ujo
+
+%\thanks{Engenharia da Computa\c{c}\~ao, Universidade Federal do Par\'a, Bel\'em-PA, Brasil}
+Emails: \{dhcsouza, huggosan, weltonmaxx007\}@gmail.com\\
+Matr\'iculas: 10080000801, 10080000701, 10080000501}
+
+\maketitle
+
+\begin{abstract}
+Measuring analogic values from the real world and displaying this measurements in real time is a very common practice nowadays, either for control, safety or just entertainment. Among this context, there is speed measurements that are widelt used in many applications, from toy vehicles to the velocity of an electron in a particle accelerator.
+Each type of application has it's own needs in order to build the sensors that are capable of measure these analogic values, that can be either simple or sophisticated, and this implies on the product's final price.
+This article has the aim to show a simulation and result of system that measures velocity of an object using just a cheap and very simple light sensor and a LED (Light-Emitting Diode).
+\end{abstract}
+
+\begin{IEEEkeywords}
+sensor de luz, sensor de velocidade, LLS05-A
+\end{IEEEkeywords}
+
+\IEEEpeerreviewmaketitle
+
+\section{Introdução}
+ 
+Medir grandezas do mundo real e ter essas medições disponíveis em tempo real é algo bastante comum nos dias atuais, seja para fins de controle, segurança ou simplesmente entretenimento. Neste contexto, temos as medições de velocidade que são largamente utilizada nas mais diversas aplicações, desde velocidade de automóveis de brinquedos até a velocidade de elétrons dentro de um acelerador de partículas.
+ 
+Cada aplicação demanda diferentes requisitos para a construção destes sensores, capazes de medir tais grandezas, que podem ser simples ou sofisticados e isso implica naturalmente no preço final do produto.
+ 
+Este artigo tem por objetivo mostrar como utilizar um sensor de luz para medir a velocidade de um objeto conduzido por uma roda contendo um único furo. Pode possuir inúmeras outras aplicações, principalmente na indústria.
+ 
+\section{Descrição do Projeto}
+
+O projeto consiste em posicionar um led no furo de uma roda, acoplada a um motor, e posicionar um sensor de luz de tal forma que a cada volta completa o led passe exatamente na frente do sensor. Dessa forma, a luminância medida no sensor irá aumentar e consequentemente sua tensão de saída também.
+	
+Este sinal precisa ser amplificado devido à variação de tensão na saida do sensor ser muito baixa. Em seguida, o sinal amplificado passará por um comparador que irá verificar se o nível está alto ou baixo em relação ao valor de referência, que neste caso é de 2.5 volts. O programa criado irá calcular o tempo entre cada vez que uma tensão de nível alto for detectada. A partir disto, conhecendo esse tempo juntamente com o raio da circunferência da roda, será possível determinar a que velocidade a roda está girando.
+	
+Em resumo, o projeto segue os seguintes passos de fucnionamento:
+\begin{itemize}
+	\item Sensor de luz capta a alta luminância do led
+	\item A saída do sensor é amplificada
+	\item A saida do amplificador é comparada
+	\item A saida alta do comparador é usada como referência para calcular o período de revolução
+	\item Usando o período é possivel determinar a velocidade
+\end{itemize}
+		
+\section{Descrição do sensor}
+O sensor utilizado foi LLS05-A fabricado por \textit{Senba Optical Electronics CO., LTD.}, seu \textit{datasheet} se encontra em \cite{datasheet} e custa cerca de \$0,32 segundo \cite{preco}. Este dispositivo tem um comportamento linear em relação à luminância e à corrente que o atinge. O gráfico está na Figura \ref{fig:luxXCorrente}. A tensão de saída do sensor é calculada pela fórmula Vout=Rss*i, onde Rss é o resistor de limitação de corrente máxima pelo sensor. Seu valor mínimo é de 357 \(\Omega\) para uma dissipação máxima de calor definida pelo fabricante de 70 mW. Porém foi usado um resistor de 10 K\(\Omega\) no lugar do Rss por recomendação do fabricante.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=9cm]{figures/luxXCorrente.png}
+	\caption{Gráfico Lux X Corrente retirado de \cite{datasheet}}
+	\label{fig:luxXCorrente}
+\end{figure}
+Analisando a figura \ref{fig:luxXCorrente} verifica-se que a equação de resposta do sensor é $ I_{lux} = \alpha L_{ux} $, onde $ \alpha = 1,125 $. \\
+Outra característica importante é o tempo de resposta do fotosensor. O tempo de subida e descida da tensão é de 8.5 ms. Isto faz com que o crescimento da tensão a partir de uma luminosidade não seja instantãnea. A Figura \ref{fig:tempoRespostaSensor} mostra a resposta ideal e real do sensor.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=9cm]{figures/tempoRespostaSensor.png}
+	\caption{Gráfico do tempo de resposta do sensor. Em cima é a resposta ideal e abaixo é a resposta real, tr e tf valem 8,5 ms,  retirado de \cite{datasheet}}
+	\label{fig:tempoRespostaSensor}
+\end{figure}
+
+Tratando-se de um componente eletrônico, a percepção de luminosidade captada pelo sensor não é exatamente igual ao que o olho humano capta. Além disso, existem faixas de frequência da luz onde existe maior e menor sensibilidade. A Figura \ref{fig:respostaSpectral} mostra a resposta espectral do sensor. É possível perceber que o sensor capta somente 70\% de luminosidade do espectro de luz humano. 
+		
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=9cm]{figures/respostaSpectral.png}
+	\caption{Gráfico da resposta espectral do sensor,  retirado de \cite{datasheet}}
+	\label{fig:respostaSpectral}
+\end{figure}		
+		
+\section{Descrição da Simulação}
+
+
+Seguindo a proposta inicial do projeto, toda a simulação foi realizada no MatLab\textregistered, desde os cálculos dos componentes do circuito, passando pela simulação do disco girando, até o cálculo das velocidades.
+As principais variáveis envolvidas são:
+	\begin{itemize}
+		\item A tensão real de saída do sensor: \textit{v\_sinal}.
+		\item A luminância real capturada pelo sensor: \textit{lux\_sinal}.
+		\item O resistor que limita a potência dissipada no sensor: \textit{rss}.
+		\item O raio da roda \textit{r}
+	\end{itemize}
+
+\subsection{Pontos Críticos do Projeto}
+	Os principais pontos que devem ser levados em consideração são o tempo de resposta do sensor e a resposta relativa da luminância, âmbos mostrados nas figuras \ref{fig:tempoRespostaSensor} e \ref{fig:respostaSpectral} respectivamente. Para contornar esses fatores e simplificar a simulação, porém ser perder a confiabilidade, o tempo de resposta utilizado foi de 9 ms.
+
+Na simulação foram gerados diversos gráficos para descrever o compartamento de cada etapa do projeto. A equação do sensor LSS05-A foi determinada a partir de dados do seu \textit{datasheet}. Os seguintes sinais (vetores) foram criados:
+	\begin{itemize}
+		\item Sinal de tensão (real e ideal) gerado pelo sensor, que simula o giro da roda(tensão X tempo).
+		\item Sinal de luminância (real e ideal) gerado pelo sensor, que simula o giro da roda(lux X tempo).
+		\item Sinal de tensão do sensor (real e ideal) amplificado.
+	\end{itemize}
+	
+	Para os 3 sinais acima, foram gerados versões randômicas que simulam uma variação no período de revolução da roda e a partir desses períodos foram calculadas as velocidades, representadas em um gráfico que indica a curva de variação destas. 
+	
+	O código abaixo, mostra que os 6 vetores, com valores reais e ideias, são preenchidos na mesma iteração.
+	\lstinputlisting[language=Matlab, label=vetores, caption={Iteração de preenchimento dos vetores acima citados}]{../code/preenchimentoVetores.m}
+	
+	O preenchimento desses vetores ocorre em cinco situações diferentes, detalhadas abaixo
+		\begin{itemize}
+			\item 1\textordfeminine Etapa: O sistema está em repouso, com o led à frente do sensor
+			\item 2\textordfeminine Etapa: Determinar os valores para a subida do tempo de resposta do sensor
+			\item 3\textordfeminine Etapa: Determinar os valores para o período em que o led está passando pelo sensor (leitura do sensor está perto do valor máximo)
+			\item 4\textordfeminine Etapa: Determinar os valores para a descida do tempo de resposta do sensor
+			\item 5\textordfeminine Etapa: Preencher os vetores com os valores mínimos de leitura (o led não está mais à frente do sensor)
+		\end{itemize}
+		
+	A diferença entre as etapas está somente na comparação do sinal, que vai determinar nível lógico alto ou baixo, a partir disso calcular o período entre os níveis lógicos altos e determinar a velocidade.
+	
+	As variáveis \textit{v\_sinal\_r\_amp}, \textit{v\_ref\_comp} e \textit{v\_sinal\_r\_comp} indicam a tensão do sinal real amplificado, a tensão de referência do comparador e a tensão do sinal real comparado, respectivamente.
+	
+	
+		\begin{itemize}
+			\item 1\textordfeminine Etapa
+			\lstinputlisting[language=Matlab, label=comp1, caption={Cálculo realizado no comparador na 1\textordfeminine etapa (Sistema em repouso)}]{../code/comparador1Etapa.m}
+			\item 2\textordfeminine Etapa
+			\lstinputlisting[language=Matlab, label=comp2, caption={Cálculo realizado no comparador na 2\textordfeminine etapa (Borda de subida)}]{../code/comparador2Etapa.m}
+			\item 3\textordfeminine Etapa
+			\lstinputlisting[language=Matlab, label=comp3, caption={Cálculo realizado no comparador na 3\textordfeminine etapa (Sinal alto)}]{../code/comparador3Etapa.m}
+			\item 4\textordfeminine Etapa
+			\lstinputlisting[language=Matlab, label=comp4, caption={Cálculo realizado no comparador na 4\textordfeminine etapa (Borda de descida)}]{../code/comparador4Etapa.m}
+			\item 5\textordfeminine Etapa
+			\lstinputlisting[language=Matlab, label=comp5, caption={Cálculo realizado no comparador na 5\textordfeminine etapa (Sinal baixo)}]{../code/comparador5Etapa.m}
+		\end{itemize}
+
+	Para os vetores que guardam os valores finais  de velocidade, são utilizadas duas flags, \textit{flag\_high} e \textit{flag\_low}, utilizadas para checar a subida e a descida do sinal ao longo do período de medição. O fluxograma representado na Figura \ref{fig:fluxograma} mostra a sequência de execução do programa.
+	
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=9cm]{figures/projetoFinalPHI.png}
+	\caption{Fluxograma do código do projeto}
+	\label{fig:fluxograma}
+\end{figure}
+		
+	
+	
+O comportamento representado na simulação tem seu esquemático mostrado na Figura \ref{fig:circuito}. Nela é possível visualizar a forma como o sensor LLS05-A é ligado. A passagem de sua saída pelo amplificador normaliza o sinal entre 4,5 a 0,5 Volts, valores de grandeza os quais o comparador pode atuar com  margens de segurança.
+
+Comparadores geralmente já vêm contidos dentro de microcontroladores, portanto o microcontrolador recebe diretamente o sinal analógico. Utilizando um valor de referência de 2,5V, a saída do comparador subirá o sinal para 5V, caso a entrada seja maior que a referência, e para 0 caso seja menor que 2,5 Volts.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=9cm]{figures/circuito.png}
+	\caption{Esquemático simulado}
+	\label{fig:circuito}
+\end{figure}
+
+
+
+No MatLab\textregistered, foi simulado o sensor captando somente 70\% do valor da luminosidade real, alguns gráficos mostram como seria o funcionamento ideal e o real. A Figura \ref{fig:velCte} mostra o comportamento do sinal considerando uma velocidade de 0,6 m/s, raio da roda igual a 0,05 metros, o ângulo da janela por onde passa a luz de \(\pi\)/16 radianos e duraçao de 0,8 segundos.
+
+ Nela é possivel perceber que a subida e a descida não sobem imediatamente, diferentemente do sinal ideal e, também, a saída do comparador sobe o sinal para 5 Volts a partir de 2,5V. Percebe-se também que a luz só captada em um trecho muito curto da roda, isto é, em 1/32 de toda a circunferência da roda.
+
+No MatLab\textregistered, foi simulado o sensor captando somente 70\% do valor da luminosidade real, alguns gráficos mostram como seria o funcionamento ideal e o real. A Figura \ref{fig:velCte} mostra o comportamento do sinal considerando uma velocidade de 0,6 m/s, raio da roda igual a 0,05 metros, o ângulo da janela por onde passa a luz de \(\pi\)/16 radianos e duraçao de 0,8 segundos. Nela é possivel perceber que a subida e a descida não ocorrem imediatamente, diferentemente do sinal ideal e também da a saída do comparador, que é 5 Volts (sinal lógico alto) a partir de 2,5V. Percebe-se também que a luz só captada em um trecho muito curto da roda, isto é, em 1/32 de toda a circunferência da roda.
+
+Os cálculos da velocidade variam de acordo com o período \textit{T} e o raio \textit{r}. A velocidade \textit{v} é dada por 
+
+	\begin{equation}\label{(1)}
+		\textit{v} = \omega\textit{r}
+	\end{equation}, onde	
+
+	\begin{equation}\label{(2)}
+		\omega = 2\pi/\textit{T}
+	\end{equation}	
+
+O sinal com as velocidades reais é utilizado para gerar o sinal real de leitura do sensor, Figura \ref{fig:velVar} (a). Com a velocidade é possivel determinar o período e por fim encontrar os intervalos entre os picos de medição do sensor (sinal alto). O sensor realiza a leitura deste sinal e utilizando o processo inverso, encontra a velocidade a partir do período, levando em consideração os atrasos e limitações na medição.
+
+A velocidade máxima medida pelo sensor é a velocidade em que o período \textit{T} é igual ao atraso de leitura do sensor (período para velocidade máxima mostrado em (\ref{(3)}), esta velocidade depende tambem do raio, uma vez que a velocidade é determinada substituindo-se (\ref{(2)}) em (\ref{(1)}).
+
+	\begin{equation}\label{(3)}
+		\textit{T}_{vmax} = 8.5 \textit{ms}
+	\end{equation}
+	
+	As Figuras \ref{fig:compVel} e \ref{fig:erro} mostram a comparação entre as velocidades reais e calculadas e o erro decorrente das perdas na medição, respectivamente.
+	
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=9cm]{figures/comparacaoVelocidades.png}
+	\caption{Gráfico de comparação entre as velocidades reais (vermelho) e as calculadas (azul).}
+	\label{fig:compVel}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=9cm]{figures/erroVelocidade.png}
+	\caption{Gráfico que mostra a curva do erro em função do número de amostras.}
+	\label{fig:erro}
+\end{figure}
+
+Percebe-se pela análise dos dois gráficos acima, que quanto maior for a velocidade maior será o erro, por tanto este sistema é indicado para aplicações de baixa velocidade. Esse aspecto é uma das principais desvantagens de um sistema mais barato, a precisão não é muito eficiente quando há um aumento significativo nas grandezas medidas, ou seja, é ncessário refletir bastante sobre a relação \textit{custo X benefício}. Se algum ponto importante não for levado em conta na hora de fazer esse equilíbrio, o sistema pode ficar bem abaixo do esperado em termos de desempenho.
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=9cm]{figures/velCte.png}
+	\caption{Gráfico superior representa a tensão de saída real(em azul) e ideal(em vermelho) do sensor; Gráfico do meio representa a luminosidade real(em azul) e ideal(em vermelho) captada pelo sensor; Gráfico inferior representa a conversão do sinal amplificado(em azul) em outro sinal(em verde) ao passar pelo comparador}
+	\label{fig:velCte}
+\end{figure}
+
+Esses gráficos da Figura \ref{fig:compVel} foram gerados utilizando uma roda com raio $ \textit{r} = 0.05m $, tempo total da simulação $ T_{sim} = 20s $ e com velocidade real crescente inicial $ V_{inicial} = 2.19 m/s $ em uma progressão aritmética (PA) com razão -0.01.
+ 
+%Outra simulação foi feita utilizando as mesmas grandezas da simulaçao com velocidade constante, no entanto a duração passar a ser 3 segundos e a velocidade de pico em pico varia aleatoriamente. A Figura \ref{fig:velVar} mostra o comportamento do sinal.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=9cm]{figures/velVar.png}
+	\caption{Gráfico superior representa a tensão de saída real(em azul) e ideal(em vermelho) do sensor; Gráfico do meio representa a luminosidade real(em azul) e ideal(em vermelho) captada pelo sensor; Gráfico inferior representa a conversão do sinal amplificado(em azul) em outro sinal(em verde) ao passar pelo comparador}
+	\label{fig:velVar}
+\end{figure}
+
+%A partir da Figura \ref{fig:compVel} é possível calcular-se quatro velocidades diferentes, pois só existem 5 picos. A Tabela \ref{tab:simVelVar} mostra os resultados da simulação.
+
+\begin{comment}
+\begin{table}
+  \centering
+  \caption{Velocidade real, calculada e o erro}
+  %\vspace{0.5cm}
+  \label{tab:variaveis}
+  \begin{tabular}{|c|c|c|} \hline
+    Velocidade real 	& Velocidade calculada 	& Erro		\\ \hline
+    2,19				& 2,24	   				& 2,46\%	\\ \hline
+    2,18				& 2,22	   				& 2,20\%	\\ \hline  
+    2,17				& 2,21	  				& 2,67\%	\\ \hline
+    2,16				& 2,19	  				& 2,42\%	\\ \hline
+    1,69				& 1,70	   				& 1,02\%	\\ \hline
+    1,68				& 1,70	   				& 1,08\%	\\ \hline  
+    1,67				& 1,69	  				& 1,13\%	\\ \hline
+    1,66				& 1,68	  				& 1,20\%	\\ \hline
+	1,19				& 1,18	   				& -0,30\%	\\ \hline
+    1,18				& 1,17	   				& -0,66\%	\\ \hline  
+    1,17				& 1,16	  				& -0,55\%	\\ \hline
+    1,16				& 1,15	  				& -0,80\%	\\ \hline
+  \end{tabular}
+  \label{tab:simVelVar}
+\end{table} 
+\end{comment}
+
+\section{Considerações Finais}
+
+	Como apresentado neste artigo, é possível criar soluções simples e de baixo custo, entretanto a simplicidade pode estar somente na operação, no caso apresentado, seria mais fácil simplesmenta usar um sensor de velocidade já pronto, pegar suas saídas e utilizar na aplicação, entretanto, isto poderia significar um alto custo em larga escala. Contudo, o projeto da solução mais barata pode não ser trivial, visto que existem lacunas a serem preenchidas.
+	
+	Essa relação entre \textit{custo do projeto X custo de produção em escala} é fundamental para decidir a abordagem de solução para uma determinada aplicação em qualquer que seja a área de atuação.
+
+\begin{thebibliography}{1}
+ 	\bibitem{datasheet} Datasheet, \url{www.futurlec.com/Light_Sensor.shtml}, acesso em 13/02/2013.
+	\bibitem{preco} Alibaba,com, \url{http://spanish.alibaba.com/product-gs/lls05-a-5mm-photo-sensors-527748246.html}, acesso em 13/02/2013.
+\end{thebibliography}
+
+\bibliographystyle{plain}
+
+\end{document}

@@ -1,0 +1,376 @@
+\documentclass[11pt,a4paper]{report}
+%\usepackage[utf8]{inputenc}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{multicol, blindtext}
+\usepackage[top=0.58in, bottom=0.9in]{geometry}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{lipsum}
+
+\title{	\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.75]{./logoufpa.png}
+			\label{fig:logoufpa}
+		\end{figure}
+		Universidade Federal do Pará \linebreak
+		Instituto de Tecnologia \linebreak
+		Faculdade de Engenharia de Computação e Telecomunicações \linebreak
+		Sistemas de Controle \linebreak
+		$3^{a}$ Avaliação com $MatLab^{\copyright}$ \linebreak
+		Prof$^{a}$ Adriana Castro}
+
+\begin{document}
+
+\author{Danilo Souza 	- 10080000801 \\
+		Hugo Santos 	- 10080000701}
+\maketitle
+
+\tableofcontents
+\listoffigures
+
+\chapter{Questão 1}
+	
+	As Figuras \ref{fig:questao1_LGR_naoCompensado} e \ref{fig:questao1Ganho_nao_compensado} mostram, respectivamente, o LGR e o ganho do sistema não compensado para $\xi=0,174$.
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.75]{./questao1/questao1_LGR_naoCompensado.png}
+		\caption{LGR do sistema não compensado}
+		\label{fig:questao1_LGR_naoCompensado}
+	\end{figure}	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.75]{./questao1/questao1Ganho_nao_compensado.png}
+		\caption{Ganho do sistema não compensado}		
+		\label{fig:questao1Ganho_nao_compensado}
+	\end{figure}
+	Para o ganho de $K = 161$, temos que:
+		\[ G(s) = \frac{161}{(s+1)(s+2)(s+10)}\]
+	
+	Calculando $K_{p}$, utilizando a Equação \ref{eq:calculokp}:
+	\begin{equation}
+		K_{p} = \lim_{s \rightarrow 0} G(S)
+		\label{eq:calculokp}
+	\end{equation}		
+	Temos:
+		\[ K_{p} = \frac{161}{(1)(2)(10)} = 8,05\]
+	Para o calcular o erro de regime utilizamos a Equação :
+	\begin{equation}
+		e(\infty) = \frac{1}{1+K_{p}}
+		\label{eq:calculoerro}
+	\end{equation}		
+	Temos:
+		\[ e(\infty) = \frac{1}{1+8,05} = 0,1105\]
+		
+	A Figura \ref{fig:questao1_sistema_nao_compensado} mostra o sistema não compensado.
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=1]{./questao1/questao1_sistema_nao_compensado.png}
+		\caption{Sistema não compensado}		
+		\label{fig:questao1_sistema_nao_compensado}
+	\end{figure}
+	
+	O valor do zero escolhido arbitrariamente para o compensador PI (ideal) foi $Z_{c} = -0,2$, resultando na seguinte função de transferência para o compensador:
+	\[ G_{c}(s) = \frac{K_{c}(s+0,2)}{s}\]
+	Onde $K_{c}$ é o ganho do sistema compensado. As Figuras \ref{fig:questao1_LGR_Compensado} e \ref{fig:questao1Ganho_compensado} mostram respectivamente o novo LGR e o novo ganho ($K_{c} = 149$) do sistema.
+
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.75]{./questao1/questao1_LGR_Compensado.png}
+		\caption{LGR do sistema compensado}		
+		\label{fig:questao1_LGR_Compensado}
+	\end{figure}	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.75]{./questao1/questao1Ganho_compensado.png}
+		\caption{Ganho do sistema compensado}		
+		\label{fig:questao1Ganho_compensado}
+	\end{figure}
+	
+	As Figuras \ref{fig:questao1_sistema_compensado} e  mostram, respectivamente, o sistema compensado e o gráfico comparando âmbas as respostas, compensada (verde) e não compensada(azul). Note que $149*0,2 = 29,8$.
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=1]{./questao1/questao1_sistema_compensado.png}
+		\caption{Sistema compensado}		
+		\label{fig:questao1_sistema_compensado}
+	\end{figure}		
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.75]{./questao1/questao1_comparacao.png}
+		\caption{Comparação entre os sistemas compensado e não compensado}		
+		\label{fig:questao1_comparacao}
+	\end{figure}	
+
+\chapter{Questão 2}
+
+	O sistema não compensado é o mesmo para a questão anterior, mostrado na Figura \ref{fig:questao1_sistema_nao_compensado} assim como o valor de $K_{p} = 8,05$ e o valor do erro $e(\infty) = 0,1105$. O erro de regime do sistema compensado é:
+		\[ e_{c}(\infty) = \frac{e(\infty)}{10} = 0,011\]
+	
+	 Calculando o valor de $K_{pc}$:
+		\[ K_{pc} = \frac{1 - e_{c}(\infty)}{e_{c}(\infty)} = 89,9\]
+	Temos que:
+		\[ \frac{Z_{c}}{P_{c}} = \frac{K_{pc}}{K_{p}} = \frac{89,9}{8,05} = 11,1677\]
+	Escolhendo arbitrariamente $P_{c} = 0,05$, obtém-se $P_{c} = 11,1677*0,05 = 0,5584$. Com esses valores é possível montar a Função de transferência do compensador por atraso de fase, mostrada na Equação \ref{eq:questao2funcaocompensador}:
+		\begin{equation}
+			G_{c}(s) = \frac{K_{c}(s+0,5584)}{s+0,05}
+			\label{eq:questao2funcaocompensador}
+		\end{equation}
+	As Figuras \ref{fig:questao2_sistemaCompensado}, \ref{fig:questao2_LGR_Compensado} e \ref{fig:questao2Ganho_compensado} mostram, respectivamente, o sistema compensado, o LGR e o ganho ($K_{c} = 192$) do sistema compensado.	
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=1]{./questao2/questao2_sistemaCompensado.png}
+		\caption{Sistema compensado}		
+		\label{fig:questao2_sistemaCompensado}
+	\end{figure}		
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.75]{./questao2/questao2_LGR_Compensado.png}
+		\caption{LGR do sistema Compensado}		
+		\label{fig:questao2_LGR_Compensado}
+	\end{figure}	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.75]{./questao2/questao2Ganho_compensado.png}
+		\caption{Ganho do sistema compensado}		
+		\label{fig:questao2Ganho_compensado}
+	\end{figure}
+	A Figura  mostra a comparação entre os sistemas não compensado (azul) e compensado (verde). O valor de erro de regime simulado foi $e_{simulado}(\infty) = 0,0097$, menor do que o valor calculado $e_{c}(\infty) = 0,0011$.
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.75]{./questao2/questao2_comparacao.png}
+		\caption{Comparação entre os sistemas compensado e não compensado}		
+		\label{fig:questao2_comparacao}
+	\end{figure}
+	
+
+\chapter{Questão 3}
+		Utilizando o valor de $M_{p} = 0,1$ podemos encontrar o valor de $\xi$ e descobrir através do LGR quais são os pólos dominantes para esse sistema, além do ganho $K$ do sistema.
+		
+			\[ M_{p} = e^{\frac{-\xi \pi}{\sqrt{1-\xi ^{2}}}} \rightarrow ln(0,1) = \frac{-\xi \pi}{\sqrt{1-\xi ^{2}}} \rightarrow \]
+			\[ \rightarrow 2,3026 = \frac{-\xi \pi}{\sqrt{1-\xi ^{2}}} \rightarrow (\sqrt{1-\xi ^{2}})^{2} = (\frac{\xi \pi}{2,3026})^{2}\]
+			\[ \rightarrow 1-\xi ^{2} = 1,8615\xi ^{2} \rightarrow 2,8615\xi ^{2} = 1 \rightarrow \]
+			\[ \rightarrow \xi = \sqrt{\frac{1}{2,8615}} \rightarrow \xi = 0,5912 \]
+		As Figuras \ref{fig:questao3LGR_nao_compensado} e \ref{fig:questao3Ganho_nao_compensado} mostram, respectivamente, o LGR e o ganho do sistema não compensado. O sistema não compensado é mostrado na Figura \ref{fig:questao3_sistema_nao_Compensado}, com $K = 45,4$. O pólo dominantes deste sistema é $-2,02 + 2,76j$
+		
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.75]{./questao3/questao3LGR_nao_compensado.png}
+		\caption{LGR do sistema não compensado}		
+		\label{fig:questao3LGR_nao_compensado}
+	\end{figure}		
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.75]{./questao3/questao3Ganho_nao_compensado.png}
+		\caption{Ganho do sistema não compensado}		
+		\label{fig:questao3Ganho_nao_compensado}
+	\end{figure}	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=1]{./questao3/questao3_sistema_nao_Compensado.png}
+		\caption{Sistema não compensado}		
+		\label{fig:questao3_sistema_nao_Compensado}
+	\end{figure}	
+	
+	Escolhendo arbitrariamente $K_{pc} = 100$ e $P_{c} = 0,0001$, obtemos:
+		\[ \frac{Z_{c}}{P_{c}} = \frac{K_{pc}}{K_{p}} = \frac{100}{20} = 5 \rightarrow Z_{c} = 5*0,0001 = 0,0005 \]
+		O LGR, o ganho e o diagrama de blocos do sistema compensado são mostrados, respectivamente, nas Figura  \ref{fig:questao3LGR_compensado}, \ref{fig:questao3Ganho_compensado} e \ref{fig:questao3_sistema_Compensado}. A Figura \ref{fig:questao3_comparacao} mostra o gráfico com a comparação das saídas dos sistemas não compensado (azul) e compensado (verde). Analisando a figura \ref{fig:questao3Ganho_compensado}, percebe-se que o pólo dominante do sistema compensado permanece inalterado em $-2,02 + 2,76j$. A função do compensador por atraso de fase é:
+		\[ G_{c}(s) = \frac{45,5(s+0,0005)}{(s+0,0001)}\]
+
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.75]{./questao3/questao3LGR_compensado.png}
+		\caption{LGR do sistema compensado}		
+		\label{fig:questao3LGR_compensado}
+	\end{figure}		
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.75]{./questao3/questao3Ganho_compensado.png}
+		\caption{Ganho do sistema compensado}		
+		\label{fig:questao3Ganho_compensado}
+	\end{figure}	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=1]{./questao3/questao3_sistema_nao_Compensado.png}
+		\caption{Sistema compensado}		
+		\label{fig:questao3_sistema_Compensado}
+	\end{figure}	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.6]{./questao3/questao3_comparacao.png}
+		\caption{Comparação entre os sitemas não compensado (azul) e compensado (verde)}		
+		\label{fig:questao3_comparacao}
+	\end{figure}		
+	
+\chapter{Questão 4}
+	A Figura \ref{fig:questao5_LGR&Ganho_sistema_nao_compensado}  mostra o LGR e o ganho para o sistema não compensado. A partir do Gráfico, foi obtido os valores que seguem na tabela \ref{tab:valoresq4}. O sistema não compensado está na Figura \ref{fig:funcaotransferencianaocompensado}.
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.6]{./questao4/lgrq4naocompensado.png}
+		\caption{LGR do sistema não compensado}		
+		\label{fig:lgrq4naocompensado}
+	\end{figure}
+
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.6]{./questao4/funcaotransferencianaocompensado.png}
+		\caption{Sistema não compensado}		
+		\label{fig:funcaotransferencianaocompensado}
+	\end{figure}
+	
+	Usando o valor original do $T_{s}$ encontrado na simulação, encontra-se um novo $T_{s_{2\%}}$ por:
+	
+	\[ T_{s} = \frac{4,454}{2} = 2,227 \rightarrow T_{s} = \frac{4}{\sigma} \rightarrow \sigma = \frac{4}{2,227} = 1,7961 \]
+	
+	A partir do $\sigma$, tem-se a parte real do novo polo dominante e deve-se calcular a parte imaginária por:
+	
+	\[ \sigma = \xi W_{n} \rightarrow W_{n} = \frac{\sigma}{\xi} = \frac{1,7961}{0,707} = 2,5404 \]
+	
+	Obtido o valor de $W_{n}$, a parte imaginária é calculada por:
+	
+	\[ W_{d} = W_{n} \sqrt{1 - \xi} = 2,5404 \sqrt{1 -0,707} = 1,7961  \] 
+	
+	Dado o novo polo dominante em $-1,7961 + 1,7961i$, deve ser achar o ângulo que o novo zero a ser inserido fará com o eixo real. Para isto, o cálculo deste ângulo é feito por:
+	
+	\[ \theta_{1} - \theta_{2} - \theta_{3} - \theta_{4} - \theta_{5} = (2k+1)180 \]
+	
+	Onde: 
+	
+	\[ \theta_{2} = tg^{-1} \frac{1,7961}{-1,7961 + 1} = 113,9 \]
+	
+	\[ \theta_{3} = tg^{-1} \frac{1,7961}{-1,7961 + 2} = 83,52 \]
+	
+	\[ \theta_{4} = tg^{-1} \frac{1,7961}{-1,7961 + 3} = 56,16 \]
+	
+	\[ \theta_{5} = tg^{-1} \frac{1,7961}{-1,7961 + 6} = 23,13 \]
+	
+	\[ \theta_{1} = 96,71 \]
+	
+	Para achar o ponto onde o zero deve ser inserido, deve-se achar a sua distância em relação ao eixo imaginário com a equação:
+	
+	\[ \frac{1,7961}{1,7961 - \sigma_{c}} = tg(180 - 96,71) \rightarrow 8,4997\sigma_{c} - 15,2663 = 1,7961 \rightarrow \sigma_{c} = 2,007 \]
+	
+	O zero deve ser colocado no ponto 2,007. O novo LGR formado se encontra na \ref{fig:lgrq4compensado}. Mantendo-se o mesmo $\xi$, os valores da variáveis encontradas no LGR estão na tabela \ref{tab:valoresq4}. O sistema compensado ficou como na Figura \ref{fig:funcaotransferencianaocompensado}. A resposta do sistema está na Figura \ref{fig:comparacaocompensadoenaocompensado} com o sistema não compensado em azul e o compensado em verde.
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.6]{./questao4/lgrq4compensado.png}
+		\caption{LGR do sistema compensado}		
+		\label{fig:lgrq4compensado}
+	\end{figure}
+
+	\begin{table}
+		\centering
+		\begin{tabular}{|c|c|c|}
+		\hline
+		Variável & Não compensado & Compensado \\
+		\hline
+		$\xi$ & 0,707 & 0,707 \\
+		\hline
+		Ganho & 16,6 & 19,2 \\
+		\hline
+		Polo Dominante & -1,04 + 1,04i & -2,12 + 2,12i \\
+		\hline
+		$W_{n}$ & 1,47 & 3 \\
+		\hline
+		$V_{r}$ & 0,3156 & 0,517 \\
+		\hline
+		$T_{p}$ & 0,3531 & 0,5437 \\
+		\hline
+		$T_{s}$ & 2,737 & 4,454 \\
+		\hline
+		\end{tabular}
+		\caption{Valores extraídos dos LGRs e das respostas do sistemas compensados e não compensados na simulação}
+		\label{tab:valoresq4}
+	\end{table}
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.6]{./questao4/funcaotransferencianaocompensado.png}
+		\caption{Sistema não compensado}		
+		\label{fig:funcaotransferencianaocompensado}
+	\end{figure}
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.6]{./questao4/comparacaocompensadoenaocompensado.png}
+		\caption{Comparação da resposta do sistema não compensado em azul e do sistema compensado em verde}		
+		\label{fig:comparacaocompensadoenaocompensado}
+	\end{figure}
+
+\chapter{Questão 5}
+	
+	A Figura   mostra o LGR e o ganho para o sistema não compensado.
+
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.6]{./questao5/questao5_LGR&Ganho_sistema_nao_compensado.png}
+		\caption{LGR e ganho do sistema não compensado}		
+		\label{fig:questao5_LGR&Ganho_sistema_nao_compensado}
+	\end{figure}	
+	
+	
+	Usando o valor de $T_{p}$ para calcular $\omega _{d}$ (parte imaginária do pólo):
+		\[ T_{p} = \frac{\pi}{\omega _{d}} \rightarrow \omega _{d} = \frac{\pi}{1,047} = 3,0006 \cong 3\]
+	A partir de $\omega _{d}$ encontra-se o valor de $\omega _{n}$:
+		\[ \omega _{d} = \omega _{n}\sqrt{1-\xi ^{2}} \rightarrow \omega _{n} = \frac{3}{\sqrt{1-0,8^{2}}} \rightarrow \omega _{n} = 5\]
+	Encontrando a parte real do pólo:
+		\[ \sigma = \omega _{n}\xi = 5*0,8 = 4\]
+	Usando a Equação \ref{eq:formulados} para encontrar o pólo dominante desejado:
+
+		\begin{equation}
+			s = -\omega _{n}\xi \pm \omega _{d}j
+			\label{eq:formulados}
+		\end{equation}			
+		\[ s = -4 \pm 3j \]
+	Os ângulos dos pólos do sistema estão representados no Apeêndice B. Abaixo será mostrado o cálculo do ângulo $\theta _{1}$ e do zero do controlador, $Z_{c}$.
+		\[ \theta _{1} -\theta _{2} -\theta _{3} -\theta _{4} = 180 \]
+		\[ \theta _{2} = tan^{-1}(\frac{3}{3}) = tan^{-1}(1) = 45^{o} \]
+		\[ \theta _{3} = \theta _{4} = 90^{o} \]
+		\[ \theta _{1} -45 -90 -90 = 180 \rightarrow \theta _{1} = 405^{o} = 45^{o} \]
+	Calculando o valor de $Z_{c}$:
+		\[ tan(45^{o}) = \frac{3}{Z_{c} - 4} \rightarrow Z_{c} = 7 \]
+	A função de transferência do controlador PD é:
+		\[ G_{PD}(s) = (s+7)\]				
+	A função de transferência parcial do sitema com controlador PD é:
+		\[ G(s) = \frac{2.99(s+7)}{(s+1)(s+4)}	\]
+	As Figuras  mostras, respectivamente, o LGR e o ganho do sistema com o controlador PD, e a comparação das saídas do do sistema sem controlador (azul) e com controlador PD (verde). O tempo de pico do sistema com controlador PD foi $T_{p} = 0,8785$, bem próximo do valor desejado ($T_{p} = 1,047$).
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.6]{./questao5/questao5_Ganho_sistema_compensado_PD.png}
+		\caption{LGR e ganho do sistema com controlador PD}		
+		\label{fig:questao5_Ganho_sistema_compensado_PD}
+	\end{figure}	
+		\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.6]{./questao5/questao5_comparacao_sistema_PD.png}
+		\caption{Comparação das saídas dos sistemas sem controlador (azul) e com controlador PD (verde)}		
+		\label{fig:questao5_comparacao_sistema_PD}
+	\end{figure}
+	
+	Para o controlador PI foi escolhido um zero em $-0,1$, a função de transferência do controlador PI é:
+	 \[ G_{PI}(s) = \frac{(s+0,1)}{s}\]	
+	O tempo de pico permacene o mesmo ($T_{p} = 0,8785$), uma vez que a instrodução do controlador PI não altera a resposta transitória e o erro de regime foi a zero. As Figuras \ref{fig:questao5_Ganho_sistema_compensado_PI} e \ref{fig:questao5_comparacao_sistema_PI} mostram, respectivamente, o LGR/ganho do sistema com o controlador PID e a comparação entre as respostas do sistema sem controlador (azul) e com contrlador PID (verde). A função de transferência para o sistema com os controladores PD e PI fica da seguinte forma:
+		\[ G(s) = \frac{3(s+7)(s+0,1)}{s(s+1)(s+4)} \]
+		
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.6]{./questao5/questao5_Ganho_sistema_compensado_PI.png}
+		\caption{LGR e ganho do sistema com controlador PID}		
+		\label{fig:questao5_Ganho_sistema_compensado_PI}
+	\end{figure}	
+		\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.6]{./questao5/questao5_comparacao_sistema_PI.png}
+		\caption{Comparação das saídas dos sistemas sem controlador (azul) e com controlador PID (verde)}		
+		\label{fig:questao5_comparacao_sistema_PI}
+	\end{figure}	
+				 
+\end{document}
