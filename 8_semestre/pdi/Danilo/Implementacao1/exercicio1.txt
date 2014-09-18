@@ -1,0 +1,23 @@
+ Aluno: Danilo H. C. Souza
+ Matrícula: 201006840008
+ Data: 09/09/2014
+ Processamento Digital de Imagens
+ Exercício 1
+ 
+ Questão 1)
+	a) 14 Mega Pixels = 14,680,064 Pixels
+	b) 600 ppi (Pixels por polegada)
+	c) 1600x900 = 1,440,000 Pixels
+	d) 
+		720p = 1280x720 = 921,600 Pixels
+		1080i/p = 1920x1080 = 2,073,600
+	e) HDR é um conjunto de técnicas utilizadas em processamento de imagem para reproduzir um espectro maior d eluminosidade
+
+Questão 2)
+	Resolução HD = 1280x720
+	2h = 7200 segundos
+	7200 x 30 fps = 216,000 quadros (imagens) no total do filme
+	Cada quadro tem 921,600 Pixels
+	Cada quadro ocupa 22,118,400 bits
+	O filme todo possui 216,000 x 22,118,400 = 4,777,574,400,000 bits = aprox. 	4,345 TBytes
+	
