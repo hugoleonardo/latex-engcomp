@@ -1,0 +1,1059 @@
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.3.29)  3 OCT 2014 08:54
+entering extended mode
+**implem03.tex
+
+(C:\Users\Danilo\EngComp\latex-engcomp\8_semestre\pdi\Danilo\Implementacao3\Rel
+atorio\implem03.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2012-05-30, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
+ lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
+german-x-2012-05-30, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
+ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
+an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
+ishmax, welsh, loaded.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\size11.clo"
+File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+Package: inputenc 2008/03/30 v1.1d Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\latin1.def"
+File: latin1.def 2008/03/30 v1.1d Input encoding file
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+Package: amstext 2000/06/29 v2.01
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks16
+\ex@=\dimen103
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen104
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count87
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count88
+\leftroot@=\count89
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count90
+\DOTSCASE@=\count91
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count92
+\c@MaxMatrixCols=\count93
+\dotsspace@=\muskip10
+\c@parentequation=\count94
+\dspbrk@lvl=\count95
+\tag@help=\toks17
+\row@=\count96
+\column@=\count97
+\maxfields@=\count98
+\andhelp@=\toks18
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks19
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks20
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\multicol.sty"
+Package: multicol 2011/06/27 v1.7a multicolumn formatting (FMi)
+\c@tracingmulticols=\count99
+\mult@box=\box28
+\multicol@leftmargin=\dimen112
+\c@unbalance=\count100
+\c@collectmore=\count101
+\doublecol@number=\count102
+\multicoltolerance=\count103
+\multicolpretolerance=\count104
+\full@width=\dimen113
+\page@free=\dimen114
+\premulticols=\dimen115
+\postmulticols=\dimen116
+\multicolsep=\skip46
+\multicolbaselineskip=\skip47
+\partial@page=\box29
+\last@line=\box30
+\mult@rightbox=\box31
+\mult@grightbox=\box32
+\mult@gfirstbox=\box33
+\mult@firstbox=\box34
+\@tempa=\box35
+\@tempa=\box36
+\@tempa=\box37
+\@tempa=\box38
+\@tempa=\box39
+\@tempa=\box40
+\@tempa=\box41
+\@tempa=\box42
+\@tempa=\box43
+\@tempa=\box44
+\@tempa=\box45
+\@tempa=\box46
+\@tempa=\box47
+\@tempa=\box48
+\@tempa=\box49
+\@tempa=\box50
+\@tempa=\box51
+\c@columnbadness=\count105
+\c@finalcolumnbadness=\count106
+\last@try=\dimen117
+\multicolovershoot=\dimen118
+\multicolundershoot=\dimen119
+\mult@nat@firstbox=\box52
+\colbreak@box=\box53
+\multicol@sort@counter=\count107
+)
+(C:\Users\Danilo\AppData\Roaming\MiKTeX\2.9\tex\latex\blindtext\blindtext.sty
+Package: blindtext 2012/01/06 V2.0 blindtext-Package
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\xspace.sty"
+Package: xspace 2009/10/20 v1.13 Space after command names (DPC,MH)
+)
+\c@blindtext=\count108
+\c@Blindtext=\count109
+\c@blind@countparstart=\count110
+\blind@countxx=\count111
+\blindtext@numBlindtext=\count112
+\blind@countyy=\count113
+\c@blindlist=\count114
+\c@blindlistlevel=\count115
+\c@blindlist@level=\count116
+\blind@listitem=\count117
+\c@blind@listcount=\count118
+\c@blind@levelcount=\count119
+\blind@mathformula=\count120
+\blind@Mathformula=\count121
+\c@blind@randomcount=\count122
+\c@blind@randommax=\count123
+\c@blind@pangramcount=\count124
+\c@blind@pangrammax=\count125
+)
+(C:\Users\Danilo\AppData\Roaming\MiKTeX\2.9\tex\latex\appendix\appendix.sty
+Package: appendix 2009/09/02 v1.2b extra appendix facilities
+\c@@pps=\count126
+\c@@ppsavesec=\count127
+\c@@ppsaveapp=\count128
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks21
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count129
+\Gm@cntv=\count130
+\c@Gm@tempcnt=\count131
+\Gm@bindingoffset=\dimen120
+\Gm@wd@mp=\dimen121
+\Gm@odd@mp=\dimen122
+\Gm@even@mp=\dimen123
+\Gm@layoutwidth=\dimen124
+\Gm@layoutheight=\dimen125
+\Gm@layouthoffset=\dimen126
+\Gm@layoutvoffset=\dimen127
+\Gm@dimlist=\toks22
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\textcomp.sty"
+Package: textcomp 2005/09/27 v1.99g Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 71.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1enc.def"
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+)
+LaTeX Info: Redefining \oldstylenums on input line 266.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 281.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 282.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 283.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 284.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 285.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 286.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 287.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 288.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 289.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 290.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 291.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 292.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 293.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 294.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 295.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 296.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 297.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 298.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 299.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 300.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 301.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 302.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 303.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 304.
+
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 305.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 306.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 307.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 308.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 309.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 310.
+Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 311.
+Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 312.
+Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 313.
+Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 314.
+Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 315.
+Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 316.
+Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 317.
+Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 318.
+Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 319.
+Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 320.
+Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 321.
+Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 322.
+Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 323.
+Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 324.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 325.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 326.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 327.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 328.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 329.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 330.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 331.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 332.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 333.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 334.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 335.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 336.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 337.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 338.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 339.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 340.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count132
+))
+\Gin@req@height=\dimen128
+\Gin@req@width=\dimen129
+)
+(C:\Users\Danilo\AppData\Roaming\MiKTeX\2.9\tex\latex\lipsum\lipsum.sty
+Package: lipsum 2011/04/14 v1.2 150 paragraphs of Lorem Ipsum dummy text
+\c@lips@count=\count133
+)
+(C:\Users\Danilo\AppData\Roaming\MiKTeX\2.9\tex\latex\natbib\natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip48
+\bibsep=\skip49
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count134
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
+\Urlmuskip=\muskip11
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+(C:\Users\Danilo\AppData\Roaming\MiKTeX\2.9\tex\latex\cite\cite.sty
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 373.
+Package: cite 2010/09/10  v 5.3
+)
+(C:\Users\Danilo\EngComp\latex-engcomp\8_semestre\pdi\Danilo\Implementacao3\Rel
+atorio\implem03.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 29.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 29.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
+File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 29.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(41.91672pt, 465.96407pt, 89.62709pt)
+* v-part:(T,H,B)=(41.91672pt, 738.08757pt, 65.04256pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=465.96407pt
+* \textheight=738.08757pt
+* \oddsidemargin=-30.35327pt
+* \evensidemargin=-30.35327pt
+* \topmargin=-67.35327pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=11.0pt
+* \footskip=30.0pt
+* \marginparwidth=50.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(C:\Users\Danilo\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count135
+\scratchdimen=\dimen130
+\scratchbox=\box54
+\nofMPsegments=\count136
+\nofMParguments=\count137
+\everyMPshowfont=\toks23
+\MPscratchCnt=\count138
+\MPscratchDim=\dimen131
+\MPnumerator=\count139
+\makeMPintoPDFobject=\count140
+\everyMPtoPDFconversion=\toks24
+) <./pictures/logoufpa.png, id=1, 238.64156pt x 301.125pt>
+File: ./pictures/logoufpa.png Graphic file (type png)
+
+<use ./pictures/logoufpa.png>
+Package pdftex.def Info: ./pictures/logoufpa.png used on input line 32.
+(pdftex.def)             Requested size: 178.98071pt x 225.84319pt.
+LaTeX Font Info:    Try loading font information for U+msa on input line 32.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 32.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+(C:\Users\Danilo\EngComp\latex-engcomp\8_semestre\pdi\Danilo\Implementacao3\Rel
+atorio\implem03.toc)
+\tf@toc=\write3
+
+(C:\Users\Danilo\EngComp\latex-engcomp\8_semestre\pdi\Danilo\Implementacao3\Rel
+atorio\implem03.lof [1
+
+{C:/Users/Danilo/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/D
+anilo/EngComp/latex-engcomp/8_semestre/pdi/Danilo/Implementacao3/Relatorio/pict
+ures/logoufpa.png>])
+\tf@lof=\write4
+
+<./pictures/imagem1_tomcinza.png, id=16, 421.575pt x 316.18124pt>
+File: ./pictures/imagem1_tomcinza.png Graphic file (type png)
+
+<use ./pictures/imagem1_tomcinza.png>
+Package pdftex.def Info: ./pictures/imagem1_tomcinza.png used on input line 47.
+
+(pdftex.def)             Requested size: 252.94695pt x 189.7102pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<./pictures/questao1L_3.png, id=17, 421.575pt x 316.18124pt>
+File: ./pictures/questao1L_3.png Graphic file (type png)
+
+<use ./pictures/questao1L_3.png>
+Package pdftex.def Info: ./pictures/questao1L_3.png used on input line 54.
+(pdftex.def)             Requested size: 252.94695pt x 189.7102pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<./pictures/questao1L_15.png, id=18, 421.575pt x 316.18124pt>
+File: ./pictures/questao1L_15.png Graphic file (type png)
+
+<use ./pictures/questao1L_15.png>
+Package pdftex.def Info: ./pictures/questao1L_15.png used on input line 61.
+(pdftex.def)             Requested size: 252.94695pt x 189.7102pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<./pictures/questao1_resp_imp_L3.png, id=19, 421.575pt x 316.18124pt>
+File: ./pictures/questao1_resp_imp_L3.png Graphic file (type png)
+
+<use ./pictures/questao1_resp_imp_L3.png>
+Package pdftex.def Info: ./pictures/questao1_resp_imp_L3.png used on input line
+ 68.
+(pdftex.def)             Requested size: 252.94695pt x 189.7102pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<./pictures/questao1_resp_imp_L15.png, id=20, 422.32782pt x 316.18124pt>
+File: ./pictures/questao1_resp_imp_L15.png Graphic file (type png)
+
+<use ./pictures/questao1_resp_imp_L15.png>
+Package pdftex.def Info: ./pictures/questao1_resp_imp_L15.png used on input lin
+e 75.
+(pdftex.def)             Requested size: 253.39864pt x 189.7102pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<./pictures/questao1_mod_resp_freq_L3.png, id=21, 421.575pt x 316.18124pt>
+File: ./pictures/questao1_mod_resp_freq_L3.png Graphic file (type png)
+
+<use ./pictures/questao1_mod_resp_freq_L3.png>
+Package pdftex.def Info: ./pictures/questao1_mod_resp_freq_L3.png used on input
+ line 82.
+(pdftex.def)             Requested size: 252.94695pt x 189.7102pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<./pictures/questao1_mod_resp_freq_L15.png, id=22, 421.575pt x 316.18124pt>
+File: ./pictures/questao1_mod_resp_freq_L15.png Graphic file (type png)
+
+<use ./pictures/questao1_mod_resp_freq_L15.png>
+Package pdftex.def Info: ./pictures/questao1_mod_resp_freq_L15.png used on inpu
+t line 89.
+(pdftex.def)             Requested size: 252.94695pt x 189.7102pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[2] [3 <C:/Users/Danilo/EngComp/latex-engcomp/8_semestre/pdi/Danilo/Implementac
+ao3/Relatorio/pictures/imagem1_tomcinza.png (PNG copy)> <C:/Users/Danilo/EngCom
+p/latex-engcomp/8_semestre/pdi/Danilo/Implementacao3/Relatorio/pictures/questao
+1L_3.png (PNG copy)> <C:/Users/Danilo/EngComp/latex-engcomp/8_semestre/pdi/Dani
+lo/Implementacao3/Relatorio/pictures/questao1L_15.png (PNG copy)>]
+<./pictures/questao2_filtro2d_L3.png, id=30, 1028.34187pt x 490.08093pt>
+File: ./pictures/questao2_filtro2d_L3.png Graphic file (type png)
+
+<use ./pictures/questao2_filtro2d_L3.png>
+Package pdftex.def Info: ./pictures/questao2_filtro2d_L3.png used on input line
+ 100.
+(pdftex.def)             Requested size: 514.16968pt x 245.03987pt.
+
+Overfull \hbox (48.20561pt too wide) in paragraph at lines 100--101
+[][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<./pictures/questao2_filtro2d_L15.png, id=31, 1028.34187pt x 490.08093pt>
+File: ./pictures/questao2_filtro2d_L15.png Graphic file (type png)
+
+<use ./pictures/questao2_filtro2d_L15.png>
+Package pdftex.def Info: ./pictures/questao2_filtro2d_L15.png used on input lin
+e 107.
+(pdftex.def)             Requested size: 514.16968pt x 245.03987pt.
+
+Overfull \hbox (48.20561pt too wide) in paragraph at lines 107--108
+[][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[4 <C:/Users/Danilo/EngComp/latex-engcomp/8_semestre/pdi/Danilo/Implementacao3/
+Relatorio/pictures/questao1_resp_imp_L3.png (PNG copy)> <C:/Users/Danilo/EngCom
+p/latex-engcomp/8_semestre/pdi/Danilo/Implementacao3/Relatorio/pictures/questao
+1_resp_imp_L15.png (PNG copy)> <C:/Users/Danilo/EngComp/latex-engcomp/8_semestr
+e/pdi/Danilo/Implementacao3/Relatorio/pictures/questao1_mod_resp_freq_L3.png (P
+NG copy)>] [5 <C:/Users/Danilo/EngComp/latex-engcomp/8_semestre/pdi/Danilo/Impl
+ementacao3/Relatorio/pictures/questao1_mod_resp_freq_L15.png (PNG copy)> <C:/Us
+ers/Danilo/EngComp/latex-engcomp/8_semestre/pdi/Danilo/Implementacao3/Relatorio
+/pictures/questao2_filtro2d_L3.png (PNG copy)>]
+<./pictures/questao3_resp_freq_sigma_3.png, id=38, 422.32782pt x 316.18124pt>
+File: ./pictures/questao3_resp_freq_sigma_3.png Graphic file (type png)
+
+<use ./pictures/questao3_resp_freq_sigma_3.png>
+Package pdftex.def Info: ./pictures/questao3_resp_freq_sigma_3.png used on inpu
+t line 121.
+(pdftex.def)             Requested size: 295.62746pt x 221.32535pt.
+
+<./pictures/questao3_resp_freq_sigma_9.png, id=39, 421.575pt x 316.18124pt>
+File: ./pictures/questao3_resp_freq_sigma_9.png Graphic file (type png)
+
+<use ./pictures/questao3_resp_freq_sigma_9.png>
+Package pdftex.def Info: ./pictures/questao3_resp_freq_sigma_9.png used on inpu
+t line 128.
+(pdftex.def)             Requested size: 295.10048pt x 221.32535pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<./pictures/questao3_resp_imp_sigma3.png, id=40, 421.575pt x 316.18124pt>
+File: ./pictures/questao3_resp_imp_sigma3.png Graphic file (type png)
+
+<use ./pictures/questao3_resp_imp_sigma3.png>
+Package pdftex.def Info: ./pictures/questao3_resp_imp_sigma3.png used on input 
+line 135.
+(pdftex.def)             Requested size: 295.10048pt x 221.32535pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<./pictures/questao3_resp_imp_sigma9.png, id=41, 421.575pt x 316.18124pt>
+File: ./pictures/questao3_resp_imp_sigma9.png Graphic file (type png)
+
+<use ./pictures/questao3_resp_imp_sigma9.png>
+Package pdftex.def Info: ./pictures/questao3_resp_imp_sigma9.png used on input 
+line 142.
+(pdftex.def)             Requested size: 295.10048pt x 221.32535pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<./pictures/questao3_mod_resp_freq_sigma3.png, id=42, 421.575pt x 316.18124pt>
+File: ./pictures/questao3_mod_resp_freq_sigma3.png Graphic file (type png)
+
+<use ./pictures/questao3_mod_resp_freq_sigma3.png>
+Package pdftex.def Info: ./pictures/questao3_mod_resp_freq_sigma3.png used on i
+nput line 149.
+(pdftex.def)             Requested size: 295.10048pt x 221.32535pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<./pictures/questao3_mod_resp_freq_sigma9.png, id=43, 421.575pt x 316.18124pt>
+File: ./pictures/questao3_mod_resp_freq_sigma9.png Graphic file (type png)
+
+<use ./pictures/questao3_mod_resp_freq_sigma9.png>
+Package pdftex.def Info: ./pictures/questao3_mod_resp_freq_sigma9.png used on i
+nput line 156.
+(pdftex.def)             Requested size: 295.10048pt x 221.32535pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<./pictures/questao3_filtrogaussiano_sigma3.png, id=44, 1028.34187pt x 490.0809
+3pt>
+File: ./pictures/questao3_filtrogaussiano_sigma3.png Graphic file (type png)
+ <use ./pictures/questao3_filtrogaussiano_sigma3.png>
+Package pdftex.def Info: ./pictures/questao3_filtrogaussiano_sigma3.png used on
+ input line 163.
+(pdftex.def)             Requested size: 514.16968pt x 245.03987pt.
+
+Overfull \hbox (48.20561pt too wide) in paragraph at lines 163--164
+[][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<./pictures/questao3_filtrogaussiano_sigma9.png, id=45, 1028.34187pt x 490.0809
+3pt>
+File: ./pictures/questao3_filtrogaussiano_sigma9.png Graphic file (type png)
+ <use ./pictures/questao3_filtrogaussiano_sigma9.png>
+Package pdftex.def Info: ./pictures/questao3_filtrogaussiano_sigma9.png used on
+ input line 170.
+(pdftex.def)             Requested size: 514.16968pt x 245.03987pt.
+
+Overfull \hbox (48.20561pt too wide) in paragraph at lines 170--171
+[][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[6 <C:/Users/Danilo/EngComp/latex-engcomp/8_semestre/pdi/Danilo/Implementacao3/
+Relatorio/pictures/questao2_filtro2d_L15.png (PNG copy)> <C:/Users/Danilo/EngCo
+mp/latex-engcomp/8_semestre/pdi/Danilo/Implementacao3/Relatorio/pictures/questa
+o3_resp_freq_sigma_3.png (PNG copy)>] [7 <C:/Users/Danilo/EngComp/latex-engcomp
+/8_semestre/pdi/Danilo/Implementacao3/Relatorio/pictures/questao3_resp_freq_sig
+ma_9.png (PNG copy)> <C:/Users/Danilo/EngComp/latex-engcomp/8_semestre/pdi/Dani
+lo/Implementacao3/Relatorio/pictures/questao3_resp_imp_sigma3.png (PNG copy)>]
+Overfull \hbox (40.20007pt too wide) in paragraph at lines 191--192
+\OT1/cmr/m/n/10.95 Para este prob-lema foram re-al-izadas sim-ulac~oes com nu
+mero de it-erac~oes (count) igual a $10\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.9
+5 15\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 20\OML/cmm/m/it/10.95 ; \OT1/cmr/m
+/n/10.95 25\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 30\OML/cmm/m/it/10.95 ; \OT
+1/cmr/m/n/10.95 35$,
+ []
+
+
+<./pictures/questao4_comparacao_valores_aleatorios_count10_20imagens_ruidosas.p
+ng, id=54, 1028.34187pt x 490.08093pt>
+File: ./pictures/questao4_comparacao_valores_aleatorios_count10_20imagens_ruido
+sas.png Graphic file (type png)
+
+<use ./pictures/questao4_comparacao_valores_aleatorios_count10_20imagens_ruidos
+as.png>
+Package pdftex.def Info: ./pictures/questao4_comparacao_valores_aleatorios_coun
+t10_20imagens_ruidosas.png used on input line 202.
+(pdftex.def)             Requested size: 565.58978pt x 269.54535pt.
+
+Overfull \hbox (99.62572pt too wide) in paragraph at lines 202--203
+[][] 
+ []
+
+[8 <C:/Users/Danilo/EngComp/latex-engcomp/8_semestre/pdi/Danilo/Implementacao3/
+Relatorio/pictures/questao3_resp_imp_sigma9.png (PNG copy)> <C:/Users/Danilo/En
+gComp/latex-engcomp/8_semestre/pdi/Danilo/Implementacao3/Relatorio/pictures/que
+stao3_mod_resp_freq_sigma3.png (PNG copy)>]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<./pictures/questao4_comparacao_valores_aleatorios_count15_20imagens_ruidosas.p
+ng, id=58, 1028.34187pt x 490.08093pt>
+File: ./pictures/questao4_comparacao_valores_aleatorios_count15_20imagens_ruido
+sas.png Graphic file (type png)
+
+<use ./pictures/questao4_comparacao_valores_aleatorios_count15_20imagens_ruidos
+as.png>
+Package pdftex.def Info: ./pictures/questao4_comparacao_valores_aleatorios_coun
+t15_20imagens_ruidosas.png used on input line 209.
+(pdftex.def)             Requested size: 565.58978pt x 269.54535pt.
+
+Overfull \hbox (99.62572pt too wide) in paragraph at lines 209--210
+[][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<./pictures/questao4_comparacao_valores_aleatorios_count20_20imagens_ruidosas.p
+ng, id=59, 1028.34187pt x 490.08093pt>
+File: ./pictures/questao4_comparacao_valores_aleatorios_count20_20imagens_ruido
+sas.png Graphic file (type png)
+
+<use ./pictures/questao4_comparacao_valores_aleatorios_count20_20imagens_ruidos
+as.png>
+Package pdftex.def Info: ./pictures/questao4_comparacao_valores_aleatorios_coun
+t20_20imagens_ruidosas.png used on input line 216.
+(pdftex.def)             Requested size: 565.58978pt x 269.54535pt.
+
+Overfull \hbox (99.62572pt too wide) in paragraph at lines 216--217
+[][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<./pictures/questao4_comparacao_valores_aleatorios_count25_20imagens_ruidosas.p
+ng, id=60, 1028.34187pt x 490.08093pt>
+File: ./pictures/questao4_comparacao_valores_aleatorios_count25_20imagens_ruido
+sas.png Graphic file (type png)
+
+<use ./pictures/questao4_comparacao_valores_aleatorios_count25_20imagens_ruidos
+as.png>
+Package pdftex.def Info: ./pictures/questao4_comparacao_valores_aleatorios_coun
+t25_20imagens_ruidosas.png used on input line 223.
+(pdftex.def)             Requested size: 565.58978pt x 269.54535pt.
+
+Overfull \hbox (99.62572pt too wide) in paragraph at lines 223--224
+[][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<./pictures/questao4_comparacao_valores_aleatorios_count30_20imagens_ruidosas.p
+ng, id=61, 1028.34187pt x 490.08093pt>
+File: ./pictures/questao4_comparacao_valores_aleatorios_count30_20imagens_ruido
+sas.png Graphic file (type png)
+
+<use ./pictures/questao4_comparacao_valores_aleatorios_count30_20imagens_ruidos
+as.png>
+Package pdftex.def Info: ./pictures/questao4_comparacao_valores_aleatorios_coun
+t30_20imagens_ruidosas.png used on input line 230.
+(pdftex.def)             Requested size: 565.58978pt x 269.54535pt.
+
+Overfull \hbox (99.62572pt too wide) in paragraph at lines 230--231
+[][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<./pictures/questao4_comparacao_valores_aleatorios_count35_20imagens_ruidosas.p
+ng, id=62, 1028.34187pt x 490.08093pt>
+File: ./pictures/questao4_comparacao_valores_aleatorios_count35_20imagens_ruido
+sas.png Graphic file (type png)
+
+<use ./pictures/questao4_comparacao_valores_aleatorios_count35_20imagens_ruidos
+as.png>
+Package pdftex.def Info: ./pictures/questao4_comparacao_valores_aleatorios_coun
+t35_20imagens_ruidosas.png used on input line 237.
+(pdftex.def)             Requested size: 565.58978pt x 269.54535pt.
+
+Overfull \hbox (99.62572pt too wide) in paragraph at lines 237--238
+[][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<./pictures/questao4_comparacao_valores_aleatorios_30imagens_ruidosas.png, id=6
+3, 1028.34187pt x 490.08093pt>
+File: ./pictures/questao4_comparacao_valores_aleatorios_30imagens_ruidosas.png 
+Graphic file (type png)
+
+<use ./pictures/questao4_comparacao_valores_aleatorios_30imagens_ruidosas.png>
+Package pdftex.def Info: ./pictures/questao4_comparacao_valores_aleatorios_30im
+agens_ruidosas.png used on input line 244.
+(pdftex.def)             Requested size: 565.58978pt x 269.54535pt.
+
+Overfull \hbox (99.62572pt too wide) in paragraph at lines 244--245
+[][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<./pictures/questao4_comparacao_valores_aleatorios_40imagens_ruidosas.png, id=6
+4, 1028.34187pt x 490.08093pt>
+File: ./pictures/questao4_comparacao_valores_aleatorios_40imagens_ruidosas.png 
+Graphic file (type png)
+
+<use ./pictures/questao4_comparacao_valores_aleatorios_40imagens_ruidosas.png>
+Package pdftex.def Info: ./pictures/questao4_comparacao_valores_aleatorios_40im
+agens_ruidosas.png used on input line 251.
+(pdftex.def)             Requested size: 565.58978pt x 269.54535pt.
+
+Overfull \hbox (99.62572pt too wide) in paragraph at lines 251--252
+[][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<./pictures/questao4_comparacao_valores_aleatorios_50imagens_ruidosas.png, id=6
+5, 1028.34187pt x 490.08093pt>
+File: ./pictures/questao4_comparacao_valores_aleatorios_50imagens_ruidosas.png 
+Graphic file (type png)
+
+<use ./pictures/questao4_comparacao_valores_aleatorios_50imagens_ruidosas.png>
+Package pdftex.def Info: ./pictures/questao4_comparacao_valores_aleatorios_50im
+agens_ruidosas.png used on input line 258.
+(pdftex.def)             Requested size: 565.58978pt x 269.54535pt.
+
+Overfull \hbox (99.62572pt too wide) in paragraph at lines 258--259
+[][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<./pictures/questao4_comparacao_valores_aleatorios_100imagens_ruidosas.png, id=
+66, 1028.34187pt x 490.08093pt>
+File: ./pictures/questao4_comparacao_valores_aleatorios_100imagens_ruidosas.png
+ Graphic file (type png)
+
+<use ./pictures/questao4_comparacao_valores_aleatorios_100imagens_ruidosas.png>
+Package pdftex.def Info: ./pictures/questao4_comparacao_valores_aleatorios_100i
+magens_ruidosas.png used on input line 265.
+(pdftex.def)             Requested size: 565.58978pt x 269.54535pt.
+
+Overfull \hbox (99.62572pt too wide) in paragraph at lines 265--266
+[][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[9 <C:/Users/Danilo/EngComp/latex-engcomp/8_semestre/pdi/Danilo/Implementacao3/
+Relatorio/pictures/questao3_mod_resp_freq_sigma9.png (PNG copy)> <C:/Users/Dani
+lo/EngComp/latex-engcomp/8_semestre/pdi/Danilo/Implementacao3/Relatorio/picture
+s/questao3_filtrogaussiano_sigma3.png (PNG copy)>]
+<./pictures/questao5_imagem1_sal_pim_30_comparacao_L3_dim3.png, id=70, 1028.341
+87pt x 490.08093pt>
+File: ./pictures/questao5_imagem1_sal_pim_30_comparacao_L3_dim3.png Graphic fil
+e (type png)
+
+<use ./pictures/questao5_imagem1_sal_pim_30_comparacao_L3_dim3.png>
+Package pdftex.def Info: ./pictures/questao5_imagem1_sal_pim_30_comparacao_L3_d
+im3.png used on input line 282.
+(pdftex.def)             Requested size: 565.58978pt x 269.54535pt.
+
+Overfull \hbox (99.62572pt too wide) in paragraph at lines 282--283
+[][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<./pictures/questao5_imagem1_sal_pim_70_comparacao_L3_dim3.png, id=71, 1028.341
+87pt x 490.08093pt>
+File: ./pictures/questao5_imagem1_sal_pim_70_comparacao_L3_dim3.png Graphic fil
+e (type png)
+
+<use ./pictures/questao5_imagem1_sal_pim_70_comparacao_L3_dim3.png>
+Package pdftex.def Info: ./pictures/questao5_imagem1_sal_pim_70_comparacao_L3_d
+im3.png used on input line 289.
+(pdftex.def)             Requested size: 565.58978pt x 269.54535pt.
+
+Overfull \hbox (99.62572pt too wide) in paragraph at lines 289--290
+[][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<./pictures/questao5_imagem1_sal_pim_50.png, id=72, 1028.34187pt x 490.08093pt>
+File: ./pictures/questao5_imagem1_sal_pim_50.png Graphic file (type png)
+<use ./pictures/questao5_imagem1_sal_pim_50.png>
+Package pdftex.def Info: ./pictures/questao5_imagem1_sal_pim_50.png used on inp
+ut line 297.
+(pdftex.def)             Requested size: 565.58978pt x 269.54535pt.
+
+Overfull \hbox (99.62572pt too wide) in paragraph at lines 297--298
+[][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<./pictures/questao5_imagem1_sal_pim_50_comparacao_L3_dim3.png, id=73, 1028.341
+87pt x 490.08093pt>
+File: ./pictures/questao5_imagem1_sal_pim_50_comparacao_L3_dim3.png Graphic fil
+e (type png)
+
+<use ./pictures/questao5_imagem1_sal_pim_50_comparacao_L3_dim3.png>
+Package pdftex.def Info: ./pictures/questao5_imagem1_sal_pim_50_comparacao_L3_d
+im3.png used on input line 304.
+(pdftex.def)             Requested size: 565.58978pt x 269.54535pt.
+
+Overfull \hbox (99.62572pt too wide) in paragraph at lines 304--305
+[][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<./pictures/questao5_imagem1_sal_pim_50_comparacao_L5_dim5.png, id=74, 1028.341
+87pt x 490.08093pt>
+File: ./pictures/questao5_imagem1_sal_pim_50_comparacao_L5_dim5.png Graphic fil
+e (type png)
+
+<use ./pictures/questao5_imagem1_sal_pim_50_comparacao_L5_dim5.png>
+Package pdftex.def Info: ./pictures/questao5_imagem1_sal_pim_50_comparacao_L5_d
+im5.png used on input line 311.
+(pdftex.def)             Requested size: 565.58978pt x 269.54535pt.
+
+Overfull \hbox (99.62572pt too wide) in paragraph at lines 311--312
+[][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<./pictures/questao5_imagem1_sal_pim_50_comparacao_L7_dim7.png, id=75, 1028.341
+87pt x 490.08093pt>
+File: ./pictures/questao5_imagem1_sal_pim_50_comparacao_L7_dim7.png Graphic fil
+e (type png)
+
+<use ./pictures/questao5_imagem1_sal_pim_50_comparacao_L7_dim7.png>
+Package pdftex.def Info: ./pictures/questao5_imagem1_sal_pim_50_comparacao_L7_d
+im7.png used on input line 318.
+(pdftex.def)             Requested size: 565.58978pt x 269.54535pt.
+
+Overfull \hbox (99.62572pt too wide) in paragraph at lines 318--319
+[][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<./pictures/questao5_imagem1_sal_pim_50_comparacao_L9_dim9.png, id=76, 1028.341
+87pt x 490.08093pt>
+File: ./pictures/questao5_imagem1_sal_pim_50_comparacao_L9_dim9.png Graphic fil
+e (type png)
+
+<use ./pictures/questao5_imagem1_sal_pim_50_comparacao_L9_dim9.png>
+Package pdftex.def Info: ./pictures/questao5_imagem1_sal_pim_50_comparacao_L9_d
+im9.png used on input line 325.
+(pdftex.def)             Requested size: 565.58978pt x 269.54535pt.
+
+Overfull \hbox (99.62572pt too wide) in paragraph at lines 325--326
+[][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+No file implem03.bbl.
+[10 <C:/Users/Danilo/EngComp/latex-engcomp/8_semestre/pdi/Danilo/Implementacao3
+/Relatorio/pictures/questao3_filtrogaussiano_sigma9.png (PNG copy)> <C:/Users/D
+anilo/EngComp/latex-engcomp/8_semestre/pdi/Danilo/Implementacao3/Relatorio/pict
+ures/questao4_comparacao_valores_aleatorios_count10_20imagens_ruidosas.png (PNG
+ copy)>] [11 <C:/Users/Danilo/EngComp/latex-engcomp/8_semestre/pdi/Danilo/Imple
+mentacao3/Relatorio/pictures/questao4_comparacao_valores_aleatorios_count15_20i
+magens_ruidosas.png (PNG copy)> <C:/Users/Danilo/EngComp/latex-engcomp/8_semest
+re/pdi/Danilo/Implementacao3/Relatorio/pictures/questao4_comparacao_valores_ale
+atorios_count20_20imagens_ruidosas.png (PNG copy)>] [12 <C:/Users/Danilo/EngCom
+p/latex-engcomp/8_semestre/pdi/Danilo/Implementacao3/Relatorio/pictures/questao
+4_comparacao_valores_aleatorios_count25_20imagens_ruidosas.png (PNG copy)> <C:/
+Users/Danilo/EngComp/latex-engcomp/8_semestre/pdi/Danilo/Implementacao3/Relator
+io/pictures/questao4_comparacao_valores_aleatorios_count30_20imagens_ruidosas.p
+ng (PNG copy)>] [13 <C:/Users/Danilo/EngComp/latex-engcomp/8_semestre/pdi/Danil
+o/Implementacao3/Relatorio/pictures/questao4_comparacao_valores_aleatorios_coun
+t35_20imagens_ruidosas.png (PNG copy)> <C:/Users/Danilo/EngComp/latex-engcomp/8
+_semestre/pdi/Danilo/Implementacao3/Relatorio/pictures/questao4_comparacao_valo
+res_aleatorios_30imagens_ruidosas.png (PNG copy)>] [14 <C:/Users/Danilo/EngComp
+/latex-engcomp/8_semestre/pdi/Danilo/Implementacao3/Relatorio/pictures/questao4
+_comparacao_valores_aleatorios_40imagens_ruidosas.png (PNG copy)> <C:/Users/Dan
+ilo/EngComp/latex-engcomp/8_semestre/pdi/Danilo/Implementacao3/Relatorio/pictur
+es/questao4_comparacao_valores_aleatorios_50imagens_ruidosas.png (PNG copy)>]
+[15 <C:/Users/Danilo/EngComp/latex-engcomp/8_semestre/pdi/Danilo/Implementacao3
+/Relatorio/pictures/questao4_comparacao_valores_aleatorios_100imagens_ruidosas.
+png (PNG copy)> <C:/Users/Danilo/EngComp/latex-engcomp/8_semestre/pdi/Danilo/Im
+plementacao3/Relatorio/pictures/questao5_imagem1_sal_pim_30_comparacao_L3_dim3.
+png (PNG copy)>] [16 <C:/Users/Danilo/EngComp/latex-engcomp/8_semestre/pdi/Dani
+lo/Implementacao3/Relatorio/pictures/questao5_imagem1_sal_pim_70_comparacao_L3_
+dim3.png (PNG copy)> <C:/Users/Danilo/EngComp/latex-engcomp/8_semestre/pdi/Dani
+lo/Implementacao3/Relatorio/pictures/questao5_imagem1_sal_pim_50.png (PNG copy)
+>] [17 <C:/Users/Danilo/EngComp/latex-engcomp/8_semestre/pdi/Danilo/Implementac
+ao3/Relatorio/pictures/questao5_imagem1_sal_pim_50_comparacao_L3_dim3.png (PNG 
+copy)> <C:/Users/Danilo/EngComp/latex-engcomp/8_semestre/pdi/Danilo/Implementac
+ao3/Relatorio/pictures/questao5_imagem1_sal_pim_50_comparacao_L5_dim5.png (PNG 
+copy)>] [18 <C:/Users/Danilo/EngComp/latex-engcomp/8_semestre/pdi/Danilo/Implem
+entacao3/Relatorio/pictures/questao5_imagem1_sal_pim_50_comparacao_L7_dim7.png 
+(PNG copy)> <C:/Users/Danilo/EngComp/latex-engcomp/8_semestre/pdi/Danilo/Implem
+entacao3/Relatorio/pictures/questao5_imagem1_sal_pim_50_comparacao_L9_dim9.png 
+(PNG copy)>]
+(C:\Users\Danilo\EngComp\latex-engcomp\8_semestre\pdi\Danilo\Implementacao3\Rel
+atorio\implem03.aux) ) 
+Here is how much of TeX's memory you used:
+ 4284 strings out of 493921
+ 65802 string characters out of 3147279
+ 213494 words of memory out of 3000000
+ 7477 multiletter control sequences out of 15000+200000
+ 14053 words of font info for 53 fonts, out of 3000000 for 9000
+ 841 hyphenation exceptions out of 8191
+ 27i,6n,24p,1179b,327s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\Danilo\AppData\Local\MiKTeX\2.9\fonts\pk\ljfou
+r\jknappen\ec\dpi600\tcrm1095.pk> <C:\Users\Danilo\AppData\Local\MiKTeX\2.9\fon
+ts\pk\ljfour\jknappen\ec\dpi600\tcrm1200.pk><C:/Program Files/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
+/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.p
+fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on implem03.pdf (18 pages, 10717903 bytes).
+PDF statistics:
+ 139 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 176 words of extra memory for PDF output out of 10000 (max. 10000000)
+

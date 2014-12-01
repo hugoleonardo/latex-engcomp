@@ -1,0 +1,34 @@
+\contentsline {figure}{\numberline {1}{\ignorespaces Imagem utilizada nos experimentos (em tom de cinza)}}{3}
+\contentsline {figure}{\numberline {2}{\ignorespaces Resposta em frequ\^encia para o filtro 2D uniforme com $L = 3$}}{3}
+\contentsline {figure}{\numberline {3}{\ignorespaces Resposta em frequ\^encia para o filtro 2D uniforme com $L = 15$}}{3}
+\contentsline {figure}{\numberline {4}{\ignorespaces Resposta ao impulso para o filtro 2D uniforme com $L = 3$}}{4}
+\contentsline {figure}{\numberline {5}{\ignorespaces Resposta ao impulso para o filtro 2D uniforme com $L = 15$}}{4}
+\contentsline {figure}{\numberline {6}{\ignorespaces M\'odulo da resposta em frequ\^encia para o filtro 2D uniforme com $L = 3$}}{4}
+\contentsline {figure}{\numberline {7}{\ignorespaces M\'odulo da resposta em frequ\^encia para o filtro 2D uniforme com $L = 15$}}{5}
+\contentsline {figure}{\numberline {8}{\ignorespaces Filtragem utilizando filtro 2D uniforme com $L = 3$}}{5}
+\contentsline {figure}{\numberline {9}{\ignorespaces Filtragem utilizando filtro 2D uniforme com $L = 15$}}{6}
+\contentsline {figure}{\numberline {10}{\ignorespaces Resposta em frequ\^encia para o filtro gaussiano com $\sigma = 3$}}{6}
+\contentsline {figure}{\numberline {11}{\ignorespaces Resposta em frequ\^encia para o filtro gaussiano com $\sigma = 9$}}{7}
+\contentsline {figure}{\numberline {12}{\ignorespaces Resposta ao impulso para o filtro gaussiano com $\sigma = 3$}}{7}
+\contentsline {figure}{\numberline {13}{\ignorespaces Resposta ao impulso para o filtro gaussiano com $\sigma = 9$}}{8}
+\contentsline {figure}{\numberline {14}{\ignorespaces M\'odulo da Resposta em frequ\^encia para o filtro gaussiano com $\sigma = 3$}}{8}
+\contentsline {figure}{\numberline {15}{\ignorespaces M\'odulo da Resposta em frequ\^encia para o filtro gaussiano com $\sigma = 9$}}{9}
+\contentsline {figure}{\numberline {16}{\ignorespaces Filtragem utilizando filtro gaussiano com $\sigma = 3$}}{9}
+\contentsline {figure}{\numberline {17}{\ignorespaces Filtragem utilizando filtro gaussiano com $\sigma = 9$}}{10}
+\contentsline {figure}{\numberline {18}{\ignorespaces Compara\c c\~ao dos resultados de filtragem com 10 itera\c c\~oes ($count = 10$)}}{10}
+\contentsline {figure}{\numberline {19}{\ignorespaces Compara\c c\~ao dos resultados de filtragem com 15 itera\c c\~oes ($count = 15$)}}{11}
+\contentsline {figure}{\numberline {20}{\ignorespaces Compara\c c\~ao dos resultados de filtragem com 20 itera\c c\~oes ($count = 20$)}}{11}
+\contentsline {figure}{\numberline {21}{\ignorespaces Compara\c c\~ao dos resultados de filtragem com 25 itera\c c\~oes ($count = 25$)}}{12}
+\contentsline {figure}{\numberline {22}{\ignorespaces Compara\c c\~ao dos resultados de filtragem com 30 itera\c c\~oes ($count = 30$)}}{12}
+\contentsline {figure}{\numberline {23}{\ignorespaces Compara\c c\~ao dos resultados de filtragem com 35 itera\c c\~oes ($count = 35$)}}{13}
+\contentsline {figure}{\numberline {24}{\ignorespaces Compara\c c\~ao dos resultados de filtragem com 30 imagens ruidosas}}{13}
+\contentsline {figure}{\numberline {25}{\ignorespaces Compara\c c\~ao dos resultados de filtragem com 40 imagens ruidosas}}{14}
+\contentsline {figure}{\numberline {26}{\ignorespaces Compara\c c\~ao dos resultados de filtragem com 50 imagens ruidosas}}{14}
+\contentsline {figure}{\numberline {27}{\ignorespaces Compara\c c\~ao dos resultados de filtragem com 100 imagens ruidosas}}{15}
+\contentsline {figure}{\numberline {28}{\ignorespaces Compara\c c\~ao dos resultados de filtragem do ru\IeC {\'\i }do sal e pimenta usando filtro de mediana e 2D uniforme com $30\%$ dos pixels corrompidos}}{15}
+\contentsline {figure}{\numberline {29}{\ignorespaces Compara\c c\~ao dos resultados de filtragem do ru\IeC {\'\i }do sal e pimenta usando filtro de mediana e 2D uniforme com $70\%$ dos pixels corrompidos }}{16}
+\contentsline {figure}{\numberline {30}{\ignorespaces Imagem com $50\%$ dos pixels corrompidos }}{16}
+\contentsline {figure}{\numberline {31}{\ignorespaces Compara\c c\~ao dos resultados de filtragem do ru\IeC {\'\i }do sal e pimenta usando filtro de mediana e 2D uniforme com $50\%$ dos pixels corrompidos }}{17}
+\contentsline {figure}{\numberline {32}{\ignorespaces Compara\c c\~ao dos resultados de filtragem do ru\IeC {\'\i }do sal e pimenta usando filtro de mediana e 2D uniforme com $50\%$ dos pixels corrompidos }}{17}
+\contentsline {figure}{\numberline {33}{\ignorespaces Compara\c c\~ao dos resultados de filtragem do ru\IeC {\'\i }do sal e pimenta usando filtro de mediana e 2D uniforme com $50\%$ dos pixels corrompidos }}{18}
+\contentsline {figure}{\numberline {34}{\ignorespaces Compara\c c\~ao dos resultados de filtragem do ru\IeC {\'\i }do sal e pimenta usando filtro de mediana e 2D uniforme com $50\%$ dos pixels corrompidos }}{18}

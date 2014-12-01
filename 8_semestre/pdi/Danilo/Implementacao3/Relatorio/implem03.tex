@@ -1,0 +1,334 @@
+\documentclass[11pt,a4paper]{article}
+%\usepackage[utf8]{inputenc}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{multicol, blindtext}
+\usepackage[toc,page]{appendix}
+\usepackage[top=0.58in, bottom=0.9in, left=0.58in]{geometry}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{lipsum}
+\usepackage{natbib}
+\usepackage{url}
+\usepackage{cite}
+
+\title{	\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.75]{./pictures/logoufpa.png}
+			\label{fig:logoufpa}
+		\end{figure}
+		Universidade Federal do Pará \linebreak
+		Instituto de Tecnologia \linebreak
+		Faculdade de Engenharia de Computação e Telecomunicações \linebreak
+		Computação Gráfica e Processamento Digital de Imagens \linebreak
+		Implementação 03 com $MatLab^{\copyright}$ \linebreak
+		Prof$^{o}$ Ronaldo de Freitas Zampolo}
+
+\begin{document}
+
+\author{Danilo Souza - 201006840008}
+\maketitle
+
+\tableofcontents
+\listoffigures
+
+\section{Questão 1}
+
+	A imagem em tom de cinza utilizada nos experimentos está ilustrada na Figura \ref{fig:imagem1_tomcinza}.  As Figuras \ref{fig:questao1L_3} e \ref{fig:questao1L_15} mostras a resposta em frequência para o filtro 2D uniforme para $L =3$ e $L = 15$, respectivamente. É notória a diferença de seletividade entre estes dois filtros, para $L = 15$ a seletividade do filtro $L = 15$ é quase o dobro, i.e (o valor das frequências selecionadas é mais da metade dos valores selcionados com o filtro $L = 3$), além da atenuação do sinal ser maior, como é possivel visualizar nas Figuras acima mencionadas, a atenuação do segundo filtro fica abaixo de $ -5db$ para os lóbulos secundários enquanto que no primeiro filtro a intensidade da atenuação tende a parmanecer em $-5db$ para as altas frequências.
+	
+	As respostas ao impulso são mostradas, respecitivamente para $L = 3$ e $L = 15$, nas Figuras \ref{fig:questao1_resp_imp_L3} e \ref{fig:questao1_resp_imp_L15}. Os módulos das respostas frequência são mostradas, respecitivamente para $L = 3$ e $L = 15$, nas Figuras \ref{fig:questao1_mod_resp_freq_L3} e \ref{fig:questao1_mod_resp_freq_L15}.  
+		
+	Estas características comportamentais dos filtros são melhor visualizadas na questão seguinte quando os filtros forem usados na Figura \ref{fig:imagem1_tomcinza}.
+
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[scale=0.6]{./pictures/imagem1_tomcinza.png}
+			\caption{Imagem utilizada nos experimentos (em tom de cinza)}
+			\label{fig:imagem1_tomcinza}
+		\end{figure}
+
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[scale=0.6]{./pictures/questao1L_3.png}
+			\caption{Resposta em frequência para o filtro 2D uniforme com $L = 3$}
+			\label{fig:questao1L_3}
+		\end{figure}
+		
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[scale=0.6]{./pictures/questao1L_15.png}
+			\caption{Resposta em frequência para o filtro 2D uniforme com $L = 15$}
+			\label{fig:questao1L_15}
+		\end{figure}
+			
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[scale=0.6]{./pictures/questao1_resp_imp_L3.png}
+			\caption{Resposta ao impulso para o filtro 2D uniforme com $L = 3$}
+			\label{fig:questao1_resp_imp_L3}
+		\end{figure}
+		
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[scale=0.6]{./pictures/questao1_resp_imp_L15.png}
+			\caption{Resposta ao impulso para o filtro 2D uniforme com $L = 15$}
+			\label{fig:questao1_resp_imp_L15}
+		\end{figure}
+		
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[scale=0.6]{./pictures/questao1_mod_resp_freq_L3.png}
+			\caption{Módulo da resposta em frequência para o filtro 2D uniforme com $L = 3$}
+			\label{fig:questao1_mod_resp_freq_L3}
+		\end{figure}
+		
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[scale=0.6]{./pictures/questao1_mod_resp_freq_L15.png}
+			\caption{Módulo da resposta em frequência para o filtro 2D uniforme com $L = 15$}
+			\label{fig:questao1_mod_resp_freq_L15}
+		\end{figure}
+		
+		
+\section{Questão 2}
+	As Figuras \ref{fig:questao2_filtro2d_L3} e \ref{fig:questao2_filtro2d_L15} mostram, respectivamente o resultado da filtragem, com filtro 2D uniforme para $L = 3$ e $L = 15$, da Figura \ref{fig:imagem1_tomcinza}. É possivel perceber que na Figura \ref{fig:questao2_filtro2d_L15} houve uma perda muito maior de detalhes do que na Figura \ref{fig:questao2_filtro2d_L3} devido ao fato de que filtro com $L = 15$ filtra com mais eficiência as altas frequências, deixando assim a imagem mais suave e com poucas transições de borda perceptíveis.
+
+		\begin{figure}[h!]
+			%\centering
+			\includegraphics[scale=0.5]{./pictures/questao2_filtro2d_L3.png}
+			\caption{Filtragem utilizando filtro 2D uniforme com $L = 3$}
+			\label{fig:questao2_filtro2d_L3}
+		\end{figure}
+
+		\begin{figure}[h!]
+			%\centering
+			\includegraphics[scale=0.5]{./pictures/questao2_filtro2d_L15.png}
+			\caption{Filtragem utilizando filtro 2D uniforme com $L = 15$}
+			\label{fig:questao2_filtro2d_L15}
+		\end{figure}
+\section{Questão 3}
+
+	As imagens \ref{fig:questao3_resp_freq_sigma_3} e \ref{fig:questao3_resp_freq_sigma_9} mostras, respectivamente, as respostas em frequência do filtro gaussiano para $\sigma = 3$ e $\sigma = 9$, a diferença entre as duas respostas é essencialmente a mesma entre o filtro 2D uniforme para $L = 3$ e $L = 15$, com excessão de que para o filtro gaussiano a atenuação do sinal é maior para as frequências logo acima da frequência de corte, com valores abaixo de $-20db$ para os dois filtros. As Figuras \ref{fig:questao3_resp_imp_sigma3} e \ref{fig:questao3_resp_imp_sigma9} mostras as respostas ao impulso, respectivamente, para $\sigma = 3$ e $\sigma = 9$ e as Figuras \ref{fig:questao3_mod_resp_freq_sigma3} e \ref{fig:questao3_mod_resp_freq_sigma9} mostram, respectivamente, o módulo das respostas em frequência para $\sigma = 3$ e $\sigma = 9$ para o filtro Gaussiano.
+	
+	Analisando os resultados do filtro gaussiano percebe-se que seu comportamente é parecido com o do filtro 2D Uniforma, entretando, este primeiro filtro possui uma eficiência bem maior do que o segundo em eliminar as altas frequências acima da frequência de corte, portanto sua seletividade é mais eficiente.
+	
+	As Figuras \ref{fig:questao3_filtrogaussiano_sigma3} e \ref{fig:questao3_filtrogaussiano_sigma9} mostram respectivamente o resultado da fitlragem para o filtro gaussiano com $\sigma = 3$ e $\sigma = 9$. O resultado é parecido com o resutlado do filtro 2D, entretanto, as transições de borda são menos perceptiveis, principalmente para $\sigma = 9$ onde é praticamente imperceptível devido ao fato de o filtro gaussiano causar uma atenuação maior nas frequências logo acima da frequência de corte, fazendo com que estas não exerçam nenhuma ou muito pouca influência na imagem final, perdendo assim bastante informação de transição de bordas.
+		
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[scale=0.7]{./pictures/questao3_resp_freq_sigma_3.png}
+			\caption{Resposta em frequência para o filtro gaussiano com $\sigma = 3$}
+			\label{fig:questao3_resp_freq_sigma_3}
+		\end{figure}
+		
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[scale=0.7]{./pictures/questao3_resp_freq_sigma_9.png}
+			\caption{Resposta em frequência para o filtro gaussiano com $\sigma = 9$}
+			\label{fig:questao3_resp_freq_sigma_9}
+		\end{figure}
+		
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[scale=0.7]{./pictures/questao3_resp_imp_sigma3.png}
+			\caption{Resposta ao impulso para o filtro gaussiano com $\sigma = 3$}
+			\label{fig:questao3_resp_imp_sigma3}
+		\end{figure}
+		
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[scale=0.7]{./pictures/questao3_resp_imp_sigma9.png}
+			\caption{Resposta ao impulso para o filtro gaussiano com $\sigma = 9$}
+			\label{fig:questao3_resp_imp_sigma9}
+		\end{figure}
+		
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[scale=0.7]{./pictures/questao3_mod_resp_freq_sigma3.png}
+			\caption{Módulo da Resposta em frequência para o filtro gaussiano com $\sigma = 3$}
+			\label{fig:questao3_mod_resp_freq_sigma3}
+		\end{figure}
+
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[scale=0.7]{./pictures/questao3_mod_resp_freq_sigma9.png}
+			\caption{Módulo da Resposta em frequência para o filtro gaussiano com $\sigma = 9$}
+			\label{fig:questao3_mod_resp_freq_sigma9}
+		\end{figure}
+		
+		\begin{figure}[h!]
+			%\centering
+			\includegraphics[scale=0.5]{./pictures/questao3_filtrogaussiano_sigma3.png}
+			\caption{Filtragem utilizando filtro gaussiano com $\sigma = 3$}
+			\label{fig:questao3_filtrogaussiano_sigma3}
+		\end{figure}
+		
+		\begin{figure}[h!]
+			%\centering
+			\includegraphics[scale=0.5]{./pictures/questao3_filtrogaussiano_sigma9.png}
+			\caption{Filtragem utilizando filtro gaussiano com $\sigma = 9$}
+			\label{fig:questao3_filtrogaussiano_sigma9}
+		\end{figure}
+\section{Questão 4}
+
+	Para esta questão, os parâmetros dos filtros ajustados foram:
+		\begin{itemize}
+			\item 1) As dimensões do filtro de  mediana ($d$) (sempre quadrada).
+			\item 2) $\sigma$ (desvio padrão do filtro gaussiano) e o  intervalo em torno da média.
+		\end{itemize}
+	O algoritmo de testes utilizado para verificar o melhor resultado da filtragem foi:
+		\begin{itemize}
+			\item 1) Escolher o número de iterações a serem realizadas (definido como parâmetro da função)
+			\item 2) Sorteia-se um valor aleatório dentro de um determinado intervalo (para este caso o intervalo foi $[2,12]$, atribui-se esse valor para $d$ e $\sigma$ (para cada variável é gerado um valor aleatório diferente).
+			\item 3) O intervalo em torno da média (filtro gaussiano) permaneceu constante e igual a 5. Após alguns experimentos realizados percebeu-se que este valor de intervalo foi o que apresentou resultados mais satisfatórios.
+			\item 4) Realiza-se a filtragem usando os três filtros (para os filtros de mediana e gaussiano é escolhida apenas uma imagem dentre as 20 ruidosas geradas). 
+			\item 5) Calcula-se o erro quadrático médio normalizado para o resultado dos três filtros (mediana, gaussiana e estatístico).
+			\item 6) O erro do filtro estatístico é constante e igual a 0.0000438615.
+			\item 7) Para os outros dois filtros o processo é repetido (passo 2) até que o número de iterações chegue ao fim, o melhor resultado encontrado é apresentado como saida da função.
+		\end{itemize}
+	Para este problema foram realizadas simulações com número de iterações (count) igual a $10,15,20,25,30,35$, os resultados comparativos são apresentados, respectivamente, nas Figuras \ref{fig:questao4_comparacao_valores_aleatorios_count10_20imagens_ruidosas}, \ref{fig:questao4_comparacao_valores_aleatorios_count15_20imagens_ruidosas}, \ref{fig:questao4_comparacao_valores_aleatorios_count20_20imagens_ruidosas}, \ref{fig:questao4_comparacao_valores_aleatorios_count25_20imagens_ruidosas}, \ref{fig:questao4_comparacao_valores_aleatorios_count30_20imagens_ruidosas}, \ref{fig:questao4_comparacao_valores_aleatorios_count35_20imagens_ruidosas}. 
+	
+	Analisando as imagens  e verificando os erros conclui-se que os mlehores resultados encontrados foram $\sigma = 2$ para o filtro gaussiano (encontrado com 20 iterações) com $ erro = 0.0000624642$ e Dimensões de $9 x 9$ para o filtro de mediana (encontrado com 35 iterações) com $ erro = 0.0000780482$. Mesmo que esses resultados sejam considerados visualmente satisfatórios, não conseguiram superar o filtro estatístico que obteve o menor erro, igual a 0.0000438615. 
+	
+	Considerando o ruído uniforme, o filtro estatístico se prova um bom instrumento para filtrar esse ruído, devido o fato de que ao se calcular média dos valores dos pixels, aqueles valores que se sobressaem aos demais, ou seja, os valores estranhos a uma dada região da imagem (os valores de ruído) tendem a desaparecer e quanto maior for o número de imagens para realizar a filtragem estatística. Porém se forem usadas muitas imagens como amostra para o filtro estatístico o efeito pode ser exatamente o oposto, onde o ruído passa a ser uma tendência e o erro da imagem aumenta. 
+	
+	Para demonstrar isso, foram feitas simulações com 30,40,50 e 100 imagens ruidosas mostradas,  respectivamente, nas Figuras \ref{fig:questao4_comparacao_valores_aleatorios_30imagens_ruidosas}, \ref{fig:questao4_comparacao_valores_aleatorios_40imagens_ruidosas}, \ref{fig:questao4_comparacao_valores_aleatorios_50imagens_ruidosas} e  \ref{fig:questao4_comparacao_valores_aleatorios_100imagens_ruidosas}.
+	
+	
+	\begin{figure}[h!]
+		%\centering
+		\includegraphics[scale=0.55]{./pictures/questao4_comparacao_valores_aleatorios_count10_20imagens_ruidosas.png}
+		\caption{Comparação dos resultados de filtragem com 10 iterações ($count = 10$)}
+		\label{fig:questao4_comparacao_valores_aleatorios_count10_20imagens_ruidosas}
+	\end{figure}
+	
+	\begin{figure}[h!]
+		%\centering
+		\includegraphics[scale=0.55]{./pictures/questao4_comparacao_valores_aleatorios_count15_20imagens_ruidosas.png}
+		\caption{Comparação dos resultados de filtragem com 15 iterações ($count = 15$)}
+		\label{fig:questao4_comparacao_valores_aleatorios_count15_20imagens_ruidosas}
+	\end{figure}
+	
+	\begin{figure}[h!]
+		%\centering
+		\includegraphics[scale=0.55]{./pictures/questao4_comparacao_valores_aleatorios_count20_20imagens_ruidosas.png}
+		\caption{Comparação dos resultados de filtragem com 20 iterações ($count = 20$)}
+		\label{fig:questao4_comparacao_valores_aleatorios_count20_20imagens_ruidosas}
+	\end{figure}
+	
+	\begin{figure}[h!]
+		%\centering
+		\includegraphics[scale=0.55]{./pictures/questao4_comparacao_valores_aleatorios_count25_20imagens_ruidosas.png}
+		\caption{Comparação dos resultados de filtragem com 25 iterações ($count = 25$)}
+		\label{fig:questao4_comparacao_valores_aleatorios_count25_20imagens_ruidosas}
+	\end{figure}
+	
+	\begin{figure}[h!]
+		%\centering
+		\includegraphics[scale=0.55]{./pictures/questao4_comparacao_valores_aleatorios_count30_20imagens_ruidosas.png}
+		\caption{Comparação dos resultados de filtragem com 30 iterações ($count = 30$)}
+		\label{fig:questao4_comparacao_valores_aleatorios_count30_20imagens_ruidosas}
+	\end{figure}
+	
+	\begin{figure}[h!]
+		%\centering
+		\includegraphics[scale=0.55]{./pictures/questao4_comparacao_valores_aleatorios_count35_20imagens_ruidosas.png}
+		\caption{Comparação dos resultados de filtragem com 35 iterações ($count = 35$)}
+		\label{fig:questao4_comparacao_valores_aleatorios_count35_20imagens_ruidosas}
+	\end{figure}
+	
+	\begin{figure}[h!]
+		%\centering
+		\includegraphics[scale=0.55]{./pictures/questao4_comparacao_valores_aleatorios_30imagens_ruidosas.png}
+		\caption{Comparação dos resultados de filtragem com 30 imagens ruidosas}
+		\label{fig:questao4_comparacao_valores_aleatorios_30imagens_ruidosas}
+	\end{figure}
+	
+	\begin{figure}[h!]
+		%\centering
+		\includegraphics[scale=0.55]{./pictures/questao4_comparacao_valores_aleatorios_40imagens_ruidosas.png}
+		\caption{Comparação dos resultados de filtragem com 40 imagens ruidosas}
+		\label{fig:questao4_comparacao_valores_aleatorios_40imagens_ruidosas}
+	\end{figure}
+	
+	\begin{figure}[h!]
+		%\centering
+		\includegraphics[scale=0.55]{./pictures/questao4_comparacao_valores_aleatorios_50imagens_ruidosas.png}
+		\caption{Comparação dos resultados de filtragem com 50 imagens ruidosas}
+		\label{fig:questao4_comparacao_valores_aleatorios_50imagens_ruidosas}
+	\end{figure}
+	
+	\begin{figure}[h!]
+		%\centering
+		\includegraphics[scale=0.55]{./pictures/questao4_comparacao_valores_aleatorios_100imagens_ruidosas.png}
+		\caption{Comparação dos resultados de filtragem com 100 imagens ruidosas}
+		\label{fig:questao4_comparacao_valores_aleatorios_100imagens_ruidosas}
+	\end{figure}
+
+\section{Questão 5}
+
+	As Figuras \ref{fig:questao5_imagem1_sal_pim_30_comparacao_L3_dim3} e  \ref{fig:questao5_imagem1_sal_pim_70_comparacao_L3_dim3} mostram, respectivamente, uma comparação da filtragem do ruído sal e pimenta feita com filtro 2D Uniforme e filtro de Mediana (os parâmetros dos filtros estão descritos nas imagens) para $30\%, 70\%$ dos pixels corrompidos. Para uma análise mais detalhada, onde os parâmetros dos filtros são alterados de forma gradual com o intuito de analisar os resultados, o valor de $50\%$ de pixels corrompidos foi escolhidos, Figura \ref{fig:questao5_imagem1_sal_pim_50}. 
+	
+	Os parâmetros ajustados dos filtros foram $L$, para o filtro 2D Uniforme e $d$, dimensão da matriz do filtro de mediana. As Figuras \ref{fig:questao5_imagem1_sal_pim_50_comparacao_L3_dim3}, \ref{fig:questao5_imagem1_sal_pim_50_comparacao_L5_dim5}, \ref{fig:questao5_imagem1_sal_pim_50_comparacao_L7_dim7} e  \ref{fig:questao5_imagem1_sal_pim_50_comparacao_L9_dim9} mostram, respecitvamente, os resultados para $ L = 3/  d = 3$,  $ L = 5 / d = 5$,  $ L = 7 / d = 7$ e $ L = 9 / d = 9$. Analisando o resultado do filtro de mediana, nota-se que a partir da Figura \ref{fig:questao5_imagem1_sal_pim_50_comparacao_L7_dim7} se obtém um resultado satisfatorio do ponto de vista visual e embora as duas imagens subsequeentes apresentem melhoras significativas em relação à filtragem do ruído, elas também filtram as altas frequências da imagem fazendo com que esta perca suas informações de borda, causando assim uma suavização na imagem, o que em alguns casos é indesejado. Para esta imagem específica o último filtro utilizado filtrou quase $100\%$ do ruído e causou uma suavização na imagem sem perda de informação.
+	
+	O filtro 2D uniforme não apresentou resultado satisfatorio, pois embora conseguisse filtar o ruído pimenta, não é capaz de filtrar o ruído sal com nenhum dos parâmetros utilizados, resultando em imagens degradadas com ruído e para os altos valores de $L$, em imagens sem definições de borda devido à filtragem das altas frequências.
+	
+
+	
+	\begin{figure}[h!]
+		%\centering
+		\includegraphics[scale=0.55]{./pictures/questao5_imagem1_sal_pim_30_comparacao_L3_dim3.png}
+		\caption{Comparação dos resultados de filtragem do ruído sal e pimenta usando filtro de mediana e 2D uniforme com $30\%$ dos pixels corrompidos}
+		\label{fig:questao5_imagem1_sal_pim_30_comparacao_L3_dim3}
+	\end{figure}
+	
+	\begin{figure}[h!]
+		%\centering
+		\includegraphics[scale=0.55]{./pictures/questao5_imagem1_sal_pim_70_comparacao_L3_dim3.png}
+		\caption{Comparação dos resultados de filtragem do ruído sal e pimenta usando filtro de mediana e 2D uniforme com $70\%$ dos pixels corrompidos }
+		\label{fig:questao5_imagem1_sal_pim_70_comparacao_L3_dim3}
+	\end{figure}
+	
+	
+	\begin{figure}[h!]
+		%\centering
+		\includegraphics[scale=0.55]{./pictures/questao5_imagem1_sal_pim_50.png}
+		\caption{Imagem com $50\%$ dos pixels corrompidos }
+		\label{fig:questao5_imagem1_sal_pim_50}
+	\end{figure}
+	
+	\begin{figure}[h!]
+		%\centering
+		\includegraphics[scale=0.55]{./pictures/questao5_imagem1_sal_pim_50_comparacao_L3_dim3.png}
+		\caption{Comparação dos resultados de filtragem do ruído sal e pimenta usando filtro de mediana e 2D uniforme com $50\%$ dos pixels corrompidos }
+		\label{fig:questao5_imagem1_sal_pim_50_comparacao_L3_dim3}
+	\end{figure}
+	
+	\begin{figure}[h!]
+		%\centering
+		\includegraphics[scale=0.55]{./pictures/questao5_imagem1_sal_pim_50_comparacao_L5_dim5.png}
+		\caption{Comparação dos resultados de filtragem do ruído sal e pimenta usando filtro de mediana e 2D uniforme com $50\%$ dos pixels corrompidos }
+		\label{fig:questao5_imagem1_sal_pim_50_comparacao_L5_dim5}
+	\end{figure}
+	
+	\begin{figure}[h!]
+		%\centering
+		\includegraphics[scale=0.55]{./pictures/questao5_imagem1_sal_pim_50_comparacao_L7_dim7.png}
+		\caption{Comparação dos resultados de filtragem do ruído sal e pimenta usando filtro de mediana e 2D uniforme com $50\%$ dos pixels corrompidos }
+		\label{fig:questao5_imagem1_sal_pim_50_comparacao_L7_dim7}
+	\end{figure}
+	
+	\begin{figure}[h!]
+		%\centering
+		\includegraphics[scale=0.55]{./pictures/questao5_imagem1_sal_pim_50_comparacao_L9_dim9.png}
+		\caption{Comparação dos resultados de filtragem do ruído sal e pimenta usando filtro de mediana e 2D uniforme com $50\%$ dos pixels corrompidos }
+		\label{fig:questao5_imagem1_sal_pim_50_comparacao_L9_dim9}
+	\end{figure}
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+	
+\end{document}

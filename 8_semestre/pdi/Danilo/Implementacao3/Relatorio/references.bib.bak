@@ -1,0 +1,15 @@
+@BOOKLET{GSM,
+author = {},
+title = {GSM World },
+month = may,
+year = {2014},
+howpublished = {\url{www.gsmworld.com}}
+},
+
+@MISC{CDMA,
+author = {},
+title = {CDMA},
+month = may,
+year = {2014},
+howpublished = {\url{http://www.phonescoop.com/glossary/term.php?gid=8}}
+}
