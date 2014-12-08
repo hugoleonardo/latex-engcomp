@@ -1,0 +1,15 @@
+@MISC {jonesalbuquerque2014,
+    author       = "Jones Albuquerque",
+    title        = "Análise de Complexidade de Algoritmos",
+    howpublished = "{\url{http://www.cin.ufpe.br/~joa/menu_options/school/cursos/ppd/aulas/complexidade.pdf}}",
+    month        = "aug",
+    year         = "2014"
+}
+
+@MISC {carlosbarrico2014,
+    author       = "Carlos Barrico",
+    title        = "Análise de COmplexidade",
+    howpublished = "{\url{http://www.di.ubi.pt/~cbarrico/Disciplinas/AlgoritmosEstruturasDados/Downloads/Teorica_AnaliseComplexidade.pdf}}",
+    month        = "nov",
+    year         = "2014"
+}

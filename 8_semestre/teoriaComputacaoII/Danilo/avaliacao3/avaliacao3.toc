@@ -1,0 +1,7 @@
+\contentsline {section}{\numberline {1}Introdu\c c\~ao}{2}
+\contentsline {subsection}{\numberline {1.1}A import\^ancia do problema}{2}
+\contentsline {section}{\numberline {2}Defini\c c\~oes}{2}
+\contentsline {subsection}{\numberline {2.1}P e NP}{2}
+\contentsline {subsection}{\numberline {2.2}Teoria da Intratabilidade x Teoria da indecidibilidade}{2}
+\contentsline {section}{\numberline {3}P \textit {versus} NP}{2}
+\contentsline {section}{\numberline {4}Conclus\~ao}{2}
