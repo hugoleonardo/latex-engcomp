@@ -38,6 +38,9 @@ cluster_prominence = 0;
 mean_i = 0;
 mean_j = 0;
 
+
+%%%% Declaração das matrizes que irão receber as imagens para cada
+%%%% característica
 contrast_img(M-window_size,N-window_size) = 0;
 inv_dif_img(M-window_size,N-window_size) = 0;
 inv_dif_mom_img(M-window_size,N-window_size) = 0;
