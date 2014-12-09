@@ -1,4 +1,4 @@
-function [ contrast_img_norm, homogeneity_img_norm, energy_img_norm, inv_dif_img_norm, inv_dif_mom_img_norm, dissimilarity_img_norm, cluster_shade_img_norm, cluster_prominence_img_norm ] = calculate_feature(image, theta, window_size)
+function [ contrast_img_norm, homogeneity_img_norm, energy_img_norm, inv_dif_img_norm, inv_dif_mom_img_norm, dissimilarity_img_norm, cluster_shade_img_norm, cluster_prominence_img_norm, correlation_img_norm ] = calculate_feature(image, theta, window_size)
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
 
