@@ -223,6 +223,7 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
         dp_i = 0;
         dp_j = 0;
         entropy = 0;
+        correlation = 0;
         
         glcm_win = zeros(NLevels, NLevels);
         glcm_win_norm = zeros(NLevels, NLevels);
