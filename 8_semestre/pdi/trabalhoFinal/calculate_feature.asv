@@ -1,4 +1,4 @@
-function [ contrast_img_norm, homogeneity_img_norm, energy_img_norm, inv_dif_img_norm, inv_dif_mom_img_norm, dissimilarity_img_norm, cluster_shade_img_norm, cluster_prominence_img_norm, correlation_img_norm, entropy_img_norm, max_prob_img_norm ] = calculate_feature(image, theta, window_size)
+function [ contrast_img_norm, homogeneity_img_norm, energy_img_norm, inv_dif_img_norm, inv_dif_mom_img_norm, dissimilarity_img_norm, cluster_shade_img_norm, cluster_prominence_img_norm, correlation_img_norm, entropy_img_norm ] = calculate_feature(image, theta, window_size)
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -54,7 +54,7 @@ cluster_prominence_img(M-window_size,N-window_size) = 0;
 correlation_img(M-window_size,N-window_size) = 0;
 energy_img(M-window_size,N-window_size) = 0;
 entropy_img(M-window_size,N-window_size) = 0;
-max_prob_img(M-window_size,N-window_size) = 0;
+
 %Calculating the GLCM matrix using window
 for i=round(window_size/2):M-(round(window_size/2)-1)
     for j=round(window_size/2):N-(round(window_size/2)-1)
@@ -196,7 +196,6 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
             end
         end
         
-        max_prob = max((glcm_win_norm(k,g)));
         
         
         contrast_img(i-((round(window_size/2))-1),j-((round(window_size/2))-1)) = contrast;
@@ -209,7 +208,7 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
         inv_dif_img(i-((round(window_size/2))-1),j-((round(window_size/2))-1)) = inv_dif;
         inv_dif_mom_img(i-((round(window_size/2))-1),j-((round(window_size/2))-1)) = inv_dif_mom;     
         entropy_img(i-((round(window_size/2))-1),j-((round(window_size/2))-1)) = -entropy;
-        max_prob_img(i-((round(window_size/2))-1),j-((round(window_size/2))-1)) = max_prob;
+        max_prob_img = max((glcm_win_norm(k,g)));
         
         energy = 0;
         inv_dif = 0;
@@ -225,7 +224,6 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
         dp_j = 0;
         entropy = 0;
         correlation = 0;
-        max_prob = 0;
         
         glcm_win = zeros(NLevels, NLevels);
         glcm_win_norm = zeros(NLevels, NLevels);
@@ -274,7 +272,7 @@ disp('Normalizou o momento da diferença inversa');
 entropy_img_norm = normaliza(entropy_img, M, N, window_size);
 
 % Normalizing the GLCM max probability matrix 
-max_prob_img_norm = normaliza(max_prob_img, M, N, window_size);
-disp('Normalizou a máxima probabilidade');
+contrast_img_norm = normaliza(max_img, M, N, window_size);
+disp('Normalizou o contraste');
 end
 
