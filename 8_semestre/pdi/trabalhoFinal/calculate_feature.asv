@@ -82,8 +82,6 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
                     homogeneity =  (glcm_win_norm(k,g))^2 + homogeneity; % homogeneity calculation
                     mean_i = k*(glcm_win_norm(k,g)) + mean_i; % Mean x-direction calculation
                     mean_j = g*(glcm_win_norm(k,g)) + mean_j; % Mean y-direction calculation
-                    dp_i = sqrt( (k - mean_i)^2*glcm_win_norm(k,g) );
-                    dp_j = sqrt( (k - mean_j)^2*glcm_win_norm(k,g) );
                 end
             end
             disp('Normalizou o pixel e calculou as caracteristicas');
@@ -113,8 +111,6 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
                     homogeneity =  (glcm_win_norm(k,g))^2 + homogeneity; % homogeneity calculation
                     mean_i = k*(glcm_win_norm(k,g)) + mean_i; % Mean x-direction calculation
                     mean_j = g*(glcm_win_norm(k,g)) + mean_j; % Mean y-direction calculation
-                    dp_i = sqrt( (k - mean_i)^2*glcm_win_norm(k,g) );
-                    dp_j = sqrt( (k - mean_j)^2*glcm_win_norm(k,g) );
                 end
             end
         else if theta == 2
@@ -143,8 +139,6 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
                     homogeneity =  (glcm_win_norm(k,g))^2 + homogeneity; % homogeneity calculation
                     mean_i = k*(glcm_win_norm(k,g)) + mean_i; % Mean x-direction calculation
                     mean_j = g*(glcm_win_norm(k,g)) + mean_j; % Mean y-direction calculation
-                    dp_i = sqrt( (k - mean_i)^2*glcm_win_norm(k,g) );
-                    dp_j = sqrt( (k - mean_j)^2*glcm_win_norm(k,g) );
                 end
             end 
         else if theta == 3
@@ -173,8 +167,6 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
                     homogeneity =  (glcm_win_norm(k,g))^2 + homogeneity; % homogeneity calculation
                     mean_i = k*(glcm_win_norm(k,g)) + mean_i; % Mean x-direction calculation
                     mean_j = g*(glcm_win_norm(k,g)) + mean_j; % Mean y-direction calculation
-                    dp_i = sqrt( (k - mean_i)^2*glcm_win_norm(k,g) );
-                    dp_j = sqrt( (k - mean_j)^2*glcm_win_norm(k,g) );
                 end
             end 
             end
@@ -185,7 +177,6 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
             for g=1:NLevels
                 cluster_shade = (((k+g-(mean_i)-(mean_j))^3)*(glcm_win_norm(k,g))) + cluster_shade;
                 cluster_prominence = (((k+g-(mean_i)-(mean_j))^4)*(glcm_win_norm(k,g))) + cluster_prominence;
-                correlation = (k-mean_i)*(g-mean_j)*glcm_win_norm(k,g)/(dp_i*dp_j);
             end
         end
         
@@ -196,7 +187,6 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
         dissimilarity_img(i-((round(window_size/2))-1),j-((round(window_size/2))-1)) = dissimilarity;
         cluster_shade_img(i-((round(window_size/2))-1),j-((round(window_size/2))-1)) = cluster_shade;
         cluster_prominence_img(i-((round(window_size/2))-1),j-((round(window_size/2))-1)) = cluster_prominence;
-        correlation_img(i-((round(window_size/2))-1),j-((round(window_size/2))-1)) = correlation;
         energy_img(i-((round(window_size/2))-1),j-((round(window_size/2))-1)) = energy;
         inv_dif_img(i-((round(window_size/2))-1),j-((round(window_size/2))-1)) = inv_dif;
         inv_dif_mom_img(i-((round(window_size/2))-1),j-((round(window_size/2))-1)) = inv_dif_mom;
@@ -211,9 +201,6 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
         homogeneity = 0;
         mean_i = 0;
         mean_j = 0;
-        dp_i = 0;
-        dp_j = 0;
-        corre
         
         glcm_win = zeros(NLevels, NLevels);
         glcm_win_norm = zeros(NLevels, NLevels);
@@ -237,9 +224,6 @@ disp('Normalizou o cluster shade');
 % Normalizing the GLCM cluster prominence shade matrix 
 cluster_prominence_img_norm = normaliza(cluster_prominence_img, M, N, window_size);
 disp('Normalizou o cluster prominence');
-
-% Normalizing the GLCM correlation matrix
-correlation_img_norm = normaliza(correlation_img, M, N, window_size);
 
 % Normalizing the GLCM energy matrix 
 energy_img_norm = normaliza(energy_img, M, N, window_size);
