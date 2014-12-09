@@ -35,6 +35,8 @@ inv_dif = 0;
 inv_dif_mom = 0;
 cluster_shade = 0;
 cluster_prominence = 0;
+entropy = 0;
+max_prob = 0;
 mean_i = 0;
 mean_j = 0;
 dp_i = 0;
@@ -51,6 +53,7 @@ cluster_shade_img(M-window_size,N-window_size) = 0;
 cluster_prominence_img(M-window_size,N-window_size) = 0;
 correlation_img(M-window_size,N-window_size) = 0;
 energy_img(M-window_size,N-window_size) = 0;
+entropy_img(M-window_size,N-window_size) = 0;
 
 %Calculating the GLCM matrix using window
 for i=round(window_size/2):M-(round(window_size/2)-1)
@@ -84,6 +87,7 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
                     mean_j = g*(glcm_win_norm(k,g)) + mean_j; % Mean y-direction calculation
                     dp_i = sqrt( (k - mean_i)^2*glcm_win_norm(k,g) );
                     dp_j = sqrt( (k - mean_j)^2*glcm_win_norm(k,g) );
+                    entropy = -sum(sum(glcm_win_norm(k,g))*log((glcm_win_norm(k,g))));
                 end
             end
             disp('Normalizou o pixel e calculou as caracteristicas');
@@ -115,6 +119,7 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
                     mean_j = g*(glcm_win_norm(k,g)) + mean_j; % Mean y-direction calculation
                     dp_i = sqrt( (k - mean_i)^2*glcm_win_norm(k,g) );
                     dp_j = sqrt( (k - mean_j)^2*glcm_win_norm(k,g) );
+                    entropy = -sum(sum(glcm_win_norm(k,g))*log((glcm_win_norm(k,g))));
                 end
             end
         else if theta == 2
@@ -145,6 +150,7 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
                     mean_j = g*(glcm_win_norm(k,g)) + mean_j; % Mean y-direction calculation
                     dp_i = sqrt( (k - mean_i)^2*glcm_win_norm(k,g) );
                     dp_j = sqrt( (k - mean_j)^2*glcm_win_norm(k,g) );
+                    entropy = -sum(sum(glcm_win_norm(k,g))*log((glcm_win_norm(k,g))));
                 end
             end 
         else if theta == 3
@@ -175,6 +181,7 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
                     mean_j = g*(glcm_win_norm(k,g)) + mean_j; % Mean y-direction calculation
                     dp_i = sqrt( (k - mean_i)^2*glcm_win_norm(k,g) );
                     dp_j = sqrt( (k - mean_j)^2*glcm_win_norm(k,g) );
+                    entropy = -sum(sum(glcm_win_norm(k,g))*log((glcm_win_norm(k,g))));
                 end
             end 
             end
@@ -199,7 +206,9 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
         correlation_img(i-((round(window_size/2))-1),j-((round(window_size/2))-1)) = correlation;
         energy_img(i-((round(window_size/2))-1),j-((round(window_size/2))-1)) = energy;
         inv_dif_img(i-((round(window_size/2))-1),j-((round(window_size/2))-1)) = inv_dif;
-        inv_dif_mom_img(i-((round(window_size/2))-1),j-((round(window_size/2))-1)) = inv_dif_mom;
+        inv_dif_mom_img(i-((round(window_size/2))-1),j-((round(window_size/2))-1)) = inv_dif_mom;     
+        entropy_img(i-((round(window_size/2))-1),j-((round(window_size/2))-1)) = entropy;
+        max_prob = max((glcm_win_norm(k,g)));
         
         energy = 0;
         inv_dif = 0;
@@ -213,7 +222,7 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
         mean_j = 0;
         dp_i = 0;
         dp_j = 0;
-        corre
+        entropy = 0;
         
         glcm_win = zeros(NLevels, NLevels);
         glcm_win_norm = zeros(NLevels, NLevels);
@@ -256,6 +265,9 @@ disp('Normalizou a diferença inversa');
 % Normalizing the GLCM inverse difference moment matrix 
 inv_dif_mom_img_norm = normaliza(inv_dif_mom_img, M, N, window_size);
 disp('Normalizou o momento da diferença inversa');
+
+% Normalizing the GLCM entropy matrix 
+entropy_img_norm = normaliza(entropy_img, M, N, window_size);
 
 end
 
