@@ -38,6 +38,7 @@ inv_dif = 0;
 inv_dif_mom = 0;
 cluster_shade = 0;
 cluster_prominence = 0;
+correlation = 0;
 entropy = 0;
 max_prob = 0;
 mean_i = 0;
@@ -88,8 +89,8 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
                     %homogeneity =  (glcm_win_norm(k,g))^2 + homogeneity; % homogeneity calculation
                     mean_i = k*(glcm_win_norm(k,g)) + mean_i; % Mean x-direction calculation
                     mean_j = g*(glcm_win_norm(k,g)) + mean_j; % Mean y-direction calculation
-                    dp_i = sqrt( (k - mean_i)^2*glcm_win_norm(k,g) );
-                    dp_j = sqrt( (g - mean_j)^2*glcm_win_norm(k,g) );
+                    dp_i = sqrt( (k - mean_i)^2*glcm_win_norm(k,g) ) + dp_i;
+                    dp_j = sqrt( (g - mean_j)^2*glcm_win_norm(k,g) ) + dp_j;
                     entropy = (glcm_win_norm(k,g)*log(glcm_win_norm(k,g)+cte)) + entropy; % entropy calculation
                 end
             end
@@ -120,8 +121,8 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
                     homogeneity =  (glcm_win_norm(k,g))^2 + homogeneity; % homogeneity calculation
                     mean_i = k*(glcm_win_norm(k,g)) + mean_i; % Mean x-direction calculation
                     mean_j = g*(glcm_win_norm(k,g)) + mean_j; % Mean y-direction calculation
-                    dp_i = sqrt( (k - mean_i)^2*glcm_win_norm(k,g) );
-                    dp_j = sqrt( (g - mean_j)^2*glcm_win_norm(k,g) );
+                    dp_i = sqrt( (k - mean_i)^2*glcm_win_norm(k,g) ) + dp_i;
+                    dp_j = sqrt( (g - mean_j)^2*glcm_win_norm(k,g) ) + dp_j;
                     entropy = glcm_win_norm(k,g)*log(glcm_win_norm(k,g)+cte) + entropy; % entropy calculation
                 end
             end
@@ -151,8 +152,8 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
                     homogeneity =  (glcm_win_norm(k,g))^2 + homogeneity; % homogeneity calculation
                     mean_i = k*(glcm_win_norm(k,g)) + mean_i; % Mean x-direction calculation
                     mean_j = g*(glcm_win_norm(k,g)) + mean_j; % Mean y-direction calculation
-                    dp_i = sqrt( (k - mean_i)^2*glcm_win_norm(k,g) );
-                    dp_j = sqrt( (g - mean_j)^2*glcm_win_norm(k,g) );
+                    dp_i = sqrt( (k - mean_i)^2*glcm_win_norm(k,g) ) + dp_i;
+                    dp_j = sqrt( (g - mean_j)^2*glcm_win_norm(k,g) ) + dp_j;
                     entropy = glcm_win_norm(k,g)*log(glcm_win_norm(k,g)+cte) + entropy; % entropy calculation
                 end
             end 
@@ -182,8 +183,8 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
                     homogeneity =  (glcm_win_norm(k,g))^2 + homogeneity; % homogeneity calculation
                     mean_i = k*(glcm_win_norm(k,g)) + mean_i; % Mean x-direction calculation
                     mean_j = g*(glcm_win_norm(k,g)) + mean_j; % Mean y-direction calculation
-                    dp_i = sqrt( (k - mean_i)^2*glcm_win_norm(k,g) );
-                    dp_j = sqrt( (g - mean_j)^2*glcm_win_norm(k,g) );
+                    dp_i = sqrt( (k - mean_i)^2*glcm_win_norm(k,g) ) + dp_i;
+                    dp_j = sqrt( (g - mean_j)^2*glcm_win_norm(k,g) ) + dp_j;
                     entropy = glcm_win_norm(k,g)*log(glcm_win_norm(k,g)+cte) + entropy; % entropy calculation
                 end
             end 
@@ -255,6 +256,7 @@ disp('Normalizou o cluster prominence');
 
 % Normalizing the GLCM correlation matrix
 correlation_img_norm = normaliza(correlation_img, M, N, window_size);
+disp('Normalizou a correlação');
 
 % Normalizing the GLCM energy matrix 
 energy_img_norm = normaliza(energy_img, M, N, window_size);
