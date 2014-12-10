@@ -192,8 +192,8 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
         end
         for k=1:NLevels
             for g=1:NLevels
-                %cluster_shade = (((k+g-(mean_i)-(mean_j))^3)*(glcm_win_norm(k,g))) + cluster_shade;
-                %cluster_prominence = (((k+g-(mean_i)-(mean_j))^4)*(glcm_win_norm(k,g))) + cluster_prominence;
+                cluster_shade = (((k+g-(mean_i)-(mean_j))^3)*(glcm_win_norm(k,g))) + cluster_shade;
+                cluster_prominence = (((k+g-(mean_i)-(mean_j))^4)*(glcm_win_norm(k,g))) + cluster_prominence;
                 correlation = ((k-mean_i)*(g-mean_j)*glcm_win_norm(k,g))/(dp_i*dp_j) + correlation;
                 contrast = ((abs(k-g))^2)*contrast_temp + contrast;
             end
