@@ -1,4 +1,4 @@
-function [ contrast_img_norm, homogeneity_img_norm, energy_img_norm, inv_dif_img_norm, inv_dif_mom_img_norm, dissimilarity_img_norm, cluster_shade_img_norm, cluster_prominence_img_norm, correlation_img_norm, entropy_img_norm, max_prob_img_norm ] = calculate_feature(image, theta, window_size)
+function [ contrast_img_norm, homogeneity_img_norm, energy_img_norm, inv_dif_img_norm, inv_dif_mom_img_norm, dissimilarity_img_norm, cluster_shade_img_norm, cluster_prominence_img_norm, correlation_img_norm, entropy_img_norm, max_prob_img_norm, soma_avg_img_norm, soma_entropia_img_norm, soma_variancia_img_norm, diferenca_entropia_img_norm, diferenca_variancia_img_norm ] = calculate_feature(image, theta, window_size)
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -8,7 +8,7 @@ mosaic = imread(image);
 %theta  % direction; 0 = 0º || 1 = 45º || 2 = 90º || 3 = 135º
 D = 1; % Distance bwtween the reference and neighbor pixel to compute the GLCM
 NLevels = 16; % number of gray levels to calculate the GLCM matrix
-cte = 0.36 % COnstante usada no cálculo da Entropia log(0.36) ~= 1
+cte = 0.36; % COnstante usada no cálculo da Entropia log(0.36) ~= 1
 %treshold_contrast = 0.434;
 %treshold_homogeneity = 0.231;
 %treshold_cluster = 0.578;
@@ -26,6 +26,16 @@ end
 
 % Features calculation
 
+soma_temp = 0;
+diferenca_temp = 0;
+soma_avg = 0;
+soma_entropia = 0;
+soma_variancia = 0;
+diferenca_media = 0;
+diferenca_variancia = 0;
+diferenca_entropia = 0;
+soma = zeros(1,2*NLevels);
+diferenca = zeros(1,NLevels);
 glcm_win = zeros(NLevels, NLevels);
 glcm_win_norm = zeros(NLevels, NLevels);
 contrast = 0;
@@ -48,6 +58,11 @@ dp_j = 0;
 
 %%%% Declaração das matrizes que irão receber as imagens para cada
 %%%% característica
+soma_avg_img(M-window_size,N-window_size) = 0;
+soma_entropia_img(M-window_size,N-window_size) = 0;
+soma_variancia_img(M-window_size,N-window_size) = 0;
+diferenca_variancia_img(M-window_size,N-window_size) = 0;
+diferenca_entropia_img(M-window_size,N-window_size) = 0;
 contrast_img(M-window_size,N-window_size) = 0;
 inv_dif_img(M-window_size,N-window_size) = 0;
 inv_dif_mom_img(M-window_size,N-window_size) = 0;
@@ -91,6 +106,10 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
                     dp_i = sqrt( (k - mean_i)^2*glcm_win_norm(k,g) ) + dp_i;
                     dp_j = sqrt( (g - mean_j)^2*glcm_win_norm(k,g) ) + dp_j;
                     entropy = (glcm_win_norm(k,g)*log(glcm_win_norm(k,g)+cte)) + entropy; % entropy calculation
+                    soma_temp = glcm_win_norm(k,g) + soma_temp;
+                    soma(1,k+g) = soma_temp;
+                    diferenca_temp = glcm_win_norm(k,g) + diferenca_temp;
+                    diferenca(1,abs(k-g)+1) = diferenca_temp;
                 end
             end
         else if theta == 1
@@ -122,6 +141,10 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
                     dp_i = sqrt( (k - mean_i)^2*glcm_win_norm(k,g) ) + dp_i;
                     dp_j = sqrt( (g - mean_j)^2*glcm_win_norm(k,g) ) + dp_j;
                     entropy = glcm_win_norm(k,g)*log(glcm_win_norm(k,g)+cte) + entropy; % entropy calculation
+                    soma_temp = glcm_win_norm(k,g) + soma_temp;
+                    soma(1,k+g) = soma_temp;
+                    diferenca_temp = glcm_win_norm(k,g) + diferenca_temp;
+                    diferenca(1,abs(k-g)+1) = diferenca_temp;
                 end
             end
         else if theta == 2
@@ -153,6 +176,10 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
                     dp_i = sqrt( (k - mean_i)^2*glcm_win_norm(k,g) ) + dp_i;
                     dp_j = sqrt( (g - mean_j)^2*glcm_win_norm(k,g) ) + dp_j;
                     entropy = glcm_win_norm(k,g)*log(glcm_win_norm(k,g)+cte) + entropy; % entropy calculation
+                    soma_temp = glcm_win_norm(k,g) + soma_temp;
+                    soma(1,k+g) = soma_temp;
+                    diferenca_temp = glcm_win_norm(k,g) + diferenca_temp;
+                    diferenca(1,abs(k-g)+1) = diferenca_temp;
                 end
             end 
         else if theta == 3
@@ -184,6 +211,10 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
                     dp_i = sqrt( (k - mean_i)^2*glcm_win_norm(k,g) ) + dp_i;
                     dp_j = sqrt( (g - mean_j)^2*glcm_win_norm(k,g) ) + dp_j;
                     entropy = glcm_win_norm(k,g)*log(glcm_win_norm(k,g)+cte) + entropy; % entropy calculation
+                    soma_temp = glcm_win_norm(k,g) + soma_temp;
+                    soma(1,k+g) = soma_temp;
+                    diferenca_temp = glcm_win_norm(k,g) + diferenca_temp;
+                    diferenca(1,abs(k-g)+1) = diferenca_temp;
                 end
             end 
             end
@@ -197,6 +228,22 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
                 correlation = ((k-mean_i)*(g-mean_j)*glcm_win_norm(k,g))/(dp_i*dp_j) + correlation;
                 contrast = ((abs(k-g))^2)*contrast_temp + contrast;
             end
+        end
+        
+        
+        for p=2:2*NLevels
+            soma_avg = (p*(soma(1,p))) + soma_avg;
+            soma_entropia = (soma(1,p)*log((soma(1,p))+cte)) + soma_entropia;
+            soma_variancia = ((p - soma_entropia)^2)*soma(1,p) +  soma_variancia;
+        end
+        
+        for p=1:NLevels
+            diferenca_entropia = (diferenca(1,p)*log(diferenca(1,p)+cte)) + diferenca_entropia;
+            diferenca_media = p*diferenca(1,p) + diferenca_media;
+        end
+        
+        for p=1:NLevels
+            diferenca_variancia = ((p-diferenca_media)^2)*diferenca(1,p) + diferenca_variancia;
         end
         
         max_prob = max(max(glcm_win_norm));
@@ -213,6 +260,11 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
         inv_dif_mom_img(i-((round(window_size/2))-1),j-((round(window_size/2))-1)) = inv_dif_mom;     
         entropy_img(i-((round(window_size/2))-1),j-((round(window_size/2))-1)) = entropy;
         max_prob_img(i-((round(window_size/2))-1),j-((round(window_size/2))-1)) = max_prob;
+        soma_avg_img(i-((round(window_size/2))-1),j-((round(window_size/2))-1)) = soma_avg;
+        soma_entropia_img(i-((round(window_size/2))-1),j-((round(window_size/2))-1)) = soma_entropia;
+        soma_variancia_img(i-((round(window_size/2))-1),j-((round(window_size/2))-1)) = soma_variancia;
+        diferenca_entropia_img(i-((round(window_size/2))-1),j-((round(window_size/2))-1)) = diferenca_entropia;
+        diferenca_variancia_img(i-((round(window_size/2))-1),j-((round(window_size/2))-1)) = diferenca_variancia;
         
         energy = 0;
         inv_dif = 0;
@@ -230,6 +282,14 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
         entropy = 0;
         correlation = 0;
         max_prob = 0;
+        soma_temp = 0;
+        diferenca_temp = 0;
+        soma_avg = 0;
+        soma_entropia = 0;
+        soma_variancia = 0;
+        diferenca_entropia = 0;
+        diferenca_variancia = 0;
+        diferenca_media = 0;
         
         glcm_win = zeros(NLevels, NLevels);
         glcm_win_norm = zeros(NLevels, NLevels);
@@ -238,35 +298,67 @@ end
 
 % Normalizing the GLCM contrast matrix 
 contrast_img_norm = normaliza(contrast_img, M, N, window_size);
+imwrite(contrast_img_norm, 'mosaic3_theta45_window5_contrast.png');
 
 % Normalizing the GLCM homogeneity matrix 
 homogeneity_img_norm = normaliza(homogeneity_img, M, N, window_size);
+imwrite(homogeneity_img_norm, 'mosaic3_theta45_window5_homogeneity.png');
 
 % Normalizing the GLCM cluster shade shade matrix 
 cluster_shade_img_norm = normaliza(cluster_shade_img, M, N, window_size);
+imwrite(cluster_shade_img, 'mosaic3_theta45_window5_cluster_shade.png');
 
 % Normalizing the GLCM cluster prominence shade matrix 
 cluster_prominence_img_norm = normaliza(cluster_prominence_img, M, N, window_size);
+imwrite(cluster_prominence_img, 'mosaic3_theta45_window5_cluster_prominence.png');
 
 % Normalizing the GLCM correlation matrix
 correlation_img_norm = normaliza(correlation_img, M, N, window_size);
+imwrite(correlation_img_norm, 'mosaic3_theta45_window5_correlation_img.png');
 
 % Normalizing the GLCM energy matrix 
 energy_img_norm = normaliza(energy_img, M, N, window_size);
+imwrite(energy_img_norm, 'mosaic3_theta45_window5_energy_img.png');
 
 % Normalizing the GLCM dissimilarity matrix 
 dissimilarity_img_norm = normaliza(dissimilarity_img, M, N, window_size);
+imwrite(dissimilarity_img_norm, 'mosaic3_theta45_window5_dissimilarity.png');
 
 % Normalizing the GLCM inverse difference matrix 
 inv_dif_img_norm = normaliza(inv_dif_img, M, N, window_size);
+imwrite(inv_dif_img_norm, 'mosaic3_theta45_window5_inv_dif.png');
 
 % Normalizing the GLCM inverse difference moment matrix 
 inv_dif_mom_img_norm = normaliza(inv_dif_mom_img, M, N, window_size);
+imwrite(inv_dif_mom_img_norm, 'mosaic3_theta45_window5_inv_dif_mom.png');
 
 % Normalizing the GLCM entropy matrix 
 entropy_img_norm = normaliza(entropy_img, M, N, window_size);
+imwrite(entropy_img_norm, 'mosaic3_theta45_window5_entropy.png');
+
 % Normalizing the GLCM max probability matrix 
 max_prob_img_norm = normaliza(max_prob_img, M, N, window_size);
+imwrite(max_prob_img_norm, 'mosaic3_theta45_window5_max_prob.png');
+
+% Normalizing the GLCM sum average matrix 
+soma_avg_img_norm = normaliza(soma_avg_img, M, N, window_size);
+imwrite(soma_avg_img_norm, 'mosaic3_theta45_window5_soma_avg.png');
+
+% Normalizing the GLCM sum entropy matrix 
+soma_entropia_img_norm = normaliza(soma_entropia_img, M, N, window_size);
+imwrite(soma_entropia_img_norm, 'mosaic3_theta45_window5_soma_entropia.png');
+
+% Normalizing the GLCM difference entropy matrix 
+diferenca_entropia_img_norm = normaliza(diferenca_entropia_img, M, N, window_size);
+imwrite(diferenca_entropia_img_norm, 'mosaic3_theta45_window5_diferenca_entropia.png');
+
+% Normalizing the GLCM sum entropy matrix 
+soma_variancia_img_norm = normaliza(soma_variancia_img, M, N, window_size);
+imwrite(soma_variancia_img_norm, 'mosaic3_theta45_window5_soma_variancia.png');
+
+% Normalizing the GLCM sum entropy matrix 
+diferenca_variancia_img_norm = normaliza(diferenca_variancia_img, M, N, window_size);
+imwrite(diferenca_variancia_img_norm, 'mosaic3_theta45_window5_diferenca_variancia.png');
 
 end
 
