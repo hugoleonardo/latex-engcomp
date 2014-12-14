@@ -1,32 +1,43 @@
-function [ feature, feature1_2 ] = smoothing_danilo( imagem1, imagem2, window_size )
+function [ feature, feature_s, feature_s_norm, feature_s_norm_avg ] = smoothing_danilo( imagem1, imagem2, window_size )
 %UNTITLED Summary of this function goes here
 %   Noise reduciton as descrideb in the article
 
-D = 1;
 feature1 = imread(imagem1);
 feature2 = imread(imagem2);
-[M N] = size(feature1);
-feature = zeros(M,N);
-%feature1_2 = zeros(M,N);
-%feature2_2 = zeros(M,N);
+[M, N] = size(feature1);
+temp = 0;
+feature_s_norm_avg(M-window_size,N-window_size) = 0;
+%feature = zeros(M,N);
 
-feature1 = normaliza(feature1, M, N, window_size);
-feature2 = normaliza(feature2, M, N, window_size);
+feature1 = im2double(feature1);
+feature2 = im2double(feature2);
+feature1 = normaliza(feature1, M, N);
+feature2 = normaliza(feature2, M, N);
 
-feature1_2 = feature1*(feature1);
-feature2_2 = feature2*(feature2);
-
-feature1_2 = normaliza(feature1, M, N, window_size);
+feature1 = feature1.*feature1;
+feature2 = feature2.*feature2;
 
 
-for i=M
-    for j=N
-        feature(i,j) = ((sqrt(2*(feature1_2(i,j)))) + ((sqrt(2*(feature2_2(i,j))))))/2;
+feature = (sqrt(2*feature1) + sqrt(2*feature2))/2;
+
+feature_s = filter2d(feature,window_size);
+feature_s_norm = normaliza(feature_s, M, N);
+
+for i=round(window_size/2):M-(round(window_size/2)-1)
+    for j=round(window_size/2):N-(round(window_size/2)-1)
+        for m=1:window_size
+            for n=1:window_size
+                temp = feature_s_norm((i-round(window_size/2))+m, (j-round(window_size/2))+n) + temp;
+            end
+        end
+        feature_s_norm_avg(i,j) = temp/(window_size*window_size);
+        temp = 0;
     end
 end
 
-%feature = padarray(feature,[((round(window_size/2))) ((round(window_size/2)))],0,'both');
-disp('echo');
+
+
+imwrite(feature_s_norm_avg, 'mosaic3_window5_smoothed_inv_dif.png');
 
 end
 
