@@ -1,12 +1,12 @@
-function [ img, imagem] = noise_reduction_danilo
+function [coeff, score] = noise_reduction_danilo
 %UNTITLED Summary of this function goes here
 %   Noise reduciton as descrideb in the article
 
-    imagem = imread(imagem1);
-    [M,N] = size(imagem);
-    imagem = im2double(imagem);
-    imagem = 128 - imagem;
-    imagem = normaliza(imagem,M ,N);
+    %imagem = imread(imagem1);
+    %[M,N] = size(imagem);
+    %imagem = im2double(imagem);
+    %imagem = 128 - imagem;
+    %imagem = normaliza(imagem,M ,N);
 
     tmp = imread('mosaic3_window5_smoothed_cluster_prominence.png');
     tmp(256,256)=0;
@@ -20,7 +20,7 @@ function [ img, imagem] = noise_reduction_danilo
     tmp = idct2(tmp);
     pca(2,:) = tmp(:);
     
-    tmp = imread('mosaic3_window5_smoothed_constrast.png');
+    tmp = imread('mosaic3_window5_smoothed_contrast.png');
     tmp(256,256)=0;
     tmp = dct2(tmp);
     tmp = idct2(tmp);
@@ -38,7 +38,7 @@ function [ img, imagem] = noise_reduction_danilo
     tmp = idct2(tmp);
     pca(5,:) = tmp(:);
     
-    tmp = imread('mosaic3_window5_smoothed_diferenca_varianciat.png');
+    tmp = imread('mosaic3_window5_smoothed_diferenca_variancia.png');
     tmp(256,256)=0;
     tmp = dct2(tmp);
     tmp = idct2(tmp);
@@ -103,6 +103,8 @@ function [ img, imagem] = noise_reduction_danilo
     tmp = dct2(tmp);
     tmp = idct2(tmp);
     pca(16,:) = tmp(:);
+    
+    [coeff, score] = princomp(pca');
     
     disp('maoe');
 end
