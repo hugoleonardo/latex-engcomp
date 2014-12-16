@@ -1,23 +1,7 @@
-function [out] = LagrangeGrau2(x, xi, y);
-%clear; clc;
-%x = zeros(1,3);
-%y = zeros(1,3);
+function [out] = LagrangeGrau2(x, xi, y)
 
-%for i=1:3
-%    fprintf('Digite o x%d\n',i);
-%    x(1,i) = input('');
-%end
-x
-%fprintf('Digite o valor inicial de x\n');
-%xi = input('');
+L0 = ( (x-xi(1,2))/(xi(1,1)-xi(1,2)) )*( (x-xi(1,3))/(xi(1,1)-xi(1,3)) );
+L1 = ( (x-xi(1,1))/(xi(1,2)-xi(1,1)) )*( (x-xi(1,3))/(xi(1,2)-xi(1,3)) );
+L2 = ( (x-xi(1,1))/(xi(1,3)-xi(1,1)) )*( (x-xi(1,2))/(xi(1,3)-xi(1,2)) );
 
-%for i=1:3
-%    fprintf('Digite o valor de y%d\n',i);
-%    y(1,i) = input('');
-%end
-
-l0 = ((xi-x(1,2))/(x(1,1)-x(1,2)))*((xi-x(1,3))/(x(1,1)-x(1,3)));
-l1 = ((xi-x(1,1))/(x(1,2)-x(1,1)))*((xi-x(1,3))/(x(1,2)-x(1,3)));
-l2 = ((xi-x(1,1))/(x(1,3)-x(1,1)))*((xi-x(1,2))/(x(1,3)-x(1,2)));
-
-out = (y(1,1)*l0)+(y(1,2)*l1)+(y(1,3)*l2);
+out = (y(1,1)*L0)+(y(1,2)*L1)+(y(1,3)*L2);
