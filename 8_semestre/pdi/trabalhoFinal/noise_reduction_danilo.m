@@ -1,3 +1,4 @@
+
 function [coeff, score] = noise_reduction_danilo
 %UNTITLED Summary of this function goes here
 %   Noise reduciton as descrideb in the article
@@ -109,6 +110,7 @@ function [coeff, score] = noise_reduction_danilo
     %plot(pcamat(17,:));
     pcamat2 = pcamat';
     
+
     %[coeff, score] = princomp(pcamat2);
     [~,score] = pca(pcamat2,'NumComponents',16);
     x = fitgmdist(score,4);
