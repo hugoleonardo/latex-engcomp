@@ -10,10 +10,10 @@ function [signals,PC,V] = pca1(data)
 mn = mean(data,2);
 data = data - repmat(mn,1,N);
 % calculate the covariance matrix
-covariance = 1 / (N-1) * data * data’;
+covariance = 1 / (N-1) * (data * data');
 % find the eigenvectors and eigenvalues
 [PC, V] = eig(covariance);
-13 http://www.mathworks.com13
+%13 http://www.mathworks.com13
 % extract diagonal of matrix as vector
 V = diag(V);
 % sort the variances in decreasing order
@@ -21,4 +21,4 @@ V = diag(V);
 V = V(rindices);
 PC = PC(:,rindices);
 % project the original data set
-signals = PC’ * data;
+signals = PC' * data;
