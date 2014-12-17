@@ -1,4 +1,4 @@
-function [coeff, score, latent, unknown, explained] = noise_reduction_danilo
+function [coeff, score, latent, unknown, explained, a, b, c] = noise_reduction_danilo
 %UNTITLED Summary of this function goes here
 %   Noise reduciton as descrideb in the article
 
@@ -109,6 +109,7 @@ function [coeff, score, latent, unknown, explained] = noise_reduction_danilo
     
     %[coeff, score, latent, unknown, explained] = princomp(pca_mat);
     [coeff, score, latent, unknown, explained] = pca(pca_mat);
+    [a, b, c] = pca2_danilo(pca_mat');
     
     disp('maoe');
 end
