@@ -1,0 +1,91 @@
+function [] = smoothing_danilo()
+%UNTITLED Summary of this function goes here
+%   Noise reduciton as descrideb in the article
+window_size = 5;
+
+%feature1 = imread('mosaic6_theta0_window5_cluster_prominence.png');
+%feature2 = imread('mosaic6_theta45_window5_cluster_prominence.png');
+%feature1 = imread('mosaic6_theta0_window5_cluster_shade.png');
+%feature2 = imread('mosaic6_theta45_window5_cluster_shade.png');
+%feature1 = imread('mosaic6_theta0_window5_contrast.png');
+%feature2 = imread('mosaic6_theta45_window5_contrast.png');
+%feature1 = imread('mosaic6_theta0_window5_correlation_img.png');
+%feature2 = imread('mosaic6_theta45_window5_correlation_img.png');
+%feature1 = imread('mosaic6_theta0_window5_diferenca_entropia.png');
+%feature2 = imread('mosaic6_theta45_window5_diferenca_entropia.png');
+%feature1 = imread('mosaic6_theta0_window5_diferenca_variancia.png');
+%feature2 = imread('mosaic6_theta45_window5_diferenca_variancia.png');
+%feature1 = imread('mosaic6_theta0_window5_dissimilarity.png');
+%feature2 = imread('mosaic6_theta45_window5_dissimilarity.png');
+%feature1 = imread('mosaic6_theta0_window5_energy_img.png');
+%feature2 = imread('mosaic6_theta45_window5_energy_img.png');
+%feature1 = imread('mosaic6_theta0_window5_entropy.png');
+%feature2 = imread('mosaic6_theta45_window5_entropy.png');
+%feature1 = imread('mosaic6_theta0_window5_homogeneity.png');
+%feature2 = imread('mosaic6_theta45_window5_homogeneity.png');
+%feature1 = imread('mosaic6_theta0_window5_inv_dif.png');
+%feature2 = imread('mosaic6_theta45_window5_inv_dif.png');
+%feature1 = imread('mosaic6_theta0_window5_inv_dif_mom.png');
+%feature2 = imread('mosaic6_theta45_window5_inv_dif_mom.png');
+%feature1 = imread('mosaic6_theta0_window5_max_prob.png');
+%feature2 = imread('mosaic6_theta45_window5_max_prob.png');
+%feature1 = imread('mosaic6_theta0_window5_soma_avg.png');
+%feature2 = imread('mosaic6_theta45_window5_soma_avg.png');
+%feature1 = imread('mosaic6_theta0_window5_soma_entropia.png');
+%feature2 = imread('mosaic6_theta45_window5_soma_entropia.png');
+feature1 = imread('mosaic6_theta0_window5_soma_variancia.png');
+feature2 = imread('mosaic6_theta45_window5_soma_variancia.png');
+
+[M, N] = size(feature1);
+temp = 0;
+feature_s_norm_avg(M-window_size,N-window_size) = 0;
+%feature = zeros(M,N);
+
+feature1 = im2double(feature1);
+feature2 = im2double(feature2);
+feature1 = normaliza(feature1);
+feature2 = normaliza(feature2);
+
+feature1 = feature1.*feature1;
+feature2 = feature2.*feature2;
+
+
+feature = (sqrt(2*feature1) + sqrt(2*feature2))/2;
+
+feature_s = filter2d(feature,window_size);
+feature_s_norm_pre = normaliza(feature_s);
+
+%noise reduction
+feature_s_norm = smoothn(feature_s_norm_pre);
+
+for i=round(window_size/2):M-(round(window_size/2)-1)
+    for j=round(window_size/2):N-(round(window_size/2)-1)
+        for m=1:window_size
+            for n=1:window_size
+                temp = feature_s_norm((i-round(window_size/2))+m, (j-round(window_size/2))+n) + temp;
+            end
+        end
+        feature_s_norm_avg(i,j) = temp/(window_size*window_size);
+        temp = 0;
+    end
+end
+
+%imwrite(feature_s_norm_avg, 'mosaic6_window5_smoothed_cluster_prominence.png');
+%imwrite(feature_s_norm_avg,'mosaic6_window5_smoothed_cluster_shade.png');
+%imwrite(feature_s_norm_avg,'mosaic6_window5_smoothed_contrast.png');
+%imwrite(feature_s_norm_avg,'mosaic6_window5_smoothed_correlation.png');
+%imwrite(feature_s_norm_avg,'mosaic6_window5_smoothed_diferenca_entropia.png');
+%imwrite(feature_s_norm_avg,'mosaic6_window5_smoothed_diferenca_variancia.png');;
+%imwrite(feature_s_norm_avg,'mosaic6_window5_smoothed_dissimilarity.png');
+%imwrite(feature_s_norm_avg,'mosaic6_window5_smoothed_energy.png');
+%imwrite(feature_s_norm_avg,'mosaic6_window5_smoothed_entropy.png');
+%imwrite(feature_s_norm_avg,'mosaic6_window5_smoothed_homogeneity.png');
+%imwrite(feature_s_norm_avg,'mosaic6_window5_smoothed_inv_dif.png');
+%imwrite(feature_s_norm_avg,'mosaic6_window5_smoothed_inv_div_mom.png');
+%imwrite(feature_s_norm_avg,'mosaic6_window5_smoothed_max_prob.png');
+%imwrite(feature_s_norm_avg,'mosaic6_window5_smoothed_soma_avg.png');
+%imwrite(feature_s_norm_avg,'mosaic6_window5_smoothed_soma_entropia.png');
+imwrite(feature_s_norm_avg,'mosaic6_window5_smoothed_soma_variancia.png');
+
+end
+

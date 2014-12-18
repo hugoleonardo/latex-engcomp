@@ -1,10 +1,11 @@
-function [ imagem_norm ] = normaliza( imagem, M, N )
+function [ imagem_norm ] = normaliza( imagem)
 %UNTITLED2 Summary of this function goes here
 %   Função que normaliza entre 0 e 1 os valores da imagem após a extração
 %   da característica. Esta função também preenche os espaços em bracos
 %   dexados pela janela na borda da imagem
 
-% Normalizing the GLCM contrast matrix 
+% Normalizing the GLCM contrast matrix
+[M, N] = size(imagem);
 imagem_min = min(min(imagem));
 imagem_max = max(max(imagem));
 imagem_norm (M,N) = 0;

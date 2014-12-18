@@ -1,0 +1,172 @@
+function [coeff, score] = noise_reduction_danilo
+%UNTITLED Summary of this function goes here
+%   Noise reduciton as descrideb in the article
+
+    %imagem = imread(imagem1);
+    %[M,N] = size(imagem);
+    %imagem = im2double(imagem);
+    %imagem = 128 - imagem;
+    %imagem = normaliza(imagem,M ,N);
+
+    tmp = imread('mosaic3_window5_smoothed_cluster_prominence.png');
+    tmp(256,256)=0;
+    tmp = dct2(tmp);
+    tmp = idct2(tmp);
+    pcamat(1,:) = tmp(:);
+    
+    tmp = imread('mosaic3_window5_smoothed_cluster_shade.png');
+    tmp(256,256)=0;
+    tmp = dct2(tmp);
+    tmp = idct2(tmp);
+    pcamat(2,:) = tmp(:);
+    
+    tmp = imread('mosaic3_window5_smoothed_soma_variancia.png');
+    tmp(256,256)=0;
+    tmp = dct2(tmp);
+    tmp = idct2(tmp);
+    pcamat(3,:) = tmp(:);
+    
+    tmp = imread('mosaic3_window5_smoothed_correlation.png');
+    tmp(256,256)=0;
+    tmp = dct2(tmp);
+    tmp = idct2(tmp);
+    pcamat(4,:) = tmp(:);
+    
+    tmp = imread('mosaic3_window5_smoothed_diferenca_entropia.png');
+    tmp(256,256)=0;
+    tmp = dct2(tmp);
+    tmp = idct2(tmp);
+    pcamat(5,:) = tmp(:);
+    
+    tmp = imread('mosaic3_window5_smoothed_diferenca_variancia.png');
+    tmp(256,256)=0;
+    tmp = dct2(tmp);
+    tmp = idct2(tmp);
+    pcamat(6,:) = tmp(:);
+    
+    tmp = imread('mosaic3_window5_smoothed_dissimilarity.png');
+    tmp(256,256)=0;
+    tmp = dct2(tmp);
+    tmp = idct2(tmp);
+    pcamat(7,:) = tmp(:);
+    
+    tmp = imread('mosaic3_window5_smoothed_energy.png');
+    tmp(256,256)=0;
+    tmp = dct2(tmp);
+    tmp = idct2(tmp);
+    pcamat(8,:) = tmp(:);
+    
+    tmp = imread('mosaic3_window5_smoothed_entropy.png');
+    tmp(256,256)=0;
+    tmp = dct2(tmp);
+    tmp = idct2(tmp);
+    pcamat(9,:) = tmp(:);
+    
+    tmp = imread('mosaic3_window5_smoothed_homogeneity.png');
+    tmp(256,256)=0;
+    tmp = dct2(tmp);
+    tmp = idct2(tmp);
+    pcamat(10,:) = tmp(:);
+    
+    tmp = imread('mosaic3_window5_smoothed_inv_dif.png');
+    tmp(256,256)=0;
+    tmp = dct2(tmp);
+    tmp = idct2(tmp);
+    pcamat(11,:) = tmp(:);
+    
+    tmp = imread('mosaic3_window5_smoothed_inv_dif_mom.png');
+    tmp(256,256)=0;
+    tmp = dct2(tmp);
+    tmp = idct2(tmp);
+    pcamat(12,:) = tmp(:);
+    
+    tmp = imread('mosaic3_window5_smoothed_max_prob.png');
+    tmp(256,256)=0;
+    tmp = dct2(tmp);
+    tmp = idct2(tmp);
+    pcamat(13,:) = tmp(:);
+    
+    tmp = imread('mosaic3_window5_smoothed_soma_avg.png');
+    tmp(256,256)=0;
+    tmp = dct2(tmp);
+    tmp = idct2(tmp);
+    pcamat(14,:) = tmp(:);
+    
+    tmp = imread('mosaic3_window5_smoothed_soma_entropia.png');
+    tmp(256,256)=0;
+    tmp = dct2(tmp);
+    tmp = idct2(tmp);
+    pcamat(15,:) = tmp(:);
+    
+    tmp = imread('mosaic3_window5_smoothed_contrast.png');
+    tmp(256,256)=0;
+    tmp = dct2(tmp);
+    tmp = idct2(tmp);
+    pcamat(16,:) = tmp(:);
+    %plot(tmp);
+    
+    %pcamat(17,:) = 0;
+    %plot(pcamat(17,:));
+    %pcamat2 = pcamat';
+    
+    %[coeff, score] = princomp(pcamat2);
+    %[~,score] = pca(pcamat2,'NumComponents',16);
+    [signal, PC, V] = pca2(pcamat);
+    
+    
+    %options = statset('Display','off');
+    signal(16,:) = [];
+    signal = signal';
+    obj = fitgmdist(signal,4,'SharedCov',true,'CovType','diagonal');
+    idx = cluster(obj,signal);
+    
+    cluster1 = signal(idx == 1,:);
+    cluster2 = signal(idx == 2,:);
+    cluster3 = signal(idx == 3,:);
+    cluster4 = signal(idx == 4,:);
+    cluster5 = signal(idx == 5,:);
+    
+    x = posterior(obj,signal);
+    
+    im = imread('mosaic3.png');
+    imteste(:,1) = im(:);
+    [m,n] = size(im);
+    for i=1:m*n
+        prob=0;
+        tmp = 0;
+        for g=1:4
+            if(x(i,g)>tmp)
+                prob=g;
+                tmp = x(i,g);
+            end
+        end
+        if(prob==1)
+            imteste(i)=51;
+        elseif(prob==2)
+            imteste(i)=102;
+        elseif(prob==3)
+            imteste(i)=153;
+        elseif(prob==4)
+            imteste(i)=204;
+        else
+            imteste(i)=255;
+        end
+    end
+    imteste2 = reshape(imteste,[256,256]);
+    figure;
+    imshow(im);
+    figure;
+    imshow(imteste2);
+    %h1 = scatter(cluster1,10,'g.');
+    %h2 = scatter(cluster2,10,'g.');
+    %h3 = scatter(cluster3,10,'b.');
+    %h4 = scatter(cluster4,10,'k.');
+    %h5 = scatter(cluster5,10,'m.');
+    %legend([h1 h2 h3 h4 h5],'Cluster 1','Cluster 2','Cluster 3','Cluster 4','Cluster 5','Location','NW')
+    %obj = fitgmdist(signal',4);
+    
+    %x = fitgmdist(PC,16);
+    
+    disp('maoe');
+end
+
