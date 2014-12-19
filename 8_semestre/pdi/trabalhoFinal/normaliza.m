@@ -4,7 +4,8 @@ function [ imagem_norm ] = normaliza( imagem)
 %   da característica. Esta função também preenche os espaços em bracos
 %   dexados pela janela na borda da imagem
 
-% Normalizing the GLCM contrast matrix 
+% Normalizing the GLCM contrast matrix
+[M, N] = size(imagem);
 imagem_min = min(min(imagem));
 imagem_max = max(max(imagem));
 [M,N] = size(imagem);
