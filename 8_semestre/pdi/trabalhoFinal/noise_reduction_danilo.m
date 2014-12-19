@@ -1,5 +1,5 @@
 
-function [coeff, score] = noise_reduction_danilo
+function [signal, obj, idx] = noise_reduction_danilo
 %UNTITLED Summary of this function goes here
 %   Noise reduciton as descrideb in the article
 
@@ -104,16 +104,19 @@ function [coeff, score] = noise_reduction_danilo
     tmp = dct2(tmp);
     tmp = idct2(tmp);
     pcamat(16,:) = tmp(:);
-    plot(tmp);
+    %plot(tmp);
+   
     
-    %pcamat(17,:) = 0;
-    %plot(pcamat(17,:));
-    pcamat2 = pcamat';
-    
-
     %[coeff, score] = princomp(pcamat2);
-    [~,score] = pca(pcamat2,'NumComponents',16);
-    x = fitgmdist(score,4);
+    %[~,signal] = pca(pcamat2,'NumComponents',16);
+    [signal,pc,v] = pca2(pcamat);
+    signal(16,:) = [];
+    obj = fitgmdist(signal',5,'SharedCov',true,'CovType','diagonal');
+    
+    idx = cluster(obj,signal');
+    
+    
+    
     
     disp('maoe');
 end

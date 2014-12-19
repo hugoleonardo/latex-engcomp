@@ -3,7 +3,7 @@ function [ contrast_img_norm, homogeneity_img_norm, energy_img_norm, inv_dif_img
 %   Detailed explanation goes here
 
 mosaic = imread(image);
-[M N] = size(mosaic); % M is the rows and N is the columns of the image
+[M, N] = size(mosaic); % M is the rows and N is the columns of the image
 
 %theta  % direction; 0 = 0º || 1 = 45º || 2 = 90º || 3 = 135º
 D = 1; % Distance bwtween the reference and neighbor pixel to compute the GLCM
@@ -78,8 +78,8 @@ max_prob_img(M-window_size,N-window_size) = 0;
 for i=round(window_size/2):M-(round(window_size/2)-1)
     for j=round(window_size/2):N-(round(window_size/2)-1)
         if theta == 0
-            for m=1:window_size-1
-                for n=D:window_size-1-D
+            for m=1:window_size
+                for n=D:window_size-D
                     %glcm_win((mosaic((i-round(window_size/2))+m, (j-round(window_size/2))+n)),(mosaic(((i-round(window_size/2))+m), (j-round(window_size/2))+n+D))) = glcm_win((mosaic((i-round(window_size/2))+m, (j-round(window_size/2))+n)),(mosaic((i-round(window_size/2))+m, (j-round(window_size/2))+n+D))) + 1;
                     r = (mosaic((i-round(window_size/2))+m, (j-round(window_size/2))+n));
                     s = (mosaic(((i-round(window_size/2))+m), (j-round(window_size/2))+n+D));
@@ -297,51 +297,85 @@ for i=round(window_size/2):M-(round(window_size/2)-1)
 end
 
 % Normalizing the GLCM contrast matrix 
-contrast_img_norm = normaliza(contrast_img, M, N, window_size);
+contrast_img_norm = normaliza(contrast_img);
+%contrast_img_norm(M,N) = 0;
+imwrite(contrast_img_norm, 'mosaic5_theta0_window5_contrast.png');
+
 
 % Normalizing the GLCM homogeneity matrix 
-homogeneity_img_norm = normaliza(homogeneity_img, M, N, window_size);
+homogeneity_img_norm = normaliza(homogeneity_img);
+%homogeneity_img_norm(M,N) = 0;
+imwrite(homogeneity_img_norm, 'mosaic5_theta0_window5_homogeneity.png');
 
 % Normalizing the GLCM cluster shade shade matrix 
-cluster_shade_img_norm = normaliza(cluster_shade_img, M, N, window_size);
+cluster_shade_img_norm = normaliza(cluster_shade_img);
+%cluster_shade_img_norm(M,N) = 0;
+imwrite(cluster_shade_img, 'mosaic5_theta0_window5_cluster_shade.png');
 
-% Normalizing the GLCM cluster prominence shade matrix 
-cluster_prominence_img_norm = normaliza(cluster_prominence_img, M, N, window_size);
+% Normalizing the GLCM cluster prominence matrix 
+cluster_prominence_img_norm = normaliza(cluster_prominence_img);
+%cluster_prominence_img_norm(M,N) = 0;
+imwrite(cluster_prominence_img, 'mosaic5_theta0_window5_cluster_prominence.png');
 
 % Normalizing the GLCM correlation matrix
-correlation_img_norm = normaliza(correlation_img, M, N, window_size);
+correlation_img_norm = normaliza(correlation_img);
+%correlation_img_norm(M,N) = 0;
+imwrite(correlation_img_norm, 'mosaic5_theta0_window5_correlation.png');
 
 % Normalizing the GLCM energy matrix 
-energy_img_norm = normaliza(energy_img, M, N, window_size);
+energy_img_norm = normaliza(energy_img);
+%energy_img_norm(M,N) = 0;
+imwrite(energy_img_norm, 'mosaic5_theta0_window5_energy.png');
 
 % Normalizing the GLCM dissimilarity matrix 
-dissimilarity_img_norm = normaliza(dissimilarity_img, M, N, window_size);
+dissimilarity_img_norm = normaliza(dissimilarity_img);
+%dissimilarity_img_norm(M,N) = 0;
+imwrite(dissimilarity_img_norm, 'mosaic5_theta0_window5_dissimilarity.png');
 
 % Normalizing the GLCM inverse difference matrix 
-inv_dif_img_norm = normaliza(inv_dif_img, M, N, window_size);
+inv_dif_img_norm = normaliza(inv_dif_img);
+%inv_dif_img_norm(M,N) = 0;
+imwrite(inv_dif_img_norm, 'mosaic5_theta0_window5_inv_dif.png');
 
 % Normalizing the GLCM inverse difference moment matrix 
-inv_dif_mom_img_norm = normaliza(inv_dif_mom_img, M, N, window_size);
+inv_dif_mom_img_norm = normaliza(inv_dif_mom_img);
+%inv_dif_mom_img_norm(M,N) = 0;
+imwrite(inv_dif_mom_img_norm, 'mosaic5_theta0_window5_inv_dif_mom.png');
 
 % Normalizing the GLCM entropy matrix 
-entropy_img_norm = normaliza(entropy_img, M, N, window_size);
+entropy_img_norm = normaliza(entropy_img);
+%entropy_img_norm(M,N) = 0;
+imwrite(entropy_img_norm, 'mosaic5_theta0_window5_entropy.png');
+
 % Normalizing the GLCM max probability matrix 
-max_prob_img_norm = normaliza(max_prob_img, M, N, window_size);
+max_prob_img_norm = normaliza(max_prob_img);
+%max_prob_img_norm(M,N) = 0;
+imwrite(max_prob_img_norm, 'mosaic5_theta0_window5_max_prob.png');
 
 % Normalizing the GLCM sum average matrix 
-soma_avg_img_norm = normaliza(soma_avg_img, M, N, window_size);
+soma_avg_img_norm = normaliza(soma_avg_img);
+%soma_avg_img_norm(M,N) = 0;
+imwrite(soma_avg_img_norm, 'mosaic5_theta0_window5_soma_avg.png');
 
 % Normalizing the GLCM sum entropy matrix 
-soma_entropia_img_norm = normaliza(soma_entropia_img, M, N, window_size);
+soma_entropia_img_norm = normaliza(soma_entropia_img);
+%soma_entropia_img_norm(M,N) = 0;
+imwrite(soma_entropia_img_norm, 'mosaic5_theta0_window5_soma_entropia.png');
 
 % Normalizing the GLCM difference entropy matrix 
-diferenca_entropia_img_norm = normaliza(diferenca_entropia_img, M, N, window_size);
+diferenca_entropia_img_norm = normaliza(diferenca_entropia_img);
+%diferenca_entropia_img_norm(M,N) = 0;
+imwrite(diferenca_entropia_img_norm, 'mosaic5_theta0_window5_diferenca_entropia.png');
 
 % Normalizing the GLCM sum entropy matrix 
-soma_variancia_img_norm = normaliza(soma_variancia_img, M, N, window_size);
+soma_variancia_img_norm = normaliza(soma_variancia_img);
+%soma_variancia_img_norm(M,N) = 0;
+imwrite(soma_variancia_img_norm, 'mosaic5_theta0_window5_soma_variancia.png');
 
 % Normalizing the GLCM sum entropy matrix 
-diferenca_variancia_img_norm = normaliza(diferenca_variancia_img, M, N, window_size);
+diferenca_variancia_img_norm = normaliza(diferenca_variancia_img);
+%diferenca_variancia_img_norm(M,N) = 0;
+imwrite(diferenca_variancia_img_norm, 'mosaic5_theta0_window5_diferenca_variancia.png');
 
 end
 

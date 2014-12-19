@@ -12,7 +12,7 @@ data = data - repmat(mn,1,N);
 % construct the matrix Y
 Y = data' / sqrt(N-1);
 % SVD does it all
-[u,S,PC] = svd(Y);
+[u,S,PC] = svd(Y,0);
 % calculate the variances
 S = diag(S);
 V = S .* S;

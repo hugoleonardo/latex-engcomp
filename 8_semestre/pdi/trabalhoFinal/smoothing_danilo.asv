@@ -37,9 +37,7 @@ end
 
 
 
-imwrite(feature_s_norm_avg, 'mosaic5_window5_smoothed_cluster_prominence.png');
-
-
+imwrite(feature_s_norm_avg, 'mosaic5_window5_smoothed_diferenca.png');
 
 end
 
