@@ -1,5 +1,5 @@
 
-function [signal, obj, idx] = noise_reduction_danilo(k)
+function [signal, obj, idx] = noise_reduction_danilo
 %UNTITLED Summary of this function goes here
 %   Noise reduciton as descrideb in the article
 
@@ -9,97 +9,97 @@ function [signal, obj, idx] = noise_reduction_danilo(k)
     %imagem = 128 - imagem;
     %imagem = normaliza(imagem,M ,N);
 
-    tmp = imread('mosaic3_window5_smoothed_cluster_prominence.png');
+    tmp = imread('mosaic6_window5_smoothed_cluster_prominence.png');
     tmp(256,256)=0;
     tmp = dct2(tmp);
     tmp = idct2(tmp);
     pcamat(1,:) = tmp(:);
     
-    tmp = imread('mosaic3_window5_smoothed_cluster_shade.png');
+    tmp = imread('mosaic6_window5_smoothed_cluster_shade.png');
     tmp(256,256)=0;
     tmp = dct2(tmp);
     tmp = idct2(tmp);
     pcamat(2,:) = tmp(:);
     
-    tmp = imread('mosaic3_window5_smoothed_soma_variancia.png');
+    tmp = imread('mosaic6_window5_smoothed_soma_variancia.png');
     tmp(256,256)=0;
     tmp = dct2(tmp);
     tmp = idct2(tmp);
     pcamat(3,:) = tmp(:);
     
-    tmp = imread('mosaic3_window5_smoothed_correlation.png');
+    tmp = imread('mosaic6_window5_smoothed_correlation.png');
     tmp(256,256)=0;
     tmp = dct2(tmp);
     tmp = idct2(tmp);
     pcamat(4,:) = tmp(:);
     
-    tmp = imread('mosaic3_window5_smoothed_diferenca_entropia.png');
+    tmp = imread('mosaic6_window5_smoothed_diferenca_entropia.png');
     tmp(256,256)=0;
     tmp = dct2(tmp);
     tmp = idct2(tmp);
     pcamat(5,:) = tmp(:);
     
-    tmp = imread('mosaic3_window5_smoothed_diferenca_variancia.png');
+    tmp = imread('mosaic6_window5_smoothed_diferenca_variancia.png');
     tmp(256,256)=0;
     tmp = dct2(tmp);
     tmp = idct2(tmp);
     pcamat(6,:) = tmp(:);
     
-    tmp = imread('mosaic3_window5_smoothed_dissimilarity.png');
+    tmp = imread('mosaic6_window5_smoothed_dissimilarity.png');
     tmp(256,256)=0;
     tmp = dct2(tmp);
     tmp = idct2(tmp);
     pcamat(7,:) = tmp(:);
     
-    tmp = imread('mosaic3_window5_smoothed_energy.png');
+    tmp = imread('mosaic6_window5_smoothed_energy.png');
     tmp(256,256)=0;
     tmp = dct2(tmp);
     tmp = idct2(tmp);
     pcamat(8,:) = tmp(:);
     
-    tmp = imread('mosaic3_window5_smoothed_entropy.png');
+    tmp = imread('mosaic6_window5_smoothed_entropy.png');
     tmp(256,256)=0;
     tmp = dct2(tmp);
     tmp = idct2(tmp);
     pcamat(9,:) = tmp(:);
     
-    tmp = imread('mosaic3_window5_smoothed_homogeneity.png');
+    tmp = imread('mosaic6_window5_smoothed_homogeneity.png');
     tmp(256,256)=0;
     tmp = dct2(tmp);
     tmp = idct2(tmp);
     pcamat(10,:) = tmp(:);
     
-    tmp = imread('mosaic3_window5_smoothed_inv_dif.png');
+    tmp = imread('mosaic6_window5_smoothed_inv_dif.png');
     tmp(256,256)=0;
     tmp = dct2(tmp);
     tmp = idct2(tmp);
     pcamat(11,:) = tmp(:);
     
-    tmp = imread('mosaic3_window5_smoothed_inv_dif_mom.png');
+    tmp = imread('mosaic6_window5_smoothed_inv_dif_mom.png');
     tmp(256,256)=0;
     tmp = dct2(tmp);
     tmp = idct2(tmp);
     pcamat(12,:) = tmp(:);
     
-    tmp = imread('mosaic3_window5_smoothed_max_prob.png');
+    tmp = imread('mosaic6_window5_smoothed_max_prob.png');
     tmp(256,256)=0;
     tmp = dct2(tmp);
     tmp = idct2(tmp);
     pcamat(13,:) = tmp(:);
     
-    tmp = imread('mosaic3_window5_smoothed_soma_avg.png');
+    tmp = imread('mosaic6_window5_smoothed_soma_avg.png');
     tmp(256,256)=0;
     tmp = dct2(tmp);
     tmp = idct2(tmp);
     pcamat(14,:) = tmp(:);
     
-    tmp = imread('mosaic3_window5_smoothed_soma_entropia.png');
+    tmp = imread('mosaic6_window5_smoothed_soma_entropia.png');
     tmp(256,256)=0;
     tmp = dct2(tmp);
     tmp = idct2(tmp);
     pcamat(15,:) = tmp(:);
     
-    tmp = imread('mosaic3_window5_smoothed_contrast.png');
+    tmp = imread('mosaic6_window5_smoothed_contrast.png');
     tmp(256,256)=0;
     tmp = dct2(tmp);
     tmp = idct2(tmp);
@@ -111,7 +111,7 @@ function [signal, obj, idx] = noise_reduction_danilo(k)
     %[~,signal] = pca(pcamat2,'NumComponents',16);
     [signal,pc,v] = pca2(pcamat);
     signal(16,:) = [];
-    obj = fitgmdist(signal',k,'SharedCov',true,'CovType','diagonal');
+    obj = fitgmdist(signal',5,'SharedCov',true,'CovType','diagonal');
     
     idx = cluster(obj,signal');
     
