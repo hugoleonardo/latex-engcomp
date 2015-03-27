@@ -1,0 +1,566 @@
+\chapter{Modelagem de Tráfego de Redes}
+\label{cap:trafego}
+
+Este Capítulo apresenta um estudo de caso baseado na análise do \emph{trace} de tráfego Internet \texttt{2002\_Apr\_13\_Sat\_1930.7260.sk1.1ms.B\_P.ts.gz} \cite{trace:UNC02}, \cite{park05}. Esta série, que faz parte de um conjunto de vinte  \emph{traces} denominado ``UNC02'', contém uma coleta de 2 horas de tráfego IP unidirecional na escala de 1 milissegundo de um enlace Gigabit Ethernet\footnote{``Banda'' ou vazão de $10^9$ \ac{bps}, ou seja, 1 Gbps.} existente entre o campus da University of North Carolina (UNC) at Chapel Hill e o seu \ac{ISP} em 13/04/2002 no horário 19:30-21:30. Este \emph{trace}, que consiste no registro das séries temporais de contagem de pacotes e de \emph{bytes} no sentido \emph{inbound} (ou seja, tráfego entrante no campus da UNC) por \emph{bin} de 1 milissegundo, foi coletado pelo programa \texttt{tcpdump}, originalmente desenvolvido por Van Jacobson, Leres e McCanne \cite{tcpdump}, e encontra-se à disposição  no endereço \url{http://www-dirt.cs.unc.edu/ts/}. De acordo com os autores do estudo \cite{park05}, a coleta  foi implementada com uma precisão de 1 microsegundo, sendo que foi observada uma taxa de perda de pacotes de $0,03\%$ para o \emph{trace} em consideração. Portanto, o efeito desta imprecisão em coletas de tráfego com \emph{bins} de 1 ou 10 ms é desprezível.  
+O restante desta tese se refere ao \emph{trace} \texttt{2002\_Apr\_13\_Sat\_1930.7260.sk1.1ms.B\_P.ts.gz} simplesmente como \emph{trace} \texttt{UNC02}. O artigo \cite{park05} também analisa um outro conjunto de \emph{traces}, ao qual esta tese se refere como \texttt{UNC03}, coletados em abril de 2003.
+
+%O conjunto de \emph{traces} \texttt{lcs.tar.gz}, denominado \texttt{LCS05}, foi coletado na rede local Fast Ethernet 100 Mbps ($10^6$ bps) do LCS-EPUSP no ano de 2005 pelo engenheiro Marcelo Lipas, pesquisador do LCS-EPUSP, e está à disposição no endereço  \url{http://www.lcs.poli.usp.br/~lipas/traces/}. A coleta também utilizou o programa 
+%\texttt{tcpdump}.
+
+Algumas das descobertas do estudo empírico de Park \emph{et al} \cite{park05} são extremamente relevantes e têm aplicação imediata nesta tese e por isso estão resumidas a seguir:
+\begin{itemize}
+	\item Foi observado um significativo decréscimo nos valores das estimativas do parâmetro $H$ das séries de pacotes do conjunto de traces \texttt{UNC03} com relação ao conjunto \texttt{UNC02}. Por outro lado, as estimativas de $H$ para as séries de contagem de \emph{bytes} mantiveram-se praticamente idênticas. Note-se que alguns autores, como Stoev \emph{et al} \cite{stoev05}, limitam-se à investigação das séries de contagem de pacotes por \emph{bin}\footnote{Stoev \emph{et al} também analisaram os \emph{traces} \texttt{UNC02} e \texttt{UNC03}.}. Para tal, argumentam que a experiência mostra que não há diferença importante entre o estudo das séries de \emph{bytes} e de pacotes, porque o tamanho dos pacotes tende a ser igual ao \ac{MTU} (unidade máxima de transmissão\footnote{Em redes de computadores, MTU corresponde ao tamanho do maior datagrama que uma camada de um protocolo de comunicação pode transmitir.}). Conforme mencionado acima, Park \emph{et al} \cite{park05} mostraram que a realidade não confirma este tipo de argumento intuitivo e que pode haver uma diferença quantitativa significativa entre as estimativas de $H$ obtidas das análises das séries de pacotes e de \emph{bytes}. Além disso, observe-se que os mecanismos de controle de tráfego das redes de telecomunicações levam em conta a vazão (banda ou capacidade) em bps  das interfaces de rede e não a vazão em pacotes por segundo\footnote{Exemplos: a) uma interface E1 (da hierarquia digital plesiócrona) tem uma vazão de 2.048 kbps e b) uma interface \ac{STM}-1, da hierarquia digital síncrona, trabalha a uma taxa de 155 Mbps.}. Portanto, a estimativa de $H$ deve ser feita sobre a série de \emph{bytes} quando a finalidade é o controle do tráfego. 
+	\item Várias séries (das 56 que foram analisadas) não são Gaussianas.
+	\item Estimativas do parâmetro $H$ para as séries de contagem de \emph{bytes} são tipicamente superiores a $0,8$, indicando que o tráfego da UNC é fortemente LRD.
+	\item O grau de memória longa do tráfego (estimativa do  parâmetro $H$) \textbf{não} foi influenciado pelo dia da semana ou pelo horário do dia. Isto quer dizer que as flutuações no número de usuários ativos na rede do campus da UNC (população total de 35.000 pessoas) não influenciaram o grau de LRD. 
+	\item O grau de memória longa do tráfego \textbf{não} foi influenciado pelo nível de utilização (em $\%$ da banda) do enlace de acesso ou pelo número de conexões \ac{TCP} ativas. Em particular, não foi observado qualquer declínio do parâmetro $H$ com o aumento do número de conexões TCP.   
+\end{itemize}
+
+
+
+
+\section{Modelagem do \emph{Trace} UNC02}
+\label{trafego:sec:UNC02}
+
+
+\subsection{Análise Exploratória}
+\label{trafego:subsec:analise-UNC02}
+
+Nesta seção, faz-se uma análise exploratória das séries de pacotes e de \emph{bytes} \texttt{UNC02} na escala de 1 milissegundo e na escala agregada de 1 segundo. O restante deste trabalho se refere às séries de pacotes \texttt{UNC02} nas escalas de 1 milissegundo e 1 segundo como \texttt{UNC02Pktsbin1ms} e \texttt{UNC02Pktsbin1s}, respectivamente, e às séries de \emph{bytes} \texttt{UNC02} nas escalas de 1 milissegundo e 1 segundo como \texttt{UNC02bin1ms} e \texttt{UNC02bin1s}, respectivamente. 
+
+%Alguns autores, como Stoev \emph{et al} \cite{stoev05}, preferem somente investigar as séries de contagem de pacotes por \emph{bin}. Para tal, argumentam que a experiência mostra que não há diferença importante entre o estudo das séries de bytes e de pacotes, porque o tamanho dos pacotes tende a ser igual ao \ac{MTU} (unidade máxima de transmissão\footnote{Em redes de computadores, MTU corresponde ao tamanho do maior datagrama que uma camada de um protocolo de comunicação pode transmitir.}). Entretanto, o estudo empírico de Park \emph{et al} \cite{park05} mostra que a realidade não confirma este tipo de argumento intuitivo. Park \emph{et al} observaram um significativo decréscimo nos valores dos parâmetros de Hurst das séries de pacotes do conjunto de traces \texttt{UNC03} com relação ao conjunto \texttt{UNC02}. Por outro lado, as estimativas de $H$ para as séries de contagem de \emph{bytes} mantiveram-se praticamente idênticas.  
+
+Um dos objetivos fundamentais da análise de séries temporais é a construção de um modelo estocástico da série que está sendo investigada. O modelo pode ser estacionário ou não-estacionário, conforme visto no Cap. \ref{cap:conceitos}.
+Modelos ARMA ou ARFIMA, por exemplo, supõem que a série seja estacionária. Entretanto, a maioria das séries empíricas pode apresentar alguma forma de estacionariedade. Uma série pode ser estacionária durante um período muito longo ou pode ser estacionária apenas em períodos bastante curtos, mudando de nível e/ou inclinação. Sendo assim, é importante tentar responder às seguintes questões preliminares antes de se proceder à uma análise exploratória mais detalhada \cite{leipus03}, \cite{whitcher98}: 
+\begin{itemize}
+	\item A série sob investigação é \textbf{globalmente} estacionária? 
+	\item Caso a série não seja globalmente estacionária, pode-se identificar um encadeamento de sub-séries estacionárias, que podem ser geradas a partir de modelos (estacionários)?
+  \item A série apresenta tendências determinísticas e/ou estocásticas, SRD e/ou LRD?
+  \item Como detectar e estimar as mudanças de regime\footnote{Por exemplo, mudanças na média e na variância da série.} (conhecido na literatura como \emph{change-point problem} ou problema do ponto de mudança) de uma série não estacionária? 
+\end{itemize}
+A última questão, em especial, envolve o desenvolvimento de novas técnicas estatísticas, que incorporem a memória longa \cite{stoev05}, \cite{leipus03}. De acordo com Kokoszka e Leipus \cite{leipus03}, o problema do ponto de mudança tem sido extensivamente estudado para o caso de séries pouco correlacionadas. Somente mais recentemente (desde meados da década de 1990) é que o problema da mudança de regime no contexto da LRD tem recebido mais atenção. Kokoszka e Leipus \cite{leipus03} também afirmam que o estudo da LRD em conjunto com a análise de pontos de mudança deve ser realizado quando se tem uma série temporal LRD suficientemente grande (isto é, com um número muito grande de amostras), pois a possibilidade de ocorrência de pontos de mudança é maior do que nas séries pequenas, o que é o caso do tráfego das redes.
+
+A \textbf{não-estacionariedade} do tráfego das redes para escalas de tempo da ordem de horas  é intuitiva. Considere, por exemplo, a utilização de um enlace de acesso à Internet numa rede corporativa como a da USP. Não há dúvida de que a utilização desse enlace durante os horários de pico da manhã e da tarde deva ser maior do que a do período da madrugada. Também é esperado que o tráfego apresente algum tipo de tendência determinística do tipo ``rampa de subida'' logo após o começo do expediente, que se dá por volta das 8h da manhã. Portanto, faz sentido afirmar que o tráfego das redes é não-estacionário quanto à média e/ou inclinação em escalas de horas. Por outro lado, vários estudos \cite{leland94}, \cite{paxson95}, \cite{park05} (dentre inúmeros outros) mostram que é razoável caracterizar o tráfego Internet como sendo auto-similar e LRD (lembre-se de que o conceito de memória longa do Cap. \ref{cap:fractal} só foi definido para processo estacionário em sentido amplo) numa faixa de escalas que pode se estender de centenas de milissegundos a até centenas de segundos (esses limites superior e inferior podem variar em função da rede em questão). Veja, por exemplo, a Fig. \ref{fig:LCS05-bin100ms}, que ilustra uma coleta de 1 hora de tráfego na rede do LCS com \emph{bins} de 100 milissegundos. Observe que esse sinal é ``visualmente'' não-estacionário quanto à média e variância (a sua potência varia com o tempo). Contudo, tem-se a impressão de que a série é \textbf{localmente estacionária} (flutuações homogêneas em torno de uma média local) em alguns trechos como aquele em que $1.700\leq t \leq 10.000$ (limites aproximados).
+
+
+\begin{figure}[htp]
+\centering
+		\includegraphics[width=12cm,keepaspectratio]{simulations/Cap6/LCS/lcs_20051212151148_3600sec_0001_100ms.eps}
+		\caption{Tráfego coletado na rede local do LCS: série de contagem de \emph{bytes} por \emph{bin} de 100 milissegundos.}%
+\label{fig:LCS05-bin100ms}%
+\end{figure}
+
+Stoev \emph{et al} \cite{stoev05} afirmam que os sinais \texttt{UNC02Pktsbin1ms} e \texttt{UNC02Pktsbin1s} das Fig. \ref{fig:UNC02-Pkts1ms} e \ref{fig:UNC02-Pkts1s}, respectivamente, podem ser consideradas estacionários. A Fig. \ref{fig:QQ-plot-UNC02-Pkts1930-2130} mostra os QQ-plots de \texttt{UNC02Pktsbin1ms} e \texttt{UNC02Pktsbin1s}. O QQ-plot da Fig. \ref{fig:UNC02-QQplot-Pkts-bin1ms} indica que a \ac{PDF} de primeira ordem da série \texttt{UNC02Pktsbin1ms} é assimétrica, não-Gaussiana e de cauda pesada (observe que os quantis empíricos nos extremos superior direito e inferior esquerdo da Fig. \ref{fig:UNC02-QQplot-Pkts-bin1ms} não acompanham a linha vermelha com ponto e traço e que os quantis empíricos da extremidade superior são maiores do que os teóricos). Observe como o formato do QQ-plot da Fig. \ref{fig:UNC02-QQplot-Pkts-bin1ms} tem uma certa semelhança com o QQ-plot da realização MWM com $H=0,9$ da Fig. \ref{fig:MWM1h09qqplot}. O QQ-plot da Fig. \ref{fig:UNC02-QQplot-Pkts-bin1s} sugere que a distribuição marginal de probabilidades de \texttt{UNC02Pktsbin1s} também é assimétrica, não-Gaussiana e com cauda superior pesada. De fato, o teste de normalidade de Jarque-Bera \cite{Jarque87} (baseado nas medidas de assimetria e curtose) rejeitou a hipótese nula de normalidade de \texttt{UNC02Pktsbin1s}. A estatística desse teste é definida como  
+\begin{equation}
+	\label{def:jarque-bera}
+	JB = \frac{N}{6}\left( \hat{A}^2 + \frac{(\hat{K}-3)^2}{4} \right) \,,
+\end{equation}
+em que $N$ é o número de amostras, $\hat{A}$ é o estimador de assimetria
+\begin{equation}
+	\label{def:est-assimet}
+	\hat{A}= \frac{1}{N s_{\rvx}^3} \sum_{t=1}^{N} (\rvx_t - \hat{\mu})^3
+\end{equation}
+em que $\hat{\mu}$ denota a média amotral, $s_{\rvx}^2$ é a variância amostral 
+e $\hat{K}$ é o estimador de curtose
+\begin{equation}
+	\label{def:est-curt}
+	\hat{K}= \frac{1}{N s_{\rvx}^4} \sum_{t=1}^{N} (\rvx_t - \hat{\mu})^4.
+\end{equation}
+Sob a hipótese nula de que os dados sejam normalmente distribuídos, espera-se que $JB \sim \chi^2(2)$ (chi-quadrada com dois graus de liberdade). 
+
+O programa \texttt{STABLE4.0} para \texttt{MATLAB} \cite{robust:url}, que foi cedido pelo Dr. John P. Nolan (Robust Analysis, Inc.) para utilização nesta pesquisa, ajustou uma distribuição estável $S_{\alpha}(\sigma,\eta,\mu)= S_{1,92}(495;0,86;2,15\times10^4)$ para \texttt{UNC02Pktsbin1s}. 
+A Fig. \ref{fig:UNC2002-Apr13-Sat-Pkts-bin1s-1930-2130-STABLEDIAG} ilustra os gráficos produzidos pela função \texttt{stablediag}, a saber: ajuste de \ac{PDF}, QQ-plot (quantis da distribuição estável ajustada \emph{vs} quantis empíricos), PP(\emph{Probability-Probability})-plot e ZZ-plot.  
+O PP-plot é construído utilizando-se a \ac{CDF} teórica, $F_{\rvx}(x)$, do modelo ajustado. Os valores das amostras de dados, ordenadas em ordem crescente, são denotadas por $x(1), x(2), \ldots,x(n)$. Para $i=1,2,\ldots,n$, $F_{\rvx}(x(i))$ (valor teórico) é representado contra $q_i=(i-0,5)/n$ (valor empírico da CDF) \cite{nolan-stable-manual}. O ZZ-plot é o gráfico do inverso da CDF teórica \emph{vs} o inverso da CDF empírica (ou seja, pode ser obtido a partir do PP-plot). 
+De acordo com Nolan \cite{nolan99}, o diagnóstico de dados estáveis por meio do QQ-plot apresenta os seguintes problemas práticos (vide o QQ-plot da Fig. \ref{fig:UNC2002-Apr13-Sat-Pkts-bin1s-1930-2130-STABLEDIAG}): a maior parte dos dados fica comprimida numa pequena região e b) há um desvio razoável dos dados das extremidades do QQ-plot com relação à linha teórica. É por isso que Nolan recomenda o uso das ferramentas de diagnóstico PP-plot e ZZ-plot (vide \cite{nolan99} para maiores informações sobre o diagnóstico de dados que possuam distribuição com cauda pesada). Sendo assim, a série \texttt{UNC02Pktsbin1s} possui causa pesada e é bem modelada por uma distribuição estável, de acordo com o \emph{toolbox} \texttt{STABLE4.0}. 
+
+A Fig. \ref{fig:Wav-Spec-UNC02-Pkts-1930-2130} ilustra os espectros \emph{wavelet} de \texttt{UNC02Pktsbin1ms} e \texttt{UNC02Pktsbin1s}. Os gráficos \ref{fig:Wav-Spec-bin1ms-UNC02-Pkts-1930-2130} e \ref{fig:Wav-Spec-bin1s-UNC02-Pkts-1930-2130} representam a estatística $S_j$ como uma função da escala $j$
+para as séries \texttt{UNC02Pktsbin1ms} e \texttt{UNC02Pktsbin1s}, respectivamente.  
+Conforme visto na seção \ref{model:subsec:wavelet}, a estatística $S_j$ quantifica a fração da potência da série na faixa de freqüências $[1/2^{j+1},1/2^j]$ (lembre que um coeficiente \emph{wavelet} (DWT) $w_{j,k}$ é proporcional à diferença entre duas médias adjacentes de um sinal $x_t$ na escala de tempo $\tau_j=2^{j-1}\Delta t$, em que $\Delta t$ denota o intervalo de tempo entre duas observações sucessivas ). 
+Grandes valores de $j$ correspondem às baixas freqüências (escalas dilatadas ou mais lentas de tempo) e pequenos valores correspondem às altas freqüências (escalas rápidas ou mais  refinadas de tempo). Observe que o espectro \emph{wavelet} da série \texttt{UNC02Pktsbin1ms} (Fig. \ref{fig:Wav-Spec-bin1ms-UNC02-Pkts-1930-2130}) nas escalas $1 \leq j \leq 5$ é quase constante. Esta característica é uma forte evidência de que flutuações de \texttt{UNC02Pktsbin1ms} nas escalas  $\tau_j=2^{j-1}\Delta t = \{1,2,4,8,16\}$ ms, em que $\Delta t=1$ms, são pouco correlacionadas\footnote{A estrutura de dependência de curta duração de um sinal está relacionada à forma da sua DEP na região das altas freqüências, que, por sua vez, está relacionada às pequenas escalas do espectro \emph{wavelet} \cite{percival00}, \cite{stoev05}.}. Este comportamento também foi observado em \emph{traces} de tráfego capturados em enlaces de alta capacidade \ac{SONET}\footnote{Observe-se que enlaces SONET possuem um alto nível de multiplexação ou agregação de tráfego.} \ac{OC}-3, OC-12 e OC-48 (155 Mbps, 622 Mbps e 2,5 Gbps, respectivamente) da rede do \ac{ISP} \emph{tier}-1 (nível 1) norte-americano Sprint\footnote{A Internet é uma rede de redes. Na Internet pública, redes de acesso situadas na borda da Internet são conectadas ao restante segundo uma hierarquia  de níveis de ISPs. Os ISPs de acesso estão no topo mais baixo da hierarquia. No topo dela está um número relativamente pequeno de ISPs (norte-americanos em sua maioria) denominados ISPs de nível 1, os quais apresentam as seguintes características: a) conectam-se diretamente a cada um dos outros ISPs de nível 1, conectam-se a um grande número de ISPs de nível 2 e têm cobertura internacional \cite{kurose06}.} \cite{zhang03}. Na Fig. \ref{fig:Wav-Spec-bin1ms-UNC02-Pkts-1930-2130}, observe que o espectro é aproximadamente linear para escalas $j \geq 10$ (ou $\tau_j \geq 512$ms). Portanto, \texttt{UNC02Pktsbin1ms} é LRD\footnote{É comum a literatura mencionar que sinais de tráfego podem apresentar, simultaneamente, características SRD e LRD. O espectro \emph{wavelet} da Fig. \ref{fig:Wav-Spec-bin1ms-UNC02-Pkts-1930-2130} mostra que \texttt{UNC02Pktsbin1ms} é um exemplo de sinal que só apresenta a característica LRD, uma vez que a SRD se manifestaria por meio de um \emph{spike} na região das escalas rápidas do espectro \emph{wavelet}.} e assintoticamente auto-similar. 
+
+O espectro \emph{wavelet} da série agregada \texttt{UNC02Pktsbin1s} (Fig. \ref{fig:Wav-Spec-bin1s-UNC02-Pkts-1930-2130})	corresponde aos componentes do espectro da Fig. \ref{fig:Wav-Spec-bin1ms-UNC02-Pkts-1930-2130} para as escalas dilatadas $11 \leq j \leq 20$. Note-se que o espectro da Fig. \ref{fig:Wav-Spec-bin1s-UNC02-Pkts-1930-2130} também é aproximadamente linear. Os parâmetros de Hurst de \texttt{UNC02Pktsbin1ms} e \texttt{UNC02Pktsbin1s}, estimados por meio do ajuste de uma linha ao espectro \emph{wavelet} da Fig. \ref{fig:Wav-Spec-bin1ms-UNC02-Pkts-1930-2130} entre as escalas $j=10,11,\ldots,20$ e de uma linha ao espectro \emph{wavelet} da Fig. \ref{fig:Wav-Spec-bin1s-UNC02-Pkts-1930-2130} entre as escalas $j=1,2,\ldots,10$, é igual a $\widehat{H}\approx 0,854$ e $\widehat{H}\approx 0,922$, respectivamente.
+
+
+\begin{figure}[htp]
+\centering
+		\subfloat[]{%
+			\label{fig:UNC02-Pkts1ms}
+			\includegraphics[width=15cm,keepaspectratio]{simulations/Cap6/UNC/UNC2002-Apr13-Sat-Pkts-bin1ms-1930-2130.eps}}\\		
+		\vspace{10pt}%
+		\subfloat[]{%
+			\label{fig:UNC02-Pkts1s}
+			\includegraphics[width=15cm,keepaspectratio]{simulations/Cap6/UNC/UNC2002-Apr13-Sat-Pkts-bin1s-1930-2130.eps}}\\
+		\vspace{10pt}%
+		\caption[]{Tráfego entrante (série de contagem de pacotes por \emph{bin}) num enlace de acesso Gigabit Ethernet da UNC em 13/04/2002, no horário 19:30-21:30, na escala de 1 milissegundo (\texttt{UNC02Pktsbin1ms}) \subref{fig:UNC02-Pkts1ms} e na escala de 1 segundo (\texttt{UNC02Pktsbin1s}) \subref{fig:UNC02-Pkts1s}.}%
+\label{fig:UNC02-Pkts1930-2130}%
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+		\subfloat[]{%
+			\label{fig:UNC02-QQplot-Pkts-bin1ms}
+			\includegraphics[width=7cm,keepaspectratio]{simulations/Cap6/UNC/UNC02-QQplot-Pkts-bin1ms.eps}}\\		
+		\hspace{0pt}%
+		\subfloat[]{%
+			\label{fig:UNC02-QQplot-Pkts-bin1s}
+			\includegraphics[width=7cm,keepaspectratio]{simulations/Cap6/UNC/UNC02-QQplot-Pkts-bin1s.eps}}\\
+		\vspace{10pt}%
+		\caption[]{\subref{fig:UNC02-QQplot-Pkts-bin1ms} QQ-plot de \texttt{UNC02Pktsbin1ms} e \subref{fig:UNC02-QQplot-Pkts-bin1s} QQ-plot de \texttt{UNC02Pktsbin1s}.}%
+\label{fig:QQ-plot-UNC02-Pkts1930-2130}%
+\end{figure}
+
+\begin{figure}[htp]
+	\begin{center}
+		\includegraphics[height=10cm,width=14cm]{simulations/Cap6/UNC/UNC2002-Apr13-Sat-Pkts-bin1s-1930-2130-STABLEDIAG.eps}
+	\end{center}
+	\caption{Ajuste de uma distribuição estável com parâmetros $\{\alpha=1,92, \sigma=495, \eta=0,86, \mu=2,15\times10^4\}$,  à série \texttt{UNC02Pktsbin1s} (gráfico do canto superior esquerdo), QQ-plot da distribuição estável \emph{vs} os dados empíricos (canto superior direito), ZZ-plot da distribuição estável \emph{vs} os dados empíricos (canto inferior esquerdo) e PP-plot da distribuição estável ajustada \emph{vs} os dados empíricos (canto inferior direito). Os gráficos ZZ-plot e PP-plot sugerem que o ajuste da distribuição $S_{1,92}(495;0,86;2,15\times10^4)$ aos dados empíricos é bastante satisfatório.}
+\label{fig:UNC2002-Apr13-Sat-Pkts-bin1s-1930-2130-STABLEDIAG}
+\end{figure}  
+
+
+\begin{figure}[htp]
+\centering
+	\subfloat[]{
+		\label{fig:Wav-Spec-bin1ms-UNC02-Pkts-1930-2130}				                                   		
+  \includegraphics[width=7cm,keepaspectratio]{simulations/Cap6/UNC/Wav-Spec-UNC2002-Apr13-Sat-Pkts-bin1ms-1930-2130.eps}}		\vspace{10pt}%
+  \subfloat[]{
+		\label{fig:Wav-Spec-bin1s-UNC02-Pkts-1930-2130}				                                   		
+  \includegraphics[width=7cm,keepaspectratio]{simulations/Cap6/UNC/Wav-Spec-UNC2002-Apr13-Sat-Pkts-bin1s-1930-2130.eps}}		\vspace{10pt}%
+		\caption[]{Espectros \emph{wavelet} do \emph{trace} \texttt{UNC02} (em pacotes/\emph{bin}) estimados por meio da série \texttt{UNC02Pktsbin1ms} \subref{fig:Wav-Spec-bin1ms-UNC02-Pkts-1930-2130} e por meio da série \texttt{UNC02Pktsbin1s} \subref{fig:Wav-Spec-bin1s-UNC02-Pkts-1930-2130}. Em \subref{fig:Wav-Spec-bin1ms-UNC02-Pkts-1930-2130}, observe que o espectro é aproximadamente linear para escalas $j \geq 10$ (ou seja, para $\text{\emph{bins}} \geq 1\,\text{seg.}$). Os parâmetros de Hurst de \texttt{UNC02Pktsbin1ms} e \texttt{UNC02Pktsbin1s}, estimados por meio do ajuste de uma linha ao espectro \emph{wavelet} \subref{fig:Wav-Spec-bin1ms-UNC02-Pkts-1930-2130} entre as escalas $j=10,11,\ldots,20$ e de uma linha ao espectro \emph{wavelet} \subref{fig:Wav-Spec-bin1s-UNC02-Bytes-1930-2130} entre as escalas $j=1,2,\ldots,10$, é igual a $\widehat{H}\approx 0,854$ e $\widehat{H}\approx 0,922$, respectivamente.}%
+\label{fig:Wav-Spec-UNC02-Pkts-1930-2130}%
+\end{figure}
+
+
+A Fig. \ref{fig:UNC02-1930-2130} sugere que é razoável admitir que as séries de contagem de \emph{bytes} \texttt{UNC02bin1ms} e \texttt{UNC02bin1s}, que não foram analisadas pelo estudo de Stoev \emph{et al} \cite{stoev05}, sejam estacionárias. Como o foco deste trabalho é a modelagem de séries de \emph{bytes} em escalas temporais maiores ou iguais a 1 segundo (com fins à implementação de mecanismos de controle preventivo de congestionamento em redes multimídia), o restante desta seção se concentra na análise da série agregada \texttt{UNC02bin1s}. 
+
+\begin{figure}[htp]
+\centering
+		\subfloat[]{%
+			\label{fig:UNC02-1ms}
+			\includegraphics[width=15cm,keepaspectratio]{simulations/Cap6/UNC/UNC2002-Apr13-Sat-Bytes-bin1ms-1930-2130.eps}}\\		
+		\vspace{10pt}%
+		\subfloat[]{%
+			\label{fig:UNC02-1s}
+			\includegraphics[width=15cm,keepaspectratio]{simulations/Cap6/UNC/UNC2002-Apr13-Sat-Bytes-bin1s-1930-2130.eps}}\\
+		\vspace{10pt}%
+		\caption[]{Tráfego entrante (série de contagem de \emph{bytes} por \emph{bin}) num enlace de acesso Gigabit Ethernet da UNC em 13/04/2002, no horário 19:30-21:30, na escala de 1 milissegundo (\texttt{UNC02bin1ms}) \subref{fig:UNC02-1ms} e na escala de 1 segundo (\texttt{UNC02bin1s}) \subref{fig:UNC02-1s}. O tráfego médio é igual a $51,623$ Mbps (ou $6,4529$ Mbytes/s) e é indicado pela linha branca em \subref{fig:UNC02-1s}, o que implica uma utilização do enlace de aproximadamente $5,16\%$.}%
+\label{fig:UNC02-1930-2130}%
+\end{figure}
+ 
+O resultado do teste de estacionariedade KPSS aplicado à série \texttt{UNC02bin1s} (vide Tabela \ref{tab:UNC02-testes}) não rejeita a hipótese de estacionariedade. A Tabela \ref{tab:UNC02-testes} também mostra que \texttt{UNC02bin1s} não possui raízes unitárias, é linear, não-Gaussiana e possui memória longa de acordo com os testes R/S e GPH. A Fig. \ref{fig:UNC2002-Apr13-Sat-bin1s-1930-2130-STABLEDIAG} mostra: a) o ajuste de uma distribuição estável com parâmetros $\{\alpha=1,79, \sigma=4,09\times10^5, \eta=0,99, \mu=6,35\times10^6\}$ à série \texttt{UNC02bin1s} no gráfico do canto superior esquerdo, b) o QQ-plot da distribuição estável ajustada \emph{vs} os dados empíricos no canto superior direito, c) o ZZ-plot da distribuição estável estimada \emph{vs} os dados empíricos no canto inferior esquerdo e d) o PP-plot da distribuição estável estimada \emph{vs} os dados empíricos no canto inferior direito. 
+Os gráficos ZZ-plot e PP-plot indicam que a distribuição marginal de probabilidades da série \texttt{UNC02bin1s} é bem modelada pela distribuição estável $S_{1,79}(4,09\times10^5;0,99;6,35\times10^6)$, o que explica o fato deste sinal ser linear porém não-Gaussiano.
+
+\begin{figure}[htp]
+	\begin{center}
+		\includegraphics[height=10cm,width=14cm]{simulations/Cap6/UNC/UNC2002-Apr13-Sat-bin1s-1930-2130-STABLEDIAG.eps}
+	\end{center}
+	\caption{Ajuste de uma PDF estável com parâmetros $\{\alpha=1,79, \sigma=4,09\times10^5, \eta=0,99, \mu=6,35\times10^6\}$, à série \texttt{UNC02bin1s} (gráfico do canto superior esquerdo), QQ-plot da distribuição estável estimada \emph{vs} os dados empíricos (canto superior direito), ZZ-plot da distribuição estável ajustada \emph{vs} os dados empíricos (canto inferior esquerdo) e PP-plot da distribuição estável estimada \emph{vs} os dados empíricos (canto inferior direito). Os gráficos ZZ-plot e PP-plot sugerem que os dados da série são bem modelados pela distribuição $S_{1,79}(4,09\times10^5;0,99;6,35\times10^6)$.}
+\label{fig:UNC2002-Apr13-Sat-bin1s-1930-2130-STABLEDIAG}
+\end{figure}  
+
+ 
+
+\begin{table}[htp]
+	\caption{Série \texttt{UNC02bin1s}: resultados de testes estatísticos (estacionariedade, memória longa, normalidade e linearidade) e quantificação do número de raízes unitárias (coluna $\hat{m}$). Os testes de Hinich, que utilizam a \ac{FFT} (\emph{Fast Fourier Transform}), foram aplicados ao primeiro bloco de 4096 amostras de \texttt{UNC02bin1s} (que contém $7340$ amostras, um número que não é uma potência de 2).}
+	\centering
+	\begin{tabular}{c| c c | c c | c c c c} \hline\hline  
+	\multicolumn{1}{c|}{$x_t$ é $I(0)$?} & \multicolumn{2}{c|}{$x_t$ é LRD?} & \multicolumn{2}{c|}{Hinich} &
+	\multicolumn{1}{c}{ $\hat{m}$}     \\ 
+KPSS           & R/S            & GPH                & $x_t$ é normal?   &  $x_t$ é linear?   & \\ \hline
+SIM            & SIM            & SIM                & NÃO               &  SIM               &  $0$       \\ 
+$p_{af}>0,05$  & $p_{af}<0,01$  & $p_{af}<0,01$   & $p_{af}=0$   &                    &     \\
+\hline\hline
+	\end{tabular}
+	\label{tab:UNC02-testes}
+\end{table}
+
+
+O espectro \emph{wavelet} da Fig. \ref{fig:Wav-Spec-bin1ms-UNC02-Bytes-1930-2130} é aproximadamente linear para as escalas $j \geq 7$ (ou seja, para $\tau_j \geq 64\,\text{ms}$) e aproximadamente constante nas escalas $1 \leq j \leq 6$, o que quer dizer que flutuações de \texttt{UNC02bin1ms} nas escalas de $1, 2,\ldots,32$ms são pouco correlacionadas (comportamente similar foi observado no espectro \emph{wavelet} da Fig. \ref{fig:Wav-Spec-bin1ms-UNC02-Pkts-1930-2130}). Por outro lado, o espectro \emph{wavelet} da Fig. \ref{fig:Wav-Spec-bin1s-UNC02-Bytes-1930-2130} é aproximadamente linear em todas as escalas. Os parâmetros de Hurst de \texttt{UNC02bin1ms} e \texttt{UNC02bin1s}, estimados por meio do ajuste de uma linha ao espectro \emph{wavelet} \ref{fig:Wav-Spec-bin1ms-UNC02-Bytes-1930-2130} entre as escalas $j=10,11,\ldots,20$ e de uma linha ao espectro \emph{wavelet} \ref{fig:Wav-Spec-bin1s-UNC02-Bytes-1930-2130} entre as escalas $j=1,2,\ldots,10$, é igual a $\widehat{H}\approx 0,839$ e $\widehat{H}\approx 0,906$, respectivamente. 
+%Note-se que o espectro da Fig. \ref{fig:Wav-Spec-bin1ms-UNC02-Bytes-1930-2130} fornece uma estimativa mais robusta do parâmetro de Hurst ($\widehat{H}\approx 0,839$), tendo em vista que a mesma foi determinada por meio da série original de \emph{bytes} com \emph{bins} de 1ms (este é o critério usado pelos artigos \cite{stoev05} e \cite{park05}).  
+
+\begin{figure}[htp]
+\centering
+	\subfloat[]{
+		\label{fig:Wav-Spec-bin1ms-UNC02-Bytes-1930-2130}				                                   		
+  \includegraphics[width=7cm,keepaspectratio]{simulations/Cap6/UNC/Wav-Spec-UNC2002-Apr13-Sat-Bytes-bin1ms-1930-2130.eps}}		\vspace{10pt}%
+  \subfloat[]{
+		\label{fig:Wav-Spec-bin1s-UNC02-Bytes-1930-2130}				                                   		
+  \includegraphics[width=7cm,keepaspectratio]{simulations/Cap6/UNC/Wav-Spec-UNC2002-Apr13-Sat-Bytes-bin1s-1930-2130.eps}}		\vspace{10pt}%
+		\caption[]{Espectros \emph{wavelet} do \emph{trace} \texttt{UNC02} (em \emph{bytes}/\emph{bin}) estimados por meio da série \texttt{UNC02bin1ms} \subref{fig:Wav-Spec-bin1ms-UNC02-Bytes-1930-2130} e por meio da série \texttt{UNC02bin1s} \subref{fig:Wav-Spec-bin1s-UNC02-Bytes-1930-2130}. Em \subref{fig:Wav-Spec-bin1ms-UNC02-Bytes-1930-2130}, observe que o espectro é aproximadamente linear para escalas $j \geq 7$ (ou seja, para $\text{\emph{bins}} > 128\,\text{ms}$). O parâmetro de Hurst, estimado por meio do ajuste de uma linha ao espectro \emph{wavelet} \subref{fig:Wav-Spec-bin1ms-UNC02-Bytes-1930-2130} entre as escalas $j=10,11,\ldots,20$ e de uma linha ao espectro \emph{wavelet} \subref{fig:Wav-Spec-bin1s-UNC02-Bytes-1930-2130} entre as escalas $j=1,2,\ldots,10$, é igual a $\widehat{H}\approx 0,839$ e $\widehat{H}\approx 0,906$, respectivamente.}%
+\label{fig:Wav-Spec-UNC02-Bytes-1930-2130}%
+\end{figure}
+
+A Tabela \ref{tab:UNC-est-d} resume as estimativas do parâmetro $d$ para a série \texttt{UNC02bin1s} obtidas 
+pelos métodos R/S, periodograma (com janela de Daniell), Whittle, Haslett-Raftery e Abry-Veitch. 
+Observe que o resultado da análise R/S é discordante dos demais, os quais estão situados na faixa $0,37 \leq \hat{d} \leq 0,43$.  A Fig. \ref{fig:UNC02psd-SACF} mostra o periodograma alisado com janela de Daniell (Fig. \ref{fig:UNC02pgram}), o periodograma alisado pelo método WOSA (Fig. \ref{fig:UNC02-pwelch-bin1s}) e a SACF da série \texttt{UNC02bin1s} (Fig. \ref{fig:UNC02ACF}, que também mostra as ACFs teóricas dos modelos AR(18) e ARFIMA$(0;0,3717;1)$ estimados para a série).
+A Fig. \ref{fig:UNC02ACF} mostra que, diferentemente do modelo ARFIMA$(0;0,3717;1)$, o processo AR(18) não modela o decaimento lento da SACF da série  \texttt{UNC02bin1s}. 
+
+
+\begin{table}[htp]
+	\caption{Estimativas do parâmetro $d$ para a série \texttt{UNC02bin1s}.}
+	\centering
+	\begin{tabular}{c c c c c c c c c} \hline\hline  
+análise   & periodograma  & estimador    & estimador de MV     &  estimador   \\
+R/S       & com janela    & de Whittle   & de Haslett-Raftery  &  \emph{wavelet}   \\ 
+          & de Daniell    &              &                     &  Abry/Veitch      \\ \hline
+$0,3125$  & $0,3854$      & $0,4225$     & $0,3717$            &  $0,406$         \\ \hline\hline
+	\end{tabular}
+	\label{tab:UNC-est-d}
+\end{table}
+
+%\begin{figure}[htp]
+%\centering
+%		\subfloat[]{%
+%			\label{fig:UNC02-rawpgram}
+%			\includegraphics[height=7cm,keepaspectratio]{simulations/Cap6/UNC/UNC02-rawpgram.eps}}\\		
+%		\vspace{3pt}%
+%		\subfloat[]{%
+%			\label{fig:UNC02pgram}
+%			\includegraphics[height=7cm,keepaspectratio]{simulations/Cap6/UNC/UNC02pgram.eps}}\\
+%		\vspace{3pt}%
+%		\subfloat[]{%
+%			\label{fig:UNC02pwelch}
+%			\includegraphics[height=7cm,keepaspectratio]{simulations/Cap6/UNC/UNC02pwelch.eps}}\\
+%		\vspace{3pt}%
+%\caption[]{Série UNC02 (escala de 1 segundo): \subref{fig:UNC02-rawpgram} periodograma, \subref{fig:UNC02pgram} periodograma alisado com janela de autocorrelação de Daniell e \subref{fig:UNC02pwelch} periodograma estimado pelo método \ac{WOSA}.}%
+%\label{fig:UNC02psd}%
+%\end{figure}
+
+
+\begin{figure}[htp]
+\centering
+%		\subfloat[]{%
+%			\label{fig:UNC02-pwelch-bin1ms}
+%			\includegraphics[width=7cm,keepaspectratio]{simulations/Cap6/UNC/UNC02-bin1ms-pwelch.eps}}\\		
+%		\vspace{5pt}%
+		\subfloat[]{%
+			\label{fig:UNC02pgram}
+			\includegraphics[width=7cm,keepaspectratio]{simulations/Cap6/UNC/UNC02pgram.eps}}\\
+		\hspace{0pt}%
+		\subfloat[]{%
+			\label{fig:UNC02-pwelch-bin1s}
+			\includegraphics[width=7cm,keepaspectratio]{simulations/Cap6/UNC/UNC02-bin1s-pwelch.eps}}\\
+		\vspace{3pt}%
+		\subfloat[]{%
+			\label{fig:UNC02ACF}
+			\includegraphics[height=7cm,keepaspectratio]{simulations/Cap6/UNC/UNC02ACF.eps}}\\
+		\vspace{10pt}%
+\caption[]{Série \texttt{UNC02bin1s}: \subref{fig:UNC02pgram} periodograma alisado com janela de Daniell, \subref{fig:UNC02-pwelch-bin1s} periodograma alisado pelo método WOSA e \subref{fig:UNC02ACF} SACF e ACFs teóricas dos modelos AR(18) e ARFIMA$(0;0,3717;1)$ estimados.}%
+\label{fig:UNC02psd-SACF}%
+\end{figure}
+
+
+%\clearpage
+%\begin{figure}[htp]
+%\centering
+%		\subfloat[]{%
+%			\label{fig:UNC02qqplot}
+%			\includegraphics[height=11cm,keepaspectratio]{simulations/Cap6/UNC/UNC02qqplot.eps}}\\		
+%		\vspace{10pt}%
+%		\subfloat[]{%
+%			\label{fig:UNC02ACF}
+%			\includegraphics[height=11cm,keepaspectratio]{simulations/Cap6/UNC/UNC02ACF.eps}}\\
+%		\vspace{10pt}%
+%		\caption[]{\texttt{UNC02bin1s}: \subref{fig:UNC02qqplot} QQ-plot e \subref{fig:UNC02ACF} gráfico com a SACF e ACFs teóricas dos modelos ARFIMA$(0;0,3717;1)$ e AR$(18)$ estimados.}%
+%\label{fig:UNC02:qqplot-acf}%
+%\end{figure}
+
+
+As Figs. \ref{fig:UNC02-QQplot-resid}, \ref{fig:UNC02-pgram-resid} e \ref{fig:UNC02-resid-ACF} ilustram o QQ-plot, o periodograma alisado e a SACF dos resíduos do modelo ARFIMA$(0;0,3717;1)$ estimado para a série \texttt{UNC02bin1s}. 
+As Figs. \ref{fig:UNC02-pgram-resid-tarfima100} e \ref{fig:UNC02-resid-tarfima100-SACF} mostram o periodograma alisado e a SACF dos resíduos do modelo TARFIMA$(100)$ ajustado à série \texttt{UNC02bin1s} (foi utilizado o valor $\hat{d}=0,3717$ estimado pelo método de Haslett-Raftery). As Figs. \ref{fig:resid-ar18-AIC-SACF} e \ref{fig:resid-ar2-SACF} mostram as SACFs dos resíduos dos modelos AR$(18)$ e AR(2) estimados pelo critério AIC, respectivamente. As Figs. \ref{fig:pgram-resid-ar18-AIC} e \ref{fig:pgram-resid-ar2} mostram os periodogramas alisados dos resíduos dos modelos AR$(18)$ e AR(2) ajustados, respectivamente. 
+
+De acordo com as Figs. \ref{fig:UNC02-resid-ACF}, \ref{fig:UNC02-resid-tarfima100-SACF}, \ref{fig:resid-ar18-AIC-SACF} (SACFs dos resíduos dos modelos ARFIMA, TARFIMA$(100)$ e AR(18), respectivamente) e \ref{fig:UNC02-pgram-resid}, \ref{fig:UNC02-pgram-resid-tarfima100} e \ref{fig:pgram-resid-ar18-AIC}   
+(periodogramas dos resíduos dos modelos ARFIMA, TARFIMA$(100)$ e AR(18), respectivamente), os resíduos 
+dos modelos ARFIMA, TARFIMA$(100)$ e AR(18) se comportam como RB. Por outro lado, as Figs. \ref{fig:resid-ar2-SACF} e \ref{fig:pgram-resid-ar2} mostram que a série dos resíduos do modelo AR(2) estimado não é um RB (veja a singularidade na origem do periodograma da Fig. \ref{fig:pgram-resid-ar2}). 
+
+A Fig. \ref{fig:UNC02-polos-ar} mostra os diagramas de pólos e zeros dos modelos AR(18) (Fig. \ref{fig:polosAR18}) e AR(2) (Fig. \ref{fig:polosAR2}). Note que o pólo real positivo do processo AR(18) estimado está bastante próximo do círculo unitário (este comportamento também foi observado para as séries MWM com $H=\{0,9;0,8;0,7\}$  e ARFIMA com $d=\{0,4;0,3\}$ do Cap. \ref{cap:tarfima}).
+
+%Finalmente, observe na Fig. \ref{fig:UNC02-polos-ar}, que ilustra os diagramas de pólos e zeros dos modelos AR(18) (Fig. \ref{fig:polosAR18}) e AR(2) (Fig. \ref{fig:polosAR2}) que um pólos do modelo AR(18) está bastante próximo do círculo unitário (pólo real positivo). O diagrama da Fig. \ref{fig:polosAR18} indica que a memória longa é modelada às custas do posicionamento de um pólo nas proximidades do círculo unitário. 
+
+
+\begin{figure}[htp]
+\centering
+		\subfloat[]{%
+			\label{fig:UNC02-QQplot-resid}
+			\includegraphics[height=7cm,keepaspectratio]{simulations/Cap6/UNC/UNC02-QQplot-resid.eps}}\\
+		\vspace{2pt}%
+		\subfloat[]{%
+			\label{fig:UNC02-pgram-resid}
+			\includegraphics[height=7cm,keepaspectratio]{simulations/Cap6/UNC/UNC02-pgram-resid.eps}}\\
+		\vspace{2pt}%
+		\subfloat[]{%
+			\label{fig:UNC02-resid-ACF}
+			\includegraphics[height=7cm,keepaspectratio]{simulations/Cap6/UNC/UNC02-resid-ACF.eps}}\\		
+		\vspace{3pt}%	
+\caption[]{Resíduos do modelo ARFIMA$(0;0,3717;1)$ estimado para a série \texttt{UNC02bin1s}: \subref{fig:UNC02-QQplot-resid} QQ-plot,  \subref{fig:UNC02-pgram-resid} periodograma  e \subref{fig:UNC02-resid-ACF} SACF.}%
+\label{fig:UNC02-resid}%
+\end{figure}
+
+
+\begin{figure}[htp]
+\centering
+		\subfloat[]{%
+			\label{fig:UNC02-pgram-resid-tarfima100}
+			\includegraphics[height=7cm,keepaspectratio]{simulations/Cap6/UNC/UNC02-pgram-resid-tarfima100.eps}}\\
+		\hspace{0pt}%
+		\subfloat[]{%
+			\label{fig:UNC02-resid-tarfima100-SACF}
+			\includegraphics[height=7cm,keepaspectratio]{simulations/Cap6/UNC/UNC02-resid-tarfima100-SACF.eps}}\\
+		\vspace{10pt}%
+\caption[]{Resíduos do modelo TARFIMA$(100)$ ajustado à série \texttt{UNC02bin1s}: \subref{fig:UNC02-pgram-resid-tarfima100} periodograma e \subref{fig:UNC02-resid-tarfima100-SACF} SACF.}%
+\label{fig:UNC02-resid-tarfima100}%
+\end{figure}
+
+
+\begin{figure}[htp]
+\centering
+		\subfloat[]{%
+			\label{fig:resid-ar18-AIC-SACF}
+			\includegraphics[height=7cm,keepaspectratio]{simulations/Cap6/UNC/resid_ar18_AIC_SACF.eps}}\\
+		\hspace{0pt}%
+		\subfloat[]{%
+			\label{fig:resid-ar2-SACF}
+			\includegraphics[height=7cm,keepaspectratio]{simulations/Cap6/UNC/resid_ar2_SACF.eps}}\\
+		\vspace{10pt}%
+\caption[]{SACF dos resíduos dos modelos AR$(18)$ \subref{fig:resid-ar18-AIC-SACF} e AR(2) \subref{fig:resid-ar2-SACF} ajustados à série \texttt{UNC02bin1s}.}%
+\label{fig:UNC02-resid-ar}%
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+		\subfloat[]{%
+			\label{fig:pgram-resid-ar18-AIC}
+			\includegraphics[height=7cm,keepaspectratio]{simulations/Cap6/UNC/pgram_resid_ar18_AIC.eps}}\\
+		\hspace{0pt}%
+		\subfloat[]{%
+			\label{fig:pgram-resid-ar2}
+			\includegraphics[height=7cm,keepaspectratio]{simulations/Cap6/UNC/pgram_resid_ar2.eps}}\\
+		\vspace{10pt}%
+\caption[]{Periodogramas: \subref{fig:resid-ar18-AIC-SACF} resíduos do modelo AR(18)  e \subref{fig:resid-ar2-SACF} resíduos do modelo AR(2).}%
+\label{fig2:UNC02-resid-ar}%
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+		\subfloat[]{%
+			\label{fig:polosAR18}
+			\includegraphics[height=7cm,keepaspectratio]{simulations/Cap6/UNC/polosAR18.eps}}\\
+		\vspace{10pt}%
+		\subfloat[]{%
+			\label{fig:polosAR2}
+			\includegraphics[height=7cm,keepaspectratio]{simulations/Cap6/UNC/polosAR2.eps}}\\
+		\vspace{10pt}%
+\caption[]{Diagrama de pólos e zeros dos modelos AR(18) \subref{fig:polosAR18} e AR(2) \subref{fig:polosAR2}.}%
+\label{fig:UNC02-polos-ar}%
+\end{figure}
+
+
+\subsection{Análise Local da Memória Longa do \emph{Trace} UNC02}
+\label{trafego:subsec:Hlocal-traceUNC}
+
+Na prática, os métodos de estimação do parâmetro de Hurst podem ser severamente afetados por não-estacionariedades existentes numa determinada série, tais como mudanças bruscas do seu nível médio. 
+De acordo com a literatura \cite{stoev05}, \cite{stoev06}, este tipo de mudança de regime tende a provocar uma sobre-estimativa do parâmetro $H$ ($\hat{H} \geq 1$) efetuada pelo método \emph{wavelet} Abry-Veitch (portanto, a obtenção de uma estimativa $\hat{H} \geq 1$ é uma indicação da presença de não-estacionariedade). Sendo assim, a premissa, freqüentemente adotada, de que sinais de tráfego LRD podem ser modelados por meio de um processo estacionário caracterizado por um parâmetro $H$ \textbf{global} pode não ser realista para muitos casos encontrados na prática.   
+
+Abry e Veitch \cite{abry98} efetuaram um estudo preliminar da estacionariedade de três séries (\texttt{pAug},  \texttt{pOct} e \texttt{OctExt}) do conjunto de \emph{traces} de tráfego Ethernet coletados por Leland \emph{et al} \cite{leland94} na rede local da Bellcore no início da década de 1990 por meio do exame da variação temporal do parâmetro de Hurst. Os \emph{traces} \texttt{pAug} e \texttt{pOct} têm menos de 1 hora de duração. O \emph{trace} \texttt{OctExt} tem 35 horas de duração. Abry e Veitch dividiram as séries em 32 segmentos contíguos sobre os quais foram calculadas estimativas de $H$. Este procedimento é justificado pelo fato dos coeficientes \emph{wavelet} de sinais LRD serem aproximadamente não-correlacionados no plano tempo-escala (mais precisamente, pode-se afirmar que não há correlação entre os coeficientes \emph{wavelet} de uma mesma escala e que a correlação entre escalas diferentes é fraca) \cite{percival00}, \cite{whitcher2001}. Para os \emph{traces} \texttt{pAug} e \texttt{pOct}, Abry e Veitch observaram que as médias das 32 estimativas ficaram próximas dos valores estimados para $H$ quando foram utilizadas todas as amostras das séries. De acordo com esses pesquisadores, esta é uma boa evidência heurística de que $H$ se mantém constante ao longo daqueles \emph{traces}. Por outro lado, as estimativas de $H$ para o \emph{trace} \texttt{OctExt} apresentam uma grande variabilidade, o que indica de forma clara a sua não-estacionariedade (a média das 32 estimativas difere significativamente da estimativa de $H$ obtida sobre todo o \emph{trace}). Entretanto, esta observação não surpreende, haja vista o ciclo diurno exibido pela série (conforme \cite{abry98}).      
+
+As Figs. \ref{fig:DinH-W256-UNC02-Bytes-1s} e \ref{fig:DinH-W512-UNC02-Bytes-1s} ilustram a variação temporal do parâmetro de Hurst (gráficos das estimativas de $H$ \emph{vs} tempo em segundos) da série \texttt{UNC02bin1s} da Fig. \ref{fig2:UNC02-1s}. As estimativas de $H$ em \ref{fig:DinH-W256-UNC02-Bytes-1s} e \ref{fig:DinH-W512-UNC02-Bytes-1s} foram obtidas por meio da aplicação do estimador Abry-Veitch sobre segmentos de dados sucessivos e não-superpostos de 256 e 512 amostras, respectivamente. Os limites superior e inferior dos intervalos de confiança a $95\%$ também estão representados nas Figs. \ref{fig:DinH-W256-UNC02-Bytes-1s} e \ref{fig:DinH-W512-UNC02-Bytes-1s}. Observe-se que a variabilidade da estimativa de $H$ diminui com o aumento do número de amostras do segmento de dados. As médias das estimativas nas Figs. \ref{fig:DinH-W256-UNC02-Bytes-1s} e \ref{fig:DinH-W512-UNC02-Bytes-1s} estão indicadas pelas linhas horizontais vermelhas e correspondem a $0,9228$ e $0,9166$, respectivamente. Note-se que elas estão razoavelmente próximas da estimativa $\hat{H}=0,906$, que foi obtida utilizando-se todas as amostras do sinal. As Figs. \ref{fig:DinH-W256-UNC02-Bytes-1s} e \ref{fig:DinH-W512-UNC02-Bytes-1s} indicam que o sinal \texttt{UNC02bin1s} pode ser considerado estacionário.
+
+\begin{figure}[htp]
+\centering
+		\subfloat[]{%
+			\label{fig:DinH-W256-UNC02-Bytes-1s}
+			\includegraphics[height=6cm,keepaspectratio]{simulations/Cap6/UNC/DinH-UNC2002-Apr13-Sat-Bytes-bin1s-1930-2130.eps}}\\		
+		\vspace{3pt}%
+		\subfloat[]{%
+			\label{fig:DinH-W512-UNC02-Bytes-1s}
+			\includegraphics[height=6cm,keepaspectratio]{simulations/Cap6/UNC/DinH-UNC2002-Apr13-Sat-Bytes-bin1s-1930-2130-W512.eps}}\\		
+		\vspace{3pt}%
+		
+		\subfloat[]{%
+			\label{fig2:UNC02-1s}
+			\includegraphics[height=6cm,keepaspectratio]{simulations/Cap6/UNC/UNC2002-Apr13-Sat-Bytes-bin1s-1930-2130.eps}}\\
+		\vspace{10pt}%
+		\caption[]{As Figs. \subref{fig:DinH-W256-UNC02-Bytes-1s} e \subref{fig:DinH-W512-UNC02-Bytes-1s} mostram análises locais do parâmetro de Hurst da série \texttt{UNC02bin1s} da Fig. \subref{fig2:UNC02-1s}. As estimativas de $H$ em \subref{fig:DinH-W256-UNC02-Bytes-1s} e \subref{fig:DinH-W512-UNC02-Bytes-1s} foram obtidas por meio da aplicação do estimador Abry-Veitch sobre janelas de dados sucessivas e não-superpostas de 256 e 512 amostras, respectivamente. As médias das estimativas em \subref{fig:DinH-W256-UNC02-Bytes-1s} e \subref{fig:DinH-W512-UNC02-Bytes-1s} estão indicadas pelas linhas horizontais vermelhas e correspondem a $0,9228$ e $0,9166$, respectivamente.}%
+\label{fig:DinH-UNC2002-Apr13-Sat-Bytes-bin1s-1930-2130}%
+\end{figure}
+
+A análise local do parâmetro de Hurst ilustrada pela Fig. \ref{fig:DinH-UNC2002-Apr13-Sat-Bytes-bin1s-1930-2130} é \textbf{cega} porque: a) não se sabe, a priori, a localização dos pontos de mudança de modelo gerador e b) não há um critério para a escolha do tamanho da janela de dados. Não obstante, essa \textbf{análise empírica} sugere que o janelamento com um número relativamente pequeno de amostras (como a que se fez com janelas de tamanho igual a 256) pode provocar um aumento da variância do estimador, o que não é desejável em aplicações práticas.
+Por outro lado, a análise local empírica com janelas de 512 pontos parece produzir resultados mais consistentes.    
+Percival e Walden \cite{percival00}, por exemplo, analisam a variância \emph{wavelet} (é o termo usado por esses autores para denominar o espectro \emph{wavelet}) da série do Rio Nilo entre os anos de 773 e 1284 (análise \emph{wavelet} com 512 pontos). Conforme explicado pela seção \ref{trafego:subsec:analise-UNC02}, a detecção/estimação dos pontos de mudanças de regime de séries LRD ainda é um assunto pouco entendido. Essa questão ainda parece ser mais complicada no contexto de modelagem de teletráfego, onde se requer que a estimação seja \emph{on-line}. 
+
+%O autor desta tese seria omisso se não citasse as referências \cite[Cap.9]{percival00} (livro de Percival e Walden) e  \cite[Cap.7]{whitcher2001} (livro de Gençay, Selçuk e Whitcher), os quais demonstram como se pode usar a DWT na construção de um teste estatístico para a hipótese de homogeneidade da variância de um sinal LRD. Essas referências são importantes para a modelagem de teletráfego porque estão baseadas no uso da DWT, que, como se sabe, é uma ferramenta adequada para análise em tempo real, dado o seu baixo custo computacional (lembre-se que a DWT de um sinal com $N$ pontos requer $O(N)$ operações). 
+
+
+\subsection{Previsão Empírica com o Modelo TARFIMA}
+\label{trafego:subsec:prev-traceUNC}
+
+A Fig. \ref{fig:prevt2700-UNC02-TARFIMA100} ilustra previsões para a série \texttt{UNC02bin1s} com origem em $t=2700$ que foram obtidas por meio de modelos TARFIMA(100) e AR(18) (vide Fig. \ref{fig:prevt2700-UNC02-TARFIMA100-AR18}) e TARFIMA(100) e AR(2) (vide Fig. \ref{fig:prevt2700-UNC02-TARFIMA100-AR2}). O modelo TARFIMA(100) utilizou a estimativa (conservadora) $\hat{d}=0,3717$ (vide Tabela \ref{tab:UNC-est-d}). O processo AR(18) é o melhor modelo AR de acordo com o critério AIC. Os modelos AR(2) e AR(18) foram estimados pela função \texttt{S-PLUS}\textsuperscript{\textregistered} \texttt{AR} (método de Yule-Walker \cite[pág.94]{stoica05}).
+
+A Fig. \ref{fig:prevt2700-UNC02-TARFIMA100-AR2} mostra que as previsões do modelo AR(2) convergem rapidamente para a média amostral da série e que os seus intervalos de previsão não têm uma boa probabilidade de cobertura, uma vez que várias amostras entre $t=2700$ e $t=2740$ têm valores maiores do que os limites superiores dos intervalos de confiança obtidos. Isto também é ilustrado pela Fig. \ref{fig:UNC02-t2700-diff-abs-predict-errors(d0,3717)-TARFIMA100-AR2} que mostra a diferença entre os erros absolutos de previsão dos modelos AR(2) e TARFIMA(100) (observe que o erro absoluto de previsão do modelo AR(2) é quase sempre maior do que o do modelo TARFIMA(100)).  
+Por outro lado, as Figs. \ref{fig:prevt2700-UNC02-TARFIMA100-AR2} e \ref{fig:UNC02-t2700-diff-abs-predict-errors(d0,3717)-TARFIMA100-AR2} indicam que os intervalos de previsão do modelo TARFIMA(100) têm uma probabilidade de cobertura satisfatória.  As Figs. \ref{fig:prevt2700-UNC02-TARFIMA100-AR18} e \ref{fig:UNC02-t2700-diff-abs-predict-errors(d0,3717)-TARFIMA100-AR18}
+sugerem que os modelos TARFIMA(100) e AR(18) têm desempenhos similares. De fato, a Fig. \ref{fig:UNC02-t2700-diff-abs-predict-errors(d0,3717)-TARFIMA100-AR18} sugere que o modelo TARFIMA(100) tem um desempenho ligeiramente superior, haja vista que o erro absoluto de previsão do modelo AR(18) tende a ser maior do que o do processo TARFIMA(100) para $h\leq40$ ($2701\leq t \leq 2740$). 
+ 
+\begin{figure}[htp]
+\centering
+		\subfloat[]{%
+			\label{fig:prevt2700-UNC02-TARFIMA100-AR18}
+			\includegraphics[height=7cm,width=15.5cm]{simulations/Cap6/UNC/prev-t2700-UNC02-TARFIMA100-AR18.eps}}\\		
+		\vspace{10pt}%
+		\subfloat[]{%
+			\label{fig:prevt2700-UNC02-TARFIMA100-AR2}
+			\includegraphics[height=7cm,width=15.5cm]{simulations/Cap6/UNC/prev-t2700-UNC02-TARFIMA100-AR2.eps}}\\
+		\vspace{10pt}%
+\caption[]{Previsão da série \texttt{UNC02bin1s} com origem em $t=2700$ ($\hat{d}=0,3717$): \subref{fig:prevt2700-UNC02-TARFIMA100-AR18} observações, previsões de passo-$h$ e intervalos de $95\%$ de confiança para as previsões dos modelos TARFIMA(100) e AR(18) e \subref{fig:prevt2700-UNC02-TARFIMA100-AR2} observações, previsões de passo-$h$ e intervalos de $95\%$ de confiança para as previsões dos modelos TARFIMA(100) e AR(2).}%
+\label{fig:prevt2700-UNC02-TARFIMA100}%
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+		\subfloat[]{%
+			\label{fig:UNC02-t2700-diff-abs-predict-errors(d0,3717)-TARFIMA100-AR18}
+			\includegraphics[height=9cm,width=14cm]{simulations/Cap6/UNC/UNC02-diff-abs-predict-errors(d0,3717)t2700-TARFIMA100-AR18.eps}}\\		
+		\vspace{10pt}%
+		\subfloat[]{%
+			\label{fig:UNC02-t2700-diff-abs-predict-errors(d0,3717)-TARFIMA100-AR2}
+			\includegraphics[height=9cm,width=14cm]{simulations/Cap6/UNC/UNC02-diff-abs-predict-errors(d0,3717)t2700-TARFIMA100-AR2.eps}}\\
+		\vspace{10pt}%
+\caption[]{Previsão da série \texttt{UNC02bin1s} com origem em $t=2700$ ($\hat{d}=0,3717$): \subref{fig:UNC02-t2700-diff-abs-predict-errors(d0,3717)-TARFIMA100-AR18} diferença entre os erros absolutos de previsão dos modelos AR(18) e TARFIMA(100) (gráfico $(\Delta_h(1) - \Delta_h(2))$ \emph{vs.} $h$, em que $\Delta_h(1)$ é o erro absoluto de previsão do modelo AR(18) e $\Delta_h(2)$ é o erro absoluto de previsão do modelo TARFIMA(100)) e \subref{fig:UNC02-t2700-diff-abs-predict-errors(d0,3717)-TARFIMA100-AR2} diferença entre os erros absolutos de previsão dos modelos AR(2) e TARFIMA(100) (gráfico $(\Delta_h(1) - \Delta_h(2))$ \emph{vs.} $h$, em que $\Delta_h(1)$ é o erro absoluto de previsão do modelo AR(2) e $\Delta_h(2)$ é o erro absoluto de previsão do modelo TARFIMA(100)).}%
+\label{fig:UNC02-t2700-dif-erros-abs}%
+\end{figure}
+
+A Tabela \ref{tab:prevt2700-UNC02} contém os valores de $PCEMSE_{\rvx,\rvy}(t=2700,K)$ para $K=\{7,10,20,50,100\}$  
+dos processos AR$(18)$ e TARFIMA$(L)$, $L=10,50,100$ (utilizou-se $\hat{H}=0,8717$), relativos ao modelo AR(2). A Tabela \ref{tab:prevt2700-UNC02} mostra que a) o modelo TARFIMA(100) apresenta o melhor desempenho do ponto de vista do critério \ac{PCEMSE} e que b) os modelos AR(18), TARFIMA(50) e TARFIMA(100) têm um desempenho similar. Note-se que os resultados obtidos confirmam a teoria exposta pela seção \ref{tarfima:sec:poder-prev}: a precisão das previsões aumenta com o aumento da ordem de truncamento $L$, dada uma ``boa'' estimativa de $H$.
+
+%Entretanto, o TARFIMA apresenta um desempenho ligeiramente superior, pois o seu $\text{EQME}_t$ é menor. Apesar do bom desempenho do modelo AR$(15)$, ressalta-se que a ordem do mesmo é alta, e que, portanto, essa representação não é parsimoniosa (procura-se utilizar, na prática, modelos ARMA com ordens $\{p,q\}<3$ \cite{zivot03}). Este procedimento de estimação foi bem sucedido porque $N$, que denota o tamanho da série, é grande ($4096$) \cite[p. 358]{bhansali03}. Portanto, o TARFIMA é o modelo de previsão preferido. A Fig.\ref{fig:predict} ilustra os valores simulados, as previsões de passo-$h$ e os intervalos de confiança ($95\%$) para $y_t$ obtidos a partir dos modelos AR($15$) e TARFIMA$(50)$. 
+
+
+\begin{table}[htp]
+	\caption{Série \texttt{UNC02bin1s} ($\hat{d}=0,3717$): $PCEMSE_{\rvx,\rvy}(t=2700,K)$ dos modelos estimados AR$(18)$, TARFIMA$(10)$, TARFIMA$(50)$ e TARFIMA$(100)$ relativos ao modelo AR(2).}
+	\small
+	\centering
+	\begin{tabular}{c c c c c c c c c} \hline\hline  
+$K$	  & AR(18)	 & L=10	    & L=50	  & L=100 \\\hline
+7	  & -0,3933  & -0,4892 & -0,4365  & -0,4365  \\
+10	& -0,6611  & -0,5307 & -0,6778  & -0,6778  \\
+20	& -0,6885  & -0,2885 & -0,6858  & -0,6912 \\
+50	& -0,6160  & -0,1791 & -0,6532  & -0,6655 \\
+100	& -0,5448  & -0,1474 & -0,5989  & -0,6082 \\ \hline\hline
+	\end{tabular}
+	\label{tab:prevt2700-UNC02}
+\end{table}
+
+%-0,3933  & -0,4892 & -0,4365  & -0,4365
+%-0,6611  & -0,5307 & -0,6778  & -0,6778
+%-0,6885  & -0,2885 & -0,6858  & -0,6912
+%-0,6160  & -0,1791 & -0,6532  & -0,6655
+%-0,5448  & -0,1474 & -0,5989  & -0,6082
+
+
+
+A Fig. \ref{fig:prevt866-UNC02-TARFIMA100} mostra previsões para a série \texttt{UNC02bin1s} com origem em $t=866$ obtidas por meio dos modelos TARFIMA(100) e AR(18) (vide Fig. \ref{fig:prevt866-UNC02-TARFIMA100-AR18}) e TARFIMA(100) e AR(2) (vide Fig. \ref{fig:prevt866-UNC02-TARFIMA100-AR2}). A Fig. \ref{fig:UNC02-t866-diff-abs-predict-errors(d0,3717)-TARFIMA100-AR18} mostra que o modelo TARFIMA(100) é superior ao AR(18) para $h<40$ (a Fig. \ref{fig:prevt866-UNC02-TARFIMA100-AR18} ilustra que as probabilidades de cobertura desses modelos é similar para $t=866$). Por outro lado, a Fig. \ref{fig:UNC02-t866-diff-abs-predict-errors(d0,3717)-TARFIMA100-AR2} indica que o modelo AR(2) apresenta um desempenho superior ao do modelo de memória longa TARFIMA(100) (uma vez que o erro absoluto de previsão do modelo AR(2) é quase sempre menor do que o do modelo TARFIMA(100)). Este fato é justificado pela existência de uma inversão ``local'' de tendência na série \texttt{UNC02bin1s} por volta de $t=866$ (veja que os valores da série tendem a aumentar entre $825 \leq t < 866$ e a decrescer entre $866 \leq t \leq 885$), a qual não é bem modelada pelo modelo TARFIMA(100). Este resultado não surpreende. Conforme visto na seção \ref{tarfima:subsec:prev:arfima},
+modelos SRD podem apresentar, em determinados trechos da série LRD sob análise, um desempenho de previsão superior ao de modelos LRD. Não obstante, modelos de memória longa têm um desempenho superior ``na média'' quando aplicados às séries LRD. 
+
+\begin{figure}[htp]
+\centering
+		\subfloat[]{%
+			\label{fig:prevt866-UNC02-TARFIMA100-AR18}
+			\includegraphics[height=7cm,width=15.5cm]{simulations/Cap6/UNC/prev-t866-UNC02-TARFIMA100-AR18.eps}}\\		
+		\vspace{10pt}%
+		\subfloat[]{%
+			\label{fig:prevt866-UNC02-TARFIMA100-AR2}
+			\includegraphics[height=7cm,width=15.5cm]{simulations/Cap6/UNC/prev-t866-UNC02-TARFIMA100-AR2.eps}}\\
+		\vspace{10pt}%
+\caption[]{Previsão da série \texttt{UNC02bin1s} com origem em $t=866$ ($\hat{d}=0,3717$): \subref{fig:prevt866-UNC02-TARFIMA100-AR18} observações, previsões de passo-$h$ e intervalos de $95\%$ de confiança para as previsões dos modelos TARFIMA(100) e AR(18) e \subref{fig:prevt866-UNC02-TARFIMA100-AR2} observações, previsões de passo-$h$ e intervalos de $95\%$ de confiança para as previsões dos modelos TARFIMA(100) e AR(2).}%
+\label{fig:prevt866-UNC02-TARFIMA100}%
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+		\subfloat[]{%
+			\label{fig:UNC02-t866-diff-abs-predict-errors(d0,3717)-TARFIMA100-AR18}
+			\includegraphics[height=9cm,keepaspectratio]{simulations/Cap6/UNC/UNC02-diff-abs-predict-errors(d0,3717)t866-TARFIMA100-AR18.eps}}\\		
+		\vspace{10pt}%
+		\subfloat[]{%
+			\label{fig:UNC02-t866-diff-abs-predict-errors(d0,3717)-TARFIMA100-AR2}
+			\includegraphics[height=9cm,keepaspectratio]{simulations/Cap6/UNC/UNC02-diff-abs-predict-errors(d0,3717)t866-TARFIMA100-AR2.eps}}\\
+		\vspace{10pt}%
+\caption[]{Previsão da série \texttt{UNC02bin1s} com origem em $t=866$ ($\hat{d}=0,3717$): \subref{fig:UNC02-t866-diff-abs-predict-errors(d0,3717)-TARFIMA100-AR18} diferença entre os erros absolutos de previsão dos modelos AR(18) e TARFIMA(100) e \subref{fig:UNC02-t866-diff-abs-predict-errors(d0,3717)-TARFIMA100-AR2} diferença entre os erros absolutos de previsão dos modelos AR(2) e TARFIMA(100).}%
+\label{fig:UNC02-t866-dif-erros-abs}%
+\end{figure}
+
+%Qual é o significado do resultado acima obtido com o modelo AR(2)? Será que ele é uma evidência de que ``não vale a pena'' estimar modelos LRD (pelo menos quando o objetivo é a previsão de valores futuros) mesmo que a série em questão possua um alto grau de LRD? A resposta é \textbf{não}. Com efeito, a Fig. \ref{fig:UNC02-t866-diff-abs-predict-errors(d0,3717)-TARFIMA100-AR2} sugere que modelos SRD podem apresentar, \textbf{eventualmente}, em determinados trechos da série sob análise, um desempenho de previsão superior ao de modelos LRD. Contudo, deve-se ter em mente que modelos LRD têm um desempenho superior ``na média'' (porque levam em conta todas as possíveis realizações do processo estocástico) quando aplicados às séries LRD, conforme justificado pelo item \ref{tarfima:sec:poder-prev}. 
+
+%\begin{figure}[htp]
+%\centering
+%		\subfloat[]{%
+%			\label{fig:prevt7240-UNC02-TARFIMA100-AR18}
+%			\includegraphics[height=7cm,width=15.5cm]{simulations/Cap6/UNC/prev-t7240-UNC02-TARFIMA100-AR18.eps}}\\		
+%		\vspace{10pt}%
+%		\subfloat[]{%
+%			\label{fig:prevt7240-UNC02-TARFIMA100-AR2}
+%			\includegraphics[height=7cm,width=15.5cm]{simulations/Cap6/UNC/prev-t7240-UNC02-TARFIMA100-AR2.eps}}\\
+%		\vspace{10pt}%
+%\caption[]{Previsão da série \texttt{UNC02bin1s} com origem em $t=7240$ ($\hat{d}=0,3717$): \subref{fig:prevt7240-UNC02-TARFIMA100-AR18} observações, previsões de passo-$h$ e intervalos de $95\%$ de confiança para as previsões dos modelos TARFIMA(100) e AR(18) e \subref{fig:prevt7240-UNC02-TARFIMA100-AR2} observações, previsões de passo-$h$ e intervalos de $95\%$ de confiança para as previsões dos modelos TARFIMA(100) e AR(2).}%
+%\label{fig:prevt7240-UNC02-TARFIMA100}%
+%\end{figure}
+
+%\begin{figure}[htp]
+%\centering
+%		\subfloat[]{%
+%			\label{fig:UNC02-t7240-diff-abs-predict-errors(d0,3717)-TARFIMA100-AR18}
+			%\includegraphics[height=9cm,keepaspectratio]{simulations/Cap6/UNC/UNC02-diff-abs-predict-errors(d0,3717)t7240-TARFIMA100-AR18.eps}}\\		
+%		\vspace{10pt}%
+%		\subfloat[]{%
+%			\label{fig:UNC02-t7240-diff-abs-predict-errors(d0,3717)-TARFIMA100-AR2}
+			%\includegraphics[height=9cm,keepaspectratio]{simulations/Cap6/UNC/UNC02-diff-abs-predict-errors(d0,3717)t7240-TARFIMA100-AR2.eps}}\\
+%		\vspace{10pt}%
+%\caption[]{Previsão da série \texttt{UNC02bin1s} com origem em $t=7240$ ($\hat{d}=0,3717$): \subref{fig:UNC02-t7240-diff-abs-predict-errors(d0,3717)-TARFIMA100-AR18} diferença entre os erros absolutos de previsão dos modelos AR(18) e TARFIMA(100) e \subref{fig:UNC02-t7240-diff-abs-predict-errors(d0,3717)-TARFIMA100-AR2} diferença entre os erros absolutos de previsão dos modelos AR(2) e TARFIMA(100).}%
+%\label{fig:UNC02-t7240-dif-erros-abs}%
+%\end{figure}
+
+
+
+%\section{Modelagem do \emph{Trace} LCS}
+%\label{trafego:sec:traceLCS}
+
+%\subsection{Análise Exploratória do \emph{Trace} LCS}
+%\label{trafego:subsec:analise-traceLCS}
+
+%\subsection{Mudanças de Regime do \emph{Trace}  LCS}
+%\label{trafego:subsec:dinamica-traceLCS}
+
+%Referência Básica: \cite{leipus03}
+
+
+%\subsection{Previsão com TARFIMA}
+%\label{trafego:subsec:prev-traceLCS}
+
+\section{Conclusão}
+\label{trafego:sec:conc}
+
+O estudo de caso apresentado neste Capítulo mostra que é possível aplicar o modelo de memória longa 
+TARFIMA$(L)$ em trechos estacionários de sinais (Gaussianos/não-Gaussianos) de teletráfego fractal. Além disso, os resultados da seção \ref{trafego:subsec:Hlocal-traceUNC} sugerem que a dinâmica do parâmetro de Hurst de sinais de teletráfego seja bastante \textbf{lenta} na prática (lembre que o parâmetro de Hurst do \emph{trace} \texttt{UNC02} mantém-se constante por um período de 2 horas), no sentido de que se o valor de $H$ varia (e ele deve variar um pouco na prática), então espera-se que essa variação ocorra muito lentamente com o tempo (numa escala de horas, por exemplo). Portanto, o novo modelo proposto pode ser usado em esquemas de previsão \emph{on-line} de tráfego, tais como CAC e alocação dinâmica de banda, dado que o parâmetro $H$ pode ser estimado em tempo real por meio da aplicação da DWT\footnote{O \emph{script} \texttt{MATLAB} de Abry-Veitch (estimador \emph{wavelet} de $H$) levou aproximadamente 13 segundos para estimar o valor do parâmetro de Hurst da série \texttt{UNC02bin1ms}, que possui $N \approx 7,34 \times 10^6$ amostras, num \ac{PC} com sistema operacional \texttt{Windows}\textsuperscript{\textregistered}\texttt{XP}, processador AMD Athlon de 64 bits e 1 GB de memória RAM. É interessante observar que a mesma máquina ``travou'' quando o autor desta tese tentou obter estimativas de $H$ para a mesma série utilizando os métodos disponíveis no \emph{software} \texttt{S+FinMetrics}\textsuperscript{\textregistered} (análise R/S, Whittle, etc.)!}.
+
+%Este Capítulo mostrou que a modelagem de sinais fractais de tráfego por meio de processos AR é viável, pelo menos do ponto de vista teórico. As simulações demonstram que modelos AR de ordem alta podem oferecer um desempenho de previsão competitivo. O procedimento de inferência estatística ``funciona'' porque o número $N$ de pontos do sinal é suficientemente grande (ou seja, o fato do modelo AR estimado não ser parcimonioso não é um problema). Não obstante, observe-se que surgem algumas questões práticas relevantes como: 
+%\begin{itemize}
+%	\item a modelagem da memória longa pode ser obtida às custas do posicionamento de um pólo nas proximidades do círculo unitário (vide Fig. \ref{fig:polosAR18}); portanto, a implementação do modelo ajustado pode ser instável devido a efeitos de quantização dos coeficientes do filtro digital.
+%	\item o \textbf{problema fundamental da seleção da ordem} do modelo. 
+%Note-se que critérios de seleção tais como o AIC não levam em conta, de maneira explícita, a singularidade do tipo $1/f^{\alpha}$ que há na origem da DEP das séries LRD (vide (\ref{eq:AIC-ar})). O autor desta tese destaca o pensamento de Percival e Walden \cite[pág.434]{percival93} (segue transcrição abaixo):
+%\begin{quotation}
+%	``\emph{First, any order selection method we use should be appropriate for what we intend to do with the fitted AR model}. (...) \emph{Most of the commonly used order selection criteria are geared toward selecting a low-order AR model that does well for one-step-ahead predictions}''.  
+%\end{quotation}
+%Em seguida, Percival e Walden descrevem quatro métodos de seleção (sendo um deles o critério AIC visto no Cap. \ref{cap:conceitos}). Finalmente, segue-se abaixo a citação de duas frases importantes do último parágrafo da mesma seção \cite[pág.437]{percival93}: 
+%\begin{quotation}
+%	``\emph{How well do these order selection criteria work in practice?} (...) \emph{They conclude\footnote{Aqui Percival e Walden estão se referindo ao artigo \cite{kay81}, de Kay e Marple.} that \textbf{subjective} judgment is still needed to select the AR order for actual time series.}''.  
+%\end{quotation} 
+%\end{itemize}
+
+%Conclui-se que a aplicação de modelos AR em esquemas de previsão \emph{on-line} de tráfego é fortemente prejudicada pelo problema da identificação da ordem do modelo.
+
+
+
+   
+
+
+ 
+

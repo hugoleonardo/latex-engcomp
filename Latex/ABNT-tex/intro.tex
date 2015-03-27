@@ -1,0 +1,54 @@
+\chapter{Introdução}
+\label{cap:intro}
+
+Este Capítulo apresenta a motivação, os objetivos e as principais contribuições deste trabalho. 
+
+
+\section{Motivação}
+
+Atualmente, as operadoras de telecomunicações têm como meta a integração dos serviços de voz, vídeo, imagem e dados sobre uma única rede convergente chaveada por pacotes. Esta rede, que também é conhecida como rede de serviços integrados, multisserviço, ou de próxima geração, deve possuir características de desempenho aceitáveis para cada tipo de serviço e as seguintes vantagens: redução de custos operacionais, flexibilidade para suportar os serviços existentes e futuros serviços ainda não previstos, alocação dinâmica de banda, transporte integrado de todos os tipos de informação e utilização eficiente dos recursos da rede através da multiplexação estatística. A crescente demanda por aplicações multimídia também é outro fator motivador da implementação dessa rede. 
+
+Em 1988, a \ac{ITU-T} padronizou o Modo de Transferência Assíncrono (\ac{ATM}) como tecnologia de transporte a ser adotada na \ac{RDSI-FL}. Entretanto, a utilização da tecnologia ATM foi bastante prejudicada pela sua complexidade, dificuldades de padronização e de integração ao IP e, principalmente, porque poucas aplicações suportam o ATM de forma nativa. O ATM foi ``derrotado'' pela simplicidade e enorme sucesso da pilha de protocolos \ac{TCP}/IP. O IP tornou-se o padrão de fato e é a ``cola'' que une toda a Internet. 
+
+O núcleo das redes convergentes consiste numa única infraestrutura IP, com suporte a Qualidade de Serviço - \ac{QoS}\footnote{Os parâmetros de QoS são os seguintes: \ac{PDT}, \ac{PDV}, \ac{THRU} e \ac{PLR} \cite{barra05}.}  - redes privativas virtuais e protocolos IP versões 4 e 6 (IPv4/IPv6). A transformação da Internet numa rede com suporte a QoS é um dos grandes desafios a serem vencidos e é por isso que o \ac{IETF} tem proposto várias tecnologias e padrões para a implementação de QoS na Internet, tais como: \ac{MPLS} \cite{davie00}, \cite{rosen01}, \cite{minei05}, roteamento baseado em restrições (\emph{constrained-based routing}) \cite{davie00}, engenharia de tráfego, Serviços Integrados (\ac{IntServ}) \cite{braden94} e Serviços Diferenciados (\ac{DiffServ}) \cite{nichols98}, \cite{blake98}, \cite{armitage00}, \cite{zheng01}.
+
+A implementação de mecanismos que regulem e monitorem o teletráfego é essencial para a operação eficiente das redes convergentes. Sem controle de tráfego, a demanda irrestrita pelos recursos compartilhados (\emph{buffers}, banda e processadores) pode degradar seriamente o desempenho da rede. O controle de tráfego é necessário para proteger a QoS percebida pelos usuários e para assegurar a eficiente utilização dos recursos da rede. O seguinte conjunto de funções de controle de tráfego deve ser implementado nas redes convergentes \cite{lima02}: a) \ac{CAC}, b) policiamento do usuário - \ac{UPC}, c)  controle de prioridade e d) controle de congestionamento. As funções a), c) e d) envolvem a funcionalidade de previsão \emph{on-line} de tráfego.
+
+Medições \cite{leland94}, \cite{paxson95} demonstraram que o tráfego agregado (ou heterogêneo) das redes de dados\footnote{O tráfego de dados é a série temporal de contagem de \emph{bytes} por unidade de tempo (\emph{bytes}/bin) em um enlace da rede.} possui propriedades estatísticas fundamentalmente diferentes do tráfego existente nas redes telefônicas tradicionais, que usam a tecnologia de comutação de circuitos. O matemático e engenheiro dinamarquês A. K. Erlang mostrou em 1909 \cite{erlang1909} que o número de chamadas telefônicas geradas durante um determinado intervalo de tempo pode ser modelado pelo processo de Poisson \cite{gubner06}\footnote{O modelo de Poisson é uma cadeia de Markov \cite[p. 502]{gubner06}.}.
+Em contraste, \emph{traces} (séries) de tráfego de dados possuem propriedades fractais tais como  dependência de longa duração\footnote{No contexto desta pesquisa, os termos memória longa e auto-similaridade são sinônimos. A rigor, auto-similaridade e dependência de longa duração são conceitos distintos. Entretanto, conforme será mostrado mais adiante, processos estocásticos auto-similares de segunda ordem são LRD e vice-versa. É por esta razão que a literatura não faz distinção entre os termos auto-similaridade e LRD.} - \ac{LRD} ou memória longa - e impulsividade (grande variabilidade) em diversas escalas de agregação temporal, que não são capturadas pelo processo de Poisson. O tráfego em algumas redes locais - \ac{LAN} - e de grande área - \ac{WAN} é extremamente impulsivo porque tem uma distribuição marginal com cauda pesada (não-Gaussiana)\footnote{Um comportamento parecido foi observado, no início da década de 1960, por Mandelbrot em séries financeiras: elas também são não-Gaussianas, seguindo distribuições do tipo Lévy-\emph{stable} com variância infinita \cite{mandelbrot63}.} \cite{bates97}, \cite{karasaridis97}, \cite{garroppo00}, \cite{karasaridis01}, \cite{kim03}, \cite{athina04}. 
+
+Sabe-se que a probabilidade de transbordamento numa fila (\emph{buffer overflow probability}), com um único servidor que trabalha a uma taxa de serviço constante, submetida a tráfego Markoviano é uma função exponencial do tamanho do \emph{buffer} \cite{kleinrock75}. Portanto, um aumento do \emph{buffer} diminui sensivelmente a \ac{PLR} (taxa de perda de pacotes)
+%\footnote{Os parâmetros de QoS são os seguintes: \ac{PDT}, \ac{PDV}, \ac{THRU} e \ac{PLR} \cite{barra05}.} 
+quando o tráfego é Markoviano. Por outro lado, vários estudos \cite{leland94}, \cite{erramilli96}, \cite{yang01}, mostraram que a memória longa e a impulsividade do tráfego de dados degradam o desempenho da rede (a taxa de perda de pacotes aumenta), porque a \emph{buffer overflow probability} em sistemas submetidos a tráfego fractal é uma função potência do tamanho do \emph{buffer}, o que implica um decaimento hiperbólico, muito mais lento do que o do caso Markoviano\footnote{A taxa de decaimento é dominada pelo parâmetro $H$ ou pelo índice de cauda (\emph{tail index}) da distribuição marginal.} \cite{athina04}, \cite{grossglauser99}. Portanto, tráfego auto-similar provoca \emph{buffer overflows} muito mais freqüentemente do que tráfego Markoviano. Este fenômeno foi constatado nas redes ATM do início da década de 1990, em que os comutadores foram implementados com pequenos \emph{buffers} (de 10 a 100 células de 53 \emph{bytes}) \cite{willinger94}. 
+
+Modelos de teletráfego fractal constituem o núcleo dos mecanismos de controle de tráfego em redes convergentes, tais como algoritmos de CAC baseados em medições \cite{qiu01}, e dos geradores de tráfego agregado, que são usados para o dimensionamento de redes de alta velocidade e para a homologação de novos algoritmos de controle de tráfego via simulações e experimentos em redes de teste (\emph{testbed networks}). 
+
+
+\section{Objetivos e Contribuições}
+\label{cap:intro:sec:obj}
+
+O objetivo principal deste trabalho é propor um modelo de teletráfego que seja adequado para esquemas de previsão \emph{on-line}. As seguintes questões foram examinadas no decorrer desta pesquisa:
+\begin{itemize}
+	\item Como fazer a previsão de sinais com dependência de longa duração? 
+	\item Como aplicar a teoria de previsão de séries temporais ao tráfego real das redes de telecomunicações? 
+	\item Teletráfego é um sinal linear ou não-linear? É Gaussiano ou não-Gaussiano?
+	\item Como deve ser feita a estimação dos parâmetros do modelo?
+	\item Como identificar o modelo adequado? 
+	\item Se a previsão puder ser feita com a teoria de estimação linear, então quais seriam as técnicas disponíveis? 
+\end{itemize}
+
+
+Segue-se uma lista com as contribuições originais desta tese:
+\begin{itemize}
+	\item Desenvolvimento de um novo modelo de teletráfego fractal no espaço de estados.
+	\item Proposta de uma metodologia de análise estatística de teletráfego \ac{LRD}.
+	\item Demonstração, por meio de simulações, que a modelagem de sinais com memória longa por meio de processos \ac{AR} de ordem alta pode ser inviável na prática, dado que pode ser obtida às custas do posicionamento de um ou mais pólos do modelo nas proximidades do círculo de raio unitário.
+\end{itemize}
+
+
+\section{Estrutura da Tese}
+\label{cap:intro:sec:outline}
+
+O Capítulo \ref{cap:conceitos} apresenta alguns conceitos fundamentais da teoria de séries temporais e introduz alguns modelos clássicos, tais como o processo \ac{AR}. O Capítulo \ref{cap:fractal} introduz a noção de fractal e formula os conceitos de LRD e auto-similaridade de segunda ordem. Também são abordados os conceitos de variável aleatória com distribuição de cauda pesada, distribuições estáveis e impulsividade. O Capítulo \ref{cap:modelagem} apresenta alguns modelos de memória longa importantes da literatura. Os Capítulos \ref{cap:conceitos}, \ref{cap:fractal} e \ref{cap:modelagem} compõem a parte de fundamentação teórica deste trabalho. 
+Os resultados obtidos são apresentados pelos Capítulos \ref{cap:tarfima} e \ref{cap:trafego}.
+O Capítulo \ref{cap:tarfima} propõe um novo modelo de tráfego.  O Capítulo \ref{cap:trafego} apresenta um estudo de caso baseado na análise de um \emph{trace} de tráfego Internet. Finalmente, o Capítulo \ref{cap:conc} apresenta as conclusões e novas idéias para trabalhos futuros. 

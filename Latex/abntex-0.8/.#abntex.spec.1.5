@@ -1,0 +1,101 @@
+# $Header: /home/cvsroot/abntex/abntex.spec,v 1.5 2003/03/19 21:06:47 gweber Exp $
+%define VERSION 0.7
+%define rel alfa
+%define texdir /usr/share/texmf
+%define lyxdir /usr/share/lyx
+%define bindir /usr/local/bin
+Summary: LaTeX macros for writing documents following the ABNT norms.
+Summary(pt_BR): Macros para LaTeX que implementam normas da ABNT.
+Name: abntex
+Version: %VERSION
+Release: %rel
+Copyright: LPPL
+Group: TeX
+URL: http://abntex.codigolivre.org.br
+Source: abntex-%{version}-%{rel}.tgz
+Requires: tetex, tetex-latex
+%description
+With the abnTeX macros you will be able to write LaTeX
+documents which conform to several norms from ABNT
+(Brazilian Association for Technical Norms). In addition there
+are macros for writing automated lists of abbreviations and
+symbols and a style for writing patent applications for INPI.
+You can also use these style with LyX.
+
+%description -l pt_BR
+As macros abnTeX possibilitam escrever documentos latex
+em conformidade com as diversas normas da ABNT (Associação
+Brasileira de Normas Técnicas). Além disso estão incluídas
+macros para a confeção automatizada de listas de abreviaturas
+e símbolos e um estilo para escrever requerimentos de patentes
+para o INPI. Você também pode usar esses estilos com LyX.
+
+
+%package doc
+Summary: Precomipled (ps, pdf, html) documentation for the abnTeX macro package.
+Summary(pt_BR): Documentação precompilada (ps, pdf, html) para o pacote de macros abnTeX.
+Group: TeX
+
+%description doc
+Ready-to-use precompiled dvi, pdf, ps and html documentation of the abnTeX package.
+
+%description doc -l pt_BR
+Documentação em dvi, pdf, ps e html precompilado pronto para uso
+do pacote abnTeX.
+
+%package lyx
+Requires: abntex >= 0.7, lyx >= 1.1
+Summary: abnTeX layout styles for the use with LyX.
+Summary(pt_BR): Estilos abnTeX para uso com LyX.
+Group: Editors
+
+%description lyx
+abnTeX layout styles for the use with LyX.
+
+%description lyx -l pt_BR
+Estilos abnTeX para uso com LyX.
+
+%changelog
+* Tue Mar 19 2003 Gerald Weber <gweber@codigolivre.org.br>
+Adicionado o pacote lyx.
+
+%changelog
+* Tue Nov 27 2002 Gerald Weber <gweber@codigolivre.org.br>
+Correção de bug na classe abnt.cls.
+
+* Tue Nov 19 2002 Gerald Weber <gweber@codigolivre.org.br>
+First release as rpm package.
+
+%prep
+rm -rf $RPM_BUILD_DIR/%{name}-%{version}
+%setup
+%build
+make doc
+
+%install
+make install
+
+%post
+texhash
+
+%files
+%defattr(-, root, root)
+%doc LEIAME LEIAME.linux LEIAME.make LEIAME.administracao
+%{texdir}/bibtex/bib/abntex
+%{texdir}/bibtex/bst/abntex
+%{texdir}/tex/latex/abntex
+%{texdir}/doc/bibtex/abntex
+%{texdir}/doc/latex/abntex
+%{bindir}/geratss
+
+%files doc
+%defattr(-, root, root)
+%doc compiled.docs/*
+
+%files lyx
+%defattr(-, root, root)
+%{lyxdir}/layouts/abnt.layout
+
+
+%postun
+texhash

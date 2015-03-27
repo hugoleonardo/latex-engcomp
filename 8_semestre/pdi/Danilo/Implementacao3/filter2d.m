@@ -12,6 +12,7 @@ function [ new_img ] = filter2d( imagem, L )
     T = 64; % Tamanho total do impulso
     imp = zeros(T,T);
     imp(T/2,T/2) = 1;
+
     % Calcula a resposta ao impulso do filtro [h(x,y)]
     h = conv2(filtro,imp);
     % Calcula a transformada de Fourier de h(x,y) = H(u,v) (Resposta em
