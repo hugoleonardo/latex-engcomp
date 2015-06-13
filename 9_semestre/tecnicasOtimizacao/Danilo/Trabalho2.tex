@@ -1,0 +1,85 @@
+\documentclass[11pt,a4paper]{article}
+%\usepackage[utf8]{inputenc}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{multicol, blindtext}
+\usepackage[toc,page]{appendix}
+\usepackage[top=0.58in, bottom=0.9in, left=0.58in]{geometry}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{lipsum}
+\usepackage{natbib}
+\usepackage{url}
+\usepackage{color}
+\usepackage{tikz}
+\usepackage{cite}
+\usepackage{makecell}
+\usepackage{slashbox}
+\usepackage{xcolor,colortbl}
+\usetikzlibrary{shapes,arrows}
+
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=8.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=5cm, text width=5em,
+    minimum height=4em] 
+
+\title{	\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.75]{./pictures/logoufpa.png}
+			\label{fig:logoufpa}
+		\end{figure}
+		Universidade Federal do Pará \linebreak
+		Instituto de Tecnologia \linebreak
+		Faculdade de Engenharia de Computação e Telecomunicações \linebreak
+		Técnicas de Otimização \linebreak
+		Prof$^{o}$ Dr. Lamartine Vilar de Souza}
+
+\begin{document}
+
+\author{Danilo Souza - 201006840008}
+\maketitle
+
+\section{Modelo de Transportes}
+
+\subsection{Introdução}
+
+O modelo de transporte consiste em minimizar os custos da distribuição (escoamento) de um determinado produto, onde têm-se:
+
+\begin{itemize}
+	\item A oferta (quantidade) $S_{i}$ disponível nas origens
+	\item A demanda (quantidade) $D_{i}$ necessária nos destinos
+	\item As ofertas devem ir diretamente para os destinos de tal modo a zerar sua disponibilidade e suprir as necessidades dos destinos. Assume-se que o custo $C_{ij}$ da origem $i$ para o destino $j$ não depende da quantidade transportada.
+\end{itemize}
+
+Passos para solução de um problema de transporte
+\begin{itemize}
+	\item Encontrar uma solução inicial (básica)
+	\item Verificar se esta solução é ótimo
+	\item Caso a solução não seja ótima, retorna-se ao passo 1.
+\end{itemize}
+
+\subsection{Designação}
+
+\subsection{Custo Mínimo}
+
+\section{PLI}
+
+\subsection{Introdução}
+
+Os problemas de PLI apresentam um conjunto mais resrito de soluções em relação ao conjunto de soluções de um problema de PL convencional, pois com a remoção de algumas soluções possíveis (reais e não-inteiras) remove-se também pontos extremos da região viável do problema, retirando assim a possibilidade de aplicação dos métodos eficientes de solução para problemas de PL
+
+\subsection{PLI na prática}
+
+\section{Bibliografia}
+
+\bibliographystyle{plain} 
+
+
+	
+\end{document}
